@@ -28,14 +28,14 @@ export function SearchBar({
 
   useEffect(() => {
     const handleUpdateRecentEmojis = (e: CustomEvent<EmojiMetadata[]>) => {
-      setRecentEmojis(e.detail);
-    };
+      setRecentEmojis(e.detail)
+    }
 
-    document.addEventListener('updateRecentEmojis', handleUpdateRecentEmojis as EventListener);
+    document.addEventListener('updateRecentEmojis', handleUpdateRecentEmojis as EventListener)
     return () => {
-      document.removeEventListener('updateRecentEmojis', handleUpdateRecentEmojis as EventListener);
-    };
-  }, []);
+      document.removeEventListener('updateRecentEmojis', handleUpdateRecentEmojis as EventListener)
+    }
+  }, [])
 
   const handleSearch = (value: string) => {
     setSearchQuery(value)
@@ -45,6 +45,10 @@ export function SearchBar({
   const handleCategorySelect = (category: string) => {
     setSelectedCategory(category)
     onCategorySelect(category)
+  }
+
+  const handleEmojiSelect = (emoji: EmojiMetadata) => {
+    document.dispatchEvent(new CustomEvent('emojiSelect', { detail: emoji }))
   }
 
   return (
@@ -92,9 +96,7 @@ export function SearchBar({
                 key={emoji.id}
                 className="rounded-lg border bg-card p-2 hover:bg-accent transition-colors"
                 title={emoji.filename}
-                onClick={() => {
-                  document.dispatchEvent(new CustomEvent('emojiSelect', { detail: emoji }));
-                }}
+                onClick={() => handleEmojiSelect(emoji)}
               >
                 <img
                   src={emoji.path}
