@@ -8,7 +8,7 @@ interface EmojiGridProps {
   onEmojiSelect?: (emoji: EmojiMetadata) => void
 }
 
-export function EmojiGrid({ emojis: initialEmojis, onEmojiSelect }: EmojiGridProps) {
+const EmojiGrid = ({ emojis: initialEmojis, onEmojiSelect }: EmojiGridProps) => {
   const [focusedIndex, setFocusedIndex] = useState<number>(-1)
   const [emojis, setEmojis] = useState(initialEmojis)
   const gridRef = useRef<HTMLDivElement>(null)
@@ -98,3 +98,5 @@ export function EmojiGrid({ emojis: initialEmojis, onEmojiSelect }: EmojiGridPro
     </div>
   )
 }
+
+export default EmojiGrid;

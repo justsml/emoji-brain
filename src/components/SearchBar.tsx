@@ -16,15 +16,10 @@ interface SearchBarProps {
   recentEmojis?: EmojiMetadata[]
 }
 
-export function SearchBar({
-  onSearch,
-  onCategorySelect,
-  categories,
-  recentEmojis: initialRecentEmojis = []
-}: SearchBarProps) {
+const SearchBar = (props: SearchBarProps) => {
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedCategory, setSelectedCategory] = useState<string>('all')
-  const [recentEmojis, setRecentEmojis] = useState<EmojiMetadata[]>(initialRecentEmojis)
+  const [recentEmojis, setRecentEmojis] = useState<EmojiMetadata[]>(props.recentEmojis || [])
 
   useEffect(() => {
     const handleUpdateRecentEmojis = (e: CustomEvent<EmojiMetadata[]>) => {
@@ -39,12 +34,12 @@ export function SearchBar({
 
   const handleSearch = (value: string) => {
     setSearchQuery(value)
-    onSearch(value)
+    props.onSearch(value)
   }
 
   const handleCategorySelect = (category: string) => {
     setSelectedCategory(category)
-    onCategorySelect(category)
+    props.onCategorySelect(category)
   }
 
   const handleEmojiSelect = (emoji: EmojiMetadata) => {
@@ -75,7 +70,7 @@ export function SearchBar({
             <DropdownMenuItem onClick={() => handleCategorySelect('all')}>
               All Categories
             </DropdownMenuItem>
-            {categories.map((category) => (
+            {props.categories.map((category) => (
               <DropdownMenuItem
                 key={category}
                 onClick={() => handleCategorySelect(category)}
@@ -111,3 +106,5 @@ export function SearchBar({
     </div>
   )
 }
+
+export default SearchBar;

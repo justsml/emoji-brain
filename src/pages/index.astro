@@ -1,12 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { EmojiGrid } from '../components/EmojiGrid';
-import { SearchBar } from '../components/SearchBar';
+import EmojiGrid from '../components/EmojiGrid';
+import SearchBar from '../components/SearchBar';
 import type { EmojiMetadata } from '../types/emoji';
 import emojiMetadata from '../data/emoji-metadata.json';
 
 // Get unique categories
-const categories = Array.from(new Set(emojiMetadata.emojis.flatMap(emoji => emoji.categories)));
+const categories = Array.from(new Set(emojiMetadata.emojis.flatMap(emoji => emoji.categories))).filter(Boolean);
 ---
 
 <Layout title="Emoji Explorer">
@@ -22,12 +22,13 @@ const categories = Array.from(new Set(emojiMetadata.emojis.flatMap(emoji => emoj
       <SearchBar
         client:load
         categories={categories}
-        onSearch={(query) => {
+        onSearch={(query: string) => {
           document.dispatchEvent(new CustomEvent('search', { detail: query }));
         }}
-        onCategorySelect={(category) => {
+        onCategorySelect={(category: string) => {
           document.dispatchEvent(new CustomEvent('categorySelect', { detail: category }));
         }}
+        recentEmojis={[]}
       />
     </div>
     
@@ -35,7 +36,7 @@ const categories = Array.from(new Set(emojiMetadata.emojis.flatMap(emoji => emoj
       <EmojiGrid
         client:load
         emojis={emojiMetadata.emojis}
-        onEmojiSelect={(emoji) => {
+        onEmojiSelect={(emoji: EmojiMetadata) => {
           document.dispatchEvent(new CustomEvent('emojiSelect', { detail: emoji }));
         }}
       />
