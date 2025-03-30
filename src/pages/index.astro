@@ -1,16 +1,24 @@
 ---
-
+import Layout from '../layouts/Layout.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Emoji Explorer">
+  <div class="space-y-8">
+    <section class="text-center">
+      <h2 class="text-3xl font-bold tracking-tight">Welcome to Emoji Explorer</h2>
+      <p class="mt-4 text-muted-foreground">
+        Browse, search, and explore our collection of emojis
+      </p>
+    </section>
+    
+    <section>
+      <!-- Search and grid components will be added here -->
+      <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+        <div class="aspect-square rounded-lg border bg-card text-card-foreground shadow-sm flex items-center justify-center">
+          <!-- Placeholder for emoji grid -->
+          <span class="text-4xl">🚀</span>
+        </div>
+      </div>
+    </section>
+  </div>
+</Layout>

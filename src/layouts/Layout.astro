@@ -1,0 +1,49 @@
+---
+import { ThemeToggle } from '../components/theme-toggle';
+import '../styles/globals.css';
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Emoji Explorer - Browse and search emojis" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <script is:inline>
+      const theme = (() => {
+        if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+          return localStorage.getItem('theme');
+        }
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          return 'dark';
+        }
+        return 'light';
+      })();
+      if (theme === 'dark') {
+        document.documentElement.classList.add('dark');
+      }
+    </script>
+  </head>
+  <body>
+    <div class="min-h-screen bg-background text-foreground">
+      <header class="container mx-auto px-4 py-6">
+        <div class="flex justify-between items-center">
+          <h1 class="text-2xl font-bold">Emoji Explorer</h1>
+          <ThemeToggle client:load />
+        </div>
+      </header>
+      <main class="container mx-auto px-4 py-8">
+        <slot />
+      </main>
+    </div>
+  </body>
+</html>
