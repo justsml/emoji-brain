@@ -1,24 +1,97 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { EmojiGrid } from '../components/EmojiGrid';
+import { SearchBar } from '../components/SearchBar';
+import type { EmojiMetadata } from '../types/emoji';
+import emojiMetadata from '../data/emoji-metadata.json';
+
+// Get unique categories
+const categories = Array.from(new Set(emojiMetadata.emojis.flatMap(emoji => emoji.categories)));
 ---
 
 <Layout title="Emoji Explorer">
-  <div class="space-y-8">
+  <div class="container mx-auto px-4 py-8 space-y-8">
     <section class="text-center">
       <h2 class="text-3xl font-bold tracking-tight">Welcome to Emoji Explorer</h2>
       <p class="mt-4 text-muted-foreground">
         Browse, search, and explore our collection of emojis
       </p>
     </section>
+
+    <div class="max-w-5xl mx-auto">
+      <SearchBar
+        client:load
+        categories={categories}
+        onSearch={(query) => {
+          document.dispatchEvent(new CustomEvent('search', { detail: query }));
+        }}
+        onCategorySelect={(category) => {
+          document.dispatchEvent(new CustomEvent('categorySelect', { detail: category }));
+        }}
+      />
+    </div>
     
-    <section>
-      <!-- Search and grid components will be added here -->
-      <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-        <div class="aspect-square rounded-lg border bg-card text-card-foreground shadow-sm flex items-center justify-center">
-          <!-- Placeholder for emoji grid -->
-          <span class="text-4xl">🚀</span>
-        </div>
-      </div>
+    <section class="max-w-7xl mx-auto">
+      <EmojiGrid
+        client:load
+        emojis={emojiMetadata.emojis}
+        onEmojiSelect={(emoji) => {
+          document.dispatchEvent(new CustomEvent('emojiSelect', { detail: emoji }));
+        }}
+      />
     </section>
   </div>
+
+  <script define:vars={{ initialEmojis: emojiMetadata.emojis }}>
+    let currentEmojis = initialEmojis;
+    let searchQuery = '';
+    let selectedCategory = 'all';
+    let recentEmojis = [];
+
+    function filterEmojis() {
+      let filtered = currentEmojis;
+
+      if (searchQuery) {
+        const query = searchQuery.toLowerCase();
+        filtered = filtered.filter(emoji => 
+          emoji.filename.toLowerCase().includes(query) ||
+          emoji.tags.some(tag => tag.toLowerCase().includes(query)) ||
+          emoji.categories.some(category => category.toLowerCase().includes(query))
+        );
+      }
+
+      if (selectedCategory !== 'all') {
+        filtered = filtered.filter(emoji =>
+          emoji.categories.includes(selectedCategory)
+        );
+      }
+
+      return filtered;
+    }
+
+    // Handle search
+    document.addEventListener('search', (e) => {
+      searchQuery = e.detail;
+      const filteredEmojis = filterEmojis();
+      document.dispatchEvent(new CustomEvent('updateEmojis', { detail: filteredEmojis }));
+    });
+
+    // Handle category selection
+    document.addEventListener('categorySelect', (e) => {
+      selectedCategory = e.detail;
+      const filteredEmojis = filterEmojis();
+      document.dispatchEvent(new CustomEvent('updateEmojis', { detail: filteredEmojis }));
+    });
+
+    // Handle emoji selection
+    document.addEventListener('emojiSelect', (e) => {
+      const emoji = e.detail;
+      recentEmojis = [emoji, ...recentEmojis.filter(e => e.id !== emoji.id)].slice(0, 8);
+      navigator.clipboard.writeText(emoji.filename);
+      document.dispatchEvent(new CustomEvent('updateRecentEmojis', { detail: recentEmojis }));
+    });
+
+    // Initial state
+    document.dispatchEvent(new CustomEvent('updateEmojis', { detail: currentEmojis }));
+  </script>
 </Layout>
