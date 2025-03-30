@@ -18,6 +18,7 @@ Building a beautiful Emoji Explorer web application with a responsive grid layou
 - Include micro-interactions
 - Use TypeScript & React
 - Use Tailwind CSS for styling
+- Use `bun` instead of node/npm for all package and script operations
 
 ## Project Architecture
 
@@ -26,6 +27,7 @@ Building a beautiful Emoji Explorer web application with a responsive grid layou
 - TypeScript for type safety
 - Tailwind CSS for styling
 - shadcn-ui for UI components
+- Bun as the JavaScript runtime and package manager
 - Local storage for persistent state
 
 ## Component Structure

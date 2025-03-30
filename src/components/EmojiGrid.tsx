@@ -5,13 +5,31 @@ import { cn } from '../lib/utils'
 
 interface EmojiGridProps {
   emojis: EmojiMetadata[]
-  onEmojiSelect?: (emoji: EmojiMetadata) => void
+  onSelectionChange?: (selectedEmojis: EmojiMetadata[]) => void
 }
 
-const EmojiGrid = ({ emojis: initialEmojis, onEmojiSelect }: EmojiGridProps) => {
+const STORAGE_KEY = 'selectedEmojis'
+
+const EmojiGrid = ({ emojis: initialEmojis, onSelectionChange }: EmojiGridProps) => {
   const [focusedIndex, setFocusedIndex] = useState<number>(-1)
   const [emojis, setEmojis] = useState(initialEmojis)
+  const [selectedEmojis, setSelectedEmojis] = useState<EmojiMetadata[]>(() => {
+    if (typeof window === 'undefined') return []
+    const stored = localStorage.getItem(STORAGE_KEY)
+    return stored ? JSON.parse(stored) : []
+  })
   const gridRef = useRef<HTMLDivElement>(null)
+  
+  const toggleSelection = (emoji: EmojiMetadata) => {
+    const newSelection = selectedEmojis.some(e => e.id === emoji.id)
+      ? selectedEmojis.filter(e => e.id !== emoji.id)
+      : [...selectedEmojis, emoji]
+    
+    setSelectedEmojis(newSelection)
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(newSelection))
+    onSelectionChange?.(newSelection)
+  }
+  
 
   useEffect(() => {
     const handleUpdateEmojis = (e: CustomEvent<EmojiMetadata[]>) => {
@@ -48,7 +66,7 @@ const EmojiGrid = ({ emojis: initialEmojis, onEmojiSelect }: EmojiGridProps) => 
       case 'Enter':
       case ' ':
         e.preventDefault()
-        onEmojiSelect?.(emojis[index])
+        toggleSelection(emojis[index])
         break
     }
   }
@@ -71,14 +89,15 @@ const EmojiGrid = ({ emojis: initialEmojis, onEmojiSelect }: EmojiGridProps) => 
         <button
           key={emoji.id}
           className={cn(
-            "aspect-square rounded-lg border bg-card text-card-foreground",
+            "aspect-square rounded-lg border bg-card text-card-foreground relative group",
             "shadow-sm flex items-center justify-center",
             "transition-all duration-200 ease-in-out",
             "hover:scale-105 hover:shadow-md focus:scale-105 focus:shadow-md",
             "focus:outline-none focus:ring-2 focus:ring-primary",
-            "relative group"
+            selectedEmojis.some(e => e.id === emoji.id) && 
+              "ring-2 ring-primary ring-offset-2 bg-primary/10"
           )}
-          onClick={() => onEmojiSelect?.(emoji)}
+          onClick={() => toggleSelection(emoji)}
           onKeyDown={(e) => handleKeyDown(e, index)}
           tabIndex={focusedIndex === index ? 0 : -1}
           role="gridcell"
