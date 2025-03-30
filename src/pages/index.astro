@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import EmojiGrid from '../components/EmojiGrid';
 import SearchBar from '../components/SearchBar';
+import { EmojiExport } from '../components/EmojiExport';
 import type { EmojiMetadata } from '../types/emoji';
 import emojiMetadata from '../data/emoji-metadata.json';
 
@@ -36,11 +37,19 @@ const categories = Array.from(new Set(emojiMetadata.emojis.flatMap(emoji => emoj
       <EmojiGrid
         client:load
         emojis={emojiMetadata.emojis}
-        onEmojiSelect={(emoji: EmojiMetadata) => {
-          document.dispatchEvent(new CustomEvent('emojiSelect', { detail: emoji }));
+        onSelectionChange={(selectedEmojis) => {
+          document.dispatchEvent(new CustomEvent('updateSelectedEmojis', { detail: selectedEmojis }));
         }}
       />
     </section>
+    
+    <EmojiExport
+      client:load
+      selectedEmojis={[]}
+      onClearSelection={() => { 
+        document.dispatchEvent(new CustomEvent('clearSelection'));
+      }}
+    />
   </div>
 
   <script define:vars={{ initialEmojis: emojiMetadata.emojis }}>
@@ -84,14 +93,19 @@ const categories = Array.from(new Set(emojiMetadata.emojis.flatMap(emoji => emoj
       document.dispatchEvent(new CustomEvent('updateEmojis', { detail: filteredEmojis }));
     });
 
-    // Handle emoji selection
-    document.addEventListener('emojiSelect', (e) => {
-      const emoji = e.detail;
-      recentEmojis = [emoji, ...recentEmojis.filter(e => e.id !== emoji.id)].slice(0, 8);
-      navigator.clipboard.writeText(emoji.filename);
-      document.dispatchEvent(new CustomEvent('updateRecentEmojis', { detail: recentEmojis }));
+    // Handle clear selection
+    document.addEventListener('clearSelection', () => {
+      document.dispatchEvent(new CustomEvent('clearEmojiSelection'));
     });
 
+    // Handle selection updates
+    document.addEventListener('updateSelectedEmojis', (e) => {
+      // Update recent emojis if a single emoji was selected
+      if (e.detail.length > 0) {
+        recentEmojis = [e.detail[0], ...recentEmojis.filter(emoji => emoji.id !== e.detail[0].id)].slice(0, 8);
+        document.dispatchEvent(new CustomEvent('updateRecentEmojis', { detail: recentEmojis }));
+      }
+    });
     // Initial state
     document.dispatchEvent(new CustomEvent('updateEmojis', { detail: currentEmojis }));
   </script>
