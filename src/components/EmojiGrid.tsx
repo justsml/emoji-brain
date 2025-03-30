@@ -13,7 +13,7 @@ const ITEMS_PER_PAGE = 36 // 4 rows of 9 items in desktop view
 
 const EmojiGrid = ({ emojis: initialEmojis, onSelectionChange }: EmojiGridProps) => {
   const [focusedIndex, setFocusedIndex] = useState<number>(-1)
-  const [emojis, setEmojis] = useState(initialEmojis)
+  const [emojis, setEmojis] = useState<EmojiMetadata[]>([])
   const [selectedEmojis, setSelectedEmojis] = useState<EmojiMetadata[]>(() => {
     if (typeof window === 'undefined') return []
     const stored = localStorage.getItem(STORAGE_KEY)
@@ -22,6 +22,11 @@ const EmojiGrid = ({ emojis: initialEmojis, onSelectionChange }: EmojiGridProps)
   const gridRef = useRef<HTMLDivElement>(null)
   const [isLoading, setIsLoading] = useState(true)
   const [currentPage, setCurrentPage] = useState(1)
+
+  // Initialize emojis from props
+  useEffect(() => {
+    setEmojis(initialEmojis)
+  }, [initialEmojis])
   
   const toggleSelection = (emoji: EmojiMetadata) => {
     const newSelection = selectedEmojis.some(e => e.id === emoji.id)
@@ -57,7 +62,7 @@ const EmojiGrid = ({ emojis: initialEmojis, onSelectionChange }: EmojiGridProps)
   useEffect(() => {
     const handleUpdateEmojis = (e: CustomEvent<EmojiMetadata[]>) => {
       setEmojis(e.detail)
-      setFocusedIndex(-1) // Reset focus when emojis update
+      setFocusedIndex(-1)
     }
 
     document.addEventListener('updateEmojis', handleUpdateEmojis as EventListener)
@@ -119,10 +124,12 @@ const EmojiGrid = ({ emojis: initialEmojis, onSelectionChange }: EmojiGridProps)
   }, [focusedIndex])
 
   useEffect(() => {
-    // Simulate loading state
     setIsLoading(true)
-    const timer = setTimeout(() => setIsLoading(false), 500)
-    return () => clearTimeout(timer)
+    if (emojis.length > 0) {
+      const timer = setTimeout(() => setIsLoading(false), 300)
+      return () => clearTimeout(timer)
+    }
+    setIsLoading(false)
   }, [emojis])
 
   const handleScroll = () => {

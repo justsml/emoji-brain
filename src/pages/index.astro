@@ -53,13 +53,15 @@ const categories = Array.from(new Set(emojiMetadata.emojis.flatMap(emoji => emoj
   </div>
 
   <script define:vars={{ initialEmojis: emojiMetadata.emojis }}>
+    // Initialize state
     let currentEmojis = initialEmojis;
-    let searchQuery = '';
     let selectedCategory = 'all';
-    let recentEmojis = [];
+    let searchQuery = '';
+    let selectedEmojis = [];
+    let recentEmojis = JSON.parse(localStorage.getItem('recentEmojis') || '[]');
 
     function filterEmojis() {
-      let filtered = currentEmojis;
+      let filtered = initialEmojis;
 
       if (searchQuery) {
         const query = searchQuery.toLowerCase();
@@ -101,12 +103,18 @@ const categories = Array.from(new Set(emojiMetadata.emojis.flatMap(emoji => emoj
     // Handle selection updates
     document.addEventListener('updateSelectedEmojis', (e) => {
       // Update recent emojis if a single emoji was selected
-      if (e.detail.length > 0) {
+      selectedEmojis = e.detail;
+      if (e.detail && e.detail.length > 0) {
         recentEmojis = [e.detail[0], ...recentEmojis.filter(emoji => emoji.id !== e.detail[0].id)].slice(0, 8);
+        localStorage.setItem('recentEmojis', JSON.stringify(recentEmojis));
         document.dispatchEvent(new CustomEvent('updateRecentEmojis', { detail: recentEmojis }));
       }
+      // Update EmojiExport component
+      document.dispatchEvent(new CustomEvent('updateExportEmojis', { detail: selectedEmojis }));
     });
-    // Initial state
+
+    // Initialize components with default state
     document.dispatchEvent(new CustomEvent('updateEmojis', { detail: currentEmojis }));
+    document.dispatchEvent(new CustomEvent('updateRecentEmojis', { detail: recentEmojis }));
   </script>
 </Layout>

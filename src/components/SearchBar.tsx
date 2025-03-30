@@ -20,7 +20,7 @@ const SearchBar = (props: SearchBarProps) => {
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedCategory, setSelectedCategory] = useState<string>('all')
   const [isSearching, setIsSearching] = useState(false)
-  const [recentEmojis, setRecentEmojis] = useState<EmojiMetadata[]>(props.recentEmojis || [])
+  const [recentEmojis, setRecentEmojis] = useState<EmojiMetadata[]>([])
   const searchInputRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
@@ -33,6 +33,11 @@ const SearchBar = (props: SearchBarProps) => {
       document.removeEventListener('updateRecentEmojis', handleUpdateRecentEmojis as EventListener)
     }
   }, [])
+  
+  // Update recentEmojis when props change
+  useEffect(() => {
+    setRecentEmojis(props.recentEmojis || [])
+  }, [props.recentEmojis])
 
   useEffect(() => {
     const handleKeyboardShortcut = (e: KeyboardEvent) => {

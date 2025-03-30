@@ -17,6 +17,17 @@ interface EmojiExportProps {
 export function EmojiExport({ selectedEmojis, onClearSelection }: EmojiExportProps) {
   const [exportStatus, setExportStatus] = useState<{ message: string; type: 'success' | 'error' | 'loading' }>({ message: '', type: 'success' })
   const exportButtonRef = useRef<HTMLButtonElement>(null)
+  const [currentEmojis, setCurrentEmojis] = useState<EmojiMetadata[]>(selectedEmojis)
+
+  useEffect(() => {
+    const handleUpdateExportEmojis = (e: CustomEvent<EmojiMetadata[]>) => {
+      setCurrentEmojis(e.detail)
+    }
+    document.addEventListener('updateExportEmojis', handleUpdateExportEmojis as EventListener)
+    return () => {
+      document.removeEventListener('updateExportEmojis', handleUpdateExportEmojis as EventListener)
+    }
+  }, [])
 
   useEffect(() => {
     const handleKeyboardShortcut = (e: KeyboardEvent) => {
@@ -47,14 +58,14 @@ export function EmojiExport({ selectedEmojis, onClearSelection }: EmojiExportPro
   }
 
   const exportAsPlainText = () => {
-    const text = selectedEmojis.map(emoji => emoji.filename).join('\n')
+    const text = currentEmojis.map(emoji => emoji.filename).join('\n')
     navigator.clipboard.writeText(text)
     setExportStatus({ message: 'Copied filenames to clipboard!', type: 'success' })
     setTimeout(() => setExportStatus({ message: '', type: 'success' }), 2000)
   }
 
   const exportAsHtml = () => {
-    const html = selectedEmojis
+    const html = currentEmojis
       .map(emoji => `<img src="${emoji.path}" alt="${emoji.filename}" />`)
       .join('\n')
     navigator.clipboard.writeText(html)
@@ -63,7 +74,7 @@ export function EmojiExport({ selectedEmojis, onClearSelection }: EmojiExportPro
   }
 
   const exportAsCss = () => {
-    const css = selectedEmojis
+    const css = currentEmojis
       .map(emoji => `.emoji-${emoji.id} {
   background-image: url('${emoji.path}');
   background-size: contain;
@@ -83,7 +94,7 @@ export function EmojiExport({ selectedEmojis, onClearSelection }: EmojiExportPro
       const zip = new JSZip()
       
       // Add each emoji to the zip
-      for (const emoji of selectedEmojis) {
+      for (const emoji of currentEmojis) {
         const response = await fetch(emoji.path)
         const blob = await response.blob()
         zip.file(emoji.filename, blob)
@@ -110,14 +121,14 @@ export function EmojiExport({ selectedEmojis, onClearSelection }: EmojiExportPro
   }
 
   return (
-    selectedEmojis.length > 0 ? (
+    currentEmojis.length > 0 ? (
     <div 
       className="fixed bottom-4 left-1/2 -translate-x-1/2 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 p-4 rounded-lg shadow-lg border flex items-center gap-4 z-50 animate-in slide-in-from-bottom-4"
       role="region"
       aria-label="Export selected emojis"
     >
       <div className="text-sm font-medium" aria-live="polite">
-        {selectedEmojis.length} emoji{selectedEmojis.length !== 1 ? 's' : ''} selected
+        {currentEmojis.length} emoji{currentEmojis.length !== 1 ? 's' : ''} selected
       </div>
       
       <DropdownMenu>

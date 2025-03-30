@@ -83,7 +83,7 @@ async function generateEmojiMetadata() {
       return {
         id: generateId(filename),
         filename,
-        path: `/emojis/${filename}`,
+        path: `./emojis/${filename}`,
         categories,
         tags,
         created: stats.birthtime.toISOString(),
