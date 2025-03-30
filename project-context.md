@@ -19,6 +19,7 @@ Building a beautiful Emoji Explorer web application with a responsive grid layou
 - Use TypeScript & React
 - Use Tailwind CSS for styling
 - Use `bun` instead of node/npm for all package and script operations
+- Commit changes after every feature, include complete discussion.
 
 ## Project Architecture
 

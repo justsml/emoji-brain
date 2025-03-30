@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Button } from './ui/button'
 import {
   DropdownMenu,
@@ -6,6 +6,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from './ui/dropdown-menu'
+import { Download, Loader2, Copy, FileText, Code, X } from 'lucide-react'
 import type { EmojiMetadata } from '../types/emoji'
 
 interface EmojiExportProps {
@@ -14,13 +15,42 @@ interface EmojiExportProps {
 }
 
 export function EmojiExport({ selectedEmojis, onClearSelection }: EmojiExportProps) {
-  const [exportStatus, setExportStatus] = useState<string>('')
+  const [exportStatus, setExportStatus] = useState<{ message: string; type: 'success' | 'error' | 'loading' }>({ message: '', type: 'success' })
+  const exportButtonRef = useRef<HTMLButtonElement>(null)
+
+  useEffect(() => {
+    const handleKeyboardShortcut = (e: KeyboardEvent) => {
+      // Ctrl/Cmd + E to focus export button
+      if ((e.ctrlKey || e.metaKey) && e.key === 'e') {
+        e.preventDefault()
+        exportButtonRef.current?.focus()
+      }
+      // Ctrl/Cmd + Shift + C to clear selection
+      if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === 'C') {
+        e.preventDefault()
+        onClearSelection()
+      }
+    }
+    
+    document.addEventListener('keydown', handleKeyboardShortcut)
+    return () => document.removeEventListener('keydown', handleKeyboardShortcut)
+  }, [onClearSelection])
+
+  const announceStatus = (message: string) => {
+    const announcement = document.createElement('div')
+    announcement.setAttribute('role', 'status')
+    announcement.setAttribute('aria-live', 'polite')
+    announcement.className = 'sr-only'
+    announcement.textContent = message
+    document.body.appendChild(announcement)
+    setTimeout(() => document.body.removeChild(announcement), 1000)
+  }
 
   const exportAsPlainText = () => {
     const text = selectedEmojis.map(emoji => emoji.filename).join('\n')
     navigator.clipboard.writeText(text)
-    setExportStatus('Copied filenames to clipboard!')
-    setTimeout(() => setExportStatus(''), 2000)
+    setExportStatus({ message: 'Copied filenames to clipboard!', type: 'success' })
+    setTimeout(() => setExportStatus({ message: '', type: 'success' }), 2000)
   }
 
   const exportAsHtml = () => {
@@ -28,8 +58,8 @@ export function EmojiExport({ selectedEmojis, onClearSelection }: EmojiExportPro
       .map(emoji => `<img src="${emoji.path}" alt="${emoji.filename}" />`)
       .join('\n')
     navigator.clipboard.writeText(html)
-    setExportStatus('Copied HTML to clipboard!')
-    setTimeout(() => setExportStatus(''), 2000)
+    setExportStatus({ message: 'Copied HTML to clipboard!', type: 'success' })
+    setTimeout(() => setExportStatus({ message: '', type: 'success' }), 2000)
   }
 
   const exportAsCss = () => {
@@ -42,13 +72,13 @@ export function EmojiExport({ selectedEmojis, onClearSelection }: EmojiExportPro
 }`)
       .join('\n\n')
     navigator.clipboard.writeText(css)
-    setExportStatus('Copied CSS to clipboard!')
-    setTimeout(() => setExportStatus(''), 2000)
+    setExportStatus({ message: 'Copied CSS to clipboard!', type: 'success' })
+    setTimeout(() => setExportStatus({ message: '', type: 'success' }), 2000)
   }
 
   const downloadZip = async () => {
     try {
-      setExportStatus('Preparing ZIP...')
+      setExportStatus({ message: 'Preparing ZIP...', type: 'loading' })
       const JSZip = (await import('jszip')).default
       const zip = new JSZip()
       
@@ -70,54 +100,89 @@ export function EmojiExport({ selectedEmojis, onClearSelection }: EmojiExportPro
       document.body.removeChild(a)
       URL.revokeObjectURL(url)
       
-      setExportStatus('ZIP downloaded!')
-      setTimeout(() => setExportStatus(''), 2000)
+      setExportStatus({ message: 'ZIP downloaded!', type: 'success' })
+      setTimeout(() => setExportStatus({ message: '', type: 'success' }), 2000)
     } catch (error) {
       console.error('Error creating ZIP:', error)
-      setExportStatus('Error creating ZIP')
-      setTimeout(() => setExportStatus(''), 2000)
+      setExportStatus({ message: 'Error creating ZIP', type: 'error' })
+      setTimeout(() => setExportStatus({ message: '', type: 'success' }), 2000)
     }
   }
 
   return (
-    <div className="fixed bottom-4 left-1/2 -translate-x-1/2 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 p-4 rounded-lg shadow-lg border flex items-center gap-4 z-50">
-      <div className="text-sm font-medium">
+    selectedEmojis.length > 0 ? (
+    <div 
+      className="fixed bottom-4 left-1/2 -translate-x-1/2 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 p-4 rounded-lg shadow-lg border flex items-center gap-4 z-50 animate-in slide-in-from-bottom-4"
+      role="region"
+      aria-label="Export selected emojis"
+    >
+      <div className="text-sm font-medium" aria-live="polite">
         {selectedEmojis.length} emoji{selectedEmojis.length !== 1 ? 's' : ''} selected
       </div>
       
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button variant="outline">Export As...</Button>
+          <Button 
+            ref={exportButtonRef}
+            variant="outline"
+            className="gap-2 transition-all duration-200 hover:shadow-md"
+            aria-label="Export options"
+          >
+            {exportStatus.type === 'loading' ? (
+              <Loader2 className="h-4 w-4 animate-spin" />
+            ) : (
+              <Download className="h-4 w-4" />
+            )}
+            Export As...
+          </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
-          <DropdownMenuItem onClick={exportAsPlainText}>
+          <DropdownMenuItem 
+            onClick={exportAsPlainText}
+            className="gap-2"
+          >
+            <FileText className="h-4 w-4" />
             Plain Text
           </DropdownMenuItem>
-          <DropdownMenuItem onClick={exportAsHtml}>
+          <DropdownMenuItem 
+            onClick={exportAsHtml}
+            className="gap-2"
+          >
+            <Code className="h-4 w-4" />
             HTML
           </DropdownMenuItem>
-          <DropdownMenuItem onClick={exportAsCss}>
+          <DropdownMenuItem 
+            onClick={exportAsCss}
+            className="gap-2"
+          >
+            <Code className="h-4 w-4" />
             CSS
           </DropdownMenuItem>
-          <DropdownMenuItem onClick={downloadZip}>
+          <DropdownMenuItem 
+            onClick={downloadZip}
+            className="gap-2"
+          >
+            <Download className="h-4 w-4" />
             ZIP File
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
 
       <Button 
-        variant="ghost" 
+        variant="ghost"
         onClick={onClearSelection}
-        className="text-muted-foreground hover:text-foreground"
+        className="text-muted-foreground hover:text-foreground gap-2 transition-all duration-200"
+        aria-label="Clear selection"
       >
+        <X className="h-4 w-4" />
         Clear Selection
       </Button>
 
-      {exportStatus && (
-        <div className="text-sm text-muted-foreground animate-in fade-in slide-in-from-top-1">
-          {exportStatus}
+      {exportStatus.message && (
+        <div className={`text-sm animate-in fade-in slide-in-from-top-1 ${exportStatus.type === 'error' ? 'text-destructive' : 'text-muted-foreground'}`}>
+          {exportStatus.message}
         </div>
       )}
-    </div>
+    </div>) : null
   )
 }
