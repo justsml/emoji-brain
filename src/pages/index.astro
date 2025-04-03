@@ -46,37 +46,10 @@ const categories = Array.from(new Set(emojiMetadata.emojis.flatMap(emoji => emoj
     <EmojiExport
       client:load
       selectedEmojis={[]}
-      data-component="emoji-export"
-      onClearSelection={() => {
+      onClearSelection={() => { 
         document.dispatchEvent(new CustomEvent('clearSelection'));
       }}
     />
-
-    <script>
-      import type { EmojiMetadata } from '../types/emoji';
-      
-      let selectedEmojisState: EmojiMetadata[] = [];
-      
-      // Update EmojiExport component when selection changes
-      document.addEventListener('updateSelectedEmojis', ((e: CustomEvent<EmojiMetadata[]>) => {
-        selectedEmojisState = e.detail;
-        const emojiExport = document.querySelector('[data-component="emoji-export"]');
-        if (emojiExport) {
-          // @ts-ignore - Component property access
-          emojiExport.selectedEmojis = selectedEmojisState;
-        }
-      }) as EventListener);
-
-      // Clear selection state when clear is clicked
-      document.addEventListener('clearSelection', () => {
-        selectedEmojisState = [];
-        const emojiExport = document.querySelector('[data-component="emoji-export"]');
-        if (emojiExport) {
-          // @ts-ignore - Component property access
-          emojiExport.selectedEmojis = selectedEmojisState;
-        }
-      });
-    </script>
   </div>
 
   <script define:vars={{ initialEmojis: emojiMetadata.emojis }}>

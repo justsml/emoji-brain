@@ -37,20 +37,11 @@ const EmojiGrid = ({ emojis: initialEmojis, onSelectionChange }: EmojiGridProps)
       setFocusedIndex(-1); // Reset focus when emojis update
     };
 
-    const handleClearSelection = () => {
-      setSelectedEmojis([]);
-      localStorage.removeItem(STORAGE_KEY);
-      onSelectionChange?.([]);
-    };
-
     document.addEventListener('updateEmojis', handleUpdateEmojis as EventListener);
-    document.addEventListener('clearEmojiSelection', handleClearSelection);
-
     return () => {
       document.removeEventListener('updateEmojis', handleUpdateEmojis as EventListener);
-      document.removeEventListener('clearEmojiSelection', handleClearSelection);
     };
-  }, [onSelectionChange]);
+  }, []);
 
   const handleKeyDown = (e: KeyboardEvent, index: number) => {
     const cols = window.innerWidth >= 1024 ? 9 : window.innerWidth >= 768 ? 6 : 3
@@ -90,7 +81,7 @@ const EmojiGrid = ({ emojis: initialEmojis, onSelectionChange }: EmojiGridProps)
   return (
     <div 
       ref={gridRef}
-      className="grid grid-cols-3 md:grid-cols-6 lg:grid-cols-9 gap-4 [perspective:1000px]"
+      className="grid grid-cols-3 md:grid-cols-6 lg:grid-cols-9 gap-4"
       role="grid"
       aria-label="Emoji grid"
     >
@@ -100,12 +91,10 @@ const EmojiGrid = ({ emojis: initialEmojis, onSelectionChange }: EmojiGridProps)
           className={cn(
             "aspect-square rounded-lg border bg-card text-card-foreground relative group",
             "shadow-sm flex items-center justify-center",
-            "transition-all duration-300 ease-out",
+            "transition-all duration-200 ease-in-out",
             "hover:scale-105 hover:shadow-md focus:scale-105 focus:shadow-md",
             "focus:outline-none focus:ring-2 focus:ring-primary",
-            "animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95",
-            "motion-safe:hover:rotate-1",
-            selectedEmojis.some(e => e.id === emoji.id) &&
+            selectedEmojis.some(e => e.id === emoji.id) && 
               "ring-2 ring-primary ring-offset-2 bg-primary/10"
           )}
           onClick={() => toggleSelection(emoji)}
