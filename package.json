@@ -6,7 +6,13 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:ui": "vitest --ui",
+    "test:coverage": "vitest run --coverage",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui"
   },
   "dependencies": {
     "@astrojs/react": "^3.0.10",
@@ -25,8 +31,17 @@
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
+    "@playwright/test": "^1.51.1",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/node": "^22.14.0",
     "@types/react": "^18.2.64",
     "@types/react-dom": "^18.2.21",
-    "typescript": "^5.4.2"
+    "@vitejs/plugin-react": "^4.3.4",
+    "@vitest/ui": "^3.1.1",
+    "jsdom": "^26.0.0",
+    "typescript": "^5.4.2",
+    "vitest": "^3.1.1"
   }
 }
