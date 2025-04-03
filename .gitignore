@@ -25,3 +25,5 @@ pnpm-debug.log*
 
 .roo
 test-results
+playwright-tests
+playwright-report
