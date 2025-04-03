@@ -9,7 +9,6 @@ import {
 } from '@reduxjs/toolkit';
 import searchReducer from './searchSlice';
 import selectionReducer, { selectSelectedEmojis } from './selectionSlice';
-import type { TypedUseSelectorHook } from 'react-redux';
 
 // 1. Combine reducers first
 const rootReducer = combineReducers({

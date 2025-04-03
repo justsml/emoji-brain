@@ -27,6 +27,11 @@ const selectionSlice = createSlice({
   name: 'selection',
   initialState,
   reducers: {
+    resetSelection: (state) => {
+      state.selectedEmojis = [];
+      state.focusedIndex = -1;
+      // Note: Local storage persistence will be handled by middleware
+    },
     toggleEmojiSelection: (state, action: PayloadAction<EmojiMetadata>) => {
       const emoji = action.payload;
       const index = state.selectedEmojis.findIndex(e => e.id === emoji.id);
@@ -54,16 +59,17 @@ const selectionSlice = createSlice({
 });
 
 export const {
+  resetSelection,
   toggleEmojiSelection,
   setFocusedIndex,
   setSelection,
   initializeSelection,
 } = selectionSlice.actions;
 
-// Selectors
 export const selectSelectedEmojis = (state: { selection: SelectionState }) => state.selection.selectedEmojis;
 export const selectFocusedIndex = (state: { selection: SelectionState }) => state.selection.focusedIndex;
 export const selectIsEmojiSelected = (emojiId: string) => (state: { selection: SelectionState }) =>
   state.selection.selectedEmojis.some(e => e.id === emojiId);
+
 
 export default selectionSlice.reducer;
