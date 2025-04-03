@@ -51,6 +51,17 @@ export function EmojiExport() {
     setTimeout(() => setExportStatus(''), 2000)
   }
 
+  const exportAsMarkdownTable = () => {
+    const header = '| Emoji | Filename |\n|---|---|'
+    const rows = selectedEmojis
+      .map(emoji => `| ![${emoji.filename}](${emoji.path}) | ${emoji.filename} |`)
+      .join('\n')
+    const markdown = `${header}\n${rows}`
+    navigator.clipboard.writeText(markdown)
+    setExportStatus('Copied Markdown Table to clipboard!')
+    setTimeout(() => setExportStatus(''), 2000)
+  }
+
   const downloadZip = async () => {
     try {
       setExportStatus('Preparing ZIP...')
@@ -103,6 +114,9 @@ export function EmojiExport() {
           </DropdownMenuItem>
           <DropdownMenuItem onClick={exportAsCss}>
             CSS
+          </DropdownMenuItem>
+          <DropdownMenuItem onClick={exportAsMarkdownTable}>
+            Markdown Table
           </DropdownMenuItem>
           <DropdownMenuItem onClick={downloadZip}>
             ZIP File

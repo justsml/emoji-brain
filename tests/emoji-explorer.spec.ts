@@ -115,6 +115,7 @@ test.describe('Emoji Explorer', () => {
     await expect(page.getByText('Plain Text')).toBeVisible();
     await expect(page.getByText('HTML')).toBeVisible();
     await expect(page.getByText('CSS')).toBeVisible();
+    await expect(page.getByText('Markdown Table')).toBeVisible();
     await expect(page.getByText('ZIP File')).toBeVisible();
   });
 
