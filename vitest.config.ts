@@ -7,9 +7,6 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
   plugins: [react()],
-  build: {
-    sourcemap: 'inline',
-  },
   test: {
     environment: 'jsdom',
     globals: true,

@@ -1,7 +1,6 @@
 ---
 // src/pages/index.astro
 import Layout from '../layouts/Layout.astro';
-import ReduxProviderWrapper from '../components/ReduxProviderWrapper'; // Import the Provider wrapper
 import EmojiExplorerApp from '../components/EmojiExplorerApp'; // Import the main app component
 import type { EmojiMetadata } from '../types/emoji';
 import emojiMetadata from '../data/emoji-metadata.json'; // Assuming this path is correct
@@ -19,23 +18,11 @@ const categories = Array.from(new Set(allEmojis.flatMap(emoji => emoji.categorie
         Browse, search, and explore our collection of emojis
       </p>
     </section>
-
-    {/*
-      Render the main React application component wrapped in the Redux Provider.
-      The client:load directive ensures the React component hydrates on the client.
-      Pass initial data needed by the React app as props.
-    */}
       <EmojiExplorerApp
         client:only="react"
         initialEmojis={allEmojis}
         categories={categories}
       />
-
-    {/*
-      The section below containing the inline script has been removed.
-      All filtering, state management, and event handling previously done here
-      is now managed within the React components using Redux Toolkit.
-    */}
 
   </div>
 </Layout>

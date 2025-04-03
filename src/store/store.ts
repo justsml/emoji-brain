@@ -9,6 +9,7 @@ import {
 } from '@reduxjs/toolkit';
 import searchReducer from './searchSlice';
 import selectionReducer, { selectSelectedEmojis } from './selectionSlice';
+import type { TypedUseSelectorHook } from 'react-redux';
 
 // 1. Combine reducers first
 const rootReducer = combineReducers({
@@ -65,3 +66,8 @@ export const store = configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().prepend(listenerMiddleware.middleware),
 });
+
+export type AppStore = typeof store;
+export type AppState = ReturnType<typeof store.getState>;
+export const useAppDispatch = () => store.dispatch; // Custom hook for dispatch
+

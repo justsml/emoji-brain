@@ -64,11 +64,9 @@ const SearchBar: React.FC<SearchBarProps> = ({ categories }) => {
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="outline" className="min-w-[130px] justify-between">
-              {/* Wrap children in a single element */}
-              <span className="flex items-center justify-between w-full">
-                {selectedCategory === 'all' ? 'All Categories' : selectedCategory}
-                <ChevronDown className="ml-2 h-4 w-4" />
-              </span>
+              {/* Display selected category from Redux state */}
+              {selectedCategory === 'all' ? 'All Categories' : selectedCategory}
+              <ChevronDown className="ml-2 h-4 w-4" />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="w-[130px]">
@@ -100,14 +98,10 @@ const SearchBar: React.FC<SearchBarProps> = ({ categories }) => {
                 onClick={() => handleRecentEmojiClick(emoji)} // Dispatch selection toggle
               >
                 <img
-                  src={emoji.path.startsWith('/') ? emoji.path : `/${emoji.path}`}
+                  src={emoji.path}
                   alt={emoji.filename}
                   className="h-6 w-6 object-contain"
                   loading="lazy"
-                  onError={(e) => {
-                    console.error(`Failed to load image: ${emoji.path}`);
-                    e.currentTarget.src = '/favicon.svg'; // Fallback image
-                  }}
                 />
               </button>
             ))}

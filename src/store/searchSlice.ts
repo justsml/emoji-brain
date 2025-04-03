@@ -23,6 +23,9 @@ const searchSlice = createSlice({
     setSelectedCategory: (state, action: PayloadAction<string>) => {
       state.selectedCategory = action.payload;
     },
+    // Note: Recent emojis might be better handled via middleware or a dedicated slice
+    // if logic becomes complex (e.g., limiting size, persistence).
+    // For now, keeping it simple based on the initial design.
     updateRecentEmojis: (state, action: PayloadAction<EmojiMetadata[]>) => {
       state.recentEmojis = action.payload;
     },
