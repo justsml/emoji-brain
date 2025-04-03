@@ -93,31 +93,14 @@ test.describe('Emoji Explorer', () => {
   });
 
   test('should select and deselect emojis', async ({ page }) => {
-    // Initially, no emojis should be selected
     await expect(page.getByText('0 emojis selected')).toBeVisible();
-    
-    // Select the first emoji
     await page.locator('button[role="gridcell"]').first().click();
-    
-    // Now 1 emoji should be selected
     await expect(page.getByText('1 emoji selected')).toBeVisible();
-    
-    // Select another emoji
     await page.locator('button[role="gridcell"]').nth(1).click();
-    
-    // Now 2 emojis should be selected
     await expect(page.getByText('2 emojis selected')).toBeVisible();
-    
-    // Deselect the first emoji
     await page.locator('button[role="gridcell"]').first().click();
-    
-    // Now 1 emoji should be selected again
     await expect(page.getByText('1 emoji selected')).toBeVisible();
-    
-    // Clear the selection
     await page.getByText('Clear Selection').click();
-    
-    // Now 0 emojis should be selected
     await expect(page.getByText('0 emojis selected')).toBeVisible();
   });
 

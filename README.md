@@ -64,4 +64,4 @@ npm run test:all
 - `src/data/` - Data files
 - `public/emojis/` - Emoji image files
 - `tests/` - Test setup and configuration
-- `playwright-tests/` - E2E tests
+- `tests/` - E2E tests

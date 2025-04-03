@@ -27,7 +27,7 @@ npm run test:coverage
 
 ## E2E Testing with Playwright
 
-E2E tests are located in the `playwright-tests` directory.
+E2E tests are located in the `tests` directory.
 
 ### Running E2E Tests
 
@@ -55,7 +55,7 @@ npm run test:all
 
 ### E2E Tests
 
-- `playwright-tests/*.spec.ts` - E2E tests for application flows
+- `tests/*.spec.ts` - E2E tests for application flows
 
 ## Configuration Files
 

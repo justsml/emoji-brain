@@ -45,7 +45,7 @@ const categories = Array.from(new Set(emojiMetadata.emojis.flatMap(emoji => emoj
     
     <EmojiExport
       client:load
-      selectedEmojis={[]}
+      selectedEmojis={selectedEmojis}
       onClearSelection={() => { 
         document.dispatchEvent(new CustomEvent('clearSelection'));
       }}
@@ -56,6 +56,7 @@ const categories = Array.from(new Set(emojiMetadata.emojis.flatMap(emoji => emoj
     let currentEmojis = initialEmojis;
     let searchQuery = '';
     let selectedCategory = 'all';
+    const [selectedEmojis, setSelectedEmojis] = useState<EmojiMetadata[]>([]);
     let recentEmojis = [];
 
     function filterEmojis() {
@@ -100,6 +101,7 @@ const categories = Array.from(new Set(emojiMetadata.emojis.flatMap(emoji => emoj
 
     // Handle selection updates
     document.addEventListener('updateSelectedEmojis', (e) => {
+      setSelectedEmojis(e.detail);
       // Update recent emojis if a single emoji was selected
       if (e.detail.length > 0) {
         recentEmojis = [e.detail[0], ...recentEmojis.filter(emoji => emoji.id !== e.detail[0].id)].slice(0, 8);
