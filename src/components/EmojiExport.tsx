@@ -14,7 +14,7 @@ import type { AppDispatch } from '../store/store'; // Import AppDispatch type
 // Removed props interface
 
 export function EmojiExport() { // Removed props
-  const dispatch = useDispatch<AppDispatch>(); // Use typed dispatch
+  const dispatch = useDispatch<AppDispatch>();
   const selectedEmojis = useSelector(selectSelectedEmojis); // Get selected emojis from Redux
   const [exportStatus, setExportStatus] = useState<string>('');
 
@@ -36,7 +36,10 @@ export function EmojiExport() { // Removed props
   const exportAsHtml = () => {
     if (selectedEmojis.length === 0) return;
     const html = selectedEmojis
-      .map(emoji => `<img src="${emoji.path}" alt="${emoji.filename}" style="width: 24px; height: 24px; vertical-align: middle; margin: 0 2px;" />`) // Added basic styling
+      .map(emoji => {
+        const fullPath = emoji.path.startsWith('/') ? emoji.path : `/${emoji.path}`;
+        return `<img src="${fullPath}" alt="${emoji.filename}" style="width: 24px; height: 24px; vertical-align: middle; margin: 0 2px;" />`;
+      })
       .join(''); // Join without newline for inline display
     navigator.clipboard.writeText(html)
       .then(() => setExportStatus('Copied HTML to clipboard!'))
@@ -47,16 +50,19 @@ export function EmojiExport() { // Removed props
   const exportAsCss = () => {
     if (selectedEmojis.length === 0) return;
     const css = selectedEmojis
-      .map(emoji => `.emoji-${emoji.id} {
+      .map(emoji => {
+        const fullPath = emoji.path.startsWith('/') ? emoji.path : `/${emoji.path}`;
+        return `.emoji-${emoji.id} {
   display: inline-block; /* Better default */
   width: 24px; /* Example size */
   height: 24px; /* Example size */
-  background-image: url('${emoji.path}');
+  background-image: url('${fullPath}');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
   vertical-align: middle; /* Align with text */
-}`)
+}`;
+      })
       .join('\n\n');
     navigator.clipboard.writeText(css)
       .then(() => setExportStatus('Copied CSS to clipboard!'))
@@ -74,7 +80,9 @@ export function EmojiExport() { // Removed props
       // Add each emoji to the zip
       for (const emoji of selectedEmojis) {
         try {
-          const response = await fetch(emoji.path);
+          const fullPath = emoji.path.startsWith('/') ? emoji.path : `/${emoji.path}`;
+          console.log(`Fetching emoji: ${fullPath}`);
+          const response = await fetch(fullPath);
           if (!response.ok) throw new Error(`Failed to fetch ${emoji.filename}`);
           const blob = await response.blob();
           // Sanitize filename for ZIP (basic example)

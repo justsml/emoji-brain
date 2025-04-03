@@ -130,10 +130,14 @@ const EmojiGrid: React.FC<EmojiGridProps> = ({ emojis }): ReactElement => {
             id={`emoji-${emoji.id}`} // Add ID for potential aria-activedescendant
           >
             <img
-              src={emoji.path}
+              src={emoji.path.startsWith('/') ? emoji.path : `/${emoji.path}`}
               alt="" // Alt text is redundant with aria-label
               className="w-12 h-12 object-contain pointer-events-none" // Prevent image drag/interaction
               loading="lazy"
+              onError={(e) => {
+                console.error(`Failed to load image: ${emoji.path}`);
+                e.currentTarget.src = '/favicon.svg'; // Fallback image
+              }}
             />
             <div className="absolute inset-0 bg-black/60 text-white opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-200 rounded-lg flex items-center justify-center text-sm p-2 text-center pointer-events-none">
               {emoji.filename}

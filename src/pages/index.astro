@@ -26,7 +26,7 @@ const categories = Array.from(new Set(allEmojis.flatMap(emoji => emoji.categorie
       Pass initial data needed by the React app as props.
     */}
       <EmojiExplorerApp
-        client:load
+        client:only="react"
         initialEmojis={allEmojis}
         categories={categories}
       />
