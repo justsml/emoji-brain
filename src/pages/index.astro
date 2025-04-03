@@ -1,13 +1,14 @@
 ---
+// src/pages/index.astro
 import Layout from '../layouts/Layout.astro';
-import EmojiGrid from '../components/EmojiGrid';
-import SearchBar from '../components/SearchBar';
-import { EmojiExport } from '../components/EmojiExport';
+import ReduxProviderWrapper from '../components/ReduxProviderWrapper'; // Import the Provider wrapper
+import EmojiExplorerApp from '../components/EmojiExplorerApp'; // Import the main app component
 import type { EmojiMetadata } from '../types/emoji';
-import emojiMetadata from '../data/emoji-metadata.json';
+import emojiMetadata from '../data/emoji-metadata.json'; // Assuming this path is correct
 
-// Get unique categories
-const categories = Array.from(new Set(emojiMetadata.emojis.flatMap(emoji => emoji.categories))).filter(Boolean);
+// Prepare initial props for the React app
+const allEmojis: EmojiMetadata[] = emojiMetadata.emojis || [];
+const categories = Array.from(new Set(allEmojis.flatMap(emoji => emoji.categories))).filter(Boolean);
 ---
 
 <Layout title="Emoji Explorer">
@@ -19,96 +20,24 @@ const categories = Array.from(new Set(emojiMetadata.emojis.flatMap(emoji => emoj
       </p>
     </section>
 
-    <div class="max-w-5xl mx-auto">
-      <SearchBar
+    {/*
+      Render the main React application component wrapped in the Redux Provider.
+      The client:load directive ensures the React component hydrates on the client.
+      Pass initial data needed by the React app as props.
+    */}
+      <EmojiExplorerApp
         client:load
+        initialEmojis={allEmojis}
         categories={categories}
-        onSearch={(query: string) => {
-          document.dispatchEvent(new CustomEvent('search', { detail: query }));
-        }}
-        onCategorySelect={(category: string) => {
-          document.dispatchEvent(new CustomEvent('categorySelect', { detail: category }));
-        }}
-        recentEmojis={[]}
       />
-    </div>
-    
-    <section class="max-w-7xl mx-auto">
-      <EmojiGrid
-        client:load
-        emojis={emojiMetadata.emojis}
-        onSelectionChange={(selectedEmojis) => {
-          document.dispatchEvent(new CustomEvent('updateSelectedEmojis', { detail: selectedEmojis }));
-        }}
-      />
-    </section>
-    
-    <EmojiExport
-      client:load
-      selectedEmojis={selectedEmojis}
-      onClearSelection={() => { 
-        document.dispatchEvent(new CustomEvent('clearSelection'));
-      }}
-    />
+
+    {/*
+      The section below containing the inline script has been removed.
+      All filtering, state management, and event handling previously done here
+      is now managed within the React components using Redux Toolkit.
+    */}
+
   </div>
-
-  <script define:vars={{ initialEmojis: emojiMetadata.emojis }}>
-    let currentEmojis = initialEmojis;
-    let searchQuery = '';
-    let selectedCategory = 'all';
-    const [selectedEmojis, setSelectedEmojis] = useState<EmojiMetadata[]>([]);
-    let recentEmojis = [];
-
-    function filterEmojis() {
-      let filtered = currentEmojis;
-
-      if (searchQuery) {
-        const query = searchQuery.toLowerCase();
-        filtered = filtered.filter(emoji => 
-          emoji.filename.toLowerCase().includes(query) ||
-          emoji.tags.some(tag => tag.toLowerCase().includes(query)) ||
-          emoji.categories.some(category => category.toLowerCase().includes(query))
-        );
-      }
-
-      if (selectedCategory !== 'all') {
-        filtered = filtered.filter(emoji =>
-          emoji.categories.includes(selectedCategory)
-        );
-      }
-
-      return filtered;
-    }
-
-    // Handle search
-    document.addEventListener('search', (e) => {
-      searchQuery = e.detail;
-      const filteredEmojis = filterEmojis();
-      document.dispatchEvent(new CustomEvent('updateEmojis', { detail: filteredEmojis }));
-    });
-
-    // Handle category selection
-    document.addEventListener('categorySelect', (e) => {
-      selectedCategory = e.detail;
-      const filteredEmojis = filterEmojis();
-      document.dispatchEvent(new CustomEvent('updateEmojis', { detail: filteredEmojis }));
-    });
-
-    // Handle clear selection
-    document.addEventListener('clearSelection', () => {
-      document.dispatchEvent(new CustomEvent('clearEmojiSelection'));
-    });
-
-    // Handle selection updates
-    document.addEventListener('updateSelectedEmojis', (e) => {
-      setSelectedEmojis(e.detail);
-      // Update recent emojis if a single emoji was selected
-      if (e.detail.length > 0) {
-        recentEmojis = [e.detail[0], ...recentEmojis.filter(emoji => emoji.id !== e.detail[0].id)].slice(0, 8);
-        document.dispatchEvent(new CustomEvent('updateRecentEmojis', { detail: recentEmojis }));
-      }
-    });
-    // Initial state
-    document.dispatchEvent(new CustomEvent('updateEmojis', { detail: currentEmojis }));
-  </script>
 </Layout>
+
+{/* Removed the entire <script> block that previously handled event dispatching and filtering */}

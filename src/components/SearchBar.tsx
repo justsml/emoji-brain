@@ -1,50 +1,52 @@
-import { useState, useEffect } from 'react'
-import type { EmojiMetadata } from '../types/emoji'
-import { Button } from './ui/button'
+import React from 'react'; // Removed useState, useEffect
+import { useSelector, useDispatch } from 'react-redux';
+import type { EmojiMetadata } from '../types/emoji';
+import { Button } from './ui/button';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from './ui/dropdown-menu'
-import { ChevronDown, Search } from 'lucide-react'
+} from './ui/dropdown-menu';
+import { ChevronDown, Search } from 'lucide-react';
+import {
+  setSearchQuery,
+  setSelectedCategory,
+  selectSearchQuery,
+  selectSelectedCategory,
+  selectRecentEmojis,
+} from '../store/searchSlice';
+import { toggleEmojiSelection } from '../store/selectionSlice'; // For recent emoji click
+import type { AppDispatch } from '../store/store'; // Import AppDispatch type
 
 interface SearchBarProps {
-  onSearch: (query: string) => void
-  onCategorySelect: (category: string) => void
-  categories: string[]
-  recentEmojis?: EmojiMetadata[]
+  // Removed onSearch, onCategorySelect, recentEmojis
+  categories: string[];
 }
 
-const SearchBar = (props: SearchBarProps) => {
-  const [searchQuery, setSearchQuery] = useState('')
-  const [selectedCategory, setSelectedCategory] = useState<string>('all')
-  const [recentEmojis, setRecentEmojis] = useState<EmojiMetadata[]>(props.recentEmojis || [])
+const SearchBar: React.FC<SearchBarProps> = ({ categories }) => {
+  const dispatch = useDispatch<AppDispatch>(); // Use typed dispatch
+  const searchQuery = useSelector(selectSearchQuery);
+  const selectedCategory = useSelector(selectSelectedCategory);
+  const recentEmojis = useSelector(selectRecentEmojis); // Get recent emojis from Redux
 
-  useEffect(() => {
-    const handleUpdateRecentEmojis = (e: CustomEvent<EmojiMetadata[]>) => {
-      setRecentEmojis(e.detail)
-    }
-
-    document.addEventListener('updateRecentEmojis', handleUpdateRecentEmojis as EventListener)
-    return () => {
-      document.removeEventListener('updateRecentEmojis', handleUpdateRecentEmojis as EventListener)
-    }
-  }, [])
+  // Removed useEffect for event listener
 
   const handleSearch = (value: string) => {
-    setSearchQuery(value)
-    props.onSearch(value)
-  }
+    dispatch(setSearchQuery(value));
+  };
 
   const handleCategorySelect = (category: string) => {
-    setSelectedCategory(category)
-    props.onCategorySelect(category)
-  }
+    dispatch(setSelectedCategory(category));
+  };
 
-  const handleEmojiSelect = (emoji: EmojiMetadata) => {
-    document.dispatchEvent(new CustomEvent('emojiSelect', { detail: emoji }))
-  }
+  // When a recent emoji is clicked, treat it as a selection toggle
+  const handleRecentEmojiClick = (emoji: EmojiMetadata) => {
+    dispatch(toggleEmojiSelection(emoji));
+    // Optionally, you might want to clear the search query or category here
+    // dispatch(setSearchQuery(''));
+    // dispatch(setSelectedCategory('all'));
+  };
 
   return (
     <div className="space-y-4">
@@ -55,13 +57,14 @@ const SearchBar = (props: SearchBarProps) => {
             type="text"
             placeholder="Search emojis..."
             className="w-full rounded-md border border-input bg-background px-9 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-            value={searchQuery}
+            value={searchQuery} // Controlled by Redux state
             onChange={(e) => handleSearch(e.target.value)}
           />
         </div>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="outline" className="min-w-[130px] justify-between">
+              {/* Display selected category from Redux state */}
               {selectedCategory === 'all' ? 'All Categories' : selectedCategory}
               <ChevronDown className="ml-2 h-4 w-4" />
             </Button>
@@ -70,7 +73,7 @@ const SearchBar = (props: SearchBarProps) => {
             <DropdownMenuItem onClick={() => handleCategorySelect('all')}>
               All Categories
             </DropdownMenuItem>
-            {props.categories.map((category) => (
+            {categories.map((category) => (
               <DropdownMenuItem
                 key={category}
                 onClick={() => handleCategorySelect(category)}
@@ -82,21 +85,23 @@ const SearchBar = (props: SearchBarProps) => {
         </DropdownMenu>
       </div>
 
+      {/* Display recent emojis from Redux state */}
       {recentEmojis.length > 0 && (
         <div className="space-y-2">
           <h3 className="text-sm font-medium text-muted-foreground">Recently Used</h3>
-          <div className="flex gap-2">
+          <div className="flex gap-2 overflow-x-auto pb-2"> {/* Added scroll */}
             {recentEmojis.map((emoji) => (
               <button
                 key={emoji.id}
-                className="rounded-lg border bg-card p-2 hover:bg-accent transition-colors"
+                className="flex-shrink-0 rounded-lg border bg-card p-2 hover:bg-accent transition-colors"
                 title={emoji.filename}
-                onClick={() => handleEmojiSelect(emoji)}
+                onClick={() => handleRecentEmojiClick(emoji)} // Dispatch selection toggle
               >
                 <img
                   src={emoji.path}
                   alt={emoji.filename}
                   className="h-6 w-6 object-contain"
+                  loading="lazy"
                 />
               </button>
             ))}
@@ -104,7 +109,7 @@ const SearchBar = (props: SearchBarProps) => {
         </div>
       )}
     </div>
-  )
-}
+  );
+};
 
 export default SearchBar;
