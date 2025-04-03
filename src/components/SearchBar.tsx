@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import type { EmojiMetadata } from '../types/emoji'
 import { Button } from './ui/button'
+import { debounce } from '../lib/utils'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -32,9 +33,16 @@ const SearchBar = (props: SearchBarProps) => {
     }
   }, [])
 
+  const debouncedSearch = useCallback(
+    debounce((value: string) => {
+      props.onSearch(value)
+    }, 150),
+    [props]
+  )
+
   const handleSearch = (value: string) => {
     setSearchQuery(value)
-    props.onSearch(value)
+    debouncedSearch(value)
   }
 
   const handleCategorySelect = (category: string) => {
@@ -54,10 +62,24 @@ const SearchBar = (props: SearchBarProps) => {
           <input
             type="text"
             placeholder="Search emojis..."
-            className="w-full rounded-md border border-input bg-background px-9 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+            className="w-full rounded-md border border-input bg-background px-9 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 transition-shadow duration-200 ease-in-out focus-within:shadow-lg"
             value={searchQuery}
             onChange={(e) => handleSearch(e.target.value)}
+            autoComplete="off"
+            spellCheck="false"
           />
+          {searchQuery && (
+            <button
+              onClick={() => handleSearch('')}
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
+              aria-label="Clear search"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
+          )}
         </div>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
