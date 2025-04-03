@@ -1,3 +1,4 @@
+import type { ReactElement } from 'react';
 import { useState, useEffect, useRef } from 'react'
 import type { KeyboardEvent } from 'react'
 import type { EmojiMetadata } from '../types/emoji'
@@ -10,7 +11,7 @@ interface EmojiGridProps {
 
 const STORAGE_KEY = 'selectedEmojis'
 
-const EmojiGrid = ({ emojis: initialEmojis, onSelectionChange }: EmojiGridProps) => {
+const EmojiGrid = ({ emojis: initialEmojis, onSelectionChange }: EmojiGridProps): ReactElement => {
   const [focusedIndex, setFocusedIndex] = useState<number>(-1)
   const [emojis, setEmojis] = useState(initialEmojis)
   const [selectedEmojis, setSelectedEmojis] = useState<EmojiMetadata[]>(() => {
@@ -21,13 +22,16 @@ const EmojiGrid = ({ emojis: initialEmojis, onSelectionChange }: EmojiGridProps)
   const gridRef = useRef<HTMLDivElement>(null)
   
   const toggleSelection = (emoji: EmojiMetadata) => {
-    const newSelection = selectedEmojis.some(e => e.id === emoji.id)
-      ? selectedEmojis.filter(e => e.id !== emoji.id)
-      : [...selectedEmojis, emoji]
-    
-    setSelectedEmojis(newSelection)
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(newSelection))
-    onSelectionChange?.(newSelection)
+    setSelectedEmojis(prevSelectedEmojis => {
+      const isSelected = prevSelectedEmojis.some(e => e.id === emoji.id)
+      const newSelection = isSelected
+        ? prevSelectedEmojis.filter(e => e.id !== emoji.id)
+        : [...prevSelectedEmojis, emoji]
+      
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(newSelection))
+      onSelectionChange?.(newSelection)
+      return newSelection
+    })
   }
   
 
