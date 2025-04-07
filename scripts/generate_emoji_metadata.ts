@@ -1,9 +1,10 @@
 #!/usr/bin/env node
 
 import { promises as fs } from 'fs';
-import path from 'path';
+import path, { join } from 'path';
 import { fileURLToPath } from 'url';
 import crypto from 'crypto';
+import { emojiLabeler } from './emoji-labeler';
 
 // Get current directory in ES modules
 const __filename = fileURLToPath(import.meta.url);
@@ -14,52 +15,44 @@ const EMOJIS_DIR = path.join(process.cwd(), 'public', 'emojis');
 const OUTPUT_FILE = path.join(process.cwd(), 'src', 'data', 'emoji-metadata.json');
 
 // Helper function to generate a unique ID
-function generateId(filename) {
+function generateId(filename: string) {
   return crypto.createHash('md5').update(filename).digest('hex').slice(0, 8);
 }
 
 // Helper function to extract categories and tags from filename
-function extractMetadata(filename) {
+async function extractMetadata(filename: string) {
   const name = path.parse(filename).name;
-  const extension = path.parse(filename).ext.toLowerCase();
-  const parts = name.split(/[-_\s]+/).filter(Boolean);
+  // const extension = path.parse(filename).ext.toLowerCase();
+  // const parts = name.split(/[-_\s]+/).filter(Boolean);
   
-  // Initialize metadata
-  const metadata = {
-    categories: new Set(),
-    tags: new Set()
-  };
 
-  // Add file type as a tag for special types
-  if (extension === '.gif') {
-    metadata.tags.add('animated');
-  }
-
-  // Process filename parts
-  parts.forEach((part, index) => {
-    // Common prefixes that indicate categories
-    if (part === 'meow' || part === 'cat' || part === 'bongo') {
-      metadata.categories.add(part);
-    }
-    // Emotional states often make good categories
-    else if (['happy', 'sad', 'angry', 'crying', 'excited'].includes(part)) {
-      metadata.categories.add('emotions');
-      metadata.tags.add(part);
-    }
-    // Actions often make good tags
-    else if (part.endsWith('ing')) {
-      metadata.tags.add(part);
-    }
-    // Add remaining parts as tags
-    else {
-      metadata.tags.add(part);
-    }
+  const labels = await emojiLabeler(join(EMOJIS_DIR, filename)).catch((error) => {
+    console.error(`Error labeling emoji ${filename}:`, error);
+    process.exit(1);
+    return {};
   });
 
+  if (typeof labels === 'string') {
+    try {
+      const parsedLabels = JSON.parse(labels);
+      return parsedLabels;
+    } catch (error) {
+      console.error(`Error parsing labels for ${filename}:`, error);
+      console.error(`Received labels: ${labels}`);
+      process.exit(1);
+    }
+  } else if (labels && typeof labels === 'object') {
+    return labels;
+  }
+
   return {
-    categories: [...metadata.categories],
-    tags: [...metadata.tags]
-  };
+    categories: [],
+    tags: [],
+  }
+  // return {
+  //   categories: [...metadata.categories],
+  //   tags: [...metadata.tags]
+  // };
 }
 
 async function generateEmojiMetadata() {
@@ -77,24 +70,31 @@ async function generateEmojiMetadata() {
       // Skip if not a file
       if (!stats.isFile()) return null;
       
-      // Extract metadata
-      const { categories, tags } = extractMetadata(filename);
-      
-      return {
-        id: generateId(filename),
-        filename,
-        path: `/emojis/${filename}`,
-        categories,
-        tags,
-        created: stats.birthtime.toISOString(),
-        size: stats.size
-      };
+      try {
+        // Extract metadata
+        const { categories, tags } = await extractMetadata(filename);
+        
+        return {
+          id: generateId(filename),
+          filename,
+          path: `/emojis/${filename}`,
+          categories,
+          tags,
+          created: stats.birthtime.toISOString(),
+          size: stats.size
+        };
+      } catch (error) {
+        console.error(`\n❌ Failed to process metadata for: ${filename}`);
+        console.error(`   Error: ${error instanceof Error ? error.message : String(error)}`);
+        // Optionally log the full error: console.error(error);
+        return null; // Skip this emoji if metadata extraction fails
+      }
     }));
 
     // Filter out null entries and sort by filename
     const validEmojis = emojis
       .filter(Boolean)
-      .sort((a, b) => a.filename.localeCompare(b.filename));
+      .sort((a, b) => a?.filename?.localeCompare(b!.filename) ?? 0);
 
     // Create final metadata object
     const metadata = {
