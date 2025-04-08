@@ -147,12 +147,14 @@ if (searchTerm.trim() === '') {
 
   return (
     <div className="container mx-auto p-4">
-      <div className="mx-auto max-w-sm space-y-4">
-        <SearchBar onSearchChange={handleSearchChange} count={filteredEmojis.length} />
-        <div className="space-y-2">
-          <ShowSelectedToggle />
+      <div className="mx-auto max-w-2xl space-y-4">
+        <div className="flex gap-4 items-start">
+          <div className="flex-1 min-w-[200px]">
+            <SearchBar onSearchChange={handleSearchChange} count={filteredEmojis.length} />
+          </div>
           <SelectionControls />
         </div>
+        <ShowSelectedToggle />
       </div>
 
       <section className="mx-auto max-w-full">
