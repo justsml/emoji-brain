@@ -7,7 +7,7 @@ import { cn } from '../lib/utils';
 // Define Pagefind types for better integration
 declare global {
   interface Window {
-    pagefind?: {
+    _pagefind?: {
       search: (term: string) => Promise<{ results: PagefindResult[] }>;
       options: (opts: Record<string, any>) => Promise<void>;
     };

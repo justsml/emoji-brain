@@ -1,6 +1,6 @@
 ---
-import { ThemeToggle } from '../components/theme-toggle';
-import '../styles/globals.css';
+import { ThemeToggle } from "../components/theme-toggle";
+import "../styles/globals.css";
 
 interface Props {
   title: string;
@@ -13,7 +13,10 @@ const { title } = Astro.props;
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Emoji Explorer - Browse and search emojis" />
+    <meta
+      name="description"
+      content="Emoji Explorer - Browse and search emojis"
+    />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
@@ -22,17 +25,46 @@ const { title } = Astro.props;
     <script src="/pagefind/pagefind-ui.js" defer></script>
     <script is:inline>
       const theme = (() => {
-        if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-          return localStorage.getItem('theme');
+        if (
+          typeof localStorage !== "undefined" &&
+          localStorage.getItem("theme")
+        ) {
+          return localStorage.getItem("theme");
         }
-        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-          return 'dark';
+        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+          return "dark";
         }
-        return 'light';
+        return "light";
       })();
-      if (theme === 'dark') {
-        document.documentElement.classList.add('dark');
+      if (theme === "dark") {
+        document.documentElement.classList.add("dark");
       }
+    </script>
+    <script is:inline>
+      const pagefindOptions = {
+        excerptLength: 50,
+        baseUrl: "/",
+        highlightParam: "highlight",
+      };
+
+      import("/pagefind/pagefind.js")
+        .then((module) => {
+          console.log("Pagefind loaded:", module);
+          const pagefind = module;
+          window.pagefind = pagefind;
+          pagefind
+            .init(pagefindOptions)
+            .then(() => {
+              console.log("Pagefind initialized");
+              // pagefind.search('emoji');
+            })
+            .catch((error) => {
+              console.error("Error initializing Pagefind:", error);
+            });
+        })
+        .catch((error) => {
+          console.error("Error loading Pagefind:", error);
+        });
     </script>
   </head>
   <body>

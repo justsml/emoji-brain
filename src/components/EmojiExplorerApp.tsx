@@ -13,6 +13,11 @@ interface EmojiExplorerAppProps {
   initialEmojis: EmojiMetadata[];
   // Removed categories prop as it's no longer used by SearchBar
 }
+const pagefindOptions = {
+  excerptLength: 50,
+  baseUrl: "/",
+  "highlightParam": "highlight",
+}
 
 const _EmojiExplorerApp: React.FC<EmojiExplorerAppProps> = ({ initialEmojis }) => {
   // Removed dispatch and search-related useSelector calls
