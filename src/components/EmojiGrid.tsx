@@ -17,7 +17,7 @@ interface EmojiGridProps {
   onSelectionChange?: (selectedEmojis: EmojiMetadata[]) => void;
 }
 
-const CELL_SIZE = 96; // 64px for emoji + 32px for padding/gap
+const CELL_SIZE = 192; // 64px for emoji + 32px padding + 32px gap (2rem)
 const MIN_HEIGHT = 400;
 
 const EmojiGrid = ({
@@ -101,13 +101,18 @@ const EmojiGrid = ({
     }
   }, [focusedIndex]);
 
-  const cellRenderer = ({ columnIndex, key, rowIndex, style }) => {
+  const cellRenderer = ({ columnIndex, key, rowIndex, style }: {
+    columnIndex: number;
+    key: string;
+    rowIndex: number;
+    style: React.CSSProperties;
+  }) => {
     const index = rowIndex * dimensions.columnCount + columnIndex;
     if (index >= emojis.length) return null;
 
     const emoji = emojis[index];
     return (
-      <div key={key} style={style}>
+      <div key={key} style={style} className="p-8">
         <button
           className={cn(
             "w-full h-full p-2",
@@ -148,8 +153,9 @@ const EmojiGrid = ({
   const rowCount = Math.ceil(emojis.length / dimensions.columnCount);
 
   return (
-    <div role="grid" aria-label="Emoji grid">
+    <div role="grid" aria-label="Emoji grid" className="flex justify-center">
       <Grid
+        style={{ margin: '0 auto' }}
         ref={gridRef}
         cellRenderer={cellRenderer}
         columnWidth={CELL_SIZE}
