@@ -13,7 +13,9 @@ const SelectionControls: React.FC = () => {
   };
 
   const handleDeselectAll = () => {
-    dispatch(resetSelection());
+    if (window.confirm('Are you sure you want to deselect all emojis?')) {
+      dispatch(resetSelection());
+    }
   };
 
   return (
