@@ -139,8 +139,8 @@
     },
     {
       "id": "a4ed1e2e",
-      "filename": "awkward_girl_side_eye.gif",
-      "path": "/emojis/awkward_girl_side_eye.gif",
+      "filename": "awkward_side_eye.gif",
+      "path": "/emojis/awkward_side_eye.gif",
       "categories": [],
       "tags": [
         "animated",
@@ -163,18 +163,6 @@
       ],
       "created": "2024-03-29T01:38:12.614Z",
       "size": 5542
-    },
-    {
-      "id": "e9abbe63",
-      "filename": "awkwardgirl.gif",
-      "path": "/emojis/awkwardgirl.gif",
-      "categories": [],
-      "tags": [
-        "animated",
-        "awkwardgirl"
-      ],
-      "created": "2022-08-26T07:24:37.000Z",
-      "size": 42434
     },
     {
       "id": "3fa4203f",
@@ -1128,21 +1116,6 @@
       "size": 7065
     },
     {
-      "id": "0b470c13",
-      "filename": "meow_bongotap (1).gif",
-      "path": "/emojis/meow_bongotap (1).gif",
-      "categories": [
-        "meow"
-      ],
-      "tags": [
-        "animated",
-        "bongotap",
-        "(1)"
-      ],
-      "created": "2025-02-03T15:07:15.803Z",
-      "size": 3434
-    },
-    {
       "id": "5c17e7e0",
       "filename": "meow_bongotap.gif",
       "path": "/emojis/meow_bongotap.gif",
@@ -1334,21 +1307,6 @@
       ],
       "created": "2024-03-26T20:55:05.119Z",
       "size": 12284
-    },
-    {
-      "id": "00c11013",
-      "filename": "meow_coffeespitting (1).gif",
-      "path": "/emojis/meow_coffeespitting (1).gif",
-      "categories": [
-        "meow"
-      ],
-      "tags": [
-        "animated",
-        "coffeespitting",
-        "(1)"
-      ],
-      "created": "2025-03-24T15:50:04.485Z",
-      "size": 109204
     },
     {
       "id": "6bd1040a",
