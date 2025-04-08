@@ -7,12 +7,12 @@ import {
   type ListenerEffectAPI,
   type UnknownAction,
 } from '@reduxjs/toolkit';
-import searchReducer from './searchSlice';
+// import searchReducer from './searchSlice'; // Removed import
 import selectionReducer, { selectSelectedEmojis } from './selectionSlice';
 
 // 1. Combine reducers first
 const rootReducer = combineReducers({
-  search: searchReducer,
+//  search: searchReducer, // Removed search reducer
   selection: selectionReducer,
 });
 

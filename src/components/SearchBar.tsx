@@ -1,113 +1,32 @@
-import React from 'react'; // Removed useState, useEffect
-import { useSelector, useDispatch } from 'react-redux';
-import type { EmojiMetadata } from '../types/emoji';
-import { Button } from './ui/button';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from './ui/dropdown-menu';
-import { ChevronDown, Search } from 'lucide-react';
-import {
-  setSearchQuery,
-  setSelectedCategory,
-  selectSearchQuery,
-  selectSelectedCategory,
-  selectRecentEmojis,
-} from '../store/searchSlice';
-import { toggleEmojiSelection } from '../store/selectionSlice'; // For recent emoji click
-import type { AppDispatch } from '../store/store'; // Import AppDispatch type
+import React, { useState } from 'react';
+import { Search } from 'lucide-react';
 
 interface SearchBarProps {
-  // Removed onSearch, onCategorySelect, recentEmojis
-  categories: string[];
+  // Callback to notify parent of search term changes
+  onSearchChange: (term: string) => void;
 }
 
-const SearchBar: React.FC<SearchBarProps> = ({ categories }) => {
-  const dispatch = useDispatch<AppDispatch>(); // Use typed dispatch
-  const searchQuery = useSelector(selectSearchQuery);
-  const selectedCategory = useSelector(selectSelectedCategory);
-  const recentEmojis = useSelector(selectRecentEmojis); // Get recent emojis from Redux
+const SearchBar: React.FC<SearchBarProps> = ({ onSearchChange }) => {
+  const [inputValue, setInputValue] = useState('');
 
-  // Removed useEffect for event listener
-
-  const handleSearch = (value: string) => {
-    dispatch(setSearchQuery(value));
-  };
-
-  const handleCategorySelect = (category: string) => {
-    dispatch(setSelectedCategory(category));
-  };
-
-  // When a recent emoji is clicked, treat it as a selection toggle
-  const handleRecentEmojiClick = (emoji: EmojiMetadata) => {
-    dispatch(toggleEmojiSelection(emoji));
-    // Optionally, you might want to clear the search query or category here
-    // dispatch(setSearchQuery(''));
-    // dispatch(setSelectedCategory('all'));
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const term = event.target.value;
+    setInputValue(term);
+    onSearchChange(term); // Notify parent component
   };
 
   return (
-    <div className="space-y-4">
-      <div className="flex gap-2">
-        <div className="relative flex-1">
-          <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-          <input
-            type="text"
-            placeholder="Search emojis..."
-            className="w-full rounded-md border border-input bg-background px-9 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-            value={searchQuery} // Controlled by Redux state
-            onChange={(e) => handleSearch(e.target.value)}
-          />
-        </div>
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="outline" className="min-w-[130px] justify-between">
-              {/* Display selected category from Redux state */}
-              {selectedCategory === 'all' ? 'All Categories' : selectedCategory}
-              <ChevronDown className="ml-2 h-4 w-4" />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="w-[130px]">
-            <DropdownMenuItem onClick={() => handleCategorySelect('all')}>
-              All Categories
-            </DropdownMenuItem>
-            {categories.map((category) => (
-              <DropdownMenuItem
-                key={category}
-                onClick={() => handleCategorySelect(category)}
-              >
-                {category}
-              </DropdownMenuItem>
-            ))}
-          </DropdownMenuContent>
-        </DropdownMenu>
-      </div>
-
-      {/* Display recent emojis from Redux state */}
-      {recentEmojis.length > 0 && (
-        <div className="space-y-2">
-          <h3 className="text-sm font-medium text-muted-foreground">Recently Used</h3>
-          <div className="flex gap-2 overflow-x-auto pb-2"> {/* Added scroll */}
-            {recentEmojis.map((emoji) => (
-              <button
-                key={emoji.id}
-                className="flex-shrink-0 rounded-lg border bg-card p-2 hover:bg-accent transition-colors"
-                title={emoji.filename}
-                onClick={() => handleRecentEmojiClick(emoji)} // Dispatch selection toggle
-              >
-                <img
-                  src={emoji.path}
-                  alt={emoji.filename}
-                  className="h-6 w-6 object-contain"
-                  loading="lazy"
-                />
-              </button>
-            ))}
-          </div>
-        </div>
-      )}
+    // Removed the id="search" wrapper div
+    <div className="relative flex-1">
+      <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+      <input
+        type="text"
+        placeholder="Search emojis..."
+        className="w-full rounded-md border border-input bg-background px-9 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+        value={inputValue} // Controlled input
+        onChange={handleChange} // Update state and notify parent
+      />
+      {/* Removed category dropdown and recent emojis */}
     </div>
   );
 };
