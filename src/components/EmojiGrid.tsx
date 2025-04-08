@@ -66,7 +66,7 @@ const EmojiGrid = ({
     };
 
     updateDimensions();
-    window.addEventListener("resize", updateDimensions);
+    window.addEventListener("resize", updateDimensions, { passive: true });
     return () => window.removeEventListener("resize", updateDimensions);
   }, []);
 
