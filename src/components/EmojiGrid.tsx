@@ -1,111 +1,67 @@
 import type { ReactElement } from 'react';
-import { useState, useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import type { KeyboardEvent } from 'react';
 import type { EmojiMetadata } from '../types/emoji';
 import { cn } from '../lib/utils';
-
-// Define Pagefind types for better integration
-declare global {
-  interface Window {
-    _pagefind?: {
-      search: (term: string) => Promise<{ results: PagefindResult[] }>;
-      options: (opts: Record<string, any>) => Promise<void>;
-    };
-  }
-  interface PagefindResult {
-    id: string;
-    score: number;
-    words: number[];
-    data: () => Promise<PagefindFragmentData>;
-  }
-  interface PagefindFragmentData {
-    url: string;
-    raw_url: string;
-    content: string;
-    excerpt: string;
-    word_count: number;
-    meta?: Record<string, string>; // Expecting id, filename, path here
-    filters?: Record<string, string[]>;
-  }
-}
+import { useDispatch, useSelector } from 'react-redux';
+import { toggleEmojiSelection, setFocusedIndex, selectSelectedEmojis, selectFocusedIndex } from '../store/selectionSlice';
 
 interface EmojiGridProps {
-  emojis: EmojiMetadata[]; // This will now be the filtered list from the parent
-  // searchTerm removed
+  emojis: EmojiMetadata[];
   onSelectionChange?: (selectedEmojis: EmojiMetadata[]) => void;
 }
 
-const STORAGE_KEY = 'selectedEmojis';
-
-const EmojiGrid = ({ emojis, onSelectionChange }: EmojiGridProps): ReactElement => { // Removed searchTerm, renamed initialEmojis to emojis
-  const [focusedIndex, setFocusedIndex] = useState<number>(-1);
-  const [selectedEmojis, setSelectedEmojis] = useState<EmojiMetadata[]>(() => {
-    if (typeof window === 'undefined') return [];
-    const stored = localStorage.getItem(STORAGE_KEY);
-    return stored ? JSON.parse(stored) : [];
-  });
+const EmojiGrid = ({ emojis, onSelectionChange }: EmojiGridProps): ReactElement => {
+  const dispatch = useDispatch();
+  const selectedEmojis = useSelector(selectSelectedEmojis);
+  const focusedIndex = useSelector(selectFocusedIndex);
   const gridRef = useRef<HTMLDivElement>(null);
 
   const toggleSelection = (emoji: EmojiMetadata) => {
-    setSelectedEmojis(prevSelectedEmojis => {
-      const isSelected = prevSelectedEmojis.some(e => e.id === emoji.id);
-      const newSelection = isSelected
-        ? prevSelectedEmojis.filter(e => e.id !== emoji.id)
-        : [...prevSelectedEmojis, emoji];
-
-      
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(newSelection));
-      onSelectionChange?.(newSelection);
-      return newSelection;
-    });
+    dispatch(toggleEmojiSelection(emoji));
+    onSelectionChange?.(selectedEmojis);
   };
 
-  const handleKeyDown = (e: KeyboardEvent, index: number) => { // Restore function definition
-    // Use 'emojis' prop (filtered list) for navigation bounds
+  const handleKeyDown = (e: KeyboardEvent, index: number) => {
     const cols = window.innerWidth >= 1024 ? 9 : window.innerWidth >= 768 ? 6 : 3;
 
     switch (e.key) {
       case 'ArrowRight':
         e.preventDefault();
-        setFocusedIndex(Math.min(emojis.length - 1, index + 1)); // Use emojis.length
+        dispatch(setFocusedIndex(Math.min(emojis.length - 1, index + 1)));
         break;
       case 'ArrowLeft':
         e.preventDefault();
-        setFocusedIndex(Math.max(0, index - 1));
+        dispatch(setFocusedIndex(Math.max(0, index - 1)));
         break;
       case 'ArrowUp':
         e.preventDefault();
-        setFocusedIndex(Math.max(0, index - cols));
+        dispatch(setFocusedIndex(Math.max(0, index - cols)));
         break;
       case 'ArrowDown':
         e.preventDefault();
-        setFocusedIndex(Math.min(emojis.length - 1, index + cols)); // Use emojis.length
+        dispatch(setFocusedIndex(Math.min(emojis.length - 1, index + cols)));
         break;
       case 'Enter':
       case ' ':
         e.preventDefault();
-        // Ensure index is valid for 'emojis' prop before toggling
-        if (index >= 0 && index < emojis.length) { // Use emojis.length
-          toggleSelection(emojis[index]); // Use emojis prop
+        if (index >= 0 && index < emojis.length) {
+          toggleSelection(emojis[index]);
         }
         break;
     }
   };
 
-  // useEffect to focus the correct button when focusedIndex changes
   useEffect(() => {
     if (focusedIndex >= 0 && gridRef.current) {
       const buttons = gridRef.current.querySelectorAll<HTMLButtonElement>('button[role="gridcell"]');
-      // Ensure focusedIndex is within bounds of the current emoji list
       if (focusedIndex < buttons.length) {
         buttons[focusedIndex]?.focus();
       } else {
-         // If index is out of bounds (e.g., list shrank), reset focus or focus last item?
-         // Resetting to -1 might be safer to avoid focusing nothing.
-         setFocusedIndex(-1);
+        dispatch(setFocusedIndex(-1));
       }
     }
-  }, [focusedIndex, emojis]); // Depend on 'emojis' prop now
+  }, [focusedIndex, emojis, dispatch]);
 
   return (
     <div
@@ -145,7 +101,7 @@ const EmojiGrid = ({ emojis, onSelectionChange }: EmojiGridProps): ReactElement 
         </button>
       ))}
       {emojis.length === 0 && (
-         <p className="col-span-full text-center text-muted-foreground py-8">No emojis found.</p> // Simplified message
+        <p className="col-span-full text-center text-muted-foreground py-8">No emojis found.</p>
       )}
     </div>
   );
