@@ -142,7 +142,7 @@ const EmojiGrid = ({
           className={cn(
             "w-full h-full p-2",
             "aspect-square rounded-lg border bg-card text-card-foreground relative group",
-            "shadow-sm flex items-center justify-center",
+            "shadow-sm flex flex-col items-center justify-center",
             "transition-all duration-200 ease-in-out",
             "hover:scale-110 hover:shadow-md focus:scale-105 focus:shadow-md hover:bg-primary/10",
             "focus:outline-none focus:ring-1 focus:ring-primary focus:bg-primary/10",
@@ -156,11 +156,13 @@ const EmojiGrid = ({
           aria-label={emoji.filename}
           aria-selected={selectedEmojis.some((e) => e.id === emoji.id)}
         >
-          <img
-            src={emoji.path}
-            alt={emoji.filename}
-            className="w-12 h-12 object-contain"
-          />
+          <div className="flex items-center justify-center flex-1">
+            <img
+              src={emoji.path}
+              alt={emoji.filename}
+              className="w-12 h-12 object-contain"
+            />
+          </div>
           <div className="absolute inset-0 bg-black/60 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-200 rounded-lg flex items-center justify-center text-xs p-2 text-center font-mono">
             :{emoji.filename?.split(".")[0].replace(/\/.*\//g, "")}:
           </div>
