@@ -37,7 +37,7 @@ function getRelatedTags(url: string) {
   if (url.includes("meow")) return ["cat", "kitten", "animal"];
   if (url.includes("cat")) return ["meow", "kitten", "animal"];
   if (url.includes("dog")) return ["dog", "animal"];
-  if (url.includes("root")) return ["animal", "panda"];
+  if (url.includes("roo")) return ["animal", "panda"];
   return [];
 }
 
