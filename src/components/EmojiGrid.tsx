@@ -59,11 +59,7 @@ const EmojiGrid = ({ emojis, onSelectionChange }: EmojiGridProps): ReactElement 
       return newSelection;
     });
   };
-
-  // Removed the useEffect hook that performed Pagefind search here.
-  // Removed the useEffect hook that performed Pagefind search here.
-  // Search is now handled in the parent component (EmojiExplorerApp).
-
+  
   const handleKeyDown = (e: KeyboardEvent, index: number) => { // Restore function definition
     // Use 'emojis' prop (filtered list) for navigation bounds
     const cols = window.innerWidth >= 1024 ? 9 : window.innerWidth >= 768 ? 6 : 3;

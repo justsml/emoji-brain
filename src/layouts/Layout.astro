@@ -69,13 +69,13 @@ const { title } = Astro.props;
   </head>
   <body>
     <div class="min-h-screen bg-background text-foreground">
-      <header class="container mx-auto px-4 py-6">
+      <header class="container py-6">
         <div class="flex justify-between items-center">
           <h1 class="text-2xl font-bold">Emoji Explorer</h1>
           <ThemeToggle client:load />
         </div>
       </header>
-      <main class="container mx-auto px-4 py-8">
+      <main class="container py-8">
         <slot />
       </main>
     </div>

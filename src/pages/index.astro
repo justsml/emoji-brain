@@ -7,13 +7,13 @@ import emojiMetadata from '../data/emoji-metadata.json'; // Assuming this path i
 
 // Prepare initial props for the React app
 const allEmojis: EmojiMetadata[] = emojiMetadata.emojis || [];
-const categories = Array.from(new Set(allEmojis.flatMap(emoji => emoji.categories))).filter(Boolean);
+// const categories = Array.from(new Set(allEmojis.flatMap(emoji => emoji.categories))).filter(Boolean);
 ---
 
 <Layout title="Emoji Explorer">
-  <div class="container mx-auto px-4 py-8 space-y-8">
+  <div class="container py-8 space-y-8">
     <section class="text-center">
-      <h2 class="text-3xl font-bold tracking-tight">Welcome to Emoji Explorer</h2>
+      <h2 class="text-3xl font-bold tracking-tight">Welcome to Dan's Emoji Explorer</h2>
       <p class="mt-4 text-muted-foreground">
         Browse, search, and explore our collection of emojis
       </p>
@@ -21,10 +21,8 @@ const categories = Array.from(new Set(allEmojis.flatMap(emoji => emoji.categorie
       <EmojiExplorerApp
         client:only="react"
         initialEmojis={allEmojis}
-        categories={categories}
       />
 
   </div>
 </Layout>
 
-{/* Removed the entire <script> block that previously handled event dispatching and filtering */}

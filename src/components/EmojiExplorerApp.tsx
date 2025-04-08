@@ -302,22 +302,17 @@ const _EmojiExplorerApp: React.FC<EmojiExplorerAppProps> = ({ initialEmojis }) =
 
   return (
     <div className="space-y-8">
-      <div className="max-w-5xl mx-auto">
+      <div className="max-w-xl mx-auto">
         {/* Pass the handler to SearchBar */}
         <SearchBar onSearchChange={handleSearchChange} />
       </div>
 
       <section className="max-w-7xl mx-auto">
-        {/* Pass the filtered emoji list to EmojiGrid */}
-        {/* Add a loading indicator or message while searching */}
         {isSearching ? (
           <p className="text-center text-muted-foreground">Searching...</p>
         ) : (
           <EmojiGrid
             emojis={filteredEmojis}
-            // Removed searchTerm prop
-            // Pass down selection change handler if needed by EmojiGrid
-            // onSelectionChange={(selected) => dispatch(updateSelectionAction(selected))} // Example if needed
           />
         )}
       </section>
