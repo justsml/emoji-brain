@@ -35,21 +35,22 @@ test.describe('Emoji Explorer', () => {
     // Type "cat" in the search box
     await page.getByPlaceholder('Search emojis...').fill('cat');
     
-    // Wait for the search results to update
-    await page.waitForTimeout(500);
+    // Wait for the search results to update (Pagefind is async)
+    // Expect the count to change from the initial count
+    await expect(page.locator('button[role="gridcell"]')).not.toHaveCount(
+      initialEmojiCount,
+      { timeout: 5000 } // Wait up to 5 seconds for results to change
+    );
     
     // Get the filtered count of emojis
     const filteredEmojiCount = await page.locator('button[role="gridcell"]').count();
     
-    // The filtered count should be less than or equal to the initial count
-    // (assuming "cat" doesn't match all emojis)
-    expect(filteredEmojiCount).toBeLessThanOrEqual(initialEmojiCount);
+    expect(filteredEmojiCount).toBeLessThan(initialEmojiCount); // Assert it actually filtered
     
     // Clear the search box
     await page.getByPlaceholder('Search emojis...').clear();
-    
-    // Wait for the results to reset
-    await page.waitForTimeout(500);
+    // Wait for the results to reset to the initial count
+    await expect(page.locator('button[role="gridcell"]')).toHaveCount(initialEmojiCount, { timeout: 5000 });
     
     // The count should be back to the initial count
     const resetCount = await page.locator('button[role="gridcell"]').count();
