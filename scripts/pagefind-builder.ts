@@ -1,31 +1,32 @@
 import * as pagefind from "pagefind";
 import data from "../src/data/emoji-metadata.json" assert { type: "json" };
+import { statSync } from "node:fs";
 
-// Create a Pagefind search index to work with
 const { index } = await pagefind.createIndex();
 
 // Add the emoji metadata to the index
 for (const emoji of data.emojis) {
-  // Add the emoji to the index
+  const labels = [...emoji.categories, ...emoji.tags];
+  const fileStat = statSync('public' + emoji.path);
+  const createdDate = fileStat.birthtime || fileStat.mtime;
+  const created = createdDate.toISOString().split("T")[0]; // Format as YYYY-MM-DD
+
+
   await index!.addCustomRecord({
-    url: emoji.path,
-    content: emoji.categories.join(", ") + emoji.tags.join(", "),
     language: "en",
-    // meta: {
-    //   title: emoji.
-    // }
+    url: emoji.path,
+    content: labels.join(", "),
+    meta: {
+      id: emoji.id,
+      size: `${emoji.size}`,
+      filename: emoji.filename,
+      created,
+    }
   });
-  // index.add({
-  //   id: emoji.unified,
-  //   title: emoji.unified,
-  //   content: emoji.description,
-  //   tags: emoji.tags,
-  //   categories: emoji.categories,
-  // });
 }
 
 
-// Or, write the index to disk
+// write the index to disk
 await index!.writeFiles({
   outputPath: "public/pagefind"
 });

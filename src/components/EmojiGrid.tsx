@@ -30,16 +30,16 @@ declare global {
 }
 
 interface EmojiGridProps {
-  emojis: EmojiMetadata[]; // This is the full list of all emojis
-  searchTerm: string; // Current search term from the parent
+  emojis: EmojiMetadata[]; // This will now be the filtered list from the parent
+  // searchTerm removed
   onSelectionChange?: (selectedEmojis: EmojiMetadata[]) => void;
 }
 
 const STORAGE_KEY = 'selectedEmojis';
 
-const EmojiGrid = ({ emojis: initialEmojis, searchTerm, onSelectionChange }: EmojiGridProps): ReactElement => {
+const EmojiGrid = ({ emojis, onSelectionChange }: EmojiGridProps): ReactElement => { // Removed searchTerm, renamed initialEmojis to emojis
   const [focusedIndex, setFocusedIndex] = useState<number>(-1);
-  const [displayedEmojis, setDisplayedEmojis] = useState<EmojiMetadata[]>(initialEmojis); // Emojis currently shown (filtered or all)
+  // Removed displayedEmojis state, will use 'emojis' prop directly
   const [selectedEmojis, setSelectedEmojis] = useState<EmojiMetadata[]>(() => {
     if (typeof window === 'undefined') return [];
     const stored = localStorage.getItem(STORAGE_KEY);
@@ -60,69 +60,18 @@ const EmojiGrid = ({ emojis: initialEmojis, searchTerm, onSelectionChange }: Emo
     });
   };
 
-  // useEffect to handle searching with Pagefind API
-  useEffect(() => {
-    const performSearch = async () => {
-      // If search term is empty, show all emojis
-      if (!searchTerm) {
-        setDisplayedEmojis(initialEmojis);
-        setFocusedIndex(-1);
-        return;
-      }
+  // Removed the useEffect hook that performed Pagefind search here.
+  // Removed the useEffect hook that performed Pagefind search here.
+  // Search is now handled in the parent component (EmojiExplorerApp).
 
-      // Ensure pagefind is loaded
-      if (window.pagefind) {
-        try {
-          const searchResults = await window.pagefind.search(searchTerm);
-          const emojiDataPromises = searchResults.results.map(result => result.data());
-          const fragments = await Promise.all(emojiDataPromises);
-
-          // Map Pagefind results back to EmojiMetadata
-          // Assumes metadata (id, filename, path) is stored in the index
-          const filteredEmojis = fragments
-            .map(fragment => {
-              // Check if essential metadata exists
-              if (fragment.meta?.id && fragment.meta?.filename && fragment.meta?.path) {
-                // Find the original full EmojiMetadata object to preserve any other potential fields
-                const originalEmoji = initialEmojis.find(e => e.id === fragment.meta!.id);
-                return originalEmoji || null; // Return the full object if found
-              }
-              console.warn(`Missing metadata for Pagefind result: ${fragment.url}`);
-              return null;
-            })
-            .filter((emoji): emoji is EmojiMetadata => emoji !== null); // Filter out nulls or incomplete results
-
-          setDisplayedEmojis(filteredEmojis);
-          setFocusedIndex(-1); // Reset focus on new results
-        } catch (e) {
-          console.error("Pagefind search failed:", e);
-          setDisplayedEmojis([]); // Show empty on error? Or initialEmojis? Let's go with empty for clarity.
-          setFocusedIndex(-1);
-        }
-      } else {
-        console.warn("Pagefind not available yet. Cannot search.");
-        // Fallback if pagefind isn't ready - show initial list? Or empty?
-        // Showing initial might be confusing if user typed something. Let's show empty.
-        setDisplayedEmojis([]);
-        setFocusedIndex(-1);
-      }
-    };
-
-    // Debounce search slightly? For now, run directly.
-    performSearch();
-
-  }, [searchTerm, initialEmojis]); // Rerun on search term or initial list change
-
-  // Removed the old useEffect for 'updateEmojis' event listener
-
-  const handleKeyDown = (e: KeyboardEvent, index: number) => {
-    // Use displayedEmojis for navigation bounds
+  const handleKeyDown = (e: KeyboardEvent, index: number) => { // Restore function definition
+    // Use 'emojis' prop (filtered list) for navigation bounds
     const cols = window.innerWidth >= 1024 ? 9 : window.innerWidth >= 768 ? 6 : 3;
 
     switch (e.key) {
       case 'ArrowRight':
         e.preventDefault();
-        setFocusedIndex(Math.min(displayedEmojis.length - 1, index + 1));
+        setFocusedIndex(Math.min(emojis.length - 1, index + 1)); // Use emojis.length
         break;
       case 'ArrowLeft':
         e.preventDefault();
@@ -134,14 +83,14 @@ const EmojiGrid = ({ emojis: initialEmojis, searchTerm, onSelectionChange }: Emo
         break;
       case 'ArrowDown':
         e.preventDefault();
-        setFocusedIndex(Math.min(displayedEmojis.length - 1, index + cols));
+        setFocusedIndex(Math.min(emojis.length - 1, index + cols)); // Use emojis.length
         break;
       case 'Enter':
       case ' ':
         e.preventDefault();
-        // Ensure index is valid for displayedEmojis before toggling
-        if (index >= 0 && index < displayedEmojis.length) {
-          toggleSelection(displayedEmojis[index]);
+        // Ensure index is valid for 'emojis' prop before toggling
+        if (index >= 0 && index < emojis.length) { // Use emojis.length
+          toggleSelection(emojis[index]); // Use emojis prop
         }
         break;
     }
@@ -151,21 +100,26 @@ const EmojiGrid = ({ emojis: initialEmojis, searchTerm, onSelectionChange }: Emo
   useEffect(() => {
     if (focusedIndex >= 0 && gridRef.current) {
       const buttons = gridRef.current.querySelectorAll<HTMLButtonElement>('button[role="gridcell"]');
-      buttons[focusedIndex]?.focus();
+      // Ensure focusedIndex is within bounds of the current emoji list
+      if (focusedIndex < buttons.length) {
+        buttons[focusedIndex]?.focus();
+      } else {
+         // If index is out of bounds (e.g., list shrank), reset focus or focus last item?
+         // Resetting to -1 might be safer to avoid focusing nothing.
+         setFocusedIndex(-1);
+      }
     }
-  }, [focusedIndex, displayedEmojis]); // Also depend on displayedEmojis in case the list shrinks
+  }, [focusedIndex, emojis]); // Depend on 'emojis' prop now
 
   return (
-    // Add the id for Pagefind UI results container if we were using that approach.
-    // Since we're using the API, this div just holds our grid.
     <div
       ref={gridRef}
       className="grid grid-cols-3 md:grid-cols-6 lg:grid-cols-9 gap-4"
       role="grid"
       aria-label="Emoji grid"
     >
-      {/* Render based on displayedEmojis state */}
-      {displayedEmojis.map((emoji, index) => (
+      {/* Render based on 'emojis' prop */}
+      {emojis.map((emoji, index) => (
         <button
           key={emoji.id}
           className={cn(
@@ -179,10 +133,10 @@ const EmojiGrid = ({ emojis: initialEmojis, searchTerm, onSelectionChange }: Emo
           )}
           onClick={() => toggleSelection(emoji)}
           onKeyDown={(e) => handleKeyDown(e, index)}
-          tabIndex={focusedIndex === index ? 0 : -1} // Manage focus based on index
+          tabIndex={focusedIndex === index ? 0 : -1}
           role="gridcell"
           aria-label={emoji.filename}
-          aria-selected={selectedEmojis.some(e => e.id === emoji.id)} // Add aria-selected
+          aria-selected={selectedEmojis.some(e => e.id === emoji.id)}
         >
           <img
             src={emoji.path}
@@ -195,9 +149,10 @@ const EmojiGrid = ({ emojis: initialEmojis, searchTerm, onSelectionChange }: Emo
           </div>
         </button>
       ))}
-      {/* Optionally, add a message when displayedEmojis is empty after a search */}
-      {searchTerm && displayedEmojis.length === 0 && (
-         <p className="col-span-full text-center text-muted-foreground py-8">No emojis found for "{searchTerm}".</p>
+      {/* Message when 'emojis' prop is empty */}
+      {/* Removed searchTerm check as it's not available here */}
+      {emojis.length === 0 && (
+         <p className="col-span-full text-center text-muted-foreground py-8">No emojis found.</p> // Simplified message
       )}
     </div>
   );
