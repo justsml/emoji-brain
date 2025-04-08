@@ -19,6 +19,11 @@ interface EmojiGridProps {
 
 const CELL_SIZE = 192; // 64px for emoji + 32px padding + 32px gap (2rem)
 const MIN_HEIGHT = 400;
+// Breakpoints for responsive design
+const CONTAINER_PADDING = 48;
+const MIN_COLUMNS = 2;
+const MAX_COLUMNS = 10;
+const MIN_COLUMN_WIDTH = 200; // Minimum width for comfortable emoji display
 
 const EmojiGrid = ({
   emojis,
@@ -29,17 +34,28 @@ const EmojiGrid = ({
   const focusedIndex = useSelector(selectFocusedIndex);
   const gridRef = useRef<Grid>(null);
   const [dimensions, setDimensions] = useState({
-    width: 0,
+    width: window.innerWidth,
     height: window.innerHeight - 200, // Subtract header/footer space
     columnCount: 3,
   });
 
   useEffect(() => {
     const updateDimensions = () => {
-      const width = window.innerWidth - 48; // Account for container padding
-      const columnCount =
-        window.innerWidth >= 1024 ? 9 : window.innerWidth >= 768 ? 6 : 3;
+      const gridEl = document.querySelector(".ReactVirtualized__Grid");
+      // const boxWidth = gridEl?.
+      const boxWidth = gridEl?.getBoundingClientRect().width || window.innerWidth;
+      // const boxWidth = window.innerWidth - CONTAINER_PADDING;
+      const width = boxWidth; // - CONTAINER_PADDING;
       const height = Math.max(MIN_HEIGHT, window.innerHeight - 200);
+
+      // Calculate optimal column count based on available width
+      const maxPossibleColumns = Math.floor(width / MIN_COLUMN_WIDTH);
+      let columnCount = Math.max(
+        MIN_COLUMNS,
+        Math.min(maxPossibleColumns, MAX_COLUMNS)
+      );
+
+      // if (columnCount > 3) columnCount = 
 
       setDimensions({ width, height, columnCount });
       gridRef.current?.recomputeGridSize();
@@ -101,7 +117,12 @@ const EmojiGrid = ({
     }
   }, [focusedIndex]);
 
-  const cellRenderer = ({ columnIndex, key, rowIndex, style }: {
+  const cellRenderer = ({
+    columnIndex,
+    key,
+    rowIndex,
+    style,
+  }: {
     columnIndex: number;
     key: string;
     rowIndex: number;
@@ -137,7 +158,7 @@ const EmojiGrid = ({
             className="w-12 h-12 object-contain"
           />
           <div className="absolute inset-0 bg-black/60 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-200 rounded-lg flex items-center justify-center text-xs p-2 text-center font-mono">
-            :{emoji.filename?.split(".")[0]}:
+            :{emoji.filename?.split(".")[0].replace(/\/.*\//g, "")}:
           </div>
         </button>
       </div>
@@ -153,9 +174,13 @@ const EmojiGrid = ({
   const rowCount = Math.ceil(emojis.length / dimensions.columnCount);
 
   return (
-    <div role="grid" aria-label="Emoji grid" className="flex justify-center">
+    <div
+      role="grid"
+      aria-label="Emoji grid"
+      className="flex justify-around pr-6"
+    >
       <Grid
-        style={{ margin: '0 auto' }}
+        style={{ margin: "0 auto", paddingRight: CONTAINER_PADDING / 2 }}
         ref={gridRef}
         cellRenderer={cellRenderer}
         columnWidth={CELL_SIZE}
