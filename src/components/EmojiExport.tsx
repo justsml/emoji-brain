@@ -98,7 +98,11 @@ export function EmojiExport() {
     <div className="fixed bottom-4 left-0 right-0 mx-2 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 p-4 rounded-lg shadow-lg border flex w-full justify-between items-center gap-x-4 z-50">
       <div className="text-sm font-medium">
         {selectedEmojis.length} selected
-        
+        {selectedEmojis.length > 0 && (
+          <span className="ml-2 text-muted-foreground">
+            ({(selectedEmojis.reduce((total, emoji) => total + emoji.size, 0) / 1024).toFixed(1)} KB)
+          </span>
+        )}
       </div>
       
       <DropdownMenu>
@@ -123,14 +127,6 @@ export function EmojiExport() {
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
-
-      <Button 
-        variant="ghost" 
-        onClick={onClearSelection}
-        className="text-muted-foreground hover:text-foreground"
-      >
-        Clear
-      </Button>
 
       {exportStatus && (
         <div className="text-sm text-muted-foreground animate-in fade-in slide-in-from-top-1">
