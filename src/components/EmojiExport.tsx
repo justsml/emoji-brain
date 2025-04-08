@@ -1,199 +1,143 @@
-import { useState, useEffect, useRef } from 'react'
-import { Button } from './ui/button'
+import { useState } from "react";
+import { Button } from "./ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from './ui/dropdown-menu'
-import { Download, Loader2, Copy, FileText, Code, X } from 'lucide-react'
-import type { EmojiMetadata } from '../types/emoji'
+} from "./ui/dropdown-menu";
+import { useAppDispatch, type RootState } from "../store/store";
+import { useSelector } from "react-redux";
+import { resetSelection } from "../store/selectionSlice";
+import { getAbsoluteUrl } from "../lib/utils";
 
-interface EmojiExportProps {
-  selectedEmojis: EmojiMetadata[]
-  onClearSelection: () => void
-}
+export function EmojiExport() {
+  const { selectedEmojis } = useSelector((state: RootState) => state.selection);
+  const dispatch = useAppDispatch();
+  const onClearSelection = () => {
+    dispatch(resetSelection());
+  };
 
-export function EmojiExport({ selectedEmojis, onClearSelection }: EmojiExportProps) {
-  const [exportStatus, setExportStatus] = useState<{ message: string; type: 'success' | 'error' | 'loading' }>({ message: '', type: 'success' })
-  const exportButtonRef = useRef<HTMLButtonElement>(null)
-  const [currentEmojis, setCurrentEmojis] = useState<EmojiMetadata[]>(selectedEmojis)
-
-  useEffect(() => {
-    const handleUpdateExportEmojis = (e: CustomEvent<EmojiMetadata[]>) => {
-      setCurrentEmojis(e.detail)
-    }
-    document.addEventListener('updateExportEmojis', handleUpdateExportEmojis as EventListener)
-    return () => {
-      document.removeEventListener('updateExportEmojis', handleUpdateExportEmojis as EventListener)
-    }
-  }, [])
-
-  useEffect(() => {
-    const handleKeyboardShortcut = (e: KeyboardEvent) => {
-      // Ctrl/Cmd + E to focus export button
-      if ((e.ctrlKey || e.metaKey) && e.key === 'e') {
-        e.preventDefault()
-        exportButtonRef.current?.focus()
-      }
-      // Ctrl/Cmd + Shift + C to clear selection
-      if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === 'C') {
-        e.preventDefault()
-        onClearSelection()
-      }
-    }
-    
-    document.addEventListener('keydown', handleKeyboardShortcut)
-    return () => document.removeEventListener('keydown', handleKeyboardShortcut)
-  }, [onClearSelection])
-
-  const announceStatus = (message: string) => {
-    const announcement = document.createElement('div')
-    announcement.setAttribute('role', 'status')
-    announcement.setAttribute('aria-live', 'polite')
-    announcement.className = 'sr-only'
-    announcement.textContent = message
-    document.body.appendChild(announcement)
-    setTimeout(() => document.body.removeChild(announcement), 1000)
-  }
+  const [exportStatus, setExportStatus] = useState<string>("");
 
   const exportAsPlainText = () => {
-    const text = currentEmojis.map(emoji => emoji.filename).join('\n')
-    navigator.clipboard.writeText(text)
-    setExportStatus({ message: 'Copied filenames to clipboard!', type: 'success' })
-    setTimeout(() => setExportStatus({ message: '', type: 'success' }), 2000)
-  }
+    const text = selectedEmojis.map((emoji) => emoji.filename).join("\n");
+    navigator.clipboard.writeText(text);
+    setExportStatus("Copied filenames to clipboard!");
+    setTimeout(() => setExportStatus(""), 2000);
+  };
 
   const exportAsHtml = () => {
-    const html = currentEmojis
-      .map(emoji => `<img src="${emoji.path}" alt="${emoji.filename}" />`)
-      .join('\n')
-    navigator.clipboard.writeText(html)
-    setExportStatus({ message: 'Copied HTML to clipboard!', type: 'success' })
-    setTimeout(() => setExportStatus({ message: '', type: 'success' }), 2000)
-  }
+    const html = selectedEmojis
+      .map((emoji) => `<img src="${getAbsoluteUrl(emoji.path)}" alt="${emoji.filename}" />`)
+      .join("\n");
+    navigator.clipboard.writeText(html);
+    setExportStatus("Copied HTML to clipboard!");
+    setTimeout(() => setExportStatus(""), 2000);
+  };
 
   const exportAsCss = () => {
-    const css = currentEmojis
-      .map(emoji => `.emoji-${emoji.id} {
-  background-image: url('${emoji.path}');
+    const css = selectedEmojis
+      .map(
+        (emoji) => `.emoji-${emoji.id} {
+  background-image: url('${getAbsoluteUrl(emoji.path)}');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-}`)
-      .join('\n\n')
-    navigator.clipboard.writeText(css)
-    setExportStatus({ message: 'Copied CSS to clipboard!', type: 'success' })
-    setTimeout(() => setExportStatus({ message: '', type: 'success' }), 2000)
-  }
+}`
+      )
+      .join("\n\n");
+    navigator.clipboard.writeText(css);
+    setExportStatus("Copied CSS to clipboard!");
+    setTimeout(() => setExportStatus(""), 2000);
+  };
+
+  const exportAsMarkdownTable = () => {
+    const header = "| Emoji | Filename |\n|---|---|";
+    const rows = selectedEmojis
+      .map(
+        (emoji) => `| ![${emoji.filename}](${getAbsoluteUrl(emoji.path)}) | ${emoji.filename} |`
+      )
+      .join("\n");
+    const markdown = `${header}\n${rows}`;
+    navigator.clipboard.writeText(markdown);
+    setExportStatus("Copied Markdown Table to clipboard!");
+    setTimeout(() => setExportStatus(""), 2000);
+  };
 
   const downloadZip = async () => {
     try {
-      setExportStatus({ message: 'Preparing ZIP...', type: 'loading' })
-      const JSZip = (await import('jszip')).default
-      const zip = new JSZip()
-      
+      setExportStatus("Preparing ZIP...");
+      const JSZip = (await import("jszip")).default;
+      const zip = new JSZip();
+
       // Add each emoji to the zip
-      for (const emoji of currentEmojis) {
-        const response = await fetch(emoji.path)
-        const blob = await response.blob()
-        zip.file(emoji.filename, blob)
+      for (const emoji of selectedEmojis) {
+        const response = await fetch(getAbsoluteUrl(emoji.path));
+        const blob = await response.blob();
+        zip.file(emoji.filename, blob);
       }
-      
+
       // Generate and download the zip
-      const content = await zip.generateAsync({ type: 'blob' })
-      const url = URL.createObjectURL(content)
-      const a = document.createElement('a')
-      a.href = url
-      a.download = 'selected-emojis.zip'
-      document.body.appendChild(a)
-      a.click()
-      document.body.removeChild(a)
-      URL.revokeObjectURL(url)
-      
-      setExportStatus({ message: 'ZIP downloaded!', type: 'success' })
-      setTimeout(() => setExportStatus({ message: '', type: 'success' }), 2000)
+      const content = await zip.generateAsync({ type: "blob" });
+      const url = URL.createObjectURL(content);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "selected-emojis.zip";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+
+      setExportStatus("ZIP downloaded!");
+      setTimeout(() => setExportStatus(""), 2000);
     } catch (error) {
-      console.error('Error creating ZIP:', error)
-      setExportStatus({ message: 'Error creating ZIP', type: 'error' })
-      setTimeout(() => setExportStatus({ message: '', type: 'success' }), 2000)
+      console.error("Error creating ZIP:", error);
+      setExportStatus("Error creating ZIP");
+      setTimeout(() => setExportStatus(""), 2000);
     }
-  }
+  };
 
   return (
-    currentEmojis.length > 0 ? (
-    <div 
-      className="fixed bottom-4 left-1/2 -translate-x-1/2 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 p-4 rounded-lg shadow-lg border flex items-center gap-4 z-50 animate-in slide-in-from-bottom-4"
-      role="region"
-      aria-label="Export selected emojis"
-    >
-      <div className="text-sm font-medium" aria-live="polite">
-        {currentEmojis.length} emoji{currentEmojis.length !== 1 ? 's' : ''} selected
+    <div className="fixed bottom-4 left-0 right-0 mx-2 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 p-4 rounded-lg shadow-lg border flex w-full justify-between items-center gap-x-4 z-50">
+      <div className="text-sm font-medium">
+        {selectedEmojis.length} selected
+        {selectedEmojis.length > 0 && (
+          <span className="ml-2 text-muted-foreground">
+            (
+            {parseFloat(
+              (
+                selectedEmojis.reduce((total, emoji) => total + emoji.size, 0) /
+                1024
+              ).toFixed(1)
+            ).toLocaleString()}{" "}
+            KB)
+          </span>
+        )}
       </div>
-      
+
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button 
-            ref={exportButtonRef}
-            variant="outline"
-            className="gap-2 transition-all duration-200 hover:shadow-md"
-            aria-label="Export options"
-          >
-            {exportStatus.type === 'loading' ? (
-              <Loader2 className="h-4 w-4 animate-spin" />
-            ) : (
-              <Download className="h-4 w-4" />
-            )}
-            Export As...
-          </Button>
+          <Button variant="outline">Export...</Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
-          <DropdownMenuItem 
-            onClick={exportAsPlainText}
-            className="gap-2"
-          >
-            <FileText className="h-4 w-4" />
+          <DropdownMenuItem onClick={exportAsPlainText}>
             Plain Text
           </DropdownMenuItem>
-          <DropdownMenuItem 
-            onClick={exportAsHtml}
-            className="gap-2"
-          >
-            <Code className="h-4 w-4" />
-            HTML
+          <DropdownMenuItem onClick={exportAsHtml}>HTML</DropdownMenuItem>
+          <DropdownMenuItem onClick={exportAsCss}>CSS</DropdownMenuItem>
+          <DropdownMenuItem onClick={exportAsMarkdownTable}>
+            Markdown Table
           </DropdownMenuItem>
-          <DropdownMenuItem 
-            onClick={exportAsCss}
-            className="gap-2"
-          >
-            <Code className="h-4 w-4" />
-            CSS
-          </DropdownMenuItem>
-          <DropdownMenuItem 
-            onClick={downloadZip}
-            className="gap-2"
-          >
-            <Download className="h-4 w-4" />
-            ZIP File
-          </DropdownMenuItem>
+          <DropdownMenuItem onClick={downloadZip}>ZIP File</DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
 
-      <Button 
-        variant="ghost"
-        onClick={onClearSelection}
-        className="text-muted-foreground hover:text-foreground gap-2 transition-all duration-200"
-        aria-label="Clear selection"
-      >
-        <X className="h-4 w-4" />
-        Clear Selection
-      </Button>
-
-      {exportStatus.message && (
-        <div className={`text-sm animate-in fade-in slide-in-from-top-1 ${exportStatus.type === 'error' ? 'text-destructive' : 'text-muted-foreground'}`}>
-          {exportStatus.message}
+      {exportStatus && (
+        <div className="text-sm text-muted-foreground animate-in fade-in slide-in-from-top-1">
+          {exportStatus}
         </div>
       )}
-    </div>) : null
-  )
+    </div>
+  );
 }

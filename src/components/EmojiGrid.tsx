@@ -1,219 +1,206 @@
-import { useState, useEffect, useRef, useMemo } from 'react'
-import type { KeyboardEvent } from 'react'
-import type { EmojiMetadata } from '../types/emoji'
-import { cn } from '../lib/utils'
+import type { ReactElement } from "react";
+import { useEffect, useRef, useState } from "react";
+import type { KeyboardEvent } from "react";
+import type { EmojiMetadata } from "../types/emoji";
+import { cn } from "../lib/utils";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  toggleEmojiSelection,
+  setFocusedIndex,
+  selectSelectedEmojis,
+  selectFocusedIndex,
+} from "../store/selectionSlice";
+import { Grid } from "react-virtualized";
 
 interface EmojiGridProps {
-  emojis: EmojiMetadata[]
-  onSelectionChange?: (selectedEmojis: EmojiMetadata[]) => void
+  emojis: EmojiMetadata[];
+  onSelectionChange?: (selectedEmojis: EmojiMetadata[]) => void;
 }
 
-const STORAGE_KEY = 'selectedEmojis'
-const ITEMS_PER_PAGE = 36 // 4 rows of 9 items in desktop view
+const CELL_SIZE = 192; // 64px for emoji + 32px padding + 32px gap (2rem)
+const MIN_HEIGHT = 300;
+// Breakpoints for responsive design
+const CONTAINER_PADDING = 48;
+const MIN_COLUMNS = 2;
+const MAX_COLUMNS = 10;
+const MIN_COLUMN_WIDTH = 200; // Minimum width for comfortable emoji display
 
-const EmojiGrid = ({ emojis: initialEmojis, onSelectionChange }: EmojiGridProps) => {
-  const [focusedIndex, setFocusedIndex] = useState<number>(-1)
-  const [emojis, setEmojis] = useState<EmojiMetadata[]>([])
-  const [selectedEmojis, setSelectedEmojis] = useState<EmojiMetadata[]>(() => {
-    if (typeof window === 'undefined') return []
-    const stored = localStorage.getItem(STORAGE_KEY)
-    return stored ? JSON.parse(stored) : []
-  })
-  const gridRef = useRef<HTMLDivElement>(null)
-  const [isLoading, setIsLoading] = useState(true)
-  const [currentPage, setCurrentPage] = useState(1)
+const EmojiGrid = ({
+  emojis,
+  onSelectionChange,
+}: EmojiGridProps): ReactElement => {
+  const dispatch = useDispatch();
+  const selectedEmojis = useSelector(selectSelectedEmojis);
+  const focusedIndex = useSelector(selectFocusedIndex);
+  const gridRef = useRef<Grid>(null);
+  const [dimensions, setDimensions] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight - 320, // Subtract header/footer space
+    columnCount: 3,
+  });
 
-  // Initialize emojis from props
   useEffect(() => {
-    setEmojis(initialEmojis)
-  }, [initialEmojis])
-  
+    const updateDimensions = () => {
+      const gridEl = document.querySelector(".ReactVirtualized__Grid");
+      // const boxWidth = gridEl?.
+      const boundingRect = gridEl?.getBoundingClientRect();
+      // The grid height can be inferred from the top of the grid element
+      const topPx = boundingRect?.y || 0;
+      const boxHeight = window.innerHeight - topPx
+      const boxWidth = boundingRect?.width || window.innerWidth;
+      // const boxWidth = window.innerWidth - CONTAINER_PADDING;
+      const width = boxWidth; // - CONTAINER_PADDING;
+      const height = Math.max(boxHeight, MIN_HEIGHT);
+
+      // Calculate optimal column count based on available width
+      const maxPossibleColumns = Math.floor(width / MIN_COLUMN_WIDTH);
+      let columnCount = Math.max(
+        MIN_COLUMNS,
+        Math.min(maxPossibleColumns, MAX_COLUMNS)
+      );
+
+      // if (columnCount > 3) columnCount = 
+
+      setDimensions({ width, height, columnCount });
+      gridRef.current?.recomputeGridSize();
+    };
+
+    updateDimensions();
+    window.addEventListener("resize", updateDimensions, { passive: true });
+    return () => window.removeEventListener("resize", updateDimensions);
+  }, []);
+
   const toggleSelection = (emoji: EmojiMetadata) => {
-    const newSelection = selectedEmojis.some(e => e.id === emoji.id)
-      ? selectedEmojis.filter(e => e.id !== emoji.id)
-      : [...selectedEmojis, emoji]
-    
-    setSelectedEmojis(newSelection)
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(newSelection))
-    announceSelection(emoji, newSelection.some(e => e.id === emoji.id))
-    onSelectionChange?.(newSelection)
-  }
-  
-  const announceSelection = (emoji: EmojiMetadata, isSelected: boolean) => {
-    const message = `${emoji.filename} ${isSelected ? 'selected' : 'unselected'}`
-    const announcement = document.createElement('div')
-    announcement.setAttribute('role', 'status')
-    announcement.setAttribute('aria-live', 'polite')
-    announcement.className = 'sr-only'
-    announcement.textContent = message
-    document.body.appendChild(announcement)
-    setTimeout(() => document.body.removeChild(announcement), 1000)
-  }
-
-  // Calculate grid dimensions
-  const cols = useMemo(() => {
-    const width = typeof window !== 'undefined' ? window.innerWidth : 1024
-    return width >= 1024 ? 9 : width >= 768 ? 6 : 3
-  }, [])
-
-  const totalPages = Math.ceil(emojis.length / ITEMS_PER_PAGE)
-  const paginatedEmojis = emojis.slice(0, currentPage * ITEMS_PER_PAGE)
-  
-  useEffect(() => {
-    const handleUpdateEmojis = (e: CustomEvent<EmojiMetadata[]>) => {
-      setEmojis(e.detail)
-      setFocusedIndex(-1)
-    }
-
-    document.addEventListener('updateEmojis', handleUpdateEmojis as EventListener)
-    return () => {
-      document.removeEventListener('updateEmojis', handleUpdateEmojis as EventListener)
-    }
-  }, [])
-
-  useEffect(() => {
-    const handleClearSelection = () => {
-      setSelectedEmojis([])
-      localStorage.setItem(STORAGE_KEY, '[]')
-      onSelectionChange?.([])
-    }
-
-    document.addEventListener('clearEmojiSelection', handleClearSelection)
-    return () => document.removeEventListener('clearEmojiSelection', handleClearSelection)
-  }, [])
-
-  useEffect(() => {
-    const handleKeyboardShortcut = (e: KeyboardEvent) => {
-      if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
-        e.preventDefault()
-        document.dispatchEvent(new Event('clearEmojiSelection'))
-      }
-    }
-    document.addEventListener('keydown', handleKeyboardShortcut as any)
-    return () => document.removeEventListener('keydown', handleKeyboardShortcut as any)
-  }, [])
+    dispatch(toggleEmojiSelection(emoji));
+    onSelectionChange?.(selectedEmojis);
+  };
 
   const handleKeyDown = (e: KeyboardEvent, index: number) => {
-    e.preventDefault()
-    
     switch (e.key) {
-      case 'ArrowRight':
-        setFocusedIndex(Math.min(emojis.length - 1, index + 1))
-        break
-      case 'ArrowLeft':
-        setFocusedIndex(Math.max(0, index - 1))
-        break
-      case 'ArrowUp':
-        setFocusedIndex(Math.max(0, index - cols))
-        break
-      case 'ArrowDown':
-        setFocusedIndex(Math.min(emojis.length - 1, index + cols))
-        break
-      case 'Enter':
-      case ' ':
-        toggleSelection(emojis[index])
-        break
+      case "ArrowRight":
+        e.preventDefault();
+        dispatch(setFocusedIndex(Math.min(emojis.length - 1, index + 1)));
+        break;
+      case "ArrowLeft":
+        e.preventDefault();
+        dispatch(setFocusedIndex(Math.max(0, index - 1)));
+        break;
+      case "ArrowUp":
+        e.preventDefault();
+        dispatch(setFocusedIndex(Math.max(0, index - dimensions.columnCount)));
+        break;
+      case "ArrowDown":
+        e.preventDefault();
+        dispatch(
+          setFocusedIndex(
+            Math.min(emojis.length - 1, index + dimensions.columnCount)
+          )
+        );
+        break;
+      case "Enter":
+      case " ":
+        e.preventDefault();
+        if (index >= 0 && index < emojis.length) {
+          toggleSelection(emojis[index]);
+        }
+        break;
     }
-  }
+  };
 
   useEffect(() => {
     if (focusedIndex >= 0 && gridRef.current) {
-      const buttons = gridRef.current.getElementsByTagName('button')
-      buttons[focusedIndex]?.focus()
+      if (
+        "forceUpdateGrid" in gridRef.current &&
+        typeof gridRef.current.forceUpdateGrid === "function" &&
+        gridRef.current.forceUpdateGrid
+      ) {
+        gridRef.current.forceUpdateGrid();
+      } else {
+        console.error("forceUpdateGrid is not a function");
+      }
     }
-  }, [focusedIndex])
+  }, [focusedIndex]);
 
-  useEffect(() => {
-    setIsLoading(true)
-    if (emojis.length > 0) {
-      const timer = setTimeout(() => setIsLoading(false), 300)
-      return () => clearTimeout(timer)
-    }
-    setIsLoading(false)
-  }, [emojis])
+  const cellRenderer = ({
+    columnIndex,
+    key,
+    rowIndex,
+    style,
+  }: {
+    columnIndex: number;
+    key: string;
+    rowIndex: number;
+    style: React.CSSProperties;
+  }) => {
+    const index = rowIndex * dimensions.columnCount + columnIndex;
+    if (index >= emojis.length) return null;
 
-  const handleScroll = () => {
-    if (!gridRef.current) return
-    
-    const { scrollTop, scrollHeight, clientHeight } = gridRef.current
-    // Load more when user scrolls to bottom
-    if (scrollHeight - scrollTop <= clientHeight * 1.5 && currentPage < totalPages) {
-      setCurrentPage(prev => prev + 1)
-    }
+    const emoji = emojis[index];
+    return (
+      <div key={key} style={style} className="p-8">
+        <button
+          className={cn(
+            "w-full h-full p-2",
+            "aspect-square rounded-lg border bg-card text-card-foreground relative group",
+            "shadow-sm flex flex-col items-center justify-center",
+            "transition-all duration-200 ease-in-out",
+            "hover:scale-110 hover:shadow-md focus:scale-105 focus:shadow-md hover:bg-primary/10",
+            "focus:outline-none focus:ring-1 focus:ring-primary focus:bg-primary/10",
+            selectedEmojis.some((e) => e.id === emoji.id) &&
+              "ring-primary bg-primary/10"
+          )}
+          onClick={() => toggleSelection(emoji)}
+          onKeyDown={(e) => handleKeyDown(e, index)}
+          tabIndex={focusedIndex === index ? 0 : -1}
+          role="gridcell"
+          aria-label={emoji.filename}
+          aria-selected={selectedEmojis.some((e) => e.id === emoji.id)}
+        >
+          <div className="flex items-center justify-center flex-1">
+            <img
+              src={emoji.path}
+              alt={emoji.filename}
+              className="w-12 h-12 object-contain"
+            />
+          </div>
+          <div className="absolute inset-0 bg-black/60 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-200 rounded-lg flex items-center justify-center text-xs p-2 text-center font-mono">
+            :{emoji.filename?.split(".")[0].replace(/\/.*\//g, "")}:
+          </div>
+        </button>
+      </div>
+    );
+  };
+
+  if (emojis.length === 0) {
+    return (
+      <p className="text-center text-muted-foreground py-8">No emojis found.</p>
+    );
   }
 
-  useEffect(() => {
-    const grid = gridRef.current
-    if (grid) {
-      grid.addEventListener('scroll', handleScroll)
-      return () => grid.removeEventListener('scroll', handleScroll)
-    }
-  }, [currentPage, totalPages])
+  const rowCount = Math.ceil(emojis.length / dimensions.columnCount);
 
   return (
-    <>
-      <div
+    <div
+      role="grid"
+      aria-label="Emoji grid"
+      className="flex justify-around emoji-box"
+    >
+      <Grid
+        style={{ margin: "0 auto" }}
         ref={gridRef}
-        className="h-[80vh] overflow-auto relative"
-        role="grid"
-        aria-label="Emoji grid"
-        aria-busy={isLoading}
-        aria-describedby="grid-instructions"
-      >
-        <div 
-          className="sr-only" 
-          id="grid-instructions"
-        >
-          Use arrow keys to navigate, space or enter to select, and Control+K to clear selection
-        </div>
-        
-        <div className="grid grid-cols-3 md:grid-cols-6 lg:grid-cols-9 gap-4 p-4">
-          {paginatedEmojis.map((emoji, index) => (
-            <button
-              key={emoji.id}
-              className={cn(
-                "aspect-square rounded-lg border bg-card text-card-foreground relative group",
-                "shadow-sm flex items-center justify-center",
-                "transition-all duration-200 ease-in-out",
-                "hover:scale-105 hover:shadow-md focus:scale-105 focus:shadow-md",
-                "focus:outline-none focus:ring-2 focus:ring-primary",
-                "active:scale-95",
-                selectedEmojis.some(e => e.id === emoji.id) && 
-                  "ring-2 ring-primary ring-offset-2 bg-primary/10"
-              )}
-              onClick={() => toggleSelection(emoji)}
-              onKeyDown={(e) => handleKeyDown(e, index)}
-              tabIndex={focusedIndex === index ? 0 : -1}
-              role="gridcell"
-              aria-label={emoji.filename}
-              aria-selected={selectedEmojis.some(e => e.id === emoji.id)}
-            >
-              {isLoading ? (
-                <div className="w-12 h-12 animate-pulse bg-muted rounded" />
-              ) : (
-                <>
-                  <img 
-                    src={emoji.path}
-                    alt={emoji.filename}
-                    className="w-12 h-12 object-contain"
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-black/60 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-200 rounded-lg flex items-center justify-center text-sm p-2 text-center">
-                    {emoji.filename}
-                  </div>
-                </>
-              )}
-            </button>
-          ))}
-        </div>
-      </div>
-      {currentPage < totalPages && (
-        <div className="flex justify-center p-4">
-          <div className="w-8 h-8 animate-spin rounded-full border-4 border-primary border-t-transparent" />
-        </div>
-      )}
-    </>
-  )
-}
+        cellRenderer={cellRenderer}
+        columnWidth={CELL_SIZE}
+        rowHeight={CELL_SIZE}
+        columnCount={dimensions.columnCount}
+        rowCount={rowCount}
+        width={dimensions.width}
+        height={dimensions.height}
+        overscanRowCount={2}
+        overscanColumnCount={2}
+        className="emoji-v-grid outline-none"
+      />
+    </div>
+  );
+};
 
-export default EmojiGrid
+export default EmojiGrid;

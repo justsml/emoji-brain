@@ -1,21 +1,67 @@
-# Astro Starter Kit: Minimal
+# Emoji Explorer
 
-## Prompt
+A beautiful web application for browsing, searching, and exporting emojis with a responsive grid layout.
 
-Build a beautiful Emoji Explorer web application with a responsive grid layout that adapts seamlessly across all device sizes.
-Implement a robust search bar with interactive drop-down filters for categories, emotions, and recently used emojis.
+## Features
 
-Technical requirements:
+- **Responsive Grid Layout**: Adapts seamlessly from 3 columns on mobile to 9 columns on desktop
+- **Advanced Search**: Filter emojis by name, category, or tags
+- **Category Filtering**: Quick access to emojis by category
+- **Selection System**: Save your favorite emojis with persistent state
+- **Export Options**: Export selected emojis as plain text, HTML, CSS, or ZIP
+- **Dark Mode Support**: Automatic system preference detection for light/dark mode
+- **Keyboard Navigation**: Full keyboard support for accessibility
+- **Screen Reader Compatible**: Accessible to all users
 
-- Use all images in `public/emojis` folder.
-- Implement a responsive grid layout with a minimum of 3 columns and a maximum of 9 columns.
-- Utilize shadcn-ui components for a polished, accessible interface
-- Implement smooth animations for emoji hover, selection, and filter transitions.
-- For the source data,  se static JSON index file(s) to load data, or use a search tool like `pagefind`.
-- Support both light and dark mode with automatic system preference detection
-- Create a selection system allowing users to save favorite emojis with persistent state
-- Add an export functionality to copy or export selected emojis in various formats (plain text, HTML, CSS, ZIP.)
-- Ensure keyboard navigation and screen reader compatibility.
-- Include subtle micro-interactions to enhance user experience.
-- Use TypeScript & React.
-- Use Tailwind CSS for styling.
+## Technology Stack
+
+- **Framework**: Astro with React islands
+- **UI Components**: shadcn/ui for a polished interface
+- **Styling**: Tailwind CSS
+- **Language**: TypeScript
+- **Data**: Static JSON for emoji metadata
+- **State Management**: React hooks and localStorage for persistence
+
+## Getting Started
+
+```bash
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
+```
+
+## Testing
+
+This project includes both unit tests and end-to-end tests. See [TESTING.md](TESTING.md) for details.
+
+```bash
+# Run unit tests
+npm test
+
+# Run E2E tests
+npm run test:e2e
+
+# Run all tests
+npm run test:all
+```
+
+## Project Structure
+
+- `src/components/` - React components
+- `src/pages/` - Astro pages
+- `src/layouts/` - Layout components
+- `src/styles/` - Global styles
+- `src/types/` - TypeScript type definitions
+- `src/lib/` - Utility functions
+- `src/data/` - Data files
+- `public/emojis/` - Emoji image files
+- `tests/` - Test setup and configuration
+- `tests/` - E2E tests
