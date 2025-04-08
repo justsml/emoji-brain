@@ -2,6 +2,7 @@ import React, { useState, useCallback, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import type { EmojiMetadata } from '../types/emoji';
 import SearchBar from './SearchBar';
+import SelectionControls from './SelectionControls';
 import EmojiGrid from './EmojiGrid';
 import { EmojiExport } from './EmojiExport';
 import { selectSelectedEmojis } from '../store/selectionSlice';
@@ -148,7 +149,10 @@ if (searchTerm.trim() === '') {
     <div className="container mx-auto p-4">
       <div className="mx-auto max-w-sm space-y-4">
         <SearchBar onSearchChange={handleSearchChange} count={filteredEmojis.length} />
-        <ShowSelectedToggle />
+        <div className="space-y-2">
+          <ShowSelectedToggle />
+          <SelectionControls />
+        </div>
       </div>
 
       <section className="mx-auto max-w-full">

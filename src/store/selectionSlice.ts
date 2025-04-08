@@ -27,6 +27,17 @@ const selectionSlice = createSlice({
   name: 'selection',
   initialState,
   reducers: {
+    selectAllVisible: (state, action: PayloadAction<EmojiMetadata[]>) => {
+      // Create a Set of existing IDs for efficient lookup
+      const existingIds = new Set(state.selectedEmojis.map(e => e.id));
+      
+      // Add only emojis that aren't already selected
+      action.payload.forEach(emoji => {
+        if (!existingIds.has(emoji.id)) {
+          state.selectedEmojis.push(emoji);
+        }
+      });
+    },
     resetSelection: (state) => {
       state.selectedEmojis = [];
       state.focusedIndex = -1;
@@ -64,6 +75,7 @@ export const {
   setFocusedIndex,
   setSelection,
   initializeSelection,
+  selectAllVisible,
 } = selectionSlice.actions;
 
 export const selectSelectedEmojis = (state: { selection: SelectionState }) => state.selection.selectedEmojis;
