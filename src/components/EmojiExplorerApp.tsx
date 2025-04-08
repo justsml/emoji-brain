@@ -255,7 +255,11 @@ const _EmojiExplorerApp: React.FC<EmojiExplorerAppProps> = ({ initialEmojis }) =
 
       setIsSearching(true);
       try {
-        const searchResults = await window.pagefind.search(searchTerm.trim());
+        const searchResults = await window.pagefind.search(searchTerm.trim(), {
+          sort: {
+            filename: 'asc',
+          }
+        });
         console.log("Pagefind search results:", searchResults);
         if (searchResults.results.length === 0) {
           setFilteredEmojis([]);
@@ -276,16 +280,6 @@ const _EmojiExplorerApp: React.FC<EmojiExplorerAppProps> = ({ initialEmojis }) =
             size: data.meta.size ? parseInt(data.meta.size, 10) : 0,
             
           }));
-
-          // const emojis = emojiDataResults.map(data => ({
-          //   id: data.meta.id || '', // Ensure ID exists
-          //   filename: data.meta.filename || '',
-          //   path: data.meta.path || data.url, // Use URL as fallback path
-          //   categories: data.meta.categories ? data.meta.categories.split(',') : [],
-          //   tags: data.meta.tags ? data.meta.tags.split(',') : [],
-          //   created: data.meta.created || '',
-          //   size: data.meta.size ? parseInt(data.meta.size, 10) : 0,
-          // })) // .filter(emoji => emoji.id); // Filter out any potential misses
           setFilteredEmojis(emojis);
         }
       } catch (error) {

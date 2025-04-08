@@ -1,6 +1,7 @@
 import * as pagefind from "pagefind";
 import data from "../src/data/emoji-metadata.json" assert { type: "json" };
 import { statSync } from "node:fs";
+import path, { basename } from "node:path";
 
 const { index } = await pagefind.createIndex();
 
@@ -10,9 +11,14 @@ for (const emoji of data.emojis) {
   const fileStat = statSync('public' + emoji.path);
   const createdDate = fileStat.birthtime || fileStat.mtime;
   const created = createdDate.toISOString().split("T")[0]; // Format as YYYY-MM-DD
-
+  const fileBaseName = basename(emoji.path);
 
   await index!.addCustomRecord({
+    sort: {
+      created: created,
+      filename: emoji.filename,
+    },
+
     language: "en",
     url: emoji.path,
     content: labels.join(", "),
@@ -20,6 +26,8 @@ for (const emoji of data.emojis) {
       id: emoji.id,
       size: `${emoji.size}`,
       filename: emoji.filename,
+      fileBaseName,
+      path: emoji.path,
       created,
     }
   });
