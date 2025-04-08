@@ -5,7 +5,14 @@ import SearchBar from './SearchBar';
 import EmojiGrid from './EmojiGrid';
 import { EmojiExport } from './EmojiExport';
 import { selectSelectedEmojis } from '../store/selectionSlice';
-import { selectFilteredEmojis, selectIsSearching, setFilteredEmojis, setIsSearching } from '../store/filteredEmojisSlice';
+import {
+  selectFilteredEmojis,
+  selectIsSearching,
+  selectShowSelectedOnly,
+  setFilteredEmojis,
+  setIsSearching
+} from '../store/filteredEmojisSlice';
+import ShowSelectedToggle from './ShowSelectedToggle';
 import ReduxProviderWrapper from './ReduxProviderWrapper';
 
 // Pagefind types remain unchanged...
@@ -73,6 +80,7 @@ const _EmojiExplorerApp: React.FC<EmojiExplorerAppProps> = ({ initialEmojis }) =
   const selectedEmojis = useSelector(selectSelectedEmojis);
   const filteredEmojis = useSelector(selectFilteredEmojis);
   const isSearching = useSelector(selectIsSearching);
+  const showSelectedOnly = useSelector(selectShowSelectedOnly);
   const [searchTerm, setSearchTerm] = useState('');
 
   // Handler for search term changes from SearchBar
@@ -88,12 +96,15 @@ const _EmojiExplorerApp: React.FC<EmojiExplorerAppProps> = ({ initialEmojis }) =
         dispatch(setFilteredEmojis(initialEmojis));
         return;
       }
+if (searchTerm.trim() === '') {
+  const emojis = showSelectedOnly
+    ? initialEmojis.filter(emoji => selectedEmojis.some(selected => selected.id === emoji.id))
+    : initialEmojis;
+  dispatch(setFilteredEmojis(emojis));
+  dispatch(setIsSearching(false));
+  return;
+}
 
-      if (searchTerm.trim() === '') {
-        dispatch(setFilteredEmojis(initialEmojis));
-        dispatch(setIsSearching(false));
-        return;
-      }
 
       dispatch(setIsSearching(true));
       try {
@@ -117,7 +128,10 @@ const _EmojiExplorerApp: React.FC<EmojiExplorerAppProps> = ({ initialEmojis }) =
             categories: data.content?.split(',') || [],
             size: data.meta.size ? parseInt(data.meta.size, 10) : 0,
           }));
-          dispatch(setFilteredEmojis(emojis));
+          const filteredResults = showSelectedOnly
+            ? emojis.filter(emoji => selectedEmojis.some(selected => selected.id === emoji.id))
+            : emojis;
+          dispatch(setFilteredEmojis(filteredResults));
         }
       } catch (error) {
         console.error("Pagefind search error:", error);
@@ -128,12 +142,13 @@ const _EmojiExplorerApp: React.FC<EmojiExplorerAppProps> = ({ initialEmojis }) =
     };
 
     performSearch();
-  }, [searchTerm, initialEmojis, dispatch]);
+  }, [searchTerm, initialEmojis, dispatch, showSelectedOnly, selectedEmojis]);
 
   return (
     <div className="container mx-auto p-4">
-      <div className="mx-auto max-w-sm">
+      <div className="mx-auto max-w-sm space-y-4">
         <SearchBar onSearchChange={handleSearchChange} count={filteredEmojis.length} />
+        <ShowSelectedToggle />
       </div>
 
       <section className="mx-auto max-w-full">
