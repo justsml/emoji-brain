@@ -66,7 +66,7 @@ const EmojiGrid = ({ emojis, onSelectionChange }: EmojiGridProps): ReactElement 
   return (
     <div
       ref={gridRef}
-      className="grid grid-cols-3 md:grid-cols-6 lg:grid-cols-9 gap-4"
+      className="grid grid-cols-3 md:grid-cols-6 lg:grid-cols-9 gap-6"
       role="grid"
       aria-label="Emoji grid"
     >
@@ -78,9 +78,9 @@ const EmojiGrid = ({ emojis, onSelectionChange }: EmojiGridProps): ReactElement 
             "shadow-sm flex items-center justify-center",
             "transition-all duration-200 ease-in-out",
             "hover:scale-105 hover:shadow-md focus:scale-105 focus:shadow-md",
-            "focus:outline-none focus:ring-2 focus:ring-primary",
+            "focus:outline-none focus:ring-1 focus:ring-primary",
             selectedEmojis.some(e => e.id === emoji.id) &&
-              "ring-2 ring-primary ring-offset-2 bg-primary/10"
+              "ring-primary bg-primary/10"
           )}
           onClick={() => toggleSelection(emoji)}
           onKeyDown={(e) => handleKeyDown(e, index)}
