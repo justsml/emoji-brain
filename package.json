@@ -14,7 +14,7 @@
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui",
     "test:all": "npm run test && npm run test:e2e",
-    "build:pagefind": "bun run scripts/pagefind-builder.ts"
+    "build:pagefind": "bun scripts/pagefind-builder.ts"
   },
   "dependencies": {
     "@ai-sdk/google": "^1.2.5",
