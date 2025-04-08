@@ -39,7 +39,6 @@ const STORAGE_KEY = 'selectedEmojis';
 
 const EmojiGrid = ({ emojis, onSelectionChange }: EmojiGridProps): ReactElement => { // Removed searchTerm, renamed initialEmojis to emojis
   const [focusedIndex, setFocusedIndex] = useState<number>(-1);
-  // Removed displayedEmojis state, will use 'emojis' prop directly
   const [selectedEmojis, setSelectedEmojis] = useState<EmojiMetadata[]>(() => {
     if (typeof window === 'undefined') return [];
     const stored = localStorage.getItem(STORAGE_KEY);
@@ -54,12 +53,13 @@ const EmojiGrid = ({ emojis, onSelectionChange }: EmojiGridProps): ReactElement 
         ? prevSelectedEmojis.filter(e => e.id !== emoji.id)
         : [...prevSelectedEmojis, emoji];
 
+      
       localStorage.setItem(STORAGE_KEY, JSON.stringify(newSelection));
       onSelectionChange?.(newSelection);
       return newSelection;
     });
   };
-  
+
   const handleKeyDown = (e: KeyboardEvent, index: number) => { // Restore function definition
     // Use 'emojis' prop (filtered list) for navigation bounds
     const cols = window.innerWidth >= 1024 ? 9 : window.innerWidth >= 768 ? 6 : 3;
@@ -114,7 +114,6 @@ const EmojiGrid = ({ emojis, onSelectionChange }: EmojiGridProps): ReactElement 
       role="grid"
       aria-label="Emoji grid"
     >
-      {/* Render based on 'emojis' prop */}
       {emojis.map((emoji, index) => (
         <button
           key={emoji.id}
@@ -145,8 +144,6 @@ const EmojiGrid = ({ emojis, onSelectionChange }: EmojiGridProps): ReactElement 
           </div>
         </button>
       ))}
-      {/* Message when 'emojis' prop is empty */}
-      {/* Removed searchTerm check as it's not available here */}
       {emojis.length === 0 && (
          <p className="col-span-full text-center text-muted-foreground py-8">No emojis found.</p> // Simplified message
       )}

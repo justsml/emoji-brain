@@ -26,7 +26,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearchChange }) => {
         value={inputValue} // Controlled input
         onChange={handleChange} // Update state and notify parent
       />
-      {/* Removed category dropdown and recent emojis */}
+      {/* Add category dropdown and recent emojis */}
     </div>
   );
 };
