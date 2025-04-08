@@ -18,7 +18,7 @@ interface EmojiGridProps {
 }
 
 const CELL_SIZE = 192; // 64px for emoji + 32px padding + 32px gap (2rem)
-const MIN_HEIGHT = 400;
+const MIN_HEIGHT = 300;
 // Breakpoints for responsive design
 const CONTAINER_PADDING = 48;
 const MIN_COLUMNS = 2;
@@ -35,7 +35,7 @@ const EmojiGrid = ({
   const gridRef = useRef<Grid>(null);
   const [dimensions, setDimensions] = useState({
     width: window.innerWidth,
-    height: window.innerHeight - 200, // Subtract header/footer space
+    height: window.innerHeight - 320, // Subtract header/footer space
     columnCount: 3,
   });
 
@@ -43,10 +43,14 @@ const EmojiGrid = ({
     const updateDimensions = () => {
       const gridEl = document.querySelector(".ReactVirtualized__Grid");
       // const boxWidth = gridEl?.
-      const boxWidth = gridEl?.getBoundingClientRect().width || window.innerWidth;
+      const boundingRect = gridEl?.getBoundingClientRect();
+      // The grid height can be inferred from the top of the grid element
+      const topPx = boundingRect?.y || 0;
+      const boxHeight = window.innerHeight - topPx
+      const boxWidth = boundingRect?.width || window.innerWidth;
       // const boxWidth = window.innerWidth - CONTAINER_PADDING;
       const width = boxWidth; // - CONTAINER_PADDING;
-      const height = Math.max(MIN_HEIGHT, window.innerHeight - 200);
+      const height = Math.max(boxHeight, MIN_HEIGHT);
 
       // Calculate optimal column count based on available width
       const maxPossibleColumns = Math.floor(width / MIN_COLUMN_WIDTH);
@@ -177,10 +181,10 @@ const EmojiGrid = ({
     <div
       role="grid"
       aria-label="Emoji grid"
-      className="flex justify-around pr-6"
+      className="flex justify-around emoji-box"
     >
       <Grid
-        style={{ margin: "0 auto", paddingRight: CONTAINER_PADDING / 2 }}
+        style={{ margin: "0 auto" }}
         ref={gridRef}
         cellRenderer={cellRenderer}
         columnWidth={CELL_SIZE}
@@ -191,7 +195,7 @@ const EmojiGrid = ({
         height={dimensions.height}
         overscanRowCount={2}
         overscanColumnCount={2}
-        className="outline-none"
+        className="emoji-v-grid outline-none"
       />
     </div>
   );

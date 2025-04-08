@@ -1,7 +1,7 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 import type { EmojiMetadata } from '../types/emoji';
 
-interface SelectionState {
+export interface SelectionState {
   selectedEmojis: EmojiMetadata[];
   focusedIndex: number;
 }

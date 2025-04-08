@@ -7,13 +7,13 @@ import {
   type ListenerEffectAPI,
   type UnknownAction,
 } from '@reduxjs/toolkit';
-// import searchReducer from './searchSlice'; // Removed import
 import selectionReducer, { selectSelectedEmojis } from './selectionSlice';
+import filteredEmojisReducer from './filteredEmojisSlice';
 
 // 1. Combine reducers first
 const rootReducer = combineReducers({
-//  search: searchReducer, // Removed search reducer
   selection: selectionReducer,
+  filteredEmojis: filteredEmojisReducer,
 });
 
 // 2. Define the store without middleware initially to infer types
@@ -44,14 +44,13 @@ startAppListening({
   },
   effect: async (action: UnknownAction, listenerApi: ListenerEffectAPI<RootState, AppDispatch>) => {
     // Get the updated selection state
-    const state = listenerApi.getState(); // No need for 'as RootState' due to typed middleware
+    const state = listenerApi.getState();
     const selectedEmojis = selectSelectedEmojis(state);
 
     // Persist to localStorage
     try {
       if (typeof window !== 'undefined') {
         localStorage.setItem('selectedEmojis', JSON.stringify(selectedEmojis));
-        // console.log('Persisted selected emojis to localStorage:', selectedEmojis);
       }
     } catch (error) {
       console.error('Failed to persist selected emojis to localStorage:', error);
@@ -69,4 +68,3 @@ export const store = configureStore({
 export type AppStore = typeof store;
 export type AppState = ReturnType<typeof store.getState>;
 export const useAppDispatch = () => store.dispatch; // Custom hook for dispatch
-

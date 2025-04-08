@@ -6,7 +6,6 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
   } from './ui/dropdown-menu'
-import type { EmojiMetadata } from '../types/emoji'
 import { useAppDispatch, type RootState } from '../store/store'
 import { useSelector } from 'react-redux'
 import { resetSelection } from '../store/selectionSlice'
@@ -96,14 +95,15 @@ export function EmojiExport() {
   }
 
   return (
-    <div className="fixed bottom-4 left-1/2 -translate-x-1/2 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 p-4 rounded-lg shadow-lg border flex items-center gap-4 z-50">
+    <div className="fixed bottom-4 left-0 right-0 mx-2 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 p-4 rounded-lg shadow-lg border flex w-full justify-between items-center gap-x-4 z-50">
       <div className="text-sm font-medium">
-        {selectedEmojis.length} emoji{selectedEmojis.length !== 1 ? 's' : ''} selected
+        {selectedEmojis.length} selected
+        
       </div>
       
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button variant="outline">Export As...</Button>
+          <Button variant="outline">Export...</Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
           <DropdownMenuItem onClick={exportAsPlainText}>
@@ -129,7 +129,7 @@ export function EmojiExport() {
         onClick={onClearSelection}
         className="text-muted-foreground hover:text-foreground"
       >
-        Clear Selection
+        Clear
       </Button>
 
       {exportStatus && (

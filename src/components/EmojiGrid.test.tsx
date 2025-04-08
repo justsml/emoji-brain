@@ -5,7 +5,7 @@ import EmojiGrid from './EmojiGrid';
 import type { EmojiMetadata } from '../types/emoji';
 
 // Skip these tests for now as they're having issues with the DOM
-describe.skip('EmojiGrid Component', () => {
+describe('EmojiGrid Component', () => {
   const mockEmojis: EmojiMetadata[] = [
     { id: '1', filename: 'emoji1.png', path: '/emojis/emoji1.png', categories: ['cat'], tags: ['funny'], created: '2023-01-01', size: 1024 },
     { id: '2', filename: 'emoji2.png', path: '/emojis/emoji2.png', categories: ['dog'], tags: ['cute'], created: '2023-01-02', size: 2048 },

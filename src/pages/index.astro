@@ -1,9 +1,9 @@
 ---
 // src/pages/index.astro
-import Layout from '../layouts/Layout.astro';
-import EmojiExplorerApp from '../components/EmojiExplorerApp'; // Import the main app component
-import type { EmojiMetadata } from '../types/emoji';
-import emojiMetadata from '../data/emoji-metadata.json'; // Assuming this path is correct
+import Layout from "../layouts/Layout.astro";
+import EmojiExplorerApp from "../components/EmojiExplorerApp"; // Import the main app component
+import type { EmojiMetadata } from "../types/emoji";
+import emojiMetadata from "../data/emoji-metadata.json"; // Assuming this path is correct
 
 // Prepare initial props for the React app
 const allEmojis: EmojiMetadata[] = emojiMetadata.emojis || [];
@@ -11,18 +11,16 @@ const allEmojis: EmojiMetadata[] = emojiMetadata.emojis || [];
 ---
 
 <Layout title="Emoji Explorer">
-  <div class="container py-8 space-y-8">
+  <div class="">
     <section class="text-center">
-      <h2 class="text-3xl font-bold tracking-tight">Welcome to Dan's Emoji Explorer</h2>
+      <h2 class="text-3xl font-bold tracking-tight">
+        emojixplorer
+      </h2>
       <p class="mt-4 text-muted-foreground">
         Browse, search, and explore our collection of emojis
       </p>
     </section>
-      <EmojiExplorerApp
-        client:only="react"
-        initialEmojis={allEmojis}
-      />
 
+    <EmojiExplorerApp client:only="react" initialEmojis={allEmojis} />
   </div>
 </Layout>
-

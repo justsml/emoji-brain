@@ -21,8 +21,6 @@ const { title } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
-    <link href="/pagefind/pagefind-ui.css" rel="stylesheet" />
-    <script src="/pagefind/pagefind-ui.js" defer></script>
     <script is:inline>
       const theme = (() => {
         if (
@@ -66,16 +64,34 @@ const { title } = Astro.props;
           console.error("Error loading Pagefind:", error);
         });
     </script>
+    <style is:inline>
+      :root {
+        --img-zoom: 1.75;
+        --img-zoom-hover: 2.5;
+        --img-zoom-focus: 3;
+      }
+      
+      .emoji-v-grid img {
+        transition: transform 0.2s ease-in-out;
+        transform: scale(var(--img-zoom));
+      }
+      .emoji-v-grid .gridcell:focus-within img {
+        transform: scale(var(--img-zoom-hover));
+      }
+      .emoji-v-grid img:focus {
+        transform: scale(var(--img-zoom-focus));
+      }
+    </style>
   </head>
   <body>
     <div class="min-h-screen bg-background text-foreground">
-      <header class="container py-6">
+      <header class="px-4 py-8 container mx-auto">
         <div class="flex justify-between items-center">
           <h1 class="text-2xl font-bold">Emoji Explorer</h1>
           <ThemeToggle client:load />
         </div>
       </header>
-      <main class="container py-8">
+      <main class="w-full">
         <slot />
       </main>
     </div>

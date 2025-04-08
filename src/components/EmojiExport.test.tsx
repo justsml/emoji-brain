@@ -1,7 +1,8 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { EmojiExport } from './EmojiExport';
+import { render } from '../test-utils/test-utils';
 import type { EmojiMetadata } from '../types/emoji';
 
 // Mock the JSZip import
@@ -14,15 +15,12 @@ vi.mock('jszip', () => {
   };
 });
 
-// Skip these tests for now as they're having issues with the DOM
-describe.skip('EmojiExport Component', () => {
+describe('EmojiExport Component', () => {
   const mockSelectedEmojis: EmojiMetadata[] = [
     { id: '1', filename: 'emoji1.png', path: '/emojis/emoji1.png', categories: ['cat'], tags: ['funny'], created: '2023-01-01', size: 1024 },
     { id: '2', filename: 'emoji2.png', path: '/emojis/emoji2.png', categories: ['dog'], tags: ['cute'], created: '2023-01-02', size: 2048 },
   ];
-  
-  const mockOnClearSelection = vi.fn();
-  
+
   beforeEach(() => {
     vi.clearAllMocks();
     
@@ -61,34 +59,40 @@ describe.skip('EmojiExport Component', () => {
   });
   
   it('renders with the correct number of selected emojis', () => {
-    render(
-      <EmojiExport
-        selectedEmojis={mockSelectedEmojis}
-        onClearSelection={mockOnClearSelection}
-      />
-    );
+    render(<EmojiExport />, {
+      initialState: {
+        selection: {
+          selectedEmojis: mockSelectedEmojis,
+          focusedIndex: -1
+        }
+      }
+    });
     
     expect(screen.getByText('2 emojis selected')).toBeInTheDocument();
   });
   
   it('renders with singular text when only one emoji is selected', () => {
-    render(
-      <EmojiExport
-        selectedEmojis={[mockSelectedEmojis[0]]}
-        onClearSelection={mockOnClearSelection}
-      />
-    );
+    render(<EmojiExport />, {
+      initialState: {
+        selection: {
+          selectedEmojis: [mockSelectedEmojis[0]],
+          focusedIndex: -1
+        }
+      }
+    });
     
     expect(screen.getByText('1 emoji selected')).toBeInTheDocument();
   });
   
   it('shows export dropdown when clicking the Export As button', async () => {
-    render(
-      <EmojiExport
-        selectedEmojis={mockSelectedEmojis}
-        onClearSelection={mockOnClearSelection}
-      />
-    );
+    render(<EmojiExport />, {
+      initialState: {
+        selection: {
+          selectedEmojis: mockSelectedEmojis,
+          focusedIndex: -1
+        }
+      }
+    });
     
     const exportButton = screen.getByText('Export As...');
     await userEvent.click(exportButton);
@@ -100,12 +104,14 @@ describe.skip('EmojiExport Component', () => {
   });
   
   it('calls clipboard API when exporting as plain text', async () => {
-    render(
-      <EmojiExport
-        selectedEmojis={mockSelectedEmojis}
-        onClearSelection={mockOnClearSelection}
-      />
-    );
+    render(<EmojiExport />, {
+      initialState: {
+        selection: {
+          selectedEmojis: mockSelectedEmojis,
+          focusedIndex: -1
+        }
+      }
+    });
     
     const exportButton = screen.getByText('Export As...');
     await userEvent.click(exportButton);
@@ -118,12 +124,14 @@ describe.skip('EmojiExport Component', () => {
   });
   
   it('calls clipboard API when exporting as HTML', async () => {
-    render(
-      <EmojiExport
-        selectedEmojis={mockSelectedEmojis}
-        onClearSelection={mockOnClearSelection}
-      />
-    );
+    render(<EmojiExport />, {
+      initialState: {
+        selection: {
+          selectedEmojis: mockSelectedEmojis,
+          focusedIndex: -1
+        }
+      }
+    });
     
     const exportButton = screen.getByText('Export As...');
     await userEvent.click(exportButton);
@@ -138,12 +146,14 @@ describe.skip('EmojiExport Component', () => {
   });
   
   it('calls clipboard API when exporting as CSS', async () => {
-    render(
-      <EmojiExport
-        selectedEmojis={mockSelectedEmojis}
-        onClearSelection={mockOnClearSelection}
-      />
-    );
+    render(<EmojiExport />, {
+      initialState: {
+        selection: {
+          selectedEmojis: mockSelectedEmojis,
+          focusedIndex: -1
+        }
+      }
+    });
     
     const exportButton = screen.getByText('Export As...');
     await userEvent.click(exportButton);
@@ -156,12 +166,14 @@ describe.skip('EmojiExport Component', () => {
   });
   
   it('creates a ZIP file when exporting as ZIP', async () => {
-    render(
-      <EmojiExport
-        selectedEmojis={mockSelectedEmojis}
-        onClearSelection={mockOnClearSelection}
-      />
-    );
+    render(<EmojiExport />, {
+      initialState: {
+        selection: {
+          selectedEmojis: mockSelectedEmojis,
+          focusedIndex: -1
+        }
+      }
+    });
     
     const exportButton = screen.getByText('Export As...');
     await userEvent.click(exportButton);
@@ -179,17 +191,20 @@ describe.skip('EmojiExport Component', () => {
     expect(document.createElement).toHaveBeenCalledWith('a');
   });
   
-  it('calls onClearSelection when clicking Clear Selection', async () => {
-    render(
-      <EmojiExport
-        selectedEmojis={mockSelectedEmojis}
-        onClearSelection={mockOnClearSelection}
-      />
-    );
+  it('dispatches resetSelection when clicking Clear Selection', async () => {
+    const { store } = render(<EmojiExport />, {
+      initialState: {
+        selection: {
+          selectedEmojis: mockSelectedEmojis,
+          focusedIndex: -1
+        }
+      }
+    });
     
     const clearButton = screen.getByText('Clear Selection');
     await userEvent.click(clearButton);
     
-    expect(mockOnClearSelection).toHaveBeenCalledTimes(1);
+    const state = store.getState();
+    expect(state.selection.selectedEmojis).toHaveLength(0);
   });
 });
