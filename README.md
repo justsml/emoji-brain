@@ -1,41 +1,55 @@
 # Emoji Explorer
 
+A simple Astro app for browsing, searching, and exporting emojis. Built with React, Shadcn and Tailwind CSS.
+
 A beautiful web application for browsing, searching, and exporting emojis with a responsive grid layout.
 
 ## Features
 
+- **Self-hostable**: Manage your private, artisinal emoji collection 🍺
 - **Responsive Grid Layout**: Adapts seamlessly from 3 columns on mobile to 9 columns on desktop
-- **Advanced Search**: Filter emojis by name, category, or tags
+- **Instant Serverless Search**: Filter emojis by name, category, or tags (0% Algolia)
 - **Category Filtering**: Quick access to emojis by category
 - **Selection System**: Save your favorite emojis with persistent state
 - **Export Options**: Export selected emojis as plain text, HTML, CSS, or ZIP
 - **Dark Mode Support**: Automatic system preference detection for light/dark mode
 - **Keyboard Navigation**: Full keyboard support for accessibility
 - **Screen Reader Compatible**: Accessible to all users
+- [ ] Slack import/export script generator
+- [ ] Discord import/export script generator
+- [ ] Custom emoji support
+- [ ] Upload custom emojis
+- [ ] AI Emoji Remixer? Local?
+- [ ] URL based state (bitwise encoding? base64? what does excalidraw do?)
+- [ ] AuthN/Z?
+
 
 ## Technology Stack
 
 - **Framework**: Astro with React islands
 - **UI Components**: shadcn/ui for a polished interface
+- **Backend**: None (static site)
+- **Hosting**: CDN (e.g., Vercel, Netlify)
+- **Search**: Client-side search with Fuse.js
 - **Styling**: Tailwind CSS
 - **Language**: TypeScript
 - **Data**: Static JSON for emoji metadata
-- **State Management**: React hooks and localStorage for persistence
+- **State Management**: RTK, and localStorage for persistence
 
 ## Getting Started
 
 ```bash
 # Install dependencies
-npm install
+bun install
 
 # Start development server
-npm run dev
+bun run dev
 
 # Build for production
-npm run build
+bun run build
 
 # Preview production build
-npm run preview
+bun run preview
 ```
 
 ## Testing
@@ -44,13 +58,13 @@ This project includes both unit tests and end-to-end tests. See [TESTING.md](TES
 
 ```bash
 # Run unit tests
-npm test
+bun test
 
 # Run E2E tests
-npm run test:e2e
+bun run test:e2e
 
 # Run all tests
-npm run test:all
+bun run test:all
 ```
 
 ## Project Structure

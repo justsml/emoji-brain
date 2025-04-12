@@ -6,7 +6,7 @@ This file documents recurring patterns and standards used in the project.
 
 ### Pagefind Integration
 
-*   **Indexing:** A custom script (`scripts/pagefind-builder.ts`) is used to build the Pagefind search index. This script likely processes emoji metadata (e.g., from `src/data/emoji-metadata.json`) to create a searchable index. The index is output to the `public/pagefind/` directory.
+*   **Indexing:** A custom script (`scripts/create-pagefind-index.ts`) is used to build the Pagefind search index. This script likely processes emoji metadata (e.g., from `src/data/emoji-metadata.json`) to create a searchable index. The index is output to the `public/pagefind/` directory.
 *   **Frontend Usage:** The frontend utilizes the Pagefind UI library or its core API to interact with the generated index. Components (like `EmojiGrid.tsx` or a dedicated search component) query the Pagefind index based on user input.
 *   **Configuration:** Pagefind might be configured via `astro.config.mjs` or within the build script itself to fine-tune indexing and search behavior (e.g., ranking, filtering).
 
