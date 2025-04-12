@@ -1,5 +1,7 @@
 # Emoji Explorer
 
+Demo/educational project for emoji browsing, searching, and exporting.
+
 A simple Astro app for browsing, searching, and exporting emojis. Built with React, Shadcn and Tailwind CSS.
 
 A beautiful web application for browsing, searching, and exporting emojis with a responsive grid layout.
@@ -8,7 +10,7 @@ A beautiful web application for browsing, searching, and exporting emojis with a
 
 - **Self-hostable**: Manage your private, artisinal emoji collection 🍺
 - **Responsive Grid Layout**: Adapts seamlessly from 3 columns on mobile to 9 columns on desktop
-- **Instant Serverless Search**: Filter emojis by name, category, or tags (0% Algolia)
+- [**Instant Serverless Search**:](`scripts/create-pagefind-index.ts`) Filter emojis by name, category, or tags (0% Algolia)
 - **Category Filtering**: Quick access to emojis by category
 - **Selection System**: Save your favorite emojis with persistent state
 - **Export Options**: Export selected emojis as plain text, HTML, CSS, or ZIP
