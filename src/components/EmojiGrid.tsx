@@ -17,7 +17,8 @@ interface EmojiGridProps {
   onSelectionChange?: (selectedEmojis: EmojiMetadata[]) => void;
 }
 
-const CELL_SIZE = 192; // 64px for emoji + 32px padding + 32px gap (2rem)
+// Cell size calculation based on largest emoji size (128px) + padding + gap
+const CELL_SIZE = 256; // 128px for emoji + 32px padding + 32px gap (2rem)
 const MIN_HEIGHT = 300;
 // Breakpoints for responsive design
 const CONTAINER_PADDING = 48;
@@ -70,7 +71,8 @@ const EmojiGrid = ({
     return () => window.removeEventListener("resize", updateDimensions);
   }, []);
 
-  const toggleSelection = (emoji: EmojiMetadata) => {
+  const toggleSelection = (emoji: EmojiMetadata, event?: React.MouseEvent) => {
+    event?.preventDefault();
     dispatch(toggleEmojiSelection(emoji));
     onSelectionChange?.(selectedEmojis);
   };
@@ -149,7 +151,7 @@ const EmojiGrid = ({
             selectedEmojis.some((e) => e.id === emoji.id) &&
               "ring-primary bg-primary/10"
           )}
-          onClick={() => toggleSelection(emoji)}
+          onClick={(e) => toggleSelection(emoji, e)}
           onKeyDown={(e) => handleKeyDown(e, index)}
           tabIndex={focusedIndex === index ? 0 : -1}
           role="gridcell"
@@ -160,7 +162,10 @@ const EmojiGrid = ({
             <img
               src={emoji.path}
               alt={emoji.filename}
-              className="w-12 h-12 object-contain"
+              className="sm:w-6 md:w-8 lg:w-16 xl:w-32 h-auto object-contain"
+              loading="lazy"
+              srcSet={`${emoji.path} 24w, ${emoji.path} 32w, ${emoji.path} 64w, ${emoji.path} 128w`}
+              sizes="(max-width: 640px) 24px, (max-width: 768px) 32px, (max-width: 1024px) 64px, 128px"
             />
           </div>
           <div className="absolute inset-0 bg-black/60 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-200 rounded-lg flex items-center justify-center text-xs p-2 text-center font-mono">
