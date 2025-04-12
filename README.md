@@ -1,5 +1,12 @@
 # Emoji Explorer
 
+
+[View demo on Vercel](https://emoji-brain.vercel.app/)
+[View demo on Netlify](https://emoji-brain.netlify.app/)
+[![Vercel](https://vercelbadge.vercel.app/api/emoji-brain/emoji-brain)](https://emoji-brain.vercel.app/)
+[![Netlify](https://api.netlify.com/api/v1/badges/0c3f4a2b-5d7e-4b8c-9f6d-0a1e2f3b4c5d/deploy-status)](https://emoji-brain.netlify.app/)
+
+
 Demo/educational project for emoji browsing, searching, and exporting.
 
 A simple Astro app for browsing, searching, and exporting emojis. Built with React, Shadcn and Tailwind CSS.
