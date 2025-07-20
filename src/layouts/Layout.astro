@@ -15,7 +15,7 @@ const { title } = Astro.props;
     <meta charset="UTF-8" />
     <meta
       name="description"
-      content="Emoji Explorer - Browse and search emojis"
+      content="Emoji Explorer: Search, share, & export emojis with ease"
     />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -66,16 +66,16 @@ const { title } = Astro.props;
     </script>
     <style is:inline>
       :root {
-        --img-zoom: 1.75;
-        --img-zoom-hover: 2.5;
-        --img-zoom-focus: 3;
+        --img-zoom: 1.25;
+        --img-zoom-hover: 1.95;
+        --img-zoom-focus: 1.75;
       }
       
       .emoji-v-grid img {
         transition: transform 0.2s ease-in-out;
         transform: scale(var(--img-zoom));
       }
-      .emoji-v-grid .gridcell:focus-within img {
+      .emoji-v-grid .gridcell:hover img {
         transform: scale(var(--img-zoom-hover));
       }
       .emoji-v-grid img:focus {
