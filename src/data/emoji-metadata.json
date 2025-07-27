@@ -4,8 +4,8 @@
   "emojis": [
     {
       "id": "b24c1b67",
-      "filename": "-1000.webp",
-      "path": "/emojis/-1000.webp",
+      "filename": "-1000.png",
+      "path": "/emojis/-1000.png",
       "categories": [],
       "tags": [
         "1000"
@@ -15,8 +15,8 @@
     },
     {
       "id": "b4828288",
-      "filename": "10-10.webp",
-      "path": "/emojis/10-10.webp",
+      "filename": "10-10.png",
+      "path": "/emojis/10-10.png",
       "categories": [],
       "tags": [
         "10"
@@ -26,8 +26,8 @@
     },
     {
       "id": "46f5fd4a",
-      "filename": "1000.webp",
-      "path": "/emojis/1000.webp",
+      "filename": "1000.png",
+      "path": "/emojis/1000.png",
       "categories": [],
       "tags": [
         "1000"
@@ -37,8 +37,8 @@
     },
     {
       "id": "30ef18c8",
-      "filename": "10000.webp",
-      "path": "/emojis/10000.webp",
+      "filename": "10000.png",
+      "path": "/emojis/10000.png",
       "categories": [],
       "tags": [
         "10000"
@@ -48,8 +48,8 @@
     },
     {
       "id": "de1b2c33",
-      "filename": "100000.webp",
-      "path": "/emojis/100000.webp",
+      "filename": "100000.png",
+      "path": "/emojis/100000.png",
       "categories": [],
       "tags": [
         "100000"
@@ -59,8 +59,8 @@
     },
     {
       "id": "95768914",
-      "filename": "420.webp",
-      "path": "/emojis/420.webp",
+      "filename": "420.png",
+      "path": "/emojis/420.png",
       "categories": [],
       "tags": [
         "420"
@@ -70,8 +70,8 @@
     },
     {
       "id": "e1a735c5",
-      "filename": "50.webp",
-      "path": "/emojis/50.webp",
+      "filename": "50.png",
+      "path": "/emojis/50.png",
       "categories": [],
       "tags": [
         "50"
@@ -81,8 +81,8 @@
     },
     {
       "id": "2a45ee66",
-      "filename": "ablobcatknitsweats.webp",
-      "path": "/emojis/ablobcatknitsweats.webp",
+      "filename": "ablobcatknitsweats.gif",
+      "path": "/emojis/ablobcatknitsweats.gif",
       "categories": [],
       "tags": [
         "animated",
@@ -93,8 +93,8 @@
     },
     {
       "id": "d92336d7",
-      "filename": "abraham-thinkin.webp",
-      "path": "/emojis/abraham-thinkin.webp",
+      "filename": "abraham-thinkin.png",
+      "path": "/emojis/abraham-thinkin.png",
       "categories": [],
       "tags": [
         "abraham",
@@ -105,8 +105,8 @@
     },
     {
       "id": "18fc9852",
-      "filename": "alert.webp",
-      "path": "/emojis/alert.webp",
+      "filename": "alert.gif",
+      "path": "/emojis/alert.gif",
       "categories": [],
       "tags": [
         "animated",
@@ -117,8 +117,8 @@
     },
     {
       "id": "bf333c0d",
-      "filename": "avocato.webp",
-      "path": "/emojis/avocato.webp",
+      "filename": "avocato.png",
+      "path": "/emojis/avocato.png",
       "categories": [],
       "tags": [
         "avocato"
@@ -128,8 +128,8 @@
     },
     {
       "id": "a408f049",
-      "filename": "awesome.webp",
-      "path": "/emojis/awesome.webp",
+      "filename": "awesome.png",
+      "path": "/emojis/awesome.png",
       "categories": [],
       "tags": [
         "awesome"
@@ -139,8 +139,8 @@
     },
     {
       "id": "a4ed1e2e",
-      "filename": "awkward_side_eye.webp",
-      "path": "/emojis/awkward_side_eye.webp",
+      "filename": "awkward_side_eye.gif",
+      "path": "/emojis/awkward_side_eye.gif",
       "categories": [],
       "tags": [
         "animated",
@@ -154,8 +154,8 @@
     },
     {
       "id": "c679e4de",
-      "filename": "awkward.webp",
-      "path": "/emojis/awkward.webp",
+      "filename": "awkward.gif",
+      "path": "/emojis/awkward.gif",
       "categories": [],
       "tags": [
         "animated",
@@ -166,8 +166,8 @@
     },
     {
       "id": "3fa4203f",
-      "filename": "badtime.webp",
-      "path": "/emojis/badtime.webp",
+      "filename": "badtime.png",
+      "path": "/emojis/badtime.png",
       "categories": [],
       "tags": [
         "badtime"
@@ -188,8 +188,8 @@
     },
     {
       "id": "92ada80f",
-      "filename": "bongo-cat-drumming.webp",
-      "path": "/emojis/bongo-cat-drumming.webp",
+      "filename": "bongo-cat-drumming.gif",
+      "path": "/emojis/bongo-cat-drumming.gif",
       "categories": [
         "bongo",
         "cat"
@@ -203,8 +203,8 @@
     },
     {
       "id": "906dd64f",
-      "filename": "bongo-cat-jumbo.webp",
-      "path": "/emojis/bongo-cat-jumbo.webp",
+      "filename": "bongo-cat-jumbo.gif",
+      "path": "/emojis/bongo-cat-jumbo.gif",
       "categories": [
         "bongo",
         "cat"
@@ -218,8 +218,8 @@
     },
     {
       "id": "68947a7c",
-      "filename": "bongo-cat.webp",
-      "path": "/emojis/bongo-cat.webp",
+      "filename": "bongo-cat.gif",
+      "path": "/emojis/bongo-cat.gif",
       "categories": [
         "bongo",
         "cat"
@@ -232,8 +232,8 @@
     },
     {
       "id": "a2510d1d",
-      "filename": "bongocat.webp",
-      "path": "/emojis/bongocat.webp",
+      "filename": "bongocat.gif",
+      "path": "/emojis/bongocat.gif",
       "categories": [],
       "tags": [
         "animated",
@@ -244,8 +244,8 @@
     },
     {
       "id": "1d876934",
-      "filename": "boxcat.webp",
-      "path": "/emojis/boxcat.webp",
+      "filename": "boxcat.gif",
+      "path": "/emojis/boxcat.gif",
       "categories": [],
       "tags": [
         "animated",
@@ -256,8 +256,8 @@
     },
     {
       "id": "ec0cff9e",
-      "filename": "cat_money.webp",
-      "path": "/emojis/cat_money.webp",
+      "filename": "cat_money.gif",
+      "path": "/emojis/cat_money.gif",
       "categories": [
         "cat"
       ],
@@ -270,8 +270,8 @@
     },
     {
       "id": "f9cff3c0",
-      "filename": "cat-confuse.webp",
-      "path": "/emojis/cat-confuse.webp",
+      "filename": "cat-confuse.png",
+      "path": "/emojis/cat-confuse.png",
       "categories": [
         "cat"
       ],
@@ -283,8 +283,8 @@
     },
     {
       "id": "b26c7340",
-      "filename": "cat-curious.webp",
-      "path": "/emojis/cat-curious.webp",
+      "filename": "cat-curious.png",
+      "path": "/emojis/cat-curious.png",
       "categories": [
         "cat"
       ],
@@ -296,8 +296,8 @@
     },
     {
       "id": "ef80126c",
-      "filename": "cat-fishing.webp",
-      "path": "/emojis/cat-fishing.webp",
+      "filename": "cat-fishing.png",
+      "path": "/emojis/cat-fishing.png",
       "categories": [
         "cat"
       ],
@@ -309,8 +309,8 @@
     },
     {
       "id": "62463842",
-      "filename": "cat-meow-disappointed.webp",
-      "path": "/emojis/cat-meow-disappointed.webp",
+      "filename": "cat-meow-disappointed.png",
+      "path": "/emojis/cat-meow-disappointed.png",
       "categories": [
         "cat",
         "meow"
@@ -323,8 +323,8 @@
     },
     {
       "id": "435c81bc",
-      "filename": "cat-meow-hearts.webp",
-      "path": "/emojis/cat-meow-hearts.webp",
+      "filename": "cat-meow-hearts.gif",
+      "path": "/emojis/cat-meow-hearts.gif",
       "categories": [
         "cat",
         "meow"
@@ -338,8 +338,8 @@
     },
     {
       "id": "716e494d",
-      "filename": "cat-meow-knife.webp",
-      "path": "/emojis/cat-meow-knife.webp",
+      "filename": "cat-meow-knife.png",
+      "path": "/emojis/cat-meow-knife.png",
       "categories": [
         "cat",
         "meow"
@@ -352,8 +352,8 @@
     },
     {
       "id": "acc2e73a",
-      "filename": "cat-meow-mask.webp",
-      "path": "/emojis/cat-meow-mask.webp",
+      "filename": "cat-meow-mask.png",
+      "path": "/emojis/cat-meow-mask.png",
       "categories": [
         "cat",
         "meow"
@@ -366,8 +366,8 @@
     },
     {
       "id": "7c8b91d0",
-      "filename": "cat-meow-peek.webp",
-      "path": "/emojis/cat-meow-peek.webp",
+      "filename": "cat-meow-peek.png",
+      "path": "/emojis/cat-meow-peek.png",
       "categories": [
         "cat",
         "meow"
@@ -380,8 +380,8 @@
     },
     {
       "id": "33b1a5db",
-      "filename": "cat-meow-shocked.webp",
-      "path": "/emojis/cat-meow-shocked.webp",
+      "filename": "cat-meow-shocked.png",
+      "path": "/emojis/cat-meow-shocked.png",
       "categories": [
         "cat",
         "meow"
@@ -394,8 +394,8 @@
     },
     {
       "id": "7ce04c67",
-      "filename": "cat-meow-sip.webp",
-      "path": "/emojis/cat-meow-sip.webp",
+      "filename": "cat-meow-sip.png",
+      "path": "/emojis/cat-meow-sip.png",
       "categories": [
         "cat",
         "meow"
@@ -408,8 +408,8 @@
     },
     {
       "id": "b8e4292c",
-      "filename": "cat-meow-wow.webp",
-      "path": "/emojis/cat-meow-wow.webp",
+      "filename": "cat-meow-wow.png",
+      "path": "/emojis/cat-meow-wow.png",
       "categories": [
         "cat",
         "meow"
@@ -422,8 +422,8 @@
     },
     {
       "id": "6ca87630",
-      "filename": "cat-nap.webp",
-      "path": "/emojis/cat-nap.webp",
+      "filename": "cat-nap.png",
+      "path": "/emojis/cat-nap.png",
       "categories": [
         "cat"
       ],
@@ -435,8 +435,8 @@
     },
     {
       "id": "db3fff23",
-      "filename": "cat-nap2.webp",
-      "path": "/emojis/cat-nap2.webp",
+      "filename": "cat-nap2.png",
+      "path": "/emojis/cat-nap2.png",
       "categories": [
         "cat"
       ],
@@ -448,8 +448,8 @@
     },
     {
       "id": "0f1709d0",
-      "filename": "cat-orange.webp",
-      "path": "/emojis/cat-orange.webp",
+      "filename": "cat-orange.png",
+      "path": "/emojis/cat-orange.png",
       "categories": [
         "cat"
       ],
@@ -476,8 +476,8 @@
     },
     {
       "id": "35a41a20",
-      "filename": "catdance.webp",
-      "path": "/emojis/catdance.webp",
+      "filename": "catdance.gif",
+      "path": "/emojis/catdance.gif",
       "categories": [],
       "tags": [
         "animated",
@@ -500,8 +500,8 @@
     },
     {
       "id": "3339cff0",
-      "filename": "cheers-whiskey.webp",
-      "path": "/emojis/cheers-whiskey.webp",
+      "filename": "cheers-whiskey.png",
+      "path": "/emojis/cheers-whiskey.png",
       "categories": [],
       "tags": [
         "cheers",
@@ -512,8 +512,8 @@
     },
     {
       "id": "7055d339",
-      "filename": "cheers.webp",
-      "path": "/emojis/cheers.webp",
+      "filename": "cheers.gif",
+      "path": "/emojis/cheers.gif",
       "categories": [],
       "tags": [
         "animated",
@@ -524,8 +524,8 @@
     },
     {
       "id": "8d3d793b",
-      "filename": "clapclap-e.webp",
-      "path": "/emojis/clapclap-e.webp",
+      "filename": "clapclap-e.gif",
+      "path": "/emojis/clapclap-e.gif",
       "categories": [],
       "tags": [
         "animated",
@@ -537,8 +537,8 @@
     },
     {
       "id": "b02da635",
-      "filename": "come-at-me-bro.webp",
-      "path": "/emojis/come-at-me-bro.webp",
+      "filename": "come-at-me-bro.png",
+      "path": "/emojis/come-at-me-bro.png",
       "categories": [],
       "tags": [
         "come",
@@ -551,8 +551,8 @@
     },
     {
       "id": "1bd3450b",
-      "filename": "crying_bear.webp",
-      "path": "/emojis/crying_bear.webp",
+      "filename": "crying_bear.gif",
+      "path": "/emojis/crying_bear.gif",
       "categories": [
         "emotions"
       ],
@@ -566,8 +566,8 @@
     },
     {
       "id": "64e4de86",
-      "filename": "doge_notes.webp",
-      "path": "/emojis/doge_notes.webp",
+      "filename": "doge_notes.png",
+      "path": "/emojis/doge_notes.png",
       "categories": [],
       "tags": [
         "doge",
@@ -578,8 +578,8 @@
     },
     {
       "id": "50dbadde",
-      "filename": "doge-finger-guns.webp",
-      "path": "/emojis/doge-finger-guns.webp",
+      "filename": "doge-finger-guns.png",
+      "path": "/emojis/doge-finger-guns.png",
       "categories": [],
       "tags": [
         "doge",
@@ -602,8 +602,8 @@
     },
     {
       "id": "888ec65c",
-      "filename": "dumpster-fire.webp",
-      "path": "/emojis/dumpster-fire.webp",
+      "filename": "dumpster-fire.gif",
+      "path": "/emojis/dumpster-fire.gif",
       "categories": [],
       "tags": [
         "animated",
@@ -615,8 +615,8 @@
     },
     {
       "id": "05ccdb10",
-      "filename": "elmo-fire.webp",
-      "path": "/emojis/elmo-fire.webp",
+      "filename": "elmo-fire.gif",
+      "path": "/emojis/elmo-fire.gif",
       "categories": [],
       "tags": [
         "animated",
@@ -639,8 +639,8 @@
     },
     {
       "id": "c58eaa75",
-      "filename": "extreme-teamwork.webp",
-      "path": "/emojis/extreme-teamwork.webp",
+      "filename": "extreme-teamwork.gif",
+      "path": "/emojis/extreme-teamwork.gif",
       "categories": [],
       "tags": [
         "animated",
@@ -652,8 +652,8 @@
     },
     {
       "id": "9107d268",
-      "filename": "eyetwitch.webp",
-      "path": "/emojis/eyetwitch.webp",
+      "filename": "eyetwitch.gif",
+      "path": "/emojis/eyetwitch.gif",
       "categories": [],
       "tags": [
         "animated",
@@ -664,8 +664,8 @@
     },
     {
       "id": "2aa16e8e",
-      "filename": "fatcat.webp",
-      "path": "/emojis/fatcat.webp",
+      "filename": "fatcat.png",
+      "path": "/emojis/fatcat.png",
       "categories": [],
       "tags": [
         "fatcat"
@@ -675,8 +675,8 @@
     },
     {
       "id": "d19b28de",
-      "filename": "fingerguns_left.webp",
-      "path": "/emojis/fingerguns_left.webp",
+      "filename": "fingerguns_left.png",
+      "path": "/emojis/fingerguns_left.png",
       "categories": [],
       "tags": [
         "fingerguns",
@@ -687,8 +687,8 @@
     },
     {
       "id": "aae4f825",
-      "filename": "fingerguns.webp",
-      "path": "/emojis/fingerguns.webp",
+      "filename": "fingerguns.png",
+      "path": "/emojis/fingerguns.png",
       "categories": [],
       "tags": [
         "fingerguns"
@@ -698,8 +698,8 @@
     },
     {
       "id": "2d16159b",
-      "filename": "fingergunz.webp",
-      "path": "/emojis/fingergunz.webp",
+      "filename": "fingergunz.png",
+      "path": "/emojis/fingergunz.png",
       "categories": [],
       "tags": [
         "fingergunz"
@@ -709,8 +709,8 @@
     },
     {
       "id": "c009e9f1",
-      "filename": "fonzie.webp",
-      "path": "/emojis/fonzie.webp",
+      "filename": "fonzie.png",
+      "path": "/emojis/fonzie.png",
       "categories": [],
       "tags": [
         "fonzie"
@@ -720,8 +720,8 @@
     },
     {
       "id": "fbdeb41c",
-      "filename": "fry_take_my_money.webp",
-      "path": "/emojis/fry_take_my_money.webp",
+      "filename": "fry_take_my_money.png",
+      "path": "/emojis/fry_take_my_money.png",
       "categories": [],
       "tags": [
         "fry",
@@ -734,8 +734,8 @@
     },
     {
       "id": "0dc1bb7d",
-      "filename": "fry.webp",
-      "path": "/emojis/fry.webp",
+      "filename": "fry.png",
+      "path": "/emojis/fry.png",
       "categories": [],
       "tags": [
         "fry"
@@ -745,8 +745,8 @@
     },
     {
       "id": "6d82fc50",
-      "filename": "golden_turd.webp",
-      "path": "/emojis/golden_turd.webp",
+      "filename": "golden_turd.png",
+      "path": "/emojis/golden_turd.png",
       "categories": [],
       "tags": [
         "golden",
@@ -757,8 +757,8 @@
     },
     {
       "id": "53280452",
-      "filename": "hai-guys-cat.webp",
-      "path": "/emojis/hai-guys-cat.webp",
+      "filename": "hai-guys-cat.png",
+      "path": "/emojis/hai-guys-cat.png",
       "categories": [
         "cat"
       ],
@@ -771,8 +771,8 @@
     },
     {
       "id": "27792ee7",
-      "filename": "happycat.webp",
-      "path": "/emojis/happycat.webp",
+      "filename": "happycat.png",
+      "path": "/emojis/happycat.png",
       "categories": [],
       "tags": [
         "happycat"
@@ -782,8 +782,8 @@
     },
     {
       "id": "9062e94a",
-      "filename": "happykitty.webp",
-      "path": "/emojis/happykitty.webp",
+      "filename": "happykitty.gif",
+      "path": "/emojis/happykitty.gif",
       "categories": [],
       "tags": [
         "animated",
@@ -794,8 +794,8 @@
     },
     {
       "id": "2c995d38",
-      "filename": "heart-mew-cat.webp",
-      "path": "/emojis/heart-mew-cat.webp",
+      "filename": "heart-mew-cat.png",
+      "path": "/emojis/heart-mew-cat.png",
       "categories": [
         "cat"
       ],
@@ -808,8 +808,8 @@
     },
     {
       "id": "c7370ea2",
-      "filename": "heycat.webp",
-      "path": "/emojis/heycat.webp",
+      "filename": "heycat.png",
+      "path": "/emojis/heycat.png",
       "categories": [],
       "tags": [
         "heycat"
@@ -819,8 +819,8 @@
     },
     {
       "id": "89750e84",
-      "filename": "hypecat.webp",
-      "path": "/emojis/hypecat.webp",
+      "filename": "hypecat.gif",
+      "path": "/emojis/hypecat.gif",
       "categories": [],
       "tags": [
         "animated",
@@ -831,8 +831,8 @@
     },
     {
       "id": "200066e8",
-      "filename": "i_have_no_idea_what_im_doing.webp",
-      "path": "/emojis/i_have_no_idea_what_im_doing.webp",
+      "filename": "i_have_no_idea_what_im_doing.png",
+      "path": "/emojis/i_have_no_idea_what_im_doing.png",
       "categories": [],
       "tags": [
         "i",
@@ -848,8 +848,8 @@
     },
     {
       "id": "d6aa9c14",
-      "filename": "joycat.webp",
-      "path": "/emojis/joycat.webp",
+      "filename": "joycat.png",
+      "path": "/emojis/joycat.png",
       "categories": [],
       "tags": [
         "joycat"
@@ -859,8 +859,8 @@
     },
     {
       "id": "a26a7114",
-      "filename": "keanu_thanks.webp",
-      "path": "/emojis/keanu_thanks.webp",
+      "filename": "keanu_thanks.gif",
+      "path": "/emojis/keanu_thanks.gif",
       "categories": [],
       "tags": [
         "animated",
@@ -872,8 +872,8 @@
     },
     {
       "id": "474ecd71",
-      "filename": "keanu-thanks.webp",
-      "path": "/emojis/keanu-thanks.webp",
+      "filename": "keanu-thanks.gif",
+      "path": "/emojis/keanu-thanks.gif",
       "categories": [],
       "tags": [
         "animated",
@@ -885,8 +885,8 @@
     },
     {
       "id": "5f816875",
-      "filename": "let-me-think.webp",
-      "path": "/emojis/let-me-think.webp",
+      "filename": "let-me-think.gif",
+      "path": "/emojis/let-me-think.gif",
       "categories": [],
       "tags": [
         "animated",
@@ -899,8 +899,8 @@
     },
     {
       "id": "83ae65c2",
-      "filename": "lets-fucking-go.webp",
-      "path": "/emojis/lets-fucking-go.webp",
+      "filename": "lets-fucking-go.png",
+      "path": "/emojis/lets-fucking-go.png",
       "categories": [],
       "tags": [
         "lets",
@@ -912,8 +912,8 @@
     },
     {
       "id": "f68b6b6e",
-      "filename": "loading.webp",
-      "path": "/emojis/loading.webp",
+      "filename": "loading.gif",
+      "path": "/emojis/loading.gif",
       "categories": [],
       "tags": [
         "animated",
@@ -924,8 +924,8 @@
     },
     {
       "id": "9605aa49",
-      "filename": "magic.webp",
-      "path": "/emojis/magic.webp",
+      "filename": "magic.gif",
+      "path": "/emojis/magic.gif",
       "categories": [],
       "tags": [
         "animated",
@@ -936,8 +936,8 @@
     },
     {
       "id": "f90e3a7a",
-      "filename": "meow_alien.webp",
-      "path": "/emojis/meow_alien.webp",
+      "filename": "meow_alien.png",
+      "path": "/emojis/meow_alien.png",
       "categories": [
         "meow"
       ],
@@ -949,8 +949,8 @@
     },
     {
       "id": "5360de76",
-      "filename": "meow_angel.webp",
-      "path": "/emojis/meow_angel.webp",
+      "filename": "meow_angel.png",
+      "path": "/emojis/meow_angel.png",
       "categories": [
         "meow"
       ],
@@ -962,8 +962,8 @@
     },
     {
       "id": "a8812f8d",
-      "filename": "meow_angry_intensifies.webp",
-      "path": "/emojis/meow_angry_intensifies.webp",
+      "filename": "meow_angry_intensifies.gif",
+      "path": "/emojis/meow_angry_intensifies.gif",
       "categories": [
         "meow",
         "emotions"
@@ -978,8 +978,8 @@
     },
     {
       "id": "a0b8e84c",
-      "filename": "meow_angry_tableflip.webp",
-      "path": "/emojis/meow_angry_tableflip.webp",
+      "filename": "meow_angry_tableflip.png",
+      "path": "/emojis/meow_angry_tableflip.png",
       "categories": [
         "meow",
         "emotions"
@@ -993,8 +993,8 @@
     },
     {
       "id": "8a14183f",
-      "filename": "meow_attention.webp",
-      "path": "/emojis/meow_attention.webp",
+      "filename": "meow_attention.gif",
+      "path": "/emojis/meow_attention.gif",
       "categories": [
         "meow"
       ],
@@ -1007,8 +1007,8 @@
     },
     {
       "id": "391388ab",
-      "filename": "meow_autism.webp",
-      "path": "/emojis/meow_autism.webp",
+      "filename": "meow_autism.png",
+      "path": "/emojis/meow_autism.png",
       "categories": [
         "meow"
       ],
@@ -1020,8 +1020,8 @@
     },
     {
       "id": "706db376",
-      "filename": "meow_baguette_hero.webp",
-      "path": "/emojis/meow_baguette_hero.webp",
+      "filename": "meow_baguette_hero.png",
+      "path": "/emojis/meow_baguette_hero.png",
       "categories": [
         "meow"
       ],
@@ -1034,8 +1034,8 @@
     },
     {
       "id": "afa602a1",
-      "filename": "meow_bg.webp",
-      "path": "/emojis/meow_bg.webp",
+      "filename": "meow_bg.png",
+      "path": "/emojis/meow_bg.png",
       "categories": [
         "meow"
       ],
@@ -1047,8 +1047,8 @@
     },
     {
       "id": "69eac597",
-      "filename": "meow_bigsob_cry.webp",
-      "path": "/emojis/meow_bigsob_cry.webp",
+      "filename": "meow_bigsob_cry.png",
+      "path": "/emojis/meow_bigsob_cry.png",
       "categories": [
         "meow"
       ],
@@ -1061,8 +1061,8 @@
     },
     {
       "id": "4111cb9c",
-      "filename": "meow_birthday.webp",
-      "path": "/emojis/meow_birthday.webp",
+      "filename": "meow_birthday.png",
+      "path": "/emojis/meow_birthday.png",
       "categories": [
         "meow"
       ],
@@ -1074,8 +1074,8 @@
     },
     {
       "id": "09864ff9",
-      "filename": "meow_black_cat.webp",
-      "path": "/emojis/meow_black_cat.webp",
+      "filename": "meow_black_cat.png",
+      "path": "/emojis/meow_black_cat.png",
       "categories": [
         "meow",
         "cat"
@@ -1088,8 +1088,8 @@
     },
     {
       "id": "fb553776",
-      "filename": "meow_boat-captain.webp",
-      "path": "/emojis/meow_boat-captain.webp",
+      "filename": "meow_boat-captain.png",
+      "path": "/emojis/meow_boat-captain.png",
       "categories": [
         "meow"
       ],
@@ -1102,8 +1102,8 @@
     },
     {
       "id": "ece53762",
-      "filename": "meow_bongo_rage.webp",
-      "path": "/emojis/meow_bongo_rage.webp",
+      "filename": "meow_bongo_rage.gif",
+      "path": "/emojis/meow_bongo_rage.gif",
       "categories": [
         "meow",
         "bongo"
@@ -1117,8 +1117,8 @@
     },
     {
       "id": "5c17e7e0",
-      "filename": "meow_bongotap.webp",
-      "path": "/emojis/meow_bongotap.webp",
+      "filename": "meow_bongotap.gif",
+      "path": "/emojis/meow_bongotap.gif",
       "categories": [
         "meow"
       ],
@@ -1131,8 +1131,8 @@
     },
     {
       "id": "7cd035c7",
-      "filename": "meow_box.webp",
-      "path": "/emojis/meow_box.webp",
+      "filename": "meow_box.png",
+      "path": "/emojis/meow_box.png",
       "categories": [
         "meow"
       ],
@@ -1144,8 +1144,8 @@
     },
     {
       "id": "c5e61ab6",
-      "filename": "meow_bread_disappear.webp",
-      "path": "/emojis/meow_bread_disappear.webp",
+      "filename": "meow_bread_disappear.gif",
+      "path": "/emojis/meow_bread_disappear.gif",
       "categories": [
         "meow"
       ],
@@ -1159,8 +1159,8 @@
     },
     {
       "id": "9bcd8478",
-      "filename": "meow_broken_heart.webp",
-      "path": "/emojis/meow_broken_heart.webp",
+      "filename": "meow_broken_heart.gif",
+      "path": "/emojis/meow_broken_heart.gif",
       "categories": [
         "meow"
       ],
@@ -1174,8 +1174,8 @@
     },
     {
       "id": "9b556527",
-      "filename": "meow_broken_heart.webp",
-      "path": "/emojis/meow_broken_heart.webp",
+      "filename": "meow_broken_heart.png",
+      "path": "/emojis/meow_broken_heart.png",
       "categories": [
         "meow"
       ],
@@ -1188,8 +1188,8 @@
     },
     {
       "id": "9cca546c",
-      "filename": "meow_brokenheart.webp",
-      "path": "/emojis/meow_brokenheart.webp",
+      "filename": "meow_brokenheart.png",
+      "path": "/emojis/meow_brokenheart.png",
       "categories": [
         "meow"
       ],
@@ -1201,8 +1201,8 @@
     },
     {
       "id": "572a89fc",
-      "filename": "meow_caged.webp",
-      "path": "/emojis/meow_caged.webp",
+      "filename": "meow_caged.png",
+      "path": "/emojis/meow_caged.png",
       "categories": [
         "meow"
       ],
@@ -1214,8 +1214,8 @@
     },
     {
       "id": "87a26e1e",
-      "filename": "meow_catdoggosnuggle.webp",
-      "path": "/emojis/meow_catdoggosnuggle.webp",
+      "filename": "meow_catdoggosnuggle.png",
+      "path": "/emojis/meow_catdoggosnuggle.png",
       "categories": [
         "meow"
       ],
@@ -1227,8 +1227,8 @@
     },
     {
       "id": "1a7e7efd",
-      "filename": "meow_chips.webp",
-      "path": "/emojis/meow_chips.webp",
+      "filename": "meow_chips.gif",
+      "path": "/emojis/meow_chips.gif",
       "categories": [
         "meow"
       ],
@@ -1241,8 +1241,8 @@
     },
     {
       "id": "12dd0138",
-      "filename": "meow_clorox.webp",
-      "path": "/emojis/meow_clorox.webp",
+      "filename": "meow_clorox.gif",
+      "path": "/emojis/meow_clorox.gif",
       "categories": [
         "meow"
       ],
@@ -1255,8 +1255,8 @@
     },
     {
       "id": "1ef1e684",
-      "filename": "meow_cloroxsip.webp",
-      "path": "/emojis/meow_cloroxsip.webp",
+      "filename": "meow_cloroxsip.gif",
+      "path": "/emojis/meow_cloroxsip.gif",
       "categories": [
         "meow"
       ],
@@ -1269,8 +1269,8 @@
     },
     {
       "id": "41c01452",
-      "filename": "meow_code.webp",
-      "path": "/emojis/meow_code.webp",
+      "filename": "meow_code.gif",
+      "path": "/emojis/meow_code.gif",
       "categories": [
         "meow"
       ],
@@ -1283,8 +1283,8 @@
     },
     {
       "id": "c5981c43",
-      "filename": "meow_coffee_sip.webp",
-      "path": "/emojis/meow_coffee_sip.webp",
+      "filename": "meow_coffee_sip.png",
+      "path": "/emojis/meow_coffee_sip.png",
       "categories": [
         "meow"
       ],
@@ -1297,8 +1297,8 @@
     },
     {
       "id": "8495959c",
-      "filename": "meow_coffee.webp",
-      "path": "/emojis/meow_coffee.webp",
+      "filename": "meow_coffee.png",
+      "path": "/emojis/meow_coffee.png",
       "categories": [
         "meow"
       ],
@@ -1310,8 +1310,8 @@
     },
     {
       "id": "6bd1040a",
-      "filename": "meow_coffeespitting.webp",
-      "path": "/emojis/meow_coffeespitting.webp",
+      "filename": "meow_coffeespitting.gif",
+      "path": "/emojis/meow_coffeespitting.gif",
       "categories": [
         "meow"
       ],
@@ -1324,8 +1324,8 @@
     },
     {
       "id": "6743a548",
-      "filename": "meow_cold.webp",
-      "path": "/emojis/meow_cold.webp",
+      "filename": "meow_cold.png",
+      "path": "/emojis/meow_cold.png",
       "categories": [
         "meow"
       ],
@@ -1337,8 +1337,8 @@
     },
     {
       "id": "61f103e5",
-      "filename": "meow_comfy.webp",
-      "path": "/emojis/meow_comfy.webp",
+      "filename": "meow_comfy.png",
+      "path": "/emojis/meow_comfy.png",
       "categories": [
         "meow"
       ],
@@ -1350,8 +1350,8 @@
     },
     {
       "id": "3530a9cc",
-      "filename": "meow_comfyangry.webp",
-      "path": "/emojis/meow_comfyangry.webp",
+      "filename": "meow_comfyangry.png",
+      "path": "/emojis/meow_comfyangry.png",
       "categories": [
         "meow"
       ],
@@ -1363,8 +1363,8 @@
     },
     {
       "id": "fe5ae4f1",
-      "filename": "meow_comfyaww.webp",
-      "path": "/emojis/meow_comfyaww.webp",
+      "filename": "meow_comfyaww.png",
+      "path": "/emojis/meow_comfyaww.png",
       "categories": [
         "meow"
       ],
@@ -1376,8 +1376,8 @@
     },
     {
       "id": "62384ac2",
-      "filename": "meow_comfywhatisthis.webp",
-      "path": "/emojis/meow_comfywhatisthis.webp",
+      "filename": "meow_comfywhatisthis.png",
+      "path": "/emojis/meow_comfywhatisthis.png",
       "categories": [
         "meow"
       ],
@@ -1389,8 +1389,8 @@
     },
     {
       "id": "9b5fd2f2",
-      "filename": "meow_cookie.webp",
-      "path": "/emojis/meow_cookie.webp",
+      "filename": "meow_cookie.gif",
+      "path": "/emojis/meow_cookie.gif",
       "categories": [
         "meow"
       ],
@@ -1403,8 +1403,8 @@
     },
     {
       "id": "570a2651",
-      "filename": "meow_cosmic.webp",
-      "path": "/emojis/meow_cosmic.webp",
+      "filename": "meow_cosmic.png",
+      "path": "/emojis/meow_cosmic.png",
       "categories": [
         "meow"
       ],
@@ -1416,8 +1416,8 @@
     },
     {
       "id": "89af6cbd",
-      "filename": "meow_cowboy_smile.webp",
-      "path": "/emojis/meow_cowboy_smile.webp",
+      "filename": "meow_cowboy_smile.png",
+      "path": "/emojis/meow_cowboy_smile.png",
       "categories": [
         "meow"
       ],
@@ -1430,8 +1430,8 @@
     },
     {
       "id": "51ce0751",
-      "filename": "meow_cry_laugh.webp",
-      "path": "/emojis/meow_cry_laugh.webp",
+      "filename": "meow_cry_laugh.png",
+      "path": "/emojis/meow_cry_laugh.png",
       "categories": [
         "meow"
       ],
@@ -1444,8 +1444,8 @@
     },
     {
       "id": "536ae250",
-      "filename": "meow_cry.webp",
-      "path": "/emojis/meow_cry.webp",
+      "filename": "meow_cry.png",
+      "path": "/emojis/meow_cry.png",
       "categories": [
         "meow"
       ],
@@ -1457,8 +1457,8 @@
     },
     {
       "id": "a0d9cc6e",
-      "filename": "meow_crying.webp",
-      "path": "/emojis/meow_crying.webp",
+      "filename": "meow_crying.gif",
+      "path": "/emojis/meow_crying.gif",
       "categories": [
         "meow",
         "emotions"
@@ -1472,8 +1472,8 @@
     },
     {
       "id": "7c144937",
-      "filename": "meow_deficit.webp",
-      "path": "/emojis/meow_deficit.webp",
+      "filename": "meow_deficit.png",
+      "path": "/emojis/meow_deficit.png",
       "categories": [
         "meow"
       ],
@@ -1485,8 +1485,8 @@
     },
     {
       "id": "e3dca4a6",
-      "filename": "meow_derpy.webp",
-      "path": "/emojis/meow_derpy.webp",
+      "filename": "meow_derpy.gif",
+      "path": "/emojis/meow_derpy.gif",
       "categories": [
         "meow"
       ],
@@ -1499,8 +1499,8 @@
     },
     {
       "id": "c0a78fb5",
-      "filename": "meow_devil.webp",
-      "path": "/emojis/meow_devil.webp",
+      "filename": "meow_devil.png",
+      "path": "/emojis/meow_devil.png",
       "categories": [
         "meow"
       ],
@@ -1512,8 +1512,8 @@
     },
     {
       "id": "070d45f3",
-      "filename": "meow_disputed.webp",
-      "path": "/emojis/meow_disputed.webp",
+      "filename": "meow_disputed.png",
+      "path": "/emojis/meow_disputed.png",
       "categories": [
         "meow"
       ],
@@ -1525,8 +1525,8 @@
     },
     {
       "id": "0ba4b578",
-      "filename": "meow_dizzy_puffy.webp",
-      "path": "/emojis/meow_dizzy_puffy.webp",
+      "filename": "meow_dizzy_puffy.png",
+      "path": "/emojis/meow_dizzy_puffy.png",
       "categories": [
         "meow"
       ],
@@ -1539,8 +1539,8 @@
     },
     {
       "id": "12a18e74",
-      "filename": "meow_dj.webp",
-      "path": "/emojis/meow_dj.webp",
+      "filename": "meow_dj.png",
+      "path": "/emojis/meow_dj.png",
       "categories": [
         "meow"
       ],
@@ -1552,8 +1552,8 @@
     },
     {
       "id": "05dffec4",
-      "filename": "meow_drool.webp",
-      "path": "/emojis/meow_drool.webp",
+      "filename": "meow_drool.gif",
+      "path": "/emojis/meow_drool.gif",
       "categories": [
         "meow"
       ],
@@ -1566,8 +1566,8 @@
     },
     {
       "id": "0a89e6ab",
-      "filename": "meow_dunno.webp",
-      "path": "/emojis/meow_dunno.webp",
+      "filename": "meow_dunno.png",
+      "path": "/emojis/meow_dunno.png",
       "categories": [
         "meow"
       ],
@@ -1579,8 +1579,8 @@
     },
     {
       "id": "9671437a",
-      "filename": "meow_elf.webp",
-      "path": "/emojis/meow_elf.webp",
+      "filename": "meow_elf.png",
+      "path": "/emojis/meow_elf.png",
       "categories": [
         "meow"
       ],
@@ -1592,8 +1592,8 @@
     },
     {
       "id": "92663e63",
-      "filename": "meow_ez.webp",
-      "path": "/emojis/meow_ez.webp",
+      "filename": "meow_ez.png",
+      "path": "/emojis/meow_ez.png",
       "categories": [
         "meow"
       ],
@@ -1605,8 +1605,8 @@
     },
     {
       "id": "f5d7120a",
-      "filename": "meow_facepalm.webp",
-      "path": "/emojis/meow_facepalm.webp",
+      "filename": "meow_facepalm.png",
+      "path": "/emojis/meow_facepalm.png",
       "categories": [
         "meow"
       ],
@@ -1618,8 +1618,8 @@
     },
     {
       "id": "357b4d79",
-      "filename": "meow_fart.webp",
-      "path": "/emojis/meow_fart.webp",
+      "filename": "meow_fart.gif",
+      "path": "/emojis/meow_fart.gif",
       "categories": [
         "meow"
       ],
@@ -1632,8 +1632,8 @@
     },
     {
       "id": "de03c8ae",
-      "filename": "meow_fear.webp",
-      "path": "/emojis/meow_fear.webp",
+      "filename": "meow_fear.png",
+      "path": "/emojis/meow_fear.png",
       "categories": [
         "meow"
       ],
@@ -1645,8 +1645,8 @@
     },
     {
       "id": "4e6f60cd",
-      "filename": "meow_firefighter.webp",
-      "path": "/emojis/meow_firefighter.webp",
+      "filename": "meow_firefighter.png",
+      "path": "/emojis/meow_firefighter.png",
       "categories": [
         "meow"
       ],
@@ -1658,8 +1658,8 @@
     },
     {
       "id": "292f814d",
-      "filename": "meow_fistbumpleft.webp",
-      "path": "/emojis/meow_fistbumpleft.webp",
+      "filename": "meow_fistbumpleft.png",
+      "path": "/emojis/meow_fistbumpleft.png",
       "categories": [
         "meow"
       ],
@@ -1671,8 +1671,8 @@
     },
     {
       "id": "898ec811",
-      "filename": "meow_fistbumpright.webp",
-      "path": "/emojis/meow_fistbumpright.webp",
+      "filename": "meow_fistbumpright.png",
+      "path": "/emojis/meow_fistbumpright.png",
       "categories": [
         "meow"
       ],
@@ -1684,8 +1684,8 @@
     },
     {
       "id": "20e452c4",
-      "filename": "meow_floppy.webp",
-      "path": "/emojis/meow_floppy.webp",
+      "filename": "meow_floppy.png",
+      "path": "/emojis/meow_floppy.png",
       "categories": [
         "meow"
       ],
@@ -1697,8 +1697,8 @@
     },
     {
       "id": "2a6451bc",
-      "filename": "meow_frowningbig.webp",
-      "path": "/emojis/meow_frowningbig.webp",
+      "filename": "meow_frowningbig.png",
+      "path": "/emojis/meow_frowningbig.png",
       "categories": [
         "meow"
       ],
@@ -1710,8 +1710,8 @@
     },
     {
       "id": "0a98e9b0",
-      "filename": "meow_fux.webp",
-      "path": "/emojis/meow_fux.webp",
+      "filename": "meow_fux.png",
+      "path": "/emojis/meow_fux.png",
       "categories": [
         "meow"
       ],
@@ -1723,8 +1723,8 @@
     },
     {
       "id": "11489cbc",
-      "filename": "meow_fuxpuffy.webp",
-      "path": "/emojis/meow_fuxpuffy.webp",
+      "filename": "meow_fuxpuffy.png",
+      "path": "/emojis/meow_fuxpuffy.png",
       "categories": [
         "meow"
       ],
@@ -1736,8 +1736,8 @@
     },
     {
       "id": "1dba66f0",
-      "filename": "meow_glare-sad.webp",
-      "path": "/emojis/meow_glare-sad.webp",
+      "filename": "meow_glare-sad.png",
+      "path": "/emojis/meow_glare-sad.png",
       "categories": [
         "meow",
         "emotions"
@@ -1751,8 +1751,8 @@
     },
     {
       "id": "d778696a",
-      "filename": "meow_glare2.webp",
-      "path": "/emojis/meow_glare2.webp",
+      "filename": "meow_glare2.png",
+      "path": "/emojis/meow_glare2.png",
       "categories": [
         "meow"
       ],
@@ -1764,8 +1764,8 @@
     },
     {
       "id": "c88e8029",
-      "filename": "meow_grumpy_coffee.webp",
-      "path": "/emojis/meow_grumpy_coffee.webp",
+      "filename": "meow_grumpy_coffee.png",
+      "path": "/emojis/meow_grumpy_coffee.png",
       "categories": [
         "meow"
       ],
@@ -1778,8 +1778,8 @@
     },
     {
       "id": "76070df1",
-      "filename": "meow_grumpy.webp",
-      "path": "/emojis/meow_grumpy.webp",
+      "filename": "meow_grumpy.png",
+      "path": "/emojis/meow_grumpy.png",
       "categories": [
         "meow"
       ],
@@ -1791,8 +1791,8 @@
     },
     {
       "id": "f6a066f8",
-      "filename": "meow_gummyattention.webp",
-      "path": "/emojis/meow_gummyattention.webp",
+      "filename": "meow_gummyattention.png",
+      "path": "/emojis/meow_gummyattention.png",
       "categories": [
         "meow"
       ],
@@ -1804,8 +1804,8 @@
     },
     {
       "id": "c134f46b",
-      "filename": "meow_hammer.webp",
-      "path": "/emojis/meow_hammer.webp",
+      "filename": "meow_hammer.png",
+      "path": "/emojis/meow_hammer.png",
       "categories": [
         "meow"
       ],
@@ -1817,8 +1817,8 @@
     },
     {
       "id": "790bfe32",
-      "filename": "meow_headache.webp",
-      "path": "/emojis/meow_headache.webp",
+      "filename": "meow_headache.png",
+      "path": "/emojis/meow_headache.png",
       "categories": [
         "meow"
       ],
@@ -1830,8 +1830,8 @@
     },
     {
       "id": "f187e6b5",
-      "filename": "meow_headphones.webp",
-      "path": "/emojis/meow_headphones.webp",
+      "filename": "meow_headphones.png",
+      "path": "/emojis/meow_headphones.png",
       "categories": [
         "meow"
       ],
@@ -1843,8 +1843,8 @@
     },
     {
       "id": "20a1cc6a",
-      "filename": "meow_heart_bongo.webp",
-      "path": "/emojis/meow_heart_bongo.webp",
+      "filename": "meow_heart_bongo.gif",
+      "path": "/emojis/meow_heart_bongo.gif",
       "categories": [
         "meow",
         "bongo"
@@ -1858,8 +1858,8 @@
     },
     {
       "id": "49f80676",
-      "filename": "meow_heart.webp",
-      "path": "/emojis/meow_heart.webp",
+      "filename": "meow_heart.png",
+      "path": "/emojis/meow_heart.png",
       "categories": [
         "meow"
       ],
@@ -1871,8 +1871,8 @@
     },
     {
       "id": "dfa439b8",
-      "filename": "meow_hearts.webp",
-      "path": "/emojis/meow_hearts.webp",
+      "filename": "meow_hearts.png",
+      "path": "/emojis/meow_hearts.png",
       "categories": [
         "meow"
       ],
@@ -1884,8 +1884,8 @@
     },
     {
       "id": "b3ebd690",
-      "filename": "meow_helmut.webp",
-      "path": "/emojis/meow_helmut.webp",
+      "filename": "meow_helmut.png",
+      "path": "/emojis/meow_helmut.png",
       "categories": [
         "meow"
       ],
@@ -1897,8 +1897,8 @@
     },
     {
       "id": "ecefb7a3",
-      "filename": "meow_highfive_team.webp",
-      "path": "/emojis/meow_highfive_team.webp",
+      "filename": "meow_highfive_team.png",
+      "path": "/emojis/meow_highfive_team.png",
       "categories": [
         "meow"
       ],
@@ -1911,8 +1911,8 @@
     },
     {
       "id": "0efe76f9",
-      "filename": "meow_hiss.webp",
-      "path": "/emojis/meow_hiss.webp",
+      "filename": "meow_hiss.png",
+      "path": "/emojis/meow_hiss.png",
       "categories": [
         "meow"
       ],
@@ -1924,8 +1924,8 @@
     },
     {
       "id": "a4229678",
-      "filename": "meow_hmm.webp",
-      "path": "/emojis/meow_hmm.webp",
+      "filename": "meow_hmm.png",
+      "path": "/emojis/meow_hmm.png",
       "categories": [
         "meow"
       ],
@@ -1937,8 +1937,8 @@
     },
     {
       "id": "f342688c",
-      "filename": "meow_hug.webp",
-      "path": "/emojis/meow_hug.webp",
+      "filename": "meow_hug.png",
+      "path": "/emojis/meow_hug.png",
       "categories": [
         "meow"
       ],
@@ -1950,8 +1950,8 @@
     },
     {
       "id": "78129f2f",
-      "filename": "meow_huh.webp",
-      "path": "/emojis/meow_huh.webp",
+      "filename": "meow_huh.png",
+      "path": "/emojis/meow_huh.png",
       "categories": [
         "meow"
       ],
@@ -1963,8 +1963,8 @@
     },
     {
       "id": "05ae92ce",
-      "filename": "meow_hungry.webp",
-      "path": "/emojis/meow_hungry.webp",
+      "filename": "meow_hungry.gif",
+      "path": "/emojis/meow_hungry.gif",
       "categories": [
         "meow"
       ],
@@ -1977,8 +1977,8 @@
     },
     {
       "id": "c48baf82",
-      "filename": "meow_hungry.webp",
-      "path": "/emojis/meow_hungry.webp",
+      "filename": "meow_hungry.png",
+      "path": "/emojis/meow_hungry.png",
       "categories": [
         "meow"
       ],
@@ -1990,8 +1990,8 @@
     },
     {
       "id": "279ea69a",
-      "filename": "meow_hyper_think.webp",
-      "path": "/emojis/meow_hyper_think.webp",
+      "filename": "meow_hyper_think.gif",
+      "path": "/emojis/meow_hyper_think.gif",
       "categories": [
         "meow"
       ],
@@ -2005,8 +2005,8 @@
     },
     {
       "id": "1d170933",
-      "filename": "meow_hyper.webp",
-      "path": "/emojis/meow_hyper.webp",
+      "filename": "meow_hyper.png",
+      "path": "/emojis/meow_hyper.png",
       "categories": [
         "meow"
       ],
@@ -2018,8 +2018,8 @@
     },
     {
       "id": "09ab60d5",
-      "filename": "meow_icecream_yum.webp",
-      "path": "/emojis/meow_icecream_yum.webp",
+      "filename": "meow_icecream_yum.png",
+      "path": "/emojis/meow_icecream_yum.png",
       "categories": [
         "meow"
       ],
@@ -2032,8 +2032,8 @@
     },
     {
       "id": "ff7394b4",
-      "filename": "meow_icecream.webp",
-      "path": "/emojis/meow_icecream.webp",
+      "filename": "meow_icecream.png",
+      "path": "/emojis/meow_icecream.png",
       "categories": [
         "meow"
       ],
@@ -2045,8 +2045,8 @@
     },
     {
       "id": "923fe6a3",
-      "filename": "meow_idea.webp",
-      "path": "/emojis/meow_idea.webp",
+      "filename": "meow_idea.png",
+      "path": "/emojis/meow_idea.png",
       "categories": [
         "meow"
       ],
@@ -2058,8 +2058,8 @@
     },
     {
       "id": "9f4b181a",
-      "filename": "meow_joy.webp",
-      "path": "/emojis/meow_joy.webp",
+      "filename": "meow_joy.png",
+      "path": "/emojis/meow_joy.png",
       "categories": [
         "meow"
       ],
@@ -2071,8 +2071,8 @@
     },
     {
       "id": "1ebbe4d8",
-      "filename": "meow_just_right.webp",
-      "path": "/emojis/meow_just_right.webp",
+      "filename": "meow_just_right.png",
+      "path": "/emojis/meow_just_right.png",
       "categories": [
         "meow"
       ],
@@ -2085,8 +2085,8 @@
     },
     {
       "id": "9225fec8",
-      "filename": "meow_lord.webp",
-      "path": "/emojis/meow_lord.webp",
+      "filename": "meow_lord.png",
+      "path": "/emojis/meow_lord.png",
       "categories": [
         "meow"
       ],
@@ -2098,8 +2098,8 @@
     },
     {
       "id": "7f07eff1",
-      "filename": "meow_lurk.webp",
-      "path": "/emojis/meow_lurk.webp",
+      "filename": "meow_lurk.gif",
+      "path": "/emojis/meow_lurk.gif",
       "categories": [
         "meow"
       ],
@@ -2112,8 +2112,8 @@
     },
     {
       "id": "661210e0",
-      "filename": "meow_matcha.webp",
-      "path": "/emojis/meow_matcha.webp",
+      "filename": "meow_matcha.png",
+      "path": "/emojis/meow_matcha.png",
       "categories": [
         "meow"
       ],
@@ -2125,8 +2125,8 @@
     },
     {
       "id": "298b26cc",
-      "filename": "meow_melt.webp",
-      "path": "/emojis/meow_melt.webp",
+      "filename": "meow_melt.png",
+      "path": "/emojis/meow_melt.png",
       "categories": [
         "meow"
       ],
@@ -2138,8 +2138,8 @@
     },
     {
       "id": "3c0789f8",
-      "filename": "meow_money.webp",
-      "path": "/emojis/meow_money.webp",
+      "filename": "meow_money.png",
+      "path": "/emojis/meow_money.png",
       "categories": [
         "meow"
       ],
@@ -2151,8 +2151,8 @@
     },
     {
       "id": "8455ecb1",
-      "filename": "meow_mustache.webp",
-      "path": "/emojis/meow_mustache.webp",
+      "filename": "meow_mustache.png",
+      "path": "/emojis/meow_mustache.png",
       "categories": [
         "meow"
       ],
@@ -2164,8 +2164,8 @@
     },
     {
       "id": "c590694d",
-      "filename": "meow_nauseated.webp",
-      "path": "/emojis/meow_nauseated.webp",
+      "filename": "meow_nauseated.png",
+      "path": "/emojis/meow_nauseated.png",
       "categories": [
         "meow"
       ],
@@ -2177,8 +2177,8 @@
     },
     {
       "id": "03d9a572",
-      "filename": "meow_nerd2.webp",
-      "path": "/emojis/meow_nerd2.webp",
+      "filename": "meow_nerd2.png",
+      "path": "/emojis/meow_nerd2.png",
       "categories": [
         "meow"
       ],
@@ -2190,8 +2190,8 @@
     },
     {
       "id": "5720bc3e",
-      "filename": "meow_nervoussweat.webp",
-      "path": "/emojis/meow_nervoussweat.webp",
+      "filename": "meow_nervoussweat.png",
+      "path": "/emojis/meow_nervoussweat.png",
       "categories": [
         "meow"
       ],
@@ -2203,8 +2203,8 @@
     },
     {
       "id": "c54cf47e",
-      "filename": "meow_ninja.webp",
-      "path": "/emojis/meow_ninja.webp",
+      "filename": "meow_ninja.png",
+      "path": "/emojis/meow_ninja.png",
       "categories": [
         "meow"
       ],
@@ -2216,8 +2216,8 @@
     },
     {
       "id": "0545f00a",
-      "filename": "meow_ninjacaged.webp",
-      "path": "/emojis/meow_ninjacaged.webp",
+      "filename": "meow_ninjacaged.png",
+      "path": "/emojis/meow_ninjacaged.png",
       "categories": [
         "meow"
       ],
@@ -2229,8 +2229,8 @@
     },
     {
       "id": "824659eb",
-      "filename": "meow_no_me.webp",
-      "path": "/emojis/meow_no_me.webp",
+      "filename": "meow_no_me.png",
+      "path": "/emojis/meow_no_me.png",
       "categories": [
         "meow"
       ],
@@ -2243,8 +2243,8 @@
     },
     {
       "id": "1879ac70",
-      "filename": "meow_no.webp",
-      "path": "/emojis/meow_no.webp",
+      "filename": "meow_no.png",
+      "path": "/emojis/meow_no.png",
       "categories": [
         "meow"
       ],
@@ -2256,8 +2256,8 @@
     },
     {
       "id": "c10c6eb5",
-      "filename": "meow_noddies.webp",
-      "path": "/emojis/meow_noddies.webp",
+      "filename": "meow_noddies.gif",
+      "path": "/emojis/meow_noddies.gif",
       "categories": [
         "meow"
       ],
@@ -2270,8 +2270,8 @@
     },
     {
       "id": "3b4e024a",
-      "filename": "meow_noplease.webp",
-      "path": "/emojis/meow_noplease.webp",
+      "filename": "meow_noplease.png",
+      "path": "/emojis/meow_noplease.png",
       "categories": [
         "meow"
       ],
@@ -2283,8 +2283,8 @@
     },
     {
       "id": "5ded5202",
-      "filename": "meow_notlike.webp",
-      "path": "/emojis/meow_notlike.webp",
+      "filename": "meow_notlike.png",
+      "path": "/emojis/meow_notlike.png",
       "categories": [
         "meow"
       ],
@@ -2296,8 +2296,8 @@
     },
     {
       "id": "ef53eba2",
-      "filename": "meow_ok_u.webp",
-      "path": "/emojis/meow_ok_u.webp",
+      "filename": "meow_ok_u.png",
+      "path": "/emojis/meow_ok_u.png",
       "categories": [
         "meow"
       ],
@@ -2310,8 +2310,8 @@
     },
     {
       "id": "d9d414db",
-      "filename": "meow_ok.webp",
-      "path": "/emojis/meow_ok.webp",
+      "filename": "meow_ok.png",
+      "path": "/emojis/meow_ok.png",
       "categories": [
         "meow"
       ],
@@ -2323,8 +2323,8 @@
     },
     {
       "id": "a648d190",
-      "filename": "meow_onfire.webp",
-      "path": "/emojis/meow_onfire.webp",
+      "filename": "meow_onfire.png",
+      "path": "/emojis/meow_onfire.png",
       "categories": [
         "meow"
       ],
@@ -2336,8 +2336,8 @@
     },
     {
       "id": "b7f6ead8",
-      "filename": "meow_outage.webp",
-      "path": "/emojis/meow_outage.webp",
+      "filename": "meow_outage.png",
+      "path": "/emojis/meow_outage.png",
       "categories": [
         "meow"
       ],
@@ -2349,8 +2349,8 @@
     },
     {
       "id": "678f35ee",
-      "filename": "meow_party.webp",
-      "path": "/emojis/meow_party.webp",
+      "filename": "meow_party.png",
+      "path": "/emojis/meow_party.png",
       "categories": [
         "meow"
       ],
@@ -2362,8 +2362,8 @@
     },
     {
       "id": "d761a242",
-      "filename": "meow_pat2.webp",
-      "path": "/emojis/meow_pat2.webp",
+      "filename": "meow_pat2.png",
+      "path": "/emojis/meow_pat2.png",
       "categories": [
         "meow"
       ],
@@ -2375,8 +2375,8 @@
     },
     {
       "id": "3f84234a",
-      "filename": "meow_paw2.webp",
-      "path": "/emojis/meow_paw2.webp",
+      "filename": "meow_paw2.png",
+      "path": "/emojis/meow_paw2.png",
       "categories": [
         "meow"
       ],
@@ -2388,8 +2388,8 @@
     },
     {
       "id": "584791d7",
-      "filename": "meow_peek.webp",
-      "path": "/emojis/meow_peek.webp",
+      "filename": "meow_peek.png",
+      "path": "/emojis/meow_peek.png",
       "categories": [
         "meow"
       ],
@@ -2401,8 +2401,8 @@
     },
     {
       "id": "59562f45",
-      "filename": "meow_peppermint.webp",
-      "path": "/emojis/meow_peppermint.webp",
+      "filename": "meow_peppermint.png",
+      "path": "/emojis/meow_peppermint.png",
       "categories": [
         "meow"
       ],
@@ -2414,8 +2414,8 @@
     },
     {
       "id": "855b1d4e",
-      "filename": "meow_perfecto.webp",
-      "path": "/emojis/meow_perfecto.webp",
+      "filename": "meow_perfecto.png",
+      "path": "/emojis/meow_perfecto.png",
       "categories": [
         "meow"
       ],
@@ -2427,8 +2427,8 @@
     },
     {
       "id": "11611b5a",
-      "filename": "meow_pikachu.webp",
-      "path": "/emojis/meow_pikachu.webp",
+      "filename": "meow_pikachu.png",
+      "path": "/emojis/meow_pikachu.png",
       "categories": [
         "meow"
       ],
@@ -2440,8 +2440,8 @@
     },
     {
       "id": "a622f219",
-      "filename": "meow_pizza.webp",
-      "path": "/emojis/meow_pizza.webp",
+      "filename": "meow_pizza.png",
+      "path": "/emojis/meow_pizza.png",
       "categories": [
         "meow"
       ],
@@ -2453,8 +2453,8 @@
     },
     {
       "id": "8844f1a2",
-      "filename": "meow_popcorn.webp",
-      "path": "/emojis/meow_popcorn.webp",
+      "filename": "meow_popcorn.gif",
+      "path": "/emojis/meow_popcorn.gif",
       "categories": [
         "meow"
       ],
@@ -2467,8 +2467,8 @@
     },
     {
       "id": "6f04d00d",
-      "filename": "meow_puffy_shy.webp",
-      "path": "/emojis/meow_puffy_shy.webp",
+      "filename": "meow_puffy_shy.png",
+      "path": "/emojis/meow_puffy_shy.png",
       "categories": [
         "meow"
       ],
@@ -2481,8 +2481,8 @@
     },
     {
       "id": "4d272bac",
-      "filename": "meow_puffy-big-eyes.webp",
-      "path": "/emojis/meow_puffy-big-eyes.webp",
+      "filename": "meow_puffy-big-eyes.png",
+      "path": "/emojis/meow_puffy-big-eyes.png",
       "categories": [
         "meow"
       ],
@@ -2496,8 +2496,8 @@
     },
     {
       "id": "772d6f32",
-      "filename": "meow_puffy-terrified.webp",
-      "path": "/emojis/meow_puffy-terrified.webp",
+      "filename": "meow_puffy-terrified.png",
+      "path": "/emojis/meow_puffy-terrified.png",
       "categories": [
         "meow"
       ],
@@ -2510,8 +2510,8 @@
     },
     {
       "id": "7e0918e2",
-      "filename": "meow_puffyblush.webp",
-      "path": "/emojis/meow_puffyblush.webp",
+      "filename": "meow_puffyblush.png",
+      "path": "/emojis/meow_puffyblush.png",
       "categories": [
         "meow"
       ],
@@ -2523,8 +2523,8 @@
     },
     {
       "id": "1aafbf92",
-      "filename": "meow_puffytears.webp",
-      "path": "/emojis/meow_puffytears.webp",
+      "filename": "meow_puffytears.png",
+      "path": "/emojis/meow_puffytears.png",
       "categories": [
         "meow"
       ],
@@ -2536,8 +2536,8 @@
     },
     {
       "id": "6de2b99c",
-      "filename": "meow_pumpkin.webp",
-      "path": "/emojis/meow_pumpkin.webp",
+      "filename": "meow_pumpkin.png",
+      "path": "/emojis/meow_pumpkin.png",
       "categories": [
         "meow"
       ],
@@ -2549,8 +2549,8 @@
     },
     {
       "id": "4bd78a63",
-      "filename": "meow_pumpkinspicelatte.webp",
-      "path": "/emojis/meow_pumpkinspicelatte.webp",
+      "filename": "meow_pumpkinspicelatte.png",
+      "path": "/emojis/meow_pumpkinspicelatte.png",
       "categories": [
         "meow"
       ],
@@ -2562,8 +2562,8 @@
     },
     {
       "id": "7479a26e",
-      "filename": "meow_queen.webp",
-      "path": "/emojis/meow_queen.webp",
+      "filename": "meow_queen.png",
+      "path": "/emojis/meow_queen.png",
       "categories": [
         "meow"
       ],
@@ -2575,8 +2575,8 @@
     },
     {
       "id": "b1a61e70",
-      "filename": "meow_reach.webp",
-      "path": "/emojis/meow_reach.webp",
+      "filename": "meow_reach.png",
+      "path": "/emojis/meow_reach.png",
       "categories": [
         "meow"
       ],
@@ -2588,8 +2588,8 @@
     },
     {
       "id": "93911075",
-      "filename": "meow_sad-rain.webp",
-      "path": "/emojis/meow_sad-rain.webp",
+      "filename": "meow_sad-rain.gif",
+      "path": "/emojis/meow_sad-rain.gif",
       "categories": [
         "meow",
         "emotions"
@@ -2604,8 +2604,8 @@
     },
     {
       "id": "803515d4",
-      "filename": "meow_sadlife.webp",
-      "path": "/emojis/meow_sadlife.webp",
+      "filename": "meow_sadlife.png",
+      "path": "/emojis/meow_sadlife.png",
       "categories": [
         "meow"
       ],
@@ -2617,8 +2617,8 @@
     },
     {
       "id": "0bcc5812",
-      "filename": "meow_sadpats.webp",
-      "path": "/emojis/meow_sadpats.webp",
+      "filename": "meow_sadpats.png",
+      "path": "/emojis/meow_sadpats.png",
       "categories": [
         "meow"
       ],
@@ -2630,8 +2630,8 @@
     },
     {
       "id": "10a4f597",
-      "filename": "meow_sadreach.webp",
-      "path": "/emojis/meow_sadreach.webp",
+      "filename": "meow_sadreach.png",
+      "path": "/emojis/meow_sadreach.png",
       "categories": [
         "meow"
       ],
@@ -2643,8 +2643,8 @@
     },
     {
       "id": "0a0093d7",
-      "filename": "meow_science.webp",
-      "path": "/emojis/meow_science.webp",
+      "filename": "meow_science.png",
+      "path": "/emojis/meow_science.png",
       "categories": [
         "meow"
       ],
@@ -2656,8 +2656,8 @@
     },
     {
       "id": "812a962b",
-      "filename": "meow_sick.webp",
-      "path": "/emojis/meow_sick.webp",
+      "filename": "meow_sick.png",
+      "path": "/emojis/meow_sick.png",
       "categories": [
         "meow"
       ],
@@ -2669,8 +2669,8 @@
     },
     {
       "id": "3f8e68b5",
-      "filename": "meow_sleep_drool.webp",
-      "path": "/emojis/meow_sleep_drool.webp",
+      "filename": "meow_sleep_drool.png",
+      "path": "/emojis/meow_sleep_drool.png",
       "categories": [
         "meow"
       ],
@@ -2683,8 +2683,8 @@
     },
     {
       "id": "07f5b996",
-      "filename": "meow_sleep_zzz.webp",
-      "path": "/emojis/meow_sleep_zzz.webp",
+      "filename": "meow_sleep_zzz.png",
+      "path": "/emojis/meow_sleep_zzz.png",
       "categories": [
         "meow"
       ],
@@ -2697,8 +2697,8 @@
     },
     {
       "id": "1e11d9dd",
-      "filename": "meow_sleep.webp",
-      "path": "/emojis/meow_sleep.webp",
+      "filename": "meow_sleep.png",
+      "path": "/emojis/meow_sleep.png",
       "categories": [
         "meow"
       ],
@@ -2710,8 +2710,8 @@
     },
     {
       "id": "b70be17f",
-      "filename": "meow_sleepless.webp",
-      "path": "/emojis/meow_sleepless.webp",
+      "filename": "meow_sleepless.png",
+      "path": "/emojis/meow_sleepless.png",
       "categories": [
         "meow"
       ],
@@ -2723,8 +2723,8 @@
     },
     {
       "id": "b8ffb0af",
-      "filename": "meow_sob.webp",
-      "path": "/emojis/meow_sob.webp",
+      "filename": "meow_sob.png",
+      "path": "/emojis/meow_sob.png",
       "categories": [
         "meow"
       ],
@@ -2736,8 +2736,8 @@
     },
     {
       "id": "87987e42",
-      "filename": "meow_sorry.webp",
-      "path": "/emojis/meow_sorry.webp",
+      "filename": "meow_sorry.png",
+      "path": "/emojis/meow_sorry.png",
       "categories": [
         "meow"
       ],
@@ -2749,8 +2749,8 @@
     },
     {
       "id": "a1607b75",
-      "filename": "meow_stare_coffee.webp",
-      "path": "/emojis/meow_stare_coffee.webp",
+      "filename": "meow_stare_coffee.png",
+      "path": "/emojis/meow_stare_coffee.png",
       "categories": [
         "meow"
       ],
@@ -2763,8 +2763,8 @@
     },
     {
       "id": "45ee97ed",
-      "filename": "meow_stop.webp",
-      "path": "/emojis/meow_stop.webp",
+      "filename": "meow_stop.png",
+      "path": "/emojis/meow_stop.png",
       "categories": [
         "meow"
       ],
@@ -2776,8 +2776,8 @@
     },
     {
       "id": "42f69e85",
-      "filename": "meow_sushi.webp",
-      "path": "/emojis/meow_sushi.webp",
+      "filename": "meow_sushi.png",
+      "path": "/emojis/meow_sushi.png",
       "categories": [
         "meow"
       ],
@@ -2789,8 +2789,8 @@
     },
     {
       "id": "807595b9",
-      "filename": "meow_sweats2.webp",
-      "path": "/emojis/meow_sweats2.webp",
+      "filename": "meow_sweats2.png",
+      "path": "/emojis/meow_sweats2.png",
       "categories": [
         "meow"
       ],
@@ -2802,8 +2802,8 @@
     },
     {
       "id": "9c1d9685",
-      "filename": "meow_tableflip.webp",
-      "path": "/emojis/meow_tableflip.webp",
+      "filename": "meow_tableflip.png",
+      "path": "/emojis/meow_tableflip.png",
       "categories": [
         "meow"
       ],
@@ -2815,8 +2815,8 @@
     },
     {
       "id": "e7337f46",
-      "filename": "meow_think.webp",
-      "path": "/emojis/meow_think.webp",
+      "filename": "meow_think.png",
+      "path": "/emojis/meow_think.png",
       "categories": [
         "meow"
       ],
@@ -2828,8 +2828,8 @@
     },
     {
       "id": "2ec23099",
-      "filename": "meow_thinkingsmart.webp",
-      "path": "/emojis/meow_thinkingsmart.webp",
+      "filename": "meow_thinkingsmart.png",
+      "path": "/emojis/meow_thinkingsmart.png",
       "categories": [
         "meow"
       ],
@@ -2841,8 +2841,8 @@
     },
     {
       "id": "f57bdc73",
-      "filename": "meow_thinkingsmirk.webp",
-      "path": "/emojis/meow_thinkingsmirk.webp",
+      "filename": "meow_thinkingsmirk.gif",
+      "path": "/emojis/meow_thinkingsmirk.gif",
       "categories": [
         "meow"
       ],
@@ -2855,8 +2855,8 @@
     },
     {
       "id": "4e19d813",
-      "filename": "meow_thinkingsmirk.webp",
-      "path": "/emojis/meow_thinkingsmirk.webp",
+      "filename": "meow_thinkingsmirk.png",
+      "path": "/emojis/meow_thinkingsmirk.png",
       "categories": [
         "meow"
       ],
@@ -2868,8 +2868,8 @@
     },
     {
       "id": "c607fcf1",
-      "filename": "meow_thinksmart.webp",
-      "path": "/emojis/meow_thinksmart.webp",
+      "filename": "meow_thinksmart.png",
+      "path": "/emojis/meow_thinksmart.png",
       "categories": [
         "meow"
       ],
@@ -2881,8 +2881,8 @@
     },
     {
       "id": "407f2fd0",
-      "filename": "meow_this.webp",
-      "path": "/emojis/meow_this.webp",
+      "filename": "meow_this.png",
+      "path": "/emojis/meow_this.png",
       "categories": [
         "meow"
       ],
@@ -2894,8 +2894,8 @@
     },
     {
       "id": "4d34948b",
-      "filename": "meow_thonking.webp",
-      "path": "/emojis/meow_thonking.webp",
+      "filename": "meow_thonking.png",
+      "path": "/emojis/meow_thonking.png",
       "categories": [
         "meow"
       ],
@@ -2907,8 +2907,8 @@
     },
     {
       "id": "eb7dc04c",
-      "filename": "meow_trash.webp",
-      "path": "/emojis/meow_trash.webp",
+      "filename": "meow_trash.png",
+      "path": "/emojis/meow_trash.png",
       "categories": [
         "meow"
       ],
@@ -2920,8 +2920,8 @@
     },
     {
       "id": "643f2797",
-      "filename": "meow_unamused2.webp",
-      "path": "/emojis/meow_unamused2.webp",
+      "filename": "meow_unamused2.png",
+      "path": "/emojis/meow_unamused2.png",
       "categories": [
         "meow"
       ],
@@ -2933,8 +2933,8 @@
     },
     {
       "id": "5d040293",
-      "filename": "meow_verified.webp",
-      "path": "/emojis/meow_verified.webp",
+      "filename": "meow_verified.png",
+      "path": "/emojis/meow_verified.png",
       "categories": [
         "meow"
       ],
@@ -2946,8 +2946,8 @@
     },
     {
       "id": "0e6f20ed",
-      "filename": "meow_verysad.webp",
-      "path": "/emojis/meow_verysad.webp",
+      "filename": "meow_verysad.png",
+      "path": "/emojis/meow_verysad.png",
       "categories": [
         "meow"
       ],
@@ -2959,8 +2959,8 @@
     },
     {
       "id": "b9b104cc",
-      "filename": "meow_waitwhat.webp",
-      "path": "/emojis/meow_waitwhat.webp",
+      "filename": "meow_waitwhat.png",
+      "path": "/emojis/meow_waitwhat.png",
       "categories": [
         "meow"
       ],
@@ -2972,8 +2972,8 @@
     },
     {
       "id": "97bbd82a",
-      "filename": "meow_weary.webp",
-      "path": "/emojis/meow_weary.webp",
+      "filename": "meow_weary.png",
+      "path": "/emojis/meow_weary.png",
       "categories": [
         "meow"
       ],
@@ -2985,8 +2985,8 @@
     },
     {
       "id": "f978a66e",
-      "filename": "meow_wine.webp",
-      "path": "/emojis/meow_wine.webp",
+      "filename": "meow_wine.png",
+      "path": "/emojis/meow_wine.png",
       "categories": [
         "meow"
       ],
@@ -2998,8 +2998,8 @@
     },
     {
       "id": "fe7b332b",
-      "filename": "meow_wink.webp",
-      "path": "/emojis/meow_wink.webp",
+      "filename": "meow_wink.png",
+      "path": "/emojis/meow_wink.png",
       "categories": [
         "meow"
       ],
@@ -3011,8 +3011,8 @@
     },
     {
       "id": "b986dc90",
-      "filename": "meow_winktongue.webp",
-      "path": "/emojis/meow_winktongue.webp",
+      "filename": "meow_winktongue.png",
+      "path": "/emojis/meow_winktongue.png",
       "categories": [
         "meow"
       ],
@@ -3024,8 +3024,8 @@
     },
     {
       "id": "7e170166",
-      "filename": "meow_witch.webp",
-      "path": "/emojis/meow_witch.webp",
+      "filename": "meow_witch.png",
+      "path": "/emojis/meow_witch.png",
       "categories": [
         "meow"
       ],
@@ -3037,8 +3037,8 @@
     },
     {
       "id": "26888621",
-      "filename": "meow_woah2.webp",
-      "path": "/emojis/meow_woah2.webp",
+      "filename": "meow_woah2.png",
+      "path": "/emojis/meow_woah2.png",
       "categories": [
         "meow"
       ],
@@ -3050,8 +3050,8 @@
     },
     {
       "id": "a5de5842",
-      "filename": "meow_wow.webp",
-      "path": "/emojis/meow_wow.webp",
+      "filename": "meow_wow.png",
+      "path": "/emojis/meow_wow.png",
       "categories": [
         "meow"
       ],
@@ -3063,8 +3063,8 @@
     },
     {
       "id": "efc303e5",
-      "filename": "meow_yikes.webp",
-      "path": "/emojis/meow_yikes.webp",
+      "filename": "meow_yikes.png",
+      "path": "/emojis/meow_yikes.png",
       "categories": [
         "meow"
       ],
@@ -3076,8 +3076,8 @@
     },
     {
       "id": "d769f853",
-      "filename": "meow_yw_welcome.webp",
-      "path": "/emojis/meow_yw_welcome.webp",
+      "filename": "meow_yw_welcome.png",
+      "path": "/emojis/meow_yw_welcome.png",
       "categories": [
         "meow"
       ],
@@ -3090,8 +3090,8 @@
     },
     {
       "id": "a1c71efc",
-      "filename": "meow-bernie-mittens.webp",
-      "path": "/emojis/meow-bernie-mittens.webp",
+      "filename": "meow-bernie-mittens.png",
+      "path": "/emojis/meow-bernie-mittens.png",
       "categories": [
         "meow"
       ],
@@ -3104,8 +3104,8 @@
     },
     {
       "id": "2c2bd69f",
-      "filename": "meow-cat.webp",
-      "path": "/emojis/meow-cat.webp",
+      "filename": "meow-cat.png",
+      "path": "/emojis/meow-cat.png",
       "categories": [
         "meow",
         "cat"
@@ -3116,8 +3116,8 @@
     },
     {
       "id": "1f110cd4",
-      "filename": "meow-devil-intensifies.webp",
-      "path": "/emojis/meow-devil-intensifies.webp",
+      "filename": "meow-devil-intensifies.gif",
+      "path": "/emojis/meow-devil-intensifies.gif",
       "categories": [
         "meow"
       ],
@@ -3131,8 +3131,8 @@
     },
     {
       "id": "b0b76c5c",
-      "filename": "meow-gift.webp",
-      "path": "/emojis/meow-gift.webp",
+      "filename": "meow-gift.png",
+      "path": "/emojis/meow-gift.png",
       "categories": [
         "meow"
       ],
@@ -3144,8 +3144,8 @@
     },
     {
       "id": "6711a917",
-      "filename": "meow-mic-drop.webp",
-      "path": "/emojis/meow-mic-drop.webp",
+      "filename": "meow-mic-drop.gif",
+      "path": "/emojis/meow-mic-drop.gif",
       "categories": [
         "meow"
       ],
@@ -3159,8 +3159,8 @@
     },
     {
       "id": "9484c8ac",
-      "filename": "meow-shark.webp",
-      "path": "/emojis/meow-shark.webp",
+      "filename": "meow-shark.png",
+      "path": "/emojis/meow-shark.png",
       "categories": [
         "meow"
       ],
@@ -3172,8 +3172,8 @@
     },
     {
       "id": "088f245a",
-      "filename": "meow-stretch.webp",
-      "path": "/emojis/meow-stretch.webp",
+      "filename": "meow-stretch.gif",
+      "path": "/emojis/meow-stretch.gif",
       "categories": [
         "meow"
       ],
@@ -3186,8 +3186,8 @@
     },
     {
       "id": "6bf26fe8",
-      "filename": "meow-wizard.webp",
-      "path": "/emojis/meow-wizard.webp",
+      "filename": "meow-wizard.png",
+      "path": "/emojis/meow-wizard.png",
       "categories": [
         "meow"
       ],
@@ -3199,8 +3199,8 @@
     },
     {
       "id": "9ae686b5",
-      "filename": "meowby-maybe.webp",
-      "path": "/emojis/meowby-maybe.webp",
+      "filename": "meowby-maybe.png",
+      "path": "/emojis/meowby-maybe.png",
       "categories": [],
       "tags": [
         "meowby",
@@ -3211,8 +3211,8 @@
     },
     {
       "id": "ca13f9e2",
-      "filename": "milchick_roll.webp",
-      "path": "/emojis/milchick_roll.webp",
+      "filename": "milchick_roll.gif",
+      "path": "/emojis/milchick_roll.gif",
       "categories": [],
       "tags": [
         "animated",
@@ -3247,8 +3247,8 @@
     },
     {
       "id": "36d22831",
-      "filename": "nyancat.webp",
-      "path": "/emojis/nyancat.webp",
+      "filename": "nyancat.gif",
+      "path": "/emojis/nyancat.gif",
       "categories": [],
       "tags": [
         "animated",
@@ -3259,8 +3259,8 @@
     },
     {
       "id": "e59f1476",
-      "filename": "ohyeaaah.webp",
-      "path": "/emojis/ohyeaaah.webp",
+      "filename": "ohyeaaah.png",
+      "path": "/emojis/ohyeaaah.png",
       "categories": [],
       "tags": [
         "ohyeaaah"
@@ -3270,8 +3270,8 @@
     },
     {
       "id": "4fdffb62",
-      "filename": "oke.webp",
-      "path": "/emojis/oke.webp",
+      "filename": "oke.png",
+      "path": "/emojis/oke.png",
       "categories": [],
       "tags": [
         "oke"
@@ -3281,8 +3281,8 @@
     },
     {
       "id": "ab970b24",
-      "filename": "old-man-yells-at-cloud.webp",
-      "path": "/emojis/old-man-yells-at-cloud.webp",
+      "filename": "old-man-yells-at-cloud.png",
+      "path": "/emojis/old-man-yells-at-cloud.png",
       "categories": [],
       "tags": [
         "old",
@@ -3296,8 +3296,8 @@
     },
     {
       "id": "c082eb4b",
-      "filename": "old-man-yells-at-comcast.webp",
-      "path": "/emojis/old-man-yells-at-comcast.webp",
+      "filename": "old-man-yells-at-comcast.png",
+      "path": "/emojis/old-man-yells-at-comcast.png",
       "categories": [],
       "tags": [
         "old",
@@ -3311,8 +3311,8 @@
     },
     {
       "id": "88d47938",
-      "filename": "oof.webp",
-      "path": "/emojis/oof.webp",
+      "filename": "oof.png",
+      "path": "/emojis/oof.png",
       "categories": [],
       "tags": [
         "oof"
@@ -3322,8 +3322,8 @@
     },
     {
       "id": "18923e63",
-      "filename": "panda-omg.webp",
-      "path": "/emojis/panda-omg.webp",
+      "filename": "panda-omg.gif",
+      "path": "/emojis/panda-omg.gif",
       "categories": [],
       "tags": [
         "animated",
@@ -3335,8 +3335,8 @@
     },
     {
       "id": "d08a6a2b",
-      "filename": "pikachu-think.webp",
-      "path": "/emojis/pikachu-think.webp",
+      "filename": "pikachu-think.png",
+      "path": "/emojis/pikachu-think.png",
       "categories": [],
       "tags": [
         "pikachu",
@@ -3347,8 +3347,8 @@
     },
     {
       "id": "46abb9a7",
-      "filename": "roo-aww.webp",
-      "path": "/emojis/roo-aww.webp",
+      "filename": "roo-aww.png",
+      "path": "/emojis/roo-aww.png",
       "categories": [],
       "tags": [
         "roo",
@@ -3359,8 +3359,8 @@
     },
     {
       "id": "5429836c",
-      "filename": "roo-blank.webp",
-      "path": "/emojis/roo-blank.webp",
+      "filename": "roo-blank.png",
+      "path": "/emojis/roo-blank.png",
       "categories": [],
       "tags": [
         "roo",
@@ -3371,8 +3371,8 @@
     },
     {
       "id": "1e46bd5e",
-      "filename": "roo-blind.webp",
-      "path": "/emojis/roo-blind.webp",
+      "filename": "roo-blind.png",
+      "path": "/emojis/roo-blind.png",
       "categories": [],
       "tags": [
         "roo",
@@ -3383,8 +3383,8 @@
     },
     {
       "id": "71b0a26f",
-      "filename": "roo-bot.webp",
-      "path": "/emojis/roo-bot.webp",
+      "filename": "roo-bot.png",
+      "path": "/emojis/roo-bot.png",
       "categories": [],
       "tags": [
         "roo",
@@ -3395,8 +3395,8 @@
     },
     {
       "id": "275c6c2d",
-      "filename": "roo-cop.webp",
-      "path": "/emojis/roo-cop.webp",
+      "filename": "roo-cop.png",
+      "path": "/emojis/roo-cop.png",
       "categories": [],
       "tags": [
         "roo",
@@ -3407,8 +3407,8 @@
     },
     {
       "id": "c3351ed8",
-      "filename": "roo-cry.webp",
-      "path": "/emojis/roo-cry.webp",
+      "filename": "roo-cry.png",
+      "path": "/emojis/roo-cry.png",
       "categories": [],
       "tags": [
         "roo",
@@ -3419,8 +3419,8 @@
     },
     {
       "id": "c7c3fc00",
-      "filename": "roo-cult.webp",
-      "path": "/emojis/roo-cult.webp",
+      "filename": "roo-cult.png",
+      "path": "/emojis/roo-cult.png",
       "categories": [],
       "tags": [
         "roo",
@@ -3431,8 +3431,8 @@
     },
     {
       "id": "6dbfbb03",
-      "filename": "roo-derp.webp",
-      "path": "/emojis/roo-derp.webp",
+      "filename": "roo-derp.png",
+      "path": "/emojis/roo-derp.png",
       "categories": [],
       "tags": [
         "roo",
@@ -3443,8 +3443,8 @@
     },
     {
       "id": "d9afa54a",
-      "filename": "roo-devil.webp",
-      "path": "/emojis/roo-devil.webp",
+      "filename": "roo-devil.png",
+      "path": "/emojis/roo-devil.png",
       "categories": [],
       "tags": [
         "roo",
@@ -3455,8 +3455,8 @@
     },
     {
       "id": "f8d20c1c",
-      "filename": "roo-duck.webp",
-      "path": "/emojis/roo-duck.webp",
+      "filename": "roo-duck.png",
+      "path": "/emojis/roo-duck.png",
       "categories": [],
       "tags": [
         "roo",
@@ -3467,8 +3467,8 @@
     },
     {
       "id": "68e5418a",
-      "filename": "roo-ez.webp",
-      "path": "/emojis/roo-ez.webp",
+      "filename": "roo-ez.png",
+      "path": "/emojis/roo-ez.png",
       "categories": [],
       "tags": [
         "roo",
@@ -3479,8 +3479,8 @@
     },
     {
       "id": "5fd2330a",
-      "filename": "roo-gift.webp",
-      "path": "/emojis/roo-gift.webp",
+      "filename": "roo-gift.png",
+      "path": "/emojis/roo-gift.png",
       "categories": [],
       "tags": [
         "roo",
@@ -3491,8 +3491,8 @@
     },
     {
       "id": "e75af1f8",
-      "filename": "roo-happy.webp",
-      "path": "/emojis/roo-happy.webp",
+      "filename": "roo-happy.png",
+      "path": "/emojis/roo-happy.png",
       "categories": [
         "emotions"
       ],
@@ -3505,8 +3505,8 @@
     },
     {
       "id": "c295961c",
-      "filename": "roo-innocent.webp",
-      "path": "/emojis/roo-innocent.webp",
+      "filename": "roo-innocent.png",
+      "path": "/emojis/roo-innocent.png",
       "categories": [],
       "tags": [
         "roo",
@@ -3517,8 +3517,8 @@
     },
     {
       "id": "c7ac0478",
-      "filename": "roo-lick.webp",
-      "path": "/emojis/roo-lick.webp",
+      "filename": "roo-lick.png",
+      "path": "/emojis/roo-lick.png",
       "categories": [],
       "tags": [
         "roo",
@@ -3529,8 +3529,8 @@
     },
     {
       "id": "a7d0c55a",
-      "filename": "roo-nap.webp",
-      "path": "/emojis/roo-nap.webp",
+      "filename": "roo-nap.png",
+      "path": "/emojis/roo-nap.png",
       "categories": [],
       "tags": [
         "roo",
@@ -3541,8 +3541,8 @@
     },
     {
       "id": "c2bc54ab",
-      "filename": "roo-nom.webp",
-      "path": "/emojis/roo-nom.webp",
+      "filename": "roo-nom.png",
+      "path": "/emojis/roo-nom.png",
       "categories": [],
       "tags": [
         "roo",
@@ -3553,8 +3553,8 @@
     },
     {
       "id": "c62b5300",
-      "filename": "roo-omg.webp",
-      "path": "/emojis/roo-omg.webp",
+      "filename": "roo-omg.png",
+      "path": "/emojis/roo-omg.png",
       "categories": [],
       "tags": [
         "roo",
@@ -3565,8 +3565,8 @@
     },
     {
       "id": "2461ca22",
-      "filename": "roo-scared.webp",
-      "path": "/emojis/roo-scared.webp",
+      "filename": "roo-scared.png",
+      "path": "/emojis/roo-scared.png",
       "categories": [],
       "tags": [
         "roo",
@@ -3577,8 +3577,8 @@
     },
     {
       "id": "8c0d2ab1",
-      "filename": "roo-sellout.webp",
-      "path": "/emojis/roo-sellout.webp",
+      "filename": "roo-sellout.png",
+      "path": "/emojis/roo-sellout.png",
       "categories": [],
       "tags": [
         "roo",
@@ -3589,8 +3589,8 @@
     },
     {
       "id": "39dc435b",
-      "filename": "roo-sip.webp",
-      "path": "/emojis/roo-sip.webp",
+      "filename": "roo-sip.png",
+      "path": "/emojis/roo-sip.png",
       "categories": [],
       "tags": [
         "roo",
@@ -3601,8 +3601,8 @@
     },
     {
       "id": "81086a9a",
-      "filename": "roo-think.webp",
-      "path": "/emojis/roo-think.webp",
+      "filename": "roo-think.png",
+      "path": "/emojis/roo-think.png",
       "categories": [],
       "tags": [
         "roo",
@@ -3613,8 +3613,8 @@
     },
     {
       "id": "426b83a8",
-      "filename": "roorooq.webp",
-      "path": "/emojis/roorooq.webp",
+      "filename": "roorooq.gif",
+      "path": "/emojis/roorooq.gif",
       "categories": [],
       "tags": [
         "animated",
@@ -3625,8 +3625,8 @@
     },
     {
       "id": "9e28da54",
-      "filename": "sad_keanu.webp",
-      "path": "/emojis/sad_keanu.webp",
+      "filename": "sad_keanu.png",
+      "path": "/emojis/sad_keanu.png",
       "categories": [
         "emotions"
       ],
@@ -3639,8 +3639,8 @@
     },
     {
       "id": "13c3b1e3",
-      "filename": "sadcat.webp",
-      "path": "/emojis/sadcat.webp",
+      "filename": "sadcat.png",
+      "path": "/emojis/sadcat.png",
       "categories": [],
       "tags": [
         "sadcat"
@@ -3650,8 +3650,8 @@
     },
     {
       "id": "58ec0c32",
-      "filename": "severance-dancing-helly.webp",
-      "path": "/emojis/severance-dancing-helly.webp",
+      "filename": "severance-dancing-helly.gif",
+      "path": "/emojis/severance-dancing-helly.gif",
       "categories": [],
       "tags": [
         "animated",
@@ -3664,8 +3664,8 @@
     },
     {
       "id": "505d5dc6",
-      "filename": "severance-dancing-mark.webp",
-      "path": "/emojis/severance-dancing-mark.webp",
+      "filename": "severance-dancing-mark.gif",
+      "path": "/emojis/severance-dancing-mark.gif",
       "categories": [],
       "tags": [
         "animated",
@@ -3678,8 +3678,8 @@
     },
     {
       "id": "ae8a59bf",
-      "filename": "severance-dancing.webp",
-      "path": "/emojis/severance-dancing.webp",
+      "filename": "severance-dancing.gif",
+      "path": "/emojis/severance-dancing.gif",
       "categories": [],
       "tags": [
         "animated",
@@ -3691,8 +3691,8 @@
     },
     {
       "id": "11069eec",
-      "filename": "severance-running.webp",
-      "path": "/emojis/severance-running.webp",
+      "filename": "severance-running.gif",
+      "path": "/emojis/severance-running.gif",
       "categories": [],
       "tags": [
         "animated",
@@ -3704,8 +3704,8 @@
     },
     {
       "id": "453f0d32",
-      "filename": "severance-working.webp",
-      "path": "/emojis/severance-working.webp",
+      "filename": "severance-working.png",
+      "path": "/emojis/severance-working.png",
       "categories": [],
       "tags": [
         "severance",
@@ -3716,8 +3716,8 @@
     },
     {
       "id": "fca217fd",
-      "filename": "severance.webp",
-      "path": "/emojis/severance.webp",
+      "filename": "severance.gif",
+      "path": "/emojis/severance.gif",
       "categories": [],
       "tags": [
         "animated",
@@ -3728,8 +3728,8 @@
     },
     {
       "id": "caae4ef4",
-      "filename": "shruggy-grimace.webp",
-      "path": "/emojis/shruggy-grimace.webp",
+      "filename": "shruggy-grimace.png",
+      "path": "/emojis/shruggy-grimace.png",
       "categories": [],
       "tags": [
         "shruggy",
@@ -3740,8 +3740,8 @@
     },
     {
       "id": "8a60ec31",
-      "filename": "side-eye.webp",
-      "path": "/emojis/side-eye.webp",
+      "filename": "side-eye.gif",
+      "path": "/emojis/side-eye.gif",
       "categories": [],
       "tags": [
         "animated",
@@ -3753,8 +3753,8 @@
     },
     {
       "id": "27ea12fc",
-      "filename": "smart.webp",
-      "path": "/emojis/smart.webp",
+      "filename": "smart.gif",
+      "path": "/emojis/smart.gif",
       "categories": [],
       "tags": [
         "animated",
@@ -3765,8 +3765,8 @@
     },
     {
       "id": "812d0365",
-      "filename": "success.webp",
-      "path": "/emojis/success.webp",
+      "filename": "success.png",
+      "path": "/emojis/success.png",
       "categories": [],
       "tags": [
         "success"
@@ -3776,8 +3776,8 @@
     },
     {
       "id": "ceaa804a",
-      "filename": "thank_you.webp",
-      "path": "/emojis/thank_you.webp",
+      "filename": "thank_you.png",
+      "path": "/emojis/thank_you.png",
       "categories": [],
       "tags": [
         "thank",
@@ -3788,8 +3788,8 @@
     },
     {
       "id": "fb9ef6f0",
-      "filename": "thankyou.webp",
-      "path": "/emojis/thankyou.webp",
+      "filename": "thankyou.gif",
+      "path": "/emojis/thankyou.gif",
       "categories": [],
       "tags": [
         "animated",
@@ -3800,8 +3800,8 @@
     },
     {
       "id": "65f45667",
-      "filename": "the_more_you_know.webp",
-      "path": "/emojis/the_more_you_know.webp",
+      "filename": "the_more_you_know.gif",
+      "path": "/emojis/the_more_you_know.gif",
       "categories": [],
       "tags": [
         "animated",
@@ -3815,8 +3815,8 @@
     },
     {
       "id": "f77ea055",
-      "filename": "think-eyes.webp",
-      "path": "/emojis/think-eyes.webp",
+      "filename": "think-eyes.png",
+      "path": "/emojis/think-eyes.png",
       "categories": [],
       "tags": [
         "think",
@@ -3838,8 +3838,8 @@
     },
     {
       "id": "4d067eeb",
-      "filename": "thinking-face-rotating.webp",
-      "path": "/emojis/thinking-face-rotating.webp",
+      "filename": "thinking-face-rotating.gif",
+      "path": "/emojis/thinking-face-rotating.gif",
       "categories": [],
       "tags": [
         "animated",
@@ -3852,8 +3852,8 @@
     },
     {
       "id": "0bbae1e5",
-      "filename": "this_is_fine.webp",
-      "path": "/emojis/this_is_fine.webp",
+      "filename": "this_is_fine.gif",
+      "path": "/emojis/this_is_fine.gif",
       "categories": [],
       "tags": [
         "animated",
@@ -3866,8 +3866,8 @@
     },
     {
       "id": "4c51a124",
-      "filename": "this-is-fine-fire.webp",
-      "path": "/emojis/this-is-fine-fire.webp",
+      "filename": "this-is-fine-fire.gif",
+      "path": "/emojis/this-is-fine-fire.gif",
       "categories": [],
       "tags": [
         "animated",
@@ -3881,8 +3881,8 @@
     },
     {
       "id": "1380f8fb",
-      "filename": "try-not-to-cry.webp",
-      "path": "/emojis/try-not-to-cry.webp",
+      "filename": "try-not-to-cry.gif",
+      "path": "/emojis/try-not-to-cry.gif",
       "categories": [],
       "tags": [
         "animated",
@@ -3896,8 +3896,8 @@
     },
     {
       "id": "75bbcc93",
-      "filename": "typing_cat_kitten.webp",
-      "path": "/emojis/typing_cat_kitten.webp",
+      "filename": "typing_cat_kitten.gif",
+      "path": "/emojis/typing_cat_kitten.gif",
       "categories": [
         "cat"
       ],
@@ -3911,8 +3911,8 @@
     },
     {
       "id": "c1cdd84d",
-      "filename": "typingcat.webp",
-      "path": "/emojis/typingcat.webp",
+      "filename": "typingcat.gif",
+      "path": "/emojis/typingcat.gif",
       "categories": [],
       "tags": [
         "animated",
@@ -3923,8 +3923,8 @@
     },
     {
       "id": "8da0daf7",
-      "filename": "unikitty.webp",
-      "path": "/emojis/unikitty.webp",
+      "filename": "unikitty.png",
+      "path": "/emojis/unikitty.png",
       "categories": [],
       "tags": [
         "unikitty"
@@ -3934,8 +3934,8 @@
     },
     {
       "id": "a5ed0739",
-      "filename": "unikittyangry.webp",
-      "path": "/emojis/unikittyangry.webp",
+      "filename": "unikittyangry.gif",
+      "path": "/emojis/unikittyangry.gif",
       "categories": [],
       "tags": [
         "animated",
@@ -3946,8 +3946,8 @@
     },
     {
       "id": "2f4ee684",
-      "filename": "unikittyhappy.webp",
-      "path": "/emojis/unikittyhappy.webp",
+      "filename": "unikittyhappy.png",
+      "path": "/emojis/unikittyhappy.png",
       "categories": [],
       "tags": [
         "unikittyhappy"
@@ -3957,8 +3957,8 @@
     },
     {
       "id": "33d3b270",
-      "filename": "unikittysad.webp",
-      "path": "/emojis/unikittysad.webp",
+      "filename": "unikittysad.png",
+      "path": "/emojis/unikittysad.png",
       "categories": [],
       "tags": [
         "unikittysad"
@@ -3968,8 +3968,8 @@
     },
     {
       "id": "f5026add",
-      "filename": "watcat.webp",
-      "path": "/emojis/watcat.webp",
+      "filename": "watcat.gif",
+      "path": "/emojis/watcat.gif",
       "categories": [],
       "tags": [
         "animated",
@@ -3980,8 +3980,8 @@
     },
     {
       "id": "c5b22f0c",
-      "filename": "weed.webp",
-      "path": "/emojis/weed.webp",
+      "filename": "weed.png",
+      "path": "/emojis/weed.png",
       "categories": [],
       "tags": [
         "weed"

@@ -201,8 +201,8 @@ const EmojiGrid = ({
         width={dimensions.width}
         height={dimensions.height}
         overscanRowCount={2}
-        overscanColumnCount={2}
-        className="emoji-v-grid outline-none"
+        overscanColumnCount={0}
+        className="emoji-v-grid outline-1"
       />
     </div>
   );
