@@ -226,7 +226,7 @@ describe("EmojiExport Component", () => {
     const clearButton = screen.getByText("Clear Selection");
     await userEvent.click(clearButton);
 
-    const state = store.getState();
+    const state = store.getState() as any;
     expect(state.selection.selectedEmojis).toHaveLength(0);
   });
 });
