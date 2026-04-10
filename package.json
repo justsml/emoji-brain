@@ -14,8 +14,7 @@
     "test:coverage": "vitest run --coverage",
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui",
-    "test:all": "bun run test && bun run test:e2e",
-    "build:pagefind": "bun scripts/create-pagefind-index.ts"
+    "test:all": "bun run test && bun run test:e2e"
   },
   "dependencies": {
     "@astrojs/react": "^5.0.3",

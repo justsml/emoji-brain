@@ -193,8 +193,8 @@ const EmojiGrid = ({
 
   return (
     <div
-      role="grid"
-      aria-label="Emoji grid"
+      role="region"
+      aria-label="Emoji results"
       className="flex justify-around emoji-box"
     >
       <Grid

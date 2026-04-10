@@ -16,8 +16,8 @@ test("should display welcome message", async ({ page }) => {
 });
 
 test("should display emoji grid", async ({ page }) => {
-  // Check that the emoji grid is displayed
-  const emojiGrid = page.locator('div[role="grid"]');
+  // Check that the emoji grid region is displayed
+  const emojiGrid = page.locator('div[role="region"][aria-label="Emoji results"]');
   await expect(emojiGrid).toBeVisible();
 
   // Check that there are multiple emojis displayed
@@ -140,9 +140,9 @@ test("should show export options when emojis are selected", async ({
 test("should be responsive", async ({ page }) => {
   // Test desktop layout
   await page.setViewportSize({ width: 1280, height: 800 });
-  await expect(page.locator('div[role="grid"]')).toBeVisible();
+  await expect(page.locator('div[role="region"][aria-label="Emoji results"]')).toBeVisible();
 
   // Test mobile layout
   await page.setViewportSize({ width: 375, height: 667 });
-  await expect(page.locator('div[role="grid"]')).toBeVisible();
+  await expect(page.locator('div[role="region"][aria-label="Emoji results"]')).toBeVisible();
 });
