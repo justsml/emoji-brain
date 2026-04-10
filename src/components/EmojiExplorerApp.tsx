@@ -1,22 +1,21 @@
-import React, { useState, useCallback, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import type { EmojiMetadata } from '../types/emoji';
-import SearchBar from './SearchBar';
-import SelectionControls from './SelectionControls';
-import EmojiGrid from './EmojiGrid';
-import { EmojiExport } from './EmojiExport';
-import { selectSelectedEmojis } from '../store/selectionSlice';
+import React, { useState, useCallback, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import type { EmojiMetadata } from "../types/emoji";
+import SearchBar from "./SearchBar";
+import SelectionControls from "./SelectionControls";
+import EmojiGrid from "./EmojiGrid";
+import { EmojiExport } from "./EmojiExport";
+import { selectSelectedEmojis } from "../store/selectionSlice";
 import {
   selectFilteredEmojis,
   selectIsSearching,
   selectShowSelectedOnly,
   setFilteredEmojis,
-  setIsSearching
-} from '../store/filteredEmojisSlice';
-import ShowSelectedToggle from './ShowSelectedToggle';
-import ReduxProviderWrapper from './ReduxProviderWrapper';
+  setIsSearching,
+} from "../store/filteredEmojisSlice";
+import ShowSelectedToggle from "./ShowSelectedToggle";
+import ReduxProviderWrapper from "./ReduxProviderWrapper";
 
-// Pagefind types remain unchanged...
 interface PagefindResultData {
   url: string;
   content: string;
@@ -76,13 +75,15 @@ interface EmojiExplorerAppProps {
   initialEmojis: EmojiMetadata[];
 }
 
-const _EmojiExplorerApp: React.FC<EmojiExplorerAppProps> = ({ initialEmojis }) => {
+const _EmojiExplorerApp: React.FC<EmojiExplorerAppProps> = ({
+  initialEmojis,
+}) => {
   const dispatch = useDispatch();
   const selectedEmojis = useSelector(selectSelectedEmojis);
   const filteredEmojis = useSelector(selectFilteredEmojis);
   const isSearching = useSelector(selectIsSearching);
   const showSelectedOnly = useSelector(selectShowSelectedOnly);
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
 
   // Handler for search term changes from SearchBar
   const handleSearchChange = useCallback((term: string) => {
@@ -97,40 +98,47 @@ const _EmojiExplorerApp: React.FC<EmojiExplorerAppProps> = ({ initialEmojis }) =
         dispatch(setFilteredEmojis(initialEmojis));
         return;
       }
-if (searchTerm.trim() === '') {
-  const emojis = showSelectedOnly
-    ? initialEmojis.filter(emoji => selectedEmojis.some(selected => selected.id === emoji.id))
-    : initialEmojis;
-  dispatch(setFilteredEmojis(emojis));
-  dispatch(setIsSearching(false));
-  return;
-}
-
+      if (searchTerm.trim() === "") {
+        const emojis = showSelectedOnly
+          ? initialEmojis.filter((emoji) =>
+              selectedEmojis.some((selected) => selected.id === emoji.id)
+            )
+          : initialEmojis;
+        dispatch(setFilteredEmojis(emojis));
+        dispatch(setIsSearching(false));
+        return;
+      }
 
       dispatch(setIsSearching(true));
       try {
         const searchResults = await window.pagefind.search(searchTerm.trim(), {
           sort: {
-            filename: 'asc',
-          }
+            filename: "asc",
+          },
         });
         console.log("Pagefind search results:", searchResults);
         if (searchResults.results.length === 0) {
           dispatch(setFilteredEmojis([]));
         } else {
-          const emojiDataPromises = searchResults.results.map(result => result.data());
-          const emojiDataResults: PagefindResultData[] = await Promise.all(emojiDataPromises);
-          const emojis: EmojiMetadata[] = emojiDataResults.map(data => ({
-            id: data.meta.id || '',
-            filename: data.url || '',
+          const emojiDataPromises = searchResults.results.map((result) =>
+            result.data()
+          );
+          const emojiDataResults: PagefindResultData[] = await Promise.all(
+            emojiDataPromises
+          );
+          const emojis: EmojiMetadata[] = emojiDataResults.map((data) => ({
+            id: data.meta.id || "",
+            filename: data.url || "",
             path: data.raw_url || data.url,
             tags: [],
-            created: '',
-            categories: data.content?.split(',') || [],
+            created: "",
+            categories: data.content?.split(",") || [],
             size: data.meta.size ? parseInt(data.meta.size, 10) : 0,
           }));
           const filteredResults = showSelectedOnly
-            ? emojis.filter(emoji => selectedEmojis.some(selected => selected.id === emoji.id))
+            ? emojis.filter((emoji) =>
+                selectedEmojis.some((selected) => selected.id === emoji.id)
+              )
             : emojis;
           dispatch(setFilteredEmojis(filteredResults));
         }
@@ -150,7 +158,10 @@ if (searchTerm.trim() === '') {
       <div className="mx-auto max-w-2xl space-y-4">
         <div className="flex gap-4 items-start">
           <div className="flex-1 min-w-[200px]">
-            <SearchBar onSearchChange={handleSearchChange} count={filteredEmojis.length} />
+            <SearchBar
+              onSearchChange={handleSearchChange}
+              count={filteredEmojis.length}
+            />
           </div>
           <SelectionControls />
         </div>
@@ -161,9 +172,7 @@ if (searchTerm.trim() === '') {
         {isSearching ? (
           <p className="text-center text-muted-foreground">Searching...</p>
         ) : (
-          <EmojiGrid
-            emojis={filteredEmojis}
-          />
+          <EmojiGrid emojis={filteredEmojis} />
         )}
       </section>
 
@@ -172,7 +181,9 @@ if (searchTerm.trim() === '') {
   );
 };
 
-const EmojiExplorerWrapper = (props: Omit<EmojiExplorerAppProps, 'categories'>) => {
+const EmojiExplorerWrapper = (
+  props: Omit<EmojiExplorerAppProps, "categories">
+) => {
   const EmojiExplorerApp = _EmojiExplorerApp;
   return (
     <ReduxProviderWrapper>
