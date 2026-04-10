@@ -1,7 +1,7 @@
 import * as pagefind from "pagefind";
 import data from "../src/data/emoji-metadata.json" assert { type: "json" };
 import { statSync } from "node:fs";
-import path, { basename } from "node:path";
+import { basename } from "node:path";
 
 const { index } = await pagefind.createIndex();
 
