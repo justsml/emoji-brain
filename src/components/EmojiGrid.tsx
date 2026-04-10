@@ -138,9 +138,19 @@ const EmojiGrid = ({
     if (index >= emojis.length) return null;
 
     const emoji = emojis[index];
+    const isSelected = selectedEmojis.some((e) => e.id === emoji.id);
     return (
-      <div key={key} style={style} className="p-8">
+      <div
+        key={key}
+        style={style}
+        className="p-8"
+        role="gridcell"
+        aria-selected={isSelected}
+        tabIndex={-1}
+      >
         <button
+          key={emoji.id}
+          type="button"
           className={cn(
             "w-full h-full p-2",
             "aspect-square rounded-lg border bg-card text-card-foreground relative group",
@@ -148,15 +158,12 @@ const EmojiGrid = ({
             "transition-all duration-200 ease-in-out",
             "hover:scale-110 hover:shadow-md focus:scale-105 focus:shadow-md hover:bg-primary/10",
             "focus:outline-none focus:ring-1 focus:ring-primary focus:bg-primary/10",
-            selectedEmojis.some((e) => e.id === emoji.id) &&
-              "ring-primary bg-primary/10"
+            isSelected && "ring-primary bg-primary/10"
           )}
           onClick={(e) => toggleSelection(emoji, e)}
           onKeyDown={(e) => handleKeyDown(e, index)}
           tabIndex={focusedIndex === index ? 0 : -1}
-          role="gridcell"
           aria-label={emoji.filename}
-          aria-selected={selectedEmojis.some((e) => e.id === emoji.id)}
         >
           <div className="flex items-center justify-center flex-1">
             <img

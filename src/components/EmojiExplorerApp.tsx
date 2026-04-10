@@ -13,6 +13,7 @@ import {
   setFilteredEmojis,
   setIsSearching,
 } from "../store/filteredEmojisSlice";
+import { toggleEmojiSelection } from "../store/selectionSlice";
 import ShowSelectedToggle from "./ShowSelectedToggle";
 import ReduxProviderWrapper from "./ReduxProviderWrapper";
 
@@ -90,11 +91,18 @@ const _EmojiExplorerApp: React.FC<EmojiExplorerAppProps> = ({
     setSearchTerm(term);
   }, []);
 
+  // Handler for emoji selection from SearchBar
+  const handleEmojiSelect = useCallback(
+    (emoji: EmojiMetadata) => {
+      dispatch(toggleEmojiSelection(emoji));
+    },
+    [dispatch],
+  );
+
   // Effect to perform Pagefind search when searchTerm changes
   useEffect(() => {
     const performSearch = async () => {
       if (!window.pagefind) {
-        console.error("Pagefind not loaded");
         dispatch(setFilteredEmojis(initialEmojis));
         return;
       }
@@ -116,7 +124,6 @@ const _EmojiExplorerApp: React.FC<EmojiExplorerAppProps> = ({
             filename: "asc",
           },
         });
-        console.log("Pagefind search results:", searchResults);
         if (searchResults.results.length === 0) {
           dispatch(setFilteredEmojis([]));
         } else {
@@ -160,6 +167,7 @@ const _EmojiExplorerApp: React.FC<EmojiExplorerAppProps> = ({
           <div className="flex-1 min-w-[200px]">
             <SearchBar
               onSearchChange={handleSearchChange}
+              onEmojiSelect={handleEmojiSelect}
               count={filteredEmojis.length}
             />
           </div>

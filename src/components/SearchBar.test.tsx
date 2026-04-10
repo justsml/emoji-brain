@@ -1,11 +1,13 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import SearchBar from './SearchBar';
 import type { EmojiMetadata } from '../types/emoji';
+import { render } from '../test-utils/test-utils';
 
 describe('SearchBar Component', () => {
   const mockOnSearchChange = vi.fn();
+  const mockOnEmojiSelect = vi.fn();
   const mockCategories = ['cat', 'dog', 'meme'];
   
   beforeEach(() => {
@@ -57,9 +59,7 @@ describe('SearchBar Component', () => {
     expect(screen.getAllByRole('img')).toHaveLength(2);
   });
   
-  it('dispatches emojiSelect event when clicking a recent emoji', async () => {
-    const dispatchEventSpy = vi.spyOn(document, 'dispatchEvent');
-    
+  it('calls onEmojiSelect when clicking a recent emoji', async () => {
     const recentEmojis: EmojiMetadata[] = [
       { id: '1', filename: 'emoji1.png', path: '/emojis/emoji1.png', categories: ['cat'], tags: ['funny'], created: '2023-01-01', size: 1024 },
     ];
@@ -67,6 +67,7 @@ describe('SearchBar Component', () => {
     render(
       <SearchBar
         onSearchChange={mockOnSearchChange}
+        onEmojiSelect={mockOnEmojiSelect}
         count={0}
         recentEmojis={recentEmojis}
       />
@@ -75,8 +76,6 @@ describe('SearchBar Component', () => {
     const emojiButton = screen.getByTitle('emoji1.png');
     await userEvent.click(emojiButton);
     
-    expect(dispatchEventSpy).toHaveBeenCalledTimes(1);
-    expect(dispatchEventSpy.mock.calls[0][0].type).toBe('emojiSelect');
-    expect((dispatchEventSpy.mock.calls[0][0] as CustomEvent).detail).toEqual(recentEmojis[0]);
+    expect(mockOnEmojiSelect).toHaveBeenCalledWith(recentEmojis[0]);
   });
 });

@@ -5,6 +5,8 @@ import type { EmojiMetadata } from '../types/emoji';
 interface SearchBarProps {
   // Callback to notify parent of search term changes
   onSearchChange: (term: string) => void;
+  // Callback to notify parent of emoji selection
+  onEmojiSelect?: (emoji: EmojiMetadata) => void;
   // Number of search results
   count: number;
   // Optional props
@@ -14,6 +16,7 @@ interface SearchBarProps {
 
 const SearchBar: React.FC<SearchBarProps> = ({ 
   onSearchChange, 
+  onEmojiSelect,
   count,
   categories = [],
   recentEmojis = []
@@ -27,8 +30,9 @@ const SearchBar: React.FC<SearchBarProps> = ({
   };
 
   const handleEmojiSelect = (emoji: EmojiMetadata) => {
-    const event = new CustomEvent('emojiSelect', { detail: emoji });
-    document.dispatchEvent(event);
+    if (onEmojiSelect) {
+      onEmojiSelect(emoji);
+    }
   };
 
   return (
@@ -52,6 +56,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
             {recentEmojis.map(emoji => (
               <button
                 key={emoji.id}
+                type="button"
                 onClick={() => handleEmojiSelect(emoji)}
                 title={emoji.filename}
                 className="p-1 hover:bg-accent rounded"
@@ -60,7 +65,6 @@ const SearchBar: React.FC<SearchBarProps> = ({
                   src={emoji.path}
                   alt={emoji.filename}
                   className="w-6 h-6"
-                  role="img"
                 />
               </button>
             ))}
