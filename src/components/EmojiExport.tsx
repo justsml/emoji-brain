@@ -100,19 +100,40 @@ export function EmojiExport() {
 
   return (
     <div className="fixed bottom-4 left-0 right-0 mx-2 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 p-4 rounded-lg shadow-lg border flex w-full justify-between items-center gap-x-4 z-50">
-      <div className="text-sm font-medium">
-        {selectedEmojis.length} selected
-        {selectedEmojis.length > 0 && (
-          <span className="ml-2 text-muted-foreground">
-            (
-            {parseFloat(
+      <div className="flex items-center gap-3 min-w-0">
+        <div className="text-sm font-medium shrink-0">
+          {selectedEmojis.length} selected
+          {selectedEmojis.length > 0 && (
+            <span className="ml-2 text-muted-foreground">
               (
-                selectedEmojis.reduce((total, emoji) => total + emoji.size, 0) /
-                1024
-              ).toFixed(1)
-            ).toLocaleString()}{" "}
-            KB)
-          </span>
+              {parseFloat(
+                (
+                  selectedEmojis.reduce((total, emoji) => total + emoji.size, 0) /
+                  1024
+                ).toFixed(1)
+              ).toLocaleString()}{" "}
+              KB)
+            </span>
+          )}
+        </div>
+        {selectedEmojis.length > 0 && (
+          <div className="flex gap-1 overflow-x-auto max-w-md scrollbar-hide" style={{ scrollSnapType: 'x mandatory' }}>
+            {selectedEmojis.map((emoji) => (
+              <div
+                key={emoji.id}
+                className="shrink-0 w-8 h-8 flex items-center justify-center"
+                style={{ scrollSnapAlign: 'start' }}
+              >
+                <img
+                  src={emoji.path}
+                  alt={emoji.filename}
+                  className="w-full h-full object-contain"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+            ))}
+          </div>
         )}
       </div>
 

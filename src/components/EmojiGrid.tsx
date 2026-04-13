@@ -21,7 +21,7 @@ interface EmojiGridProps {
 }
 
 const MIN_HEIGHT = 400;
-const GRID_GAP = 12;
+const GRID_GAP = 24;
 
 const EmojiGrid = ({
   emojis,
@@ -87,9 +87,9 @@ const EmojiGrid = ({
   useEffect(() => {
     const timer = setTimeout(() => {
       gridRef.current?.recomputeGridSize();
-    }, 50); // Small delay to sync with animation
+    }, 50);
     return () => clearTimeout(timer);
-  }, [gridScale, emojis.length]);
+  }, []);
 
   const cellRenderer = useMemo(() => ({
     columnIndex,
@@ -114,21 +114,23 @@ const EmojiGrid = ({
     return (
       <div
         key={key}
-        style={{
-          ...style,
-          padding: GRID_GAP / 2,
-        }}
+          style={{
+            ...style,
+            padding: GRID_GAP / 2,
+            contentVisibility: 'auto',
+            containIntrinsicSize: 'auto',
+          }}
         role="gridcell"
         tabIndex={-1}
       >
-        <motion.button
+          <motion.button
           layout
           layoutDependency={gridScale}
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
-          whileHover={{ scale: 1.05, y: -2, rotate: [0, -1, 1, 0] }}
-          transition={{ duration: 0.2, layout: { duration: 0.4, ease: "circOut" } }}
+          whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
+          transition={{ duration: 0.15 }}
           type="button"
           className={cn(
             "w-full h-full p-2 relative group overflow-hidden",
@@ -138,6 +140,7 @@ const EmojiGrid = ({
             isSelected ? "border-primary bg-primary/20 ring-2 ring-primary/30 shadow-primary/20" : "border-border/40 hover:border-primary/40",
             isFocused && "ring-2 ring-primary/50 bg-primary/10"
           )}
+          style={{ willChange: 'transform' }}
           onClick={(e) => toggleSelection(emoji, e)}
           onKeyDown={(e) => handleKeyDown(e, index, columnCount)}
           tabIndex={isFocused ? 0 : -1}
@@ -158,12 +161,14 @@ const EmojiGrid = ({
           </AnimatePresence>
 
           <div className="flex items-center justify-center flex-1 w-full h-full relative z-0">
-            <motion.img
+            <img
               src={emoji.path}
               alt={emoji.filename}
-              className="w-full h-full object-contain drop-shadow-sm"
+              className="w-full h-full object-contain drop-shadow-sm transition-all duration-200"
               loading="lazy"
-              animate={{ 
+              decoding="async"
+              style={{ 
+                willChange: 'filter',
                 filter: isSelected ? "drop-shadow(0 0 8px rgba(var(--primary), 0.4))" : "none"
               }}
             />

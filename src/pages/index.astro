@@ -11,11 +11,7 @@ const allEmojis: EmojiMetadata[] = emojiMetadata.emojis || [];
 ---
 
 <Layout title="Emoji Explorer">
-  <div class="emoji-app w-full h-fit flex flex-col items-center justify-center">
-    <!-- <p class="mt-1 text-muted-foreground">
-      Browse, search, and explore our collection of emojis
-    </p> -->
-
+  <div class="emoji-app w-full h-fit">
     <EmojiExplorerApp client:only="react" initialEmojis={allEmojis} />
   </div>
 </Layout>

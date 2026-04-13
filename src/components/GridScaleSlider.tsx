@@ -6,11 +6,8 @@ import { cn } from "../lib/utils";
 import { LayoutGrid, ZoomIn } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
-// 10 notches at relative scales (pixel values for the grid cells)
-// Using a logarithmic-ish progression for better visual feel
-export const GRID_SCALES = [
-  32, 48, 64, 80, 96, 128, 160, 224, 320, 512
-];
+// Fixed scale points between 48px and 192px
+export const GRID_SCALES = [48, 64, 80, 96, 128, 160, 192];
 
 const GridScaleSlider: React.FC = () => {
   const dispatch = useDispatch();
