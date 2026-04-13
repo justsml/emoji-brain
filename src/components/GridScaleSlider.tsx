@@ -1,0 +1,75 @@
+import React from "react";
+import * as Slider from "@radix-ui/react-slider";
+import { useDispatch, useSelector } from "react-redux";
+import { setGridScale, selectGridScale } from "../store/filteredEmojisSlice";
+import { cn } from "../lib/utils";
+import { LayoutGrid, ZoomIn } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+
+// 10 notches at relative scales (pixel values for the grid cells)
+// Using a logarithmic-ish progression for better visual feel
+export const GRID_SCALES = [
+  32, 48, 64, 80, 96, 128, 160, 224, 320, 512
+];
+
+const GridScaleSlider: React.FC = () => {
+  const dispatch = useDispatch();
+  const gridScale = useSelector(selectGridScale);
+
+  return (
+    <div className="flex flex-col gap-2 w-full max-w-[240px]">
+      <div className="flex items-center justify-between text-xs text-muted-foreground mb-1 px-1">
+        <div className="flex items-center gap-1.5">
+          <LayoutGrid size={12} className="opacity-70" />
+          <span className="font-medium tracking-tight uppercase">Scale</span>
+        </div>
+        <AnimatePresence mode="wait">
+          <motion.span
+            key={gridScale}
+            initial={{ opacity: 0, y: 2 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -2 }}
+            transition={{ duration: 0.15 }}
+            className="font-mono bg-secondary px-1.5 py-0.5 rounded tabular-nums"
+          >
+            {GRID_SCALES[gridScale]}px
+          </motion.span>
+        </AnimatePresence>
+      </div>
+      
+      <Slider.Root
+        className="relative flex items-center select-none touch-none w-full h-5 group"
+        value={[gridScale]}
+        max={GRID_SCALES.length - 1}
+        step={1}
+        onValueChange={([val]) => dispatch(setGridScale(val))}
+      >
+        <Slider.Track className="bg-secondary relative grow rounded-full h-[3px] transition-colors group-hover:bg-secondary/80">
+          <Slider.Range className="absolute bg-primary rounded-full h-full" />
+          {/* Tick marks */}
+          <div className="absolute inset-0 flex justify-between px-[1px]">
+            {GRID_SCALES.map((scale, i) => (
+              <div 
+                key={scale} 
+                className={cn(
+                  "w-[1px] h-1 mt-[1px] transition-colors",
+                  i <= gridScale ? "bg-primary/40" : "bg-muted-foreground/20"
+                )} 
+              />
+            ))}
+          </div>
+        </Slider.Track>
+        <Slider.Thumb
+          className={cn(
+            "block w-4 h-4 bg-background border-2 border-primary rounded-full shadow-lg",
+            "transition-all hover:scale-125 focus:outline-none focus:ring-2 focus:ring-primary/20",
+            "cursor-grab active:cursor-grabbing hover:border-primary active:scale-110"
+          )}
+          aria-label="Grid scale"
+        />
+      </Slider.Root>
+    </div>
+  );
+};
+
+export default GridScaleSlider;

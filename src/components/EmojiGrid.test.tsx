@@ -5,6 +5,25 @@ import EmojiGrid from './EmojiGrid';
 import type { EmojiMetadata } from '../types/emoji';
 import { render } from '../test-utils/test-utils';
 
+// Mock PointerEvent for framer-motion in JSDOM
+if (typeof window !== 'undefined' && !window.PointerEvent) {
+  class PointerEvent extends MouseEvent {
+    constructor(type: string, params: PointerEventInit = {}) {
+      super(type, params);
+    }
+  }
+  (window as any).PointerEvent = PointerEvent;
+}
+
+// Mock AutoSizer to provide a width in tests
+vi.mock('react-virtualized', async () => {
+  const actual = await vi.importActual('react-virtualized');
+  return {
+    ...actual,
+    AutoSizer: ({ children }: any) => children({ width: 1000, height: 1000 }),
+  };
+});
+
 // Skip these tests for now as they're having issues with the DOM
 describe('EmojiGrid Component', () => {
   const mockEmojis: EmojiMetadata[] = [
