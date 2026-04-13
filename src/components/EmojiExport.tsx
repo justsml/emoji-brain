@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
 import { Button } from "./ui/button";
 import {
   DropdownMenu,
@@ -6,37 +6,39 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
-import { useAppDispatch, type RootState } from "../store/store";
-import { useSelector } from "react-redux";
-import { resetSelection } from "../store/selectionSlice";
+import type { EmojiMetadata } from "../types/emoji";
 import { getAbsoluteUrl } from "../lib/utils";
 
-export function EmojiExport() {
-  const { selectedEmojis } = useSelector((state: RootState) => state.selection);
-  const dispatch = useAppDispatch();
-  const onClearSelection = () => {
-    dispatch(resetSelection());
-  };
+interface EmojiExportProps {
+  selectedEmojis: EmojiMetadata[];
+  onClearSelection: () => void;
+}
 
+export function EmojiExport({ selectedEmojis, onClearSelection }: EmojiExportProps) {
   const [exportStatus, setExportStatus] = useState<string>("");
+  const abortControllerRef = useRef<AbortController | null>(null);
 
-  const exportAsPlainText = () => {
+  const setStatusWithTimeout = useCallback((status: string) => {
+    setExportStatus(status);
+    const timer = setTimeout(() => setExportStatus(""), 2000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  const exportAsPlainText = useCallback(() => {
     const text = selectedEmojis.map((emoji) => emoji.filename).join("\n");
     navigator.clipboard.writeText(text);
-    setExportStatus("Copied filenames to clipboard!");
-    setTimeout(() => setExportStatus(""), 2000);
-  };
+    setStatusWithTimeout("Copied filenames to clipboard!");
+  }, [selectedEmojis, setStatusWithTimeout]);
 
-  const exportAsHtml = () => {
+  const exportAsHtml = useCallback(() => {
     const html = selectedEmojis
       .map((emoji) => `<img src="${getAbsoluteUrl(emoji.path)}" alt="${emoji.filename}" />`)
       .join("\n");
     navigator.clipboard.writeText(html);
-    setExportStatus("Copied HTML to clipboard!");
-    setTimeout(() => setExportStatus(""), 2000);
-  };
+    setStatusWithTimeout("Copied HTML to clipboard!");
+  }, [selectedEmojis, setStatusWithTimeout]);
 
-  const exportAsCss = () => {
+  const exportAsCss = useCallback(() => {
     const css = selectedEmojis
       .map(
         (emoji) => `.emoji-${emoji.id} {
@@ -48,11 +50,10 @@ export function EmojiExport() {
       )
       .join("\n\n");
     navigator.clipboard.writeText(css);
-    setExportStatus("Copied CSS to clipboard!");
-    setTimeout(() => setExportStatus(""), 2000);
-  };
+    setStatusWithTimeout("Copied CSS to clipboard!");
+  }, [selectedEmojis, setStatusWithTimeout]);
 
-  const exportAsMarkdownTable = () => {
+  const exportAsMarkdownTable = useCallback(() => {
     const header = "| Emoji | Filename |\n|---|---|";
     const rows = selectedEmojis
       .map(
@@ -61,24 +62,29 @@ export function EmojiExport() {
       .join("\n");
     const markdown = `${header}\n${rows}`;
     navigator.clipboard.writeText(markdown);
-    setExportStatus("Copied Markdown Table to clipboard!");
-    setTimeout(() => setExportStatus(""), 2000);
-  };
+    setStatusWithTimeout("Copied Markdown Table to clipboard!");
+  }, [selectedEmojis, setStatusWithTimeout]);
 
-  const downloadZip = async () => {
+  const downloadZip = useCallback(async () => {
+    abortControllerRef.current?.abort();
+    abortControllerRef.current = new AbortController();
+
     try {
       setExportStatus("Preparing ZIP...");
       const JSZip = (await import("jszip")).default;
       const zip = new JSZip();
 
-      // Add each emoji to the zip
       for (const emoji of selectedEmojis) {
-        const response = await fetch(getAbsoluteUrl(emoji.path));
+        if (abortControllerRef.current?.signal.aborted) {
+          throw new DOMException('Aborted', 'AbortError');
+        }
+        const response = await fetch(getAbsoluteUrl(emoji.path), {
+          signal: abortControllerRef.current.signal
+        });
         const blob = await response.blob();
         zip.file(emoji.filename, blob);
       }
 
-      // Generate and download the zip
       const content = await zip.generateAsync({ type: "blob" });
       const url = URL.createObjectURL(content);
       const a = document.createElement("a");
@@ -89,14 +95,21 @@ export function EmojiExport() {
       document.body.removeChild(a);
       URL.revokeObjectURL(url);
 
-      setExportStatus("ZIP downloaded!");
-      setTimeout(() => setExportStatus(""), 2000);
+      setStatusWithTimeout("ZIP downloaded!");
     } catch (error) {
+      if (error instanceof DOMException && error.name === 'AbortError') {
+        return;
+      }
       console.error("Error creating ZIP:", error);
-      setExportStatus("Error creating ZIP");
-      setTimeout(() => setExportStatus(""), 2000);
+      setStatusWithTimeout("Error creating ZIP");
     }
-  };
+  }, [selectedEmojis, setStatusWithTimeout]);
+
+  useEffect(() => {
+    return () => {
+      abortControllerRef.current?.abort();
+    };
+  }, []);
 
   return (
     <div className="fixed bottom-4 left-0 right-0 mx-2 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 p-4 rounded-lg shadow-lg border flex w-full justify-between items-center gap-x-4 z-50">
