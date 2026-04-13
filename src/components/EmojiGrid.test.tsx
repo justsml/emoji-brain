@@ -14,11 +14,19 @@ if (typeof window !== 'undefined' && !window.PointerEvent) {
   (window as any).PointerEvent = PointerEvent;
 }
 
-vi.mock('react-virtualized', async () => {
-  const actual = await vi.importActual('react-virtualized');
+vi.mock('@tanstack/react-virtual', async () => {
+  const actual = await vi.importActual('@tanstack/react-virtual');
   return {
     ...actual,
-    AutoSizer: ({ children }: any) => children({ width: 1000, height: 1000 }),
+    useVirtualizer: vi.fn(() => ({
+      getVirtualItems: () => Array.from({ length: 3 }, (_, i) => ({
+        key: `row-${i}`,
+        index: i,
+        start: i * 153,
+        size: 153,
+      })),
+      getTotalSize: () => 459,
+    })),
   };
 });
 
@@ -104,8 +112,7 @@ describe('EmojiGrid Component', () => {
       onAnnounceSelection={() => {}}
     />);
     
-    const emojiButtons = screen.getAllByRole('gridcell');
-    const buttons = emojiButtons.map(cell => cell.querySelector('button')!);
+    const buttons = screen.getAllByRole('button', { name: /emoji/i });
     
     buttons[0].focus();
     expect(document.activeElement).toBe(buttons[0]);
@@ -125,8 +132,7 @@ describe('EmojiGrid Component', () => {
       onAnnounceSelection={mockAnnounce}
     />);
     
-    const emojiButtons = screen.getAllByRole('gridcell');
-    const button = emojiButtons[0].querySelector('button')!;
+    const button = screen.getByRole('button', { name: 'emoji1.png' });
     
     button.focus();
     await userEvent.keyboard('{Enter}');
