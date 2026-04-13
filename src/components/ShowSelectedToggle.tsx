@@ -1,10 +1,8 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { setShowSelectedOnly, selectShowSelectedOnly } from '../store/filteredEmojisSlice';
+import { useEmojiContext } from '../context/EmojiContext';
 
 const ShowSelectedToggle: React.FC = () => {
-  const dispatch = useDispatch();
-  const showSelectedOnly = useSelector(selectShowSelectedOnly);
+  const { showSelectedOnly, setShowSelectedOnly } = useEmojiContext();
 
   return (
     <div className="flex items-center gap-2">
@@ -12,7 +10,7 @@ const ShowSelectedToggle: React.FC = () => {
         type="checkbox"
         id="show-selected-only"
         checked={showSelectedOnly}
-        onChange={(e) => dispatch(setShowSelectedOnly(e.target.checked))}
+        onChange={(e) => setShowSelectedOnly(e.target.checked)}
         className="h-4 w-4 rounded border-gray-300"
       />
       <label htmlFor="show-selected-only" className="text-sm text-muted-foreground">

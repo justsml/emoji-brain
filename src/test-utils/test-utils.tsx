@@ -1,59 +1,29 @@
 import React, { type ReactElement } from 'react';
 import { render as rtlRender } from '@testing-library/react';
-import { configureStore } from '@reduxjs/toolkit';
-import { Provider } from 'react-redux';
-import selectionReducer, { type SelectionState } from '../store/selectionSlice';
-import filteredEmojisReducer from '../store/filteredEmojisSlice';
-import type { RootState } from '../store/store';
+import { EmojiProvider } from '../context/EmojiContext';
+import type { EmojiMetadata } from '../types/emoji';
 
 interface WrapperProps {
   children: React.ReactNode;
+  initialEmojis?: EmojiMetadata[];
 }
 
 interface ExtendedRenderOptions {
-  initialState?: {
-    selection?: SelectionState;
-    filteredEmojis?: {
-      emojis: any[];
-      isSearching: boolean;
-      showSelectedOnly: boolean;
-      gridScale: number;
-    };
-  };
-  store?: ReturnType<typeof configureStore>;
+  initialEmojis?: EmojiMetadata[];
 }
 
 function render(
   ui: ReactElement,
   {
-    initialState = {
-      selection: {
-        selectedEmojis: [],
-        focusedIndex: -1
-      },
-      filteredEmojis: {
-        emojis: [],
-        isSearching: false,
-        showSelectedOnly: false,
-        gridScale: 4
-      }
-    },
-    store = configureStore({
-      reducer: {
-        selection: selectionReducer,
-        filteredEmojis: filteredEmojisReducer
-      },
-      preloadedState: initialState as any
-    }),
+    initialEmojis = [],
     ...renderOptions
   }: ExtendedRenderOptions = {}
 ) {
   function Wrapper({ children }: WrapperProps) {
-    return <Provider store={store}>{children}</Provider>;
+    return <EmojiProvider initialEmojis={initialEmojis}>{children}</EmojiProvider>;
   }
 
   return {
-    store,
     ...rtlRender(ui, {
       wrapper: Wrapper,
       ...renderOptions,
@@ -61,6 +31,5 @@ function render(
   };
 }
 
-// re-export everything
 export * from '@testing-library/react';
 export { render };

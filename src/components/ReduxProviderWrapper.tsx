@@ -1,18 +1,13 @@
 import React from 'react';
-import { Provider } from 'react-redux';
-import { store } from '../store/store'; // Adjust path if necessary
+import { EmojiProvider } from '../context/EmojiContext';
 
-interface ReduxProviderWrapperProps {
+interface EmojiProviderWrapperProps {
   children: React.ReactNode;
+  initialEmojis: any[];
 }
 
-/**
- * A wrapper component that provides the Redux store to its children.
- * This is necessary for integrating Redux with React components rendered
- * within an Astro project using client directives.
- */
-const ReduxProviderWrapper: React.FC<ReduxProviderWrapperProps> = ({ children }) => {
-  return <Provider store={store}>{children}</Provider>;
+const EmojiProviderWrapper: React.FC<EmojiProviderWrapperProps> = ({ children, initialEmojis }) => {
+  return <EmojiProvider initialEmojis={initialEmojis}>{children}</EmojiProvider>;
 };
 
-export default ReduxProviderWrapper;
+export default EmojiProviderWrapper;

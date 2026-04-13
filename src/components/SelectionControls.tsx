@@ -1,21 +1,23 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectAllVisible, resetSelection } from '../store/selectionSlice';
-import { selectFilteredEmojis } from '../store/filteredEmojisSlice';
+import { useEmojiContext } from '../context/EmojiContext';
 import { Button } from '@/components/ui/button';
 import { CheckSquare, XSquare } from 'lucide-react';
 
 const SelectionControls: React.FC = () => {
-  const dispatch = useDispatch();
-  const filteredEmojis = useSelector(selectFilteredEmojis);
+  const { selectedEmojis, filteredEmojis, toggleEmojiSelection, resetSelection } = useEmojiContext();
 
   const handleSelectAllVisible = () => {
-    dispatch(selectAllVisible(filteredEmojis));
+    const allFiltered = filteredEmojis;
+    allFiltered.forEach((emoji) => {
+      if (!selectedEmojis.some((e) => e.id === emoji.id)) {
+        toggleEmojiSelection(emoji);
+      }
+    });
   };
 
   const handleDeselectAll = () => {
     if (window.confirm('Are you sure you want to deselect all emojis?')) {
-      dispatch(resetSelection());
+      resetSelection();
     }
   };
 

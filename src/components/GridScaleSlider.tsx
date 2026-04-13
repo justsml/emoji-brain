@@ -1,17 +1,14 @@
 import React from "react";
 import * as Slider from "@radix-ui/react-slider";
-import { useDispatch, useSelector } from "react-redux";
-import { setGridScale, selectGridScale } from "../store/filteredEmojisSlice";
+import { useEmojiContext } from "../context/EmojiContext";
 import { cn } from "../lib/utils";
 import { LayoutGrid, ZoomIn } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
-// Fixed scale points between 48px and 192px
 export const GRID_SCALES = [48, 64, 80, 96, 128, 160, 192];
 
 const GridScaleSlider: React.FC = () => {
-  const dispatch = useDispatch();
-  const gridScale = useSelector(selectGridScale);
+  const { gridScale, setGridScale } = useEmojiContext();
 
   return (
     <div className="flex flex-col gap-2 w-full max-w-[240px]">
@@ -39,11 +36,10 @@ const GridScaleSlider: React.FC = () => {
         value={[gridScale]}
         max={GRID_SCALES.length - 1}
         step={1}
-        onValueChange={([val]) => dispatch(setGridScale(val))}
+        onValueChange={([val]) => setGridScale(val)}
       >
         <Slider.Track className="bg-secondary relative grow rounded-full h-[3px] transition-colors group-hover:bg-secondary/80">
           <Slider.Range className="absolute bg-primary rounded-full h-full" />
-          {/* Tick marks */}
           <div className="absolute inset-0 flex justify-between px-[1px]">
             {GRID_SCALES.map((scale, i) => (
               <div 
