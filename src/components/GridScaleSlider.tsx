@@ -2,8 +2,7 @@ import React from "react";
 import * as Slider from "@radix-ui/react-slider";
 import { useEmojiContext } from "../context/EmojiContext";
 import { cn } from "../lib/utils";
-import { LayoutGrid, ZoomIn } from "lucide-react";
-import { motion, AnimatePresence } from "motion";
+import { LayoutGrid } from "lucide-react";
 
 export const GRID_SCALES = [48, 64, 80, 96, 128, 160, 192];
 
@@ -17,18 +16,12 @@ const GridScaleSlider: React.FC = () => {
           <LayoutGrid size={12} className="opacity-70" />
           <span className="font-medium tracking-tight uppercase">Scale</span>
         </div>
-        <AnimatePresence mode="wait">
-          <motion.span
-            key={gridScale}
-            initial={{ opacity: 0, y: 2 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -2 }}
-            transition={{ duration: 0.15 }}
-            className="font-mono bg-secondary px-1.5 py-0.5 rounded tabular-nums"
-          >
-            {GRID_SCALES[gridScale]}px
-          </motion.span>
-        </AnimatePresence>
+        <span
+          key={gridScale}
+          className="font-mono bg-secondary px-1.5 py-0.5 rounded tabular-nums animate-in fade-in slide-in-from-bottom-1 duration-150"
+        >
+          {GRID_SCALES[gridScale]}px
+        </span>
       </div>
       
       <Slider.Root
