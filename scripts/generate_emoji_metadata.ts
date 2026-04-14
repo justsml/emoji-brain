@@ -19,16 +19,40 @@ function generateId(filename: string) {
   return crypto.createHash('md5').update(filename).digest('hex').slice(0, 8);
 }
 
-// Helper function to extract categories and tags from filename
-async function extractMetadata(filename: string) {
-  const name = path.parse(filename).name;
-  // const extension = path.parse(filename).ext.toLowerCase();
-  // const parts = name.split(/[-_\s]+/).filter(Boolean);
-  
+// Load existing metadata to preserve labels across runs
+async function loadExistingMetadata(): Promise<Map<string, { categories: string[]; tags: string[] }>> {
+  const existing = new Map<string, { categories: string[]; tags: string[] }>();
+  try {
+    const content = await fs.readFile(OUTPUT_FILE, 'utf8');
+    const data = JSON.parse(content);
+    for (const emoji of data.emojis || []) {
+      if (emoji.filename && (emoji.categories?.length || emoji.tags?.length)) {
+        existing.set(emoji.filename, {
+          categories: emoji.categories || [],
+          tags: emoji.tags || [],
+        });
+      }
+    }
+  } catch {
+    // File doesn't exist yet, return empty map
+  }
+  return existing;
+}
 
+// Helper function to extract categories and tags from filename
+async function extractMetadata(filename: string, existingMetadata: Map<string, { categories: string[]; tags: string[] }>, forceRegenerate = false) {
+  const name = path.parse(filename).name;
+  
+  // Check if we have existing metadata for this file
+  const existing = existingMetadata.get(filename);
+  
+  // If existing metadata has labels and we're not forcing regeneration, reuse them
+  if (!forceRegenerate && existing && (existing.categories.length > 0 || existing.tags.length > 0)) {
+    return existing;
+  }
+  
   const labels = await emojiLabeler(join(EMOJIS_DIR, filename)).catch((error) => {
     console.error(`Error labeling emoji ${filename}:`, error);
-    process.exit(1);
     return {};
   });
 
@@ -39,26 +63,34 @@ async function extractMetadata(filename: string) {
     } catch (error) {
       console.error(`Error parsing labels for ${filename}:`, error);
       console.error(`Received labels: ${labels}`);
-      process.exit(1);
+      // Return existing metadata if parsing fails
+      return existing || { categories: [], tags: [] };
     }
-  } else if (labels && typeof labels === 'object') {
-    return labels;
   }
 
-  return {
+  // Return existing metadata if AI didn't generate new labels
+  return existing || {
     categories: [],
     tags: [],
-  }
-  // return {
-  //   categories: [...metadata.categories],
-  //   tags: [...metadata.tags]
-  // };
+  };
 }
 
 async function generateEmojiMetadata() {
   try {
     // Ensure output directory exists
     await fs.mkdir(path.dirname(OUTPUT_FILE), { recursive: true });
+
+    // Check for --force flag to regenerate all labels
+    const forceRegenerate = process.argv.includes('--force') || process.argv.includes('-f');
+    
+    // Load existing metadata to preserve labels across runs
+    const existingMetadata = await loadExistingMetadata();
+    
+    if (forceRegenerate) {
+      console.log(`⚠️  Force regeneration mode - all labels will be regenerated`);
+    } else {
+      console.log(`📦 Loaded existing metadata for ${existingMetadata.size} emojis`);
+    }
 
     // Read emoji directory
     const files = await fs.readdir(EMOJIS_DIR);
@@ -71,8 +103,8 @@ async function generateEmojiMetadata() {
       if (!stats.isFile()) return null;
       
       try {
-        // Extract metadata
-        const { categories, tags } = await extractMetadata(filename);
+        // Extract metadata (passing existing metadata for consistency)
+        const { categories, tags } = await extractMetadata(filename, existingMetadata, forceRegenerate);
         
         return {
           id: generateId(filename),
@@ -96,6 +128,11 @@ async function generateEmojiMetadata() {
       .filter(Boolean)
       .sort((a, b) => a?.filename?.localeCompare(b!.filename) ?? 0);
 
+    // Count how many had existing labels preserved
+    const preservedCount = validEmojis.filter(
+      (e) => e?.categories?.length || e?.tags?.length
+    ).length;
+
     // Create final metadata object
     const metadata = {
       total: validEmojis.length,
@@ -111,7 +148,11 @@ async function generateEmojiMetadata() {
     );
 
     console.log(`✨ Generated metadata for ${validEmojis.length} emojis`);
+    if (!forceRegenerate) {
+      console.log(`💾 Preserved labels for ${preservedCount} emojis (consistent with previous runs)`);
+    }
     console.log(`📝 Metadata saved to: ${OUTPUT_FILE}`);
+    console.log(`\n💡 Tip: Use --force flag to regenerate all labels with the AI`);
 
   } catch (error) {
     console.error('Error generating emoji metadata:', error);

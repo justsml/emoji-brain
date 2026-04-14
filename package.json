@@ -14,7 +14,10 @@
     "test:coverage": "vitest run --coverage",
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui",
-    "test:all": "bun run test && bun run test:e2e"
+    "test:all": "bun run test && bun run test:e2e",
+    "convert-to-webp": "bun scripts/convert-to-webp.ts",
+    "generate-metadata": "bun scripts/generate_emoji_metadata.ts",
+    "ingest": "bun scripts/ingest.ts"
   },
   "dependencies": {
     "@astrojs/react": "^5.0.3",
@@ -48,7 +51,7 @@
     "@vitest/ui": "^3.1.1",
     "dedent": "^1.5.3",
     "jsdom": "^26.0.0",
-    "pagefind": "^1.3.0",
+    "pagefind": "^1.5.2",
     "sharp": "^0.33.5",
     "typescript": "^6.0.2",
     "vitest": "^4.1.4"
