@@ -3,7 +3,7 @@ import * as Slider from "@radix-ui/react-slider";
 import { useEmojiContext } from "../context/EmojiContext";
 import { cn } from "../lib/utils";
 import { LayoutGrid, ZoomIn } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "motion";
 
 export const GRID_SCALES = [48, 64, 80, 96, 128, 160, 192];
 
