@@ -4,6 +4,7 @@ import { promises as fs } from 'fs';
 import path, { join } from 'path';
 import { fileURLToPath } from 'url';
 import crypto from 'crypto';
+import sharp from 'sharp';
 import { emojiLabeler } from './emoji-labeler';
 
 // Get current directory in ES modules
@@ -58,7 +59,9 @@ async function extractMetadata(filename: string, existingMetadata: Map<string, {
 
   if (typeof labels === 'string') {
     try {
-      const parsedLabels = JSON.parse(labels);
+      // Strip markdown code block syntax if present
+      const cleanedLabels = labels.replace(/^```json\s*|\s*```$/g, '').trim();
+      const parsedLabels = JSON.parse(cleanedLabels);
       return parsedLabels;
     } catch (error) {
       console.error(`Error parsing labels for ${filename}:`, error);
@@ -106,6 +109,9 @@ async function generateEmojiMetadata() {
         // Extract metadata (passing existing metadata for consistency)
         const { categories, tags } = await extractMetadata(filename, existingMetadata, forceRegenerate);
         
+        // Get image dimensions using sharp
+        const metadata = await sharp(path.join(EMOJIS_DIR, filename)).metadata();
+        
         return {
           id: generateId(filename),
           filename,
@@ -113,7 +119,9 @@ async function generateEmojiMetadata() {
           categories,
           tags,
           created: stats.birthtime.toISOString(),
-          size: stats.size
+          size: stats.size,
+          width: metadata.width || 0,
+          height: metadata.height || 0
         };
       } catch (error) {
         console.error(`\n❌ Failed to process metadata for: ${filename}`);
