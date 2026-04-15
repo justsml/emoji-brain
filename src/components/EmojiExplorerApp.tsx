@@ -126,6 +126,7 @@ const _EmojiExplorerApp: React.FC<EmojiExplorerAppProps> = ({
     filteredEmojis,
     isSearching,
     showSelectedOnly,
+    gridScale,
     toggleEmojiSelection,
     setFilteredEmojis,
     setIsSearching,
@@ -211,19 +212,20 @@ const _EmojiExplorerApp: React.FC<EmojiExplorerAppProps> = ({
           <p className="text-center text-muted-foreground">Searching...</p>
         ) : searchPromise ? (
           <Suspense fallback={<p className="text-center text-muted-foreground">Loading results...</p>}>
-            <EmojiGridRenderer 
-              promise={searchPromise} 
+            <EmojiGridRenderer
+              promise={searchPromise}
+              gridScale={gridScale}
               onToggle={handleEmojiSelect}
               onFocusChange={setFocusedIndex}
               onAnnounce={handleAnnounceSelection}
             />
           </Suspense>
         ) : (
-          <EmojiGrid 
-            emojis={filteredEmojis} 
+          <EmojiGrid
+            emojis={filteredEmojis}
             selectedEmojis={selectedEmojis}
             focusedIndex={0}
-            gridScale={4}
+            gridScale={gridScale}
             onToggleSelection={handleEmojiSelect}
             onSetFocusedIndex={setFocusedIndex}
             onAnnounceSelection={handleAnnounceSelection}
@@ -241,14 +243,15 @@ const _EmojiExplorerApp: React.FC<EmojiExplorerAppProps> = ({
 
 interface EmojiGridRendererProps {
   promise: Promise<EmojiMetadata[]>;
+  gridScale: number;
   onToggle: (emoji: EmojiMetadata) => void;
   onFocusChange: (index: number) => void;
   onAnnounce: (emoji: EmojiMetadata, isSelected: boolean) => void;
 }
 
-function EmojiGridRenderer({ promise, onToggle, onFocusChange, onAnnounce }: EmojiGridRendererProps) {
+function EmojiGridRenderer({ promise, gridScale, onToggle, onFocusChange, onAnnounce }: EmojiGridRendererProps) {
   const emojis = use(promise);
-  
+
   if (emojis.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center py-20 space-y-4">
@@ -257,13 +260,13 @@ function EmojiGridRenderer({ promise, onToggle, onFocusChange, onAnnounce }: Emo
       </div>
     );
   }
-  
+
   return (
-    <EmojiGrid 
+    <EmojiGrid
       emojis={emojis}
       selectedEmojis={[]}
       focusedIndex={0}
-      gridScale={4}
+      gridScale={gridScale}
       onToggleSelection={onToggle}
       onSetFocusedIndex={onFocusChange}
       onAnnounceSelection={onAnnounce}

@@ -46,6 +46,10 @@ const EmojiCell = ({
     onKeyDown(e, index, columnCount);
   }, [onKeyDown, index, columnCount]);
 
+  const handleFocus = useCallback(() => {
+    onFocusChange(index);
+  }, [onFocusChange, index]);
+
   return (
     <div
       className="p-3"
@@ -76,7 +80,7 @@ const EmojiCell = ({
         }}
         onClick={handleClick}
         onKeyDown={handleKeyDown}
-        onFocus={() => onFocusChange(index)}
+        onFocus={handleFocus}
         tabIndex={isFocused ? 0 : -1}
         aria-label={emoji.filename}
       >
@@ -114,6 +118,7 @@ const EmojiCell = ({
 };
 
 const MemoizedEmojiCell = Object.assign(EmojiCell, { displayName: 'MemoizedEmojiCell' });
+Object.freeze(MemoizedEmojiCell);
 
 const EmojiGrid = ({
   emojis,
@@ -131,11 +136,10 @@ const EmojiGrid = ({
     const baseSize = GRID_SCALES[scale];
     const availableWidth = width - 32;
     const columnCount = Math.max(1, Math.floor(availableWidth / (baseSize + GRID_GAP)));
-    const columnWidth = Math.floor(availableWidth / columnCount);
-    return { columnCount, columnWidth };
+    return { columnCount };
   }, []);
 
-  const { columnCount, columnWidth } = calculateLayout(width, gridScale);
+  const { columnCount } = calculateLayout(width, gridScale);
 
   useEffect(() => {
     if (!parentRef.current) return;
@@ -188,7 +192,11 @@ const EmojiGrid = ({
   }, [emojis, onSetFocusedIndex, onToggleSelection, onAnnounceSelection, selectedEmojis]);
 
   const isSelectedMap = useMemo(() => {
-    return new Map(selectedEmojis.map(e => [e.id, true]));
+    const map = new Map();
+    for (const emoji of selectedEmojis) {
+      map.set(emoji.id, true);
+    }
+    return map;
   }, [selectedEmojis]);
 
   if (emojis.length === 0) {
@@ -203,36 +211,30 @@ const EmojiGrid = ({
   return (
     <div
       ref={parentRef}
-      className="w-full h-[calc(100vh-300px)] min-h-[500px] mt-8 px-4 overflow-auto"
+      className="w-full h-[calc(100vh-300px)] min-h-[500px] mt-8 px-4 overflow-x-hidden overflow-y-auto"
       style={{
         contentVisibility: 'auto',
       }}
     >
       <div
-        className="grid gap-6"
+        className="grid gap-6 w-full max-w-full"
         style={{
-          gridTemplateColumns: `repeat(${columnCount}, ${columnWidth}px)`,
-          justifyContent: 'center',
+          gridTemplateColumns: `repeat(${columnCount}, 1fr)`,
         }}
       >
-        {emojis.map((emoji, index) => {
-          const isSelected = isSelectedMap.has(emoji.id);
-          const isFocused = focusedIndex === index;
-
-          return (
-            <MemoizedEmojiCell
-              key={emoji.id}
-              emoji={emoji}
-              index={index}
-              isSelected={isSelected}
-              isFocused={isFocused}
-              columnCount={columnCount}
-              onToggle={onToggleSelection}
-              onKeyDown={handleKeyDown}
-              onFocusChange={onSetFocusedIndex}
-            />
-          );
-        })}
+        {emojis.map((emoji, index) => (
+          <MemoizedEmojiCell
+            key={emoji.id}
+            emoji={emoji}
+            index={index}
+            isSelected={isSelectedMap.has(emoji.id)}
+            isFocused={focusedIndex === index}
+            columnCount={columnCount}
+            onToggle={onToggleSelection}
+            onKeyDown={handleKeyDown}
+            onFocusChange={onSetFocusedIndex}
+          />
+        ))}
       </div>
     </div>
   );

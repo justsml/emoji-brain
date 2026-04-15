@@ -31,14 +31,14 @@ const GridScaleSlider: React.FC = () => {
         step={1}
         onValueChange={([val]) => setGridScale(val)}
       >
-        <Slider.Track className="bg-secondary relative grow rounded-full h-[3px] transition-colors group-hover:bg-secondary/80">
-          <Slider.Range className="absolute bg-primary rounded-full h-full" />
+        <Slider.Track className="bg-secondary relative grow rounded-full h-[3px] transition-colors duration-150 ease-out group-hover:bg-secondary/80">
+          <Slider.Range className="absolute bg-primary rounded-full h-full transition-all duration-150 ease-out" />
           <div className="absolute inset-0 flex justify-between px-[1px]">
             {GRID_SCALES.map((scale, i) => (
               <div 
                 key={scale} 
                 className={cn(
-                  "w-[1px] h-1 mt-[1px] transition-colors",
+                  "w-[1px] h-1 mt-[1px] transition-all duration-100 ease-out",
                   i <= gridScale ? "bg-primary/40" : "bg-muted-foreground/20"
                 )} 
               />
@@ -48,7 +48,7 @@ const GridScaleSlider: React.FC = () => {
         <Slider.Thumb
           className={cn(
             "block w-4 h-4 bg-background border-2 border-primary rounded-full shadow-lg",
-            "transition-all hover:scale-125 focus:outline-none focus:ring-2 focus:ring-primary/20",
+            "transition-all duration-100 ease-out hover:scale-125 focus:outline-none focus:ring-2 focus:ring-primary/20",
             "cursor-grab active:cursor-grabbing hover:border-primary active:scale-110"
           )}
           aria-label="Grid scale"
