@@ -1,7 +1,6 @@
 import React, { useState, useCallback, useEffect, use, Suspense } from "react";
 import type { EmojiMetadata } from "../types/emoji";
 import SearchBar from "./SearchBar";
-import SelectionControls from "./SelectionControls";
 import EmojiGrid from "./EmojiGrid";
 import GridScaleSlider from "./GridScaleSlider";
 import { EmojiExport } from "./EmojiExport";
@@ -133,6 +132,7 @@ const _EmojiExplorerApp: React.FC<EmojiExplorerAppProps> = ({
     setFocusedIndex,
     announceSelection,
     resetSelection,
+    selectAllVisible,
   } = useEmojiContext();
   
   const [searchTerm, setSearchTerm] = useState("");
@@ -198,7 +198,6 @@ const _EmojiExplorerApp: React.FC<EmojiExplorerAppProps> = ({
                 count={filteredEmojis.length}
               />
             </div>
-            <SelectionControls />
           </div>
           <div className="flex items-center justify-between gap-6 flex-wrap">
             <ShowSelectedToggle />
@@ -234,7 +233,13 @@ const _EmojiExplorerApp: React.FC<EmojiExplorerAppProps> = ({
       </section>
 
       <div className="container mx-auto p-4">
-        <EmojiExport selectedEmojis={selectedEmojis} onClearSelection={handleResetSelection} />
+        <EmojiExport
+          selectedEmojis={selectedEmojis}
+          onClearSelection={handleResetSelection}
+          onSelectAll={() => selectAllVisible(filteredEmojis)}
+          filteredEmojis={filteredEmojis}
+          gridScale={gridScale}
+        />
       </div>
     </div>
     </ErrorBoundary>

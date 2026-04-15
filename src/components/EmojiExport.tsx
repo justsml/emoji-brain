@@ -8,13 +8,18 @@ import {
 } from "./ui/dropdown-menu";
 import type { EmojiMetadata } from "../types/emoji";
 import { getAbsoluteUrl } from "../lib/utils";
+import { CheckSquare, XSquare } from "lucide-react";
 
 interface EmojiExportProps {
   selectedEmojis: EmojiMetadata[];
   onClearSelection: () => void;
+  onSelectAll: () => void;
+  filteredEmojis: EmojiMetadata[];
+  gridScale: number;
 }
 
-export function EmojiExport({ selectedEmojis, onClearSelection }: EmojiExportProps) {
+export function EmojiExport({ selectedEmojis, onClearSelection, onSelectAll, filteredEmojis, gridScale }: EmojiExportProps) {
+  const iconGap = 0.75 + (gridScale * 0.25);
   const [exportStatus, setExportStatus] = useState<string>("");
   const abortControllerRef = useRef<AbortController | null>(null);
 
@@ -112,29 +117,33 @@ export function EmojiExport({ selectedEmojis, onClearSelection }: EmojiExportPro
   }, []);
 
   return (
-    <div className="fixed bottom-4 left-0 right-0 mx-2 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 p-4 rounded-lg shadow-lg border flex w-full justify-between items-center gap-x-4 z-50">
-      <div className="flex items-center gap-3 min-w-0">
-        <div className="text-sm font-medium shrink-0">
-          {selectedEmojis.length} selected
-          {selectedEmojis.length > 0 && (
-            <span className="ml-2 text-muted-foreground">
-              (
-              {parseFloat(
-                (
-                  selectedEmojis.reduce((total, emoji) => total + emoji.size, 0) /
-                  1024
-                ).toFixed(1)
-              ).toLocaleString()}{" "}
-              KB)
-            </span>
+    <div className="fixed bottom-6 left-0 right-0 mx-auto bg-background/80 backdrop-blur-xl supports-[backdrop-filter]:bg-background/60 p-3 pr-5 rounded-2xl shadow-2xl border border-border/50 flex w-full max-w-[50vw] min-w-96 justify-between items-center gap-x-4 z-50">
+      <div className="flex items-center gap-4 min-w-0 p-5">
+        <div className="text-lg font-medium shrink-0 text-foreground/90">
+          {selectedEmojis.length === 0 ? (
+            <span className="text-muted-foreground">No emojis selected</span>
+          ) : (
+            <>
+              <span className="font-semibold">{selectedEmojis.length}</span> selected
+              {selectedEmojis.length > 0 && (
+                <span className="ml-2 text-muted-foreground/70 text-xs">
+                  ({parseFloat(
+                    (
+                      selectedEmojis.reduce((total, emoji) => total + emoji.size, 0) /
+                      1024
+                    ).toFixed(1)
+                  ).toLocaleString()} KB)
+                </span>
+              )}
+            </>
           )}
         </div>
         {selectedEmojis.length > 0 && (
-          <div className="flex gap-1 overflow-x-auto max-w-md scrollbar-hide" style={{ scrollSnapType: 'x mandatory' }}>
-            {selectedEmojis.map((emoji) => (
+          <div className="flex gap-1.5 overflow-x-auto max-w-md scrollbar-hide mask-fade-right" style={{ scrollSnapType: 'x mandatory' }}>
+            {selectedEmojis.slice(0, 8).map((emoji, index) => (
               <div
                 key={emoji.id}
-                className="shrink-0 w-8 h-8 flex items-center justify-center"
+                className="shrink-0 w-7 h-7 flex items-center justify-center bg-secondary/50 rounded-md overflow-hidden ring-1 ring-border/50"
                 style={{ scrollSnapAlign: 'start' }}
               >
                 <img
@@ -146,26 +155,55 @@ export function EmojiExport({ selectedEmojis, onClearSelection }: EmojiExportPro
                 />
               </div>
             ))}
+            {selectedEmojis.length > 8 && (
+              <div className="shrink-0 w-7 h-7 flex items-center justify-center bg-secondary/30 rounded-md text-xs text-muted-foreground font-medium">
+                +{selectedEmojis.length - 8}
+              </div>
+            )}
           </div>
         )}
       </div>
 
-      <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-          <Button variant="outline">Export...</Button>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent align="end">
-          <DropdownMenuItem onClick={exportAsPlainText}>
-            Plain Text
-          </DropdownMenuItem>
-          <DropdownMenuItem onClick={exportAsHtml}>HTML</DropdownMenuItem>
-          <DropdownMenuItem onClick={exportAsCss}>CSS</DropdownMenuItem>
-          <DropdownMenuItem onClick={exportAsMarkdownTable}>
-            Markdown Table
-          </DropdownMenuItem>
-          <DropdownMenuItem onClick={downloadZip}>ZIP File</DropdownMenuItem>
-        </DropdownMenuContent>
-      </DropdownMenu>
+      <div className="flex items-center shrink-0" style={{ gap: `${iconGap}rem` }}>
+        <Button
+          variant="ghost"
+          onClick={onSelectAll}
+          className="h-9 w-9 p-0 rounded-xl transition-all duration-200 hover:bg-primary/10 hover:text-primary hover:scale-105 active:scale-95"
+          size="sm"
+          title="Select All Visible"
+        >
+          <CheckSquare className="h-4 w-4" />
+        </Button>
+        <Button
+          variant="ghost"
+          onClick={onClearSelection}
+          className="h-9 w-9 p-0 rounded-xl transition-all duration-200 hover:bg-destructive/10 hover:text-destructive hover:scale-105 active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100"
+          size="sm"
+          title="Deselect All"
+          disabled={selectedEmojis.length === 0}
+        >
+          <XSquare className="h-4 w-4" />
+        </Button>
+        <div className="w-px h-6 bg-border" />
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="outline" className="h-9 px-4 rounded-xl font-medium transition-all duration-200 hover:shadow-md hover:scale-[1.02] active:scale-[0.98]">
+              Export
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end" className="rounded-xl shadow-xl border-border/50">
+            <DropdownMenuItem onClick={exportAsPlainText}>
+              Plain Text
+            </DropdownMenuItem>
+            <DropdownMenuItem onClick={exportAsHtml}>HTML</DropdownMenuItem>
+            <DropdownMenuItem onClick={exportAsCss}>CSS</DropdownMenuItem>
+            <DropdownMenuItem onClick={exportAsMarkdownTable}>
+              Markdown Table
+            </DropdownMenuItem>
+            <DropdownMenuItem onClick={downloadZip}>ZIP File</DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      </div>
 
       {exportStatus && (
         <div className="text-sm text-muted-foreground animate-in fade-in slide-in-from-top-1">

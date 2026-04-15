@@ -27,6 +27,22 @@ interface EmojiCellProps {
   onFocusChange: (index: number) => void;
 }
 
+const AnimatedImage = ({ src, alt, isAnimated }: { src: string; alt: string; isAnimated: boolean }) => {
+  return (
+    <img
+      src={src}
+      alt={alt}
+      className="w-full h-full object-contain"
+      loading="lazy"
+      decoding="async"
+      fetchPriority="low"
+      style={{
+        imageRendering: 'auto',
+      }}
+    />
+  );
+};
+
 const EmojiCell = ({
   emoji,
   index,
@@ -54,8 +70,6 @@ const EmojiCell = ({
     <div
       className="p-3"
       style={{
-        contentVisibility: 'auto',
-        containIntrinsicSize: 'auto 80px',
         contain: 'layout style',
       }}
     >
@@ -75,7 +89,6 @@ const EmojiCell = ({
           isFocused && "ring-2 ring-primary/50 bg-primary/10"
         )}
         style={{
-          willChange: 'transform',
           transform: 'translateZ(0)',
         }}
         onClick={handleClick}
@@ -94,16 +107,10 @@ const EmojiCell = ({
         )}
 
         <div className="flex items-center justify-center flex-1 w-full h-full relative z-0 p-2">
-          <img
+          <AnimatedImage
             src={emoji.path}
             alt={emoji.filename}
-            className="w-full h-full object-contain"
-            loading="lazy"
-            decoding="async"
-            fetchPriority="low"
-            style={{
-              imageRendering: 'auto',
-            }}
+            isAnimated={emoji.filename.endsWith('.webp') || emoji.filename.endsWith('.gif')}
           />
         </div>
 
@@ -211,10 +218,7 @@ const EmojiGrid = ({
   return (
     <div
       ref={parentRef}
-      className="w-full h-[calc(100vh-300px)] min-h-[500px] mt-8 px-4 overflow-x-hidden overflow-y-auto"
-      style={{
-        contentVisibility: 'auto',
-      }}
+      className="w-full mt-8 px-4"
     >
       <div
         className="grid gap-6 w-full max-w-full"
