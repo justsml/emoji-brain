@@ -40,6 +40,24 @@ async function loadExistingMetadata(): Promise<Map<string, { categories: string[
   return existing;
 }
 
+// Migrate metadata from old filename to new filename when only extension changes
+function migrateMetadataForExtensionChange(
+  filename: string,
+  existingMetadata: Map<string, { categories: string[]; tags: string[] }>
+): { categories: string[]; tags: string[] } | null {
+  const newName = path.parse(filename).name;
+  
+  // Look for existing metadata with same base name but different extension
+  for (const [existingFilename, metadata] of existingMetadata.entries()) {
+    const existingName = path.parse(existingFilename).name;
+    if (existingName === newName && existingFilename !== filename) {
+      console.log(`🔄 Migrating metadata from ${existingFilename} to ${filename}`);
+      return metadata;
+    }
+  }
+  return null;
+}
+
 // Helper function to extract categories and tags from filename
 async function extractMetadata(filename: string, existingMetadata: Map<string, { categories: string[]; tags: string[] }>, forceRegenerate = false) {
   const name = path.parse(filename).name;
@@ -50,6 +68,14 @@ async function extractMetadata(filename: string, existingMetadata: Map<string, {
   // If existing metadata has labels and we're not forcing regeneration, reuse them
   if (!forceRegenerate && existing && (existing.categories.length > 0 || existing.tags.length > 0)) {
     return existing;
+  }
+  
+  // Check for extension change migration (e.g., .png to .webp)
+  if (!forceRegenerate) {
+    const migrated = migrateMetadataForExtensionChange(filename, existingMetadata);
+    if (migrated) {
+      return migrated;
+    }
   }
   
   const labels = await emojiLabeler(join(EMOJIS_DIR, filename)).catch((error) => {

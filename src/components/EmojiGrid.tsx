@@ -1,9 +1,8 @@
 import type { ReactElement, KeyboardEvent } from "react";
-import { useRef, useCallback, useMemo, useState, useEffect } from "react";
+import { useCallback, useMemo, useState, useEffect, useRef } from "react";
 import type { EmojiMetadata } from "../types/emoji";
 import { cn } from "../lib/utils";
 import { GRID_SCALES } from "./GridScaleSlider";
-import { useVirtualizer } from "@tanstack/react-virtual";
 
 interface EmojiGridProps {
   emojis: EmojiMetadata[];
@@ -48,7 +47,14 @@ const EmojiCell = ({
   }, [onKeyDown, index, columnCount]);
 
   return (
-    <div className="p-3">
+    <div
+      className="p-3"
+      style={{
+        contentVisibility: 'auto',
+        containIntrinsicSize: 'auto 80px',
+        contain: 'layout style',
+      }}
+    >
       <button
         type="button"
         className={cn(
@@ -60,10 +66,14 @@ const EmojiCell = ({
           "hover:shadow-xl hover:border-primary/40 hover:scale-[1.02]",
           "active:scale-[0.98]",
           isSelected 
-            ? "border-primary bg-primary/20 ring-2 ring-primary/30 shadow-primary/20" 
+            ? "border-primary bg-primary/20 ring-2 ring-primary/30" 
             : "border-border/40",
           isFocused && "ring-2 ring-primary/50 bg-primary/10"
         )}
+        style={{
+          willChange: 'transform',
+          transform: 'translateZ(0)',
+        }}
         onClick={handleClick}
         onKeyDown={handleKeyDown}
         onFocus={() => onFocusChange(index)}
@@ -83,11 +93,12 @@ const EmojiCell = ({
           <img
             src={emoji.path}
             alt={emoji.filename}
-            className="w-full h-full object-contain drop-shadow-sm"
+            className="w-full h-full object-contain"
             loading="lazy"
             decoding="async"
+            fetchPriority="low"
             style={{
-              filter: isSelected ? "drop-shadow(0 0 8px rgba(var(--primary), 0.4))" : "none"
+              imageRendering: 'auto',
             }}
           />
         </div>
@@ -121,11 +132,10 @@ const EmojiGrid = ({
     const availableWidth = width - 32;
     const columnCount = Math.max(1, Math.floor(availableWidth / (baseSize + GRID_GAP)));
     const columnWidth = Math.floor(availableWidth / columnCount);
-    const rowHeight = columnWidth;
-    return { columnCount, columnWidth, rowHeight };
+    return { columnCount, columnWidth };
   }, []);
 
-  const { columnCount, rowHeight } = calculateLayout(width, gridScale);
+  const { columnCount, columnWidth } = calculateLayout(width, gridScale);
 
   useEffect(() => {
     if (!parentRef.current) return;
@@ -148,7 +158,7 @@ const EmojiGrid = ({
     return () => {};
   }, []);
 
-  const handleKeyDown = useCallback((e: KeyboardEvent, index: number, columnCount: number) => {
+  const handleKeyDown = useCallback((e: KeyboardEvent, index: number, colCount: number) => {
     switch (e.key) {
       case "ArrowRight":
         e.preventDefault();
@@ -160,11 +170,11 @@ const EmojiGrid = ({
         break;
       case "ArrowUp":
         e.preventDefault();
-        onSetFocusedIndex(Math.max(0, index - columnCount));
+        onSetFocusedIndex(Math.max(0, index - colCount));
         break;
       case "ArrowDown":
         e.preventDefault();
-        onSetFocusedIndex(Math.min(emojis.length - 1, index + columnCount));
+        onSetFocusedIndex(Math.min(emojis.length - 1, index + colCount));
         break;
       case "Enter":
       case " ":
@@ -181,15 +191,6 @@ const EmojiGrid = ({
     return new Map(selectedEmojis.map(e => [e.id, true]));
   }, [selectedEmojis]);
 
-  const virtualizer = useVirtualizer({
-    count: Math.ceil(emojis.length / columnCount),
-    getScrollElement: () => parentRef.current,
-    estimateSize: () => rowHeight,
-    overscan: 5,
-  });
-
-  const rows = virtualizer.getVirtualItems();
-
   if (emojis.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center py-20 space-y-4">
@@ -203,53 +204,35 @@ const EmojiGrid = ({
     <div
       ref={parentRef}
       className="w-full h-[calc(100vh-300px)] min-h-[500px] mt-8 px-4 overflow-auto"
+      style={{
+        contentVisibility: 'auto',
+      }}
     >
       <div
+        className="grid gap-6"
         style={{
-          height: `${virtualizer.getTotalSize()}px`,
-          width: '100%',
-          position: 'relative',
+          gridTemplateColumns: `repeat(${columnCount}, ${columnWidth}px)`,
+          justifyContent: 'center',
         }}
       >
-        {rows.map((row) => (
-          <div
-            key={row.key}
-            style={{
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              width: '100%',
-              height: `${row.size}px`,
-              transform: `translateY(${row.start}px)`,
-              display: 'flex',
-              flexWrap: 'wrap',
-              alignContent: 'flex-start',
-            }}
-          >
-            {Array.from({ length: columnCount }).map((_, colIndex) => {
-              const index = row.index * columnCount + colIndex;
-              if (index >= emojis.length) return null;
+        {emojis.map((emoji, index) => {
+          const isSelected = isSelectedMap.has(emoji.id);
+          const isFocused = focusedIndex === index;
 
-              const emoji = emojis[index];
-              const isSelected = isSelectedMap.has(emoji.id);
-              const isFocused = focusedIndex === index;
-
-              return (
-                <MemoizedEmojiCell
-                  key={emoji.id}
-                  emoji={emoji}
-                  index={index}
-                  isSelected={isSelected}
-                  isFocused={isFocused}
-                  columnCount={columnCount}
-                  onToggle={onToggleSelection}
-                  onKeyDown={handleKeyDown}
-                  onFocusChange={onSetFocusedIndex}
-                />
-              );
-            })}
-          </div>
-        ))}
+          return (
+            <MemoizedEmojiCell
+              key={emoji.id}
+              emoji={emoji}
+              index={index}
+              isSelected={isSelected}
+              isFocused={isFocused}
+              columnCount={columnCount}
+              onToggle={onToggleSelection}
+              onKeyDown={handleKeyDown}
+              onFocusChange={onSetFocusedIndex}
+            />
+          );
+        })}
       </div>
     </div>
   );

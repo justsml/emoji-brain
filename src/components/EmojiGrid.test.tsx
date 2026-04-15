@@ -14,22 +14,6 @@ if (typeof window !== 'undefined' && !window.PointerEvent) {
   (window as any).PointerEvent = PointerEvent;
 }
 
-vi.mock('@tanstack/react-virtual', async () => {
-  const actual = await vi.importActual('@tanstack/react-virtual');
-  return {
-    ...actual,
-    useVirtualizer: vi.fn(() => ({
-      getVirtualItems: () => Array.from({ length: 3 }, (_, i) => ({
-        key: `row-${i}`,
-        index: i,
-        start: i * 153,
-        size: 153,
-      })),
-      getTotalSize: () => 459,
-    })),
-  };
-});
-
 describe('EmojiGrid Component', () => {
   const mockEmojis: EmojiMetadata[] = [
     { id: '1', filename: 'emoji1.png', path: '/emojis/emoji1.png', categories: ['cat'], tags: ['funny'], created: '2023-01-01', size: 1024 },
