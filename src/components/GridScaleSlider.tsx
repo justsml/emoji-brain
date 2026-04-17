@@ -4,7 +4,7 @@ import { useEmojiContext } from "../context/EmojiContext";
 import { cn } from "../lib/utils";
 import { LayoutGrid } from "lucide-react";
 
-export const GRID_SCALES = [96, 128, 160, 192];
+export const GRID_SCALES = [128, 160, 192, 256];
 
 const GridScaleSlider: React.FC = () => {
   const { gridScale, setGridScale } = useEmojiContext();

@@ -239,6 +239,7 @@ const _EmojiExplorerApp: React.FC<EmojiExplorerAppProps> = ({
           onSelectAll={() => selectAllVisible(filteredEmojis)}
           filteredEmojis={filteredEmojis}
           gridScale={gridScale}
+          onRemoveEmoji={handleEmojiSelect}
         />
       </div>
     </div>

@@ -39,7 +39,7 @@ const initialState: EmojiState = {
   filteredEmojis: [],
   isSearching: false,
   showSelectedOnly: false,
-  gridScale: 4,
+  gridScale: 0,
 };
 
 function emojiReducer(state: EmojiState, action: EmojiAction): EmojiState {

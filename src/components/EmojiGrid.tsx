@@ -22,17 +22,19 @@ interface EmojiCellProps {
   isSelected: boolean;
   isFocused: boolean;
   columnCount: number;
+  imageWidth: number;
   onToggle: (emoji: EmojiMetadata, event?: React.MouseEvent) => void;
   onKeyDown: (e: KeyboardEvent, index: number, columnCount: number) => void;
   onFocusChange: (index: number) => void;
 }
 
-const AnimatedImage = ({ src, alt, isAnimated }: { src: string; alt: string; isAnimated: boolean }) => {
+const AnimatedImage = ({ src, alt, isAnimated, width }: { src: string; alt: string; isAnimated: boolean; width: number }) => {
   return (
     <img
       src={src}
       alt={alt}
-      className="w-full h-full object-contain"
+      className="h-full object-contain"
+      width={width}
       loading="lazy"
       decoding="async"
       fetchPriority="low"
@@ -49,6 +51,7 @@ const EmojiCell = ({
   isSelected,
   isFocused,
   columnCount,
+  imageWidth,
   onToggle,
   onKeyDown,
   onFocusChange,
@@ -99,7 +102,7 @@ const EmojiCell = ({
       >
         {isSelected && (
           <div
-            className="absolute top-2 right-2 z-10 w-5 h-5 bg-primary rounded-full flex items-center justify-center text-[10px] text-white shadow-lg
+            className="absolute top-2 right-2 z-10 w-4 h-4 sm:w-5 sm:h-5 bg-primary rounded-full flex items-center justify-center text-[10px] text-white shadow-lg
             animate-in fade-in zoom-in duration-200"
           >
             ✓
@@ -111,6 +114,7 @@ const EmojiCell = ({
             src={emoji.path}
             alt={emoji.filename}
             isAnimated={emoji.filename.endsWith('.webp') || emoji.filename.endsWith('.gif')}
+            width={imageWidth}
           />
         </div>
 
@@ -218,7 +222,7 @@ const EmojiGrid = ({
   return (
     <div
       ref={parentRef}
-      className="w-full mt-8 px-4"
+      className="w-full my-12 mb-16 px-4"
     >
       <div
         className="grid gap-6 w-full max-w-full"
@@ -234,6 +238,7 @@ const EmojiGrid = ({
             isSelected={isSelectedMap.has(emoji.id)}
             isFocused={focusedIndex === index}
             columnCount={columnCount}
+            imageWidth={GRID_SCALES[gridScale]}
             onToggle={onToggleSelection}
             onKeyDown={handleKeyDown}
             onFocusChange={onSetFocusedIndex}

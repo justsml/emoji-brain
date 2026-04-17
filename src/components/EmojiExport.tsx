@@ -16,9 +16,10 @@ interface EmojiExportProps {
   onSelectAll: () => void;
   filteredEmojis: EmojiMetadata[];
   gridScale: number;
+  onRemoveEmoji: (emoji: EmojiMetadata) => void;
 }
 
-export function EmojiExport({ selectedEmojis, onClearSelection, onSelectAll, filteredEmojis, gridScale }: EmojiExportProps) {
+export function EmojiExport({ selectedEmojis, onClearSelection, onSelectAll, filteredEmojis, gridScale, onRemoveEmoji }: EmojiExportProps) {
   const iconGap = 0.75 + (gridScale * 0.25);
   const [exportStatus, setExportStatus] = useState<string>("");
   const abortControllerRef = useRef<AbortController | null>(null);
@@ -117,7 +118,7 @@ export function EmojiExport({ selectedEmojis, onClearSelection, onSelectAll, fil
   }, []);
 
   return (
-    <div className="fixed bottom-6 left-0 right-0 mx-auto bg-background/80 backdrop-blur-xl supports-[backdrop-filter]:bg-background/60 p-3 pr-5 rounded-2xl shadow-2xl border border-border/50 flex w-full max-w-[50vw] min-w-96 justify-between items-center gap-x-4 z-50">
+    <div className="fixed bottom-3 left-0 right-0 mx-auto bg-background/80 backdrop-blur-xl supports-[backdrop-filter]:bg-background/60 p-3 pr-5 rounded-2xl shadow-2xl border border-border/50 flex w-full max-w-[50vw] min-w-96 justify-between items-center gap-x-4 z-50">
       <div className="flex items-center gap-4 min-w-0 p-5">
         <div className="text-lg font-medium shrink-0 text-foreground/90">
           {selectedEmojis.length === 0 ? (
@@ -139,12 +140,15 @@ export function EmojiExport({ selectedEmojis, onClearSelection, onSelectAll, fil
           )}
         </div>
         {selectedEmojis.length > 0 && (
-          <div className="flex gap-1.5 overflow-x-auto max-w-md scrollbar-hide mask-fade-right" style={{ scrollSnapType: 'x mandatory' }}>
-            {selectedEmojis.slice(0, 8).map((emoji, index) => (
-              <div
+          <div className="flex gap-1.5 overflow-x-auto max-w-[calc(50vw-12rem)] scrollbar-hide mask-fade-right" style={{ scrollSnapType: 'x mandatory' }}>
+            {selectedEmojis.map((emoji, index) => (
+              <button
                 key={emoji.id}
-                className="shrink-0 w-7 h-7 flex items-center justify-center bg-secondary/50 rounded-md overflow-hidden ring-1 ring-border/50"
+                type="button"
+                className="shrink-0 w-7 h-7 flex items-center justify-center bg-secondary/50 rounded-md overflow-hidden ring-1 ring-border/50 hover:ring-destructive/50 hover:bg-destructive/10 transition-colors cursor-pointer"
                 style={{ scrollSnapAlign: 'start' }}
+                onClick={() => onRemoveEmoji(emoji)}
+                title={`Remove ${emoji.filename}`}
               >
                 <img
                   src={emoji.path}
@@ -153,13 +157,8 @@ export function EmojiExport({ selectedEmojis, onClearSelection, onSelectAll, fil
                   loading="lazy"
                   decoding="async"
                 />
-              </div>
+              </button>
             ))}
-            {selectedEmojis.length > 8 && (
-              <div className="shrink-0 w-7 h-7 flex items-center justify-center bg-secondary/30 rounded-md text-xs text-muted-foreground font-medium">
-                +{selectedEmojis.length - 8}
-              </div>
-            )}
           </div>
         )}
       </div>
