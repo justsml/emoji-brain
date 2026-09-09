@@ -17,6 +17,7 @@
     "test:all": "bun run test && bun run test:e2e",
     "convert-to-webp": "bun scripts/convert-to-webp.ts",
     "generate-metadata": "bun scripts/generate_emoji_metadata.ts",
+    "generate-stills": "bun scripts/generate-emoji-stills.ts",
     "ingest": "bun scripts/ingest.ts"
   },
   "dependencies": {

@@ -6,4 +6,6 @@ export interface EmojiMetadata {
   tags: string[]
   created: string
   size: number
+  /** true when the source WebP has more than one frame */
+  animated?: boolean
 }

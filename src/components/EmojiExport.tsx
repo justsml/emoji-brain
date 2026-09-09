@@ -7,7 +7,7 @@ import {
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 import type { EmojiMetadata } from "../types/emoji";
-import { getAbsoluteUrl } from "../lib/utils";
+import { getAbsoluteUrl, stillSrc } from "../lib/utils";
 import { generateSlackBrowserScript } from "../lib/slackBrowserScript";
 import { CheckSquare, XSquare, ChevronDown, Copy, LoaderCircle, X, Check } from "lucide-react";
 import "../styles/sheet-tray.css";
@@ -229,8 +229,10 @@ export function EmojiExport({ selectedEmojis, onClearSelection, onSelectAll, fil
                 onClick={() => onRemoveEmoji(emoji)}
                 title={`Remove ${emoji.filename}`}
               >
+                {/* stills only: the tray sits on a blurred backdrop, so an
+                    animating chip would force it to re-blur every frame */}
                 <img
-                  src={emoji.path}
+                  src={stillSrc(emoji)}
                   alt={emoji.filename}
                   loading="lazy"
                   decoding="async"

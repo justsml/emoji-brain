@@ -1,7 +1,7 @@
 import type { ReactElement, KeyboardEvent } from "react";
 import { memo, useCallback, useMemo, useState, useEffect, useRef } from "react";
 import type { EmojiMetadata } from "../types/emoji";
-import { cn } from "../lib/utils";
+import { cn, stillSrc } from "../lib/utils";
 import { GRID_SCALES } from "./GridScaleSlider";
 import "../styles/emoji-cards.css";
 
@@ -29,7 +29,22 @@ interface EmojiCellProps {
   onFocusChange: (index: number) => void;
 }
 
-const AnimatedImage = ({ src, alt, width }: { src: string; alt: string; width: number }) => {
+const AnimatedImage = ({
+  emoji,
+  alt,
+  width,
+  isPlaying,
+}: {
+  emoji: EmojiMetadata;
+  alt: string;
+  width: number;
+  isPlaying: boolean;
+}) => {
+  // Animated WebPs invalidate their compositor tile on every frame. Drawing 90+
+  // of them at once means the grid can never hold a cached raster, which is what
+  // makes the page blank out while scrolling. Stills stay put; only the sticker
+  // under the pointer plays.
+  const src = isPlaying ? emoji.path : stillSrc(emoji);
   return (
     <img
       src={src}
@@ -39,9 +54,7 @@ const AnimatedImage = ({ src, alt, width }: { src: string; alt: string; width: n
       loading="lazy"
       decoding="async"
       fetchPriority="low"
-      style={{
-        imageRendering: 'auto',
-      }}
+      draggable={false}
     />
   );
 };
@@ -57,8 +70,12 @@ const EmojiCell = ({
   onKeyDown,
   onFocusChange,
 }: EmojiCellProps) => {
+  const [isPlaying, setIsPlaying] = useState(false);
+
   const handleClick = useCallback((e: React.MouseEvent) => {
     e.preventDefault();
+    // a tap has no hover to enter, so play from the tap itself
+    setIsPlaying(true);
     onToggle(emoji, e);
   }, [onToggle, emoji]);
 
@@ -67,8 +84,12 @@ const EmojiCell = ({
   }, [onKeyDown, index, columnCount]);
 
   const handleFocus = useCallback(() => {
+    setIsPlaying(true);
     onFocusChange(index);
   }, [onFocusChange, index]);
+
+  const startPlaying = useCallback(() => setIsPlaying(true), []);
+  const stopPlaying = useCallback(() => setIsPlaying(false), []);
 
   const name = emoji.filename.split("/").pop()?.replace(/\.[^.]+$/, "") || emoji.filename;
 
@@ -80,6 +101,9 @@ const EmojiCell = ({
         onClick={handleClick}
         onKeyDown={handleKeyDown}
         onFocus={handleFocus}
+        onBlur={stopPlaying}
+        onPointerEnter={startPlaying}
+        onPointerLeave={stopPlaying}
         tabIndex={isFocused ? 0 : -1}
         aria-label={emoji.filename}
         aria-pressed={isSelected}
@@ -87,7 +111,7 @@ const EmojiCell = ({
       >
         <div className="emoji-card-preview">
           <span className="emoji-card-check" aria-hidden="true">{isSelected ? "✓" : "+"}</span>
-          <AnimatedImage src={emoji.path} alt={emoji.filename} width={imageWidth} />
+          <AnimatedImage emoji={emoji} alt={emoji.filename} width={imageWidth} isPlaying={isPlaying} />
         </div>
         <span className="emoji-card-name">:{name}:</span>
       </button>

@@ -6,6 +6,16 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 /**
+ * The still frame for an animated emoji, written by scripts/generate-emoji-stills.ts.
+ * Animated WebPs re-rasterize forever, so the grid draws stills and only plays the
+ * real file while a sticker is hovered, focused or tapped.
+ */
+export function stillSrc(emoji: { path: string; animated?: boolean }): string {
+  if (!emoji.animated) return emoji.path;
+  return emoji.path.replace(/\/emojis\/([^/]+)$/, "/emojis/still/$1");
+}
+
+/**
  * Converts a relative path to an absolute URL using the current origin
  */
 export function getAbsoluteUrl(path: string): string {
