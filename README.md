@@ -1,90 +1,109 @@
 # Emoji Explorer
 
+[![Vercel demo](https://img.shields.io/badge/Demo-Vercel-000000?logo=vercel)](https://emoji-brain.vercel.app/)
+[![Netlify demo](https://img.shields.io/badge/Demo-Netlify-00C7B7?logo=netlify&logoColor=white)](https://emoji-brain.netlify.app/)
 
-[View demo on Vercel](https://emoji-brain.vercel.app/)
-[View demo on Netlify](https://emoji-brain.netlify.app/)
-[![Vercel](https://vercelbadge.vercel.app/api/emoji-brain/emoji-brain)](https://emoji-brain.vercel.app/)
-[![Netlify](https://api.netlify.com/api/v1/badges/0c3f4a2b-5d7e-4b8c-9f6d-0a1e2f3b4c5d/deploy-status)](https://emoji-brain.netlify.app/)
+Browse a hand-collected library of custom emoji and stickers, pick your favorites, and export them for Slack or the web. Emoji Explorer (`emoji-brain`) is a self-hostable, static Astro app with a React interface—no backend required.
 
+## What you can do
 
-Demo/educational project for emoji browsing, searching, and exporting.
+- Search emoji metadata with Pagefind, with a local text-search fallback when Pagefind is unavailable.
+- Adjust the grid size and filter the view to your selected emojis.
+- Keep your selection between visits using localStorage.
+- Copy a Slack browser upload script with the selected images embedded.
+- Export filenames, HTML, CSS, or a Markdown table to the clipboard, or download the images as a ZIP.
+- Switch between light and dark themes, with the initial theme following your system preference.
 
-A simple Astro app for browsing, searching, and exporting emojis. Built with React, Shadcn and Tailwind CSS.
+## Use the collection
 
-A beautiful web application for browsing, searching, and exporting emojis with a responsive grid layout.
+1. Open the [Vercel demo](https://emoji-brain.vercel.app/) or [Netlify demo](https://emoji-brain.netlify.app/).
+2. Search for emojis and click the ones you want to add to your sheet. Click again to remove one.
+3. Choose **Copy Slack script**, or open **Other export options** beside it for the other formats.
 
-## Features
+For Slack, sign in to your workspace and open `https://YOUR-WORKSPACE.slack.com/customize/emoji`. Open your browser's developer tools, select **Console**, paste the generated script, and press **Enter**. Leave the page open to see progress and the final counts. Your workspace must allow you to add custom emoji.
 
-- **Self-hostable**: Manage your private, artisinal emoji collection 🍺
-- **Responsive Grid Layout**: Adapts seamlessly from 3 columns on mobile to 9 columns on desktop
-- [**Instant Serverless Search**:](`scripts/create-pagefind-index.ts`) Filter emojis by name, category, or tags (0% Algolia)
-- **Category Filtering**: Quick access to emojis by category
-- **Selection System**: Save your favorite emojis with persistent state
-- **Export Options**: Export selected emojis as plain text, HTML, CSS, ZIP, or a copy-paste Slack browser uploader
-- **Dark Mode Support**: Automatic system preference detection for light/dark mode
-- **Keyboard Navigation**: Full keyboard support for accessibility
-- **Screen Reader Compatible**: Accessible to all users
-- [x] Slack browser upload script generator
+Plain-text export copies filenames. HTML, CSS, and Markdown exports reference images on the site you exported from; ZIP includes the image files themselves.
+
+## Run locally
+
+Have Node.js and pnpm installed. Bun is also needed for the repository's TypeScript maintenance scripts and the combined `test:all` command.
+
+```bash
+git clone https://github.com/justsml/emoji-brain.git
+cd emoji-brain
+pnpm install
+pnpm dev
+```
+
+Open `http://localhost:3000`. Set `PORT` to use another development port, for example `PORT=3001 pnpm dev`.
+
+`pnpm preview` and `pnpm start` also honor `PORT`, defaulting to `4321`. For example, `PORT=3001 pnpm preview` serves the production build on port `3001`.
+
+```bash
+# Build the static site into dist/
+pnpm build
+
+# Preview the production build
+pnpm preview
+```
+
+Deploy `dist/` to a static host such as Vercel or Netlify, using `pnpm build` as the build command.
+
+## Collection and search data
+
+Images live in [`public/emojis/`](public/emojis/), and the app reads [`src/data/emoji-metadata.json`](src/data/emoji-metadata.json). Each metadata entry includes an ID, filename, public path, tags, categories, creation date, and size in bytes.
+
+When editing the collection, keep the images and metadata in sync, then regenerate the Pagefind index before building:
+
+```bash
+bun scripts/create-pagefind-index.ts
+pnpm build
+```
+
+The [indexing script](scripts/create-pagefind-index.ts) writes to `public/pagefind/`. The normal build does not regenerate this index. Browsing the included collection does not require an AI API key.
+
+## Tests
+
+```bash
+# Unit and component tests (Vitest)
+pnpm test
+
+# Watch unit tests
+pnpm test:watch
+
+# Install the browser used by the E2E suite (first run)
+pnpm exec playwright install chromium
+
+# E2E tests run against the production preview, so build first
+pnpm build
+pnpm test:e2e
+```
+
+Playwright starts the preview server at `http://localhost:4321`. See [`TESTING.md`](TESTING.md) for test locations and configuration.
+
+## Project structure
+
+| Path | Purpose |
+| --- | --- |
+| `src/pages/`, `src/layouts/` | Astro page and site shell |
+| `src/components/` | React interface and component tests |
+| `src/context/`, `src/hooks/` | Selection state and localStorage persistence |
+| `src/lib/` | Export helpers and Slack script generation |
+| `src/data/`, `src/types/` | Emoji metadata and TypeScript definitions |
+| `src/styles/` | Global and component styles |
+| `public/emojis/` | Emoji image files |
+| `public/pagefind/` | Generated client-side search index |
+| `scripts/` | Image conversion, metadata, indexing, and import utilities |
+| `tests/` | Playwright scenarios and shared test setup |
+
+Built with Astro, React, TypeScript, Tailwind CSS, shadcn/ui components, Pagefind, and JSZip. UI state uses React Context and a reducer.
+
+## Ideas for later
+
 - [ ] Discord import/export script generator
-- [ ] Custom emoji support
-- [ ] Upload custom emojis
-- [ ] AI Emoji Remixer? Local?
-- [ ] URL based state (bitwise encoding? base64? what does excalidraw do?)
-- [ ] AuthN/Z?
+- [ ] Upload custom emojis through the app
+- [ ] AI emoji remixer, possibly local
+- [ ] Share selections through URL state
+- [ ] Authentication and access controls
 
-
-## Technology Stack
-
-- **Framework**: Astro with React islands
-- **UI Components**: shadcn/ui for a polished interface
-- **Backend**: None (static site)
-- **Hosting**: CDN (e.g., Vercel, Netlify)
-- **Search**: Client-side search with Fuse.js
-- **Styling**: Tailwind CSS
-- **Language**: TypeScript
-- **Data**: Static JSON for emoji metadata
-- **State Management**: RTK, and localStorage for persistence
-
-## Getting Started
-
-```bash
-# Install dependencies
-bun install
-
-# Start development server
-bun run dev
-
-# Build for production
-bun run build
-
-# Preview production build
-bun run preview
-```
-
-## Testing
-
-This project includes both unit tests and end-to-end tests. See [TESTING.md](TESTING.md) for details.
-
-```bash
-# Run unit tests
-bun test
-
-# Run E2E tests
-bun run test:e2e
-
-# Run all tests
-bun run test:all
-```
-
-## Project Structure
-
-- `src/components/` - React components
-- `src/pages/` - Astro pages
-- `src/layouts/` - Layout components
-- `src/styles/` - Global styles
-- `src/types/` - TypeScript type definitions
-- `src/lib/` - Utility functions
-- `src/data/` - Data files
-- `public/emojis/` - Emoji image files
-- `tests/` - Test setup and configuration
-- `tests/` - E2E tests
+[Suggest an emoji or report an issue](https://github.com/justsml/emoji-brain/issues/new).
