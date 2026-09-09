@@ -61,3 +61,40 @@
 .emoji-v-grid {
   mask-image: linear-gradient(to bottom, transparent, black 20px, black calc(100% - 20px), transparent);
 }
+
+/* A quiet canvas keeps colorful emoji artwork in the foreground. */
+body { background: hsl(var(--background)); }
+body > div {
+  background-image: radial-gradient(ellipse at 15% 0%, hsl(260 85% 65% / .07), transparent 48%);
+}
+.app-header { padding: 2rem 1.5rem 1.25rem; }
+.brand-mark {
+  display: grid; place-items: center; width: 3rem; height: 3rem;
+  border-radius: 1rem; color: #fff; font-size: 2.25rem; line-height: 1;
+  background: linear-gradient(135deg, #8b5cf6, #4f46e5);
+  box-shadow: 0 6px 20px #7c3aed25;
+}
+.brand-eyebrow {
+  margin-bottom: .2rem; font-size: .65rem; font-weight: 700;
+  letter-spacing: .13em; text-transform: uppercase; color: hsl(var(--muted-foreground));
+}
+.header-details { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; margin-top: 1.25rem; }
+.engagement-links { display: flex; flex-wrap: wrap; gap: .5rem; }
+.engagement-link {
+  display: inline-flex; align-items: center; gap: .4rem; padding: .55rem .8rem;
+  border: 1px solid hsl(var(--border)); border-radius: 999px;
+  background: hsl(var(--card) / .8); font-size: .75rem; font-weight: 600;
+  box-shadow: 0 2px 3px #00000003; transition: background .16s, border-color .16s, transform .16s;
+}
+.engagement-link svg { width: 1rem; height: 1rem; flex-shrink: 0; }
+.engagement-link:hover { border-color: #a78bfa; background: hsl(260 85% 65% / .1); transform: translateY(-1px); }
+.engagement-link:focus-visible { outline: 2px solid #8b5cf6; outline-offset: 3px; }
+.engagement-link-thanks { color: #be185d; border-color: #fbcfe8; background: #fdf2f8; }
+.dark .engagement-link-thanks { color: #f9a8d4; border-color: #831843; background: #50072450; }
+@media (max-width: 480px) {
+  .app-header { padding: 1.25rem 1rem .75rem; }
+  .engagement-link { padding: .5rem .65rem; font-size: .7rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .engagement-link { transition: none; }
+}
