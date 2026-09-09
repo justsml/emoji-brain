@@ -236,4 +236,17 @@ describe("EmojiExport Component", () => {
     await userEvent.click(screen.getByRole("button", { name: "Clear all selected emojis" }));
     expect(mockClear).toHaveBeenCalledOnce();
   });
+  it("copies a link to the sheet and reports it", async () => {
+    const shareUrl = vi.fn(() => "https://example.test/?s=AQID");
+    renderExport({ shareUrl });
+    await userEvent.click(screen.getByRole("button", { name: "Copy a link to this sheet" }));
+    expect(shareUrl).toHaveBeenCalled();
+    expect(navigator.clipboard.writeText).toHaveBeenCalledWith("https://example.test/?s=AQID");
+    expect(screen.getByRole("status")).toHaveTextContent("Link copied · 2 emojis");
+  });
+
+  it("has no link to share from an empty sheet", () => {
+    renderExport({ selectedEmojis: [], shareUrl: () => "" });
+    expect(screen.getByRole("button", { name: "Copy a link to this sheet" })).toBeDisabled();
+  });
 });

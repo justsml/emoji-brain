@@ -9,7 +9,7 @@ import {
 import type { EmojiMetadata } from "../types/emoji";
 import { getAbsoluteUrl, stillSrc } from "../lib/utils";
 import { generateSlackBrowserScript } from "../lib/slackBrowserScript";
-import { CheckSquare, XSquare, ChevronDown, Copy, LoaderCircle, X, Check, Trash2 } from "lucide-react";
+import { CheckSquare, XSquare, ChevronDown, Copy, LoaderCircle, X, Check, Trash2, Link } from "lucide-react";
 import "../styles/sheet-tray.css";
 
 interface EmojiExportProps {
@@ -20,9 +20,11 @@ interface EmojiExportProps {
   filteredEmojis: EmojiMetadata[];
   gridScale: number;
   onRemoveEmoji: (emoji: EmojiMetadata) => void;
+  /** Returns a URL that reopens this sheet; omit to hide the share button. */
+  shareUrl?: () => string;
 }
 
-export function EmojiExport({ selectedEmojis, onClearSelection, onDeselectVisible, onSelectAll, filteredEmojis, gridScale, onRemoveEmoji }: EmojiExportProps) {
+export function EmojiExport({ selectedEmojis, onClearSelection, onDeselectVisible, onSelectAll, filteredEmojis, gridScale, onRemoveEmoji, shareUrl }: EmojiExportProps) {
   const [exportStatus, setExportStatus] = useState<string>("");
   const [isExporting, setIsExporting] = useState(false);
   const [copiedScript, setCopiedScript] = useState<{ megabytes: string; count: number } | null>(null);
@@ -79,6 +81,17 @@ export function EmojiExport({ selectedEmojis, onClearSelection, onDeselectVisibl
     navigator.clipboard.writeText(markdown);
     setStatusWithTimeout("Copied Markdown Table to clipboard!");
   }, [selectedEmojis, setStatusWithTimeout]);
+
+  const copyShareLink = useCallback(async () => {
+    if (!shareUrl) return;
+    try {
+      await navigator.clipboard.writeText(shareUrl());
+      setStatusWithTimeout(`Link copied · ${selectedEmojis.length} ${selectedEmojis.length === 1 ? "emoji" : "emojis"}`);
+    } catch (error) {
+      console.error("Could not copy share link:", error);
+      setStatusWithTimeout("Could not copy the link. Please try again.");
+    }
+  }, [shareUrl, selectedEmojis.length, setStatusWithTimeout]);
 
   const exportSlackUploadScript = useCallback(async () => {
     if (isExporting || selectedEmojis.length === 0) return;
@@ -279,6 +292,19 @@ export function EmojiExport({ selectedEmojis, onClearSelection, onDeselectVisibl
           <Trash2 className="h-4 w-4" />
         </Button>
         <div className="sheet-divider" />
+        {shareUrl && (
+          <Button
+            variant="ghost"
+            onClick={copyShareLink}
+            className="h-9 w-9 p-0 hover:bg-primary/10 hover:text-primary disabled:opacity-35"
+            size="sm"
+            title="Copy a link to this sheet"
+            aria-label="Copy a link to this sheet"
+            disabled={selectedEmojis.length === 0}
+          >
+            <Link className="h-4 w-4" />
+          </Button>
+        )}
         <div className="flex items-center">
           <Button
             ref={scriptButtonRef}

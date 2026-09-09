@@ -15,6 +15,7 @@ type EmojiAction =
   | { type: 'TOGGLE_SELECTION'; payload: EmojiMetadata }
   | { type: 'SELECT_ALL'; payload: EmojiMetadata[] }
   | { type: 'DESELECT_VISIBLE'; payload: EmojiMetadata[] }
+  | { type: 'SET_SELECTION'; payload: EmojiMetadata[] }
   | { type: 'RESET_SELECTION' }
   | { type: 'SET_FOCUSED_INDEX'; payload: number }
   | { type: 'SET_FILTERED_EMOJIS'; payload: EmojiMetadata[] }
@@ -26,6 +27,8 @@ interface EmojiContextType extends EmojiState {
   toggleEmojiSelection: (emoji: EmojiMetadata) => void;
   selectAllVisible: (emojis: EmojiMetadata[]) => void;
   deselectVisible: (emojis: EmojiMetadata[]) => void;
+  /** Replace the whole selection, e.g. when opening a shared link. */
+  replaceSelection: (emojis: EmojiMetadata[]) => void;
   resetSelection: () => void;
   setFocusedIndex: (index: number) => void;
   setFilteredEmojis: (emojis: EmojiMetadata[]) => void;
@@ -55,11 +58,14 @@ function emojiReducer(state: EmojiState, action: EmojiAction): EmojiState {
           : [...state.selectedEmojis, action.payload],
       };
     }
-    case 'SELECT_ALL':
+    case 'SELECT_ALL': {
+      const selectedById = new Map(state.selectedEmojis.map(emoji => [emoji.id, emoji]));
+      for (const emoji of action.payload) selectedById.set(emoji.id, emoji);
       return {
         ...state,
-        selectedEmojis: action.payload,
+        selectedEmojis: [...selectedById.values()],
       };
+    }
     case 'DESELECT_VISIBLE': {
       const visibleIds = new Set(action.payload.map(emoji => emoji.id));
       return {
@@ -67,6 +73,12 @@ function emojiReducer(state: EmojiState, action: EmojiAction): EmojiState {
         selectedEmojis: state.selectedEmojis.filter(emoji => !visibleIds.has(emoji.id)),
       };
     }
+    case 'SET_SELECTION':
+      return {
+        ...state,
+        selectedEmojis: action.payload,
+        focusedIndex: 0,
+      };
     case 'RESET_SELECTION':
       return {
         ...state,
@@ -135,6 +147,10 @@ export function EmojiProvider({ children, initialEmojis }: EmojiProviderProps) {
     dispatch({ type: 'DESELECT_VISIBLE', payload: emojis });
   }, []);
 
+  const replaceSelection = useCallback((emojis: EmojiMetadata[]) => {
+    dispatch({ type: 'SET_SELECTION', payload: emojis });
+  }, []);
+
   const resetSelection = useCallback(() => {
     dispatch({ type: 'RESET_SELECTION' });
   }, []);
@@ -167,6 +183,7 @@ export function EmojiProvider({ children, initialEmojis }: EmojiProviderProps) {
     toggleEmojiSelection,
     selectAllVisible,
     deselectVisible,
+    replaceSelection,
     resetSelection,
     setFocusedIndex,
     setFilteredEmojis,

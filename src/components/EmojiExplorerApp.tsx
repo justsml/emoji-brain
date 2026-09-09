@@ -8,6 +8,7 @@ import { useEmojiContext } from "../context/EmojiContext";
 import ShowSelectedToggle from "./ShowSelectedToggle";
 import { ErrorBoundary } from "./ErrorBoundary";
 import EmojiProviderWrapper from "./ReduxProviderWrapper";
+import { buildShareUrl, clearShareParams, readShareParams } from "../lib/shareLink";
 
 interface PagefindResultData {
   url: string;
@@ -118,11 +119,16 @@ const _EmojiExplorerApp: React.FC<EmojiExplorerAppProps> = ({
     setFocusedIndex,
     announceSelection,
     resetSelection,
+    replaceSelection,
     selectAllVisible,
     deselectVisible,
   } = useEmojiContext();
-  
-  const [searchTerm, setSearchTerm] = useState("");
+
+  // A shared link opens straight onto its search and its sheet.
+  const [shared] = useState(() =>
+    typeof window === "undefined" ? {} : readShareParams(window.location.search),
+  );
+  const [searchTerm, setSearchTerm] = useState(shared.q ?? "");
   const [searchResults, setSearchResults] = useState(initialEmojis);
   const [searchStatus, setSearchStatus] = useState("");
   const [searchProgress, setSearchProgress] = useState<number | undefined>();
@@ -141,6 +147,22 @@ const _EmojiExplorerApp: React.FC<EmojiExplorerAppProps> = ({
   const handleResetSelection = useCallback(() => {
     resetSelection();
   }, [resetSelection]);
+
+  useEffect(() => {
+    if (shared.ids) {
+      const byId = new Map(initialEmojis.map((emoji) => [emoji.id, emoji]));
+      const emojis = shared.ids.flatMap((id) => byId.get(id) ?? []);
+      if (emojis.length > 0) replaceSelection(emojis);
+    }
+    // once applied, the address bar shouldn't keep re-applying it on reload
+    if (shared.ids || shared.q) clearShareParams();
+  }, [shared, initialEmojis, replaceSelection]);
+
+  const searchShareUrl = useCallback(() => buildShareUrl({ q: searchTerm }), [searchTerm]);
+  const selectionShareUrl = useCallback(
+    () => buildShareUrl({ ids: selectedEmojis.map((emoji) => emoji.id) }),
+    [selectedEmojis],
+  );
 
   useEffect(() => {
     let current = true;
@@ -191,6 +213,8 @@ const _EmojiExplorerApp: React.FC<EmojiExplorerAppProps> = ({
             <SearchBar
               onSearchChange={handleSearchChange}
               onEmojiSelect={handleEmojiSelect}
+              defaultValue={shared.q ?? ""}
+              shareUrl={searchShareUrl}
               count={filteredEmojis.length}
               isSearching={isSearching}
               status={searchStatus}
@@ -212,6 +236,8 @@ const _EmojiExplorerApp: React.FC<EmojiExplorerAppProps> = ({
             onToggleSelection={handleEmojiSelect}
             onSetFocusedIndex={setFocusedIndex}
             onAnnounceSelection={handleAnnounceSelection}
+            onSelectMany={selectAllVisible}
+            onDeselectMany={deselectVisible}
           />
         </section>
 
@@ -223,6 +249,7 @@ const _EmojiExplorerApp: React.FC<EmojiExplorerAppProps> = ({
           filteredEmojis={filteredEmojis}
           gridScale={gridScale}
           onRemoveEmoji={handleEmojiSelect}
+          shareUrl={selectionShareUrl}
         />
       </div>
     </ErrorBoundary>

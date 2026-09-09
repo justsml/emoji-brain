@@ -74,3 +74,17 @@ it('keeps original filenames and paths for indexed matches', async () => {
   await waitFor(() => expect(screen.getByRole('status')).toHaveTextContent('1 matches'));
   expect(screen.getByRole('button', { name: 'original.png' })).toBeInTheDocument();
 });
+
+it('opens a shared link onto its search and selection, then cleans the address bar', async () => {
+  const emojis = [
+    { id: 'df167e0a', filename: 'ten.png', path: '/ten.png', tags: [], categories: [], created: '', size: 1 },
+    { id: '0a0b0c0d', filename: 'other.png', path: '/other.png', tags: [], categories: [], created: '', size: 1 },
+  ];
+  const { packIds } = await import('../lib/shareLink');
+  window.history.replaceState(null, '', `/?q=ten&s=${packIds(['df167e0a'])}`);
+  render(<EmojiExplorerApp initialEmojis={emojis} />);
+  expect(screen.getByRole('searchbox')).toHaveValue('ten');
+  await waitFor(() => expect(screen.getByRole('button', { name: 'ten.png' })).toHaveAttribute('aria-pressed', 'true'));
+  await waitFor(() => expect(screen.queryByRole('button', { name: 'other.png' })).not.toBeInTheDocument());
+  expect(window.location.search).toBe('');
+});

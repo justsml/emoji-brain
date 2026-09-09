@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import '../styles/search.css';
-import { Search } from 'lucide-react';
+import { Check, Link, Search } from 'lucide-react';
 import type { EmojiMetadata } from '../types/emoji';
 
 interface SearchBarProps {
@@ -13,6 +13,10 @@ interface SearchBarProps {
   isSearching?: boolean;
   status?: string;
   progress?: number;
+  // Initial search term, e.g. from a shared link
+  defaultValue?: string;
+  // Returns the URL to copy for the current search; omit to hide the button
+  shareUrl?: () => string;
   // Optional props
   categories?: string[];
   recentEmojis?: EmojiMetadata[];
@@ -25,9 +29,27 @@ const SearchBar: React.FC<SearchBarProps> = ({
   isSearching = false,
   status = "",
   progress,
+  defaultValue = '',
+  shareUrl,
   recentEmojis = []
 }) => {
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState(defaultValue);
+  const [linkCopied, setLinkCopied] = useState(false);
+  const copiedTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => () => { if (copiedTimerRef.current) clearTimeout(copiedTimerRef.current); }, []);
+
+  const handleCopyLink = async () => {
+    if (!shareUrl) return;
+    try {
+      await navigator.clipboard.writeText(shareUrl());
+      setLinkCopied(true);
+      if (copiedTimerRef.current) clearTimeout(copiedTimerRef.current);
+      copiedTimerRef.current = setTimeout(() => setLinkCopied(false), 2000);
+    } catch (error) {
+      console.error('Could not copy search link:', error);
+    }
+  };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const term = event.target.value;
@@ -57,6 +79,18 @@ const SearchBar: React.FC<SearchBarProps> = ({
         <span className="emoji-search-count">
           {count.toLocaleString()}<span className="sr-only"> results</span>
         </span>
+        {shareUrl && (
+          <button
+            type="button"
+            className={`emoji-search-share ${linkCopied ? 'is-copied' : ''}`}
+            onClick={handleCopyLink}
+            disabled={inputValue.trim() === ''}
+            title="Copy link to this search"
+            aria-label={linkCopied ? 'Search link copied' : 'Copy link to this search'}
+          >
+            {linkCopied ? <Check aria-hidden="true" /> : <Link aria-hidden="true" />}
+          </button>
+        )}
 
         {isSearching && progress !== undefined && (
           <div className="emoji-search-progress" role="progressbar" aria-label="Preparing search matches"

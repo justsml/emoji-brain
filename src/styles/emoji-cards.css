@@ -162,3 +162,82 @@
   .emoji-card:active .emoji-card-image,
   .emoji-card-selected .emoji-card-image { transform: none; }
 }
+
+/* --- rubber-band selection ---------------------------------------------- */
+
+.emoji-grid-stage {
+  position: relative;
+}
+/* while a drag is in flight nothing on the mat should light up or select */
+.emoji-grid-wrap.is-marquee {
+  cursor: crosshair;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.emoji-grid-wrap.is-marquee .emoji-card:hover { background: none; }
+.emoji-grid-wrap.is-marquee .emoji-card:hover .emoji-card-image,
+.emoji-grid-wrap.is-marquee .emoji-card:active .emoji-card-image {
+  transform: none;
+  filter: drop-shadow(0 1.5px 1.5px hsl(var(--lift) / 0.3));
+}
+.emoji-grid-wrap.is-marquee .emoji-card:hover .emoji-card-check { opacity: 0; }
+
+/* the cut line being drawn: a dashed rule in the cut colour over a faint wash */
+.emoji-marquee {
+  position: absolute;
+  z-index: 2;
+  pointer-events: none;
+  outline: 1.5px dashed hsl(var(--cut));
+  outline-offset: -1px;
+  background: hsl(var(--cut) / 0.07);
+}
+.emoji-marquee-remove {
+  outline-color: hsl(var(--muted-foreground));
+  background: hsl(var(--foreground) / 0.05);
+}
+.emoji-marquee-count {
+  position: absolute;
+  right: -1px;
+  bottom: -1px;
+  transform: translate(100%, 100%);
+  margin: 4px;
+  padding: 1px 6px;
+  border-radius: 999px;
+  background: hsl(var(--cut));
+  color: #fff;
+  font-family: var(--font-code);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  line-height: 1.5;
+  white-space: nowrap;
+}
+.emoji-marquee-remove .emoji-marquee-count {
+  background: hsl(var(--muted-foreground));
+}
+
+/* stickers under the rectangle preview what release will do to them */
+.emoji-card-marquee-add,
+.emoji-card-marquee-add:hover {
+  background: hsl(var(--cut) / 0.09);
+  box-shadow: inset 0 -2px 0 0 hsl(var(--cut) / 0.55);
+}
+.emoji-card-marquee-add .emoji-card-check {
+  opacity: 1;
+  background: hsl(var(--cut) / 0.55);
+  color: #fff;
+}
+.emoji-card-marquee-add .emoji-card-name { color: hsl(var(--cut)); }
+.emoji-card-marquee-remove,
+.emoji-card-marquee-remove:hover {
+  background: hsl(var(--foreground) / 0.05);
+  box-shadow: inset 0 -2px 0 0 hsl(var(--muted-foreground) / 0.5);
+}
+.emoji-card-marquee-remove .emoji-card-image { opacity: 0.45; }
+.emoji-card-marquee-remove .emoji-card-check {
+  opacity: 1;
+  background: hsl(var(--muted-foreground));
+}
+.emoji-card-marquee-remove .emoji-card-name {
+  color: hsl(var(--muted-foreground));
+  text-decoration: line-through;
+}

@@ -81,3 +81,26 @@ describe('SearchBar Component', () => {
     expect(mockOnEmojiSelect).toHaveBeenCalledWith(recentEmojis[0]);
   });
 });
+
+describe('SearchBar share link', () => {
+  it('copies the search link once there is a term', async () => {
+    const writeText = vi.fn().mockResolvedValue(undefined);
+    Object.defineProperty(navigator, 'clipboard', { value: { writeText }, configurable: true });
+    const shareUrl = vi.fn(() => 'https://example.test/?q=cat');
+    render(<SearchBar onSearchChange={vi.fn()} count={0} shareUrl={shareUrl} />);
+
+    const button = screen.getByRole('button', { name: 'Copy link to this search' });
+    expect(button).toBeDisabled();
+    await userEvent.type(screen.getByPlaceholderText('Search emojis...'), 'cat');
+    expect(button).toBeEnabled();
+    await userEvent.click(button);
+    expect(writeText).toHaveBeenCalledWith('https://example.test/?q=cat');
+    expect(screen.getByRole('button', { name: 'Search link copied' })).toBeInTheDocument();
+  });
+
+  it('starts from a shared term', () => {
+    render(<SearchBar onSearchChange={vi.fn()} count={0} defaultValue="party" shareUrl={() => ''} />);
+    expect(screen.getByPlaceholderText('Search emojis...')).toHaveValue('party');
+    expect(screen.getByRole('button', { name: 'Copy link to this search' })).toBeEnabled();
+  });
+});

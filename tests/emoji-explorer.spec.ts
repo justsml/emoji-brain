@@ -116,7 +116,7 @@ test("should select and deselect emojis", async ({ page }) => {
 
   // Handle dialog for deselect all
   page.on("dialog", (dialog) => dialog.accept());
-  await page.getByTitle("Deselect All").click();
+  await page.getByTitle("Deselect visible").click();
   await expect(page.getByText("No emojis selected")).toBeVisible();
 });
 

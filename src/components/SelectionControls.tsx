@@ -1,17 +1,17 @@
 import React from 'react';
 import { useEmojiContext } from '../context/EmojiContext';
 import { Button } from '@/components/ui/button';
-import { CheckSquare, XSquare } from 'lucide-react';
+import { CheckSquare, Trash2, XSquare } from 'lucide-react';
 
 const SelectionControls: React.FC = () => {
-  const { selectedEmojis, filteredEmojis, selectAllVisible, resetSelection } = useEmojiContext();
+  const { selectedEmojis, filteredEmojis, selectAllVisible, deselectVisible, resetSelection } = useEmojiContext();
 
   const handleSelectAllVisible = () => {
     selectAllVisible(filteredEmojis);
   };
 
-  const handleDeselectAll = () => {
-    resetSelection();
+  const handleDeselectVisible = () => {
+    deselectVisible(filteredEmojis);
   };
 
   return (
@@ -28,13 +28,25 @@ const SelectionControls: React.FC = () => {
       </Button>
       <Button
         variant="outline"
-        onClick={handleDeselectAll}
+        onClick={handleDeselectVisible}
         className="text-sm"
         size="sm"
-        title="Deselect All"
+        title="Deselect visible"
+        aria-label="Deselect visible"
       >
         <XSquare className="h-4 w-4 sm:mr-2" />
-        <span className="hidden sm:inline">Deselect All</span>
+        <span className="hidden sm:inline">Deselect visible</span>
+      </Button>
+      <Button
+        variant="outline"
+        onClick={resetSelection}
+        className="text-sm"
+        size="sm"
+        title="Clear all selected emojis"
+        aria-label="Clear all selected emojis"
+        disabled={selectedEmojis.length === 0}
+      >
+        <Trash2 className="h-4 w-4" />
       </Button>
     </div>
   );

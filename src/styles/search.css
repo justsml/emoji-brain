@@ -107,3 +107,25 @@
   .emoji-search-shell,
   .emoji-search-progress > span { transition: none; }
 }
+
+/* share sits after the count, drawn in the same ink until it has done something */
+.emoji-search-share {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  margin: -0.25rem 0;
+  border: 0;
+  border-radius: 2px;
+  background: none;
+  color: hsl(var(--muted-foreground));
+  cursor: pointer;
+  transition: color 120ms ease, background-color 120ms ease;
+}
+.emoji-search-share svg { width: 0.95rem; height: 0.95rem; }
+.emoji-search-share:hover:not(:disabled),
+.emoji-search-share:focus-visible { color: hsl(var(--cut)); background: hsl(var(--cut) / 0.08); outline: none; }
+.emoji-search-share.is-copied { color: hsl(var(--cut)); }
+.emoji-search-share:disabled { opacity: 0.35; cursor: default; }

@@ -3,6 +3,7 @@ import { memo, useCallback, useMemo, useState, useEffect, useRef } from "react";
 import type { EmojiMetadata } from "../types/emoji";
 import { cn, stillSrc } from "../lib/utils";
 import { GRID_SCALES } from "./GridScaleSlider";
+import { useMarqueeSelection, type MarqueeMode } from "../hooks/useMarqueeSelection";
 import "../styles/emoji-cards.css";
 
 interface EmojiGridProps {
@@ -13,6 +14,10 @@ interface EmojiGridProps {
   onToggleSelection: (emoji: EmojiMetadata, event?: React.MouseEvent) => void;
   onSetFocusedIndex: (index: number) => void;
   onAnnounceSelection: (emoji: EmojiMetadata, isSelected: boolean) => void;
+  /** Drag-select: add these to the selection. Falls back to toggling each. */
+  onSelectMany?: (emojis: EmojiMetadata[]) => void;
+  /** Alt-drag: remove these from the selection. Falls back to toggling each. */
+  onDeselectMany?: (emojis: EmojiMetadata[]) => void;
 }
 
 const GRID_GAP = 12;
@@ -22,6 +27,8 @@ interface EmojiCellProps {
   index: number;
   isSelected: boolean;
   isFocused: boolean;
+  /** inside the drag rectangle, and what releasing would do to it */
+  preview: MarqueeMode | null;
   columnCount: number;
   imageWidth: number;
   onToggle: (emoji: EmojiMetadata, event?: React.MouseEvent) => void;
@@ -64,6 +71,7 @@ const EmojiCell = ({
   index,
   isSelected,
   isFocused,
+  preview,
   columnCount,
   imageWidth,
   onToggle,
@@ -94,10 +102,16 @@ const EmojiCell = ({
   const name = emoji.filename.split("/").pop()?.replace(/\.[^.]+$/, "") || emoji.filename;
 
   return (
-    <div className="min-w-0" role="gridcell" style={{ contain: "layout style" }}>
+    <div className="min-w-0" role="gridcell" data-id={emoji.id} style={{ contain: "layout style" }}>
       <button
         type="button"
-        className={cn("emoji-card", isSelected && "emoji-card-selected", isFocused && "emoji-card-focused")}
+        className={cn(
+          "emoji-card",
+          isSelected && "emoji-card-selected",
+          isFocused && "emoji-card-focused",
+          preview === "add" && "emoji-card-marquee-add",
+          preview === "remove" && "emoji-card-marquee-remove",
+        )}
         onClick={handleClick}
         onKeyDown={handleKeyDown}
         onFocus={handleFocus}
@@ -130,9 +144,37 @@ const EmojiGrid = ({
   onToggleSelection,
   onSetFocusedIndex,
   onAnnounceSelection,
+  onSelectMany,
+  onDeselectMany,
 }: EmojiGridProps): ReactElement => {
   const parentRef = useRef<HTMLDivElement>(null);
   const [width, setWidth] = useState(800);
+
+  const isSelectedMap = useMemo(() => {
+    const map = new Map();
+    for (const emoji of selectedEmojis) {
+      map.set(emoji.id, true);
+    }
+    return map;
+  }, [selectedEmojis]);
+
+  const commitMarquee = useCallback((ids: string[], mode: MarqueeMode) => {
+    const wanted = new Set(ids);
+    const hit = emojis.filter((emoji) => wanted.has(emoji.id));
+    if (mode === "add") {
+      if (onSelectMany) return onSelectMany(hit);
+      for (const emoji of hit) if (!isSelectedMap.has(emoji.id)) onToggleSelection(emoji);
+    } else {
+      if (onDeselectMany) return onDeselectMany(hit);
+      for (const emoji of hit) if (isSelectedMap.has(emoji.id)) onToggleSelection(emoji);
+    }
+  }, [emojis, isSelectedMap, onSelectMany, onDeselectMany, onToggleSelection]);
+
+  const { marquee, onPointerDown, onClickCapture } = useMarqueeSelection({
+    containerRef: parentRef,
+    cellSelector: '[role="gridcell"]',
+    onCommit: commitMarquee,
+  });
   
   const calculateLayout = useCallback((width: number, scale: number) => {
     const baseSize = GRID_SCALES[scale] ?? GRID_SCALES[0];
@@ -193,14 +235,6 @@ const EmojiGrid = ({
     }
   }, [emojis, onSetFocusedIndex, onToggleSelection, onAnnounceSelection, selectedEmojis]);
 
-  const isSelectedMap = useMemo(() => {
-    const map = new Map();
-    for (const emoji of selectedEmojis) {
-      map.set(emoji.id, true);
-    }
-    return map;
-  }, [selectedEmojis]);
-
   if (emojis.length === 0) {
     return (
       <div className="emoji-empty">
@@ -211,32 +245,73 @@ const EmojiGrid = ({
     );
   }
 
+  // Only stickers that releasing would actually change get the preview treatment.
+  const previewIds = useMemo(() => {
+    if (!marquee) return null;
+    const ids = new Set<string>();
+    for (const id of marquee.hits) {
+      if (isSelectedMap.has(id) === (marquee.mode === "remove")) ids.add(id);
+    }
+    return ids;
+  }, [marquee, isSelectedMap]);
+  const hitCount = previewIds?.size ?? 0;
+  const marqueeLabel = marquee
+    ? `${marquee.mode === "remove" ? "Remove" : "Select"} ${hitCount} ${hitCount === 1 ? "emoji" : "emojis"}`
+    : "";
+
   return (
-    <div className="emoji-grid-wrap">
-      <div
-        ref={parentRef}
-        className="grid w-full max-w-full"
-        role="grid"
-        aria-label="Emoji results"
-        style={{
-          gap: GRID_GAP,
-          gridTemplateColumns: `repeat(${columnCount}, minmax(0, 1fr))`,
-        }}
-      >
-        {emojis.map((emoji, index) => (
-          <MemoizedEmojiCell
-            key={emoji.id}
-            emoji={emoji}
-            index={index}
-            isSelected={isSelectedMap.has(emoji.id)}
-            isFocused={focusedIndex === index}
-            columnCount={columnCount}
-            imageWidth={GRID_SCALES[gridScale] ?? GRID_SCALES[0]}
-            onToggle={onToggleSelection}
-            onKeyDown={handleKeyDown}
-            onFocusChange={onSetFocusedIndex}
-          />
-        ))}
+    <div
+      className={cn("emoji-grid-wrap", marquee && "is-marquee")}
+      onPointerDown={onPointerDown}
+      onClickCapture={onClickCapture}
+    >
+      <div className="emoji-grid-stage">
+        <div
+          ref={parentRef}
+          className="grid w-full max-w-full"
+          role="grid"
+          aria-label="Emoji results"
+          style={{
+            gap: GRID_GAP,
+            gridTemplateColumns: `repeat(${columnCount}, minmax(0, 1fr))`,
+          }}
+        >
+          {emojis.map((emoji, index) => (
+            <MemoizedEmojiCell
+              key={emoji.id}
+              emoji={emoji}
+              index={index}
+              isSelected={isSelectedMap.has(emoji.id)}
+              isFocused={focusedIndex === index}
+              preview={marquee && previewIds?.has(emoji.id) ? marquee.mode : null}
+              columnCount={columnCount}
+              imageWidth={GRID_SCALES[gridScale] ?? GRID_SCALES[0]}
+              onToggle={onToggleSelection}
+              onKeyDown={handleKeyDown}
+              onFocusChange={onSetFocusedIndex}
+            />
+          ))}
+        </div>
+        {marquee && (
+          <div
+            className={cn("emoji-marquee", marquee.mode === "remove" && "emoji-marquee-remove")}
+            data-testid="emoji-marquee"
+            aria-hidden="true"
+            style={{
+              left: marquee.rect.left,
+              top: marquee.rect.top,
+              width: marquee.rect.width,
+              height: marquee.rect.height,
+            }}
+          >
+            {hitCount > 0 && (
+              <span className="emoji-marquee-count">
+                {marquee.mode === "remove" ? "−" : "+"}{hitCount}
+              </span>
+            )}
+          </div>
+        )}
+        <span className="sr-only" aria-live="polite">{marqueeLabel}</span>
       </div>
     </div>
   );
