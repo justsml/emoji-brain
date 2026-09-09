@@ -23,7 +23,7 @@ export const emojiLabeler = async (inputImage: string) => {
   }
 
   const result = await generateText({
-    model: google("gemini-3-flash-preview"),
+    model: google("gemini-3.8-flash"),
     messages: [
       {
         role: "system",

@@ -14,6 +14,7 @@ interface EmojiState {
 type EmojiAction =
   | { type: 'TOGGLE_SELECTION'; payload: EmojiMetadata }
   | { type: 'SELECT_ALL'; payload: EmojiMetadata[] }
+  | { type: 'DESELECT_VISIBLE'; payload: EmojiMetadata[] }
   | { type: 'RESET_SELECTION' }
   | { type: 'SET_FOCUSED_INDEX'; payload: number }
   | { type: 'SET_FILTERED_EMOJIS'; payload: EmojiMetadata[] }
@@ -24,6 +25,7 @@ type EmojiAction =
 interface EmojiContextType extends EmojiState {
   toggleEmojiSelection: (emoji: EmojiMetadata) => void;
   selectAllVisible: (emojis: EmojiMetadata[]) => void;
+  deselectVisible: (emojis: EmojiMetadata[]) => void;
   resetSelection: () => void;
   setFocusedIndex: (index: number) => void;
   setFilteredEmojis: (emojis: EmojiMetadata[]) => void;
@@ -58,6 +60,13 @@ function emojiReducer(state: EmojiState, action: EmojiAction): EmojiState {
         ...state,
         selectedEmojis: action.payload,
       };
+    case 'DESELECT_VISIBLE': {
+      const visibleIds = new Set(action.payload.map(emoji => emoji.id));
+      return {
+        ...state,
+        selectedEmojis: state.selectedEmojis.filter(emoji => !visibleIds.has(emoji.id)),
+      };
+    }
     case 'RESET_SELECTION':
       return {
         ...state,
@@ -122,6 +131,10 @@ export function EmojiProvider({ children, initialEmojis }: EmojiProviderProps) {
     dispatch({ type: 'SELECT_ALL', payload: emojis });
   }, []);
 
+  const deselectVisible = useCallback((emojis: EmojiMetadata[]) => {
+    dispatch({ type: 'DESELECT_VISIBLE', payload: emojis });
+  }, []);
+
   const resetSelection = useCallback(() => {
     dispatch({ type: 'RESET_SELECTION' });
   }, []);
@@ -153,6 +166,7 @@ export function EmojiProvider({ children, initialEmojis }: EmojiProviderProps) {
     ...state,
     toggleEmojiSelection,
     selectAllVisible,
+    deselectVisible,
     resetSelection,
     setFocusedIndex,
     setFilteredEmojis,

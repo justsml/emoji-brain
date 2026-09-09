@@ -9,19 +9,20 @@ import {
 import type { EmojiMetadata } from "../types/emoji";
 import { getAbsoluteUrl, stillSrc } from "../lib/utils";
 import { generateSlackBrowserScript } from "../lib/slackBrowserScript";
-import { CheckSquare, XSquare, ChevronDown, Copy, LoaderCircle, X, Check } from "lucide-react";
+import { CheckSquare, XSquare, ChevronDown, Copy, LoaderCircle, X, Check, Trash2 } from "lucide-react";
 import "../styles/sheet-tray.css";
 
 interface EmojiExportProps {
   selectedEmojis: EmojiMetadata[];
   onClearSelection: () => void;
+  onDeselectVisible: () => void;
   onSelectAll: () => void;
   filteredEmojis: EmojiMetadata[];
   gridScale: number;
   onRemoveEmoji: (emoji: EmojiMetadata) => void;
 }
 
-export function EmojiExport({ selectedEmojis, onClearSelection, onSelectAll, filteredEmojis, gridScale, onRemoveEmoji }: EmojiExportProps) {
+export function EmojiExport({ selectedEmojis, onClearSelection, onDeselectVisible, onSelectAll, filteredEmojis, gridScale, onRemoveEmoji }: EmojiExportProps) {
   const [exportStatus, setExportStatus] = useState<string>("");
   const [isExporting, setIsExporting] = useState(false);
   const [copiedScript, setCopiedScript] = useState<{ megabytes: string; count: number } | null>(null);
@@ -29,6 +30,8 @@ export function EmojiExport({ selectedEmojis, onClearSelection, onSelectAll, fil
   const scriptButtonRef = useRef<HTMLButtonElement>(null);
   const closeInstructionsRef = useRef<HTMLButtonElement>(null);
   const abortControllerRef = useRef<AbortController | null>(null);
+  const visibleIds = new Set(filteredEmojis.map(emoji => emoji.id));
+  const hasVisibleSelection = selectedEmojis.some(emoji => visibleIds.has(emoji.id));
 
   const setStatusWithTimeout = useCallback((status: string) => {
     setExportStatus(status);
@@ -255,13 +258,25 @@ export function EmojiExport({ selectedEmojis, onClearSelection, onSelectAll, fil
         </Button>
         <Button
           variant="ghost"
+          onClick={onDeselectVisible}
+          className="h-9 w-9 p-0 hover:bg-destructive/10 hover:text-destructive disabled:opacity-35"
+          size="sm"
+          title="Deselect visible"
+          aria-label="Deselect visible"
+          disabled={!hasVisibleSelection}
+        >
+          <XSquare className="h-4 w-4" />
+        </Button>
+        <Button
+          variant="ghost"
           onClick={onClearSelection}
           className="h-9 w-9 p-0 hover:bg-destructive/10 hover:text-destructive disabled:opacity-35"
           size="sm"
-          title="Deselect All"
+          title="Clear all selected emojis"
+          aria-label="Clear all selected emojis"
           disabled={selectedEmojis.length === 0}
         >
-          <XSquare className="h-4 w-4" />
+          <Trash2 className="h-4 w-4" />
         </Button>
         <div className="sheet-divider" />
         <div className="flex items-center">

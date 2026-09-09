@@ -119,6 +119,7 @@ const _EmojiExplorerApp: React.FC<EmojiExplorerAppProps> = ({
     announceSelection,
     resetSelection,
     selectAllVisible,
+    deselectVisible,
   } = useEmojiContext();
   
   const [searchTerm, setSearchTerm] = useState("");
@@ -217,6 +218,7 @@ const _EmojiExplorerApp: React.FC<EmojiExplorerAppProps> = ({
         <EmojiExport
           selectedEmojis={selectedEmojis}
           onClearSelection={handleResetSelection}
+          onDeselectVisible={() => deselectVisible(filteredEmojis)}
           onSelectAll={() => selectAllVisible(filteredEmojis)}
           filteredEmojis={filteredEmojis}
           gridScale={gridScale}

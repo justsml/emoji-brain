@@ -43,6 +43,7 @@ describe("EmojiExport Component", () => {
       <EmojiExport
         selectedEmojis={mockSelectedEmojis}
         onClearSelection={vi.fn()}
+        onDeselectVisible={vi.fn()}
         onSelectAll={vi.fn()}
         filteredEmojis={mockSelectedEmojis}
         gridScale={1}
@@ -223,10 +224,16 @@ describe("EmojiExport Component", () => {
     consoleError.mockRestore();
   });
 
-  it("calls onClearSelection when reset is triggered", async () => {
+  it("separates deselecting visible emojis from clearing the full selection", async () => {
     const mockClear = vi.fn();
-    renderExport({ onClearSelection: mockClear });
+    const mockDeselectVisible = vi.fn();
+    renderExport({ onClearSelection: mockClear, onDeselectVisible: mockDeselectVisible });
 
+    await userEvent.click(screen.getByRole("button", { name: "Deselect visible" }));
+    expect(mockDeselectVisible).toHaveBeenCalledOnce();
     expect(mockClear).not.toHaveBeenCalled();
+
+    await userEvent.click(screen.getByRole("button", { name: "Clear all selected emojis" }));
+    expect(mockClear).toHaveBeenCalledOnce();
   });
 });
