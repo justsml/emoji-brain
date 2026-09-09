@@ -4,21 +4,15 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "astro dev --port ${PORT:-3000}",
-    "build": "astro build",
+    "build": "bun scripts/create-pagefind-index.ts && astro build",
     "preview": "astro preview --port ${PORT:-4321}",
-    "astro": "astro",
-    "start": "astro preview --port ${PORT:-4321}",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:ui": "vitest --ui",
     "test:coverage": "vitest run --coverage",
     "test:e2e": "playwright test",
-    "test:e2e:ui": "playwright test --ui",
-    "test:all": "bun run test && bun run test:e2e",
-    "convert-to-webp": "bun scripts/convert-to-webp.ts",
-    "generate-metadata": "bun scripts/generate_emoji_metadata.ts",
-    "generate-stills": "bun scripts/generate-emoji-stills.ts",
-    "ingest": "bun scripts/ingest.ts"
+    "test:all": "pnpm test && pnpm test:e2e",
+    "check-emojis": "bun scripts/check-emojis.ts",
+    "update-emojis": "bun scripts/update-emojis.ts"
   },
   "dependencies": {
     "@ai-sdk/google": "^4.0.64",
@@ -57,5 +51,6 @@
     "sharp": "^0.35.4",
     "typescript": "^7.0.2",
     "vitest": "^5.0.0"
-  }
+  },
+  "packageManager": "pnpm@11.21.0"
 }

@@ -4,6 +4,12 @@ export interface EmojiMetadata {
   path: string
   categories: string[]
   tags: string[]
+  aliases?: string[]
+  hash?: string
+  labelHash?: string
+  modified?: string
+  width?: number
+  height?: number
   created: string
   size: number
   /** true when the source WebP has more than one frame */

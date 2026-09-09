@@ -6,7 +6,7 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 /**
- * The still frame for an animated emoji, written by scripts/generate-emoji-stills.ts.
+ * The still frame for an animated emoji, written by scripts/update-emojis.ts.
  * Animated WebPs re-rasterize forever, so the grid draws stills and only plays the
  * real file while a sticker is hovered, focused or tapped.
  */

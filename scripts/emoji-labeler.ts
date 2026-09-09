@@ -9,6 +9,9 @@ const google = createGoogleGenerativeAI({
 });
 
 export const emojiLabeler = async (inputImage: string) => {
+  if (process.env.CI || process.env.GITHUB_ACTIONS) {
+    throw new Error("Live labelling is disabled in CI; run locally as a maintainer.");
+  }
   const mimeType = path.extname(inputImage).slice(1);
   const validMimeTypes = ["png", "jpg", "jpeg", "gif", "webp", "pdf"];
   if (!validMimeTypes.includes(mimeType)) {
@@ -46,7 +49,7 @@ export const emojiLabeler = async (inputImage: string) => {
         content: [
           {
             type: "image",
-            image: fs.readFileSync(inputImage).toString("base64url"),
+            image: fs.readFileSync(inputImage),
           },
         ],
       },

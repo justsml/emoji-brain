@@ -26,7 +26,7 @@ Plain-text export copies filenames. HTML, CSS, and Markdown exports reference im
 
 ## Run locally
 
-Have Node.js and pnpm installed. Bun is also needed for the repository's TypeScript maintenance scripts and the combined `test:all` command.
+Have Node.js 24 and pnpm 11 installed. Bun is also needed for the repository's TypeScript maintenance scripts and builds.
 
 ```bash
 git clone https://github.com/justsml/emoji-brain.git
@@ -37,7 +37,7 @@ pnpm dev
 
 Open `http://localhost:3000`. Set `PORT` to use another development port, for example `PORT=3001 pnpm dev`.
 
-`pnpm preview` and `pnpm start` also honor `PORT`, defaulting to `4321`. For example, `PORT=3001 pnpm preview` serves the production build on port `3001`.
+`pnpm preview` also honors `PORT`, defaulting to `4321`. For example, `PORT=3001 pnpm preview` serves the production build on port `3001`.
 
 ```bash
 # Build the static site into dist/
@@ -53,14 +53,30 @@ Deploy `dist/` to a static host such as Vercel or Netlify, using `pnpm build` as
 
 Images live in [`public/emojis/`](public/emojis/), and the app reads [`src/data/emoji-metadata.json`](src/data/emoji-metadata.json). Each metadata entry includes an ID, filename, public path, tags, categories, creation date, and size in bytes.
 
-When editing the collection, keep the images and metadata in sync, then regenerate the Pagefind index before building:
+Use the two collection commands:
 
 ```bash
-bun scripts/create-pagefind-index.ts
-pnpm build
+pnpm check-emojis                         # read-only Markdown report
+pnpm check-emojis --json --report=report.json
+pnpm update-emojis --update=none          # offline maintenance
+pnpm update-emojis                        # label new/changed/unlabelled images
+pnpm update-emojis --update               # same as --update=changes
+pnpm update-emojis --update=all           # relabel every image
 ```
 
-The [indexing script](scripts/create-pagefind-index.ts) writes to `public/pagefind/`. The normal build does not regenerate this index. Browsing the included collection does not require an AI API key.
+Put new images in `public/emojis/ingest/` or directly in `public/emojis/`. Updates count new, changed, newly tracked, removed, converted, ingested, labelled, and animated files; validate images; convert PNG, JPEG, GIF, TIFF, and AVIF to WebP; preserve animation; refresh metadata and first-frame stills; validate the result; and rebuild Pagefind. Filename collisions stop the update before conversion. Originals are removed only after their converted output decodes successfully. Metadata for deleted images and orphaned stills is removed.
+
+Live modes are maintainer-only local operations and are disabled in CI. They require `GOOGLE_API_KEY` (Bun loads `.env`) and send selected images to Google Gemini for labelling. `changes` is the default with no arguments or a bare `--update`. It selects new images, changed hashes, missing tags/categories, and images whose current hash has never been labelled. The first live run after migrating legacy metadata will label every image without a `labelHash`. Offline updates preserve that pending state. Existing IDs, creation dates, aliases, and custom fields are preserved. Labelling errors fail the command and leave the previous metadata file intact; completed conversions may remain and can be safely retried.
+
+Checks report prior metadata existence, missing files, SHA-256 changes, filesystem modification-date changes, actual image type, required fields, duplicate IDs/filenames, duplicate content, dimensions, and animated still availability. Invalid or stale records exit with status 1. Modification-date changes are informational because Git checkouts reset filesystem dates; hashes determine content changes. Missing hashes/dates in legacy records require an offline update.
+
+Completeness is informational: 25% for populated fields out of 12 (`id`, `filename`, `path`, `created`, `modified`, `hash`, `size`, `width`, `height`, `tags`, `aliases`, `categories`), 25% for at least three unique tags, 25% for at least one alias, and 25% for at least two unique categories. Empty label arrays are valid for offline additions but lower the score. Aliases are curated rather than invented by the labeller.
+
+`pnpm build` always regenerates the Pagefind index. The old conversion, ingest, metadata, and still-generation package commands are replaced by `update-emojis`.
+
+The [GitHub workflow](.github/workflows/emojis.yml) runs only on pushes to `main` or a maintainer's manual dispatch on `main`. Contributions do not automatically trigger installation, tests, builds, releases, or labelling. Successful pushes publish a prerelease named `main-<commit>` containing the static site archive. CI has no AI credentials, and both the update command and labeller reject live calls in CI. Reports and site builds are available as workflow artifacts.
+
+Repository settings require approval for **all external contributors'** GitHub Actions runs, including returning contributors. Protected `main` requires one maintainer approval, dismisses stale approvals after changes, and enforces review requirements for administrators too. [CODEOWNERS](.github/CODEOWNERS) assigns review to the current maintainers. Approval to run a workflow is separate from approval to merge a PR. These GitHub settings must also be configured when forking the repository; files alone cannot enforce them.
 
 ## Tests
 

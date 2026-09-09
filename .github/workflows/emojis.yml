@@ -1,0 +1,54 @@
+name: Check and build emojis
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    if: github.ref == 'refs/heads/main'
+    timeout-minutes: 15
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+      - uses: oven-sh/setup-bun@v2
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm check-emojis --report=emoji-report.md
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: emoji-report
+          path: emoji-report.md
+      - run: pnpm test
+      - run: pnpm build
+      - uses: actions/upload-artifact@v4
+        with:
+          name: emoji-site
+          path: dist/
+          if-no-files-found: error
+  release:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: build
+    timeout-minutes: 5
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: emoji-site
+          path: dist
+      - run: tar -czf emoji-site.tar.gz -C dist .
+      - name: Release main build
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: gh release create "main-${GITHUB_SHA}" emoji-site.tar.gz --target "$GITHUB_SHA" --title "Main build ${GITHUB_SHA:0:7}" --prerelease --notes "Validated static site from main."

@@ -1,19 +1,18 @@
+import { promises as fs } from "node:fs";
 import * as pagefind from "pagefind";
 import data from "../src/data/emoji-metadata.json" with { type: "json" };
-import { statSync } from "node:fs";
 import { basename } from "node:path";
 
-const { index } = await pagefind.createIndex();
+const { index, errors } = await pagefind.createIndex();
+if (!index || errors.length) throw new Error(`Pagefind initialization failed: ${errors.join(", ")}`);
 
 // Add the emoji metadata to the index
 for (const emoji of data.emojis) {
-  const labels = [...emoji.categories, ...emoji.tags, ...getRelatedTags(emoji.path)];
-  const fileStat = statSync('public' + emoji.path);
-  const createdDate = fileStat.birthtime || fileStat.mtime;
-  const created = createdDate.toISOString().split("T")[0]; // Format as YYYY-MM-DD
+  const labels = [...emoji.categories, ...emoji.tags, ...((emoji as { aliases?: string[] }).aliases ?? []), ...getRelatedTags(emoji.path)];
+  const created = emoji.created.split("T")[0];
   const fileBaseName = basename(emoji.path);
 
-  await index!.addCustomRecord({
+  const result = await index.addCustomRecord({
     sort: {
       created: created,
       filename: emoji.filename,
@@ -31,6 +30,7 @@ for (const emoji of data.emojis) {
       created,
     }
   });
+  if (result.errors.length) throw new Error(result.errors.join("; "));
 }
 
 function getRelatedTags(url: string) {
@@ -42,6 +42,13 @@ function getRelatedTags(url: string) {
 }
 
 // write the index to disk
-await index!.writeFiles({
-  outputPath: "public/pagefind"
-});
+const staging = await fs.mkdtemp("public/.pagefind-");
+try {
+  const written = await index.writeFiles({ outputPath: staging });
+  if (written.errors.length) throw new Error(written.errors.join("; "));
+  await fs.rm("public/pagefind", { recursive: true, force: true });
+  await fs.rename(staging, "public/pagefind");
+} finally {
+  await fs.rm(staging, { recursive: true, force: true });
+  await pagefind.close();
+}
