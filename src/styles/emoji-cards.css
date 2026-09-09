@@ -1,0 +1,94 @@
+.emoji-card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid hsl(var(--border) / .8);
+  border-radius: 20px;
+  background: hsl(var(--card));
+  color: hsl(var(--foreground));
+  text-align: left;
+  cursor: pointer;
+  box-shadow: 0 3px 12px hsl(var(--foreground) / .035);
+  transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.emoji-card:hover {
+  transform: translateY(-3px);
+  border-color: #a78bfa;
+  box-shadow: 0 12px 28px rgb(124 58 237 / .12);
+}
+
+.emoji-card:active { transform: translateY(-1px) scale(.98); }
+.emoji-card:focus-visible {
+  outline: 3px solid #8b5cf6;
+  outline-offset: 4px;
+}
+.emoji-card-selected, .emoji-card-selected:hover {
+  border-color: #8b5cf6;
+  box-shadow: 0 0 0 2px rgb(139 92 246 / .22), 0 8px 24px rgb(124 58 237 / .1);
+}
+.emoji-card-preview {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1.15;
+  padding: 24px;
+  background: radial-gradient(ellipse at 25% 10%, rgb(167 139 250 / .14), transparent 70%),
+    linear-gradient(145deg, hsl(var(--muted) / .45), hsl(var(--card)));
+}
+.emoji-card-image {
+  position: absolute;
+  inset: 18%;
+  width: 64%;
+  height: 64%;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 5px rgb(0 0 0 / .08));
+}
+.emoji-card-check {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: grid;
+  place-items: center;
+  width: 23px;
+  height: 23px;
+  border-radius: 50%;
+  border: 1px solid hsl(var(--border));
+  background: hsl(var(--card) / .9);
+  color: hsl(var(--muted-foreground));
+  font-size: 15px;
+  line-height: 1;
+}
+.emoji-card-selected .emoji-card-check {
+  background: #7c3aed;
+  border-color: #7c3aed;
+  color: white;
+}
+.emoji-card-caption {
+  width: 100%;
+  padding: 12px 14px 14px;
+  border-top: 1px solid hsl(var(--border) / .6);
+}
+.emoji-card-name {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: -.015em;
+}
+.emoji-card-hint {
+  display: block;
+  margin-top: 3px;
+  color: hsl(var(--muted-foreground));
+  font-size: 10px;
+}
+.emoji-card-selected .emoji-card-hint { color: #8b5cf6; }
+
+@media (prefers-reduced-motion: reduce) {
+  .emoji-card { transition: none; }
+  .emoji-card:hover, .emoji-card:active { transform: none; }
+}

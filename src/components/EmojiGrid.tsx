@@ -1,8 +1,9 @@
 import type { ReactElement, KeyboardEvent } from "react";
-import { useCallback, useMemo, useState, useEffect, useRef } from "react";
+import { memo, useCallback, useMemo, useState, useEffect, useRef } from "react";
 import type { EmojiMetadata } from "../types/emoji";
 import { cn } from "../lib/utils";
 import { GRID_SCALES } from "./GridScaleSlider";
+import "../styles/emoji-cards.css";
 
 interface EmojiGridProps {
   emojis: EmojiMetadata[];
@@ -14,7 +15,7 @@ interface EmojiGridProps {
   onAnnounceSelection: (emoji: EmojiMetadata, isSelected: boolean) => void;
 }
 
-const GRID_GAP = 24;
+const GRID_GAP = 16;
 
 interface EmojiCellProps {
   emoji: EmojiMetadata;
@@ -28,12 +29,12 @@ interface EmojiCellProps {
   onFocusChange: (index: number) => void;
 }
 
-const AnimatedImage = ({ src, alt, isAnimated, width }: { src: string; alt: string; isAnimated: boolean; width: number }) => {
+const AnimatedImage = ({ src, alt, width }: { src: string; alt: string; width: number }) => {
   return (
     <img
       src={src}
       alt={alt}
-      className="h-full object-contain"
+      className="emoji-card-image"
       width={width}
       loading="lazy"
       decoding="async"
@@ -69,68 +70,36 @@ const EmojiCell = ({
     onFocusChange(index);
   }, [onFocusChange, index]);
 
+  const name = emoji.filename.split("/").pop()?.replace(/\.[^.]+$/, "") || emoji.filename;
+
   return (
-    <div
-      className="p-3"
-      role="gridcell"
-      style={{
-        contain: 'layout style',
-      }}
-    >
+    <div className="min-w-0" role="gridcell" style={{ contain: "layout style" }}>
       <button
         type="button"
-        className={cn(
-          "w-full aspect-square relative group overflow-hidden",
-          "rounded-xl border bg-card/40 backdrop-blur-md",
-          "flex flex-col items-center justify-center",
-          "shadow-sm focus:outline-none focus:ring-2 focus:ring-primary/40",
-          "transition-all duration-200 ease-out",
-          "hover:shadow-xl hover:border-primary/40 hover:scale-[1.02]",
-          "active:scale-[0.98]",
-          isSelected 
-            ? "border-primary bg-primary/20 ring-2 ring-primary/30" 
-            : "border-border/40",
-          isFocused && "ring-2 ring-primary/50 bg-primary/10"
-        )}
-        style={{
-          transform: 'translateZ(0)',
-        }}
+        className={cn("emoji-card", isSelected && "emoji-card-selected", isFocused && "emoji-card-focused")}
         onClick={handleClick}
         onKeyDown={handleKeyDown}
         onFocus={handleFocus}
         tabIndex={isFocused ? 0 : -1}
         aria-label={emoji.filename}
+        aria-pressed={isSelected}
+        title={`:${name}:`}
       >
-        {isSelected && (
-          <div
-            className="absolute top-2 right-2 z-10 w-4 h-4 sm:w-5 sm:h-5 bg-primary rounded-full flex items-center justify-center text-[10px] text-white shadow-lg
-            animate-in fade-in zoom-in duration-200"
-          >
-            ✓
-          </div>
-        )}
-
-        <div className="flex items-center justify-center flex-1 w-full h-full relative z-0 p-2">
-          <AnimatedImage
-            src={emoji.path}
-            alt={emoji.filename}
-            isAnimated={emoji.filename.endsWith('.webp') || emoji.filename.endsWith('.gif')}
-            width={imageWidth}
-          />
+        <div className="emoji-card-preview">
+          <span className="emoji-card-check" aria-hidden="true">{isSelected ? "✓" : "+"}</span>
+          <AnimatedImage src={emoji.path} alt={emoji.filename} width={imageWidth} />
         </div>
-
-        <div className="absolute inset-x-0 bottom-0 translate-y-full group-hover:translate-y-0 transition-transform duration-200 ease-out bg-gradient-to-t from-black/80 to-transparent p-2 text-center pointer-events-none">
-          <span className="text-[10px] text-white/90 font-mono truncate block">
-            {emoji.filename?.split(".")[0].replace(/\/.*\//g, "")}
-          </span>
+        <div className="emoji-card-caption">
+          <span className="emoji-card-name">{name}</span>
+          <span className="emoji-card-hint">{isSelected ? "Selected" : "Click to collect"}</span>
         </div>
       </button>
     </div>
   );
 };
 
-const MemoizedEmojiCell = Object.assign(EmojiCell, { displayName: 'MemoizedEmojiCell' });
-Object.freeze(MemoizedEmojiCell);
+const MemoizedEmojiCell = memo(EmojiCell);
+MemoizedEmojiCell.displayName = "EmojiCell";
 
 const EmojiGrid = ({
   emojis,
@@ -145,7 +114,7 @@ const EmojiGrid = ({
   const [width, setWidth] = useState(800);
   
   const calculateLayout = useCallback((width: number, scale: number) => {
-    const baseSize = GRID_SCALES[scale];
+    const baseSize = GRID_SCALES[scale] ?? GRID_SCALES[0];
     const availableWidth = width - 32;
     const columnCount = Math.max(1, Math.floor(availableWidth / (baseSize + GRID_GAP)));
     return { columnCount };
@@ -223,10 +192,10 @@ const EmojiGrid = ({
   return (
     <div
       ref={parentRef}
-      className="w-full my-12 mb-16 px-4"
+      className="w-full my-8 mb-16 px-4"
     >
       <div
-        className="grid gap-6 w-full max-w-full"
+        className="grid gap-4 w-full max-w-full"
         role="grid"
         aria-label="Emoji results"
         style={{
@@ -241,7 +210,7 @@ const EmojiGrid = ({
             isSelected={isSelectedMap.has(emoji.id)}
             isFocused={focusedIndex === index}
             columnCount={columnCount}
-            imageWidth={GRID_SCALES[gridScale]}
+            imageWidth={GRID_SCALES[gridScale] ?? GRID_SCALES[0]}
             onToggle={onToggleSelection}
             onKeyDown={handleKeyDown}
             onFocusChange={onSetFocusedIndex}
