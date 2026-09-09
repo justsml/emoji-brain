@@ -20,11 +20,11 @@ A beautiful web application for browsing, searching, and exporting emojis with a
 - [**Instant Serverless Search**:](`scripts/create-pagefind-index.ts`) Filter emojis by name, category, or tags (0% Algolia)
 - **Category Filtering**: Quick access to emojis by category
 - **Selection System**: Save your favorite emojis with persistent state
-- **Export Options**: Export selected emojis as plain text, HTML, CSS, or ZIP
+- **Export Options**: Export selected emojis as plain text, HTML, CSS, ZIP, or a copy-paste Slack browser uploader
 - **Dark Mode Support**: Automatic system preference detection for light/dark mode
 - **Keyboard Navigation**: Full keyboard support for accessibility
 - **Screen Reader Compatible**: Accessible to all users
-- [ ] Slack import/export script generator
+- [x] Slack browser upload script generator
 - [ ] Discord import/export script generator
 - [ ] Custom emoji support
 - [ ] Upload custom emojis

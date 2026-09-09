@@ -62,7 +62,8 @@ describe("EmojiExport Component", () => {
     });
 
     global.fetch = vi.fn().mockResolvedValue({
-      blob: vi.fn().mockResolvedValue(new Blob()),
+      ok: true,
+      blob: vi.fn().mockResolvedValue(new Blob(["image"], { type: "image/png" })),
     });
 
     URL.createObjectURL = vi.fn().mockReturnValue("mock-url");
@@ -181,6 +182,23 @@ describe("EmojiExport Component", () => {
 
     expect(global.fetch).toHaveBeenCalledTimes(2);
     expect(URL.createObjectURL).toHaveBeenCalled();
+  });
+
+  it("copies a self-contained Slack upload script", async () => {
+    renderExport();
+
+    await userEvent.click(screen.getByRole("button", { name: "Export" }));
+    await userEvent.click(screen.getByText("Slack Upload Script"));
+
+    await vi.waitFor(() => {
+      expect(navigator.clipboard.writeText).toHaveBeenCalledWith(
+        expect.stringContaining("/api/emoji.add")
+      );
+    });
+    expect(navigator.clipboard.writeText).toHaveBeenCalledWith(
+      expect.stringContaining("emoji1.png")
+    );
+    expect(screen.getByText("Copied Slack upload script!")).toBeInTheDocument();
   });
 
   it("calls onClearSelection when reset is triggered", async () => {

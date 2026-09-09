@@ -8,6 +8,7 @@ import {
 } from "./ui/dropdown-menu";
 import type { EmojiMetadata } from "../types/emoji";
 import { getAbsoluteUrl } from "../lib/utils";
+import { generateSlackBrowserScript } from "../lib/slackBrowserScript";
 import { CheckSquare, XSquare } from "lucide-react";
 
 interface EmojiExportProps {
@@ -69,6 +70,34 @@ export function EmojiExport({ selectedEmojis, onClearSelection, onSelectAll, fil
     const markdown = `${header}\n${rows}`;
     navigator.clipboard.writeText(markdown);
     setStatusWithTimeout("Copied Markdown Table to clipboard!");
+  }, [selectedEmojis, setStatusWithTimeout]);
+
+  const exportSlackUploadScript = useCallback(async () => {
+    try {
+      setExportStatus("Encoding Slack upload script...");
+      const images = await Promise.all(
+        selectedEmojis.map(async (emoji) => {
+          const response = await fetch(getAbsoluteUrl(emoji.path));
+          if (!response.ok) throw new Error(`Could not load ${emoji.filename}`);
+          const blob = await response.blob();
+          const bytes = new Uint8Array(await blob.arrayBuffer());
+          let binary = "";
+          for (let offset = 0; offset < bytes.length; offset += 0x8000) {
+            binary += String.fromCharCode(...bytes.subarray(offset, offset + 0x8000));
+          }
+          return {
+            filename: emoji.filename,
+            mimeType: blob.type || `image/${emoji.filename.split(".").pop() || "png"}`,
+            base64: btoa(binary),
+          };
+        })
+      );
+      await navigator.clipboard.writeText(generateSlackBrowserScript(images));
+      setStatusWithTimeout("Copied Slack upload script!");
+    } catch (error) {
+      console.error("Error creating Slack upload script:", error);
+      setStatusWithTimeout("Error creating Slack upload script");
+    }
   }, [selectedEmojis, setStatusWithTimeout]);
 
   const downloadZip = useCallback(async () => {
@@ -201,6 +230,9 @@ export function EmojiExport({ selectedEmojis, onClearSelection, onSelectAll, fil
             <DropdownMenuItem onClick={exportAsCss}>CSS</DropdownMenuItem>
             <DropdownMenuItem onClick={exportAsMarkdownTable}>
               Markdown Table
+            </DropdownMenuItem>
+            <DropdownMenuItem onClick={exportSlackUploadScript}>
+              Slack Upload Script
             </DropdownMenuItem>
             <DropdownMenuItem onClick={downloadZip}>ZIP File</DropdownMenuItem>
           </DropdownMenuContent>
