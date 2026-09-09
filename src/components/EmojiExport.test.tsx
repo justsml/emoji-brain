@@ -111,7 +111,7 @@ describe("EmojiExport Component", () => {
   it("shows export dropdown when clicking the Export button", async () => {
     renderExport();
 
-    const exportButton = screen.getByRole("button", { name: "Export" });
+    const exportButton = screen.getByRole("button", { name: "Other export options" });
     await userEvent.click(exportButton);
 
     expect(screen.getByText("Plain Text")).toBeInTheDocument();
@@ -123,7 +123,7 @@ describe("EmojiExport Component", () => {
   it("calls clipboard API when exporting as plain text", async () => {
     renderExport();
 
-    const exportButton = screen.getByRole("button", { name: "Export" });
+    const exportButton = screen.getByRole("button", { name: "Other export options" });
     await userEvent.click(exportButton);
 
     const plainTextOption = screen.getByText("Plain Text");
@@ -140,7 +140,7 @@ describe("EmojiExport Component", () => {
   it("calls clipboard API when exporting as HTML", async () => {
     renderExport();
 
-    const exportButton = screen.getByRole("button", { name: "Export" });
+    const exportButton = screen.getByRole("button", { name: "Other export options" });
     await userEvent.click(exportButton);
 
     const htmlOption = screen.getByText("HTML");
@@ -155,7 +155,7 @@ describe("EmojiExport Component", () => {
   it("calls clipboard API when exporting as CSS", async () => {
     renderExport();
 
-    const exportButton = screen.getByRole("button", { name: "Export" });
+    const exportButton = screen.getByRole("button", { name: "Other export options" });
     await userEvent.click(exportButton);
 
     const cssOption = screen.getByText("CSS");
@@ -170,7 +170,7 @@ describe("EmojiExport Component", () => {
   it("creates a ZIP file when exporting as ZIP", async () => {
     renderExport();
 
-    const exportButton = screen.getByRole("button", { name: "Export" });
+    const exportButton = screen.getByRole("button", { name: "Other export options" });
     await userEvent.click(exportButton);
 
     const zipOption = screen.getByText("ZIP File");
@@ -187,8 +187,7 @@ describe("EmojiExport Component", () => {
   it("copies a self-contained Slack upload script", async () => {
     renderExport();
 
-    await userEvent.click(screen.getByRole("button", { name: "Export" }));
-    await userEvent.click(screen.getByText("Slack Upload Script"));
+    await userEvent.click(screen.getByRole("button", { name: "Copy Slack Script" }));
 
     await vi.waitFor(() => {
       expect(navigator.clipboard.writeText).toHaveBeenCalledWith(
@@ -198,7 +197,30 @@ describe("EmojiExport Component", () => {
     expect(navigator.clipboard.writeText).toHaveBeenCalledWith(
       expect.stringContaining("emoji1.png")
     );
-    expect(screen.getByText("Copied Slack upload script!")).toBeInTheDocument();
+    const script = vi.mocked(navigator.clipboard.writeText).mock.calls[0][0];
+    const megabytes = (new Blob([script]).size / 1_000_000).toFixed(3);
+    expect(screen.getByRole("status")).toHaveTextContent(`Copied Slack script · ${megabytes} MB`);
+    expect(screen.getByRole("region", { name: "Your emojis are ready for Slack" })).toBeInTheDocument();
+    await userEvent.click(screen.getByRole("button", { name: "Close Slack instructions" }));
+    expect(screen.queryByRole("region", { name: "Your emojis are ready for Slack" })).not.toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Copy Slack Script" })).toHaveFocus();
+  });
+
+  it("disables export actions with no selection", () => {
+    renderExport({ selectedEmojis: [] });
+    expect(screen.getByRole("button", { name: "Copy Slack Script" })).toBeDisabled();
+    expect(screen.getByRole("button", { name: "Other export options" })).toBeDisabled();
+  });
+
+  it("does not show instructions when clipboard copying fails", async () => {
+    const consoleError = vi.spyOn(console, "error").mockImplementation(() => {});
+    vi.mocked(navigator.clipboard.writeText).mockRejectedValueOnce(new Error("Clipboard unavailable"));
+    renderExport();
+    await userEvent.click(screen.getByRole("button", { name: "Copy Slack Script" }));
+    await vi.waitFor(() => expect(screen.getByRole("status")).toHaveTextContent("Could not copy the Slack script"));
+    expect(screen.queryByRole("region", { name: "Your emojis are ready for Slack" })).not.toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Copy Slack Script" })).toBeEnabled();
+    consoleError.mockRestore();
   });
 
   it("calls onClearSelection when reset is triggered", async () => {
