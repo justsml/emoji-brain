@@ -27,7 +27,7 @@ test("should display emoji grid", async ({ page }) => {
 });
 
 test("should filter emojis when searching", async ({ page }) => {
-  await page.waitForTimeout(100);
+  await expect(page.getByRole("grid", { name: "Emoji results" })).toBeVisible();
 
   // Get the initial count of emojis
   const initialEmojiCount = await page
@@ -36,7 +36,7 @@ test("should filter emojis when searching", async ({ page }) => {
 
   // Type "cat" in the search box
   await page.getByPlaceholder("Search emojis...").fill("cat");
-  await page.waitForTimeout(200);
+  await expect(page.getByRole("region", { name: "Emoji results", exact: true })).toHaveAttribute("aria-busy", "false");
 
   // Wait for the search results to update (Pagefind is async)
   // Expect the count to change from the initial count
@@ -126,15 +126,16 @@ test("should show export options when emojis are selected", async ({
   // Select an emoji
   await page.locator('div[role="gridcell"] button').first().click();
 
+  await expect(page.getByRole("button", { name: "Copy Slack Script" })).toBeVisible();
+
   // Click the export dropdown
-  await page.getByRole("button", { name: "Export" }).click();
+  await page.getByRole("button", { name: "Other export options" }).click();
 
   // Check that all export options are displayed
   await expect(page.getByText("Plain Text")).toBeVisible();
   await expect(page.getByText("HTML")).toBeVisible();
   await expect(page.getByText("CSS")).toBeVisible();
   await expect(page.getByText("Markdown Table")).toBeVisible();
-  await expect(page.getByText("Slack Upload Script")).toBeVisible();
   await expect(page.getByText("ZIP File")).toBeVisible();
 });
 
