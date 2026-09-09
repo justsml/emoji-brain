@@ -1,5 +1,5 @@
 import * as pagefind from "pagefind";
-import data from "../src/data/emoji-metadata.json" assert { type: "json" };
+import data from "../src/data/emoji-metadata.json" with { type: "json" };
 import { statSync } from "node:fs";
 import { basename } from "node:path";
 
@@ -45,4 +45,3 @@ function getRelatedTags(url: string) {
 await index!.writeFiles({
   outputPath: "public/pagefind"
 });
-

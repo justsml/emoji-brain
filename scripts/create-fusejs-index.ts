@@ -1,5 +1,5 @@
 import Fuse from "fuse.js";
-import data from "../src/data/emoji-metadata.json" assert { type: "json" };
+import data from "../src/data/emoji-metadata.json" with { type: "json" };
 import fs from "node:fs";
 
 const emojieData = data.emojis.map((emoji) => ({

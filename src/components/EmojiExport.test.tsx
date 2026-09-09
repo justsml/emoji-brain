@@ -1,5 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { screen } from "@testing-library/react";
+import type { ComponentProps } from "react";
 import userEvent from "@testing-library/user-event";
 import { EmojiExport } from "./EmojiExport";
 import { render } from "../test-utils/test-utils";
@@ -36,6 +37,19 @@ describe("EmojiExport Component", () => {
       size: 2048,
     },
   ];
+
+  const renderExport = (overrides: Partial<ComponentProps<typeof EmojiExport>> = {}) =>
+    render(
+      <EmojiExport
+        selectedEmojis={mockSelectedEmojis}
+        onClearSelection={vi.fn()}
+        onSelectAll={vi.fn()}
+        filteredEmojis={mockSelectedEmojis}
+        gridScale={1}
+        onRemoveEmoji={vi.fn()}
+        {...overrides}
+      />
+    );
 
   beforeEach(() => {
     vi.clearAllMocks();
@@ -82,21 +96,21 @@ describe("EmojiExport Component", () => {
   });
 
   it("renders with the correct number of selected emojis", () => {
-    render(<EmojiExport selectedEmojis={mockSelectedEmojis} onClearSelection={vi.fn()} />);
+    renderExport();
 
-    expect(screen.getByText("2 selected")).toBeInTheDocument();
+    expect(screen.getByLabelText("2 selected")).toBeInTheDocument();
   });
 
   it("renders with singular text when only one emoji is selected", () => {
-    render(<EmojiExport selectedEmojis={[mockSelectedEmojis[0]]} onClearSelection={vi.fn()} />);
+    renderExport({ selectedEmojis: [mockSelectedEmojis[0]] });
 
-    expect(screen.getByText("1 selected")).toBeInTheDocument();
+    expect(screen.getByLabelText("1 selected")).toBeInTheDocument();
   });
 
   it("shows export dropdown when clicking the Export button", async () => {
-    render(<EmojiExport selectedEmojis={mockSelectedEmojis} onClearSelection={vi.fn()} />);
+    renderExport();
 
-    const exportButton = screen.getByText("Export...");
+    const exportButton = screen.getByRole("button", { name: "Export" });
     await userEvent.click(exportButton);
 
     expect(screen.getByText("Plain Text")).toBeInTheDocument();
@@ -106,9 +120,9 @@ describe("EmojiExport Component", () => {
   });
 
   it("calls clipboard API when exporting as plain text", async () => {
-    render(<EmojiExport selectedEmojis={mockSelectedEmojis} onClearSelection={vi.fn()} />);
+    renderExport();
 
-    const exportButton = screen.getByText("Export...");
+    const exportButton = screen.getByRole("button", { name: "Export" });
     await userEvent.click(exportButton);
 
     const plainTextOption = screen.getByText("Plain Text");
@@ -123,9 +137,9 @@ describe("EmojiExport Component", () => {
   });
 
   it("calls clipboard API when exporting as HTML", async () => {
-    render(<EmojiExport selectedEmojis={mockSelectedEmojis} onClearSelection={vi.fn()} />);
+    renderExport();
 
-    const exportButton = screen.getByText("Export...");
+    const exportButton = screen.getByRole("button", { name: "Export" });
     await userEvent.click(exportButton);
 
     const htmlOption = screen.getByText("HTML");
@@ -138,9 +152,9 @@ describe("EmojiExport Component", () => {
   });
 
   it("calls clipboard API when exporting as CSS", async () => {
-    render(<EmojiExport selectedEmojis={mockSelectedEmojis} onClearSelection={vi.fn()} />);
+    renderExport();
 
-    const exportButton = screen.getByText("Export...");
+    const exportButton = screen.getByRole("button", { name: "Export" });
     await userEvent.click(exportButton);
 
     const cssOption = screen.getByText("CSS");
@@ -153,9 +167,9 @@ describe("EmojiExport Component", () => {
   });
 
   it("creates a ZIP file when exporting as ZIP", async () => {
-    render(<EmojiExport selectedEmojis={mockSelectedEmojis} onClearSelection={vi.fn()} />);
+    renderExport();
 
-    const exportButton = screen.getByText("Export...");
+    const exportButton = screen.getByRole("button", { name: "Export" });
     await userEvent.click(exportButton);
 
     const zipOption = screen.getByText("ZIP File");
@@ -171,7 +185,7 @@ describe("EmojiExport Component", () => {
 
   it("calls onClearSelection when reset is triggered", async () => {
     const mockClear = vi.fn();
-    render(<EmojiExport selectedEmojis={mockSelectedEmojis} onClearSelection={mockClear} />);
+    renderExport({ onClearSelection: mockClear });
 
     expect(mockClear).not.toHaveBeenCalled();
   });

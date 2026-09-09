@@ -120,7 +120,10 @@ export function EmojiExport({ selectedEmojis, onClearSelection, onSelectAll, fil
   return (
     <div className="fixed bottom-3 left-0 right-0 mx-auto bg-background/80 backdrop-blur-xl supports-[backdrop-filter]:bg-background/60 p-3 pr-5 rounded-2xl shadow-2xl border border-border/50 flex w-full max-w-[50vw] min-w-96 justify-between items-center gap-x-4 z-50">
       <div className="flex items-center gap-4 min-w-0 p-5">
-        <div className="text-lg font-medium shrink-0 text-foreground/90">
+        <div
+          className="text-lg font-medium shrink-0 text-foreground/90"
+          aria-label={`${selectedEmojis.length} selected`}
+        >
           {selectedEmojis.length === 0 ? (
             <span className="text-muted-foreground">No emojis selected</span>
           ) : (

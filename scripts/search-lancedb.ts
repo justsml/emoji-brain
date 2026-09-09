@@ -10,7 +10,7 @@ const uri = INCLUDE_OUTPUT_IN_GIT
   : "dist/lancedb-emojis";
 const db = await lancedb.connect(uri);
 
-import data from "../src/data/emoji-metadata.json" assert { type: "json" };
+import data from "../src/data/emoji-metadata.json" with { type: "json" };
 import { statSync } from "node:fs";
 import { basename } from "node:path";
 
