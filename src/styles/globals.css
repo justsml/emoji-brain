@@ -63,7 +63,7 @@
     --input: 156 13% 27%;
     --ring: 342 95% 63%;
 
-    --rule: 172 45% 52%;
+    --rule: 172 45% 44%;
     --cut: 342 95% 63%;
     --lift: 0 0% 0%;
   }
@@ -99,7 +99,10 @@ body {
 
 .page-shell {
   min-height: 100vh;
-  padding-bottom: 6rem; /* clears the fixed sheet bar */
+  padding-bottom: 5rem; /* clears the fixed sheet bar */
+}
+@media (max-width: 560px) {
+  .page-shell { padding-bottom: 8.5rem; } /* the bar wraps to two rows */
 }
 
 /* --- masthead ------------------------------------------------------------ */

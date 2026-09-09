@@ -45,7 +45,17 @@
   font-weight: 400;
 }
 .emoji-search-input:focus { outline: none; }
-.emoji-search-input::-webkit-search-cancel-button { cursor: pointer; }
+/* the native control is a stock blue cross; redraw it in the mat's ink */
+.emoji-search-input::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  width: 0.85rem;
+  height: 0.85rem;
+  background: hsl(var(--muted-foreground));
+  cursor: pointer;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3 3l10 10M13 3L3 13' stroke='%23000' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E") center / contain no-repeat;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3 3l10 10M13 3L3 13' stroke='%23000' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+.emoji-search-input::-webkit-search-cancel-button:hover { background: hsl(var(--cut)); }
 
 .emoji-search-count {
   flex-shrink: 0;

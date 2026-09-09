@@ -54,7 +54,9 @@ const SearchBar: React.FC<SearchBarProps> = ({
           value={inputValue}
           onChange={handleChange}
         />
-        <span className="emoji-search-count">{count.toLocaleString()}</span>
+        <span className="emoji-search-count">
+          {count.toLocaleString()}<span className="sr-only"> results</span>
+        </span>
 
         {isSearching && progress !== undefined && (
           <div className="emoji-search-progress" role="progressbar" aria-label="Preparing search matches"

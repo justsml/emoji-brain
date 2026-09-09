@@ -2,7 +2,7 @@ import React from "react";
 import { useEmojiContext } from "../context/EmojiContext";
 
 /** Tile widths, in px, for each step of the size control. */
-export const GRID_SCALES = [88, 120, 164, 224];
+export const GRID_SCALES = [76, 108, 148, 208];
 
 const SIZE_LABELS = ["S", "M", "L", "XL"];
 const SIZE_NAMES = ["Small", "Medium", "Large", "Extra large"];

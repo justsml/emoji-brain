@@ -187,7 +187,7 @@ describe("EmojiExport Component", () => {
   it("copies a self-contained Slack upload script", async () => {
     renderExport();
 
-    await userEvent.click(screen.getByRole("button", { name: "Copy Slack Script" }));
+    await userEvent.click(screen.getByRole("button", { name: "Copy Slack script" }));
 
     await vi.waitFor(() => {
       expect(navigator.clipboard.writeText).toHaveBeenCalledWith(
@@ -200,15 +200,15 @@ describe("EmojiExport Component", () => {
     const script = vi.mocked(navigator.clipboard.writeText).mock.calls[0][0];
     const megabytes = (new Blob([script]).size / 1_000_000).toFixed(3);
     expect(screen.getByRole("status")).toHaveTextContent(`Copied Slack script · ${megabytes} MB`);
-    expect(screen.getByRole("region", { name: "Your emojis are ready for Slack" })).toBeInTheDocument();
+    expect(screen.getByRole("region", { name: "Three steps to get them into Slack" })).toBeInTheDocument();
     await userEvent.click(screen.getByRole("button", { name: "Close Slack instructions" }));
-    expect(screen.queryByRole("region", { name: "Your emojis are ready for Slack" })).not.toBeInTheDocument();
-    expect(screen.getByRole("button", { name: "Copy Slack Script" })).toHaveFocus();
+    expect(screen.queryByRole("region", { name: "Three steps to get them into Slack" })).not.toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Copy Slack script" })).toHaveFocus();
   });
 
   it("disables export actions with no selection", () => {
     renderExport({ selectedEmojis: [] });
-    expect(screen.getByRole("button", { name: "Copy Slack Script" })).toBeDisabled();
+    expect(screen.getByRole("button", { name: "Copy Slack script" })).toBeDisabled();
     expect(screen.getByRole("button", { name: "Other export options" })).toBeDisabled();
   });
 
@@ -216,10 +216,10 @@ describe("EmojiExport Component", () => {
     const consoleError = vi.spyOn(console, "error").mockImplementation(() => {});
     vi.mocked(navigator.clipboard.writeText).mockRejectedValueOnce(new Error("Clipboard unavailable"));
     renderExport();
-    await userEvent.click(screen.getByRole("button", { name: "Copy Slack Script" }));
+    await userEvent.click(screen.getByRole("button", { name: "Copy Slack script" }));
     await vi.waitFor(() => expect(screen.getByRole("status")).toHaveTextContent("Could not copy the Slack script"));
-    expect(screen.queryByRole("region", { name: "Your emojis are ready for Slack" })).not.toBeInTheDocument();
-    expect(screen.getByRole("button", { name: "Copy Slack Script" })).toBeEnabled();
+    expect(screen.queryByRole("region", { name: "Three steps to get them into Slack" })).not.toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Copy Slack script" })).toBeEnabled();
     consoleError.mockRestore();
   });
 

@@ -24,7 +24,9 @@ describe('SearchBar Component', () => {
     );
     
     expect(screen.getByPlaceholderText('Search emojis...')).toBeInTheDocument();
-    expect(screen.getByText('0 results')).toBeInTheDocument();
+    // the count reads as "0 results" to assistive tech; only the number is drawn
+    expect(screen.getByText('0')).toBeInTheDocument();
+    expect(screen.getByText(/results/)).toBeInTheDocument();
   });
   
   it('calls onSearchChange when typing in the search input', async () => {

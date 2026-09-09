@@ -274,9 +274,9 @@ export function EmojiExport({ selectedEmojis, onClearSelection, onSelectAll, fil
           </Button>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button aria-label="Other export options" disabled={selectedEmojis.length === 0 || isExporting} className="h-10 w-9 rounded-l-none rounded-r-lg border-l border-primary-foreground/25 p-0"><ChevronDown className="h-4 w-4" /></Button>
+              <Button aria-label="Other export options" disabled={selectedEmojis.length === 0 || isExporting} className="h-9 w-8 rounded-l-none border-l border-primary-foreground/25 p-0"><ChevronDown className="h-4 w-4" /></Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" side="top" className="rounded-xl shadow-xl border-border/50">
+            <DropdownMenuContent align="end" side="top" className="rounded-sm shadow-xl border-border/60">
               <DropdownMenuItem onClick={exportAsPlainText}>Plain Text</DropdownMenuItem>
               <DropdownMenuItem onClick={exportAsHtml}>HTML</DropdownMenuItem>
               <DropdownMenuItem onClick={exportAsCss}>CSS</DropdownMenuItem>
