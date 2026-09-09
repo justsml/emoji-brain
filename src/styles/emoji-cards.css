@@ -103,6 +103,29 @@
   color: #fff;
 }
 
+/* one pseudo-element marks motion without adding nodes or an icon dependency */
+.emoji-card-preview-animated::before {
+  content: "✦";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 18px;
+  height: 18px;
+  border: 1px solid #fff;
+  border-radius: 999px;
+  background: #111;
+  color: #fff;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.28);
+  pointer-events: none;
+  font-family: system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+}
+
 /* the shortcode is literal text you paste into Slack, so it is set as code */
 .emoji-card-name {
   display: block;

@@ -119,11 +119,11 @@ const EmojiCell = ({
         onPointerEnter={startPlaying}
         onPointerLeave={stopPlaying}
         tabIndex={isFocused ? 0 : -1}
-        aria-label={emoji.filename}
+        aria-label={`${emoji.filename}${emoji.animated ? ", animated" : ""}`}
         aria-pressed={isSelected}
         title={`:${name}:`}
       >
-        <div className="emoji-card-preview">
+        <div className={cn("emoji-card-preview", emoji.animated && "emoji-card-preview-animated")}>
           <span className="emoji-card-check" aria-hidden="true">{isSelected ? "✓" : "+"}</span>
           <AnimatedImage emoji={emoji} alt={emoji.filename} width={imageWidth} isPlaying={isPlaying} />
         </div>

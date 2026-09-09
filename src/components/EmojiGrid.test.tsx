@@ -66,6 +66,27 @@ describe('EmojiGrid Component', () => {
       expect(img).toHaveAttribute('alt', mockEmojis[index].filename);
     });
   });
+
+  it('marks animated emojis with a monochrome sparkle', () => {
+    const emojis = [
+      { ...mockEmojis[0], animated: true },
+      mockEmojis[1],
+    ];
+
+    const { container } = render(<EmojiGrid
+      emojis={emojis}
+      selectedEmojis={[]}
+      focusedIndex={0}
+      gridScale={4}
+      onToggleSelection={() => {}}
+      onSetFocusedIndex={() => {}}
+      onAnnounceSelection={() => {}}
+    />);
+
+    expect(container.querySelectorAll('.emoji-card-preview-animated')).toHaveLength(1);
+    expect(screen.getByRole('button', { name: 'emoji1.png, animated' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'emoji2.png' })).toBeInTheDocument();
+  });
   
   it('calls onToggleSelection when an emoji is clicked', async () => {
     const mockToggle = vi.fn();
