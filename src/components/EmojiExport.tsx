@@ -245,7 +245,7 @@ export function EmojiExport({ selectedEmojis, onClearSelection, onSelectAll, fil
         <Button
           variant="ghost"
           onClick={onSelectAll}
-          className="h-9 w-9 p-0 rounded-lg hover:bg-primary/10 hover:text-primary"
+          className="h-9 w-9 p-0 hover:bg-primary/10 hover:text-primary"
           size="sm"
           title="Select All Visible"
         >
@@ -254,7 +254,7 @@ export function EmojiExport({ selectedEmojis, onClearSelection, onSelectAll, fil
         <Button
           variant="ghost"
           onClick={onClearSelection}
-          className="h-9 w-9 p-0 rounded-lg hover:bg-destructive/10 hover:text-destructive disabled:opacity-35"
+          className="h-9 w-9 p-0 hover:bg-destructive/10 hover:text-destructive disabled:opacity-35"
           size="sm"
           title="Deselect All"
           disabled={selectedEmojis.length === 0}
@@ -267,7 +267,7 @@ export function EmojiExport({ selectedEmojis, onClearSelection, onSelectAll, fil
             ref={scriptButtonRef}
             onClick={exportSlackUploadScript}
             disabled={selectedEmojis.length === 0 || isExporting}
-            className="h-10 gap-2 rounded-l-lg rounded-r-none px-4 font-semibold"
+            className="h-9 gap-2 rounded-r-none px-4 font-semibold"
           >
             {isExporting ? <LoaderCircle className="h-4 w-4 animate-spin motion-reduce:animate-none" /> : <Copy className="h-4 w-4" />}
             {isExporting ? "Preparing…" : "Copy Slack script"}

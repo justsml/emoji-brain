@@ -103,12 +103,12 @@ const heroStickers = [
         <div class="masthead">
           <div class="masthead-copy">
             <h1 class="masthead-title">
-              <img class="brand-mark" src="/emojis/meow_party.webp" alt="" aria-hidden="true" width="44" height="44" />
+              <img class="brand-mark" src="/emojis/meow_party.webp" alt="" aria-hidden="true" width="42" height="42" />
               Emoji Explorer
             </h1>
             <p class="masthead-lede">
-              A hand-collected sheet of <b>402 stickers</b>. Pick the ones you
-              want, then paste a single script into Slack to upload them all.
+              A hand-collected sheet of <b>402 stickers</b>. Pick the ones you want,
+              then paste a single script into Slack to upload the lot.
             </p>
           </div>
           <div class="sticker-cluster" aria-hidden="true">
@@ -121,6 +121,18 @@ const heroStickers = [
       <main class="w-full">
         <slot />
       </main>
+      <footer class="colophon">
+        <p>
+          Missing something? <a href="https://github.com/justsml/emoji-brain/issues/new?title=Emoji%20suggestion" target="_blank" rel="noopener noreferrer">Suggest an emoji on GitHub</a> — the collection grows by request.
+        </p>
+        <p>
+          The artwork here was collected from around the internet and stays the property of whoever
+          drew it. Characters, logos and trademarks belong to their respective owners, and appear
+          here for identification only. This project is not affiliated with, sponsored by, or
+          endorsed by Slack. If something of yours shouldn’t be here,
+          <a href="https://github.com/justsml/emoji-brain/issues/new?title=Removal%20request" target="_blank" rel="noopener noreferrer">open an issue</a> and it comes down.
+        </p>
+      </footer>
       <div id="error-boundary-root" class="sr-only" aria-live="polite" aria-atomic="true"></div>
     </div>
   </body>
