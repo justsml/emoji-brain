@@ -72,6 +72,7 @@ const EmojiCell = ({
   return (
     <div
       className="p-3"
+      role="gridcell"
       style={{
         contain: 'layout style',
       }}
@@ -226,6 +227,8 @@ const EmojiGrid = ({
     >
       <div
         className="grid gap-6 w-full max-w-full"
+        role="grid"
+        aria-label="Emoji results"
         style={{
           gridTemplateColumns: `repeat(${columnCount}, 1fr)`,
         }}

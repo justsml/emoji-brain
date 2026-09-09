@@ -35,7 +35,7 @@ export default defineConfig({
     // },
   ],
   webServer: {
-    command: 'bun run preview',
+    command: 'ASTRO_PREVIEW_BACKGROUND=0 pnpm preview',
     url: 'http://localhost:4321',
     reuseExistingServer: !process.env.CI,
     timeout: 120000,

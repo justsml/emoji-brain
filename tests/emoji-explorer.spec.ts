@@ -17,7 +17,7 @@ test("should display welcome message", async ({ page }) => {
 
 test("should display emoji grid", async ({ page }) => {
   // Check that the emoji grid region is displayed
-  const emojiGrid = page.locator('div[role="region"][aria-label="Emoji results"]');
+  const emojiGrid = page.getByRole("grid", { name: "Emoji results" });
   await expect(emojiGrid).toBeVisible();
 
   // Check that there are multiple emojis displayed
@@ -106,18 +106,18 @@ test("should filter emojis when searching", async ({ page }) => {
 // });
 
 test("should select and deselect emojis", async ({ page }) => {
-  await expect(page.getByText("0 selected")).toBeVisible();
+  await expect(page.getByText("No emojis selected")).toBeVisible();
   await page.locator('div[role="gridcell"] button').first().click();
-  await expect(page.getByText("1 selected")).toBeVisible();
+  await expect(page.getByLabel("1 selected")).toBeVisible();
   await page.locator('div[role="gridcell"] button').nth(1).click();
-  await expect(page.getByText("2 selected")).toBeVisible();
+  await expect(page.getByLabel("2 selected")).toBeVisible();
   await page.locator('div[role="gridcell"] button').first().click();
-  await expect(page.getByText("1 selected")).toBeVisible();
+  await expect(page.getByLabel("1 selected")).toBeVisible();
 
   // Handle dialog for deselect all
   page.on("dialog", (dialog) => dialog.accept());
-  await page.getByText("Deselect All").click();
-  await expect(page.getByText("0 selected")).toBeVisible();
+  await page.getByTitle("Deselect All").click();
+  await expect(page.getByText("No emojis selected")).toBeVisible();
 });
 
 test("should show export options when emojis are selected", async ({
@@ -127,22 +127,23 @@ test("should show export options when emojis are selected", async ({
   await page.locator('div[role="gridcell"] button').first().click();
 
   // Click the export dropdown
-  await page.getByRole("button", { name: "Export..." }).click();
+  await page.getByRole("button", { name: "Export" }).click();
 
   // Check that all export options are displayed
   await expect(page.getByText("Plain Text")).toBeVisible();
   await expect(page.getByText("HTML")).toBeVisible();
   await expect(page.getByText("CSS")).toBeVisible();
   await expect(page.getByText("Markdown Table")).toBeVisible();
+  await expect(page.getByText("Slack Upload Script")).toBeVisible();
   await expect(page.getByText("ZIP File")).toBeVisible();
 });
 
 test("should be responsive", async ({ page }) => {
   // Test desktop layout
   await page.setViewportSize({ width: 1280, height: 800 });
-  await expect(page.locator('div[role="region"][aria-label="Emoji results"]')).toBeVisible();
+  await expect(page.getByRole("grid", { name: "Emoji results" })).toBeVisible();
 
   // Test mobile layout
   await page.setViewportSize({ width: 375, height: 667 });
-  await expect(page.locator('div[role="region"][aria-label="Emoji results"]')).toBeVisible();
+  await expect(page.getByRole("grid", { name: "Emoji results" })).toBeVisible();
 });
