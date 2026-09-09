@@ -8,6 +8,7 @@ usage() {
   echo
   echo "Options:"
   echo "  -o, --output FILE    Output JSON file (default: images.json)"
+  echo "  -n, --num-files N    Split output into N numbered JSON files"
   echo "  -e, --extensions EXT List of image extensions to include (space-separated,"
   echo "                       default: jpg jpeg png gif bmp webp)"
   echo "  -h, --help           Display this help message and exit"
@@ -25,6 +26,7 @@ fi
 # Default values
 OUTPUT_FILE="images.json"
 EXTENSIONS=("jpg" "jpeg" "png" "gif" "bmp" "webp")
+NUM_FILES=0
 
 # Parse command line arguments
 POSITIONAL=()
@@ -32,7 +34,19 @@ while [[ $# -gt 0 ]]; do
   key="$1"
   case $key in
     -o|--output)
+      if [[ $# -lt 2 ]]; then
+        echo "Error: $key requires a value"
+        exit 1
+      fi
       OUTPUT_FILE="$2"
+      shift 2
+      ;;
+    -n|--num-files)
+      if [[ $# -lt 2 || ! "$2" =~ ^[1-9][0-9]*$ ]]; then
+        echo "Error: $key requires a positive integer"
+        exit 1
+      fi
+      NUM_FILES="$2"
       shift 2
       ;;
     -e|--extensions)
@@ -87,6 +101,22 @@ echo "Scanning folder: $FOLDER_PATH"
 echo "Output file: $OUTPUT_FILE"
 echo "Extensions: ${EXTENSIONS[*]}"
 
+# Count candidates before encoding so progress includes an accurate total.
+MATCHING_IMAGES=0
+while IFS= read -r -d '' FILE; do
+  FILENAME=$(basename "$FILE")
+  EXT="${FILENAME##*.}"
+  EXT=$(echo "$EXT" | tr '[:upper:]' '[:lower:]')
+  for valid_ext in "${EXTENSIONS[@]}"; do
+    if [ "$EXT" = "$valid_ext" ]; then
+      MATCHING_IMAGES=$((MATCHING_IMAGES + 1))
+      break
+    fi
+  done
+done < <(find "$FOLDER_PATH" -type f -print0)
+
+echo "Found $MATCHING_IMAGES matching image(s)."
+
 # Start the JSON file with opening structure
 echo '{' > "$OUTPUT_FILE"
 echo '  "total_images": 0,' >> "$OUTPUT_FILE"
@@ -119,6 +149,9 @@ while IFS= read -r -d '' FILE; do
   done
   
   if [ $is_valid_ext -eq 1 ]; then
+    CURRENT_IMAGE=$((TOTAL_IMAGES + 1))
+    echo "[$CURRENT_IMAGE/$MATCHING_IMAGES] Encoding: $FILENAME"
+
     # Add comma before the next image (not the first one)
     if [ $NEED_COMMA -eq 1 ]; then
       echo ',' >> "$OUTPUT_FILE"
@@ -153,7 +186,7 @@ while IFS= read -r -d '' FILE; do
     # Increment the counter
     TOTAL_IMAGES=$((TOTAL_IMAGES + 1))
     
-    echo "Processed: $FILENAME"
+    echo "[$CURRENT_IMAGE/$MATCHING_IMAGES] Added: $FILENAME ($SIZE bytes)"
   fi
 done < <(find "$FOLDER_PATH" -type f -print0)
 
@@ -180,6 +213,39 @@ echo "Conversion complete!"
 echo "Total images processed: $TOTAL_IMAGES"
 echo "Output saved to: $(cd "$(dirname "$OUTPUT_FILE")" && pwd)/$(basename "$OUTPUT_FILE")"
 
+
+# Split the images array into an exact number of numbered JSON files.
+split_json_file_count() {
+  local input_file="$1"
+  local num_files="$2"
+  local base_name="${input_file%.*}"
+
+  if ! command -v jq >/dev/null 2>&1; then
+    echo "Error: jq command not found. Install jq to split JSON output."
+    return 1
+  fi
+
+  local total_images
+  total_images=$(jq '.images | length' "$input_file")
+
+  jq -c --argjson count "$num_files" \
+    '.images as $images
+    | ($images | length) as $total
+    | [range(0; $count)]
+    | .[] as $part
+    | {
+        part: ($part + 1),
+        total_images: $total,
+        images: ($images | .[($part * $total / $count | floor) : ((($part + 1) * $total / $count) | floor)])
+      }' "$input_file" |
+    while IFS= read -r part_json; do
+      local part
+      part=$(jq -r '.part' <<< "$part_json")
+      jq '.' <<< "$part_json" > "${base_name}_${part}.json"
+    done
+
+  echo "Split $total_images images into $num_files files: ${base_name}_1.json through ${base_name}_${num_files}.json"
+}
 
 # Function to split JSON file into smaller files based on size
 split_json_file() {
@@ -240,12 +306,14 @@ split_json_file() {
 
 # Add file_max_bytes option to argument parsing
 FILE_MAX_BYTES=1024000
-case $key in
-  --file-max-bytes)
-    FILE_MAX_BYTES="$2"
-    shift 2
-    ;;
-esac
+if [[ "${key:-}" == "--file-max-bytes" ]]; then
+  FILE_MAX_BYTES="$2"
+  shift 2
+fi
 
-# Call the split function at the end
-split_json_file "$OUTPUT_FILE" "$FILE_MAX_BYTES"
+# Call the requested split mode at the end.
+if [ "$NUM_FILES" -gt 0 ]; then
+  split_json_file_count "$OUTPUT_FILE" "$NUM_FILES"
+else
+  split_json_file "$OUTPUT_FILE" "$FILE_MAX_BYTES"
+fi
