@@ -5,8 +5,11 @@ import EmojiExplorerApp from "../components/EmojiExplorerApp"; // Import the mai
 import type { EmojiMetadata } from "../types/emoji";
 import emojiMetadata from "../data/emoji-metadata.json"; // Assuming this path is correct
 
-// Prepare initial props for the React app
-const allEmojis: EmojiMetadata[] = emojiMetadata.emojis || [];
+// Keep catalog bookkeeping on the server instead of serializing it into the
+// client island. The explorer only needs the fields left in each record.
+const allEmojis: EmojiMetadata[] = (emojiMetadata.emojis || []).map(
+  ({ hash: _hash, modified: _modified, created: _created, ...emoji }) => emoji,
+);
 // const categories = Array.from(new Set(allEmojis.flatMap(emoji => emoji.categories))).filter(Boolean);
 ---
 

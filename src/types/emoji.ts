@@ -10,7 +10,7 @@ export interface EmojiMetadata {
   modified?: string
   width?: number
   height?: number
-  created: string
+  created?: string
   size: number
   /** true when the source WebP has more than one frame */
   animated?: boolean

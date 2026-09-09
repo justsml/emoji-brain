@@ -1,11 +1,5 @@
 import { useState, useRef, useCallback, useEffect } from "react";
 import { Button } from "./ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "./ui/dropdown-menu";
 import type { EmojiMetadata } from "../types/emoji";
 import { getAbsoluteUrl, stillSrc } from "../lib/utils";
 import { generateSlackBrowserScript } from "../lib/slackBrowserScript";
@@ -32,6 +26,7 @@ export function EmojiExport({ selectedEmojis, onClearSelection, onDeselectVisibl
   const scriptButtonRef = useRef<HTMLButtonElement>(null);
   const closeInstructionsRef = useRef<HTMLButtonElement>(null);
   const abortControllerRef = useRef<AbortController | null>(null);
+  const exportMenuRef = useRef<HTMLDivElement>(null);
   const visibleIds = new Set(filteredEmojis.map(emoji => emoji.id));
   const hasVisibleSelection = selectedEmojis.some(emoji => visibleIds.has(emoji.id));
 
@@ -190,6 +185,11 @@ export function EmojiExport({ selectedEmojis, onClearSelection, onDeselectVisibl
     scriptButtonRef.current?.focus();
   };
 
+  const runExport = (action: () => void | Promise<void>) => {
+    exportMenuRef.current?.hidePopover?.();
+    void action();
+  };
+
   return (
     <>
     {copiedScript && (
@@ -315,18 +315,22 @@ export function EmojiExport({ selectedEmojis, onClearSelection, onDeselectVisibl
             {isExporting ? <LoaderCircle className="h-4 w-4 animate-spin motion-reduce:animate-none" /> : <Copy className="h-4 w-4" />}
             {isExporting ? "Preparing…" : "Copy Slack script"}
           </Button>
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button aria-label="Other export options" disabled={selectedEmojis.length === 0 || isExporting} className="h-9 w-8 rounded-l-none border-l border-primary-foreground/25 p-0"><ChevronDown className="h-4 w-4" /></Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" side="top" className="rounded-sm shadow-xl border-border/60">
-              <DropdownMenuItem onClick={exportAsPlainText}>Plain Text</DropdownMenuItem>
-              <DropdownMenuItem onClick={exportAsHtml}>HTML</DropdownMenuItem>
-              <DropdownMenuItem onClick={exportAsCss}>CSS</DropdownMenuItem>
-              <DropdownMenuItem onClick={exportAsMarkdownTable}>Markdown Table</DropdownMenuItem>
-              <DropdownMenuItem onClick={downloadZip}>ZIP File</DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
+          <Button
+            aria-label="Other export options"
+            aria-haspopup="menu"
+            popoverTarget="export-menu"
+            disabled={selectedEmojis.length === 0 || isExporting}
+            className="h-9 w-8 rounded-l-none border-l border-primary-foreground/25 p-0"
+          >
+            <ChevronDown className="h-4 w-4" />
+          </Button>
+          <div ref={exportMenuRef} id="export-menu" popover="auto" role="menu" className="export-menu">
+            <button type="button" role="menuitem" onClick={() => runExport(exportAsPlainText)}>Plain Text</button>
+            <button type="button" role="menuitem" onClick={() => runExport(exportAsHtml)}>HTML</button>
+            <button type="button" role="menuitem" onClick={() => runExport(exportAsCss)}>CSS</button>
+            <button type="button" role="menuitem" onClick={() => runExport(exportAsMarkdownTable)}>Markdown Table</button>
+            <button type="button" role="menuitem" onClick={() => runExport(downloadZip)}>ZIP File</button>
+          </div>
         </div>
       </div>
 

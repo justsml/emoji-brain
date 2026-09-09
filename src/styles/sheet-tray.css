@@ -210,3 +210,40 @@
 @media (prefers-reduced-motion: reduce) {
   .sheet-chip, .sheet-chip img, .sheet-chip::after { transition: none; }
 }
+.export-menu {
+  position: fixed;
+  inset: auto 1rem 4.75rem auto;
+  margin: 0;
+  min-width: 11rem;
+  padding: 0.3rem;
+  border: 1px solid hsl(var(--border) / 0.6);
+  border-radius: 0.25rem;
+  background: hsl(var(--popover));
+  color: hsl(var(--popover-foreground));
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+}
+
+.export-menu::backdrop {
+  background: transparent;
+}
+
+.export-menu button {
+  display: flex;
+  width: 100%;
+  cursor: pointer;
+  border: 0;
+  border-radius: 0.2rem;
+  background: transparent;
+  padding: 0.45rem 0.6rem;
+  color: inherit;
+  font: inherit;
+  font-size: 0.875rem;
+  text-align: left;
+}
+
+.export-menu button:hover,
+.export-menu button:focus-visible {
+  background: hsl(var(--accent));
+  color: hsl(var(--accent-foreground));
+  outline: none;
+}
