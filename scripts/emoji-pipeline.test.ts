@@ -3,7 +3,7 @@ import { promises as fs } from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import sharp from 'sharp';
-import { checkEmojis, paths, readCatalog, updateEmojis } from './emoji-pipeline';
+import { checkEmojis, paths, readCatalog, reportMarkdown, reportTable, updateEmojis } from './emoji-pipeline';
 const roots: string[] = [];
 async function fixture() {
   const root = await fs.mkdtemp(path.join(os.tmpdir(), 'emoji-pipeline-'));
@@ -34,7 +34,7 @@ test('offline conversion, change tracking, label selection and metadata preserva
   await fs.utimes(file, new Date(), new Date('2024-01-01'));
   let report = await checkEmojis(root);
   expect(report.rows[0].modified).toBe('changed');
-  expect(report.invalid).toBe(0);
+  expect(report.invalid).toBe(1);
   await updateEmojis(root, 'changes', label);
   expect(calls).toBe(1);
   await picture(file, 'blue');
@@ -70,6 +70,15 @@ test('missing files, duplicate IDs, invalid fields and labelling errors surface'
   const report = await checkEmojis(root);
   expect(report.errors).toContain('Duplicate id in catalog');
   expect(report.rows.find(r => r.filename === 'missing.webp')?.issues).toContain('Missing image');
+});
+test('reports render readable terminal and GitHub tables', async () => {
+  const root = await fixture();
+  await picture(path.join(paths(root).images, 'cat.webp'));
+  await updateEmojis(root, 'none');
+  const report = await checkEmojis(root);
+  expect(reportTable(report)).toContain('│ File');
+  expect(reportTable(report)).toContain('│ cat.webp');
+  expect(reportMarkdown(report)).toContain('| File | Exists / prior |');
 });
 test('animated ingest retains frames and generates a static preview', async () => {
   const root = await fixture();
