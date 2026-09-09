@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect, use, Suspense } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import type { EmojiMetadata } from "../types/emoji";
 import SearchBar from "./SearchBar";
 import EmojiGrid from "./EmojiGrid";
@@ -68,53 +68,38 @@ interface EmojiExplorerAppProps {
   initialEmojis: EmojiMetadata[];
 }
 
-function pagefindSearch(searchTerm: string, initialEmojis: EmojiMetadata[], showSelectedOnly: boolean, selectedEmojis: EmojiMetadata[]): Promise<EmojiMetadata[]> {
+async function pagefindSearch(
+  searchTerm: string,
+  initialEmojis: EmojiMetadata[],
+  onProgress: (loaded: number, total: number) => void,
+): Promise<EmojiMetadata[]> {
+  const term = searchTerm.trim();
   if (!window.pagefind) {
-    return Promise.resolve(initialEmojis);
-  }
-  
-  if (searchTerm.trim() === "") {
-    const emojis = showSelectedOnly
-      ? initialEmojis.filter((emoji) =>
-          selectedEmojis.some((selected) => selected.id === emoji.id)
-        )
-      : initialEmojis;
-    return Promise.resolve(emojis);
+    const query = term.toLowerCase();
+    return initialEmojis.filter((emoji) =>
+      [emoji.filename, ...emoji.tags, ...emoji.categories].join(" ").toLowerCase().includes(query)
+    );
   }
 
-  return window.pagefind.search(searchTerm.trim(), {
-    sort: {
-      filename: "asc",
-    },
-  }).then((searchResults) => {
-    if (searchResults.results.length === 0) {
-      return [];
-    }
-    
-    const emojiDataPromises = searchResults.results.map((result) =>
-      result.data()
-    );
-    return Promise.all(emojiDataPromises).then((emojiDataResults: PagefindResultData[]) => {
-      const emojis: EmojiMetadata[] = emojiDataResults.map((data) => ({
-        id: data.meta.id || "",
-        filename: data.url || "",
-        path: data.raw_url || data.url,
-        tags: [],
-        created: "",
-        categories: data.content?.split(",") || [],
-        size: data.meta.size ? parseInt(data.meta.size, 10) : 0,
-      }));
-      
-      return showSelectedOnly
-        ? emojis.filter((emoji) =>
-            selectedEmojis.some((selected) => selected.id === emoji.id)
-          )
-        : emojis;
-    });
-  }).catch((error) => {
-    console.error("Pagefind search error:", error);
-    return [];
-  });
+  const response = await window.pagefind.search(term, { sort: { filename: "asc" } });
+  const emojiById = new Map(initialEmojis.map((emoji) => [emoji.id, emoji]));
+  let loaded = 0;
+  onProgress(loaded, response.results.length);
+  return Promise.all(response.results.map(async (result) => {
+    const data = await result.data();
+    onProgress(++loaded, response.results.length);
+    const original = emojiById.get(data.meta.id);
+    if (original) return original;
+    return {
+      id: data.meta.id || "",
+      filename: data.url.split("/").pop() || "",
+      path: data.raw_url || data.url,
+      tags: [],
+      created: "",
+      categories: data.content?.split(",") || [],
+      size: data.meta.size ? parseInt(data.meta.size, 10) : 0,
+    };
+  }));
 }
 
 const _EmojiExplorerApp: React.FC<EmojiExplorerAppProps> = ({
@@ -126,6 +111,7 @@ const _EmojiExplorerApp: React.FC<EmojiExplorerAppProps> = ({
     isSearching,
     showSelectedOnly,
     gridScale,
+    focusedIndex,
     toggleEmojiSelection,
     setFilteredEmojis,
     setIsSearching,
@@ -136,7 +122,9 @@ const _EmojiExplorerApp: React.FC<EmojiExplorerAppProps> = ({
   } = useEmojiContext();
   
   const [searchTerm, setSearchTerm] = useState("");
-  const [searchPromise, setSearchPromise] = useState<Promise<EmojiMetadata[]> | null>(null);
+  const [searchResults, setSearchResults] = useState(initialEmojis);
+  const [searchStatus, setSearchStatus] = useState("");
+  const [searchProgress, setSearchProgress] = useState<number | undefined>();
 
   const handleSearchChange = useCallback((term: string) => {
     setSearchTerm(term);
@@ -154,32 +142,41 @@ const _EmojiExplorerApp: React.FC<EmojiExplorerAppProps> = ({
   }, [resetSelection]);
 
   useEffect(() => {
-    if (!window.pagefind) {
-      setFilteredEmojis(initialEmojis);
-      return;
-    }
-    
+    let current = true;
     if (searchTerm.trim() === "") {
-      const emojis = showSelectedOnly
-        ? initialEmojis.filter((emoji) =>
-            selectedEmojis.some((selected) => selected.id === emoji.id)
-          )
-        : initialEmojis;
-      setFilteredEmojis(emojis);
+      setSearchResults(initialEmojis);
       setIsSearching(false);
-      setSearchPromise(null);
+      setSearchStatus("");
+      setSearchProgress(undefined);
       return;
     }
 
     setIsSearching(true);
-    const promise = pagefindSearch(searchTerm, initialEmojis, showSelectedOnly, selectedEmojis);
-    setSearchPromise(promise);
-    
-    promise.then((results) => {
-      setFilteredEmojis(results);
-      setIsSearching(false);
+    setSearchStatus(`Finding matches for “${searchTerm.trim()}”…`);
+    setSearchProgress(undefined);
+    pagefindSearch(searchTerm, initialEmojis, (loaded, total) => {
+      if (!current) return;
+      setSearchStatus(`Preparing ${loaded.toLocaleString()} of ${total.toLocaleString()} matches…`);
+      setSearchProgress(total > 0 ? Math.round(loaded / total * 100) : 100);
+    }).then((results) => {
+      if (!current) return;
+      setSearchResults(results);
+      setSearchStatus(`${results.length.toLocaleString()} matches for “${searchTerm.trim()}”`);
+    }).catch((error) => {
+      if (!current) return;
+      console.error("Pagefind search error:", error);
+      setSearchStatus("Search couldn’t finish. Your previous results are still here. Try searching again.");
+    }).finally(() => {
+      if (current) setIsSearching(false);
     });
-  }, [searchTerm, initialEmojis, showSelectedOnly, selectedEmojis, setFilteredEmojis, setIsSearching]);
+    return () => { current = false; };
+  }, [searchTerm, initialEmojis, setIsSearching]);
+
+  useEffect(() => {
+    setFilteredEmojis(showSelectedOnly
+      ? searchResults.filter((emoji) => selectedEmojis.some((selected) => selected.id === emoji.id))
+      : searchResults);
+  }, [searchResults, showSelectedOnly, selectedEmojis, setFilteredEmojis]);
 
   const handleAnnounceSelection = useCallback((emoji: EmojiMetadata, isSelected: boolean) => {
     announceSelection(emoji, isSelected);
@@ -196,6 +193,9 @@ const _EmojiExplorerApp: React.FC<EmojiExplorerAppProps> = ({
                 onSearchChange={handleSearchChange}
                 onEmojiSelect={handleEmojiSelect}
                 count={filteredEmojis.length}
+                isSearching={isSearching}
+                status={searchStatus}
+                progress={searchProgress}
               />
             </div>
           </div>
@@ -206,30 +206,16 @@ const _EmojiExplorerApp: React.FC<EmojiExplorerAppProps> = ({
         </div>
       </div>
 
-      <section className="w-full">
-        {isSearching ? (
-          <p className="text-center text-muted-foreground">Searching...</p>
-        ) : searchPromise ? (
-          <Suspense fallback={<p className="text-center text-muted-foreground">Loading results...</p>}>
-            <EmojiGridRenderer
-              promise={searchPromise}
-              gridScale={gridScale}
-              onToggle={handleEmojiSelect}
-              onFocusChange={setFocusedIndex}
-              onAnnounce={handleAnnounceSelection}
-            />
-          </Suspense>
-        ) : (
+      <section className="w-full" aria-label="Emoji results" aria-busy={isSearching}>
           <EmojiGrid
             emojis={filteredEmojis}
             selectedEmojis={selectedEmojis}
-            focusedIndex={0}
+            focusedIndex={focusedIndex}
             gridScale={gridScale}
             onToggleSelection={handleEmojiSelect}
             onSetFocusedIndex={setFocusedIndex}
             onAnnounceSelection={handleAnnounceSelection}
           />
-        )}
       </section>
 
       <div className="container mx-auto p-4">
@@ -246,39 +232,6 @@ const _EmojiExplorerApp: React.FC<EmojiExplorerAppProps> = ({
     </ErrorBoundary>
   );
 };
-
-interface EmojiGridRendererProps {
-  promise: Promise<EmojiMetadata[]>;
-  gridScale: number;
-  onToggle: (emoji: EmojiMetadata) => void;
-  onFocusChange: (index: number) => void;
-  onAnnounce: (emoji: EmojiMetadata, isSelected: boolean) => void;
-}
-
-function EmojiGridRenderer({ promise, gridScale, onToggle, onFocusChange, onAnnounce }: EmojiGridRendererProps) {
-  const emojis = use(promise);
-
-  if (emojis.length === 0) {
-    return (
-      <div className="flex flex-col items-center justify-center py-20 space-y-4">
-        <p className="text-xl font-medium text-muted-foreground">No emojis found</p>
-        <p className="text-sm text-muted-foreground/60">Try adjusting your search terms</p>
-      </div>
-    );
-  }
-
-  return (
-    <EmojiGrid
-      emojis={emojis}
-      selectedEmojis={[]}
-      focusedIndex={0}
-      gridScale={gridScale}
-      onToggleSelection={onToggle}
-      onSetFocusedIndex={onFocusChange}
-      onAnnounceSelection={onAnnounce}
-    />
-  );
-}
 
 const EmojiExplorerWrapper = (
   props: Omit<EmojiExplorerAppProps, "categories">

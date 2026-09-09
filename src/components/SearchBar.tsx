@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../styles/search.css';
 import { Search } from 'lucide-react';
 import type { EmojiMetadata } from '../types/emoji';
 
@@ -9,6 +10,9 @@ interface SearchBarProps {
   onEmojiSelect?: (emoji: EmojiMetadata) => void;
   // Number of search results
   count: number;
+  isSearching?: boolean;
+  status?: string;
+  progress?: number;
   // Optional props
   categories?: string[];
   recentEmojis?: EmojiMetadata[];
@@ -18,7 +22,9 @@ const SearchBar: React.FC<SearchBarProps> = ({
   onSearchChange, 
   onEmojiSelect,
   count,
-  categories = [],
+  isSearching = false,
+  status = "",
+  progress,
   recentEmojis = []
 }) => {
   const [inputValue, setInputValue] = useState('');
@@ -37,11 +43,14 @@ const SearchBar: React.FC<SearchBarProps> = ({
 
   return (
     <div className="relative flex-1">
-      <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+      <div className={`emoji-search-shell ${isSearching ? 'is-searching' : ''}`}>
+      <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
       <input
-        type="text"
+        type="search"
+        aria-label="Search emojis"
+        aria-describedby="emoji-search-status"
         placeholder="Search emojis..."
-        className="w-full rounded-md border border-input bg-background px-9 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+        className="emoji-search-input w-full rounded-xl border border-input bg-background pl-10 pr-28 py-4 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
         value={inputValue}
         onChange={handleChange}
       />
@@ -49,6 +58,17 @@ const SearchBar: React.FC<SearchBarProps> = ({
         {count} results
       </span>
       
+      {isSearching && progress !== undefined && (
+        <div className="emoji-search-progress" role="progressbar" aria-label="Preparing search matches"
+          aria-valuemin={0} aria-valuemax={100} aria-valuenow={progress}>
+          <span style={{ width: `${progress}%` }} />
+        </div>
+      )}
+      </div>
+      <div id="emoji-search-status" role="status" className="emoji-search-status text-xs text-muted-foreground">
+        {status || 'Find your next favorite reaction.'}
+        {isSearching && <span className="block">Keep browsing while your results update.</span>}
+      </div>
       {recentEmojis.length > 0 && (
         <div className="mt-2">
           <h3 className="text-sm font-medium">Recently Used</h3>
