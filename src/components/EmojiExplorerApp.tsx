@@ -184,29 +184,25 @@ const _EmojiExplorerApp: React.FC<EmojiExplorerAppProps> = ({
 
   return (
     <ErrorBoundary>
-      <div className="w-full min-h-screen">
-        <div className="container mx-auto p-4">
-        <div className="mx-auto max-w-2xl space-y-4">
-          <div className="flex gap-4 items-start">
-            <div className="flex-1 min-w-[200px]">
-              <SearchBar
-                onSearchChange={handleSearchChange}
-                onEmojiSelect={handleEmojiSelect}
-                count={filteredEmojis.length}
-                isSearching={isSearching}
-                status={searchStatus}
-                progress={searchProgress}
-              />
+      <div className="w-full">
+        <div className="toolbar">
+          <div className="toolbar-inner">
+            <SearchBar
+              onSearchChange={handleSearchChange}
+              onEmojiSelect={handleEmojiSelect}
+              count={filteredEmojis.length}
+              isSearching={isSearching}
+              status={searchStatus}
+              progress={searchProgress}
+            />
+            <div className="toolbar-controls">
+              <ShowSelectedToggle />
+              <GridScaleSlider />
             </div>
           </div>
-          <div className="flex items-center justify-between gap-6 flex-wrap">
-            <ShowSelectedToggle />
-            <GridScaleSlider />
-          </div>
         </div>
-      </div>
 
-      <section className="w-full" aria-label="Emoji results" aria-busy={isSearching}>
+        <section className="w-full" aria-label="Emoji results" aria-busy={isSearching}>
           <EmojiGrid
             emojis={filteredEmojis}
             selectedEmojis={selectedEmojis}
@@ -216,9 +212,8 @@ const _EmojiExplorerApp: React.FC<EmojiExplorerAppProps> = ({
             onSetFocusedIndex={setFocusedIndex}
             onAnnounceSelection={handleAnnounceSelection}
           />
-      </section>
+        </section>
 
-      <div className="container mx-auto p-4">
         <EmojiExport
           selectedEmojis={selectedEmojis}
           onClearSelection={handleResetSelection}
@@ -228,7 +223,6 @@ const _EmojiExplorerApp: React.FC<EmojiExplorerAppProps> = ({
           onRemoveEmoji={handleEmojiSelect}
         />
       </div>
-    </div>
     </ErrorBoundary>
   );
 };

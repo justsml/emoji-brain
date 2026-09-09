@@ -18,8 +18,8 @@ interface SearchBarProps {
   recentEmojis?: EmojiMetadata[];
 }
 
-const SearchBar: React.FC<SearchBarProps> = ({ 
-  onSearchChange, 
+const SearchBar: React.FC<SearchBarProps> = ({
+  onSearchChange,
   onEmojiSelect,
   count,
   isSearching = false,
@@ -42,32 +42,29 @@ const SearchBar: React.FC<SearchBarProps> = ({
   };
 
   return (
-    <div className="relative flex-1">
+    <div className="emoji-search">
       <div className={`emoji-search-shell ${isSearching ? 'is-searching' : ''}`}>
-      <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-      <input
-        type="search"
-        aria-label="Search emojis"
-        aria-describedby="emoji-search-status"
-        placeholder="Search emojis..."
-        className="emoji-search-input w-full rounded-xl border border-input bg-background pl-10 pr-28 py-4 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-        value={inputValue}
-        onChange={handleChange}
-      />
-      <span className="absolute right-3 top-1/2 -translate-y-1/2 text-sm text-muted-foreground">
-        {count} results
-      </span>
-      
-      {isSearching && progress !== undefined && (
-        <div className="emoji-search-progress" role="progressbar" aria-label="Preparing search matches"
-          aria-valuemin={0} aria-valuemax={100} aria-valuenow={progress}>
-          <span style={{ width: `${progress}%` }} />
-        </div>
-      )}
+        <Search className="emoji-search-icon" aria-hidden="true" />
+        <input
+          type="search"
+          aria-label="Search emojis"
+          aria-describedby="emoji-search-status"
+          placeholder="Search emojis..."
+          className="emoji-search-input"
+          value={inputValue}
+          onChange={handleChange}
+        />
+        <span className="emoji-search-count">{count.toLocaleString()}</span>
+
+        {isSearching && progress !== undefined && (
+          <div className="emoji-search-progress" role="progressbar" aria-label="Preparing search matches"
+            aria-valuemin={0} aria-valuemax={100} aria-valuenow={progress}>
+            <span style={{ width: `${progress}%` }} />
+          </div>
+        )}
       </div>
-      <div id="emoji-search-status" role="status" className="emoji-search-status text-xs text-muted-foreground">
-        {status || 'Find your next favorite reaction.'}
-        {isSearching && <span className="block">Keep browsing while your results update.</span>}
+      <div id="emoji-search-status" role="status" className="emoji-search-status">
+        {status}
       </div>
       {recentEmojis.length > 0 && (
         <div className="mt-2">

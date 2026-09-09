@@ -1,94 +1,160 @@
+/* ---------------------------------------------------------------------------
+   Stickers laid out on the mat.
+   No wells, no outlines, no shadows behind the art — 400 containers would be
+   louder than the artwork they hold. Hover lifts a sticker off the mat;
+   selecting one washes it in the colour of a cut.
+   --------------------------------------------------------------------------- */
+
+.emoji-grid-wrap {
+  max-width: 1680px;
+  margin: 0 auto;
+  padding: 1.75rem 2rem 2rem;
+}
+@media (max-width: 560px) {
+  .emoji-grid-wrap { padding: 1rem;
+  }
+}
+
 .emoji-card {
-  display: flex;
-  flex-direction: column;
+  display: block;
   width: 100%;
-  overflow: hidden;
-  border: 1px solid hsl(var(--border) / .8);
-  border-radius: 20px;
-  background: hsl(var(--card));
-  color: hsl(var(--foreground));
-  text-align: left;
+  padding: 0.35rem 0.25rem 0.3rem;
+  border: 0;
+  border-radius: 3px;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: center;
   cursor: pointer;
-  box-shadow: 0 3px 12px hsl(var(--foreground) / .035);
-  transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color 140ms ease;
+}
+
+.emoji-card-preview {
+  position: relative;
+  aspect-ratio: 1;
+}
+
+.emoji-card-image {
+  position: absolute;
+  inset: 4%;
+  width: 92%;
+  height: 92%;
+  object-fit: contain;
+  /* a sticker sits on the mat, so it casts a short contact shadow */
+  filter: drop-shadow(0 1.5px 1.5px hsl(var(--lift) / 0.3));
+  transition: transform 150ms cubic-bezier(0.2, 0.8, 0.3, 1),
+    filter 150ms ease;
 }
 
 .emoji-card:hover {
-  transform: translateY(-3px);
-  border-color: #a78bfa;
-  box-shadow: 0 12px 28px rgb(124 58 237 / .12);
+  background: hsl(var(--foreground) / 0.05);
+}
+.emoji-card:hover .emoji-card-image {
+  transform: translateY(-3px) rotate(-2deg) scale(1.06);
+  filter: drop-shadow(0 5px 5px hsl(var(--lift) / 0.3));
+}
+.emoji-card:active .emoji-card-image {
+  transform: translateY(-1px) rotate(-1deg) scale(1);
 }
 
-.emoji-card:active { transform: translateY(-1px) scale(.98); }
+.emoji-card:focus { outline: none; }
 .emoji-card:focus-visible {
-  outline: 3px solid #8b5cf6;
-  outline-offset: 4px;
+  outline: 2px solid hsl(var(--cut));
+  outline-offset: 1px;
 }
-.emoji-card-selected, .emoji-card-selected:hover {
-  border-color: #8b5cf6;
-  box-shadow: 0 0 0 2px rgb(139 92 246 / .22), 0 8px 24px rgb(124 58 237 / .1);
+
+.emoji-card-selected,
+.emoji-card-selected:hover {
+  background: hsl(var(--cut) / 0.12);
 }
-.emoji-card-preview {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  aspect-ratio: 1.15;
-  padding: 24px;
-  background: radial-gradient(ellipse at 25% 10%, rgb(167 139 250 / .14), transparent 70%),
-    linear-gradient(145deg, hsl(var(--muted) / .45), hsl(var(--card)));
+.emoji-card-selected .emoji-card-image {
+  transform: translateY(-2px) rotate(-2deg) scale(1.04);
+  filter: drop-shadow(0 4px 4px hsl(var(--lift) / 0.28));
 }
-.emoji-card-image {
-  position: absolute;
-  inset: 18%;
-  width: 64%;
-  height: 64%;
-  object-fit: contain;
-  filter: drop-shadow(0 4px 5px rgb(0 0 0 / .08));
-}
+
+/* the punch-out tab, shown only when it can be acted on */
 .emoji-card-check {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: -2px;
+  right: -2px;
+  z-index: 1;
   display: grid;
   place-items: center;
-  width: 23px;
-  height: 23px;
-  border-radius: 50%;
-  border: 1px solid hsl(var(--border));
-  background: hsl(var(--card) / .9);
-  color: hsl(var(--muted-foreground));
-  font-size: 15px;
+  width: 16px;
+  height: 16px;
+  border-radius: 999px;
+  background: hsl(var(--foreground) / 0.14);
+  color: hsl(var(--background));
+  font-size: 11px;
+  font-weight: 700;
   line-height: 1;
+  opacity: 0;
+  transition: opacity 130ms ease;
 }
+.emoji-card:hover .emoji-card-check,
+.emoji-card:focus-visible .emoji-card-check { opacity: 1; }
 .emoji-card-selected .emoji-card-check {
-  background: #7c3aed;
-  border-color: #7c3aed;
-  color: white;
+  opacity: 1;
+  background: hsl(var(--cut));
+  color: #fff;
 }
-.emoji-card-caption {
-  width: 100%;
-  padding: 12px 14px 14px;
-  border-top: 1px solid hsl(var(--border) / .6);
-}
+
+/* the shortcode is literal text you paste into Slack, so it is set as code */
 .emoji-card-name {
   display: block;
   overflow: hidden;
+  margin-top: 6px;
+  color: hsl(var(--muted-foreground) / 0.85);
+  font-family: var(--font-code);
+  font-size: 0.6875rem;
+  letter-spacing: -0.015em;
+  line-height: 1.25;
   text-overflow: ellipsis;
   white-space: nowrap;
-  font-size: 12px;
+}
+.emoji-card:hover .emoji-card-name { color: hsl(var(--foreground)); }
+.emoji-card-selected .emoji-card-name {
+  color: hsl(var(--cut));
+  font-weight: 500;
+}
+
+/* --- empty state --------------------------------------------------------- */
+
+.emoji-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 5rem 1.5rem;
+  text-align: center;
+}
+.emoji-empty img {
+  width: 4rem;
+  height: 4rem;
+  margin-bottom: 0.5rem;
+  transform: rotate(-7deg);
+  object-fit: contain;
+  filter: drop-shadow(0 2px 3px hsl(var(--lift) / 0.28));
+}
+.emoji-empty h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.375rem;
   font-weight: 600;
-  letter-spacing: -.015em;
+  letter-spacing: -0.025em;
 }
-.emoji-card-hint {
-  display: block;
-  margin-top: 3px;
+.emoji-empty p {
+  margin: 0;
+  max-width: 40ch;
   color: hsl(var(--muted-foreground));
-  font-size: 10px;
+  font-size: 0.875rem;
+  line-height: 1.55;
 }
-.emoji-card-selected .emoji-card-hint { color: #8b5cf6; }
 
 @media (prefers-reduced-motion: reduce) {
-  .emoji-card { transition: none; }
-  .emoji-card:hover, .emoji-card:active { transform: none; }
+  .emoji-card, .emoji-card-image, .emoji-card-check { transition: none; }
+  .emoji-card:hover .emoji-card-image,
+  .emoji-card:active .emoji-card-image,
+  .emoji-card-selected .emoji-card-image { transform: none; }
 }

@@ -10,6 +10,7 @@ import type { EmojiMetadata } from "../types/emoji";
 import { getAbsoluteUrl } from "../lib/utils";
 import { generateSlackBrowserScript } from "../lib/slackBrowserScript";
 import { CheckSquare, XSquare, ChevronDown, Copy, LoaderCircle, X, Check } from "lucide-react";
+import "../styles/sheet-tray.css";
 
 interface EmojiExportProps {
   selectedEmojis: EmojiMetadata[];
@@ -179,62 +180,58 @@ export function EmojiExport({ selectedEmojis, onClearSelection, onSelectAll, fil
       <section
         aria-labelledby="slack-instructions-title"
         onKeyDown={(event) => { if (event.key === "Escape") closeInstructions(); }}
-        className="fixed bottom-36 sm:bottom-28 left-3 right-3 mx-auto z-50 max-w-lg max-h-[calc(100dvh-11rem)] overflow-y-auto rounded-3xl border border-primary/20 bg-background/95 p-6 shadow-2xl backdrop-blur-xl animate-in slide-in-from-bottom-8 fade-in duration-300 motion-reduce:animate-none"
+        className="slack-guide animate-in slide-in-from-bottom-4 fade-in duration-200 motion-reduce:animate-none"
       >
-        <div className="flex items-start justify-between gap-4">
+        <div className="slack-guide-head">
           <div>
-            <div className="mb-2 flex items-center gap-2 text-sm font-medium text-primary"><Check className="h-4 w-4" /> {copiedScript.megabytes} MB copied · {copiedScript.count} emojis</div>
-            <h2 id="slack-instructions-title" className="text-xl font-semibold">Your emojis are ready for Slack</h2>
+            <div className="slack-guide-receipt"><Check className="h-3.5 w-3.5" /> {copiedScript.count} emojis · {copiedScript.megabytes} MB on your clipboard</div>
+            <h2 id="slack-instructions-title">Three steps to get them into Slack</h2>
           </div>
           <Button ref={closeInstructionsRef} variant="ghost" size="icon" aria-label="Close Slack instructions" onClick={closeInstructions}><X className="h-4 w-4" /></Button>
         </div>
-        <ol className="mt-4 list-decimal space-y-3 pl-5 text-sm leading-relaxed text-muted-foreground">
-          <li>Sign in to your workspace and open <code className="break-all text-foreground">https://YOUR-WORKSPACE.slack.com/customize/emoji</code>.</li>
-          <li>Open your browser’s Developer Tools, then select the <strong className="text-foreground">Console</strong> tab.</li>
-          <li>Paste the copied script and press <strong className="text-foreground">Enter</strong>. Keep the page open while it uploads. The console shows each result and a final summary.</li>
+        <ol>
+          <li>Sign in to your workspace and open <code>https://YOUR-WORKSPACE.slack.com/customize/emoji</code>.</li>
+          <li>Open your browser’s developer tools and select the <strong>Console</strong> tab.</li>
+          <li>Paste the script and press <strong>Enter</strong>. Leave the page open while it uploads — the console reports each emoji and a final count.</li>
         </ol>
-        <p className="mt-4 text-xs text-muted-foreground">Your workspace must allow you to add custom emoji. Existing names or unsupported images may be rejected; check the console results.</p>
+        <p className="slack-guide-note">Your workspace must allow you to add custom emoji. Slack rejects names it already has and images it cannot read; the console lists any it skipped.</p>
       </section>
     )}
-    <div className="fixed bottom-3 left-0 right-0 mx-auto bg-background/80 backdrop-blur-xl supports-[backdrop-filter]:bg-background/60 p-3 rounded-2xl shadow-2xl border border-border/50 flex flex-wrap w-[calc(100%-1.5rem)] max-w-3xl justify-between items-center gap-2 z-50">
-      <div className="flex items-center gap-3 min-w-0 px-2 py-1">
-        <div
-          className="text-lg font-medium shrink-0 text-foreground/90"
-          aria-label={`${selectedEmojis.length} selected`}
-        >
+    <div className="sheet-tray">
+      <div className="sheet-summary">
+        <div className="sheet-tally" aria-label={`${selectedEmojis.length} selected`}>
           {selectedEmojis.length === 0 ? (
-            <span className="text-muted-foreground">No emojis selected</span>
+            <span className="sheet-empty">
+              <b>No emojis selected</b>
+              <span>Tap any sticker above to start your sheet.</span>
+            </span>
           ) : (
             <>
-              <span className="font-semibold">{selectedEmojis.length}</span> selected
-              {selectedEmojis.length > 0 && (
-                <span className="ml-2 text-muted-foreground/70 text-xs">
-                  ({parseFloat(
-                    (
-                      selectedEmojis.reduce((total, emoji) => total + emoji.size, 0) /
-                      1024
-                    ).toFixed(1)
-                  ).toLocaleString()} KB)
-                </span>
-              )}
+              <strong>{selectedEmojis.length}</strong> on your sheet
+              <span className="sheet-weight">
+                {parseFloat(
+                  (
+                    selectedEmojis.reduce((total, emoji) => total + emoji.size, 0) /
+                    1024
+                  ).toFixed(1)
+                ).toLocaleString()} KB
+              </span>
             </>
           )}
         </div>
         {selectedEmojis.length > 0 && (
-          <div className="flex gap-1.5 overflow-x-auto max-w-28 sm:max-w-52 scrollbar-hide mask-fade-right" style={{ scrollSnapType: 'x mandatory' }}>
+          <div className="sheet-strip scrollbar-hide mask-fade-right">
             {selectedEmojis.map((emoji) => (
               <button
                 key={emoji.id}
                 type="button"
-                className="shrink-0 w-7 h-7 flex items-center justify-center bg-secondary/50 rounded-md overflow-hidden ring-1 ring-border/50 hover:ring-destructive/50 hover:bg-destructive/10 transition-colors cursor-pointer"
-                style={{ scrollSnapAlign: 'start' }}
+                className="sheet-chip"
                 onClick={() => onRemoveEmoji(emoji)}
                 title={`Remove ${emoji.filename}`}
               >
                 <img
                   src={emoji.path}
                   alt={emoji.filename}
-                  className="w-full h-full object-contain"
                   loading="lazy"
                   decoding="async"
                 />
@@ -244,11 +241,11 @@ export function EmojiExport({ selectedEmojis, onClearSelection, onSelectAll, fil
         )}
       </div>
 
-      <div className="flex items-center shrink-0 gap-1 sm:gap-3">
+      <div className="sheet-actions">
         <Button
           variant="ghost"
           onClick={onSelectAll}
-          className="h-9 w-9 p-0 rounded-xl transition-all duration-200 hover:bg-primary/10 hover:text-primary hover:scale-105 active:scale-95"
+          className="h-9 w-9 p-0 rounded-lg hover:bg-primary/10 hover:text-primary"
           size="sm"
           title="Select All Visible"
         >
@@ -257,27 +254,27 @@ export function EmojiExport({ selectedEmojis, onClearSelection, onSelectAll, fil
         <Button
           variant="ghost"
           onClick={onClearSelection}
-          className="h-9 w-9 p-0 rounded-xl transition-all duration-200 hover:bg-destructive/10 hover:text-destructive hover:scale-105 active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100"
+          className="h-9 w-9 p-0 rounded-lg hover:bg-destructive/10 hover:text-destructive disabled:opacity-35"
           size="sm"
           title="Deselect All"
           disabled={selectedEmojis.length === 0}
         >
           <XSquare className="h-4 w-4" />
         </Button>
-        <div className="w-px h-6 bg-border" />
+        <div className="sheet-divider" />
         <div className="flex items-center">
           <Button
             ref={scriptButtonRef}
             onClick={exportSlackUploadScript}
             disabled={selectedEmojis.length === 0 || isExporting}
-            className="h-10 gap-2 rounded-l-xl rounded-r-none bg-primary px-4 font-semibold shadow-sm"
+            className="h-10 gap-2 rounded-l-lg rounded-r-none px-4 font-semibold"
           >
             {isExporting ? <LoaderCircle className="h-4 w-4 animate-spin motion-reduce:animate-none" /> : <Copy className="h-4 w-4" />}
-            {isExporting ? "Preparing…" : "Copy Slack Script"}
+            {isExporting ? "Preparing…" : "Copy Slack script"}
           </Button>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button aria-label="Other export options" disabled={selectedEmojis.length === 0 || isExporting} className="h-10 w-9 rounded-l-none rounded-r-xl border-l border-primary-foreground/20 p-0"><ChevronDown className="h-4 w-4" /></Button>
+              <Button aria-label="Other export options" disabled={selectedEmojis.length === 0 || isExporting} className="h-10 w-9 rounded-l-none rounded-r-lg border-l border-primary-foreground/25 p-0"><ChevronDown className="h-4 w-4" /></Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" side="top" className="rounded-xl shadow-xl border-border/50">
               <DropdownMenuItem onClick={exportAsPlainText}>Plain Text</DropdownMenuItem>
@@ -291,7 +288,7 @@ export function EmojiExport({ selectedEmojis, onClearSelection, onSelectAll, fil
       </div>
 
       {exportStatus && (
-        <div role="status" className="w-full px-2 text-xs text-muted-foreground animate-in fade-in slide-in-from-top-1">
+        <div role="status" className="sheet-status animate-in fade-in">
           {exportStatus}
         </div>
       )}

@@ -1,42 +1,99 @@
+/* The primary control: a wide ruled field, not a boxed input. It grows to fill
+   the toolbar because searching 400 stickers is the first thing you do. */
+
+.emoji-search {
+  position: relative;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
 .emoji-search-shell {
   position: relative;
-  isolation: isolate;
-  border-radius: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding-bottom: 0.3rem;
+  box-shadow: inset 0 -1px 0 0 hsl(var(--rule) / 0.55);
+  transition: box-shadow 150ms ease;
 }
-.emoji-search-shell::before {
-  content: '';
-  position: absolute;
-  inset: -2px;
-  z-index: -1;
-  border-radius: inherit;
-  background: linear-gradient(110deg, #8b5cf6, #38bdf8, #f472b6, #8b5cf6);
-  background-size: 300% 100%;
-  opacity: 0;
-  transition: opacity 180ms ease;
+.emoji-search-shell:focus-within {
+  box-shadow: inset 0 -2px 0 0 hsl(var(--cut));
 }
-.emoji-search-shell.is-searching::before {
-  opacity: 0.85;
-  animation: emoji-search-shimmer 2s linear infinite;
+
+.emoji-search-icon {
+  flex-shrink: 0;
+  width: 1.05rem;
+  height: 1.05rem;
+  color: hsl(var(--muted-foreground));
+  pointer-events: none;
 }
-.emoji-search-input { position: relative; }
-.emoji-search-shell > svg, .emoji-search-shell > span { z-index: 1; }
+
+.emoji-search-input {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 0.3rem 0;
+  border: 0;
+  background: none;
+  color: hsl(var(--foreground));
+  font-family: var(--font-display);
+  font-size: 1.0625rem;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+}
+.emoji-search-input::placeholder {
+  color: hsl(var(--muted-foreground) / 0.85);
+  font-weight: 400;
+}
+.emoji-search-input:focus { outline: none; }
+.emoji-search-input::-webkit-search-cancel-button { cursor: pointer; }
+
+.emoji-search-count {
+  flex-shrink: 0;
+  color: hsl(var(--muted-foreground));
+  font-size: 0.8125rem;
+  font-variant-numeric: tabular-nums;
+  font-weight: 500;
+}
+
+/* progress rides the field's own rule while results are being prepared */
 .emoji-search-progress {
   position: absolute;
-  bottom: 1px;
-  left: 12px;
-  right: 12px;
+  bottom: 0;
+  left: 0;
+  right: 0;
   height: 2px;
   overflow: hidden;
 }
 .emoji-search-progress > span {
   display: block;
   height: 100%;
-  background: linear-gradient(90deg, #8b5cf6, #38bdf8);
+  background: hsl(var(--cut));
   transition: width 160ms ease;
 }
-.emoji-search-status { min-height: 2.5rem; padding: 0.5rem 0.25rem 0; }
-@keyframes emoji-search-shimmer { to { background-position: 150% 0; } }
+.emoji-search-shell.is-searching {
+  box-shadow: inset 0 -2px 0 0 hsl(var(--rule) / 0.4);
+}
+
+/* status sits out of flow so the sticky toolbar never changes height */
+.emoji-search-status:not(:empty) {
+  position: absolute;
+  top: calc(100% + 0.35rem);
+  left: 0;
+  padding: 0.15rem 0.4rem;
+  border-radius: 2px;
+  background: hsl(var(--background) / 0.92);
+  color: hsl(var(--muted-foreground));
+  font-size: 0.75rem;
+  line-height: 1.3;
+  pointer-events: none;
+}
+
+@media (max-width: 900px) {
+  .emoji-search { flex-basis: 100%; }
+  .emoji-search-status:not(:empty) { position: static; padding-left: 0; background: none; }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .emoji-search-shell.is-searching::before { animation: none; }
-  .emoji-search-shell::before, .emoji-search-progress > span { transition: none; }
+  .emoji-search-shell,
+  .emoji-search-progress > span { transition: none; }
 }

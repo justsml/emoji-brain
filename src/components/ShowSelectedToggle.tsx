@@ -1,22 +1,37 @@
 import React from 'react';
 import { useEmojiContext } from '../context/EmojiContext';
 
+/**
+ * Two-state filter over the sheet. Showing the collected count here means the
+ * toolbar answers "how many have I picked?" without looking at the tray.
+ */
 const ShowSelectedToggle: React.FC = () => {
-  const { showSelectedOnly, setShowSelectedOnly } = useEmojiContext();
+  const { showSelectedOnly, setShowSelectedOnly, selectedEmojis } = useEmojiContext();
 
   return (
-    <div className="flex items-center gap-2">
-      <input
-        type="checkbox"
-        id="show-selected-only"
-        checked={showSelectedOnly}
-        onChange={(e) => setShowSelectedOnly(e.target.checked)}
-        className="h-4 w-4 rounded border-gray-300"
-      />
-      <label htmlFor="show-selected-only" className="text-sm text-muted-foreground">
-        Show selected only
+    <fieldset className="segmented">
+      <legend className="sr-only">Which emojis to show</legend>
+      <label>
+        <input
+          type="radio"
+          name="sheet-filter"
+          checked={!showSelectedOnly}
+          onChange={() => setShowSelectedOnly(false)}
+        />
+        Everything
       </label>
-    </div>
+      <label>
+        <input
+          type="radio"
+          id="show-selected-only"
+          name="sheet-filter"
+          checked={showSelectedOnly}
+          onChange={() => setShowSelectedOnly(true)}
+        />
+        Collected
+        <span className="segmented-count">{selectedEmojis.length}</span>
+      </label>
+    </fieldset>
   );
 };
 

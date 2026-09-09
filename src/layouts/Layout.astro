@@ -7,6 +7,15 @@ interface Props {
 }
 
 const { title } = Astro.props;
+
+// The hero is made of the collection itself — real stickers from the set.
+const heroStickers = [
+  "bongo-cat.webp",
+  "avocato.webp",
+  "meow_party.webp",
+  "this-is-fine-fire.webp",
+  "meow-double-thumbs2.webp",
+];
 ---
 
 <!doctype html>
@@ -21,6 +30,12 @@ const { title } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Instrument+Sans:wght@400..700&display=swap"
+    />
     <script is:inline>
       const theme = (() => {
         if (
@@ -67,34 +82,40 @@ const { title } = Astro.props;
 
   </head>
   <body>
-    <div class="min-h-screen bg-background text-foreground">
-      <header class="app-header container mx-auto">
-        <div class="flex items-start justify-between gap-4">
-          <div class="flex items-center gap-3">
-            <span class="brand-mark" aria-hidden="true">✳︎</span>
-            <div>
-              <p class="brand-eyebrow">A little more expressive</p>
-              <h1 class="text-2xl font-bold tracking-tight sm:text-3xl">Emoji Explorer</h1>
-            </div>
-          </div>
+    <div class="page-shell">
+      <header class="app-header">
+        <nav class="utility-rail" aria-label="Project links">
+          <a class="rail-link" href="https://github.com/justsml/emoji-brain" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M9 19c-4.3 1.3-4.3-2.2-6-2.7m12 5v-3.4c0-1 .1-1.5-.5-2.1 3.3-.4 6.8-1.6 6.8-7.3a5.7 5.7 0 0 0-1.5-4 5.3 5.3 0 0 0-.1-4s-1.3-.4-4.2 1.5a14.3 14.3 0 0 0-7.6 0C5 .1 3.7.5 3.7.5a5.3 5.3 0 0 0-.1 4 5.7 5.7 0 0 0-1.5 4c0 5.7 3.5 6.9 6.8 7.3-.5.5-.6 1-.6 2.1v3.4" transform="translate(1 1) scale(.9)" /></svg>
+            <span>Source</span>
+          </a>
+          <a class="rail-link rail-link-thanks" href="https://twitter.com/intent/tweet?text=Thanks%20%40justsml%20for%20Emoji%20Explorer%21&url=https%3A%2F%2Fgithub.com%2Fjustsml%2Femoji-brain" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z" /></svg>
+            <span>Thank @justsml</span>
+          </a>
+          <a class="rail-link" href="https://danlevy.net" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10" /></svg>
+            <span>danlevy.net</span>
+          </a>
           <ThemeToggle client:load />
-        </div>
-        <div class="header-details">
-          <p class="text-sm text-muted-foreground">Find your next reaction. Pick your favorites. Make Slack yours.</p>
-          <nav class="engagement-links" aria-label="Support the creator">
-            <a class="engagement-link" href="https://github.com/justsml/emoji-brain" target="_blank" rel="noopener noreferrer">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M9 19c-4.3 1.3-4.3-2.2-6-2.7m12 5v-3.4c0-1 .1-1.5-.5-2.1 3.3-.4 6.8-1.6 6.8-7.3a5.7 5.7 0 0 0-1.5-4 5.3 5.3 0 0 0-.1-4s-1.3-.4-4.2 1.5a14.3 14.3 0 0 0-7.6 0C5 .1 3.7.5 3.7.5a5.3 5.3 0 0 0-.1 4 5.7 5.7 0 0 0-1.5 4c0 5.7 3.5 6.9 6.8 7.3-.5.5-.6 1-.6 2.1v3.4" transform="translate(1 1) scale(.9)" /></svg>
-              View on GitHub
-            </a>
-            <a class="engagement-link engagement-link-thanks" href="https://twitter.com/intent/tweet?text=Thanks%20%40justsml%20for%20Emoji%20Explorer%21&url=https%3A%2F%2Fgithub.com%2Fjustsml%2Femoji-brain" target="_blank" rel="noopener noreferrer">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z" /></svg>
-              Thank @justsml
-            </a>
-            <a class="engagement-link" href="https://danlevy.net" target="_blank" rel="noopener noreferrer">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10" /></svg>
-              danlevy.net
-            </a>
-          </nav>
+        </nav>
+
+        <div class="masthead">
+          <div class="masthead-copy">
+            <h1 class="masthead-title">
+              <img class="brand-mark" src="/emojis/meow_party.webp" alt="" aria-hidden="true" width="44" height="44" />
+              Emoji Explorer
+            </h1>
+            <p class="masthead-lede">
+              A hand-collected sheet of <b>402 stickers</b>. Pick the ones you
+              want, then paste a single script into Slack to upload them all.
+            </p>
+          </div>
+          <div class="sticker-cluster" aria-hidden="true">
+            {heroStickers.map((file) => (
+              <img src={`/emojis/${file}`} alt="" width="56" height="56" loading="eager" />
+            ))}
+          </div>
         </div>
       </header>
       <main class="w-full">

@@ -15,7 +15,7 @@ interface EmojiGridProps {
   onAnnounceSelection: (emoji: EmojiMetadata, isSelected: boolean) => void;
 }
 
-const GRID_GAP = 16;
+const GRID_GAP = 12;
 
 interface EmojiCellProps {
   emoji: EmojiMetadata;
@@ -89,10 +89,7 @@ const EmojiCell = ({
           <span className="emoji-card-check" aria-hidden="true">{isSelected ? "✓" : "+"}</span>
           <AnimatedImage src={emoji.path} alt={emoji.filename} width={imageWidth} />
         </div>
-        <div className="emoji-card-caption">
-          <span className="emoji-card-name">{name}</span>
-          <span className="emoji-card-hint">{isSelected ? "Selected" : "Click to collect"}</span>
-        </div>
+        <span className="emoji-card-name">:{name}:</span>
       </button>
     </div>
   );
@@ -115,7 +112,7 @@ const EmojiGrid = ({
   
   const calculateLayout = useCallback((width: number, scale: number) => {
     const baseSize = GRID_SCALES[scale] ?? GRID_SCALES[0];
-    const availableWidth = width - 32;
+    const availableWidth = width;
     const columnCount = Math.max(1, Math.floor(availableWidth / (baseSize + GRID_GAP)));
     return { columnCount };
   }, []);
@@ -182,24 +179,24 @@ const EmojiGrid = ({
 
   if (emojis.length === 0) {
     return (
-      <div className="flex flex-col items-center justify-center py-20 space-y-4">
-        <p className="text-xl font-medium text-muted-foreground">No emojis found</p>
-        <p className="text-sm text-muted-foreground/60">Try adjusting your search terms</p>
+      <div className="emoji-empty">
+        <img src="/emojis/cat-confuse.webp" alt="" aria-hidden="true" width="72" height="72" />
+        <h2>Nothing on the sheet matches that</h2>
+        <p>Search by name, or by what an emoji is doing — try “cat”, “fire”, “thumbs”, or “party”.</p>
       </div>
     );
   }
 
   return (
-    <div
-      ref={parentRef}
-      className="w-full my-8 mb-16 px-4"
-    >
+    <div className="emoji-grid-wrap">
       <div
-        className="grid gap-4 w-full max-w-full"
+        ref={parentRef}
+        className="grid w-full max-w-full"
         role="grid"
         aria-label="Emoji results"
         style={{
-          gridTemplateColumns: `repeat(${columnCount}, 1fr)`,
+          gap: GRID_GAP,
+          gridTemplateColumns: `repeat(${columnCount}, minmax(0, 1fr))`,
         }}
       >
         {emojis.map((emoji, index) => (
