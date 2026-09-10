@@ -11,6 +11,9 @@ describe('appearance descriptors',()=>{
   const a=await extractDescriptor(original),b=await extractDescriptor(padded);
   expect(compareDescriptors(a,b).color).toBeLessThan(1e-9);
   expect(compareDescriptors(a,b).layout).toBeLessThan(1e-9);
+  expect(a.frames[0].silhouetteInformative).toBe(false);
+  expect(b.frames[0].silhouetteInformative).toBe(false);
+  expect(compareDescriptors(a,b).silhouette).toBeNull();
  });
  it('ranks shades before different hues and keeps proportions',async()=>{
   const [red,shade,blue,mixed]=await Promise.all([solid(255,0,0),solid(230,10,10),solid(0,0,255),png(x=>x<16?[255,0,0,255]:[0,0,255,255])].map(async b=>extractDescriptor(await b)));

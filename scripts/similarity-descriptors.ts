@@ -2,7 +2,7 @@ import sharp from 'sharp';
 import type { Lab, PaletteColor, FrameDescriptor, VisualDescriptor, Distances } from '../src/types/similarity';
 
 // Changing any normalization, sampling, metric, or weight requires a version bump.
-export const DESCRIPTOR_VERSION = 'oklab8-64rgb-centres-grid4-mask32-duration6-dct-v1';
+export const DESCRIPTOR_VERSION = 'oklab8-64rgb-centres-grid4-mask32-duration6-dct-v2';
 const SIZE = 32;
 const clamp = (n: number) => Math.max(0, Math.min(1, n));
 const norm = (a: number[], b: number[]) => Math.hypot(...a.map((v, i) => v - b[i]));
@@ -92,8 +92,10 @@ export async function extractDescriptor(buffer: Buffer): Promise<VisualDescripto
     }
     layout.forEach(c=>{if(c[3])for(let k=0;k<3;k++)c[k]/=c[3];});
     for(let y=1;y<31;y++)for(let x=1;x<31;x++){const i=y*32+x;if(mask[i]>.5&&[i-1,i+1,i-32,i+32].every(j=>mask[j]>.5))edges[i]=Math.hypot(light[i+1]-light[i-1],light[i+32]-light[i-32])>.12?1:0;}
-    // Opaque source images have uninformative silhouettes even when fitted with padding.
-    const opaque=raw.every((v,i)=>i%4!==3||v===255);
+    // A fully opaque trimmed rectangle has no silhouette evidence. Transparent
+    // padding must not change this decision relative to the unpadded source.
+    let opaque=right>=0;
+    for(let y=top;y<=bottom&&opaque;y++)for(let x=left;x<=right;x++)if(raw[(y*info.width+x)*4+3]!==255){opaque=false;break;}
     frames.push({weight:sample.weight,layout,mask,edges,silhouetteInformative:right>=0&&!opaque});
     if(count===1)fingerprint=phash(data);
   }
