@@ -3891,6 +3891,13 @@
       "sourceSha256": "30654d54136a55c935a30830424347be3d1db0aa440b783a6cb48a56b868e3d6",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/meow_cold.webp",
+            "bytes": 1954
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/meow_cold.webp",
@@ -3905,6 +3912,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/meow_cold.webp",
+          "bytes": 1954
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/meow_cold.webp",
+          "bytes": 4688
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/meow_cold.webp",
+          "bytes": 11266
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/meow_cold.webp",
+        "bytes": 61488,
+        "width": 1024,
+        "height": 1024
       }
     },
     "meow_comfy": {
@@ -3913,6 +3944,13 @@
       "sourceSha256": "754c7002f14468090ad41506aa85acf3dadf907c7c3694219db0288343fe5224",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/meow_comfy.webp",
+            "bytes": 2336
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/meow_comfy.webp",
@@ -3927,6 +3965,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/meow_comfy.webp",
+          "bytes": 2336
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/meow_comfy.webp",
+          "bytes": 5170
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/meow_comfy.webp",
+          "bytes": 11718
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/meow_comfy.webp",
+        "bytes": 60564,
+        "width": 1024,
+        "height": 1024
       }
     },
     "meow_comfyangry": {
@@ -3935,6 +3997,13 @@
       "sourceSha256": "188c2cb9b48ef9c0049eb049939b005bf68f1869417bc5db7635e6ac818e167a",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/meow_comfyangry.webp",
+            "bytes": 2310
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/meow_comfyangry.webp",
@@ -3949,6 +4018,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/meow_comfyangry.webp",
+          "bytes": 2310
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/meow_comfyangry.webp",
+          "bytes": 5280
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/meow_comfyangry.webp",
+          "bytes": 12134
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/meow_comfyangry.webp",
+        "bytes": 65428,
+        "width": 1024,
+        "height": 1024
       }
     },
     "meow_comfyaww": {
@@ -3957,6 +4050,13 @@
       "sourceSha256": "f6fa3007d8f670ca09e9f5982b246b03d2d6e56311233cc007cb86ba9d260069",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/meow_comfyaww.webp",
+            "bytes": 2392
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/meow_comfyaww.webp",
@@ -3971,6 +4071,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/meow_comfyaww.webp",
+          "bytes": 2392
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/meow_comfyaww.webp",
+          "bytes": 5430
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/meow_comfyaww.webp",
+          "bytes": 12892
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/meow_comfyaww.webp",
+        "bytes": 66370,
+        "width": 1024,
+        "height": 1024
       }
     },
     "meow_comfywhatisthis": {
@@ -3979,6 +4103,13 @@
       "sourceSha256": "82412899fc318d58b19011cd2522b23d6b1fc33c95bc22a55e9bd2309f2b9501",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/meow_comfywhatisthis.webp",
+            "bytes": 2192
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/meow_comfywhatisthis.webp",
@@ -3993,6 +4124,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/meow_comfywhatisthis.webp",
+          "bytes": 2192
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/meow_comfywhatisthis.webp",
+          "bytes": 4784
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/meow_comfywhatisthis.webp",
+          "bytes": 10796
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/meow_comfywhatisthis.webp",
+        "bytes": 53798,
+        "width": 1024,
+        "height": 824
       }
     },
     "meow_cosmic": {
@@ -4001,6 +4156,13 @@
       "sourceSha256": "48b01af6ade4399bfa1c91e17c7ddfbe7fd678fc6461d1ba0671e1c6c9a2226b",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/meow_cosmic.webp",
+            "bytes": 2296
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/meow_cosmic.webp",
@@ -4015,6 +4177,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/meow_cosmic.webp",
+          "bytes": 2296
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/meow_cosmic.webp",
+          "bytes": 6240
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/meow_cosmic.webp",
+          "bytes": 16152
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/meow_cosmic.webp",
+        "bytes": 89884,
+        "width": 1024,
+        "height": 1024
       }
     },
     "meow_cowboy_smile": {
@@ -4023,6 +4209,13 @@
       "sourceSha256": "efd75b02e42b89d0045d6b8fc0da51aa1a5e86c6218f3a590af03256fb0ae2e1",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/meow_cowboy_smile.webp",
+            "bytes": 1830
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/meow_cowboy_smile.webp",
@@ -4037,6 +4230,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/meow_cowboy_smile.webp",
+          "bytes": 1830
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/meow_cowboy_smile.webp",
+          "bytes": 4102
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/meow_cowboy_smile.webp",
+          "bytes": 9422
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/meow_cowboy_smile.webp",
+        "bytes": 52116,
+        "width": 1024,
+        "height": 1024
       }
     },
     "meow_cry_laugh": {
@@ -4045,6 +4262,13 @@
       "sourceSha256": "49f6b141f424274b7f881a87231928ba135698cae0418a7e78580ac943bec2cb",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/meow_cry_laugh.webp",
+            "bytes": 2232
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/meow_cry_laugh.webp",
@@ -4059,6 +4283,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/meow_cry_laugh.webp",
+          "bytes": 2232
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/meow_cry_laugh.webp",
+          "bytes": 4614
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/meow_cry_laugh.webp",
+          "bytes": 10272
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/meow_cry_laugh.webp",
+        "bytes": 58998,
+        "width": 1024,
+        "height": 1024
       }
     },
     "meow_cry": {
@@ -4067,6 +4315,13 @@
       "sourceSha256": "a4a871dcd201ff3945365b3cfafc627a6fe4ba43740d9707ebfeaacfbf32b701",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/meow_cry.webp",
+            "bytes": 2380
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/meow_cry.webp",
@@ -4081,6 +4336,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/meow_cry.webp",
+          "bytes": 2380
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/meow_cry.webp",
+          "bytes": 5048
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/meow_cry.webp",
+          "bytes": 12130
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/meow_cry.webp",
+        "bytes": 63320,
+        "width": 1024,
+        "height": 1024
       }
     },
     "meow_deficit": {
@@ -11013,6 +11292,13 @@
       "sourceSha256": "db834a25579c8739af73a81108b7f3651e5bfa3fb4ab371cba5f683cc7e6afc5",
       "animated": true,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/meow_coffeespitting.webp",
+            "bytes": 322116
+          }
+        },
         "128": {
           "webp": {
             "quality": 60,
@@ -11027,6 +11313,30 @@
             "bytes": 1698184
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/meow_coffeespitting.webp",
+          "bytes": 2292
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/meow_coffeespitting.webp",
+          "bytes": 5302
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/meow_coffeespitting.webp",
+          "bytes": 11642
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/meow_coffeespitting.webp",
+        "bytes": 4252238,
+        "width": 512,
+        "height": 512
       }
     },
     "meow_cookie": {
@@ -11035,6 +11345,13 @@
       "sourceSha256": "6e7135d28d23a24573184163b38dc50810179f54051c5e6ad95e763b5c968e0d",
       "animated": true,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/meow_cookie.webp",
+            "bytes": 20780
+          }
+        },
         "128": {
           "webp": {
             "quality": 90,
@@ -11049,6 +11366,30 @@
             "bytes": 100120
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/meow_cookie.webp",
+          "bytes": 2702
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/meow_cookie.webp",
+          "bytes": 6230
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/meow_cookie.webp",
+          "bytes": 14706
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/meow_cookie.webp",
+        "bytes": 262954,
+        "width": 512,
+        "height": 512
       }
     },
     "meow_crying": {
