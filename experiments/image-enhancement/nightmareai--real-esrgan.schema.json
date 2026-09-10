@@ -1,0 +1,279 @@
+{
+  "cover_image_url": "https://tjzk.replicate.delivery/models_models_featured_image/97ea20d0-2f23-4393-a8d8-71e4df5361f0/ApplicationFrameHost_3Bs5DdjGn.png",
+  "created_at": "2022-06-22T01:08:15.680509Z",
+  "default_example": {
+    "completed_at": "2023-05-10T17:04:31.540865Z",
+    "created_at": "2023-05-10T17:04:28.996672Z",
+    "data_removed": false,
+    "error": null,
+    "id": "2lrpder3dza2jgsvbyuyzj24r4",
+    "input": {
+      "image": "https://replicate.delivery/pbxt/Ing7Fa4YMk6YtcoG1YZnaK3UwbgDB5guRc5M2dEjV6ODNLMl/cat.jpg",
+      "scale": 2,
+      "face_enhance": false
+    },
+    "is_free_trial_prediction": false,
+    "logs": null,
+    "metrics": {
+      "predict_time": 2.56466,
+      "total_time": 2.544193
+    },
+    "model": "nightmareai/real-esrgan",
+    "output": "https://replicate.delivery/pbxt/iVcx6825RF5EMppOandycFV8fjf3acA8hePRL8F72X09Ew0hA/output.png",
+    "source": "web",
+    "started_at": "2023-05-10T17:04:28.976205Z",
+    "status": "succeeded",
+    "urls": {
+      "get": "https://api.replicate.com/v1/predictions/2lrpder3dza2jgsvbyuyzj24r4",
+      "cancel": "https://api.replicate.com/v1/predictions/2lrpder3dza2jgsvbyuyzj24r4/cancel"
+    },
+    "version": "42fed1c4974146d4d2414e2be2c5277c7fcf05fcc3a73abf41610695738c1d7b"
+  },
+  "description": "Real-ESRGAN with optional face correction and adjustable upscale",
+  "github_url": "https://github.com/NightmareAI/Real-ESRGAN",
+  "latest_version": {
+    "id": "b3ef194191d13140337468c916c2c5b96dd0cb06dffc032a022a31807f6a5ea8",
+    "created_at": "2025-10-27T21:59:19.965174Z",
+    "cog_version": "0.16.8",
+    "openapi_schema": {
+      "info": {
+        "title": "Cog",
+        "version": "0.1.0"
+      },
+      "paths": {},
+      "openapi": "3.0.2",
+      "components": {
+        "schemas": {
+          "Input": {
+            "type": "object",
+            "title": "Input",
+            "required": [
+              "image"
+            ],
+            "properties": {
+              "image": {
+                "type": "string",
+                "title": "Image",
+                "format": "uri",
+                "description": "Input image"
+              },
+              "scale": {
+                "type": "number",
+                "title": "Scale",
+                "default": 4,
+                "maximum": 10,
+                "minimum": 0,
+                "description": "Factor to scale image by"
+              },
+              "face_enhance": {
+                "type": "boolean",
+                "title": "Face Enhance",
+                "default": false,
+                "description": "Run GFPGAN face enhancement along with upscaling"
+              }
+            }
+          },
+          "Output": {
+            "type": "string",
+            "title": "Output",
+            "format": "uri"
+          },
+          "Status": {
+            "enum": [
+              "starting",
+              "processing",
+              "succeeded",
+              "canceled",
+              "failed"
+            ],
+            "type": "string",
+            "title": "Status",
+            "description": "An enumeration."
+          },
+          "WebhookEvent": {
+            "enum": [
+              "start",
+              "output",
+              "logs",
+              "completed"
+            ],
+            "type": "string",
+            "title": "WebhookEvent",
+            "description": "An enumeration."
+          },
+          "ValidationError": {
+            "type": "object",
+            "title": "ValidationError",
+            "required": [
+              "loc",
+              "msg",
+              "type"
+            ],
+            "properties": {
+              "loc": {
+                "type": "array",
+                "items": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "integer"
+                    }
+                  ]
+                },
+                "title": "Location"
+              },
+              "msg": {
+                "type": "string",
+                "title": "Message"
+              },
+              "type": {
+                "type": "string",
+                "title": "Error Type"
+              }
+            }
+          },
+          "PredictionRequest": {
+            "type": "object",
+            "title": "PredictionRequest",
+            "properties": {
+              "id": {
+                "type": "string",
+                "title": "Id",
+                "nullable": true
+              },
+              "input": {
+                "$ref": "#/components/schemas/Input",
+                "nullable": true
+              },
+              "context": {
+                "type": "object",
+                "title": "Context",
+                "nullable": true,
+                "additionalProperties": {
+                  "type": "string"
+                }
+              },
+              "webhook": {
+                "type": "string",
+                "title": "Webhook",
+                "format": "uri",
+                "nullable": true,
+                "maxLength": 65536,
+                "minLength": 1
+              },
+              "created_at": {
+                "type": "string",
+                "title": "Created At",
+                "format": "date-time",
+                "nullable": true
+              },
+              "output_file_prefix": {
+                "type": "string",
+                "title": "Output File Prefix",
+                "nullable": true
+              },
+              "webhook_events_filter": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/WebhookEvent"
+                },
+                "default": [
+                  "start",
+                  "output",
+                  "logs",
+                  "completed"
+                ],
+                "nullable": true
+              }
+            }
+          },
+          "PredictionResponse": {
+            "type": "object",
+            "title": "PredictionResponse",
+            "properties": {
+              "id": {
+                "type": "string",
+                "title": "Id",
+                "nullable": true
+              },
+              "logs": {
+                "type": "string",
+                "title": "Logs",
+                "default": ""
+              },
+              "error": {
+                "type": "string",
+                "title": "Error",
+                "nullable": true
+              },
+              "input": {
+                "$ref": "#/components/schemas/Input",
+                "nullable": true
+              },
+              "output": {
+                "$ref": "#/components/schemas/Output"
+              },
+              "status": {
+                "$ref": "#/components/schemas/Status",
+                "nullable": true
+              },
+              "metrics": {
+                "type": "object",
+                "title": "Metrics",
+                "nullable": true,
+                "additionalProperties": true
+              },
+              "version": {
+                "type": "string",
+                "title": "Version",
+                "nullable": true
+              },
+              "created_at": {
+                "type": "string",
+                "title": "Created At",
+                "format": "date-time",
+                "nullable": true
+              },
+              "started_at": {
+                "type": "string",
+                "title": "Started At",
+                "format": "date-time",
+                "nullable": true
+              },
+              "completed_at": {
+                "type": "string",
+                "title": "Completed At",
+                "format": "date-time",
+                "nullable": true
+              }
+            }
+          },
+          "HTTPValidationError": {
+            "type": "object",
+            "title": "HTTPValidationError",
+            "properties": {
+              "detail": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ValidationError"
+                },
+                "title": "Detail"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "license_url": "https://github.com/NightmareAI/Real-ESRGAN/blob/master/LICENSE",
+  "name": "real-esrgan",
+  "owner": "nightmareai",
+  "is_official": true,
+  "paper_url": null,
+  "run_count": 98441644,
+  "url": "https://replicate.com/nightmareai/real-esrgan",
+  "visibility": "public",
+  "weights_url": null
+}

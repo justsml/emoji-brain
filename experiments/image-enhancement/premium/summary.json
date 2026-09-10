@@ -1,0 +1,94 @@
+[
+  {
+    "name": "meow-cat",
+    "model": "google/nano-banana-pro",
+    "key": "meow-cat--google--nano-banana-pro",
+    "file": "/Users/dan/code/oss/emoji-brain/experiments/image-enhancement/premium/meow-cat--google--nano-banana-pro.result.json",
+    "cost": 0.15,
+    "status": "succeeded",
+    "seconds": 24.913395193,
+    "width": 2048,
+    "height": 2048,
+    "alpha": false
+  },
+  {
+    "name": "meow-cat",
+    "model": "black-forest-labs/flux-2-max",
+    "key": "meow-cat--black-forest-labs--flux-2-max",
+    "file": "/Users/dan/code/oss/emoji-brain/experiments/image-enhancement/premium/meow-cat--black-forest-labs--flux-2-max.result.json",
+    "cost": null,
+    "status": "succeeded",
+    "seconds": 28.179426453,
+    "width": 1424,
+    "height": 1424,
+    "alpha": false
+  },
+  {
+    "name": "meow-cat",
+    "model": "zsxkib/seedvr2",
+    "key": "meow-cat--zsxkib--seedvr2",
+    "file": "/Users/dan/code/oss/emoji-brain/experiments/image-enhancement/premium/meow-cat--zsxkib--seedvr2.result.json",
+    "cost": null,
+    "status": "succeeded",
+    "seconds": 21.331270574,
+    "width": 1920,
+    "height": 1920,
+    "alpha": false
+  },
+  {
+    "name": "everythingisbroken",
+    "model": "google/nano-banana-pro",
+    "key": "everythingisbroken--google--nano-banana-pro",
+    "file": "/Users/dan/code/oss/emoji-brain/experiments/image-enhancement/premium/everythingisbroken--google--nano-banana-pro.result.json",
+    "cost": 0.15,
+    "status": "succeeded",
+    "seconds": 24.568627607,
+    "width": 2048,
+    "height": 2048,
+    "alpha": false
+  },
+  {
+    "name": "everythingisbroken",
+    "model": "black-forest-labs/flux-2-max",
+    "key": "everythingisbroken--black-forest-labs--flux-2-max",
+    "file": "/Users/dan/code/oss/emoji-brain/experiments/image-enhancement/premium/everythingisbroken--black-forest-labs--flux-2-max.result.json",
+    "cost": null,
+    "status": "succeeded",
+    "seconds": 22.163899577,
+    "width": 1424,
+    "height": 1424,
+    "alpha": false
+  },
+  {
+    "name": "everythingisbroken",
+    "model": "zsxkib/seedvr2",
+    "key": "everythingisbroken--zsxkib--seedvr2",
+    "file": "/Users/dan/code/oss/emoji-brain/experiments/image-enhancement/premium/everythingisbroken--zsxkib--seedvr2.result.json",
+    "cost": null,
+    "status": "succeeded",
+    "seconds": 4.9014428,
+    "width": 1920,
+    "height": 1920,
+    "alpha": false
+  },
+  {
+    "name": "meow-cat",
+    "model": "openai/gpt-image-2.5-sunburst",
+    "key": "meow-cat--openai--gpt-image-2.5-sunburst",
+    "cost": 0.211552,
+    "status": "succeeded",
+    "width": 1024,
+    "height": 1024,
+    "alpha": false
+  },
+  {
+    "name": "everythingisbroken",
+    "model": "openai/gpt-image-2.5-sunburst",
+    "key": "everythingisbroken--openai--gpt-image-2.5-sunburst",
+    "cost": 0.211552,
+    "status": "succeeded",
+    "width": 1024,
+    "height": 1024,
+    "alpha": false
+  }
+]

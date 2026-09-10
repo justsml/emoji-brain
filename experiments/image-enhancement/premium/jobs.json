@@ -1,0 +1,44 @@
+[
+  {
+    "name": "meow-cat",
+    "model": "google/nano-banana-pro",
+    "key": "meow-cat--google--nano-banana-pro",
+    "file": "/Users/dan/code/oss/emoji-brain/experiments/image-enhancement/premium/meow-cat--google--nano-banana-pro.result.json",
+    "cost": 0.15
+  },
+  {
+    "name": "meow-cat",
+    "model": "black-forest-labs/flux-2-max",
+    "key": "meow-cat--black-forest-labs--flux-2-max",
+    "file": "/Users/dan/code/oss/emoji-brain/experiments/image-enhancement/premium/meow-cat--black-forest-labs--flux-2-max.result.json",
+    "cost": null
+  },
+  {
+    "name": "meow-cat",
+    "model": "zsxkib/seedvr2",
+    "key": "meow-cat--zsxkib--seedvr2",
+    "file": "/Users/dan/code/oss/emoji-brain/experiments/image-enhancement/premium/meow-cat--zsxkib--seedvr2.result.json",
+    "cost": null
+  },
+  {
+    "name": "everythingisbroken",
+    "model": "google/nano-banana-pro",
+    "key": "everythingisbroken--google--nano-banana-pro",
+    "file": "/Users/dan/code/oss/emoji-brain/experiments/image-enhancement/premium/everythingisbroken--google--nano-banana-pro.result.json",
+    "cost": 0.15
+  },
+  {
+    "name": "everythingisbroken",
+    "model": "black-forest-labs/flux-2-max",
+    "key": "everythingisbroken--black-forest-labs--flux-2-max",
+    "file": "/Users/dan/code/oss/emoji-brain/experiments/image-enhancement/premium/everythingisbroken--black-forest-labs--flux-2-max.result.json",
+    "cost": null
+  },
+  {
+    "name": "everythingisbroken",
+    "model": "zsxkib/seedvr2",
+    "key": "everythingisbroken--zsxkib--seedvr2",
+    "file": "/Users/dan/code/oss/emoji-brain/experiments/image-enhancement/premium/everythingisbroken--zsxkib--seedvr2.result.json",
+    "cost": null
+  }
+]

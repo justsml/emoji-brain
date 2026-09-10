@@ -1,0 +1,80 @@
+[
+  {
+    "billingConfig": {
+      "current_description": null,
+      "current_tiers": [
+        {
+          "criteria": [],
+          "description": null,
+          "prices": [
+            {
+              "description": "or 25 runs for $1",
+              "metric": "run_count",
+              "metric_display": "run",
+              "price": "$0.04",
+              "title": "per run",
+              "type": "fixed"
+            },
+            {
+              "description": "or around 33 megapixels for $1",
+              "metric": "image_input_megapixel_count",
+              "metric_display": "input image megapixel",
+              "price": "$0.03",
+              "title": "per input image megapixel",
+              "type": "per-unit"
+            },
+            {
+              "description": "or around 33 megapixels for $1",
+              "metric": "image_output_megapixel_count",
+              "metric_display": "output image megapixel",
+              "price": "$0.03",
+              "title": "per output image megapixel",
+              "type": "per-unit"
+            }
+          ],
+          "title": null
+        }
+      ]
+    },
+    "price": "$0.0001 per second",
+    "p50price": "$0.0025"
+  },
+  {
+    "billingConfig": {
+      "current_description": null,
+      "current_tiers": [
+        {
+          "criteria": [],
+          "description": null,
+          "prices": [
+            {
+              "description": "or 25 runs for $1",
+              "metric": "run_count",
+              "metric_display": "run",
+              "price": "$0.04",
+              "title": "per run",
+              "type": "fixed"
+            },
+            {
+              "description": "or around 33 megapixels for $1",
+              "metric": "image_input_megapixel_count",
+              "metric_display": "input image megapixel",
+              "price": "$0.03",
+              "title": "per input image megapixel",
+              "type": "per-unit"
+            },
+            {
+              "description": "or around 33 megapixels for $1",
+              "metric": "image_output_megapixel_count",
+              "metric_display": "output image megapixel",
+              "price": "$0.03",
+              "title": "per output image megapixel",
+              "type": "per-unit"
+            }
+          ],
+          "title": null
+        }
+      ]
+    }
+  }
+]

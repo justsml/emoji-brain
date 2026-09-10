@@ -1,0 +1,16 @@
+{
+  "model": "openai/gpt-image-2.5-sunburst",
+  "prompt": "Reconstruct this tiny emoji as a genuinely crisp, high-quality finished image. Use the reference for exact composition, expression, proportions, pose and colors, but redraw the blurry edges and surfaces with clean coherent detail. Do not reproduce blur, pixelation, compression artifacts or sharpening halos. Keep the same character and the same crop, filling the square canvas to the same extent. Do not convert it into a sticker, add a border, change the pose or make a new scene. Do not invent readable lettering from illegible marks. For transparent areas use a uniform white background, never a checkerboard. The final should look like the original artwork before it was reduced to 30 pixels, with every edge sharp at full resolution.",
+  "quality": "max",
+  "aspect_ratio": "1:1",
+  "output_format": "png",
+  "n": 1,
+  "input_references": [
+    {
+      "type": "image_url",
+      "image_url": {
+        "url": "data:image/webp;base64,UklGRrQEAABXRUJQVlA4WAoAAAAQAAAAGwAAGwAAQUxQSG4BAAABoKtt+yGx+83Gtm1brauktHMKbI0uR5BKraq0KVnatpM/FjPf8xQzu1cOISImILXPsiyrZZMHpL/YZcGKldOmXbv7/PqZ1SM6ybqO33H2/vfcIorWfzfu7O1gwtYLn8COeTN/aNW+f7Bz1H+fvb25f05K9XpHqGG5iOLFrIe5UoJQwEoa3x6un9H4B1WgyAWBwvLvydm6T4EEAYgFRUuU5r7eWW1DU4xQ0KCIvOL2iB61bndzhIhQAQrReDMwpWwjIEZYjYZ4sXtKx1UJNRRVRPXR4Z6KYkioAggGFqeFELAtiNXnCkU1lArLIL6nrFiNneZ1QJC/8e9VVFRQieB3TkVr59BPkYeIbQnLeVzq2ntJjioEUSj1ZilvvZuYenfZ9H/dMgFqRCnqE2spDR12rlkCVACBz+NSSilLvb+XRCkQVA7VUkq1lNJPFSwjqvnI1PaHEiWsJh/armEZC9tH7za1/9UAK+s/WgW/aiVWUDggIAMAAHASAJ0BKhwAHAA+MRSIQqIhIRQGqCADBLGATplCOBOCXO4x+2A54j0AbxX6AHSh2YJmN0Lvbb1F/bzLhvR/xZ0wD8Zfkz/Itkr8E39q/LTUnPPnsq/1X0h/3j8jv5n8Jn9z/SfM78x/6z3A/5J/K/77+YH91///czexd+nAdmf2HRaODxjZP3XTMJp/29A0wAOfvW4ky+hD/0TpwAD+/iMHdNsxe9xlleCBEKO0apENtuN5Qg5GQboN06AeBad08bO7ITk3/gcPm1TaeJ8gdMLJ/atnHmo6wW0B8K1TH2v8uyvRXLV7xySYYlVvAQohD+NUbFpSefzW5W51+/ENU+qzgYd78etBCYibyJMm88ju6wx8+c7HHRv+O87FXGUN90V6j+G7tmabgthV0MKR9R415mWxrFIUc5SZYwzCiP55aOEKjvG2XB5rqo8M+eBOafKq/GjXCW6QX3neh0z2cQjdjeqO48gvSvGX8lj/B89Tf0g3YTHfzQKAvxh9tKvGwepSfFP1gBBatx03PUcS434pmzVDlOltdfe36mk7WJ6vTvcX3fGyiNENMaaB4y9NGuWbEBVRdd1PsMrXv61Jw9P+igyk2/uj32Su/HO6YOKfFyny6TiFX7XTiqNPXex8sy0r1ZBKHDp7P/H83vGu80NQip1hnpylckhiq610T3GazRatBh5p/lAIJMQzd3B48Ambn7X38hF7/zmWM9MgnuvSOVTSQPKiHRVQbJGMLiN6X/9+5P/+dzWPljvOikXgB3BnFS2ZAx6m1AwlMS9SiwDpwZa2nh36pzuN2NPISDnG4IfuPD77f3n6uP72QiDbOxz2pABkcXmZ+pDZJgNIvEDngfdoUzJJHOAvf099a5IuENTi22s7gpOZLKjeoqIrP91c7J17IGTxEdKPC4GNQYzmv6Nuk3zHxNSWJUjc4wMQ71yv5JX/+050U/1MhnWK8V5o9NAPDXWFkTR3ZOTWv+fmv1BB1oDRuo/G+uxTVuG18PLVe+DB/DO8JNw+Oy8wsWDzeBN8m4tDc560cj+ocachesvJxoywyXIWvV++cuAA"
+      }
+    }
+  ]
+}

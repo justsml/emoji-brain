@@ -1,0 +1,303 @@
+{
+  "cover_image_url": "https://tjzk.replicate.delivery/models_models_featured_image/955e89ed-7a69-4b5a-ba72-2ba20d725c19/crystal-cover.webp",
+  "created_at": "2025-08-22T07:31:43.234665Z",
+  "default_example": {
+    "completed_at": "2025-10-22T09:48:33.612650Z",
+    "created_at": "2025-10-22T09:48:21.557000Z",
+    "data_removed": false,
+    "error": null,
+    "id": "4dqtzx6cpnrma0ct1d8skyewkg",
+    "input": {
+      "image": "https://replicate.delivery/pbxt/Nvbz584Gr5frZtHRC8br3sSet8U28XUzxaVfKb3Yt7F2e4X6/meme_input.jpg",
+      "scale_factor": 6
+    },
+    "is_free_trial_prediction": false,
+    "logs": "🚀 Starting prediction\nFixed seed: 1337\nInput resolution: 736x490\nScale factor: 6.0x\nNew upscaled resolution: 4416x2940",
+    "metrics": {
+      "predict_time": 12.046748873,
+      "total_time": 12.05565
+    },
+    "model": "philz1337x/crystal-upscaler",
+    "output": [
+      "https://replicate.delivery/xezq/JjokpATu5QbkO5xWNnNmicRX4AV1eB84e35feWMWL7d8mWGWB/upscaled_00001_.png"
+    ],
+    "source": "web",
+    "started_at": "2025-10-22T09:48:21.565901Z",
+    "status": "succeeded",
+    "urls": {
+      "stream": "https://stream.replicate.com/v1/files/bcwr-nrnuipejv75wbtgutcmykx2umozbsg7pweim26bycabuzxd67d2a",
+      "get": "https://api.replicate.com/v1/predictions/4dqtzx6cpnrma0ct1d8skyewkg",
+      "cancel": "https://api.replicate.com/v1/predictions/4dqtzx6cpnrma0ct1d8skyewkg/cancel"
+    },
+    "version": "hidden"
+  },
+  "description": "High-precision image upscaler optimized for portraits, faces and products. One of the upscale modes powered by Clarity AI. X:https://x.com/philz1337x",
+  "github_url": null,
+  "latest_version": {
+    "id": "5d917b1444c89ed91055f3052d27e1ad433a1218599a36544510e1dfa9ac26c8",
+    "created_at": "2025-11-21T16:03:38.113400Z",
+    "cog_version": "0.16.9",
+    "openapi_schema": {
+      "info": {
+        "title": "Cog",
+        "version": "0.1.0"
+      },
+      "paths": {},
+      "openapi": "3.0.2",
+      "components": {
+        "schemas": {
+          "Input": {
+            "type": "object",
+            "title": "Input",
+            "required": [
+              "image"
+            ],
+            "properties": {
+              "image": {
+                "type": "string",
+                "title": "Image",
+                "format": "uri",
+                "x-order": 0,
+                "description": "An input image for upscaling"
+              },
+              "creativity": {
+                "type": "number",
+                "title": "Creativity",
+                "default": 0,
+                "maximum": 10,
+                "minimum": 0,
+                "x-order": 2,
+                "description": "Creativity level for upscaling"
+              },
+              "scale_factor": {
+                "type": "number",
+                "title": "Scale Factor",
+                "default": 2,
+                "x-order": 1,
+                "description": "Scale factor for upscaling"
+              },
+              "output_format": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/output_format"
+                  }
+                ],
+                "default": "png",
+                "x-order": 3,
+                "description": "Format of the output image (JPG uses 95% quality)"
+              }
+            }
+          },
+          "Output": {
+            "type": "string",
+            "title": "Output",
+            "format": "uri"
+          },
+          "Status": {
+            "enum": [
+              "starting",
+              "processing",
+              "succeeded",
+              "canceled",
+              "failed"
+            ],
+            "type": "string",
+            "title": "Status",
+            "description": "An enumeration."
+          },
+          "WebhookEvent": {
+            "enum": [
+              "start",
+              "output",
+              "logs",
+              "completed"
+            ],
+            "type": "string",
+            "title": "WebhookEvent",
+            "description": "An enumeration."
+          },
+          "output_format": {
+            "enum": [
+              "png",
+              "jpg"
+            ],
+            "type": "string",
+            "title": "output_format",
+            "description": "An enumeration."
+          },
+          "ValidationError": {
+            "type": "object",
+            "title": "ValidationError",
+            "required": [
+              "loc",
+              "msg",
+              "type"
+            ],
+            "properties": {
+              "loc": {
+                "type": "array",
+                "items": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "integer"
+                    }
+                  ]
+                },
+                "title": "Location"
+              },
+              "msg": {
+                "type": "string",
+                "title": "Message"
+              },
+              "type": {
+                "type": "string",
+                "title": "Error Type"
+              }
+            }
+          },
+          "PredictionRequest": {
+            "type": "object",
+            "title": "PredictionRequest",
+            "properties": {
+              "id": {
+                "type": "string",
+                "title": "Id",
+                "nullable": true
+              },
+              "input": {
+                "$ref": "#/components/schemas/Input",
+                "nullable": true
+              },
+              "context": {
+                "type": "object",
+                "title": "Context",
+                "nullable": true,
+                "additionalProperties": {
+                  "type": "string"
+                }
+              },
+              "webhook": {
+                "type": "string",
+                "title": "Webhook",
+                "format": "uri",
+                "nullable": true,
+                "maxLength": 65536,
+                "minLength": 1
+              },
+              "created_at": {
+                "type": "string",
+                "title": "Created At",
+                "format": "date-time",
+                "nullable": true
+              },
+              "output_file_prefix": {
+                "type": "string",
+                "title": "Output File Prefix",
+                "nullable": true
+              },
+              "webhook_events_filter": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/WebhookEvent"
+                },
+                "default": [
+                  "start",
+                  "output",
+                  "logs",
+                  "completed"
+                ],
+                "nullable": true
+              }
+            }
+          },
+          "PredictionResponse": {
+            "type": "object",
+            "title": "PredictionResponse",
+            "properties": {
+              "id": {
+                "type": "string",
+                "title": "Id",
+                "nullable": true
+              },
+              "logs": {
+                "type": "string",
+                "title": "Logs",
+                "default": ""
+              },
+              "error": {
+                "type": "string",
+                "title": "Error",
+                "nullable": true
+              },
+              "input": {
+                "$ref": "#/components/schemas/Input",
+                "nullable": true
+              },
+              "output": {
+                "$ref": "#/components/schemas/Output"
+              },
+              "status": {
+                "$ref": "#/components/schemas/Status",
+                "nullable": true
+              },
+              "metrics": {
+                "type": "object",
+                "title": "Metrics",
+                "nullable": true,
+                "additionalProperties": true
+              },
+              "version": {
+                "type": "string",
+                "title": "Version",
+                "nullable": true
+              },
+              "created_at": {
+                "type": "string",
+                "title": "Created At",
+                "format": "date-time",
+                "nullable": true
+              },
+              "started_at": {
+                "type": "string",
+                "title": "Started At",
+                "format": "date-time",
+                "nullable": true
+              },
+              "completed_at": {
+                "type": "string",
+                "title": "Completed At",
+                "format": "date-time",
+                "nullable": true
+              }
+            }
+          },
+          "HTTPValidationError": {
+            "type": "object",
+            "title": "HTTPValidationError",
+            "properties": {
+              "detail": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ValidationError"
+                },
+                "title": "Detail"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "license_url": null,
+  "name": "crystal-upscaler",
+  "owner": "philz1337x",
+  "is_official": true,
+  "paper_url": null,
+  "run_count": 1230849,
+  "url": "https://replicate.com/philz1337x/crystal-upscaler",
+  "visibility": "public",
+  "weights_url": null
+}

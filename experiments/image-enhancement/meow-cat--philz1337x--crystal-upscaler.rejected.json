@@ -1,0 +1,5 @@
+{
+  "title": "Invalid version or not permitted",
+  "detail": "The specified version does not exist (or perhaps you don't have permission to use it?)",
+  "status": 422
+}

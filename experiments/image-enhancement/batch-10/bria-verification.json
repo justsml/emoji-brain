@@ -1,0 +1,83 @@
+[
+  {
+    "file": "10-10.bria.png",
+    "width": 1024,
+    "height": 1024,
+    "hasAlpha": true,
+    "transparentFraction": 0.13103294372558594,
+    "opaqueFraction": 0.23840808868408203,
+    "partialFraction": 0.630558967590332
+  },
+  {
+    "file": "badtime.bria.png",
+    "width": 1024,
+    "height": 1024,
+    "hasAlpha": true,
+    "transparentFraction": 0.2861356735229492,
+    "opaqueFraction": 0.2295522689819336,
+    "partialFraction": 0.4843120574951172
+  },
+  {
+    "file": "hai-guys-cat.bria.png",
+    "width": 1024,
+    "height": 1024,
+    "hasAlpha": true,
+    "transparentFraction": 0.16745948791503906,
+    "opaqueFraction": 0.18232440948486328,
+    "partialFraction": 0.6502161026000977
+  },
+  {
+    "file": "heart-mew-cat.bria.png",
+    "width": 1024,
+    "height": 1024,
+    "hasAlpha": true,
+    "transparentFraction": 0.2201213836669922,
+    "opaqueFraction": 0.23514461517333984,
+    "partialFraction": 0.544734001159668
+  },
+  {
+    "file": "meow_alien.bria.png",
+    "width": 1024,
+    "height": 1024,
+    "hasAlpha": true,
+    "transparentFraction": 0.1761922836303711,
+    "opaqueFraction": 0.14627647399902344,
+    "partialFraction": 0.6775312423706055
+  },
+  {
+    "file": "meow_black_cat.bria.png",
+    "width": 1024,
+    "height": 1024,
+    "hasAlpha": true,
+    "transparentFraction": 0.30309200286865234,
+    "opaqueFraction": 0.11329364776611328,
+    "partialFraction": 0.5836143493652344
+  },
+  {
+    "file": "meow_dj.bria.png",
+    "width": 1024,
+    "height": 1024,
+    "hasAlpha": true,
+    "transparentFraction": 0.06351757049560547,
+    "opaqueFraction": 0.18487071990966797,
+    "partialFraction": 0.7516117095947266
+  },
+  {
+    "file": "meow_fux.bria.png",
+    "width": 1024,
+    "height": 1024,
+    "hasAlpha": true,
+    "transparentFraction": 0.24026775360107422,
+    "opaqueFraction": 0.07394123077392578,
+    "partialFraction": 0.685791015625
+  },
+  {
+    "file": "meow_googly-bongo.bria.png",
+    "width": 1024,
+    "height": 1024,
+    "hasAlpha": true,
+    "transparentFraction": 0.4920082092285156,
+    "opaqueFraction": 0.10981464385986328,
+    "partialFraction": 0.3981771469116211
+  }
+]

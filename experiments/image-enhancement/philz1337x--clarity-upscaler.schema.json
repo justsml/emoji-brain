@@ -1,0 +1,549 @@
+{
+  "cover_image_url": "https://tjzk.replicate.delivery/models_models_cover_image/76fbe6df-517d-480a-a6e4-dce383b40bbb/Bildschirmfoto_2024-03-30_um_09.2.png",
+  "created_at": "2024-03-15T02:35:32.167345Z",
+  "default_example": {
+    "completed_at": "2024-04-08T15:34:51.385820Z",
+    "created_at": "2024-04-08T15:34:38.558000Z",
+    "data_removed": false,
+    "error": null,
+    "id": "snbeynewvsrgp0ceqsc8gjk6sm",
+    "input": {
+      "seed": 1337,
+      "image": "https://replicate.delivery/pbxt/KiDB5iqtTcxiTI17WASotG1Ei0TNJCztdU6J02pnMYAd8B1X/13_before-4.png",
+      "prompt": "masterpiece, best quality, highres, <lora:more_details:0.5> <lora:SDXLrender_v2.0:1>",
+      "dynamic": 6,
+      "sd_model": "juggernaut_reborn.safetensors [338b85bc4f]",
+      "scheduler": "DPM++ 3M SDE Karras",
+      "creativity": 0.35,
+      "lora_links": "",
+      "downscaling": false,
+      "resemblance": 0.6,
+      "scale_factor": 2,
+      "tiling_width": 112,
+      "tiling_height": 144,
+      "custom_sd_model": "",
+      "negative_prompt": "(worst quality, low quality, normal quality:2) JuggernautNegative-neg",
+      "num_inference_steps": 18,
+      "downscaling_resolution": 768
+    },
+    "is_free_trial_prediction": false,
+    "logs": "Running prediction\n[Tiled Diffusion] upscaling image with 4x-UltraSharp...\n[Tiled Diffusion] ControlNet found, support is enabled.\n2024-04-08 15:34:42,215 - ControlNet - \u001b[0;32mINFO\u001b[0m - unit_separate = False, style_align = False\n2024-04-08 15:34:42,215 - ControlNet - \u001b[0;32mINFO\u001b[0m - Loading model from cache: control_v11f1e_sd15_tile\n2024-04-08 15:34:42,234 - ControlNet - \u001b[0;32mINFO\u001b[0m - Using preprocessor: tile_resample\n2024-04-08 15:34:42,234 - ControlNet - \u001b[0;32mINFO\u001b[0m - preprocessor resolution = 1536\n2024-04-08 15:34:42,310 - ControlNet - \u001b[0;32mINFO\u001b[0m - ControlNet Hooked - Time = 0.0993812084197998\nMultiDiffusion hooked into 'DPM++ 3M SDE Karras' sampler, Tile size: 144x112, Tile count: 4, Batch size: 4, Tile batches: 1 (ext: ContrlNet)\n[Tiled VAE]: the input size is tiny and unnecessary to tile.\nMultiDiffusion Sampling:   0%|          | 0/10 [00:00<?, ?it/s]\n  0%|          | 0/7 [00:00<?, ?it/s]\u001b[A\nTotal progress:   0%|          | 0/7 [00:00<?, ?it/s]\u001b[A\n 14%|█▍        | 1/7 [00:00<00:05,  1.10it/s]\u001b[A\nTotal progress:  29%|██▊       | 2/7 [00:00<00:02,  2.22it/s]\u001b[A\n 29%|██▊       | 2/7 [00:01<00:04,  1.11it/s]\u001b[A\nTotal progress:  43%|████▎     | 3/7 [00:01<00:02,  1.57it/s]\u001b[A\n 43%|████▎     | 3/7 [00:02<00:03,  1.11it/s]\u001b[A\nTotal progress:  57%|█████▋    | 4/7 [00:02<00:02,  1.36it/s]\u001b[A\n 57%|█████▋    | 4/7 [00:03<00:02,  1.11it/s]\u001b[A\nTotal progress:  71%|███████▏  | 5/7 [00:03<00:01,  1.26it/s]\u001b[A\n 71%|███████▏  | 5/7 [00:04<00:01,  1.11it/s]\u001b[A\nTotal progress:  86%|████████▌ | 6/7 [00:04<00:00,  1.21it/s]\u001b[A\n 86%|████████▌ | 6/7 [00:05<00:00,  1.11it/s]\u001b[A\n100%|██████████| 7/7 [00:06<00:00,  1.11it/s]\u001b[A\n100%|██████████| 7/7 [00:06<00:00,  1.11it/s]\nTotal progress: 100%|██████████| 7/7 [00:05<00:00,  1.18it/s]\u001b[A[Tiled VAE]: the input size is tiny and unnecessary to tile.\nTotal progress: 100%|██████████| 7/7 [00:06<00:00,  1.18it/s]\u001b[A\nTotal progress: 100%|██████████| 7/7 [00:06<00:00,  1.11it/s]\nPrediction took 11.742665767669678 seconds",
+    "metrics": {
+      "predict_time": 12.806754,
+      "total_time": 12.82782
+    },
+    "model": "philz1337x/clarity-upscaler",
+    "output": [
+      "https://replicate.delivery/pbxt/00paK5p2fY36XykEcte0skfqnSl3akRGTm4TC2l2wiU0E4QlA/1337-89fd2a6e-f5bd-11ee-87b9-bec9d6ff70a9.png"
+    ],
+    "source": "web",
+    "started_at": "2024-04-08T15:34:38.579066Z",
+    "status": "succeeded",
+    "urls": {
+      "get": "https://api.replicate.com/v1/predictions/snbeynewvsrgp0ceqsc8gjk6sm",
+      "cancel": "https://api.replicate.com/v1/predictions/snbeynewvsrgp0ceqsc8gjk6sm/cancel"
+    },
+    "version": "3bb9d3412f14261c2f8cfa15a56dd7b33f44af54777c517b860a3f678a5d7f3b"
+  },
+  "description": "High resolution image Upscaler and Enhancer. Use at ClarityAI.co. A free Magnific alternative. Twitter/X: @philz1337x",
+  "github_url": "https://github.com/philz1337x/clarity-upscaler",
+  "latest_version": {
+    "id": "dfad41707589d68ecdccd1dfa600d55a208f9310748e44bfe35b4a6291453d5e",
+    "created_at": "2024-06-24T10:54:00.909883Z",
+    "cog_version": "0.8.0-beta11",
+    "openapi_schema": {
+      "info": {
+        "title": "Cog",
+        "version": "0.1.0"
+      },
+      "paths": {},
+      "openapi": "3.0.2",
+      "components": {
+        "schemas": {
+          "Input": {
+            "type": "object",
+            "title": "Input",
+            "required": [
+              "image"
+            ],
+            "properties": {
+              "mask": {
+                "type": "string",
+                "title": "Mask",
+                "format": "uri",
+                "x-order": 18,
+                "description": "Mask image to mark areas that should be preserved during upscaling"
+              },
+              "seed": {
+                "type": "integer",
+                "title": "Seed",
+                "default": 1337,
+                "x-order": 12,
+                "description": "Random seed. Leave blank to randomize the seed"
+              },
+              "image": {
+                "type": "string",
+                "title": "Image",
+                "format": "uri",
+                "x-order": 0,
+                "description": "input image"
+              },
+              "prompt": {
+                "type": "string",
+                "title": "Prompt",
+                "default": "masterpiece, best quality, highres, <lora:more_details:0.5> <lora:SDXLrender_v2.0:1>",
+                "x-order": 1,
+                "description": "Prompt"
+              },
+              "dynamic": {
+                "type": "number",
+                "title": "Dynamic",
+                "default": 6,
+                "maximum": 50,
+                "minimum": 1,
+                "x-order": 4,
+                "description": "HDR, try from 3 - 9"
+              },
+              "handfix": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/handfix"
+                  }
+                ],
+                "default": "disabled",
+                "x-order": 19,
+                "description": "Use clarity to fix hands in the image"
+              },
+              "pattern": {
+                "type": "boolean",
+                "title": "Pattern",
+                "default": false,
+                "x-order": 20,
+                "description": "Upscale a pattern with seamless tiling"
+              },
+              "sharpen": {
+                "type": "number",
+                "title": "Sharpen",
+                "default": 0,
+                "maximum": 10,
+                "minimum": 0,
+                "x-order": 17,
+                "description": "Sharpen the image after upscaling. The higher the value, the more sharpening is applied. 0 for no sharpening"
+              },
+              "sd_model": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/sd_model"
+                  }
+                ],
+                "default": "juggernaut_reborn.safetensors [338b85bc4f]",
+                "x-order": 9,
+                "description": "Stable Diffusion model checkpoint"
+              },
+              "scheduler": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/scheduler"
+                  }
+                ],
+                "default": "DPM++ 3M SDE Karras",
+                "x-order": 10,
+                "description": "scheduler"
+              },
+              "creativity": {
+                "type": "number",
+                "title": "Creativity",
+                "default": 0.35,
+                "maximum": 1,
+                "minimum": 0,
+                "x-order": 5,
+                "description": "Creativity, try from 0.3 - 0.9"
+              },
+              "lora_links": {
+                "type": "string",
+                "title": "Lora Links",
+                "default": "",
+                "x-order": 15,
+                "description": "Link to a lora file you want to use in your upscaling. Multiple links possible, seperated by comma"
+              },
+              "downscaling": {
+                "type": "boolean",
+                "title": "Downscaling",
+                "default": false,
+                "x-order": 13,
+                "description": "Downscale the image before upscaling. Can improve quality and speed for images with high resolution but lower quality"
+              },
+              "resemblance": {
+                "type": "number",
+                "title": "Resemblance",
+                "default": 0.6,
+                "maximum": 3,
+                "minimum": 0,
+                "x-order": 6,
+                "description": "Resemblance, try from 0.3 - 1.6"
+              },
+              "scale_factor": {
+                "type": "number",
+                "title": "Scale Factor",
+                "default": 2,
+                "x-order": 3,
+                "description": "Scale factor"
+              },
+              "tiling_width": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/tiling_width"
+                  }
+                ],
+                "default": 112,
+                "x-order": 7,
+                "description": "Fractality, set lower tile width for a high Fractality"
+              },
+              "output_format": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/output_format"
+                  }
+                ],
+                "default": "png",
+                "x-order": 21,
+                "description": "Format of the output images"
+              },
+              "tiling_height": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/tiling_height"
+                  }
+                ],
+                "default": 144,
+                "x-order": 8,
+                "description": "Fractality, set lower tile height for a high Fractality"
+              },
+              "custom_sd_model": {
+                "type": "string",
+                "title": "Custom Sd Model",
+                "default": "",
+                "x-order": 16
+              },
+              "negative_prompt": {
+                "type": "string",
+                "title": "Negative Prompt",
+                "default": "(worst quality, low quality, normal quality:2) JuggernautNegative-neg",
+                "x-order": 2,
+                "description": "Negative Prompt"
+              },
+              "num_inference_steps": {
+                "type": "integer",
+                "title": "Num Inference Steps",
+                "default": 18,
+                "maximum": 100,
+                "minimum": 1,
+                "x-order": 11,
+                "description": "Number of denoising steps"
+              },
+              "downscaling_resolution": {
+                "type": "integer",
+                "title": "Downscaling Resolution",
+                "default": 768,
+                "x-order": 14,
+                "description": "Downscaling resolution"
+              }
+            }
+          },
+          "Output": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uri"
+            },
+            "title": "Output"
+          },
+          "Status": {
+            "enum": [
+              "starting",
+              "processing",
+              "succeeded",
+              "canceled",
+              "failed"
+            ],
+            "type": "string",
+            "title": "Status",
+            "description": "An enumeration."
+          },
+          "handfix": {
+            "enum": [
+              "disabled",
+              "hands_only",
+              "image_and_hands"
+            ],
+            "type": "string",
+            "title": "handfix",
+            "description": "An enumeration."
+          },
+          "sd_model": {
+            "enum": [
+              "epicrealism_naturalSinRC1VAE.safetensors [84d76a0328]",
+              "juggernaut_reborn.safetensors [338b85bc4f]",
+              "flat2DAnimerge_v45Sharp.safetensors"
+            ],
+            "type": "string",
+            "title": "sd_model",
+            "description": "An enumeration."
+          },
+          "scheduler": {
+            "enum": [
+              "DPM++ 2M Karras",
+              "DPM++ SDE Karras",
+              "DPM++ 2M SDE Exponential",
+              "DPM++ 2M SDE Karras",
+              "Euler a",
+              "Euler",
+              "LMS",
+              "Heun",
+              "DPM2",
+              "DPM2 a",
+              "DPM++ 2S a",
+              "DPM++ 2M",
+              "DPM++ SDE",
+              "DPM++ 2M SDE",
+              "DPM++ 2M SDE Heun",
+              "DPM++ 2M SDE Heun Karras",
+              "DPM++ 2M SDE Heun Exponential",
+              "DPM++ 3M SDE",
+              "DPM++ 3M SDE Karras",
+              "DPM++ 3M SDE Exponential",
+              "DPM fast",
+              "DPM adaptive",
+              "LMS Karras",
+              "DPM2 Karras",
+              "DPM2 a Karras",
+              "DPM++ 2S a Karras",
+              "Restart",
+              "DDIM",
+              "PLMS",
+              "UniPC"
+            ],
+            "type": "string",
+            "title": "scheduler",
+            "description": "An enumeration."
+          },
+          "WebhookEvent": {
+            "enum": [
+              "start",
+              "output",
+              "logs",
+              "completed"
+            ],
+            "type": "string",
+            "title": "WebhookEvent",
+            "description": "An enumeration."
+          },
+          "tiling_width": {
+            "enum": [
+              16,
+              32,
+              48,
+              64,
+              80,
+              96,
+              112,
+              128,
+              144,
+              160,
+              176,
+              192,
+              208,
+              224,
+              240,
+              256
+            ],
+            "type": "integer",
+            "title": "tiling_width",
+            "description": "An enumeration."
+          },
+          "output_format": {
+            "enum": [
+              "webp",
+              "jpg",
+              "png"
+            ],
+            "type": "string",
+            "title": "output_format",
+            "description": "An enumeration."
+          },
+          "tiling_height": {
+            "enum": [
+              16,
+              32,
+              48,
+              64,
+              80,
+              96,
+              112,
+              128,
+              144,
+              160,
+              176,
+              192,
+              208,
+              224,
+              240,
+              256
+            ],
+            "type": "integer",
+            "title": "tiling_height",
+            "description": "An enumeration."
+          },
+          "ValidationError": {
+            "type": "object",
+            "title": "ValidationError",
+            "required": [
+              "loc",
+              "msg",
+              "type"
+            ],
+            "properties": {
+              "loc": {
+                "type": "array",
+                "items": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "integer"
+                    }
+                  ]
+                },
+                "title": "Location"
+              },
+              "msg": {
+                "type": "string",
+                "title": "Message"
+              },
+              "type": {
+                "type": "string",
+                "title": "Error Type"
+              }
+            }
+          },
+          "PredictionRequest": {
+            "type": "object",
+            "title": "PredictionRequest",
+            "properties": {
+              "id": {
+                "type": "string",
+                "title": "Id"
+              },
+              "input": {
+                "$ref": "#/components/schemas/Input"
+              },
+              "webhook": {
+                "type": "string",
+                "title": "Webhook",
+                "format": "uri",
+                "maxLength": 65536,
+                "minLength": 1
+              },
+              "created_at": {
+                "type": "string",
+                "title": "Created At",
+                "format": "date-time"
+              },
+              "output_file_prefix": {
+                "type": "string",
+                "title": "Output File Prefix"
+              },
+              "webhook_events_filter": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/WebhookEvent"
+                },
+                "default": [
+                  "start",
+                  "logs",
+                  "completed",
+                  "output"
+                ],
+                "uniqueItems": true
+              }
+            }
+          },
+          "PredictionResponse": {
+            "type": "object",
+            "title": "PredictionResponse",
+            "properties": {
+              "id": {
+                "type": "string",
+                "title": "Id"
+              },
+              "logs": {
+                "type": "string",
+                "title": "Logs",
+                "default": ""
+              },
+              "error": {
+                "type": "string",
+                "title": "Error"
+              },
+              "input": {
+                "$ref": "#/components/schemas/Input"
+              },
+              "output": {
+                "$ref": "#/components/schemas/Output"
+              },
+              "status": {
+                "$ref": "#/components/schemas/Status"
+              },
+              "metrics": {
+                "type": "object",
+                "title": "Metrics"
+              },
+              "version": {
+                "type": "string",
+                "title": "Version"
+              },
+              "created_at": {
+                "type": "string",
+                "title": "Created At",
+                "format": "date-time"
+              },
+              "started_at": {
+                "type": "string",
+                "title": "Started At",
+                "format": "date-time"
+              },
+              "completed_at": {
+                "type": "string",
+                "title": "Completed At",
+                "format": "date-time"
+              }
+            }
+          },
+          "HTTPValidationError": {
+            "type": "object",
+            "title": "HTTPValidationError",
+            "properties": {
+              "detail": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ValidationError"
+                },
+                "title": "Detail"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "license_url": "https://github.com/philz1337x/clarity-upscaler/blob/main/LICENSE.txt",
+  "name": "clarity-upscaler",
+  "owner": "philz1337x",
+  "is_official": false,
+  "paper_url": "https://clarityai.co",
+  "run_count": 30321831,
+  "url": "https://replicate.com/philz1337x/clarity-upscaler",
+  "visibility": "public",
+  "weights_url": null
+}

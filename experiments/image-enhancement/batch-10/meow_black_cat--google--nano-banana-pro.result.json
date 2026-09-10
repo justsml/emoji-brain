@@ -1,0 +1,36 @@
+{
+  "id": "ss6xd3wtz9rmy0d0hfea5gzt2c",
+  "model": "google/nano-banana-pro",
+  "version": "hidden",
+  "input": {
+    "allow_fallback_model": false,
+    "aspect_ratio": "match_input_image",
+    "image_input": [
+      "data:image/webp;base64,..."
+    ],
+    "output_format": "png",
+    "prompt": "Reconstruct this tiny emoji as a genuinely crisp, high-quality finished image. Use the reference for exact composition, expression, proportions, pose and colors, but redraw the blurry edges and surfaces with clean coherent detail. Do not reproduce blur, pixelation, compression artifacts or sharpening halos. Keep the same character and the same crop, filling the canvas to the same extent. Do not convert it into a sticker, add a border, change the pose or make a new scene. Do not invent readable lettering from illegible marks. For transparent areas use a uniform white background, never a checkerboard. The final should look like the original artwork before it was reduced to a tiny image, with every edge sharp at full resolution.",
+    "resolution": "1K"
+  },
+  "logs": "Matched input image aspect ratio 1.00 to 1:1\nNo sid\nGenerating image...\nTokens: 2090\nGenerated image in 54.68 seconds\n",
+  "output": "https://replicate.delivery/xezq/pj8XQ7ee9srivUfuZQWM2LdZrPvIpo7535D2We8IfxbgB9g5C/tmptad8vihn.png",
+  "data_removed": false,
+  "error": null,
+  "source": "api",
+  "status": "succeeded",
+  "created_at": "2026-09-10T15:08:05.754Z",
+  "started_at": "2026-09-10T15:08:05.792745818Z",
+  "completed_at": "2026-09-10T15:09:00.640247405Z",
+  "urls": {
+    "cancel": "https://api.replicate.com/v1/predictions/ss6xd3wtz9rmy0d0hfea5gzt2c/cancel",
+    "get": "https://api.replicate.com/v1/predictions/ss6xd3wtz9rmy0d0hfea5gzt2c",
+    "stream": "https://stream.replicate.com/v1/files/jbxs-xx4ebn2x2l7y7a6ofkc7y2iffzbvp2s2k5wetp6avxs453lwnwka",
+    "web": "https://replicate.com/p/ss6xd3wtz9rmy0d0hfea5gzt2c"
+  },
+  "metrics": {
+    "image_output_count": 1,
+    "predict_time": 54.847501597,
+    "resolution_target": "1K",
+    "total_time": 54.886247405
+  }
+}

@@ -1,0 +1,48 @@
+[
+  {
+    "billingConfig": {
+      "current_description": "<p>This model is priced per unit which vary dependent on output image megapixels:</p>\n<table>\n<thead>\n<tr>\n<th>Output MP</th>\n<th>Units</th>\n<th>Cost</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>12</td>\n<td>1</td>\n<td>$0.05</td>\n</tr>\n<tr>\n<td>24</td>\n<td>1</td>\n<td>$0.05</td>\n</tr>\n<tr>\n<td>36</td>\n<td>2</td>\n<td>$0.10</td>\n</tr>\n<tr>\n<td>48</td>\n<td>2</td>\n<td>$0.10</td>\n</tr>\n<tr>\n<td>60</td>\n<td>3</td>\n<td>$0.15</td>\n</tr>\n<tr>\n<td>96</td>\n<td>4</td>\n<td>$0.20</td>\n</tr>\n<tr>\n<td>132</td>\n<td>5</td>\n<td>$0.24</td>\n</tr>\n<tr>\n<td>168</td>\n<td>6</td>\n<td>$0.29</td>\n</tr>\n<tr>\n<td>336</td>\n<td>11</td>\n<td>$0.53</td>\n</tr>\n<tr>\n<td>512</td>\n<td>17</td>\n<td>$0.82</td>\n</tr>\n</tbody>\n</table>",
+      "current_tiers": [
+        {
+          "criteria": [],
+          "description": null,
+          "prices": [
+            {
+              "description": "or around 12 units for $1",
+              "metric": "unspecified_billing_metric",
+              "metric_display": "unit",
+              "price": "$0.08",
+              "title": "per unit",
+              "type": "per-unit"
+            }
+          ],
+          "title": null
+        }
+      ]
+    },
+    "price": "$0.0001 per second",
+    "p50price": "$0.0013"
+  },
+  {
+    "billingConfig": {
+      "current_description": "<p>This model is priced per unit which vary dependent on output image megapixels:</p>\n<table>\n<thead>\n<tr>\n<th>Output MP</th>\n<th>Units</th>\n<th>Cost</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>12</td>\n<td>1</td>\n<td>$0.05</td>\n</tr>\n<tr>\n<td>24</td>\n<td>1</td>\n<td>$0.05</td>\n</tr>\n<tr>\n<td>36</td>\n<td>2</td>\n<td>$0.10</td>\n</tr>\n<tr>\n<td>48</td>\n<td>2</td>\n<td>$0.10</td>\n</tr>\n<tr>\n<td>60</td>\n<td>3</td>\n<td>$0.15</td>\n</tr>\n<tr>\n<td>96</td>\n<td>4</td>\n<td>$0.20</td>\n</tr>\n<tr>\n<td>132</td>\n<td>5</td>\n<td>$0.24</td>\n</tr>\n<tr>\n<td>168</td>\n<td>6</td>\n<td>$0.29</td>\n</tr>\n<tr>\n<td>336</td>\n<td>11</td>\n<td>$0.53</td>\n</tr>\n<tr>\n<td>512</td>\n<td>17</td>\n<td>$0.82</td>\n</tr>\n</tbody>\n</table>",
+      "current_tiers": [
+        {
+          "criteria": [],
+          "description": null,
+          "prices": [
+            {
+              "description": "or around 12 units for $1",
+              "metric": "unspecified_billing_metric",
+              "metric_display": "unit",
+              "price": "$0.08",
+              "title": "per unit",
+              "type": "per-unit"
+            }
+          ],
+          "title": null
+        }
+      ]
+    }
+  }
+]

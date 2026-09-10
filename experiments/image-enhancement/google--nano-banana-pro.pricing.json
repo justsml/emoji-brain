@@ -1,0 +1,202 @@
+[
+  {
+    "billingConfig": {
+      "current_description": null,
+      "current_tiers": [
+        {
+          "criteria": [
+            {
+              "description": "1K",
+              "subtype": "string",
+              "title": "target resolution",
+              "type": "equals",
+              "value": "1K"
+            }
+          ],
+          "description": null,
+          "prices": [
+            {
+              "description": "or around 66 images for $10",
+              "metric": "image_output_count",
+              "metric_display": "output image",
+              "price": "$0.15",
+              "title": "per output image",
+              "type": "per-unit"
+            }
+          ],
+          "title": null
+        },
+        {
+          "criteria": [
+            {
+              "description": "2K",
+              "subtype": "string",
+              "title": "target resolution",
+              "type": "equals",
+              "value": "2K"
+            }
+          ],
+          "description": null,
+          "prices": [
+            {
+              "description": "or around 66 images for $10",
+              "metric": "image_output_count",
+              "metric_display": "output image",
+              "price": "$0.15",
+              "title": "per output image",
+              "type": "per-unit"
+            }
+          ],
+          "title": null
+        },
+        {
+          "criteria": [
+            {
+              "description": "4K",
+              "subtype": "string",
+              "title": "target resolution",
+              "type": "equals",
+              "value": "4K"
+            }
+          ],
+          "description": null,
+          "prices": [
+            {
+              "description": "or around 33 images for $10",
+              "metric": "image_output_count",
+              "metric_display": "output image",
+              "price": "$0.30",
+              "title": "per output image",
+              "type": "per-unit"
+            }
+          ],
+          "title": null
+        },
+        {
+          "criteria": [
+            {
+              "description": "fallback",
+              "subtype": "string",
+              "title": "target resolution",
+              "type": "equals",
+              "value": "fallback"
+            }
+          ],
+          "description": null,
+          "prices": [
+            {
+              "description": "or around 28 images for $1",
+              "metric": "image_output_count",
+              "metric_display": "output image",
+              "price": "$0.035",
+              "title": "per output image",
+              "type": "per-unit"
+            }
+          ],
+          "title": null
+        }
+      ]
+    },
+    "price": "$0.0001 per second",
+    "p50price": "$0.0033"
+  },
+  {
+    "billingConfig": {
+      "current_description": null,
+      "current_tiers": [
+        {
+          "criteria": [
+            {
+              "description": "1K",
+              "subtype": "string",
+              "title": "target resolution",
+              "type": "equals",
+              "value": "1K"
+            }
+          ],
+          "description": null,
+          "prices": [
+            {
+              "description": "or around 66 images for $10",
+              "metric": "image_output_count",
+              "metric_display": "output image",
+              "price": "$0.15",
+              "title": "per output image",
+              "type": "per-unit"
+            }
+          ],
+          "title": null
+        },
+        {
+          "criteria": [
+            {
+              "description": "2K",
+              "subtype": "string",
+              "title": "target resolution",
+              "type": "equals",
+              "value": "2K"
+            }
+          ],
+          "description": null,
+          "prices": [
+            {
+              "description": "or around 66 images for $10",
+              "metric": "image_output_count",
+              "metric_display": "output image",
+              "price": "$0.15",
+              "title": "per output image",
+              "type": "per-unit"
+            }
+          ],
+          "title": null
+        },
+        {
+          "criteria": [
+            {
+              "description": "4K",
+              "subtype": "string",
+              "title": "target resolution",
+              "type": "equals",
+              "value": "4K"
+            }
+          ],
+          "description": null,
+          "prices": [
+            {
+              "description": "or around 33 images for $10",
+              "metric": "image_output_count",
+              "metric_display": "output image",
+              "price": "$0.30",
+              "title": "per output image",
+              "type": "per-unit"
+            }
+          ],
+          "title": null
+        },
+        {
+          "criteria": [
+            {
+              "description": "fallback",
+              "subtype": "string",
+              "title": "target resolution",
+              "type": "equals",
+              "value": "fallback"
+            }
+          ],
+          "description": null,
+          "prices": [
+            {
+              "description": "or around 28 images for $1",
+              "metric": "image_output_count",
+              "metric_display": "output image",
+              "price": "$0.035",
+              "title": "per output image",
+              "type": "per-unit"
+            }
+          ],
+          "title": null
+        }
+      ]
+    }
+  }
+]

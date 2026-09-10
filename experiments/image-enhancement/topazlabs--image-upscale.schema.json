@@ -1,0 +1,357 @@
+{
+  "cover_image_url": "https://tjzk.replicate.delivery/models_models_featured_image/e220ac1a-3d43-4c48-884f-5678c0c3ea94/tmp9lnlmaoj.jpg",
+  "created_at": "2025-04-25T06:32:45.021517Z",
+  "default_example": {
+    "completed_at": "2025-04-25T15:25:48.719207Z",
+    "created_at": "2025-04-25T15:25:35.884000Z",
+    "data_removed": false,
+    "error": null,
+    "id": "2b7abzyx1hrmc0cpdp6rz8mvjg",
+    "input": {
+      "image": "https://replicate.delivery/pbxt/MtnpGxNIVJlHAMZmQNl5bLARbYpiLahniAYis3RsRN2KwhfJ/out-1.webp",
+      "enhance_model": "Low Resolution V2",
+      "output_format": "jpg",
+      "upscale_factor": "4x",
+      "face_enhancement": true,
+      "subject_detection": "Foreground",
+      "face_enhancement_strength": 0.8,
+      "face_enhancement_creativity": 0.5
+    },
+    "is_free_trial_prediction": false,
+    "logs": "Converted image from webp to jpeg\nGenerating...\nProcessed in 12.5sec\nCredits used: 1\nDownloading 2229037 bytes\nDownloaded 2.13MB in 0.17sec",
+    "metrics": {
+      "image_count": 1,
+      "predict_time": 12.825293246,
+      "total_time": 12.835207
+    },
+    "model": "topazlabs/image-upscale",
+    "output": "https://replicate.delivery/xezq/vXJDANfas80BdCZbLh06VSfeTtWCxdCB3TjgsVyxl0h5brMpA/tmp1orc4ro2.jpg",
+    "source": "web",
+    "started_at": "2025-04-25T15:25:35.893913Z",
+    "status": "succeeded",
+    "urls": {
+      "stream": "https://stream.replicate.com/v1/files/bcwr-ine5brkltod6pxikhpnsg7st6rc63o3b3qeocz3mxqdxklwztp2a",
+      "get": "https://api.replicate.com/v1/predictions/2b7abzyx1hrmc0cpdp6rz8mvjg",
+      "cancel": "https://api.replicate.com/v1/predictions/2b7abzyx1hrmc0cpdp6rz8mvjg/cancel"
+    },
+    "version": "hidden"
+  },
+  "description": "Professional-grade image upscaling, from Topaz Labs",
+  "github_url": null,
+  "latest_version": {
+    "id": "2fdc3b86a01d338ae89ad58e5d9241398a8a01de9b0dda41ba8a0434c8a00dc3",
+    "created_at": "2025-04-25T06:37:39.150973Z",
+    "cog_version": "0.14.4",
+    "openapi_schema": {
+      "info": {
+        "title": "Cog",
+        "version": "0.1.0"
+      },
+      "paths": {},
+      "openapi": "3.0.2",
+      "components": {
+        "schemas": {
+          "Input": {
+            "type": "object",
+            "title": "Input",
+            "required": [
+              "image"
+            ],
+            "properties": {
+              "image": {
+                "type": "string",
+                "title": "Image",
+                "format": "uri",
+                "x-order": 0,
+                "description": "Image to enhance"
+              },
+              "enhance_model": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/enhance_model"
+                  }
+                ],
+                "default": "Standard V2",
+                "x-order": 1,
+                "description": "Model to use: Standard V2 (general purpose), Low Resolution V2 (for low-res images), CGI (for digital art), High Fidelity V2 (preserves details), Text Refine (optimized for text)"
+              },
+              "output_format": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/output_format"
+                  }
+                ],
+                "default": "jpg",
+                "x-order": 3,
+                "description": "Output format"
+              },
+              "upscale_factor": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/upscale_factor"
+                  }
+                ],
+                "default": "None",
+                "x-order": 2,
+                "description": "How much to upscale the image"
+              },
+              "face_enhancement": {
+                "type": "boolean",
+                "title": "Face Enhancement",
+                "default": false,
+                "x-order": 5,
+                "description": "Enhance faces in the image"
+              },
+              "subject_detection": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/subject_detection"
+                  }
+                ],
+                "default": "None",
+                "x-order": 4,
+                "description": "Subject detection"
+              },
+              "face_enhancement_strength": {
+                "type": "number",
+                "title": "Face Enhancement Strength",
+                "default": 0.8,
+                "maximum": 1,
+                "minimum": 0,
+                "x-order": 7,
+                "description": "Control how sharp the enhanced faces are relative to the background from 0 to 1. Defaults to 0.8, and is ignored if face_enhancement is false."
+              },
+              "face_enhancement_creativity": {
+                "type": "number",
+                "title": "Face Enhancement Creativity",
+                "default": 0,
+                "maximum": 1,
+                "minimum": 0,
+                "x-order": 6,
+                "description": "Choose the level of creativity for face enhancement from 0 to 1. Defaults to 0, and is ignored if face_enhancement is false."
+              }
+            }
+          },
+          "Output": {
+            "type": "string",
+            "title": "Output",
+            "format": "uri"
+          },
+          "Status": {
+            "enum": [
+              "starting",
+              "processing",
+              "succeeded",
+              "canceled",
+              "failed"
+            ],
+            "type": "string",
+            "title": "Status",
+            "description": "An enumeration."
+          },
+          "WebhookEvent": {
+            "enum": [
+              "start",
+              "output",
+              "logs",
+              "completed"
+            ],
+            "type": "string",
+            "title": "WebhookEvent",
+            "description": "An enumeration."
+          },
+          "enhance_model": {
+            "enum": [
+              "Standard V2",
+              "Low Resolution V2",
+              "CGI",
+              "High Fidelity V2",
+              "Text Refine"
+            ],
+            "type": "string",
+            "title": "enhance_model",
+            "description": "An enumeration."
+          },
+          "output_format": {
+            "enum": [
+              "jpg",
+              "png"
+            ],
+            "type": "string",
+            "title": "output_format",
+            "description": "An enumeration."
+          },
+          "upscale_factor": {
+            "enum": [
+              "None",
+              "2x",
+              "4x",
+              "6x"
+            ],
+            "type": "string",
+            "title": "upscale_factor",
+            "description": "An enumeration."
+          },
+          "ValidationError": {
+            "type": "object",
+            "title": "ValidationError",
+            "required": [
+              "loc",
+              "msg",
+              "type"
+            ],
+            "properties": {
+              "loc": {
+                "type": "array",
+                "items": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "integer"
+                    }
+                  ]
+                },
+                "title": "Location"
+              },
+              "msg": {
+                "type": "string",
+                "title": "Message"
+              },
+              "type": {
+                "type": "string",
+                "title": "Error Type"
+              }
+            }
+          },
+          "PredictionRequest": {
+            "type": "object",
+            "title": "PredictionRequest",
+            "properties": {
+              "id": {
+                "type": "string",
+                "title": "Id"
+              },
+              "input": {
+                "$ref": "#/components/schemas/Input"
+              },
+              "webhook": {
+                "type": "string",
+                "title": "Webhook",
+                "format": "uri",
+                "maxLength": 65536,
+                "minLength": 1
+              },
+              "created_at": {
+                "type": "string",
+                "title": "Created At",
+                "format": "date-time"
+              },
+              "output_file_prefix": {
+                "type": "string",
+                "title": "Output File Prefix"
+              },
+              "webhook_events_filter": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/WebhookEvent"
+                },
+                "default": [
+                  "start",
+                  "output",
+                  "logs",
+                  "completed"
+                ]
+              }
+            }
+          },
+          "subject_detection": {
+            "enum": [
+              "None",
+              "All",
+              "Foreground",
+              "Background"
+            ],
+            "type": "string",
+            "title": "subject_detection",
+            "description": "An enumeration."
+          },
+          "PredictionResponse": {
+            "type": "object",
+            "title": "PredictionResponse",
+            "properties": {
+              "id": {
+                "type": "string",
+                "title": "Id"
+              },
+              "logs": {
+                "type": "string",
+                "title": "Logs",
+                "default": ""
+              },
+              "error": {
+                "type": "string",
+                "title": "Error"
+              },
+              "input": {
+                "$ref": "#/components/schemas/Input"
+              },
+              "output": {
+                "$ref": "#/components/schemas/Output"
+              },
+              "status": {
+                "$ref": "#/components/schemas/Status"
+              },
+              "metrics": {
+                "type": "object",
+                "title": "Metrics"
+              },
+              "version": {
+                "type": "string",
+                "title": "Version"
+              },
+              "created_at": {
+                "type": "string",
+                "title": "Created At",
+                "format": "date-time"
+              },
+              "started_at": {
+                "type": "string",
+                "title": "Started At",
+                "format": "date-time"
+              },
+              "completed_at": {
+                "type": "string",
+                "title": "Completed At",
+                "format": "date-time"
+              }
+            }
+          },
+          "HTTPValidationError": {
+            "type": "object",
+            "title": "HTTPValidationError",
+            "properties": {
+              "detail": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ValidationError"
+                },
+                "title": "Detail"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "license_url": null,
+  "name": "image-upscale",
+  "owner": "topazlabs",
+  "is_official": true,
+  "paper_url": null,
+  "run_count": 3453503,
+  "url": "https://replicate.com/topazlabs/image-upscale",
+  "visibility": "public",
+  "weights_url": null
+}

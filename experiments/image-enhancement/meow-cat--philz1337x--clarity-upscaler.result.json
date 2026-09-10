@@ -1,0 +1,37 @@
+{
+  "id": "63hh7pfy25rne0d0hf7sapcwnc",
+  "model": "philz1337x/clarity-upscaler",
+  "version": "dfad41707589d68ecdccd1dfa600d55a208f9310748e44bfe35b4a6291453d5e",
+  "input": {
+    "creativity": 0.2,
+    "dynamic": 3,
+    "image": "data:image/webp;base64,...",
+    "negative_prompt": "photorealistic, redesigned, extra objects, text, different expression",
+    "output_format": "png",
+    "prompt": "Restore and enhance this tiny low-resolution emoji. Remove blur and compression artifacts; reconstruct clean, crisp edges while preserving the exact original character, facial expression, pose, composition, colors, and drawing style. Do not redesign, add objects, text, realism, or decorative detail. Preserve transparent background if present. Produce a faithful high-resolution version of this same emoji.",
+    "resemblance": 1.6,
+    "scale_factor": 4,
+    "seed": 42
+  },
+  "logs": "Running prediction\nUpscale your image 2 times\nUpscaling with scale_factor:  2\n[Tiled Diffusion] upscaling image with 4x-UltraSharp...\n[Tiled Diffusion] ignore tiling when there's only 1 tile or nothing to do :)\n2026-09-10 14:54:19,656 - ControlNet - \u001b[0;32mINFO\u001b[0m - unit_separate = False, style_align = False\n2026-09-10 14:54:19,656 - ControlNet - \u001b[0;32mINFO\u001b[0m - Loading model from cache: control_v11f1e_sd15_tile\n2026-09-10 14:54:19,656 - ControlNet - \u001b[0;32mINFO\u001b[0m - Using preprocessor: tile_resample\n2026-09-10 14:54:19,657 - ControlNet - \u001b[0;32mINFO\u001b[0m - preprocessor resolution = 56\n2026-09-10 14:54:19,697 - ControlNet - \u001b[0;32mINFO\u001b[0m - ControlNet Hooked - Time = 0.045809268951416016\n[Tiled VAE]: the input size is tiny and unnecessary to tile.\n  0%|          | 0/4 [00:00<?, ?it/s]\u001b[A\nTotal progress:   0%|          | 0/4 [00:00<?, ?it/s]\u001b[A\n 25%|██▌       | 1/4 [00:00<00:01,  1.72it/s]\u001b[A\n 75%|███████▌  | 3/4 [00:00<00:00,  4.90it/s]\u001b[A\n100%|██████████| 4/4 [00:00<00:00,  5.05it/s]\nTotal progress:  75%|███████▌  | 3/4 [00:00<00:00, 20.38it/s]\u001b[A[Tiled VAE]: the input size is tiny and unnecessary to tile.\nMultiDiffusion Sampling:  17%|█▋        | 1/6 [00:20<01:43, 20.64s/it]\nTotal progress: 100%|██████████| 4/4 [00:00<00:00, 20.38it/s]\u001b[A\nTotal progress: 100%|██████████| 4/4 [00:00<00:00,  5.73it/s]\nUpscaling with scale_factor:  2\n[Tiled Diffusion] upscaling image with 4x-UltraSharp...\n[Tiled Diffusion] ignore tiling when there's only 1 tile or nothing to do :)\n2026-09-10 14:54:21,496 - ControlNet - \u001b[0;32mINFO\u001b[0m - unit_separate = False, style_align = False\n2026-09-10 14:54:21,496 - ControlNet - \u001b[0;32mINFO\u001b[0m - Loading model from cache: control_v11f1e_sd15_tile\n2026-09-10 14:54:21,497 - ControlNet - \u001b[0;32mINFO\u001b[0m - Using preprocessor: tile_resample\n2026-09-10 14:54:21,497 - ControlNet - \u001b[0;32mINFO\u001b[0m - preprocessor resolution = 112\n2026-09-10 14:54:21,532 - ControlNet - \u001b[0;32mINFO\u001b[0m - ControlNet Hooked - Time = 0.04060053825378418\n[Tiled VAE]: the input size is tiny and unnecessary to tile.\n  0%|          | 0/3 [00:00<?, ?it/s]\nTotal progress:   0%|          | 0/3 [00:00<?, ?it/s]\u001b[A\n 33%|███▎      | 1/3 [00:00<00:00,  6.01it/s]\n100%|██████████| 3/3 [00:00<00:00, 10.50it/s]\n100%|██████████| 3/3 [00:00<00:00,  9.77it/s]\nTotal progress: 100%|██████████| 3/3 [00:00<00:00, 20.57it/s]\u001b[A[Tiled VAE]: the input size is tiny and unnecessary to tile.\nTotal progress: 100%|██████████| 3/3 [00:00<00:00, 20.57it/s]\u001b[A\nTotal progress: 100%|██████████| 3/3 [00:00<00:00,  7.78it/s]\nPrediction took 2.88 seconds\n",
+  "output": [
+    "https://replicate.delivery/yhqm/MA1sfPzTk2UHB6YBeZ6w20cssjqGzudWUHQV2VpnYoTe0OYuA/43-81ff7ae6-ad27-11f1-8cc6-b6c595b4b99c.png"
+  ],
+  "data_removed": false,
+  "error": null,
+  "source": "api",
+  "status": "succeeded",
+  "created_at": "2026-09-10T14:54:19.153Z",
+  "started_at": "2026-09-10T14:54:19.276929888Z",
+  "completed_at": "2026-09-10T14:54:22.164245893Z",
+  "urls": {
+    "cancel": "https://api.replicate.com/v1/predictions/63hh7pfy25rne0d0hf7sapcwnc/cancel",
+    "get": "https://api.replicate.com/v1/predictions/63hh7pfy25rne0d0hf7sapcwnc",
+    "stream": "https://stream.replicate.com/v1/files/iovw-jxnuvmlm6eer3muycsuhv7n3wgxlv6fjvbqsxfmtgkes353gfdea",
+    "web": "https://replicate.com/p/63hh7pfy25rne0d0hf7sapcwnc"
+  },
+  "metrics": {
+    "predict_time": 2.887315997,
+    "total_time": 3.011245893
+  }
+}

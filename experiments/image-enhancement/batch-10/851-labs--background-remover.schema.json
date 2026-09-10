@@ -1,0 +1,273 @@
+{
+  "cover_image_url": "https://tjzk.replicate.delivery/models_models_cover_image/9908ce20-b8ac-4aa4-93c3-e2232e203bda/replicate-prediction-9qj2_RMmMJJy.png",
+  "created_at": "2024-12-19T22:52:42.276159Z",
+  "default_example": {
+    "completed_at": "2024-12-19T23:48:55.477513Z",
+    "created_at": "2024-12-19T23:48:54.812000Z",
+    "data_removed": false,
+    "error": null,
+    "id": "9qj2ak85khrj20ckw59tjs91b4",
+    "input": {
+      "image": "https://replicate.delivery/pbxt/MAqakpYnuaS5IxU4WZAh5irkSn92wuYc5bdU1TNV5xzIJ8sM/gzp35qt55t4aatwznmccv2ssgds2.png",
+      "format": "png",
+      "reverse": false,
+      "threshold": 0,
+      "background_type": "rgba"
+    },
+    "is_free_trial_prediction": false,
+    "logs": null,
+    "metrics": {
+      "predict_time": 0.654829509,
+      "total_time": 0.665513
+    },
+    "model": "851-labs/background-remover",
+    "output": "https://replicate.delivery/yhqm/3frZLerpAck9Rkr3rfcY2jMReCwggaFnNmlBb1fUdU69cxkfE/output.png",
+    "source": "web",
+    "started_at": "2024-12-19T23:48:54.822683Z",
+    "status": "succeeded",
+    "urls": {
+      "stream": "https://stream.replicate.com/v1/files/qoxq-nbx3mkhpthaqjp5c5uucerwta33cp4335wa7kbtoyxid3tqb3lcq",
+      "get": "https://api.replicate.com/v1/predictions/9qj2ak85khrj20ckw59tjs91b4",
+      "cancel": "https://api.replicate.com/v1/predictions/9qj2ak85khrj20ckw59tjs91b4/cancel"
+    },
+    "version": "a029dff38972b5fda4ec5d75d7d1cd25aeff621d2cf4946a41055d7db66b80bc"
+  },
+  "description": "Remove backgrounds from images.",
+  "github_url": "https://github.com/plemeri/transparent-background",
+  "latest_version": {
+    "id": "a029dff38972b5fda4ec5d75d7d1cd25aeff621d2cf4946a41055d7db66b80bc",
+    "created_at": "2024-12-19T23:34:16.940107Z",
+    "cog_version": "0.13.6",
+    "openapi_schema": {
+      "info": {
+        "title": "Cog",
+        "version": "0.1.0"
+      },
+      "paths": {},
+      "openapi": "3.0.2",
+      "components": {
+        "schemas": {
+          "Input": {
+            "type": "object",
+            "title": "Input",
+            "required": [
+              "image"
+            ],
+            "properties": {
+              "image": {
+                "type": "string",
+                "title": "Image",
+                "format": "uri",
+                "x-order": 0,
+                "description": "Input image"
+              },
+              "format": {
+                "type": "string",
+                "title": "Format",
+                "default": "png",
+                "x-order": 4,
+                "description": "Output format (e.g., png, jpg). Defaults to png."
+              },
+              "reverse": {
+                "type": "boolean",
+                "title": "Reverse",
+                "default": false,
+                "x-order": 2,
+                "description": "If True, remove the foreground instead of the background."
+              },
+              "threshold": {
+                "type": "number",
+                "title": "Threshold",
+                "default": 0,
+                "x-order": 1,
+                "description": "Threshold for hard segmentation (0.0-1.0). If 0.0, uses soft alpha."
+              },
+              "background_type": {
+                "type": "string",
+                "title": "Background Type",
+                "default": "rgba",
+                "x-order": 3,
+                "description": "Background type: 'rgba', 'map', 'green', 'white', [R,G,B] array, 'blur', 'overlay', or path to an image."
+              }
+            }
+          },
+          "Output": {
+            "type": "string",
+            "title": "Output",
+            "format": "uri"
+          },
+          "Status": {
+            "enum": [
+              "starting",
+              "processing",
+              "succeeded",
+              "canceled",
+              "failed"
+            ],
+            "type": "string",
+            "title": "Status",
+            "description": "An enumeration."
+          },
+          "WebhookEvent": {
+            "enum": [
+              "start",
+              "output",
+              "logs",
+              "completed"
+            ],
+            "type": "string",
+            "title": "WebhookEvent",
+            "description": "An enumeration."
+          },
+          "ValidationError": {
+            "type": "object",
+            "title": "ValidationError",
+            "required": [
+              "loc",
+              "msg",
+              "type"
+            ],
+            "properties": {
+              "loc": {
+                "type": "array",
+                "items": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "integer"
+                    }
+                  ]
+                },
+                "title": "Location"
+              },
+              "msg": {
+                "type": "string",
+                "title": "Message"
+              },
+              "type": {
+                "type": "string",
+                "title": "Error Type"
+              }
+            }
+          },
+          "PredictionRequest": {
+            "type": "object",
+            "title": "PredictionRequest",
+            "properties": {
+              "id": {
+                "type": "string",
+                "title": "Id"
+              },
+              "input": {
+                "$ref": "#/components/schemas/Input"
+              },
+              "webhook": {
+                "type": "string",
+                "title": "Webhook",
+                "format": "uri",
+                "maxLength": 65536,
+                "minLength": 1
+              },
+              "created_at": {
+                "type": "string",
+                "title": "Created At",
+                "format": "date-time"
+              },
+              "output_file_prefix": {
+                "type": "string",
+                "title": "Output File Prefix"
+              },
+              "webhook_events_filter": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/WebhookEvent"
+                },
+                "default": [
+                  "start",
+                  "output",
+                  "logs",
+                  "completed"
+                ]
+              }
+            }
+          },
+          "PredictionResponse": {
+            "type": "object",
+            "title": "PredictionResponse",
+            "properties": {
+              "id": {
+                "type": "string",
+                "title": "Id"
+              },
+              "logs": {
+                "type": "string",
+                "title": "Logs",
+                "default": ""
+              },
+              "error": {
+                "type": "string",
+                "title": "Error"
+              },
+              "input": {
+                "$ref": "#/components/schemas/Input"
+              },
+              "output": {
+                "$ref": "#/components/schemas/Output"
+              },
+              "status": {
+                "$ref": "#/components/schemas/Status"
+              },
+              "metrics": {
+                "type": "object",
+                "title": "Metrics"
+              },
+              "version": {
+                "type": "string",
+                "title": "Version"
+              },
+              "created_at": {
+                "type": "string",
+                "title": "Created At",
+                "format": "date-time"
+              },
+              "started_at": {
+                "type": "string",
+                "title": "Started At",
+                "format": "date-time"
+              },
+              "completed_at": {
+                "type": "string",
+                "title": "Completed At",
+                "format": "date-time"
+              }
+            }
+          },
+          "HTTPValidationError": {
+            "type": "object",
+            "title": "HTTPValidationError",
+            "properties": {
+              "detail": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ValidationError"
+                },
+                "title": "Detail"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "license_url": "https://github.com/plemeri/transparent-background/blob/main/LICENSE",
+  "name": "background-remover",
+  "owner": "851-labs",
+  "is_official": false,
+  "paper_url": "https://emojis.sh",
+  "run_count": 32251953,
+  "url": "https://replicate.com/851-labs/background-remover",
+  "visibility": "public",
+  "weights_url": null
+}

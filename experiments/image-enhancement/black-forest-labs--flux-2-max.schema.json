@@ -1,0 +1,393 @@
+{
+  "cover_image_url": "https://tjzk.replicate.delivery/models_models_featured_image/8147cff6-abe5-4842-9f6d-24fe06c626b9/flux-2-max-cover.jpg",
+  "created_at": "2025-12-16T14:37:45.724046Z",
+  "default_example": {
+    "completed_at": "2025-12-16T15:16:02.105317Z",
+    "created_at": "2025-12-16T15:15:31.269000Z",
+    "data_removed": false,
+    "error": null,
+    "id": "xs953f0q8nrmc0cv4yxtzptxwr",
+    "input": {
+      "prompt": "A photorealistic wide shot of a large minimalist digital billboard standing in the middle of a forest filled with purple and lavender-hued trees. Soft violet foliage surrounds the scene, creating a surreal yet elegant atmosphere. The billboard has a sleek metal frame with subtle overhead lights, blending advanced technology with dreamlike nature. On the screen, a dark glass display shows a clean, futuristic UI with gentle lavender and magenta accents. The billboard is transparent, showing the trees behind it. Centered text reads: “FLUX.2 [max]” in a modern sans-serif font, calm, confident, and precise. Soft daylight with a purple color cast, cinematic composition, ultra-high resolution, premium AI launch aesthetic, minimalism, tranquil mood.",
+      "resolution": "1 MP",
+      "aspect_ratio": "1:1",
+      "input_images": [],
+      "output_format": "webp",
+      "output_quality": 80,
+      "safety_tolerance": 2
+    },
+    "is_free_trial_prediction": false,
+    "logs": "Running prediction...\nUsing 1 MP resolution: 1024x1024\nUsing seed: 19014\nGenerating image...\nCurrent status: {'id': '39beb57a-c86e-49b3-a4ce-3b49f0567c34', 'status': 'Pending', 'result': None, 'progress': None, 'details': None, 'preview': None}\nCurrent status: {'id': '39beb57a-c86e-49b3-a4ce-3b49f0567c34', 'status': 'Pending', 'result': None, 'progress': None, 'details': None, 'preview': None}\nGenerated image in 29.5sec\nDownloaded image in 1.26sec",
+    "metrics": {
+      "predict_time": 30.816474728,
+      "total_time": 30.836317248
+    },
+    "model": "black-forest-labs/flux-2-max",
+    "output": "https://replicate.delivery/xezq/ao8amjkARBLSJBU1ke494CLvIOKReDfmiACAcuJyPtCkNlnrA/tmp67_fq1dd.webp",
+    "source": "web",
+    "started_at": "2025-12-16T15:15:31.288842Z",
+    "status": "succeeded",
+    "urls": {
+      "stream": "https://stream.replicate.com/v1/files/bcwr-73va6xfurcd7rw4dkkz7guhvx4qd7u4v65to7filnv7eqgmaylcq",
+      "get": "https://api.replicate.com/v1/predictions/xs953f0q8nrmc0cv4yxtzptxwr",
+      "cancel": "https://api.replicate.com/v1/predictions/xs953f0q8nrmc0cv4yxtzptxwr/cancel"
+    },
+    "version": "hidden"
+  },
+  "description": "The highest fidelity image model from Black Forest Labs",
+  "github_url": null,
+  "latest_version": {
+    "id": "9c23b0aaa98765a9676dbdda58b9c9915627751300747bad54cb1c11b135d3ca",
+    "created_at": "2026-03-16T18:39:00.558426Z",
+    "cog_version": "0.16.12",
+    "openapi_schema": {
+      "info": {
+        "title": "Cog",
+        "version": "0.1.0"
+      },
+      "paths": {},
+      "openapi": "3.0.2",
+      "components": {
+        "schemas": {
+          "Input": {
+            "type": "object",
+            "title": "Input",
+            "required": [
+              "prompt"
+            ],
+            "properties": {
+              "seed": {
+                "type": "integer",
+                "title": "Seed",
+                "x-order": 7,
+                "description": "Random seed. Set for reproducible generation"
+              },
+              "width": {
+                "type": "integer",
+                "title": "Width",
+                "maximum": 2048,
+                "minimum": 256,
+                "x-order": 4,
+                "nullable": true,
+                "description": "Width of the generated image. Only used when aspect_ratio=custom. Must be a multiple of 16 (if it's not, it will be rounded to nearest multiple of 16)."
+              },
+              "height": {
+                "type": "integer",
+                "title": "Height",
+                "maximum": 2048,
+                "minimum": 256,
+                "x-order": 5,
+                "nullable": true,
+                "description": "Height of the generated image. Only used when aspect_ratio=custom. Must be a multiple of 16 (if it's not, it will be rounded to nearest multiple of 16)."
+              },
+              "prompt": {
+                "type": "string",
+                "title": "Prompt",
+                "x-order": 0,
+                "description": "Text prompt for image generation"
+              },
+              "resolution": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/resolution"
+                  }
+                ],
+                "default": "1 MP",
+                "x-order": 3,
+                "description": "Resolution in megapixels. Up to 4 MP is possible, but 2 MP or below is recommended. The maximum image size is 2048x2048, which means that high-resolution images may not respect the resolution if aspect ratio is not 1:1.\n\nResolution is not used when aspect_ratio is 'custom'. When aspect_ratio is 'match_input_image', use 'match_input_image' to match the input image's resolution (clamped to 0.5-4 MP)."
+              },
+              "aspect_ratio": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/aspect_ratio"
+                  }
+                ],
+                "default": "1:1",
+                "x-order": 2,
+                "description": "Aspect ratio for the generated image. Use 'match_input_image' to match the first input image's aspect ratio."
+              },
+              "input_images": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "format": "uri"
+                },
+                "title": "Input Images",
+                "default": [],
+                "x-order": 1,
+                "description": "List of input images for image-to-image generation. Maximum 8 images. Must be jpeg, png, gif, or webp."
+              },
+              "output_format": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/output_format"
+                  }
+                ],
+                "default": "webp",
+                "x-order": 8,
+                "description": "Format of the output images."
+              },
+              "output_quality": {
+                "type": "integer",
+                "title": "Output Quality",
+                "default": 80,
+                "maximum": 100,
+                "minimum": 0,
+                "x-order": 9,
+                "description": "Quality when saving the output images, from 0 to 100. 100 is best quality, 0 is lowest quality. Not relevant for .png outputs"
+              },
+              "safety_tolerance": {
+                "type": "integer",
+                "title": "Safety Tolerance",
+                "default": 2,
+                "maximum": 5,
+                "minimum": 1,
+                "x-order": 6,
+                "description": "Safety tolerance, 1 is most strict and 5 is most permissive"
+              }
+            }
+          },
+          "Output": {
+            "type": "string",
+            "title": "Output",
+            "format": "uri"
+          },
+          "Status": {
+            "enum": [
+              "starting",
+              "processing",
+              "succeeded",
+              "canceled",
+              "failed"
+            ],
+            "type": "string",
+            "title": "Status",
+            "description": "An enumeration."
+          },
+          "resolution": {
+            "enum": [
+              "match_input_image",
+              "0.5 MP",
+              "1 MP",
+              "2 MP",
+              "4 MP"
+            ],
+            "type": "string",
+            "title": "resolution",
+            "description": "An enumeration."
+          },
+          "WebhookEvent": {
+            "enum": [
+              "start",
+              "output",
+              "logs",
+              "completed"
+            ],
+            "type": "string",
+            "title": "WebhookEvent",
+            "description": "An enumeration."
+          },
+          "aspect_ratio": {
+            "enum": [
+              "match_input_image",
+              "custom",
+              "1:1",
+              "16:9",
+              "3:2",
+              "2:3",
+              "4:5",
+              "5:4",
+              "9:16",
+              "3:4",
+              "4:3"
+            ],
+            "type": "string",
+            "title": "aspect_ratio",
+            "description": "An enumeration."
+          },
+          "output_format": {
+            "enum": [
+              "webp",
+              "jpg",
+              "png"
+            ],
+            "type": "string",
+            "title": "output_format",
+            "description": "An enumeration."
+          },
+          "ValidationError": {
+            "type": "object",
+            "title": "ValidationError",
+            "required": [
+              "loc",
+              "msg",
+              "type"
+            ],
+            "properties": {
+              "loc": {
+                "type": "array",
+                "items": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "integer"
+                    }
+                  ]
+                },
+                "title": "Location"
+              },
+              "msg": {
+                "type": "string",
+                "title": "Message"
+              },
+              "type": {
+                "type": "string",
+                "title": "Error Type"
+              }
+            }
+          },
+          "PredictionRequest": {
+            "type": "object",
+            "title": "PredictionRequest",
+            "properties": {
+              "id": {
+                "type": "string",
+                "title": "Id",
+                "nullable": true
+              },
+              "input": {
+                "$ref": "#/components/schemas/Input",
+                "nullable": true
+              },
+              "context": {
+                "type": "object",
+                "title": "Context",
+                "nullable": true,
+                "additionalProperties": {
+                  "type": "string"
+                }
+              },
+              "webhook": {
+                "type": "string",
+                "title": "Webhook",
+                "format": "uri",
+                "nullable": true,
+                "maxLength": 65536,
+                "minLength": 1
+              },
+              "created_at": {
+                "type": "string",
+                "title": "Created At",
+                "format": "date-time",
+                "nullable": true
+              },
+              "output_file_prefix": {
+                "type": "string",
+                "title": "Output File Prefix",
+                "nullable": true
+              },
+              "webhook_events_filter": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/WebhookEvent"
+                },
+                "default": [
+                  "start",
+                  "output",
+                  "logs",
+                  "completed"
+                ],
+                "nullable": true
+              }
+            }
+          },
+          "PredictionResponse": {
+            "type": "object",
+            "title": "PredictionResponse",
+            "properties": {
+              "id": {
+                "type": "string",
+                "title": "Id",
+                "nullable": true
+              },
+              "logs": {
+                "type": "string",
+                "title": "Logs",
+                "default": ""
+              },
+              "error": {
+                "type": "string",
+                "title": "Error",
+                "nullable": true
+              },
+              "input": {
+                "$ref": "#/components/schemas/Input",
+                "nullable": true
+              },
+              "output": {
+                "$ref": "#/components/schemas/Output"
+              },
+              "status": {
+                "$ref": "#/components/schemas/Status",
+                "nullable": true
+              },
+              "metrics": {
+                "type": "object",
+                "title": "Metrics",
+                "nullable": true,
+                "additionalProperties": true
+              },
+              "version": {
+                "type": "string",
+                "title": "Version",
+                "nullable": true
+              },
+              "created_at": {
+                "type": "string",
+                "title": "Created At",
+                "format": "date-time",
+                "nullable": true
+              },
+              "started_at": {
+                "type": "string",
+                "title": "Started At",
+                "format": "date-time",
+                "nullable": true
+              },
+              "completed_at": {
+                "type": "string",
+                "title": "Completed At",
+                "format": "date-time",
+                "nullable": true
+              }
+            }
+          },
+          "HTTPValidationError": {
+            "type": "object",
+            "title": "HTTPValidationError",
+            "properties": {
+              "detail": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ValidationError"
+                },
+                "title": "Detail"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "license_url": null,
+  "name": "flux-2-max",
+  "owner": "black-forest-labs",
+  "is_official": true,
+  "paper_url": null,
+  "run_count": 4063046,
+  "url": "https://replicate.com/black-forest-labs/flux-2-max",
+  "visibility": "public",
+  "weights_url": null
+}

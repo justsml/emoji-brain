@@ -1,0 +1,32 @@
+{
+  "id": "d389r95d39rmr0d0hf8azqxnf4",
+  "model": "philz1337x/crystal-upscaler",
+  "version": "hidden",
+  "input": {
+    "creativity": 0,
+    "image": "data:image/webp;base64,...",
+    "output_format": "png",
+    "scale_factor": 4
+  },
+  "logs": "🚀 Starting prediction\nFixed seed: 1337\nInput resolution: 28x28\nScale factor: 4.0x\nNew upscaled resolution: 112x112 (0.01 megapixels)\nDownloading 31687 bytes\nDownloaded 0.03MB in 0.26sec\n",
+  "output": "https://replicate.delivery/xezq/wFnTCT0SLm7uBt2gByLUWw82BIKmEGy2nnBfe9zhi35RbHMXA/tmp7vdjh13c.png",
+  "data_removed": false,
+  "error": null,
+  "source": "api",
+  "status": "succeeded",
+  "created_at": "2026-09-10T14:55:03.962Z",
+  "started_at": "2026-09-10T14:55:03.972833174Z",
+  "completed_at": "2026-09-10T14:55:13.085097134Z",
+  "urls": {
+    "cancel": "https://api.replicate.com/v1/predictions/d389r95d39rmr0d0hf8azqxnf4/cancel",
+    "get": "https://api.replicate.com/v1/predictions/d389r95d39rmr0d0hf8azqxnf4",
+    "stream": "https://stream.replicate.com/v1/files/jbxs-v56yytohunwlmcisgs7rde7vqzp6c4qiv56binw3sihcg7jrf7ea",
+    "web": "https://replicate.com/p/d389r95d39rmr0d0hf8azqxnf4"
+  },
+  "metrics": {
+    "image_output_count": 1,
+    "image_output_pixel_count": 12544,
+    "predict_time": 9.11226396,
+    "total_time": 9.123097134
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id": "smr497nc3drmw0d0hfbbgnp0qg",
+  "model": "google/nano-banana-pro",
+  "version": "hidden",
+  "input": {
+    "allow_fallback_model": false,
+    "aspect_ratio": "1:1",
+    "image_input": [
+      "data:image/webp;base64,..."
+    ],
+    "output_format": "png",
+    "prompt": "Reconstruct this tiny emoji as a genuinely crisp, high-quality finished image. Use the reference for exact composition, expression, proportions, pose and colors, but redraw the blurry edges and surfaces with clean coherent detail. Do not reproduce blur, pixelation, compression artifacts or sharpening halos. Keep the same character and the same crop, filling the square canvas to the same extent. Do not convert it into a sticker, add a border, change the pose or make a new scene. Do not invent readable lettering from illegible marks. For transparent areas use a uniform white background, never a checkerboard. The final should look like the original artwork before it was reduced to 30 pixels, with every edge sharp at full resolution.",
+    "resolution": "2K"
+  },
+  "logs": "No sid\nGenerating image...\nTokens: 2100\nGenerated image in 24.35 seconds\n",
+  "output": "https://replicate.delivery/xezq/1SjkkGLMiAbGDh1LHmEMcI3csKJPYqqs48GC5KBFEfu0wDmLA/tmpbvixfvjw.png",
+  "data_removed": false,
+  "error": null,
+  "source": "api",
+  "status": "succeeded",
+  "created_at": "2026-09-10T15:01:36.923Z",
+  "started_at": "2026-09-10T15:01:36.943465756Z",
+  "completed_at": "2026-09-10T15:02:01.512093363Z",
+  "urls": {
+    "cancel": "https://api.replicate.com/v1/predictions/smr497nc3drmw0d0hfbbgnp0qg/cancel",
+    "get": "https://api.replicate.com/v1/predictions/smr497nc3drmw0d0hfbbgnp0qg",
+    "stream": "https://stream.replicate.com/v1/files/jbxs-w7l4u4kpj3f3yejleow2guf2qkxvjznm73yqblx74kwn6xo4s5pq",
+    "web": "https://replicate.com/p/smr497nc3drmw0d0hfbbgnp0qg"
+  },
+  "metrics": {
+    "image_output_count": 1,
+    "predict_time": 24.568627607,
+    "resolution_target": "2K",
+    "total_time": 24.589093363
+  }
+}

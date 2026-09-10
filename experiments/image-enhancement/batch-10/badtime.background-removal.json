@@ -1,0 +1,30 @@
+{
+  "id": "7q456d9wynrg80d0hffb4zxm2g",
+  "model": "851-labs/background-remover",
+  "version": "a029dff38972b5fda4ec5d75d7d1cd25aeff621d2cf4946a41055d7db66b80bc",
+  "input": {
+    "background_type": "rgba",
+    "format": "png",
+    "image": "https://replicate.delivery/xezq/qfrwDbtLb4wgRidEuT8FOIfcZpEnjrOQWcNZNXueoaMQPPYuA/tmps_g7i2ck.png",
+    "threshold": 0
+  },
+  "logs": "",
+  "output": "https://replicate.delivery/czjl/e3X2oSjHn4RVekqm1ags16tTYfedUjFBg3vnZ1TnPvpKkeg5C/output.png",
+  "data_removed": false,
+  "error": null,
+  "source": "api",
+  "status": "succeeded",
+  "created_at": "2026-09-10T15:09:52.757Z",
+  "started_at": "2026-09-10T15:09:52.780009384Z",
+  "completed_at": "2026-09-10T15:09:54.576212794Z",
+  "urls": {
+    "cancel": "https://api.replicate.com/v1/predictions/7q456d9wynrg80d0hffb4zxm2g/cancel",
+    "get": "https://api.replicate.com/v1/predictions/7q456d9wynrg80d0hffb4zxm2g",
+    "stream": "https://stream.replicate.com/v1/files/fddq-b4mbx6mrza4my62fm2lux6ju5odan3kz7y3va6w3zwly4zihckxa",
+    "web": "https://replicate.com/p/7q456d9wynrg80d0hffb4zxm2g"
+  },
+  "metrics": {
+    "predict_time": 1.7962034340000002,
+    "total_time": 1.819212794
+  }
+}

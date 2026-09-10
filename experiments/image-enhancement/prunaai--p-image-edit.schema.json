@@ -1,0 +1,310 @@
+{
+  "cover_image_url": "https://tjzk.replicate.delivery/models_models_featured_image/b351106d-0249-451e-9578-c6d27e4331b3/p-image-edit-cover.jpg",
+  "created_at": "2025-10-13T12:27:24.200020Z",
+  "default_example": {
+    "completed_at": "2026-06-22T16:12:13.421467Z",
+    "created_at": "2026-06-22T16:12:11.232000Z",
+    "data_removed": false,
+    "error": null,
+    "id": "dwqhws48c1rmt0cyy0d9n04kvm",
+    "input": {
+      "seed": 42,
+      "no_op": false,
+      "turbo": true,
+      "images": [
+        "https://replicate.delivery/pbxt/PJrnETmC9Jz37ILO9fyovK1Zt9LpztRGRBvkwbkdRe8jtrii/4b325407-eb03-4fad-b14f-ff4985775f8b.png"
+      ],
+      "prompt": "Change the color of her dress to golden and white with a different elegant pattern.\nAdd delicate traces of gold to her crown.\n\nPlace the text \"P-Image-Edit\" in the middle in romantic white paint-brushed letters, like hand-painted lettering on an old fairytale canvas. The letters should have graceful swashes, soft curves, and thin-to-medium strokes . The text should be ornate but still readable, not bold, chunky, or digital-looking. The text is located on the level of her shoulder ",
+      "aspect_ratio": "match_input_image"
+    },
+    "is_free_trial_prediction": false,
+    "logs": "Using seed: 42\nGeneration took 0.87 seconds",
+    "metrics": {
+      "image_output_count": 1,
+      "predict_time": 1.09825212,
+      "total_time": 2.189467722
+    },
+    "model": "prunaai/p-image-edit",
+    "output": "https://replicate.delivery/xezq/0dSu842Mu47cOVLb2JlP9Vgl0LpFVZtnPshVy9G07qU3QcsF/output_42.jpeg",
+    "source": "web",
+    "started_at": "2026-06-22T16:12:12.323215Z",
+    "status": "succeeded",
+    "urls": {
+      "stream": "https://stream.replicate.com/v1/files/jbxs-pepikhpoji7ll555iu2zmgo42j6mvzguf6zvntqthcupp6ov6rua",
+      "get": "https://api.replicate.com/v1/predictions/dwqhws48c1rmt0cyy0d9n04kvm",
+      "cancel": "https://api.replicate.com/v1/predictions/dwqhws48c1rmt0cyy0d9n04kvm/cancel"
+    },
+    "version": "hidden"
+  },
+  "description": "A sub 1 second 0.01$ multi-image editing model built for production use cases. For image generation, check out p-image here: https://replicate.com/prunaai/p-image",
+  "github_url": null,
+  "latest_version": {
+    "id": "c20f0f66be5bd7bdffe5a7385aaf60e8949151a9ea3c5606da6aa5c5bdb41797",
+    "created_at": "2026-09-03T12:50:49.296928Z",
+    "cog_version": "0.18.0",
+    "openapi_schema": {
+      "info": {
+        "title": "Cog",
+        "version": "0.1.0"
+      },
+      "paths": {},
+      "openapi": "3.0.2",
+      "components": {
+        "schemas": {
+          "Input": {
+            "type": "object",
+            "title": "Input",
+            "required": [
+              "prompt"
+            ],
+            "properties": {
+              "seed": {
+                "type": "integer",
+                "title": "Seed",
+                "x-order": 5,
+                "nullable": true,
+                "description": "Random seed. Set for reproducible generation."
+              },
+              "no_op": {
+                "type": "boolean",
+                "title": "No Op",
+                "default": false,
+                "x-order": 7,
+                "description": "Health check mode - returns status without inference."
+              },
+              "turbo": {
+                "type": "boolean",
+                "title": "Turbo",
+                "default": true,
+                "x-order": 2,
+                "description": "If turned on, the model will run faster with additional optimizations. For complicated tasks, it is recommended to turn this off."
+              },
+              "images": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "format": "uri"
+                },
+                "title": "Images",
+                "default": [],
+                "x-order": 1,
+                "description": "Images to use as a reference. For editing task, provide the main image as the first image."
+              },
+              "prompt": {
+                "type": "string",
+                "title": "Prompt",
+                "x-order": 0,
+                "description": "Text prompt for image generation. Make sure to describe your edit task clearly. You can refer to the images as 'image 1' and 'image 2' and so on."
+              },
+              "aspect_ratio": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/aspect_ratio"
+                  }
+                ],
+                "default": "match_input_image",
+                "x-order": 4,
+                "description": "Aspect ratio for the generated image. `match_input_image` will match the aspect ratio of the first image."
+              },
+              "replicate_weights": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/replicate_weights"
+                  }
+                ],
+                "default": "default",
+                "x-order": 3,
+                "description": "Task to perform with P-Edit."
+              },
+              "disable_safety_checker": {
+                "type": "boolean",
+                "title": "Disable Safety Checker",
+                "default": false,
+                "x-order": 6,
+                "description": "Disable safety checker for generated images."
+              }
+            }
+          },
+          "Output": {
+            "type": "string",
+            "title": "Output",
+            "format": "uri"
+          },
+          "Status": {
+            "enum": [
+              "starting",
+              "processing",
+              "succeeded",
+              "canceled",
+              "failed"
+            ],
+            "type": "string",
+            "title": "Status",
+            "description": "An enumeration."
+          },
+          "aspect_ratio": {
+            "enum": [
+              "match_input_image",
+              "1:1",
+              "16:9",
+              "9:16",
+              "4:3",
+              "3:4",
+              "3:2",
+              "2:3"
+            ],
+            "type": "string",
+            "title": "aspect_ratio",
+            "description": "An enumeration."
+          },
+          "ValidationError": {
+            "type": "object",
+            "title": "ValidationError",
+            "required": [
+              "loc",
+              "msg",
+              "type"
+            ],
+            "properties": {
+              "loc": {
+                "type": "array",
+                "items": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "integer"
+                    }
+                  ]
+                },
+                "title": "Location"
+              },
+              "msg": {
+                "type": "string",
+                "title": "Message"
+              },
+              "type": {
+                "type": "string",
+                "title": "Error Type"
+              }
+            }
+          },
+          "PredictionRequest": {
+            "type": "object",
+            "title": "PredictionRequest",
+            "properties": {
+              "id": {
+                "type": "string",
+                "title": "Id"
+              },
+              "input": {
+                "$ref": "#/components/schemas/Input"
+              }
+            }
+          },
+          "replicate_weights": {
+            "enum": [
+              "default",
+              "multiple_angles",
+              "relight",
+              "light_restoration",
+              "white_to_scene",
+              "fusion",
+              "add_characters",
+              "next_scene",
+              "style_consistency",
+              "subject_consistency",
+              "scene_consistency",
+              "to_anime",
+              "to_3dchibi",
+              "to_caricature",
+              "photous",
+              "extract_texture",
+              "apply_texture",
+              "upscale",
+              "anything_to_real",
+              "white_film_to_rendering"
+            ],
+            "type": "string",
+            "title": "replicate_weights",
+            "description": "An enumeration."
+          },
+          "PredictionResponse": {
+            "type": "object",
+            "title": "PredictionResponse",
+            "properties": {
+              "id": {
+                "type": "string",
+                "title": "Id"
+              },
+              "logs": {
+                "type": "string",
+                "title": "Logs"
+              },
+              "error": {
+                "type": "string",
+                "title": "Error"
+              },
+              "input": {
+                "$ref": "#/components/schemas/Input"
+              },
+              "output": {
+                "$ref": "#/components/schemas/Output"
+              },
+              "status": {
+                "type": "string",
+                "title": "Status"
+              },
+              "metrics": {
+                "type": "object",
+                "title": "Metrics"
+              },
+              "version": {
+                "type": "string",
+                "title": "Version"
+              },
+              "created_at": {
+                "type": "string",
+                "title": "Created At",
+                "format": "date-time"
+              },
+              "started_at": {
+                "type": "string",
+                "title": "Started At",
+                "format": "date-time"
+              },
+              "completed_at": {
+                "type": "string",
+                "title": "Completed At",
+                "format": "date-time"
+              }
+            }
+          },
+          "HTTPValidationError": {
+            "type": "object",
+            "title": "HTTPValidationError",
+            "properties": {
+              "detail": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ValidationError"
+                },
+                "title": "Detail"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "license_url": null,
+  "name": "p-image-edit",
+  "owner": "prunaai",
+  "is_official": true,
+  "paper_url": null,
+  "run_count": 40855626,
+  "url": "https://replicate.com/prunaai/p-image-edit",
+  "visibility": "public",
+  "weights_url": null
+}

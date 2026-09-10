@@ -1,0 +1,36 @@
+{
+  "id": "hebbade079rmy0d0hffv9ah6kc",
+  "model": "google/nano-banana-pro",
+  "version": "hidden",
+  "input": {
+    "allow_fallback_model": false,
+    "aspect_ratio": "match_input_image",
+    "image_input": [
+      "data:image/webp;base64,..."
+    ],
+    "output_format": "png",
+    "prompt": "Restore the supplied low-resolution reference image of YOUNG HENRY WINKLER as Arthur Fonzie Fonzarelli in Happy Days in the 1970s, approximately age 30. The face must recognizably be young Henry Winkler: his actual youthful face, dark brown slick pompadour hairstyle, signature smile and facial proportions. Keep his black leather jacket over a white T-shirt and both thumbs-up hands, exactly the same pose, crop, expression, framing, and proportions as the reference. Faithfully reconstruct a crisp frame from the original television-era photograph. Do not age him, add gray hair or wrinkles, substitute another person, or create a generic handsome man. Do not caricature or illustrate him. Neutral uniform white background for a subsequent alpha matting pass. No text or borders. Use the attached reference image as the authority for composition and likeness.",
+    "resolution": "1K"
+  },
+  "logs": "Matched input image aspect ratio 1.36 to 4:3\nNo sid\nGenerating image...\nTokens: 2165\nGenerated image in 48.12 seconds\n",
+  "output": "https://replicate.delivery/xezq/xAFd2bXLRrLaOd2GYA5Do717JGYCnQv9iyZHZl94OsI16BzF/tmpmdv1xyep.png",
+  "data_removed": false,
+  "error": null,
+  "source": "api",
+  "status": "succeeded",
+  "created_at": "2026-09-10T15:11:31.898Z",
+  "started_at": "2026-09-10T15:11:31.919636788Z",
+  "completed_at": "2026-09-10T15:12:20.254469019Z",
+  "urls": {
+    "cancel": "https://api.replicate.com/v1/predictions/hebbade079rmy0d0hffv9ah6kc/cancel",
+    "get": "https://api.replicate.com/v1/predictions/hebbade079rmy0d0hffv9ah6kc",
+    "stream": "https://stream.replicate.com/v1/files/jbxs-3icr6k5l575dijclovhwmx6i777edyc4etf3bnf7llhz7ep3o5va",
+    "web": "https://replicate.com/p/hebbade079rmy0d0hffv9ah6kc"
+  },
+  "metrics": {
+    "image_output_count": 1,
+    "predict_time": 48.334832241,
+    "resolution_target": "1K",
+    "total_time": 48.356469019
+  }
+}

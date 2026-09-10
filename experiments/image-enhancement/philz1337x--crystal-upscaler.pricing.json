@@ -1,0 +1,382 @@
+[
+  {
+    "billingConfig": {
+      "current_description": null,
+      "current_tiers": [
+        {
+          "criteria": [
+            {
+              "description": "≤ 4,400,000",
+              "subtype": "open-closed",
+              "title": "output image pixel",
+              "type": "range",
+              "value": [
+                null,
+                4400000
+              ]
+            }
+          ],
+          "description": null,
+          "prices": [
+            {
+              "description": "or 20 images for $1",
+              "metric": "image_output_count",
+              "metric_display": "output image",
+              "price": "$0.05",
+              "title": "per output image",
+              "type": "per-unit"
+            }
+          ],
+          "title": "0 to 4 megapixels"
+        },
+        {
+          "criteria": [
+            {
+              "description": "> 4,400,000 and ≤8,800,000",
+              "subtype": "open-closed",
+              "title": "output image pixel",
+              "type": "range",
+              "value": [
+                4400000,
+                8800000
+              ]
+            }
+          ],
+          "description": null,
+          "prices": [
+            {
+              "description": "or 10 images for $1",
+              "metric": "image_output_count",
+              "metric_display": "output image",
+              "price": "$0.10",
+              "title": "per output image",
+              "type": "per-unit"
+            }
+          ],
+          "title": "4 to 8 megapixels"
+        },
+        {
+          "criteria": [
+            {
+              "description": "> 8,800,000 and ≤17,600,000",
+              "subtype": "open-closed",
+              "title": "output image pixel",
+              "type": "range",
+              "value": [
+                8800000,
+                17600000
+              ]
+            }
+          ],
+          "description": null,
+          "prices": [
+            {
+              "description": "or 50 images for $10",
+              "metric": "image_output_count",
+              "metric_display": "output image",
+              "price": "$0.20",
+              "title": "per output image",
+              "type": "per-unit"
+            }
+          ],
+          "title": "8 to 16 megapixels"
+        },
+        {
+          "criteria": [
+            {
+              "description": "> 17,600,000 and ≤27,500,000",
+              "subtype": "open-closed",
+              "title": "output image pixel",
+              "type": "range",
+              "value": [
+                17600000,
+                27500000
+              ]
+            }
+          ],
+          "description": null,
+          "prices": [
+            {
+              "description": "or 25 images for $10",
+              "metric": "image_output_count",
+              "metric_display": "output image",
+              "price": "$0.40",
+              "title": "per output image",
+              "type": "per-unit"
+            }
+          ],
+          "title": "16 to 25 megapixels"
+        },
+        {
+          "criteria": [
+            {
+              "description": "> 27,500,000 and ≤55,000,000",
+              "subtype": "open-closed",
+              "title": "output image pixel",
+              "type": "range",
+              "value": [
+                27500000,
+                55000000
+              ]
+            }
+          ],
+          "description": null,
+          "prices": [
+            {
+              "description": "or around 12 images for $10",
+              "metric": "image_output_count",
+              "metric_display": "output image",
+              "price": "$0.80",
+              "title": "per output image",
+              "type": "per-unit"
+            }
+          ],
+          "title": "25 to 50 megapixels"
+        },
+        {
+          "criteria": [
+            {
+              "description": "> 55,000,000 and ≤110,000,000",
+              "subtype": "open-closed",
+              "title": "output image pixel",
+              "type": "range",
+              "value": [
+                55000000,
+                110000000
+              ]
+            }
+          ],
+          "description": null,
+          "prices": [
+            {
+              "description": "or around 62 images for $100",
+              "metric": "image_output_count",
+              "metric_display": "output image",
+              "price": "$1.60",
+              "title": "per output image",
+              "type": "per-unit"
+            }
+          ],
+          "title": "50 to 100 megapixels"
+        },
+        {
+          "criteria": [
+            {
+              "description": "> 110,000,000",
+              "subtype": "open",
+              "title": "output image pixel",
+              "type": "range",
+              "value": [
+                110000000,
+                null
+              ]
+            }
+          ],
+          "description": null,
+          "prices": [
+            {
+              "description": "or around 31 images for $100",
+              "metric": "image_output_count",
+              "metric_display": "output image",
+              "price": "$3.20",
+              "title": "per output image",
+              "type": "per-unit"
+            }
+          ],
+          "title": "100 to 200 megapixels and above"
+        }
+      ]
+    },
+    "price": "$0.0001 per second",
+    "p50price": "$0.0017"
+  },
+  {
+    "billingConfig": {
+      "current_description": null,
+      "current_tiers": [
+        {
+          "criteria": [
+            {
+              "description": "≤ 4,400,000",
+              "subtype": "open-closed",
+              "title": "output image pixel",
+              "type": "range",
+              "value": [
+                null,
+                4400000
+              ]
+            }
+          ],
+          "description": null,
+          "prices": [
+            {
+              "description": "or 20 images for $1",
+              "metric": "image_output_count",
+              "metric_display": "output image",
+              "price": "$0.05",
+              "title": "per output image",
+              "type": "per-unit"
+            }
+          ],
+          "title": "0 to 4 megapixels"
+        },
+        {
+          "criteria": [
+            {
+              "description": "> 4,400,000 and ≤8,800,000",
+              "subtype": "open-closed",
+              "title": "output image pixel",
+              "type": "range",
+              "value": [
+                4400000,
+                8800000
+              ]
+            }
+          ],
+          "description": null,
+          "prices": [
+            {
+              "description": "or 10 images for $1",
+              "metric": "image_output_count",
+              "metric_display": "output image",
+              "price": "$0.10",
+              "title": "per output image",
+              "type": "per-unit"
+            }
+          ],
+          "title": "4 to 8 megapixels"
+        },
+        {
+          "criteria": [
+            {
+              "description": "> 8,800,000 and ≤17,600,000",
+              "subtype": "open-closed",
+              "title": "output image pixel",
+              "type": "range",
+              "value": [
+                8800000,
+                17600000
+              ]
+            }
+          ],
+          "description": null,
+          "prices": [
+            {
+              "description": "or 50 images for $10",
+              "metric": "image_output_count",
+              "metric_display": "output image",
+              "price": "$0.20",
+              "title": "per output image",
+              "type": "per-unit"
+            }
+          ],
+          "title": "8 to 16 megapixels"
+        },
+        {
+          "criteria": [
+            {
+              "description": "> 17,600,000 and ≤27,500,000",
+              "subtype": "open-closed",
+              "title": "output image pixel",
+              "type": "range",
+              "value": [
+                17600000,
+                27500000
+              ]
+            }
+          ],
+          "description": null,
+          "prices": [
+            {
+              "description": "or 25 images for $10",
+              "metric": "image_output_count",
+              "metric_display": "output image",
+              "price": "$0.40",
+              "title": "per output image",
+              "type": "per-unit"
+            }
+          ],
+          "title": "16 to 25 megapixels"
+        },
+        {
+          "criteria": [
+            {
+              "description": "> 27,500,000 and ≤55,000,000",
+              "subtype": "open-closed",
+              "title": "output image pixel",
+              "type": "range",
+              "value": [
+                27500000,
+                55000000
+              ]
+            }
+          ],
+          "description": null,
+          "prices": [
+            {
+              "description": "or around 12 images for $10",
+              "metric": "image_output_count",
+              "metric_display": "output image",
+              "price": "$0.80",
+              "title": "per output image",
+              "type": "per-unit"
+            }
+          ],
+          "title": "25 to 50 megapixels"
+        },
+        {
+          "criteria": [
+            {
+              "description": "> 55,000,000 and ≤110,000,000",
+              "subtype": "open-closed",
+              "title": "output image pixel",
+              "type": "range",
+              "value": [
+                55000000,
+                110000000
+              ]
+            }
+          ],
+          "description": null,
+          "prices": [
+            {
+              "description": "or around 62 images for $100",
+              "metric": "image_output_count",
+              "metric_display": "output image",
+              "price": "$1.60",
+              "title": "per output image",
+              "type": "per-unit"
+            }
+          ],
+          "title": "50 to 100 megapixels"
+        },
+        {
+          "criteria": [
+            {
+              "description": "> 110,000,000",
+              "subtype": "open",
+              "title": "output image pixel",
+              "type": "range",
+              "value": [
+                110000000,
+                null
+              ]
+            }
+          ],
+          "description": null,
+          "prices": [
+            {
+              "description": "or around 31 images for $100",
+              "metric": "image_output_count",
+              "metric_display": "output image",
+              "price": "$3.20",
+              "title": "per output image",
+              "type": "per-unit"
+            }
+          ],
+          "title": "100 to 200 megapixels and above"
+        }
+      ]
+    }
+  }
+]

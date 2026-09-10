@@ -1,0 +1,33 @@
+{
+  "id": "0nbtj5g3bdrmy0d0hf8a48gfjw",
+  "model": "topazlabs/image-upscale",
+  "version": "hidden",
+  "input": {
+    "enhance_model": "Low Resolution V2",
+    "face_enhancement": false,
+    "image": "data:image/webp;base64,...",
+    "output_format": "png",
+    "upscale_factor": "4x"
+  },
+  "logs": "Converted image from webp to jpeg\nGenerating...\nProcessed in 3.7sec\nDownloading 182113 bytes\nDownloaded 0.17MB in 0.20sec\nUnits used: 1\n",
+  "output": "https://replicate.delivery/xezq/dKngpJoxIlpsOpEWQwrLwqFYrJAXVsyI2iOXMkzypVNo2BzF/tmp7frp8lhh.png",
+  "data_removed": false,
+  "error": null,
+  "source": "api",
+  "status": "succeeded",
+  "created_at": "2026-09-10T14:54:20.507Z",
+  "started_at": "2026-09-10T14:54:20.554562157Z",
+  "completed_at": "2026-09-10T14:54:24.508721107Z",
+  "urls": {
+    "cancel": "https://api.replicate.com/v1/predictions/0nbtj5g3bdrmy0d0hf8a48gfjw/cancel",
+    "get": "https://api.replicate.com/v1/predictions/0nbtj5g3bdrmy0d0hf8a48gfjw",
+    "stream": "https://stream.replicate.com/v1/files/jbxs-ib5v5sbjxpsq7elihoywkyfvxyl4n7j3emkctojz3db2lnjevq7a",
+    "web": "https://replicate.com/p/0nbtj5g3bdrmy0d0hf8a48gfjw"
+  },
+  "metrics": {
+    "image_count": 1,
+    "predict_time": 3.95415895,
+    "total_time": 4.001721107,
+    "unspecified_billing_metric": 1
+  }
+}

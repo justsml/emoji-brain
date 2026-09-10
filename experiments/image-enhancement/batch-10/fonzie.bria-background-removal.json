@@ -1,0 +1,29 @@
+{
+  "id": "bb9jeepdadrmt0d0hfg964b9sc",
+  "model": "bria/remove-background",
+  "version": "hidden",
+  "input": {
+    "image": "https://replicate.delivery/xezq/xAFd2bXLRrLaOd2GYA5Do717JGYCnQv9iyZHZl94OsI16BzF/tmpmdv1xyep.png",
+    "preserve_alpha": true
+  },
+  "logs": "Downloading 2264805 bytes\nDownloaded 2.16MB in 0.09sec\n",
+  "output": "https://replicate.delivery/xezq/QSx2kbOc9ZINFNSdWxaTVorwJw6MCVW19oVNZwothNq66BzF/tmpjm1gi61x.png",
+  "data_removed": false,
+  "error": null,
+  "source": "api",
+  "status": "succeeded",
+  "created_at": "2026-09-10T15:12:40.787Z",
+  "started_at": "2026-09-10T15:12:40.799143482Z",
+  "completed_at": "2026-09-10T15:12:42.715155495Z",
+  "urls": {
+    "cancel": "https://api.replicate.com/v1/predictions/bb9jeepdadrmt0d0hfg964b9sc/cancel",
+    "get": "https://api.replicate.com/v1/predictions/bb9jeepdadrmt0d0hfg964b9sc",
+    "stream": "https://stream.replicate.com/v1/files/jbxs-xfan5vngxiyucg224tjaq67h76vr2uwfbwvgwxgpijfkllrasyoa",
+    "web": "https://replicate.com/p/bb9jeepdadrmt0d0hfg964b9sc"
+  },
+  "metrics": {
+    "image_output_count": 1,
+    "predict_time": 1.916012003,
+    "total_time": 1.928155495
+  }
+}

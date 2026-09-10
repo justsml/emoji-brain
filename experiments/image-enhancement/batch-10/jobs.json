@@ -1,0 +1,72 @@
+[
+  {
+    "name": "10-10",
+    "model": "google/nano-banana-pro",
+    "key": "10-10--google--nano-banana-pro",
+    "file": "/Users/dan/code/oss/emoji-brain/experiments/image-enhancement/batch-10/10-10--google--nano-banana-pro.result.json",
+    "cost": 0.15
+  },
+  {
+    "name": "badtime",
+    "model": "google/nano-banana-pro",
+    "key": "badtime--google--nano-banana-pro",
+    "file": "/Users/dan/code/oss/emoji-brain/experiments/image-enhancement/batch-10/badtime--google--nano-banana-pro.result.json",
+    "cost": 0.15
+  },
+  {
+    "name": "fonzie",
+    "model": "google/nano-banana-pro",
+    "key": "fonzie--google--nano-banana-pro",
+    "file": "/Users/dan/code/oss/emoji-brain/experiments/image-enhancement/batch-10/fonzie--google--nano-banana-pro.result.json",
+    "cost": 0.15
+  },
+  {
+    "name": "hai-guys-cat",
+    "model": "google/nano-banana-pro",
+    "key": "hai-guys-cat--google--nano-banana-pro",
+    "file": "/Users/dan/code/oss/emoji-brain/experiments/image-enhancement/batch-10/hai-guys-cat--google--nano-banana-pro.result.json",
+    "cost": 0.15
+  },
+  {
+    "name": "heart-mew-cat",
+    "model": "google/nano-banana-pro",
+    "key": "heart-mew-cat--google--nano-banana-pro",
+    "file": "/Users/dan/code/oss/emoji-brain/experiments/image-enhancement/batch-10/heart-mew-cat--google--nano-banana-pro.result.json",
+    "cost": 0.15
+  },
+  {
+    "name": "meow_alien",
+    "model": "google/nano-banana-pro",
+    "key": "meow_alien--google--nano-banana-pro",
+    "file": "/Users/dan/code/oss/emoji-brain/experiments/image-enhancement/batch-10/meow_alien--google--nano-banana-pro.result.json",
+    "cost": 0.15
+  },
+  {
+    "name": "meow_black_cat",
+    "model": "google/nano-banana-pro",
+    "key": "meow_black_cat--google--nano-banana-pro",
+    "file": "/Users/dan/code/oss/emoji-brain/experiments/image-enhancement/batch-10/meow_black_cat--google--nano-banana-pro.result.json",
+    "cost": 0.15
+  },
+  {
+    "name": "meow_dj",
+    "model": "google/nano-banana-pro",
+    "key": "meow_dj--google--nano-banana-pro",
+    "file": "/Users/dan/code/oss/emoji-brain/experiments/image-enhancement/batch-10/meow_dj--google--nano-banana-pro.result.json",
+    "cost": 0.15
+  },
+  {
+    "name": "meow_fux",
+    "model": "google/nano-banana-pro",
+    "key": "meow_fux--google--nano-banana-pro",
+    "file": "/Users/dan/code/oss/emoji-brain/experiments/image-enhancement/batch-10/meow_fux--google--nano-banana-pro.result.json",
+    "cost": 0.15
+  },
+  {
+    "name": "meow_googly-bongo",
+    "model": "google/nano-banana-pro",
+    "key": "meow_googly-bongo--google--nano-banana-pro",
+    "file": "/Users/dan/code/oss/emoji-brain/experiments/image-enhancement/batch-10/meow_googly-bongo--google--nano-banana-pro.result.json",
+    "cost": 0.15
+  }
+]

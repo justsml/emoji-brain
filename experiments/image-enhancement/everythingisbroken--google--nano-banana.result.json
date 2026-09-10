@@ -1,0 +1,33 @@
+{
+  "id": "z30937rffdrmy0d0hf88mrw3f0",
+  "model": "google/nano-banana",
+  "version": "hidden",
+  "input": {
+    "aspect_ratio": "match_input_image",
+    "image_input": [
+      "data:image/webp;base64,..."
+    ],
+    "output_format": "png",
+    "prompt": "Restore and enhance this tiny low-resolution emoji. Remove blur and compression artifacts; reconstruct clean, crisp edges while preserving the exact original character, facial expression, pose, composition, colors, and drawing style. Do not redesign, add objects, text, realism, or decorative detail. Preserve transparent background if present. Produce a faithful high-resolution version of this same emoji."
+  },
+  "logs": "Sid z30937rffdrmy0d0hf88mrw3f0\nGenerating image with Gemini Flash...\nTokens: 1622\nGenerated image in 11.09 seconds\n",
+  "output": "https://replicate.delivery/xezq/94T2PMISuQ7WEhCFCVAzxfH6hMSUCcxWEMoXutEVt9IVtDmLA/tmpecvi918o.png",
+  "data_removed": false,
+  "error": null,
+  "source": "api",
+  "status": "succeeded",
+  "created_at": "2026-09-10T14:54:23.611Z",
+  "started_at": "2026-09-10T14:54:23.625671148Z",
+  "completed_at": "2026-09-10T14:54:34.733175774Z",
+  "urls": {
+    "cancel": "https://api.replicate.com/v1/predictions/z30937rffdrmy0d0hf88mrw3f0/cancel",
+    "get": "https://api.replicate.com/v1/predictions/z30937rffdrmy0d0hf88mrw3f0",
+    "stream": "https://stream.replicate.com/v1/files/jbxs-wrku5dk5fj5j34jxqzduepbtb2h6qql3qbjp2avr7kxc5uqbd47a",
+    "web": "https://replicate.com/p/z30937rffdrmy0d0hf88mrw3f0"
+  },
+  "metrics": {
+    "image_output_count": 1,
+    "predict_time": 11.107504616,
+    "total_time": 11.122175774
+  }
+}

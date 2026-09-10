@@ -1,0 +1,48 @@
+[
+  {
+    "billingConfig": {
+      "current_description": "<p>$0.002 per image output</p>",
+      "current_tiers": [
+        {
+          "criteria": [],
+          "description": null,
+          "prices": [
+            {
+              "description": "or 500 images for $1",
+              "metric": "image_output_count",
+              "metric_display": "output image",
+              "price": "$2",
+              "title": "per thousand output images",
+              "type": "per-unit"
+            }
+          ],
+          "title": null
+        }
+      ]
+    },
+    "price": "$0.000225 per second",
+    "p50price": "$0.0034"
+  },
+  {
+    "billingConfig": {
+      "current_description": "<p>$0.002 per image output</p>",
+      "current_tiers": [
+        {
+          "criteria": [],
+          "description": null,
+          "prices": [
+            {
+              "description": "or 500 images for $1",
+              "metric": "image_output_count",
+              "metric_display": "output image",
+              "price": "$2",
+              "title": "per thousand output images",
+              "type": "per-unit"
+            }
+          ],
+          "title": null
+        }
+      ]
+    }
+  }
+]

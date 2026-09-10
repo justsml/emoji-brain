@@ -1,0 +1,29 @@
+{
+  "id": "jrf4pbw0jsrmr0d0hfgtteqs8c",
+  "model": "bria/remove-background",
+  "version": "hidden",
+  "input": {
+    "image": "data:image/png;base64,...",
+    "preserve_alpha": true
+  },
+  "logs": "Downloading 1145568 bytes\nDownloaded 1.09MB in 0.11sec\n",
+  "output": "https://replicate.delivery/xezq/nxabboFbgz4oHNb2y9NNT3gUvP6SYLcDP29qLr9AthHG7BzF/tmp1jcd1aos.png",
+  "data_removed": false,
+  "error": null,
+  "source": "api",
+  "status": "succeeded",
+  "created_at": "2026-09-10T15:13:26.678Z",
+  "started_at": "2026-09-10T15:13:26.710749646Z",
+  "completed_at": "2026-09-10T15:13:28.730313999Z",
+  "urls": {
+    "cancel": "https://api.replicate.com/v1/predictions/jrf4pbw0jsrmr0d0hfgtteqs8c/cancel",
+    "get": "https://api.replicate.com/v1/predictions/jrf4pbw0jsrmr0d0hfgtteqs8c",
+    "stream": "https://stream.replicate.com/v1/files/jbxs-omlc7lqscdhvwalzoor37dqfhm7ydzbeowbuon6xeejmi65yotpq",
+    "web": "https://replicate.com/p/jrf4pbw0jsrmr0d0hfgtteqs8c"
+  },
+  "metrics": {
+    "image_output_count": 1,
+    "predict_time": 2.019564353,
+    "total_time": 2.052313999
+  }
+}

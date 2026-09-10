@@ -1,0 +1,16 @@
+{
+  "model": "openai/gpt-image-2.5-sunburst",
+  "prompt": "Reconstruct this tiny emoji as a genuinely crisp, high-quality finished image. Use the reference for exact composition, expression, proportions, pose and colors, but redraw the blurry edges and surfaces with clean coherent detail. Do not reproduce blur, pixelation, compression artifacts or sharpening halos. Keep the same character and the same crop, filling the square canvas to the same extent. Do not convert it into a sticker, add a border, change the pose or make a new scene. Do not invent readable lettering from illegible marks. For transparent areas use a uniform white background, never a checkerboard. The final should look like the original artwork before it was reduced to 30 pixels, with every edge sharp at full resolution.",
+  "quality": "max",
+  "aspect_ratio": "1:1",
+  "output_format": "png",
+  "n": 1,
+  "input_references": [
+    {
+      "type": "image_url",
+      "image_url": {
+        "url": "data:image/webp;base64,UklGRmQDAABXRUJQVlA4IFgDAABQEwCdASoeAB4APi0Qh0KhoQ3+qgAMAWJbACdMoR1d41+KvJn6ud98kDgAbYDzAfqb+wHYA8gDrAPQU8tH2U/3B9GbABNuOILkN7keufEE2k9td7h8t2oT/uf49ZJv/F/mBzAaQL4l5u/9N6Y/9l90ftc+ff+V7gv8r/qf+p/M7u0/tiN9VXg52sDCIhMLKcstcPXJLDCvJMvCJXXdIg30CfIAAP7l7R1Tvr3+5V6+oa6DddGk7zfFOuSBh6s+TecwF/QYdhinHONgyttbRbcAJwumlN5yeIip2B1kQQ8JYXrgN4L4V9SLP0Jg45f3vv14AiHAN/EaWy4s6a4JT2mxpq+n4+hhcTGDPA/NICt/vFz8TlJJdZMcwf+8PLAm/Zz2nLCZ76CDRJFnKz/+FP31xc48by7RdQkgJofD6478wWE9cKCFf/45rJD/BCNoieI0E3/+W3yiJmLF7HuMjiw7efzaSzd1c/70eAgQGIA+OSnuuy+dMX83bltvDig/3OJc0alnjzXW6+2FPdDt4yaVWN1oJgNU3W52CElOuU5tdQRPqsf4FGTyiyf9nLTFdVuk6t4UKdKRMFXT1wx3/d7jz1DBeyunw/JMOKTC2P4rclcF7Zx46/zUX71S7Uu4zF0rWBNbYR05nofcnbSi2T6ZI0EqzSHB34ZIuhD0xAKOwj/nKen/5iFKH3dbYmgMaHNU0pGhEU4AqW3j+QEIzWSuYv92Y37F7oaTEQd9sx4yUWBQffGV5FcUBOOxbDi3//E4XNO3EIVOKf5z9mR0aRYJTYWg4xAMNkyU6Yd7CaScS7Lfacb0XB7/esky2a//lTvIA76L0xO2mQfaU8RM8TDSoT/0ozQNAHUt/4a2nTCu6WPbDRnpx7F9/8ZVA7rpEv/+vX/ErBnk93H/rHfFX9P72hB3onmW35lHwAIbYkwv6eHLvgTk6etfugq3/mWrt09YEFybu9+oJq/3Eimq9EVk9W2IiC4o6P/CLI9Cijd5PXc4bnHui0Dm6J9Srn3uHBF8L8u8L1C4eRrC7dRmUV/uXj6CDyxCMqJjRqevQRM3oADBbkEHFlv5NQgYP4W8qziSAM7S1w2L4YJsFdBxx/gOGe+CJYv3Hppqhi+qCAwpZwQMPdLIKgAA"
+      }
+    }
+  ]
+}

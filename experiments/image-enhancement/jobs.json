@@ -1,0 +1,100 @@
+[
+  {
+    "name": "meow-cat",
+    "model": "nightmareai/real-esrgan",
+    "key": "meow-cat--nightmareai--real-esrgan",
+    "file": "/Users/dan/code/oss/emoji-brain/experiments/image-enhancement/meow-cat--nightmareai--real-esrgan.result.json",
+    "cost": 0.002
+  },
+  {
+    "name": "meow-cat",
+    "model": "philz1337x/clarity-upscaler",
+    "key": "meow-cat--philz1337x--clarity-upscaler",
+    "file": "/Users/dan/code/oss/emoji-brain/experiments/image-enhancement/meow-cat--philz1337x--clarity-upscaler.result.json",
+    "cost": null
+  },
+  {
+    "name": "meow-cat",
+    "model": "philz1337x/crystal-upscaler",
+    "key": "meow-cat--philz1337x--crystal-upscaler",
+    "file": "/Users/dan/code/oss/emoji-brain/experiments/image-enhancement/meow-cat--philz1337x--crystal-upscaler.result.json",
+    "cost": 0.05
+  },
+  {
+    "name": "meow-cat",
+    "model": "topazlabs/image-upscale",
+    "key": "meow-cat--topazlabs--image-upscale",
+    "file": "/Users/dan/code/oss/emoji-brain/experiments/image-enhancement/meow-cat--topazlabs--image-upscale.result.json",
+    "cost": 0.08
+  },
+  {
+    "name": "meow-cat",
+    "model": "prunaai/p-image-edit",
+    "key": "meow-cat--prunaai--p-image-edit",
+    "file": "/Users/dan/code/oss/emoji-brain/experiments/image-enhancement/meow-cat--prunaai--p-image-edit.result.json",
+    "cost": 0.01
+  },
+  {
+    "name": "meow-cat",
+    "model": "google/nano-banana",
+    "key": "meow-cat--google--nano-banana",
+    "file": "/Users/dan/code/oss/emoji-brain/experiments/image-enhancement/meow-cat--google--nano-banana.result.json",
+    "cost": 0.039
+  },
+  {
+    "name": "meow-cat",
+    "model": "qwen/qwen-image-edit",
+    "key": "meow-cat--qwen--qwen-image-edit",
+    "file": "/Users/dan/code/oss/emoji-brain/experiments/image-enhancement/meow-cat--qwen--qwen-image-edit.result.json",
+    "cost": 0.03
+  },
+  {
+    "name": "everythingisbroken",
+    "model": "nightmareai/real-esrgan",
+    "key": "everythingisbroken--nightmareai--real-esrgan",
+    "file": "/Users/dan/code/oss/emoji-brain/experiments/image-enhancement/everythingisbroken--nightmareai--real-esrgan.result.json",
+    "cost": 0.002
+  },
+  {
+    "name": "everythingisbroken",
+    "model": "philz1337x/clarity-upscaler",
+    "key": "everythingisbroken--philz1337x--clarity-upscaler",
+    "file": "/Users/dan/code/oss/emoji-brain/experiments/image-enhancement/everythingisbroken--philz1337x--clarity-upscaler.result.json",
+    "cost": null
+  },
+  {
+    "name": "everythingisbroken",
+    "model": "philz1337x/crystal-upscaler",
+    "key": "everythingisbroken--philz1337x--crystal-upscaler",
+    "file": "/Users/dan/code/oss/emoji-brain/experiments/image-enhancement/everythingisbroken--philz1337x--crystal-upscaler.result.json",
+    "cost": 0.05
+  },
+  {
+    "name": "everythingisbroken",
+    "model": "topazlabs/image-upscale",
+    "key": "everythingisbroken--topazlabs--image-upscale",
+    "file": "/Users/dan/code/oss/emoji-brain/experiments/image-enhancement/everythingisbroken--topazlabs--image-upscale.result.json",
+    "cost": 0.08
+  },
+  {
+    "name": "everythingisbroken",
+    "model": "prunaai/p-image-edit",
+    "key": "everythingisbroken--prunaai--p-image-edit",
+    "file": "/Users/dan/code/oss/emoji-brain/experiments/image-enhancement/everythingisbroken--prunaai--p-image-edit.result.json",
+    "cost": 0.01
+  },
+  {
+    "name": "everythingisbroken",
+    "model": "google/nano-banana",
+    "key": "everythingisbroken--google--nano-banana",
+    "file": "/Users/dan/code/oss/emoji-brain/experiments/image-enhancement/everythingisbroken--google--nano-banana.result.json",
+    "cost": 0.039
+  },
+  {
+    "name": "everythingisbroken",
+    "model": "qwen/qwen-image-edit",
+    "key": "everythingisbroken--qwen--qwen-image-edit",
+    "file": "/Users/dan/code/oss/emoji-brain/experiments/image-enhancement/everythingisbroken--qwen--qwen-image-edit.result.json",
+    "cost": 0.03
+  }
+]

@@ -1,0 +1,152 @@
+[
+  {
+    "file": "public/emojis/10-10.webp",
+    "width": 28,
+    "height": 28,
+    "animated": false,
+    "hasAlpha": true,
+    "target": 128,
+    "upscaleNeeded": 4.571428571428571,
+    "laplacianVariance": 37676.91180629948,
+    "sampledPixels": 513,
+    "reasons": [
+      "low-resolution"
+    ],
+    "needsReview": true
+  },
+  {
+    "file": "public/emojis/awesome.webp",
+    "width": 30,
+    "height": 30,
+    "animated": false,
+    "hasAlpha": true,
+    "target": 128,
+    "upscaleNeeded": 4.266666666666667,
+    "laplacianVariance": 28108.621279133848,
+    "sampledPixels": 533,
+    "reasons": [
+      "low-resolution"
+    ],
+    "needsReview": true
+  },
+  {
+    "file": "public/emojis/badtime.webp",
+    "width": 30,
+    "height": 30,
+    "animated": false,
+    "hasAlpha": true,
+    "target": 128,
+    "upscaleNeeded": 4.266666666666667,
+    "laplacianVariance": 5910.7545434828035,
+    "sampledPixels": 359,
+    "reasons": [
+      "low-resolution"
+    ],
+    "needsReview": true
+  },
+  {
+    "file": "public/emojis/fonzie.webp",
+    "width": 34,
+    "height": 25,
+    "animated": false,
+    "hasAlpha": true,
+    "target": 128,
+    "upscaleNeeded": 3.764705882352941,
+    "laplacianVariance": 8848.862137108388,
+    "sampledPixels": 253,
+    "reasons": [
+      "low-resolution"
+    ],
+    "needsReview": true
+  },
+  {
+    "file": "public/emojis/hai-guys-cat.webp",
+    "width": 28,
+    "height": 28,
+    "animated": false,
+    "hasAlpha": true,
+    "target": 128,
+    "upscaleNeeded": 4.571428571428571,
+    "laplacianVariance": 13258.547329404748,
+    "sampledPixels": 486,
+    "reasons": [
+      "low-resolution"
+    ],
+    "needsReview": true
+  },
+  {
+    "file": "public/emojis/heart-mew-cat.webp",
+    "width": 28,
+    "height": 28,
+    "animated": false,
+    "hasAlpha": true,
+    "target": 128,
+    "upscaleNeeded": 4.571428571428571,
+    "laplacianVariance": 28038.72132972225,
+    "sampledPixels": 494,
+    "reasons": [
+      "low-resolution"
+    ],
+    "needsReview": true
+  },
+  {
+    "file": "public/emojis/meow_alien.webp",
+    "width": 62,
+    "height": 64,
+    "animated": false,
+    "hasAlpha": true,
+    "target": 128,
+    "upscaleNeeded": 2,
+    "laplacianVariance": 1175.8672273445113,
+    "sampledPixels": 2281,
+    "reasons": [
+      "low-resolution"
+    ],
+    "needsReview": true
+  },
+  {
+    "file": "public/emojis/meow_black_cat.webp",
+    "width": 64,
+    "height": 64,
+    "animated": false,
+    "hasAlpha": true,
+    "target": 128,
+    "upscaleNeeded": 2,
+    "laplacianVariance": 2682.4700573538935,
+    "sampledPixels": 2212,
+    "reasons": [
+      "low-resolution"
+    ],
+    "needsReview": true
+  },
+  {
+    "file": "public/emojis/meow_dj.webp",
+    "width": 40,
+    "height": 40,
+    "animated": false,
+    "hasAlpha": true,
+    "target": 128,
+    "upscaleNeeded": 3.2,
+    "laplacianVariance": 5168.7094070010035,
+    "sampledPixels": 1366,
+    "reasons": [
+      "low-resolution"
+    ],
+    "needsReview": true
+  },
+  {
+    "file": "public/emojis/meow_fux.webp",
+    "width": 64,
+    "height": 60,
+    "animated": false,
+    "hasAlpha": true,
+    "target": 128,
+    "upscaleNeeded": 2,
+    "laplacianVariance": 5950.17676870876,
+    "sampledPixels": 2434,
+    "reasons": [
+      "low-resolution"
+    ],
+    "needsReview": true
+  }
+]
