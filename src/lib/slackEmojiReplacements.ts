@@ -1,5 +1,4 @@
-/** Read-only replacement decisions. Deletion is deliberately not implemented
- * until the workspace customization endpoint is verified from a sanitized HAR. */
+/** Conservative, read-only decisions shared by the optional console workflow. */
 export interface ReplacementImage {
   name: string;
   width?: number;
@@ -14,12 +13,11 @@ export interface ReplacementDecision {
   current?: ReplacementImage;
   incoming: ReplacementImage;
 }
-const validDimensions = (image: ReplacementImage) =>
-  Number.isInteger(image.width) && Number.isInteger(image.height) && image.width! > 0 && image.height! > 0;
-
 /** Pixel dimensions, never compressed bytes, determine whether an image is smaller.
  * Names must already be normalized by the uploader; no fuzzy/family matching. */
 export function planSlackEmojiReplacements(incoming: ReplacementImage[], existing: ReplacementImage[]): ReplacementDecision[] {
+  const validDimensions = (image: ReplacementImage) =>
+  Number.isInteger(image.width) && Number.isInteger(image.height) && image.width! > 0 && image.height! > 0;
   const index = new Map<string, ReplacementImage[]>();
   for (const image of existing) index.set(image.name, [...(index.get(image.name) ?? []), image]);
   const aliasTargets = new Set(existing.flatMap(image=>image.aliasFor?[image.aliasFor]:[]));

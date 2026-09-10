@@ -1,6 +1,6 @@
 import JSZip from 'jszip';
 import {generateCompactSlackBrowserScript} from './slackBrowserScript';
-export type ExportRequest = {kind: 'zip' | 'slack'; filenames: string[]; origin: string};
+export type ExportRequest = {kind: 'zip' | 'slack'; filenames: string[]; origin: string; replaceSmaller?: boolean};
 export type ExportResult = {kind: 'zip'; buffer: ArrayBuffer} | {kind: 'slack'; script: string; count: number};
 type Asset = {path: string; bytes: number};
 type Manifest = {items: Record<string, {original: Asset; variants: Record<string, {webp: Asset}>}>};
@@ -40,5 +40,5 @@ export async function prepareExport(request: ExportRequest, progress: (text: str
     for (let offset = 0; offset < bytes.length; offset += 0x8000) binary += String.fromCharCode(...bytes.subarray(offset, offset + 0x8000));
     return {filename: asset.filename.replace(/\.[^.]+$/, '.webp'), mimeType: 'image/webp', base64: btoa(binary)};
   });
-  return {kind: 'slack', script: await generateCompactSlackBrowserScript(images), count: images.length};
+  return {kind: 'slack', script: await generateCompactSlackBrowserScript(images, {replaceSmaller: request.replaceSmaller}), count: images.length};
 }

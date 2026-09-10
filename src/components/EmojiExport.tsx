@@ -22,7 +22,7 @@ interface EmojiExportProps {
 export function EmojiExport({ selectedEmojis, onClearSelection, onDeselectVisible, onSelectAll, filteredEmojis, gridScale, onRemoveEmoji, shareUrl }: EmojiExportProps) {
   const [exportStatus, setExportStatus] = useState<string>("");
   const [isExporting, setIsExporting] = useState(false);
-  const [copiedScript, setCopiedScript] = useState<{ megabytes: string; count: number } | null>(null);
+  const [copiedScript, setCopiedScript] = useState<{ megabytes: string; count: number; replaceSmaller: boolean } | null>(null);
   const statusTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const scriptButtonRef = useRef<HTMLButtonElement>(null);
   const closeInstructionsRef = useRef<HTMLButtonElement>(null);
@@ -83,7 +83,7 @@ export function EmojiExport({ selectedEmojis, onClearSelection, onDeselectVisibl
     }
   }, [shareUrl, selectedEmojis.length, setStatusWithTimeout]);
 
-  const exportFiles = useCallback(async (kind: 'slack' | 'zip') => {
+  const exportFiles = useCallback(async (kind: 'slack' | 'zip', replaceSmaller = false) => {
     if (isExporting || selectedEmojis.length === 0) return;
     const controller = new AbortController();
     abortControllerRef.current = controller;
@@ -92,11 +92,11 @@ export function EmojiExport({ selectedEmojis, onClearSelection, onDeselectVisibl
     if (statusTimerRef.current) clearTimeout(statusTimerRef.current);
     setExportStatus(`Preparing 0 of ${selectedEmojis.length} emojis…`);
     try {
-      const result = await runExportWorker({kind, filenames: selectedEmojis.map(e => e.filename), origin: window.location.origin}, controller.signal, setExportStatus);
+      const result = await runExportWorker({kind, filenames: selectedEmojis.map(e => e.filename), origin: window.location.origin, replaceSmaller}, controller.signal, setExportStatus);
       if (result.kind === 'slack') {
         const megabytes = (new Blob([result.script]).size / 1_000_000).toFixed(3);
         await navigator.clipboard.writeText(result.script);
-        setCopiedScript({megabytes, count: result.count});
+        setCopiedScript({megabytes, count: result.count, replaceSmaller});
         setStatusWithTimeout(`Copied Slack script · ${megabytes} MB`);
       } else {
         const url = URL.createObjectURL(new Blob([result.buffer], {type: 'application/zip'}));
@@ -159,6 +159,7 @@ export function EmojiExport({ selectedEmojis, onClearSelection, onDeselectVisibl
           </div>
           <Button ref={closeInstructionsRef} variant="ghost" size="icon" aria-label="Close Slack instructions" onClick={closeInstructions}><X className="h-4 w-4" /></Button>
         </div>
+        {copiedScript.replaceSmaller && <p>The script opens a replacement preview in Slack. Save the originals backup and confirm the selected changes before anything is deleted.</p>}
         <ol>
           <li>Sign in to your workspace and open <code>https://YOUR-WORKSPACE.slack.com/customize/emoji</code>.</li>
           <li>Open your browser’s developer tools and select the <strong>Console</strong> tab.</li>
@@ -280,6 +281,7 @@ export function EmojiExport({ selectedEmojis, onClearSelection, onDeselectVisibl
             <ChevronDown className="h-4 w-4" />
           </Button>
           <div ref={exportMenuRef} id="export-menu" popover="auto" role="menu" className="export-menu">
+            <button type="button" role="menuitem" onClick={() => runExport(() => exportFiles('slack', true))}>Slack script: replace smaller…</button>
             <button type="button" role="menuitem" onClick={() => runExport(exportAsPlainText)}>Plain Text</button>
             <button type="button" role="menuitem" onClick={() => runExport(exportAsHtml)}>HTML</button>
             <button type="button" role="menuitem" onClick={() => runExport(exportAsCss)}>CSS</button>

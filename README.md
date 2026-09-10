@@ -66,6 +66,8 @@ All delivered images are WebP, including animations:
 | ZIP | Full-resolution enhanced dimensions, WebP quality 90, alpha quality 100 |
 | Markdown table | One emoji per row: linked full-resolution name, then 64px, 128px and 256px previews |
 
+For optional upgrades of smaller exact-name Slack emojis, choose **Other export options → Slack script: replace smaller…**. It opens a preview in Slack and requires an originals backup and confirmation before replacing anything. See [the replacement workflow](docs/slack-emoji-replacements.md).
+
 ZIP fetching/assembly and Slack base64/gzip/script encoding run in a dedicated worker, with four concurrent downloads, progress, cancellation and worker cleanup. ZIP stores the already-compressed WebPs without another compression pass. Clipboard writes and download initiation stay on the main thread. Small text exports remain on the main thread.
 
 The card grid uses pre-generated 64/128/256px stills with real `srcset` candidates; it loads small animated WebPs only on hover/focus/tap. The selection tray uses 64px stills. Fixed cell geometry and `content-visibility: auto` skip off-screen rendering while retaining keyboard and marquee selection targets. Frosted surfaces, shadows and hover styling are preserved.
