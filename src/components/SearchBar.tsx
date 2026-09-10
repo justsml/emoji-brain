@@ -79,12 +79,11 @@ const SearchBar: React.FC<SearchBarProps> = ({
         <span className="emoji-search-count">
           {count.toLocaleString()}<span className="sr-only"> results</span>
         </span>
-        {shareUrl && (
+        {shareUrl && inputValue.trim() !== '' && (
           <button
             type="button"
             className={`emoji-search-share ${linkCopied ? 'is-copied' : ''}`}
             onClick={handleCopyLink}
-            disabled={inputValue.trim() === ''}
             title="Copy link to this search"
             aria-label={linkCopied ? 'Search link copied' : 'Copy link to this search'}
           >

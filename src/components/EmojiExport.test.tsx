@@ -247,6 +247,6 @@ describe("EmojiExport Component", () => {
 
   it("has no link to share from an empty sheet", () => {
     renderExport({ selectedEmojis: [], shareUrl: () => "" });
-    expect(screen.getByRole("button", { name: "Copy a link to this sheet" })).toBeDisabled();
+    expect(screen.queryByRole("button", { name: "Copy a link to this sheet" })).not.toBeInTheDocument();
   });
 });

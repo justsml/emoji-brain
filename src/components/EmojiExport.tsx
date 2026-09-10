@@ -292,15 +292,14 @@ export function EmojiExport({ selectedEmojis, onClearSelection, onDeselectVisibl
           <Trash2 className="h-4 w-4" />
         </Button>
         <div className="sheet-divider" />
-        {shareUrl && (
+        {shareUrl && selectedEmojis.length > 0 && (
           <Button
             variant="ghost"
             onClick={copyShareLink}
-            className="h-9 w-9 p-0 hover:bg-primary/10 hover:text-primary disabled:opacity-35"
+            className="sheet-share h-9 w-9 p-0 hover:bg-primary/10 hover:text-primary"
             size="sm"
             title="Copy a link to this sheet"
             aria-label="Copy a link to this sheet"
-            disabled={selectedEmojis.length === 0}
           >
             <Link className="h-4 w-4" />
           </Button>

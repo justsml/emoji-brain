@@ -122,10 +122,44 @@
   background: none;
   color: hsl(var(--muted-foreground));
   cursor: pointer;
+  position: relative;
   transition: color 120ms ease, background-color 120ms ease;
 }
 .emoji-search-share svg { width: 0.95rem; height: 0.95rem; }
 .emoji-search-share:hover:not(:disabled),
 .emoji-search-share:focus-visible { color: hsl(var(--cut)); background: hsl(var(--cut) / 0.08); outline: none; }
 .emoji-search-share.is-copied { color: hsl(var(--cut)); }
-.emoji-search-share:disabled { opacity: 0.35; cursor: default; }
+.emoji-search-share.is-copied svg { animation: share-tick 260ms cubic-bezier(0.34, 1.56, 0.64, 1); }
+
+/* the button only exists once there's a search to share, so it arrives:
+   a fade with a slight overshoot, like a stamp landing on the mat */
+.emoji-search-share {
+  animation: share-pop 340ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+.emoji-search-share::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: 0 0 0 0 hsl(var(--cut) / 0.45);
+  animation: share-ring 520ms ease-out 80ms both;
+  pointer-events: none;
+}
+@keyframes share-pop {
+  0%   { opacity: 0; transform: scale(0.4) rotate(-14deg); }
+  60%  { opacity: 1; transform: scale(1.12) rotate(3deg); }
+  100% { opacity: 1; transform: scale(1) rotate(0); }
+}
+@keyframes share-ring {
+  0%   { box-shadow: 0 0 0 0 hsl(var(--cut) / 0.45); }
+  100% { box-shadow: 0 0 0 0.6rem hsl(var(--cut) / 0); }
+}
+@keyframes share-tick {
+  0%   { transform: scale(0.5); }
+  100% { transform: scale(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .emoji-search-share,
+  .emoji-search-share::after,
+  .emoji-search-share.is-copied svg { animation: none; }
+}
