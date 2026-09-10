@@ -2,7 +2,8 @@ import { useState, useRef, useCallback, useEffect } from "react";
 import { Button } from "./ui/button";
 import type { EmojiMetadata } from "../types/emoji";
 import { getAbsoluteUrl, stillSrc } from "../lib/utils";
-import { generateSlackBrowserScript } from "../lib/slackBrowserScript";
+import { generateCompactSlackBrowserScript } from "../lib/slackBrowserScript";
+import { loadSlackImages } from "../lib/slackDelivery";
 import { CheckSquare, XSquare, ChevronDown, Copy, LoaderCircle, X, Check, Trash2, Link } from "lucide-react";
 import "../styles/sheet-tray.css";
 
@@ -19,6 +20,7 @@ interface EmojiExportProps {
 }
 
 export function EmojiExport({ selectedEmojis, onClearSelection, onDeselectVisible, onSelectAll, filteredEmojis, gridScale, onRemoveEmoji, shareUrl }: EmojiExportProps) {
+  const [slackSize, setSlackSize] = useState<128 | 256>(128);
   const [exportStatus, setExportStatus] = useState<string>("");
   const [isExporting, setIsExporting] = useState(false);
   const [copiedScript, setCopiedScript] = useState<{ megabytes: string; count: number } | null>(null);
@@ -93,29 +95,12 @@ export function EmojiExport({ selectedEmojis, onClearSelection, onDeselectVisibl
     setIsExporting(true);
     setCopiedScript(null);
     if (statusTimerRef.current) clearTimeout(statusTimerRef.current);
-    let completed = 0;
     try {
       setExportStatus(`Preparing 0 of ${selectedEmojis.length} emojis…`);
-      const images = await Promise.all(
-        selectedEmojis.map(async (emoji) => {
-          const response = await fetch(getAbsoluteUrl(emoji.path));
-          if (!response.ok) throw new Error(`Could not load ${emoji.filename}`);
-          const blob = await response.blob();
-          const bytes = new Uint8Array(await blob.arrayBuffer());
-          let binary = "";
-          for (let offset = 0; offset < bytes.length; offset += 0x8000) {
-            binary += String.fromCharCode(...bytes.subarray(offset, offset + 0x8000));
-          }
-          completed += 1;
-          setExportStatus(`Prepared ${completed} of ${selectedEmojis.length} emojis…`);
-          return {
-            filename: emoji.filename,
-            mimeType: blob.type || `image/${emoji.filename.split(".").pop() || "png"}`,
-            base64: btoa(binary),
-          };
-        })
-      );
-      const script = generateSlackBrowserScript(images);
+      const images = await loadSlackImages(selectedEmojis.map(emoji => emoji.filename), slackSize, count => {
+        setExportStatus(`Prepared ${count} of ${selectedEmojis.length} emojis…`);
+      });
+      const script = await generateCompactSlackBrowserScript(images);
       const megabytes = (new Blob([script]).size / 1_000_000).toFixed(3);
       setExportStatus("Copying script to clipboard…");
       await navigator.clipboard.writeText(script);
@@ -123,11 +108,11 @@ export function EmojiExport({ selectedEmojis, onClearSelection, onDeselectVisibl
       setStatusWithTimeout(`Copied Slack script · ${megabytes} MB`);
     } catch (error) {
       console.error("Error creating Slack upload script:", error);
-      setStatusWithTimeout("Could not copy the Slack script. Please try again.");
+      setStatusWithTimeout(error instanceof Error ? `Could not copy the Slack script: ${error.message}` : "Could not copy the Slack script. Please try again.");
     } finally {
       setIsExporting(false);
     }
-  }, [selectedEmojis, setStatusWithTimeout, isExporting]);
+  }, [selectedEmojis, setStatusWithTimeout, isExporting, slackSize]);
 
   const downloadZip = useCallback(async () => {
     abortControllerRef.current?.abort();
@@ -210,7 +195,7 @@ export function EmojiExport({ selectedEmojis, onClearSelection, onDeselectVisibl
           <li>Open your browser’s developer tools and select the <strong>Console</strong> tab.</li>
           <li>Paste the script and press <strong>Enter</strong>. Leave the page open while it uploads — the console reports each emoji and a final count.</li>
         </ol>
-        <p className="slack-guide-note">Your workspace must allow you to add custom emoji. Slack rejects names it already has and images it cannot read; the console lists any it skipped.</p>
+        <p className="slack-guide-note">Your workspace must allow you to add custom emoji. The console lists any names or images Slack rejects.</p>
       </section>
     )}
     <div className="sheet-tray">
@@ -305,6 +290,10 @@ export function EmojiExport({ selectedEmojis, onClearSelection, onDeselectVisibl
           </Button>
         )}
         <div className="flex items-center">
+          <select aria-label="Slack image size" value={slackSize} disabled={isExporting} onChange={e => setSlackSize(Number(e.target.value) as 128 | 256)} className="mr-2 rounded border bg-background px-2 py-1 text-sm">
+            <option value={128}>128px · Slack</option>
+            <option value={256}>256px</option>
+          </select>
           <Button
             ref={scriptButtonRef}
             onClick={exportSlackUploadScript}

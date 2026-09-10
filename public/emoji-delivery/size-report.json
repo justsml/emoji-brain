@@ -1,0 +1,17 @@
+{
+  "128": {
+    "files": 353,
+    "imageBytes": 9769982,
+    "plainScriptBytes": 13053933,
+    "compactScriptBytes": 12940249,
+    "savedPercent": 0.8708792974500446
+  },
+  "256": {
+    "files": 353,
+    "imageBytes": 29452836,
+    "plainScriptBytes": 39297749,
+    "compactScriptBytes": 39294381,
+    "savedPercent": 0.008570465448287656
+  },
+  "originalBytes": 5997578
+}

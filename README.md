@@ -56,6 +56,16 @@ Emoji Explorer (`emoji-brain`) is a self-hostable, static [Astro](https://astro.
 
 For Slack, sign in to your workspace and open `https://YOUR-WORKSPACE.slack.com/customize/emoji`. Open your browser's developer tools, select **Console**, paste the generated script, and press **Enter**. Leave the page open to see progress and the final counts. Your workspace must allow you to add custom emoji.
 
+### Optimized WebP delivery
+
+The console exporter uses **128×128 WebP** by default, with a **256×256 WebP** option. Both stills and animations stay WebP. The generated script compresses its embedded image data with native gzip when that reduces the final script size; it needs no ZIP library or remote decoder. Existing ZIP exports continue to include the catalog originals.
+
+Run `pnpm generate:emoji-delivery` to rebuild `public/emoji-delivery/` from the chosen enhancement candidates. Encoding runs sequential batches of 16 in fresh processes, with two Sharp threads. Unchanged source hashes reuse existing files. `pnpm check:emoji-delivery` verifies coverage, dimensions, source hashes, playback duration/looping, and decoded alpha at every source frame timestamp. The review page is `/emoji-delivery/index.html`.
+
+Images use transparent padding to preserve aspect ratio, WebP quality 90 and alpha quality 100. At 128px, larger animations try quality 80, 70 and 60 to approach Slack's recommended 128 KB size. Longer animations may remain above that target; frames and timing are retained. The exporter includes these files and reports Slack's response rather than treating the recommendation as a hard upload limit. The unapproved `severance-running` enhancement is held back, so its delivery versions use the original animation.
+
+Transparency repairs and Bizcat's intentional colored background are recorded in [the still alpha audit](staging/emoji-enhancements/stills/alpha-audit.json). Staged enhancements remain available for human review; production originals are unchanged.
+
 ### Back up a Slack workspace
 
 Use **Back up Slack emojis** in the site navigation, or copy [slack-emoji-backup.js](public/scripts/slack-emoji-backup.js) into DevTools Console on your signed-in workspace’s `/customize/emoji` page. No selection in Emoji Explorer is required.

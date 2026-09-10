@@ -12,7 +12,9 @@
     "test:e2e": "playwright test",
     "test:all": "pnpm test && pnpm test:e2e",
     "check-emojis": "bun scripts/check-emojis.ts",
-    "update-emojis": "bun scripts/update-emojis.ts"
+    "update-emojis": "bun scripts/update-emojis.ts",
+    "generate:emoji-delivery": "node scripts/generate-emoji-delivery-batches.mjs",
+    "check:emoji-delivery": "node scripts/validate-emoji-delivery.mjs"
   },
   "dependencies": {
     "@ai-sdk/google": "^4.0.64",

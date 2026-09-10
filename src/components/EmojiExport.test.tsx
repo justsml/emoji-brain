@@ -20,8 +20,8 @@ describe("EmojiExport Component", () => {
   const mockSelectedEmojis: EmojiMetadata[] = [
     {
       id: "1",
-      filename: "emoji1.png",
-      path: "/emojis/emoji1.png",
+      filename: "emoji1.webp",
+      path: "/emojis/emoji1.webp",
       categories: ["cat"],
       tags: ["funny"],
       created: "2023-01-01",
@@ -29,8 +29,8 @@ describe("EmojiExport Component", () => {
     },
     {
       id: "2",
-      filename: "emoji2.png",
-      path: "/emojis/emoji2.png",
+      filename: "emoji2.webp",
+      path: "/emojis/emoji2.webp",
       categories: ["dog"],
       tags: ["cute"],
       created: "2023-01-02",
@@ -54,6 +54,7 @@ describe("EmojiExport Component", () => {
 
   beforeEach(() => {
     vi.clearAllMocks();
+    vi.stubGlobal("CompressionStream", undefined);
 
     Object.defineProperty(navigator, "clipboard", {
       value: {
@@ -64,7 +65,9 @@ describe("EmojiExport Component", () => {
 
     global.fetch = vi.fn().mockResolvedValue({
       ok: true,
-      blob: vi.fn().mockResolvedValue(new Blob(["image"], { type: "image/png" })),
+      json: vi.fn().mockResolvedValue({items:Object.fromEntries(["emoji1","emoji2"].map(name=>[name,{variants:{128:{webp:{path:`/emoji-delivery/128/${name}.webp`,bytes:5}},256:{webp:{path:`/emoji-delivery/256/${name}.webp`,bytes:5}}}}]))}),
+      arrayBuffer: vi.fn().mockResolvedValue(new TextEncoder().encode("image").buffer),
+      blob: vi.fn().mockResolvedValue(new Blob(["image"], { type: "image/webp" })),
     });
 
     URL.createObjectURL = vi.fn().mockReturnValue("mock-url");
@@ -131,7 +134,7 @@ describe("EmojiExport Component", () => {
     await userEvent.click(plainTextOption);
 
     expect(navigator.clipboard.writeText).toHaveBeenCalledWith(
-      "emoji1.png\nemoji2.png"
+      "emoji1.webp\nemoji2.webp"
     );
     expect(
       screen.getByText("Copied filenames to clipboard!")
@@ -148,7 +151,7 @@ describe("EmojiExport Component", () => {
     await userEvent.click(htmlOption);
 
     expect(navigator.clipboard.writeText).toHaveBeenCalledWith(
-      '<img src="http://localhost:3000/emojis/emoji1.png" alt="emoji1.png" />\n<img src="http://localhost:3000/emojis/emoji2.png" alt="emoji2.png" />'
+      '<img src="http://localhost:3000/emojis/emoji1.webp" alt="emoji1.webp" />\n<img src="http://localhost:3000/emojis/emoji2.webp" alt="emoji2.webp" />'
     );
     expect(screen.getByText("Copied HTML to clipboard!")).toBeInTheDocument();
   });
@@ -196,8 +199,9 @@ describe("EmojiExport Component", () => {
       );
     });
     expect(navigator.clipboard.writeText).toHaveBeenCalledWith(
-      expect.stringContaining("emoji1.png")
+      expect.stringContaining("emoji1.webp")
     );
+    expect(fetch).toHaveBeenCalledWith(expect.stringContaining("/emoji-delivery/128/emoji1.webp"));
     const script = vi.mocked(navigator.clipboard.writeText).mock.calls[0][0];
     const megabytes = (new Blob([script]).size / 1_000_000).toFixed(3);
     expect(screen.getByRole("status")).toHaveTextContent(`Copied Slack script · ${megabytes} MB`);

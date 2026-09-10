@@ -76,3 +76,19 @@ export function generateSlackBrowserScript(images: SlackScriptImage[]): string {
   return report;
 })();`;
 }
+
+/** Compress data only: uploader code remains readable, with no eval or CDN loader. */
+export async function generateCompactSlackBrowserScript(images: SlackScriptImage[]): Promise<string> {
+  const plain = generateSlackBrowserScript(images);
+  if (typeof CompressionStream === "undefined") return plain;
+  const json = JSON.stringify(images);
+  const stream = new Blob([json]).stream().pipeThrough(new CompressionStream("gzip"));
+  const bytes = new Uint8Array(await new Response(stream).arrayBuffer());
+  let binary = "";
+  for (let offset = 0; offset < bytes.length; offset += 0x8000) {
+    binary += String.fromCharCode(...bytes.subarray(offset, offset + 0x8000));
+  }
+  const decode = `JSON.parse(await new Response(new Blob([Uint8Array.from(atob(${JSON.stringify(btoa(binary))}), c => c.charCodeAt(0))]).stream().pipeThrough(new DecompressionStream('gzip'))).text())`;
+  const compact = plain.replace(`const images = ${json};`, `const images = ${decode};`);
+  return new Blob([compact]).size < new Blob([plain]).size ? compact : plain;
+}
