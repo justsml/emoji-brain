@@ -17,6 +17,22 @@ async function picture(file: string, color = 'red') {
   await sharp({ create: { width: 4, height: 4, channels: 4, background: color } }).toFile(file);
 }
 afterEach(async () => { await Promise.all(roots.splice(0).map(root => fs.rm(root, { recursive: true, force: true }))); });
+test('legacy labels pass for unchanged content but offline updates cannot hide stale labels', async () => {
+  const root = await fixture();
+  const file = path.join(paths(root).images, 'cat.webp');
+  await picture(file);
+  await updateEmojis(root, 'changes', async () => '{"tags":["cat"],"categories":["animal"]}');
+  const catalog = await readCatalog(root);
+  delete catalog.emojis[0].labelHash;
+  await fs.writeFile(paths(root).metadata, JSON.stringify(catalog));
+  expect(checkFailed(await checkEmojis(root))).toBe(false);
+  await picture(file, 'blue');
+  expect((await checkEmojis(root)).pendingLabels).toEqual(['public/emojis/cat.webp']);
+  await updateEmojis(root, 'none');
+  expect((await checkEmojis(root)).pendingLabels).toEqual(['public/emojis/cat.webp']);
+  await updateEmojis(root, 'changes', async () => '{"tags":["blue"],"categories":["animal"]}');
+  expect(checkFailed(await checkEmojis(root))).toBe(false);
+});
 test('unlabelled images block checks and missing keys explain recovery before ingest', async () => {
   const root = await fixture();
   await picture(path.join(paths(root).images, 'cat.webp'));

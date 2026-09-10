@@ -10,7 +10,7 @@ const required = ['id', 'filename', 'path', 'created', 'modified', 'hash', 'size
 export const paths = (root: string) => ({ images: path.join(root, 'public/emojis'), metadata: path.join(root, 'src/data/emoji-metadata.json') });
 const strings = (value: unknown): value is string[] => Array.isArray(value) && value.every(v => typeof v === 'string' && v.trim().length > 0);
 const populated = (value: any) => Array.isArray(value) ? value.length > 0 : value !== undefined && value !== null && value !== '';
-const needsLabelling = (entry: Entry | undefined, hash: string) => !entry || entry.hash !== hash || entry.labelHash !== hash || !strings(entry.tags) || !entry.tags.length || !strings(entry.categories) || !entry.categories.length;
+const needsLabelling = (entry: Entry | undefined, hash: string) => !entry || entry.hash !== hash || (entry.labelHash !== undefined && entry.labelHash !== hash) || !strings(entry.tags) || !entry.tags.length || !strings(entry.categories) || !entry.categories.length;
 export async function readCatalog(root: string): Promise<Entry> {
   try {
     const data = JSON.parse(await fs.readFile(paths(root).metadata, 'utf8'));
@@ -169,6 +169,8 @@ export async function updateEmojis(root: string, mode: UpdateMode, label?: (file
     const needsLabel = needsLabelling(old, info.hash);
     if (old?.hash && old.hash !== info.hash) changed++;
     const entry: Entry = { ...old, id: old?.id ?? createHash('md5').update(filename).digest('hex').slice(0, 8), filename, path: `/emojis/${filename}`, created: old?.created ?? (await fs.stat(source)).birthtime.toISOString(), tags: old?.tags ?? [], categories: old?.categories ?? [], aliases: old?.aliases ?? [], ...info };
+    // Preserve which content legacy labels describe before refreshing the image hash.
+    if (old?.hash && old.labelHash === undefined) entry.labelHash = old.hash;
     if (mode === 'all' || (mode === 'changes' && needsLabel)) {
       if (!label) throw new Error('Live labeller required');
       console.log(`Labelling ${filename}`);
