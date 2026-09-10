@@ -1,5 +1,6 @@
 import { updateEmojis, checkEmojis, type UpdateMode } from './emoji-pipeline';
 import { checkFailed, hasLabellingKey, recoveryGuidance } from './emoji-check-guidance';
+import { processSimilarity } from './similarity-pipeline';
 
 try {
   const args = process.argv.slice(2).filter(a => a !== '--');
@@ -17,7 +18,8 @@ try {
     console.table(await updateEmojis(process.cwd(), mode, label));
     const report = await checkEmojis(process.cwd());
     if (checkFailed(report)) throw new Error(`Validation failed; run pnpm check-emojis for details.\n${recoveryGuidance(report)}`);
+    await processSimilarity(process.cwd());
     await import('./create-pagefind-index');
-    console.log('Emoji update and search index complete.');
+    console.log('Emoji update, similarity, and search index complete.');
   }
 } catch (error) { console.error(error); process.exitCode = 1; }

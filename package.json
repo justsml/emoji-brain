@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "astro dev --port ${PORT:-3000}",
-    "build": "bun scripts/create-pagefind-index.ts && astro build",
+    "build": "bun scripts/process-similarity.ts && bun scripts/create-pagefind-index.ts && astro build",
     "preview": "astro preview --port ${PORT:-4321}",
     "test": "vitest run",
     "test:watch": "vitest",
@@ -12,7 +12,8 @@
     "test:e2e": "playwright test",
     "test:all": "pnpm test && pnpm test:e2e",
     "check-emojis": "bun scripts/check-emojis.ts",
-    "update-emojis": "bun scripts/update-emojis.ts"
+    "update-emojis": "bun scripts/update-emojis.ts",
+    "process-similarity": "bun scripts/process-similarity.ts"
   },
   "dependencies": {
     "@ai-sdk/google": "^4.0.64",

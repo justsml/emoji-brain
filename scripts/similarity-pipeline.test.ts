@@ -1,4 +1,4 @@
-import { afterEach, describe, expect, it } from 'vitest';
+import { afterEach, describe, expect, it, vi } from 'vitest';
 import { promises as fs } from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
@@ -91,5 +91,43 @@ describe('restartable similarity generation',()=>{
   const {root}=await fixture();await processSimilarity(root,quiet);const bytes=await output(root);let changed=false;
   await expect(processSimilarity(root,{...quiet,version:'drift',extract:async buffer=>{if(!changed){changed=true;await fs.writeFile(path.join(root,'public/emojis/000.png'),Buffer.from('changed'));}return extractDescriptor(buffer);}})).rejects.toThrow('Image changed during processing');
   expect(await output(root)).toBe(bytes);
+ });
+ it('does not publish when cancellation arrives during the final temporary write',async()=>{
+  const {root}=await fixture();await processSimilarity(root,quiet);const bytes=await output(root);
+  const controller=new AbortController(),write=fs.writeFile.bind(fs);
+  const spy=vi.spyOn(fs,'writeFile').mockImplementation(async(...args:Parameters<typeof fs.writeFile>)=>{
+    await write(...args);
+    if(String(args[0]).startsWith(path.join(root,'public/similarity/index.json.')))controller.abort(new Error('cancel before rename'));
+  });
+  try {await expect(processSimilarity(root,{...quiet,signal:controller.signal,version:'cancel-at-publish'})).rejects.toThrow('cancel before rename');}
+  finally {spy.mockRestore();}
+  expect(await output(root)).toBe(bytes);
+ });
+ it('rebuilds corrupt palette mass and recomputes cached duplicate evidence',async()=>{
+  const {root}=await fixture();const first=await processSimilarity(root,quiet);
+  const folder=path.join(root,'.cache/similarity/descriptors'),files=await fs.readdir(folder);
+  const descriptor=JSON.parse(await fs.readFile(path.join(folder,files[0]),'utf8'));
+  descriptor.descriptor.palette[0].weight=.5;
+  await fs.writeFile(path.join(folder,files[0]),JSON.stringify(descriptor));
+  const pairFolder=path.join(root,'.cache/similarity/pairs');
+  for(const file of await fs.readdir(pairFolder)){
+    const saved=JSON.parse(await fs.readFile(path.join(pairFolder,file),'utf8'));
+    for(const edge of Object.values(saved) as any[]){edge.pair.exact=true;edge.pair.hamming=63;}
+    await fs.writeFile(path.join(pairFolder,file),JSON.stringify(saved));
+  }
+  const resumed=await processSimilarity(root,quiet);
+  expect(resumed.stats.processed).toBe(1);expect(resumed.pairs).toEqual(first.pairs);
+ });
+ it('excludes concurrent processors and fails closed on malformed locks and recovery guards',async()=>{
+  const {root}=await fixture();let checked=false;
+  await processSimilarity(root,{...quiet,extract:async buffer=>{
+    if(!checked){checked=true;await expect(processSimilarity(root,quiet)).rejects.toThrow('already running');}
+    return extractDescriptor(buffer);
+  }});
+  // Invalid lock data is never silently removed; recovery guards fail closed too.
+  const lock=path.join(root,'.cache/similarity/run.lock');await fs.writeFile(lock,'not-a-pid');
+  await expect(processSimilarity(root,quiet)).rejects.toThrow('Invalid similarity lock');
+  await fs.unlink(lock);const guard=path.join(root,'.cache/similarity/recovery.lock');await fs.writeFile(guard,'not-a-pid');
+  await expect(processSimilarity(root,quiet)).rejects.toThrow('lock acquisition is in progress');
  });
 });
