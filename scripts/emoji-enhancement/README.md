@@ -27,3 +27,23 @@ Upstream architecture and weights: [Real-ESRGAN](https://github.com/xinntao/Real
 Semantic background removal can erase white faces and eyes. Enclosed-alpha repair restores only holes supported by the original source. Border-connected white removal is a narrower alternative for manually inspected outlined flat artwork on uniform white; it is unsuitable for general photos or unoutlined white subjects.
 
 Animation restoration retains frame count, individual durations and loop setting. Dual black/white restoration estimates a sharper alpha matte; the effect-preserving blend retains the original alpha. The Nano sprite-sheet variant retains timing but can change poses, margins, colors or motion effects. It is an experiment requiring frame-by-frame review, not an automatic replacement. The effect-preserving blend is provisional and intentionally weak on motion-blur examples.
+
+## Remaining animations
+
+```sh
+node scripts/emoji-enhancement/remaining-animations.mjs
+node scripts/emoji-enhancement/fix-white-animation-backgrounds.mjs
+node scripts/emoji-enhancement/preserve-animation-details.mjs
+node scripts/emoji-enhancement/stage-remaining-animations.mjs
+node scripts/emoji-enhancement/validate-remaining-animations.mjs
+```
+
+The remaining batch excludes the 12 pilot names, checkpoints completed unique frames, and reuses completed outputs. An optional comma-separated name argument limits processing. `stage-remaining-animations.mjs --prepare` builds assets for completed jobs without publishing an incomplete gallery.
+
+Photo clips use the official compact `realesr-general-x4v3` model with equal strong/weak denoise weights and a source blend. Flat artwork uses animevideov3. Effect-specific settings are in `remaining-animation-plan.mjs`; Nyan Cat and Unikitty remain pixel art and the existing 1080p bongo animation receives only a 512px export. The model files and SHA-256 hashes are recorded in the staged manifest.
+
+`mux-animation.mjs` packs independently encoded lossless frames using full-canvas, no-blend WebP animation chunks. This retains repeated frames, blank holds, exact durations and finite loop counts instead of coalescing frames. Its regression test covers translucent content disappearing between repeated frames and a loop count of 257. See the [WebP container specification](https://developers.google.com/speed/webp/docs/riff_container).
+
+Plain white canvases are removed only for three hand-reviewed outlined animations. Photo scenes and existing source cutouts retain their backgrounds/alpha. An optional per-image `selection.json` in the ignored experiment directory can select a reviewed exception, bound to the source hash; the staged manifest records the actual selected model, prompt and output hash. Boxcat uses this exception after a Nano trial recovered colors that local restoration could not.
+
+`preserve-animation-details.mjs` selects local frame refinements for South Park facial texture and Unikitty pixel art without rerunning a model. After an exception changes, `stage-remaining-animations.mjs --only=name1,name2` refreshes those entries in an existing complete gallery; run the full validator afterward.
