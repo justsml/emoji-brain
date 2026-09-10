@@ -1,29 +1,29 @@
 {
-  "id": "qdj115gb1srmr0d0hfgbec9k8r",
+  "id": "fgk1ryz761rmw0d0hfjbmfj9zg",
   "model": "bria/remove-background",
   "version": "hidden",
   "input": {
-    "image": "https://replicate.delivery/xezq/fhjN0OpB6egOnkgfsZIpkhVWdPuJO2Ihsq9Py2rQ0UeZe8g5C/tmpxwx0vb2g.png",
+    "image": "https://replicate.delivery/xezq/SBm90Gi44QqcENx6cefZPWU3bAOn1kP6yKSQYzZSIwlUvHMXA/tmppy_b3jf6.png",
     "preserve_alpha": true
   },
-  "logs": "Downloading 1700548 bytes\nDownloaded 1.62MB in 0.11sec\n",
-  "output": "https://replicate.delivery/xezq/lK3NWIOtsEKFGROjejZ12IhdtyavtkWEtPgjP3PoQYBc1DmLA/tmpua6hsjkd.png",
+  "logs": "Downloading 1383756 bytes\nDownloaded 1.32MB in 0.10sec\n",
+  "output": "https://replicate.delivery/xezq/7h6TUTDQf120SamyFukMsPtg09WMok0ceM0LEy3UxZb3vHMXA/tmpfksq5km3.png",
   "data_removed": false,
   "error": null,
   "source": "api",
   "status": "succeeded",
-  "created_at": "2026-09-10T15:11:51.054Z",
-  "started_at": "2026-09-10T15:11:51.063911294Z",
-  "completed_at": "2026-09-10T15:11:52.931746782Z",
+  "created_at": "2026-09-10T15:17:09.552Z",
+  "started_at": "2026-09-10T15:17:09.566808754Z",
+  "completed_at": "2026-09-10T15:17:11.366438446Z",
   "urls": {
-    "cancel": "https://api.replicate.com/v1/predictions/qdj115gb1srmr0d0hfgbec9k8r/cancel",
-    "get": "https://api.replicate.com/v1/predictions/qdj115gb1srmr0d0hfgbec9k8r",
-    "stream": "https://stream.replicate.com/v1/files/jbxs-rnryrnnango3shbeqr7b52rbnmvu35mpta4rvycgqftdzt5dyqqa",
-    "web": "https://replicate.com/p/qdj115gb1srmr0d0hfgbec9k8r"
+    "cancel": "https://api.replicate.com/v1/predictions/fgk1ryz761rmw0d0hfjbmfj9zg/cancel",
+    "get": "https://api.replicate.com/v1/predictions/fgk1ryz761rmw0d0hfjbmfj9zg",
+    "stream": "https://stream.replicate.com/v1/files/jbxs-tmdcpjxl3gyvps7ztqdthuyduhwtuazysq2pcha7oyqqv7bzkxuq",
+    "web": "https://replicate.com/p/fgk1ryz761rmw0d0hfjbmfj9zg"
   },
   "metrics": {
     "image_output_count": 1,
-    "predict_time": 1.8678354879999999,
-    "total_time": 1.877746782
+    "predict_time": 1.799629692,
+    "total_time": 1.814438446
   }
 }

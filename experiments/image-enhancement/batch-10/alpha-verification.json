@@ -4,18 +4,18 @@
     "width": 1024,
     "height": 1024,
     "hasAlpha": true,
-    "transparentFraction": 0.13103294372558594,
-    "opaqueFraction": 0.23840808868408203,
-    "partialFraction": 0.630558967590332
+    "transparentFraction": 0.11563491821289062,
+    "opaqueFraction": 0.14340686798095703,
+    "partialFraction": 0.7409582138061523
   },
   {
     "file": "badtime.transparent.png",
     "width": 1024,
     "height": 1024,
     "hasAlpha": true,
-    "transparentFraction": 0.2861356735229492,
-    "opaqueFraction": 0.2295522689819336,
-    "partialFraction": 0.4843120574951172
+    "transparentFraction": 0.3913421630859375,
+    "opaqueFraction": 0.2225046157836914,
+    "partialFraction": 0.3861532211303711
   },
   {
     "file": "fonzie.transparent.png",

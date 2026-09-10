@@ -1,0 +1,89 @@
+[
+  {
+    "name": "10-10",
+    "kind": "illustration",
+    "subject": "The original brown-and-cream tabby CAT, with a feline muzzle, pointed cat ears where visible, dark round eyes, and white front paws holding a yellow 10/10 sign overhead. Preserve its tabby markings and cat face; it is not a panda or bear.",
+    "text": {
+      "mode": "exact",
+      "lines": [
+        "10/10"
+      ]
+    }
+  },
+  {
+    "name": "badtime",
+    "kind": "flat",
+    "subject": "Thumper, the adult South Park ski instructor: long angular outlined nose, tan five-o-clock beard shadow across lower cheeks and jaw, small dark mouth with teeth, tousled brown hair, blue/turquoise headband. Preserve thin facial lines and flat cut-paper style.",
+    "text": {
+      "mode": "none"
+    },
+    "referenceImages": [
+      "experiments/image-enhancement/badtime-source/reference-head.png"
+    ]
+  },
+  {
+    "name": "fonzie",
+    "kind": "photo",
+    "identity": "young Henry Winkler as Arthur Fonzie Fonzarelli",
+    "identityReferenceVerified": false,
+    "text": {
+      "mode": "none"
+    }
+  },
+  {
+    "name": "hai-guys-cat",
+    "kind": "illustration",
+    "subject": "The same black cat with large white eyes and one raised pink-padded paw",
+    "text": {
+      "mode": "none"
+    }
+  },
+  {
+    "name": "heart-mew-cat",
+    "kind": "illustration",
+    "subject": "The same brown-and-cream tabby cat holding a red heart",
+    "text": {
+      "mode": "none"
+    }
+  },
+  {
+    "name": "meow_alien",
+    "kind": "flat",
+    "subject": "The same green alien cat with antennae",
+    "text": {
+      "mode": "none"
+    }
+  },
+  {
+    "name": "meow_black_cat",
+    "kind": "flat",
+    "subject": "The same charcoal cat head with yellow-green eyes and pale whiskers",
+    "text": {
+      "mode": "none"
+    }
+  },
+  {
+    "name": "meow_fux",
+    "kind": "flat",
+    "subject": "The same yellow cat with a skeptical expression and middle-finger gesture",
+    "text": {
+      "mode": "none"
+    }
+  },
+  {
+    "name": "meow_googly-bongo",
+    "kind": "flat",
+    "subject": "The same yellow cat with large googly eyes, retaining the reference pose and paws",
+    "text": {
+      "mode": "none"
+    }
+  },
+  {
+    "name": "meow_dj",
+    "kind": "illustration",
+    "subject": "The same yellow cat DJ with headphones and turntables, preserving the original eye shapes",
+    "text": {
+      "mode": "none"
+    }
+  }
+]

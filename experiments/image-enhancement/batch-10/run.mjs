@@ -3,6 +3,7 @@ import { existsSync, readFileSync } from 'node:fs';
 import { parseEnv } from 'node:util';
 import { execFileSync } from 'node:child_process';
 import sharp from 'sharp';
+import { planEnhancement } from '../../../scripts/emoji-enhancement-prompts.mjs';
 const dir = new URL('./', import.meta.url).pathname;
 const env = { ...parseEnv(readFileSync('.env', 'utf8')), ...process.env };
 const token = env.REPLICATE_API_TOKEN || env.REPLICATE_API_KEY;
@@ -18,6 +19,7 @@ const configs = [
 ];
 const jobs=[];
 const overrides=existsSync(`${dir}prompt-overrides.json`)?JSON.parse(await fs.readFile(`${dir}prompt-overrides.json`)):{};
+const routing=JSON.parse(await fs.readFile(`${dir}prompt-routing-v2.json`));
 const selection=JSON.parse(await fs.readFile(`${dir}selection.json`));
 for (const selected of selection) {
  const name=selected.file.split('/').pop().replace(/\.webp$/,'');
@@ -33,12 +35,22 @@ for (const selected of selection) {
   let result;
   if(existsSync(file)) result=JSON.parse(await fs.readFile(file));
   else {
-   result=model==='zsxkib/seedvr2'?api('predictions',{version:schema.latest_version.id,input:input(uri)}):api(`models/${model}/predictions`,{input:{...input(uri),...(overrides[name]?{prompt:overrides[name]}:{})}});
+   const spec=routing.find(item=>item.name===name);
+   if(!spec)throw new Error(`Missing reviewed prompt routing: ${name}`);
+   const plan=planEnhancement(spec);
+   if(plan.status!=='ready')throw new Error(`${name}: ${plan.blockedReasons.join(' ')}`);
+   overrides[name]=plan.prompt;
+   const referenceImages=[];
+   for(const reference of spec.referenceImages??[]){
+    referenceImages.push('data:image/png;base64,'+(await sharp(reference).png().toBuffer()).toString('base64'));
+   }
+   await fs.writeFile(`${dir}${name}.prompt-plan.json`,JSON.stringify(plan,null,2));
+   result=model==='zsxkib/seedvr2'?api('predictions',{version:schema.latest_version.id,input:input(uri)}):api(`models/${model}/predictions`,{input:{...input(uri),image_input:[uri,...referenceImages],...(overrides[name]?{prompt:overrides[name]}:{})}});
    await fs.writeFile(file,JSON.stringify(result,null,2));
   }
   if(model==='philz1337x/crystal-upscaler' && result.status===422){
    await fs.writeFile(file.replace('.result.json','.rejected.json'),JSON.stringify(result,null,2));
-   result=api(`models/${model}/predictions`,{input:{...input(uri),...(overrides[name]?{prompt:overrides[name]}:{})}});
+   result=api(`models/${model}/predictions`,{input:{...input(uri),image_input:[uri,...referenceImages],...(overrides[name]?{prompt:overrides[name]}:{})}});
    await fs.writeFile(file,JSON.stringify(result,null,2));
   }
   console.log(name,model,result.status||result.detail);

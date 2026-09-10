@@ -1,0 +1,37 @@
+{
+  "id": "rgnxq92xvdrmt0d0hfm8h0gewm",
+  "model": "google/nano-banana-pro",
+  "version": "hidden",
+  "input": {
+    "allow_fallback_model": false,
+    "aspect_ratio": "1:1",
+    "image_input": [
+      "data:image/png;base64,...",
+      "data:image/png;base64,..."
+    ],
+    "output_format": "png",
+    "prompt": "Restore the head-only emoji in image 1. Image 2 is an official source reference of the SAME character, Thumper the adult ski instructor from South Park, and provides facial details lost through downsampling. Image 1 controls the composition, head-only crop, proportions and expression. Image 2 controls character-specific facial construction. Preserve the distinctive LONG ANGULAR NOSE drawn with a fine dark outline, the tan/beige FIVE O CLOCK SHADOW across the lower cheeks, around the mouth and along the jaw/chin, the small open dark mouth with tiny teeth, the adult elongated face, large simple white eyes with tiny pupils, brown tousled hair and blue headband with a turquoise stripe. The beard shadow is a flat darker skin-colored shape, not individual hair or a full beard. Do not turn him into a generic South Park child. Match the original simple cut-paper style, thin facial lines and muted flat colors; do not add thick black sticker outlines, glossy shading, realistic texture or erase the nose/shadow. Crisp clean edges, retaining all facial features. Output only the head emoji, no neck, jacket, ski equipment, scenery, text or border. Uniform white outside the silhouette for subsequent background removal. Preserve the 1:1 canvas and the original relative head scale; no zooming in.",
+    "resolution": "1K"
+  },
+  "logs": "No sid\nGenerating image...\nTokens: 2834\nGenerated image in 28.98 seconds\n",
+  "output": "https://replicate.delivery/xezq/wBrSJsPWSpa5B1AoeYRiwGBAVD4YOL5guNywNXUegpd1zHMXA/tmpm9l6dy5y.png",
+  "data_removed": false,
+  "error": null,
+  "source": "api",
+  "status": "succeeded",
+  "created_at": "2026-09-10T15:20:56.539Z",
+  "started_at": "2026-09-10T15:20:56.561828898Z",
+  "completed_at": "2026-09-10T15:21:25.67698125Z",
+  "urls": {
+    "cancel": "https://api.replicate.com/v1/predictions/rgnxq92xvdrmt0d0hfm8h0gewm/cancel",
+    "get": "https://api.replicate.com/v1/predictions/rgnxq92xvdrmt0d0hfm8h0gewm",
+    "stream": "https://stream.replicate.com/v1/files/jbxs-opprn2dubbjqp6rmi6eza3vjwqor7e4xm3g6jmhhaj4z7chkj6dq",
+    "web": "https://replicate.com/p/rgnxq92xvdrmt0d0hfm8h0gewm"
+  },
+  "metrics": {
+    "image_output_count": 1,
+    "predict_time": 29.115152342,
+    "resolution_target": "1K",
+    "total_time": 29.13798125
+  }
+}
