@@ -3,6 +3,8 @@ import { promises as fs } from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import sharp from 'sharp';
+import { spawnSync } from 'node:child_process';
+import { checkFailed } from './emoji-check-guidance';
 import { checkEmojis, paths, readCatalog, reportMarkdown, reportTable, updateEmojis } from './emoji-pipeline';
 const roots: string[] = [];
 async function fixture() {
@@ -15,6 +17,37 @@ async function picture(file: string, color = 'red') {
   await sharp({ create: { width: 4, height: 4, channels: 4, background: color } }).toFile(file);
 }
 afterEach(async () => { await Promise.all(roots.splice(0).map(root => fs.rm(root, { recursive: true, force: true }))); });
+test('unlabelled images block checks and missing keys explain recovery before ingest', async () => {
+  const root = await fixture();
+  await picture(path.join(paths(root).images, 'cat.webp'));
+  await updateEmojis(root, 'none');
+  expect(checkFailed(await checkEmojis(root))).toBe(true);
+  expect((await checkEmojis(root)).pendingLabels).toEqual(['public/emojis/cat.webp']);
+  const ingest = path.join(paths(root).images, 'ingest');
+  await fs.mkdir(ingest);
+  await picture(path.join(ingest, 'dog.png'));
+  const env = { ...process.env };
+  for (const key of ['GOOGLE_API_KEY', 'GEMINI_API_KEY', 'GOOGLE_GENERATIVE_AI_API_KEY', 'CI', 'GITHUB_ACTIONS']) delete env[key];
+  const run = (script: string, args: string[] = [], extra = {}) => spawnSync('bun', [path.resolve('scripts', script), ...args], { cwd: root, env: { ...env, ...extra }, encoding: 'utf8' });
+  const failed = run('update-emojis.ts', ['--update=changes']);
+  expect(failed.status).toBe(1);
+  expect(failed.stderr).toContain('Set GOOGLE_API_KEY, GEMINI_API_KEY, or GOOGLE_GENERATIVE_AI_API_KEY');
+  expect(failed.stderr).toContain('public/emojis/cat.webp');
+  expect(failed.stderr).toContain('public/emojis/ingest/dog.png');
+  expect(await fs.readdir(ingest)).toEqual(['dog.png']);
+  const summary = path.join(root, 'summary.md');
+  const check = run('check-emojis.ts', ['--json'], { GITHUB_STEP_SUMMARY: summary, GEMINI_API_KEY: 'test-key-do-not-print' });
+  expect(check.status).toBe(1);
+  expect(JSON.parse(check.stdout).pendingLabels).toHaveLength(2);
+  expect(check.stderr).toContain('key is configured locally');
+  expect(check.stderr).not.toContain('test-key-do-not-print');
+  expect(await fs.readFile(summary, 'utf8')).toContain('pnpm update-emojis --update=changes');
+  await updateEmojis(root, 'changes', async () => JSON.stringify({ tags: ['animal'], categories: ['animal'] }));
+  expect(checkFailed(await checkEmojis(root))).toBe(false);
+  expect(run('check-emojis.ts').status).toBe(0);
+  await picture(path.join(paths(root).images, 'cat.webp'), 'blue');
+  expect((await checkEmojis(root)).pendingLabels).toEqual(['public/emojis/cat.webp']);
+});
 test('offline conversion, change tracking, label selection and metadata preservation', async () => {
   const root = await fixture();
   await picture(path.join(paths(root).images, 'cat.png'));
@@ -86,8 +119,10 @@ test('animated ingest retains frames and generates a static preview', async () =
   await fs.mkdir(ingest);
   const frames = Buffer.concat([Buffer.alloc(4 * 4 * 3, 0), Buffer.alloc(4 * 4 * 3, 255)]);
   await sharp(frames, { raw: { width: 4, height: 8, channels: 3, pageHeight: 4 } }).gif({ delay: [100, 100], loop: 0 }).toFile(path.join(ingest, 'dance.gif'));
+  expect((await checkEmojis(root)).errors).toContain('1 image(s) pending ingest in public/emojis/ingest/');
   expect(await updateEmojis(root, 'none')).toMatchObject({ ingested: 1, converted: 1, stills: 1 });
   expect((await sharp(path.join(paths(root).images, 'dance.webp')).metadata()).pages).toBe(2);
   expect((await sharp(path.join(paths(root).images, 'still/dance.webp')).metadata()).pages ?? 1).toBe(1);
   expect((await checkEmojis(root)).invalid).toBe(0);
+  expect((await checkEmojis(root)).errors).toEqual([]);
 });

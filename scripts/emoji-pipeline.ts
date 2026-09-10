@@ -10,6 +10,7 @@ const required = ['id', 'filename', 'path', 'created', 'modified', 'hash', 'size
 export const paths = (root: string) => ({ images: path.join(root, 'public/emojis'), metadata: path.join(root, 'src/data/emoji-metadata.json') });
 const strings = (value: unknown): value is string[] => Array.isArray(value) && value.every(v => typeof v === 'string' && v.trim().length > 0);
 const populated = (value: any) => Array.isArray(value) ? value.length > 0 : value !== undefined && value !== null && value !== '';
+const needsLabelling = (entry: Entry | undefined, hash: string) => !entry || entry.hash !== hash || entry.labelHash !== hash || !strings(entry.tags) || !entry.tags.length || !strings(entry.categories) || !entry.categories.length;
 export async function readCatalog(root: string): Promise<Entry> {
   try {
     const data = JSON.parse(await fs.readFile(paths(root).metadata, 'utf8'));
@@ -37,6 +38,9 @@ export async function checkEmojis(root: string) {
   const filenames = await filesIn(paths(root).images);
   const rows: Entry[] = [];
   const errors: string[] = [];
+  const pending = await filesIn(path.join(paths(root).images, 'ingest'));
+  const pendingLabels = pending.map(filename => `public/emojis/ingest/${filename}`);
+  if (pending.length) errors.push(`${pending.length} image(s) pending ingest in public/emojis/ingest/`);
   if (catalog.total !== catalog.emojis.length) errors.push('Catalog total does not match entries');
   for (const field of ['filename', 'id']) {
     const values = catalog.emojis.map((e: Entry) => e[field]);
@@ -65,6 +69,7 @@ export async function checkEmojis(root: string) {
     if (row.exists) {
       try {
         const info = await inspect(path.join(paths(root).images, filename));
+        if (needsLabelling(entry, info.hash)) pendingLabels.push(`public/emojis/${filename}`);
         row.type = path.extname(filename).slice(1);
         row.hash = entry?.hash ? (entry.hash === info.hash ? 'same' : 'changed') : 'untracked';
         row.modified = entry?.modified ? (entry.modified === info.modified ? 'same' : 'changed') : 'untracked';
@@ -85,7 +90,7 @@ export async function checkEmojis(root: string) {
     }
     rows.push(row);
   }
-  return { total: rows.length, errors, invalid: rows.filter(r => r.issues.length).length, averageScore: rows.length ? Math.round(rows.reduce((n, r) => n + r.score, 0) / rows.length) : 0, rows };
+  return { total: rows.length, errors, pendingLabels, invalid: rows.filter(r => r.issues.length).length, averageScore: rows.length ? Math.round(rows.reduce((n, r) => n + r.score, 0) / rows.length) : 0, rows };
 }
 export function reportMarkdown(report: Awaited<ReturnType<typeof checkEmojis>>) {
   const escape = (v: any) => String(v).replace(/\|/g, '\\|').replace(/[\r\n]/g, ' ');
@@ -161,7 +166,7 @@ export async function updateEmojis(root: string, mode: UpdateMode, label?: (file
     const old = before.get(filename) ?? catalog.emojis.find((e: Entry) => path.parse(e.filename).name === path.parse(filename).name);
     if (!old) added++;
     if (old && !old.hash) tracked++;
-    const needsLabel = !old || old.hash !== info.hash || old.labelHash !== info.hash || !strings(old.tags) || !old.tags.length || !strings(old.categories) || !old.categories.length;
+    const needsLabel = needsLabelling(old, info.hash);
     if (old?.hash && old.hash !== info.hash) changed++;
     const entry: Entry = { ...old, id: old?.id ?? createHash('md5').update(filename).digest('hex').slice(0, 8), filename, path: `/emojis/${filename}`, created: old?.created ?? (await fs.stat(source)).birthtime.toISOString(), tags: old?.tags ?? [], categories: old?.categories ?? [], aliases: old?.aliases ?? [], ...info };
     if (mode === 'all' || (mode === 'changes' && needsLabel)) {

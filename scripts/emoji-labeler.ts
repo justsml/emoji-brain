@@ -3,9 +3,10 @@ import { generateText } from "ai";
 import fs from "fs";
 import path from "path";
 import dedent from "dedent";
+import { googleApiKey } from './emoji-check-guidance';
 
 const google = createGoogleGenerativeAI({
-  apiKey: process.env.GOOGLE_API_KEY,
+  apiKey: googleApiKey(),
 });
 
 export const emojiLabeler = async (inputImage: string) => {
