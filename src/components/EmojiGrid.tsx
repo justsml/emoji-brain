@@ -18,6 +18,7 @@ interface EmojiGridProps {
   onSelectMany?: (emojis: EmojiMetadata[]) => void;
   /** Alt-drag: remove these from the selection. Falls back to toggling each. */
   onDeselectMany?: (emojis: EmojiMetadata[]) => void;
+  onShowSimilarity?: (emoji: EmojiMetadata, trigger: HTMLButtonElement) => void;
 }
 
 const GRID_GAP = 12;
@@ -34,6 +35,7 @@ interface EmojiCellProps {
   onToggle: (emoji: EmojiMetadata, event?: React.MouseEvent) => void;
   onKeyDown: (e: KeyboardEvent, index: number, columnCount: number) => void;
   onFocusChange: (index: number) => void;
+  onShowSimilarity?: EmojiGridProps["onShowSimilarity"];
 }
 
 const AnimatedImage = ({
@@ -77,6 +79,7 @@ const EmojiCell = ({
   onToggle,
   onKeyDown,
   onFocusChange,
+  onShowSimilarity,
 }: EmojiCellProps) => {
   const [isPlaying, setIsPlaying] = useState(false);
 
@@ -129,6 +132,10 @@ const EmojiCell = ({
         </div>
         <span className="emoji-card-name">:{name}:</span>
       </button>
+      {onShowSimilarity && <button type="button" className="emoji-similarity-action"
+        aria-label={`Find similar to ${emoji.filename}`}
+        onPointerDown={(event) => event.stopPropagation()}
+        onClick={(event) => { event.stopPropagation(); onShowSimilarity(emoji, event.currentTarget); }}>Similar</button>}
     </div>
   );
 };
@@ -146,6 +153,7 @@ const EmojiGrid = ({
   onAnnounceSelection,
   onSelectMany,
   onDeselectMany,
+  onShowSimilarity,
 }: EmojiGridProps): ReactElement => {
   const parentRef = useRef<HTMLDivElement>(null);
   const [width, setWidth] = useState(800);
@@ -235,16 +243,6 @@ const EmojiGrid = ({
     }
   }, [emojis, onSetFocusedIndex, onToggleSelection, onAnnounceSelection, selectedEmojis]);
 
-  if (emojis.length === 0) {
-    return (
-      <div className="emoji-empty">
-        <img src="/emojis/cat-confuse.webp" alt="" aria-hidden="true" width="72" height="72" />
-        <h2>Nothing on the sheet matches that</h2>
-        <p>Search by name, or by what an emoji is doing — try “cat”, “fire”, “thumbs”, or “party”.</p>
-      </div>
-    );
-  }
-
   // Only stickers that releasing would actually change get the preview treatment.
   const previewIds = useMemo(() => {
     if (!marquee) return null;
@@ -258,6 +256,16 @@ const EmojiGrid = ({
   const marqueeLabel = marquee
     ? `${marquee.mode === "remove" ? "Remove" : "Select"} ${hitCount} ${hitCount === 1 ? "emoji" : "emojis"}`
     : "";
+
+  if (emojis.length === 0) {
+    return (
+      <div className="emoji-empty">
+        <img src="/emojis/cat-confuse.webp" alt="" aria-hidden="true" width="72" height="72" />
+        <h2>Nothing on the sheet matches that</h2>
+        <p>Search by name, or by what an emoji is doing — try “cat”, “fire”, “thumbs”, or “party”.</p>
+      </div>
+    );
+  }
 
   return (
     <div
@@ -289,6 +297,7 @@ const EmojiGrid = ({
               onToggle={onToggleSelection}
               onKeyDown={handleKeyDown}
               onFocusChange={onSetFocusedIndex}
+              onShowSimilarity={onShowSimilarity}
             />
           ))}
         </div>

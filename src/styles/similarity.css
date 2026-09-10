@@ -1,0 +1,18 @@
+.emoji-similarity-action { display: block; margin: .1rem auto .35rem; padding: .2rem .5rem; font-size: .7rem; color: hsl(var(--foreground) / .7); border-radius: 3px; cursor: pointer; }
+.emoji-similarity-action:hover { color: hsl(var(--foreground)); background: hsl(var(--foreground) / .06); }
+.emoji-similarity-action:focus-visible, .similarity-panel button:focus-visible { outline: 2px solid hsl(var(--cut)); outline-offset: 3px; }
+.similarity-panel { max-width: 1616px; margin: 1.5rem auto; padding: 1.25rem 2rem; border-block: 1px solid hsl(var(--foreground) / .15); }
+.similarity-header { display: flex; align-items: start; justify-content: space-between; gap: 1rem; }
+.similarity-header h2 { font-size: 1.15rem; font-weight: 600; overflow-wrap: anywhere; }
+.similarity-header p, .similarity-note, .similarity-panel [role=status] { font-size: .85rem; color: hsl(var(--foreground) / .7); margin-block: .4rem; }
+.similarity-header button, .similarity-modes button { padding: .45rem .7rem; border: 1px solid hsl(var(--foreground) / .2); border-radius: 3px; cursor: pointer; }
+.similarity-header button { flex-shrink: 0; font-size: .8rem; }
+.similarity-modes { display: flex; gap: .5rem; margin-block: .75rem; }
+.similarity-modes [aria-pressed=true] { background: hsl(var(--foreground)); color: hsl(var(--background)); }
+.similarity-query { display: flex; align-items: center; gap: 1rem; margin-top: .75rem; }
+.similarity-query img { object-fit: contain; }
+.similarity-query .similarity-swatches { width: 160px; }
+.similarity-swatches { display: flex; height: 14px; overflow: hidden; border-radius: 3px; margin: .4rem .3rem; }
+.similarity-swatches span { flex-basis: 0; min-width: 1px; }
+.similarity-results { display: grid; grid-template-columns: repeat(auto-fill, minmax(95px, 1fr)); gap: 12px; list-style: none; padding: 0; margin-top: 1rem; }
+@media (max-width: 560px) { .similarity-panel { padding: 1rem; } .similarity-header { flex-wrap: wrap; } }
