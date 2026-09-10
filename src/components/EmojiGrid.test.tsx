@@ -251,3 +251,19 @@ describe('EmojiGrid drag selection', () => {
     expect(screen.queryByTestId('emoji-marquee')).toBeNull();
   });
 });
+
+describe('similarity action', () => {
+  it('opens separately without selecting and keeps hooks stable across empty results', async () => {
+    const emoji: EmojiMetadata = { id: 'one', filename: 'one.png', path: '/one.png', tags: [], categories: [], created: '', size: 1 };
+    const onToggleSelection = vi.fn(); const onShowSimilarity = vi.fn();
+    const props = { selectedEmojis: [], focusedIndex: 0, gridScale: 4, onToggleSelection, onShowSimilarity, onSetFocusedIndex: vi.fn(), onAnnounceSelection: vi.fn() };
+    const view = render(<EmojiGrid {...props} emojis={[]} />);
+    view.rerender(<EmojiGrid {...props} emojis={[emoji]} />);
+    const action = screen.getByRole('button', { name: 'Find similar to one.png' });
+    await userEvent.click(action);
+    expect(onShowSimilarity).toHaveBeenCalledWith(emoji, action);
+    expect(onToggleSelection).not.toHaveBeenCalled();
+    view.rerender(<EmojiGrid {...props} emojis={[]} />);
+    expect(screen.getByText('Nothing on the sheet matches that')).toBeVisible();
+  });
+});

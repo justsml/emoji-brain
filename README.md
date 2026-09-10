@@ -47,6 +47,7 @@ Emoji Explorer (`emoji-brain`) is a self-hostable, static [Astro](https://astro.
 - Copy a Slack browser upload script with the selected images embedded.
 - Export filenames, HTML, CSS, or a Markdown table to the clipboard, or download the images as a ZIP.
 - Switch between light and dark themes, with the initial theme following your system preference.
+- Find emojis with similar colors or a similar appearance, using locally precomputed palettes, layouts, silhouettes, and internal edges.
 
 ## Use the collection
 
@@ -111,6 +112,51 @@ Completeness is informational: 25% for populated fields out of 12 (`id`, `filena
 The [GitHub workflow](.github/workflows/emojis.yml) runs `pnpm check-emojis` on pull requests, failing for pending ingests, pending labelling, changed image content, stale metadata, or other validation errors. Failures list images pending labelling and tell contributors to run `pnpm update-emojis --update=changes` locally, rerun the check, and commit the resulting changes. Local failures detect whether a supported API key is configured and provide setup instructions when missing. CI never requires a key for validation. Filesystem timestamp differences alone do not fail the check. Unit tests run on PRs, pushes to `main`, and manual dispatches, even when emoji validation fails. Builds run on `main` only after checks pass. Superseded PR runs are cancelled. Successful pushes publish a prerelease named `main-<commit>` containing the static site archive. CI has no AI credentials, and both the update command and labeller reject live calls in CI. Reports include recovery instructions and pending image lists. Reports and site archives are retained as workflow artifacts for 14 days; release archives remain attached to the prerelease. Re-running a release replaces its existing archive.
 
 Repository settings require approval for **all external contributors'** GitHub Actions runs, including returning contributors. Protected `main` requires the GitHub Actions `check-emojis` status check and an up-to-date branch before ordinary PR merges. Code-owner review and stale-review dismissal are enabled. Administrators can bypass protection. These settings were verified on 2026-09-09. [CODEOWNERS](.github/CODEOWNERS) assigns review to the current maintainers. Approval to run a workflow is separate from approval to merge a PR. These GitHub settings must also be configured when forking the repository; files alone cannot enforce them.
+
+## Similarity processing
+
+Choose **Find similar** below an emoji to open **Similar colors** or **Looks similar**. Matches can be added to your sheet without changing the original search results. Palette bars show visible-color proportions. Similarity describes appearance, not meaning; results can contain fewer than 12 emojis.
+
+```bash
+pnpm process-similarity                     # generate the static index locally
+pnpm process-similarity --json              # progress on stderr, runtime JSON on stdout
+pnpm process-similarity --report            # also generate a local review report
+pnpm process-similarity --report --judgments=similarity-judgments.json
+```
+
+`pnpm build` and successful `pnpm update-emojis` runs regenerate similarity automatically. For development, run `pnpm process-similarity` before `pnpm dev`. No credentials, network calls, new dependencies, or vector database are needed for similarity processing. The generated index is fetched only when opening the similarity panel.
+
+Progress includes the phase, current image, completed/total work, new images, cache hits, failures, and elapsed time, with periodic heartbeats. The final summary records extraction images/sec and images/min, comparisons/sec, phase timings, sampled frames, observed peak RSS, and uncompressed index bytes. Cache hits are excluded from throughput numerators: a fully cached run reports zero new images/sec, not artificially high extraction speed. Full pipeline time includes verification and publication; optional report rendering happens afterward.
+
+Descriptors are cached by actual image SHA-256, algorithm version, and policy fingerprint. Pair checkpoints record both descriptor keys. Restart the same command after interruption: completed descriptors and checkpointed comparisons are reused, failed/unfinished work is retried, and all neighbor lists are reconstructed so additions or deletions affect unchanged emojis too. Reruns produce identical index bytes for unchanged inputs/configuration; timestamps and runtime data stay in the run report. A failed or cancelled run preserves the last published index. Generation verifies the catalog and image contents again before atomic publication.
+
+Generated files live in ignored locations:
+
+- `public/similarity/index.json`: static browser index; included in the production build.
+- `.cache/similarity/`: descriptor/pair checkpoints and `last-run.json` runtime statistics.
+- `.cache/similarity/review.html`: optional local comparison, grading, and duplicate report; open it in a browser. Its adjacent `.metrics.json` records evaluation and runtime evidence.
+
+Only one processor may use a cache at a time. Stale process locks are recovered automatically when their PID is no longer running. If a process is killed during the brief lock-acquisition guard, the next run fails closed and identifies `recovery.lock`; verify its recorded PID is dead before removing that guard. The cache is local to this checkout and is not intended for a shared network filesystem.
+
+### Methods and limitations
+
+The custom histogram baseline assigns pixels to 64 fixed RGB-cube colors using nearest Oklab distance. The primary palette method uses deterministic weighted clustering into at most eight colors and minimum-cost transport with Euclidean Oklab ground distance divided by √3. The residual flow solver uses mass tolerance `1e-10`. Transparent pixels contribute no color; partial alpha weights their contribution. Normalization trims transparent padding and fits artwork into 32×32 pixels without changing aspect ratio.
+
+Visual matching combines palette transport (0.45), a 4×4 color/coverage layout (0.30), silhouette overlap distance (0.15), and symmetric internal-edge distance (0.10). Uninformative shape components are omitted and remaining weights renormalized; opaque rectangular artwork does not supply useful silhouette evidence. Orientation is preserved. Current cutoffs are 0.22 for color and 0.30 for combined appearance. **These weights and cutoffs are provisional, not human-calibrated.** Component distances remain in the index and review report for inspection.
+
+Animation uses at most six equal-duration midpoint samples, accumulating weights when a long frame is selected repeatedly. Invalid frame delays fall back to 100ms. Palette evidence is aggregated by represented time and alpha; spatial descriptors remain separate per sampled frame. Frame-pair distances are averaged symmetrically by represented duration, so one coincidental frame cannot determine the match. This deliberately penalizes appearance variation and is not a mathematical metric: even two copies of a varying animation can have nonzero expected frame distance. Sampling can miss brief events; it does not understand motion semantics.
+
+Duplicate review is separate: exact SHA-256 matches and still-image 63-bit DCT fingerprints (DC excluded) are listed for manual inspection. Hamming distance ≤6 is a provisional candidate threshold, not permission to merge/delete images. Animated perceptual duplicate checks are unsupported. Normalized silhouettes and low-detail images can produce false positives.
+
+### Relevance review and validation
+
+The report provides 40 category-selected queries with a fixed tuning/held-out split, method comparison, palette swatches, sampled masks/edges, and original-image links. Grade color and visual resemblance independently as unrelated, partial, or relevant. Enter the human reviewer's name and export the judgments; pass that JSON back with `--judgments` to recalculate metrics. Grades are also saved as a browser-local draft. Files for another catalog/algorithm snapshot, invalid grades, and duplicate ratings are rejected.
+
+No human judgments are supplied yet. Precision is reported only for fully judged nonempty lists; unjudged results are never counted as irrelevant. Reported nDCG measures ordering within the returned judged set, not corpus-wide recall. Tune only on tuning queries and use held-out queries for confirmation. The small category-selected set cannot establish general retrieval quality. `PLAN.md` leaves human calibration and duplicate-threshold selection open.
+
+The [recorded local run](scripts/similarity/validation-run.json) processed 353 images (704 sampled frames) and 62,128 pairs in 70.64 seconds; extraction was 10.93 images/sec (655.97 images/min). A cached rerun took 6.79 seconds with all descriptors/pairs reused and identical index bytes. Development tests ran concurrently, so these are observed wall times, not isolated benchmark claims. The index was 2,365,085 bytes before compression.
+
+Automated checks cover descriptor ordering and normalization, animation timing, internal edges, transport symmetry, cache corruption, changed/deleted inputs, interruption/resume equivalence, deterministic publication, unjudged evaluation behavior, and browser selection/mode/focus flows. Research references and pending calibration criteria are in [the plan](PLAN.md#similarity-processing).
 
 ## Tests
 

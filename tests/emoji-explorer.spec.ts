@@ -107,11 +107,11 @@ test("should filter emojis when searching", async ({ page }) => {
 
 test("should select and deselect emojis", async ({ page }) => {
   await expect(page.getByText("No emojis selected")).toBeVisible();
-  await page.locator('div[role="gridcell"] button').first().click();
+  await page.locator('div[role="gridcell"] button.emoji-card').first().click();
   await expect(page.getByLabel("1 selected")).toBeVisible();
-  await page.locator('div[role="gridcell"] button').nth(1).click();
+  await page.locator('div[role="gridcell"] button.emoji-card').nth(1).click();
   await expect(page.getByLabel("2 selected")).toBeVisible();
-  await page.locator('div[role="gridcell"] button').first().click();
+  await page.locator('div[role="gridcell"] button.emoji-card').first().click();
   await expect(page.getByLabel("1 selected")).toBeVisible();
 
   // Handle dialog for deselect all
@@ -124,7 +124,7 @@ test("should show export options when emojis are selected", async ({
   page,
 }) => {
   // Select an emoji
-  await page.locator('div[role="gridcell"] button').first().click();
+  await page.locator('div[role="gridcell"] button.emoji-card').first().click();
 
   await expect(page.getByRole("button", { name: "Copy Slack Script" })).toBeVisible();
 

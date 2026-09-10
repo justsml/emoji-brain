@@ -1,7 +1,8 @@
-import React, { useState, useCallback, useEffect } from "react";
+import React, { useState, useCallback, useEffect, useRef } from "react";
 import type { EmojiMetadata } from "../types/emoji";
 import SearchBar from "./SearchBar";
 import EmojiGrid from "./EmojiGrid";
+import SimilarityPanel from "./SimilarityPanel";
 import GridScaleSlider from "./GridScaleSlider";
 import { EmojiExport } from "./EmojiExport";
 import { useEmojiContext } from "../context/EmojiContext";
@@ -130,6 +131,16 @@ const _EmojiExplorerApp: React.FC<EmojiExplorerAppProps> = ({
   );
   const [searchTerm, setSearchTerm] = useState(shared.q ?? "");
   const [searchResults, setSearchResults] = useState(initialEmojis);
+  const [similarityQuery, setSimilarityQuery] = useState<EmojiMetadata | null>(null);
+  const similarityTrigger = useRef<HTMLButtonElement | null>(null);
+  const showSimilarity = useCallback((emoji: EmojiMetadata, trigger: HTMLButtonElement) => {
+    similarityTrigger.current = trigger;
+    setSimilarityQuery(emoji);
+  }, []);
+  const closeSimilarity = useCallback(() => {
+    setSimilarityQuery(null);
+    similarityTrigger.current?.focus();
+  }, []);
   const [searchStatus, setSearchStatus] = useState("");
   const [searchProgress, setSearchProgress] = useState<number | undefined>();
 
@@ -227,6 +238,9 @@ const _EmojiExplorerApp: React.FC<EmojiExplorerAppProps> = ({
           </div>
         </div>
 
+        {similarityQuery && <SimilarityPanel query={similarityQuery} emojis={initialEmojis}
+          selectedEmojis={selectedEmojis} onToggleSelection={handleEmojiSelect} onClose={closeSimilarity} />}
+
         <section className="w-full" aria-label="Emoji results" aria-busy={isSearching}>
           <EmojiGrid
             emojis={filteredEmojis}
@@ -238,6 +252,7 @@ const _EmojiExplorerApp: React.FC<EmojiExplorerAppProps> = ({
             onAnnounceSelection={handleAnnounceSelection}
             onSelectMany={selectAllVisible}
             onDeselectMany={deselectVisible}
+            onShowSimilarity={showSimilarity}
           />
         </section>
 
