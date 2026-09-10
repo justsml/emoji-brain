@@ -10,11 +10,11 @@
 [![Last commit](https://img.shields.io/github/last-commit/justsml/emoji-brain/main?logo=git&logoColor=white)](https://github.com/justsml/emoji-brain/commits/main)
 [![Issues](https://img.shields.io/github/issues/justsml/emoji-brain?logo=github)](https://github.com/justsml/emoji-brain/issues)
 [![Stars](https://img.shields.io/github/stars/justsml/emoji-brain?style=flat&logo=github)](https://github.com/justsml/emoji-brain/stargazers)
+[![Emoji count](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjustsml%2Femoji-brain%2Fmain%2Fsrc%2Fdata%2Femoji-metadata.json&query=%24.total&label=emoji&color=ff4f8b&logo=slack&logoColor=white)](public/emojis/)
+[![PRs welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/justsml/emoji-brain/pulls)
 
 [![Live on Vercel](https://img.shields.io/badge/Live-Vercel-000000?logo=vercel)](https://emoji-brain.vercel.app/)
 [![Live on Netlify](https://img.shields.io/badge/Live-Netlify-00C7B7?logo=netlify&logoColor=white)](https://emoji-brain.netlify.app/)
-[![Emoji count](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjustsml%2Femoji-brain%2Fmain%2Fsrc%2Fdata%2Femoji-metadata.json&query=%24.total&label=emoji&color=ff4f8b&logo=slack&logoColor=white)](public/emojis/)
-[![PRs welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/justsml/emoji-brain/pulls)
 
 [![Astro](https://img.shields.io/badge/Astro-7-BC52EE?logo=astro&logoColor=white)](https://astro.build/)
 [![React](https://img.shields.io/badge/React-19-20232A?logo=react&logoColor=61DAFB)](https://react.dev/)

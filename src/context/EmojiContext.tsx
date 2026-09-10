@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useReducer, useCallback, useEffect, type ReactNode } from 'react';
 import type { EmojiMetadata } from '../types/emoji';
 import { useLocalStorage } from '../hooks/useLocalStorage';
+import { SELECTION_STORAGE_KEY, reconcileSelection } from '../lib/selectionStorage';
 
 interface EmojiState {
   selectedEmojis: EmojiMetadata[];
@@ -123,16 +124,18 @@ interface EmojiProviderProps {
 }
 
 export function EmojiProvider({ children, initialEmojis }: EmojiProviderProps) {
-  const [storedSelection, setStoredSelection] = useLocalStorage<EmojiMetadata[]>('selectedEmojis', []);
-  
+  // ids only: stored records go stale when the catalog is deduped, leaving the
+  // tray pointing at files that no longer exist.
+  const [storedSelection, setStoredSelection] = useLocalStorage<unknown>(SELECTION_STORAGE_KEY, []);
+
   const [state, dispatch] = useReducer(emojiReducer, {
     ...initialState,
-    selectedEmojis: storedSelection || [],
+    selectedEmojis: reconcileSelection(storedSelection, initialEmojis),
     filteredEmojis: initialEmojis,
   });
 
   useEffect(() => {
-    setStoredSelection(state.selectedEmojis);
+    setStoredSelection(state.selectedEmojis.map(emoji => emoji.id));
   }, [state.selectedEmojis, setStoredSelection]);
 
   const toggleEmojiSelection = useCallback((emoji: EmojiMetadata) => {
