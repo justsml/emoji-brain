@@ -3,11 +3,16 @@ import { generateText } from "ai";
 import fs from "fs";
 import path from "path";
 import dedent from "dedent";
-import { googleApiKey } from './emoji-check-guidance';
+import { googleApiKey, openRouterApiKey } from './emoji-check-guidance';
+import { createOpenRouter } from '@openrouter/ai-sdk-provider';
 
-const google = createGoogleGenerativeAI({
-  apiKey: googleApiKey(),
-});
+export function labellingModel() {
+  const routerKey = openRouterApiKey();
+  if (routerKey) return createOpenRouter({ apiKey: routerKey })('google/gemini-3.8-flash');
+  const key = googleApiKey();
+  if (!key) throw new Error('Set OPENROUTER_API_KEY or a Google Gemini API key before labelling.');
+  return createGoogleGenerativeAI({ apiKey: key })('gemini-3.8-flash');
+}
 
 export const emojiLabeler = async (inputImage: string) => {
   if (process.env.CI || process.env.GITHUB_ACTIONS) {
@@ -24,11 +29,8 @@ export const emojiLabeler = async (inputImage: string) => {
   }
 
   const result = await generateText({
-    model: google("gemini-3.8-flash"),
-    messages: [
-      {
-        role: "system",
-        content: dedent`
+    model: labellingModel(),
+    instructions: dedent`
           You are an emoji labeling assistant. Analyze the provided emoji image and generate a JSON object with 'categories' and 'tags'.
           
           GUIDELINES:
@@ -44,13 +46,14 @@ export const emojiLabeler = async (inputImage: string) => {
           
           Return ONLY valid JSON: {"categories": [], "tags": []}
         `,
-      },
+    messages: [
       {
         role: "user",
         content: [
           {
-            type: "image",
-            image: fs.readFileSync(inputImage),
+            type: "file",
+            mediaType: mimeType === 'pdf' ? 'application/pdf' : `image/${mimeType === 'jpg' ? 'jpeg' : mimeType}`,
+            data: fs.readFileSync(inputImage),
           },
         ],
       },

@@ -43,11 +43,11 @@ test('unlabelled images block checks and missing keys explain recovery before in
   await fs.mkdir(ingest);
   await picture(path.join(ingest, 'dog.png'));
   const env = { ...process.env };
-  for (const key of ['GOOGLE_API_KEY', 'GEMINI_API_KEY', 'GOOGLE_GENERATIVE_AI_API_KEY', 'CI', 'GITHUB_ACTIONS']) delete env[key];
+  for (const key of ['OPENROUTER_API_KEY', 'GOOGLE_API_KEY', 'GEMINI_API_KEY', 'GOOGLE_GENERATIVE_AI_API_KEY', 'CI', 'GITHUB_ACTIONS']) delete env[key];
   const run = (script: string, args: string[] = [], extra = {}) => spawnSync('bun', [path.resolve('scripts', script), ...args], { cwd: root, env: { ...env, ...extra }, encoding: 'utf8' });
   const failed = run('update-emojis.ts', ['--update=changes']);
   expect(failed.status).toBe(1);
-  expect(failed.stderr).toContain('Set GOOGLE_API_KEY, GEMINI_API_KEY, or GOOGLE_GENERATIVE_AI_API_KEY');
+  expect(failed.stderr).toContain('set GOOGLE_API_KEY, GEMINI_API_KEY, or GOOGLE_GENERATIVE_AI_API_KEY');
   expect(failed.stderr).toContain('public/emojis/cat.webp');
   expect(failed.stderr).toContain('public/emojis/ingest/dog.png');
   expect(await fs.readdir(ingest)).toEqual(['dog.png']);
