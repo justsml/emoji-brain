@@ -1,17 +1,24 @@
 {
-  "128": {
-    "files": 353,
-    "imageBytes": 9769982,
-    "plainScriptBytes": 13053933,
-    "compactScriptBytes": 12940249,
-    "savedPercent": 0.8708792974500446
-  },
-  "256": {
-    "files": 353,
-    "imageBytes": 29452836,
-    "plainScriptBytes": 39297749,
-    "compactScriptBytes": 39294381,
-    "savedPercent": 0.008570465448287656
-  },
-  "originalBytes": 5997578
+  "format": "webp",
+  "totals": {
+    "64": {
+      "files": 353,
+      "bytes": 5376710,
+      "previewBytes": 785550
+    },
+    "128": {
+      "files": 353,
+      "bytes": 9769982,
+      "previewBytes": 1784974
+    },
+    "256": {
+      "files": 353,
+      "bytes": 29452836,
+      "previewBytes": 4182274
+    },
+    "original": {
+      "files": 353,
+      "bytes": 79527898
+    }
+  }
 }

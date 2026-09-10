@@ -355,7 +355,7 @@
       }
     ]
   },
-  "status": "pending-human-approval",
+  "status": "approved-except-severance-running",
   "count": 70,
   "totalFrames": 2683,
   "apiSpendUsd": 1.5030520000000003,
@@ -379,7 +379,7 @@
   "items": [
     {
       "name": "ablobcatknitsweats",
-      "source": "public/emojis/ablobcatknitsweats.webp",
+      "source": "staging/emoji-enhancements/originals/ablobcatknitsweats.webp",
       "sourceSha256": "1f58bc905dee97df6a3ce1d7af90052e42b9f208e4679161722e3ded7e860dbb",
       "plan": {
         "kind": "art",
@@ -419,7 +419,7 @@
       "inference": "local",
       "sourceHasTransparentPixels": true,
       "candidate": "ablobcatknitsweats/candidate.webp",
-      "original": "../../../public/emojis/ablobcatknitsweats.webp",
+      "original": "../../../staging/emoji-enhancements/originals/ablobcatknitsweats.webp",
       "originalAtlas": "ablobcatknitsweats/original-atlas.webp",
       "candidateAtlas": "ablobcatknitsweats/candidate-atlas.webp",
       "thumbnail": "ablobcatknitsweats/thumbnail.webp",
@@ -433,11 +433,15 @@
         "blankFrames": 0,
         "transparentPixels": 820095
       },
-      "qualityNote": null
+      "qualityNote": null,
+      "promotion": {
+        "status": "promoted",
+        "approvedSha256": "fd6566a2784861381ac88410f1464c4e1e58703a775ec40e061a92c67cb8c079"
+      }
     },
     {
       "name": "alert",
-      "source": "public/emojis/alert.webp",
+      "source": "staging/emoji-enhancements/originals/alert.webp",
       "sourceSha256": "2b3f659c5fb8bd30ec5877088f577f3da502d578ba75e84fcf65c39fdb58d857",
       "plan": {
         "kind": "photo",
@@ -478,7 +482,7 @@
       "inference": "local",
       "sourceHasTransparentPixels": true,
       "candidate": "alert/candidate.webp",
-      "original": "../../../public/emojis/alert.webp",
+      "original": "../../../staging/emoji-enhancements/originals/alert.webp",
       "originalAtlas": "alert/original-atlas.webp",
       "candidateAtlas": "alert/candidate-atlas.webp",
       "thumbnail": "alert/thumbnail.webp",
@@ -492,11 +496,15 @@
         "blankFrames": 0,
         "transparentPixels": 1174751
       },
-      "qualityNote": null
+      "qualityNote": null,
+      "promotion": {
+        "status": "promoted",
+        "approvedSha256": "fb478c6da24d9dee2ecde93ea5a6c852e041934e472b2dc74264eb83c5de3634"
+      }
     },
     {
       "name": "awkward_side_eye",
-      "source": "public/emojis/awkward_side_eye.webp",
+      "source": "staging/emoji-enhancements/originals/awkward_side_eye.webp",
       "sourceSha256": "a001d8b5858b0ae2311577f627510d1ff6f4d4f53ada3a40ebef7e1f33886526",
       "plan": {
         "kind": "photo",
@@ -540,7 +548,7 @@
       "inference": "local",
       "sourceHasTransparentPixels": false,
       "candidate": "awkward_side_eye/candidate.webp",
-      "original": "../../../public/emojis/awkward_side_eye.webp",
+      "original": "../../../staging/emoji-enhancements/originals/awkward_side_eye.webp",
       "originalAtlas": "awkward_side_eye/original-atlas.webp",
       "candidateAtlas": "awkward_side_eye/candidate-atlas.webp",
       "thumbnail": "awkward_side_eye/thumbnail.webp",
@@ -554,11 +562,15 @@
         "blankFrames": 0,
         "transparentPixels": 0
       },
-      "qualityNote": null
+      "qualityNote": null,
+      "promotion": {
+        "status": "promoted",
+        "approvedSha256": "9e881b46e97930fa1e7a5038da05b020c773cf19b3f7d7e0da7026d01db0a64e"
+      }
     },
     {
       "name": "bongo-cat-drumming",
-      "source": "public/emojis/bongo-cat-drumming.webp",
+      "source": "staging/emoji-enhancements/originals/bongo-cat-drumming.webp",
       "sourceSha256": "27446c9f8679dc8f3692e5969803834dc038ebfff15902ed9daa396db57a250b",
       "plan": {
         "kind": "art",
@@ -585,7 +597,7 @@
       "sourceHasTransparentPixels": false,
       "alphaPostprocess": "border-connected-white-v1",
       "candidate": "bongo-cat-drumming/candidate.webp",
-      "original": "../../../public/emojis/bongo-cat-drumming.webp",
+      "original": "../../../staging/emoji-enhancements/originals/bongo-cat-drumming.webp",
       "originalAtlas": "bongo-cat-drumming/original-atlas.webp",
       "candidateAtlas": "bongo-cat-drumming/candidate-atlas.webp",
       "thumbnail": "bongo-cat-drumming/thumbnail.webp",
@@ -599,11 +611,15 @@
         "blankFrames": 0,
         "transparentPixels": 247650
       },
-      "qualityNote": null
+      "qualityNote": null,
+      "promotion": {
+        "status": "promoted",
+        "approvedSha256": "8d996a4f46911ee3d1d8acc6923aae0fa036876513aa5f48ce83232e6afddd92"
+      }
     },
     {
       "name": "bongo-cat-jumbo",
-      "source": "public/emojis/bongo-cat-jumbo.webp",
+      "source": "staging/emoji-enhancements/originals/bongo-cat-jumbo.webp",
       "sourceSha256": "087b3910f9936ff9382f578389190afd40a71046c3f33d429eda1e7ae2edff8f",
       "plan": {
         "kind": "resize",
@@ -649,7 +665,7 @@
       "sourceHasTransparentPixels": false,
       "alphaPostprocess": "border-connected-white-v1",
       "candidate": "bongo-cat-jumbo/candidate.webp",
-      "original": "../../../public/emojis/bongo-cat-jumbo.webp",
+      "original": "../../../staging/emoji-enhancements/originals/bongo-cat-jumbo.webp",
       "originalAtlas": "bongo-cat-jumbo/original-atlas.webp",
       "candidateAtlas": "bongo-cat-jumbo/candidate-atlas.webp",
       "thumbnail": "bongo-cat-jumbo/thumbnail.webp",
@@ -663,11 +679,15 @@
         "blankFrames": 0,
         "transparentPixels": 2609917
       },
-      "qualityNote": null
+      "qualityNote": null,
+      "promotion": {
+        "status": "promoted",
+        "approvedSha256": "9a6304c998568e7540ff50365360ff619208f9331585d8126d6b251729d1961c"
+      }
     },
     {
       "name": "boxcat",
-      "source": "public/emojis/boxcat.webp",
+      "source": "staging/emoji-enhancements/originals/boxcat.webp",
       "sourceSha256": "193f38929d7748c54cf7748cf9f91571d98f27c564573d34f06de867a29319c3",
       "plan": {
         "kind": "photo-generative",
@@ -729,7 +749,7 @@
       "qualityNote": "Generative reconstruction of severely damaged colors; original scene and timing retained, fine detail is inferred.",
       "restorationSignature": "6d1943d334481f5e2c392f06f501fd2210fb6025f7e0c1b6f24ea35b1630dc50",
       "candidate": "boxcat/candidate.webp",
-      "original": "../../../public/emojis/boxcat.webp",
+      "original": "../../../staging/emoji-enhancements/originals/boxcat.webp",
       "originalAtlas": "boxcat/original-atlas.png",
       "candidateAtlas": "boxcat/candidate-atlas.png",
       "thumbnail": "boxcat/thumbnail.webp",
@@ -742,11 +762,15 @@
         "maxAlphaCoverageDelta": 0,
         "blankFrames": 0,
         "transparentPixels": 0
+      },
+      "promotion": {
+        "status": "promoted",
+        "approvedSha256": "36baf310c1bbe82944868232c23584564745136dcaa64abcda069dee990aeaa9"
       }
     },
     {
       "name": "cat_money",
-      "source": "public/emojis/cat_money.webp",
+      "source": "staging/emoji-enhancements/originals/cat_money.webp",
       "sourceSha256": "0d0158ec60cb04eacc6bfad3dae8766be61bcbbb7ca6abd706420806f1c25c60",
       "plan": {
         "kind": "art",
@@ -782,7 +806,7 @@
       "inference": "local",
       "sourceHasTransparentPixels": true,
       "candidate": "cat_money/candidate.webp",
-      "original": "../../../public/emojis/cat_money.webp",
+      "original": "../../../staging/emoji-enhancements/originals/cat_money.webp",
       "originalAtlas": "cat_money/original-atlas.webp",
       "candidateAtlas": "cat_money/candidate-atlas.webp",
       "thumbnail": "cat_money/thumbnail.webp",
@@ -796,11 +820,15 @@
         "blankFrames": 0,
         "transparentPixels": 1714411
       },
-      "qualityNote": null
+      "qualityNote": null,
+      "promotion": {
+        "status": "promoted",
+        "approvedSha256": "da398cb4684213af5cbbef63396dbaccd3aa66cbf6b68b11425586c0f110f114"
+      }
     },
     {
       "name": "cat-meow-hearts",
-      "source": "public/emojis/cat-meow-hearts.webp",
+      "source": "staging/emoji-enhancements/originals/cat-meow-hearts.webp",
       "sourceSha256": "34315e4d26c868e73a92b2b01ec01eab3ad260736eae5ad80d5cb8c6319f2903",
       "plan": {
         "kind": "photo",
@@ -866,7 +894,7 @@
       "inference": "local",
       "sourceHasTransparentPixels": true,
       "candidate": "cat-meow-hearts/candidate.webp",
-      "original": "../../../public/emojis/cat-meow-hearts.webp",
+      "original": "../../../staging/emoji-enhancements/originals/cat-meow-hearts.webp",
       "originalAtlas": "cat-meow-hearts/original-atlas.webp",
       "candidateAtlas": "cat-meow-hearts/candidate-atlas.webp",
       "thumbnail": "cat-meow-hearts/thumbnail.webp",
@@ -880,11 +908,15 @@
         "blankFrames": 0,
         "transparentPixels": 6704205
       },
-      "qualityNote": null
+      "qualityNote": null,
+      "promotion": {
+        "status": "promoted",
+        "approvedSha256": "b340dc3ba4ccb22d318b52b03d7fce17049d2e179ac26c52a7287dd56b07770f"
+      }
     },
     {
       "name": "catdance",
-      "source": "public/emojis/catdance.webp",
+      "source": "staging/emoji-enhancements/originals/catdance.webp",
       "sourceSha256": "db3dbecf6fa77e9e8ef5d9963ce2ae3b531d42554c07b1014c4015c1985d180e",
       "plan": {
         "kind": "art",
@@ -918,7 +950,7 @@
       "inference": "local",
       "sourceHasTransparentPixels": true,
       "candidate": "catdance/candidate.webp",
-      "original": "../../../public/emojis/catdance.webp",
+      "original": "../../../staging/emoji-enhancements/originals/catdance.webp",
       "originalAtlas": "catdance/original-atlas.webp",
       "candidateAtlas": "catdance/candidate-atlas.webp",
       "thumbnail": "catdance/thumbnail.webp",
@@ -932,11 +964,15 @@
         "blankFrames": 0,
         "transparentPixels": 1128554
       },
-      "qualityNote": null
+      "qualityNote": null,
+      "promotion": {
+        "status": "promoted",
+        "approvedSha256": "9f772411b5906afd5584c0c8242636aedfc1feb35be607a136fad18fe18d68e0"
+      }
     },
     {
       "name": "cheers",
-      "source": "public/emojis/cheers.webp",
+      "source": "staging/emoji-enhancements/originals/cheers.webp",
       "sourceSha256": "152c9c683b45b1d662ab5aa200e2bab63e4f6e0a18b798944827fd02ac7a8471",
       "plan": {
         "kind": "photo",
@@ -1018,7 +1054,7 @@
       "inference": "local",
       "sourceHasTransparentPixels": false,
       "candidate": "cheers/candidate.webp",
-      "original": "../../../public/emojis/cheers.webp",
+      "original": "../../../staging/emoji-enhancements/originals/cheers.webp",
       "originalAtlas": "cheers/original-atlas.webp",
       "candidateAtlas": "cheers/candidate-atlas.webp",
       "thumbnail": "cheers/thumbnail.webp",
@@ -1032,11 +1068,15 @@
         "blankFrames": 0,
         "transparentPixels": 0
       },
-      "qualityNote": null
+      "qualityNote": null,
+      "promotion": {
+        "status": "promoted",
+        "approvedSha256": "86c3fde264fea0b936640151a8e25c85a60f64f54415e2d24bf93954e005a4d1"
+      }
     },
     {
       "name": "crying_bear",
-      "source": "public/emojis/crying_bear.webp",
+      "source": "staging/emoji-enhancements/originals/crying_bear.webp",
       "sourceSha256": "ebab7600d468556bae627e26b1c3555e62af59fa17e52a28d9f79be6b0a78eaa",
       "plan": {
         "kind": "art",
@@ -1109,7 +1149,7 @@
       "sourceHasTransparentPixels": false,
       "alphaPostprocess": "border-connected-white-v1",
       "candidate": "crying_bear/candidate.webp",
-      "original": "../../../public/emojis/crying_bear.webp",
+      "original": "../../../staging/emoji-enhancements/originals/crying_bear.webp",
       "originalAtlas": "crying_bear/original-atlas.webp",
       "candidateAtlas": "crying_bear/candidate-atlas.webp",
       "thumbnail": "crying_bear/thumbnail.webp",
@@ -1123,11 +1163,15 @@
         "blankFrames": 0,
         "transparentPixels": 5936249
       },
-      "qualityNote": null
+      "qualityNote": null,
+      "promotion": {
+        "status": "promoted",
+        "approvedSha256": "37b9f4feb1e109df8ed6eb58277f2e17daf6007b9f24be10e8e8e3901d2a66ca"
+      }
     },
     {
       "name": "dumpster-fire",
-      "source": "public/emojis/dumpster-fire.webp",
+      "source": "staging/emoji-enhancements/originals/dumpster-fire.webp",
       "sourceSha256": "69f5d873934e1a379a722df8925ab873b4774b3ce7f96e79042c7ccec29bd42c",
       "plan": {
         "kind": "art",
@@ -1163,7 +1207,7 @@
       "inference": "local",
       "sourceHasTransparentPixels": true,
       "candidate": "dumpster-fire/candidate.webp",
-      "original": "../../../public/emojis/dumpster-fire.webp",
+      "original": "../../../staging/emoji-enhancements/originals/dumpster-fire.webp",
       "originalAtlas": "dumpster-fire/original-atlas.webp",
       "candidateAtlas": "dumpster-fire/candidate-atlas.webp",
       "thumbnail": "dumpster-fire/thumbnail.webp",
@@ -1177,11 +1221,15 @@
         "blankFrames": 0,
         "transparentPixels": 1378597
       },
-      "qualityNote": null
+      "qualityNote": null,
+      "promotion": {
+        "status": "promoted",
+        "approvedSha256": "fe0d2117f14cfa43750aca0bfd63890228635ba1de567bb1f300525054d4db5f"
+      }
     },
     {
       "name": "elmo-fire",
-      "source": "public/emojis/elmo-fire.webp",
+      "source": "staging/emoji-enhancements/originals/elmo-fire.webp",
       "sourceSha256": "2633a1f8349240c22cbba8b6be8f55764579b2d07b6ca12f25b15cd179aa8fab",
       "plan": {
         "kind": "photo",
@@ -1222,7 +1270,7 @@
       "inference": "local",
       "sourceHasTransparentPixels": false,
       "candidate": "elmo-fire/candidate.webp",
-      "original": "../../../public/emojis/elmo-fire.webp",
+      "original": "../../../staging/emoji-enhancements/originals/elmo-fire.webp",
       "originalAtlas": "elmo-fire/original-atlas.webp",
       "candidateAtlas": "elmo-fire/candidate-atlas.webp",
       "thumbnail": "elmo-fire/thumbnail.webp",
@@ -1236,11 +1284,15 @@
         "blankFrames": 0,
         "transparentPixels": 0
       },
-      "qualityNote": null
+      "qualityNote": null,
+      "promotion": {
+        "status": "promoted",
+        "approvedSha256": "a5b58d9e136c5f4210515edc31627c2f99ebd15c40e83283b847fa7d6067e3b8"
+      }
     },
     {
       "name": "extreme-teamwork",
-      "source": "public/emojis/extreme-teamwork.webp",
+      "source": "staging/emoji-enhancements/originals/extreme-teamwork.webp",
       "sourceSha256": "b908f97d576393b84da4bcfc75da10ee1e3da1eef0d4d1780e31165483135f75",
       "plan": {
         "kind": "photo",
@@ -1269,7 +1321,7 @@
       "inference": "local",
       "sourceHasTransparentPixels": false,
       "candidate": "extreme-teamwork/candidate.webp",
-      "original": "../../../public/emojis/extreme-teamwork.webp",
+      "original": "../../../staging/emoji-enhancements/originals/extreme-teamwork.webp",
       "originalAtlas": "extreme-teamwork/original-atlas.webp",
       "candidateAtlas": "extreme-teamwork/candidate-atlas.webp",
       "thumbnail": "extreme-teamwork/thumbnail.webp",
@@ -1283,11 +1335,15 @@
         "blankFrames": 0,
         "transparentPixels": 0
       },
-      "qualityNote": null
+      "qualityNote": null,
+      "promotion": {
+        "status": "promoted",
+        "approvedSha256": "4f0249e68614d92c51e42aa038a7b0b2c84f9db277b24c186aa7b51976d2fe9b"
+      }
     },
     {
       "name": "happykitty",
-      "source": "public/emojis/happykitty.webp",
+      "source": "staging/emoji-enhancements/originals/happykitty.webp",
       "sourceSha256": "b77a1b60af075a704182c7721c8d084d315bfc344fe70ddafdfe7ff53baa84b4",
       "plan": {
         "kind": "art",
@@ -1336,7 +1392,7 @@
       "inference": "local",
       "sourceHasTransparentPixels": true,
       "candidate": "happykitty/candidate.webp",
-      "original": "../../../public/emojis/happykitty.webp",
+      "original": "../../../staging/emoji-enhancements/originals/happykitty.webp",
       "originalAtlas": "happykitty/original-atlas.webp",
       "candidateAtlas": "happykitty/candidate-atlas.webp",
       "thumbnail": "happykitty/thumbnail.webp",
@@ -1350,11 +1406,15 @@
         "blankFrames": 0,
         "transparentPixels": 2675731
       },
-      "qualityNote": null
+      "qualityNote": null,
+      "promotion": {
+        "status": "promoted",
+        "approvedSha256": "d030cfdefb956b381eb939c63f00f353d534321b33c1b10293628c9c973c3b83"
+      }
     },
     {
       "name": "hypecat",
-      "source": "public/emojis/hypecat.webp",
+      "source": "staging/emoji-enhancements/originals/hypecat.webp",
       "sourceSha256": "4d2e3af230e1e474b11eb835e8b4a0850f40d2e45776a89f906b890b2cc9d0fd",
       "plan": {
         "kind": "photo",
@@ -1387,7 +1447,7 @@
       "inference": "local",
       "sourceHasTransparentPixels": false,
       "candidate": "hypecat/candidate.webp",
-      "original": "../../../public/emojis/hypecat.webp",
+      "original": "../../../staging/emoji-enhancements/originals/hypecat.webp",
       "originalAtlas": "hypecat/original-atlas.webp",
       "candidateAtlas": "hypecat/candidate-atlas.webp",
       "thumbnail": "hypecat/thumbnail.webp",
@@ -1401,11 +1461,15 @@
         "blankFrames": 0,
         "transparentPixels": 0
       },
-      "qualityNote": null
+      "qualityNote": null,
+      "promotion": {
+        "status": "promoted",
+        "approvedSha256": "bcbd723ce345d8e138eb0aaa840fb2fd1feae4b57fb8b5c34acbb7a35b76bc33"
+      }
     },
     {
       "name": "keanu_thanks",
-      "source": "public/emojis/keanu_thanks.webp",
+      "source": "staging/emoji-enhancements/originals/keanu_thanks.webp",
       "sourceSha256": "24fac7e378dc017bc7954f1ddc4d5939bcd8fc50d878a79f9a3f59bd9050ca2a",
       "plan": {
         "kind": "photo",
@@ -1465,7 +1529,7 @@
       "inference": "local",
       "sourceHasTransparentPixels": false,
       "candidate": "keanu_thanks/candidate.webp",
-      "original": "../../../public/emojis/keanu_thanks.webp",
+      "original": "../../../staging/emoji-enhancements/originals/keanu_thanks.webp",
       "originalAtlas": "keanu_thanks/original-atlas.png",
       "candidateAtlas": "keanu_thanks/candidate-atlas.png",
       "thumbnail": "keanu_thanks/thumbnail.webp",
@@ -1479,11 +1543,15 @@
         "blankFrames": 0,
         "transparentPixels": 0
       },
-      "qualityNote": null
+      "qualityNote": null,
+      "promotion": {
+        "status": "promoted",
+        "approvedSha256": "deb99bc506dd59a207e00343b58e3bf8dca1c948b5d33aada6d2cbd8cff5c08d"
+      }
     },
     {
       "name": "keanu-thanks",
-      "source": "public/emojis/keanu-thanks.webp",
+      "source": "staging/emoji-enhancements/originals/keanu-thanks.webp",
       "sourceSha256": "939a091df483e8ac730ef0689d341f52a0c5a0c8b99f319bcf6a3d22bdba1567",
       "plan": {
         "kind": "photo",
@@ -1543,7 +1611,7 @@
       "inference": "local",
       "sourceHasTransparentPixels": true,
       "candidate": "keanu-thanks/candidate.webp",
-      "original": "../../../public/emojis/keanu-thanks.webp",
+      "original": "../../../staging/emoji-enhancements/originals/keanu-thanks.webp",
       "originalAtlas": "keanu-thanks/original-atlas.png",
       "candidateAtlas": "keanu-thanks/candidate-atlas.png",
       "thumbnail": "keanu-thanks/thumbnail.webp",
@@ -1557,11 +1625,15 @@
         "blankFrames": 0,
         "transparentPixels": 886500
       },
-      "qualityNote": null
+      "qualityNote": null,
+      "promotion": {
+        "status": "promoted",
+        "approvedSha256": "17aa88a7b7677002bcd70f032bd0c904cea3c98f75e6da3e0c84fb1fe22c496f"
+      }
     },
     {
       "name": "let-me-think",
-      "source": "public/emojis/let-me-think.webp",
+      "source": "staging/emoji-enhancements/originals/let-me-think.webp",
       "sourceSha256": "49c1920fe9199dbb8ec074b3d274255e81fa148a09370b836c409c5f80e5b114",
       "plan": {
         "kind": "art",
@@ -1615,7 +1687,7 @@
       "inference": "local",
       "sourceHasTransparentPixels": true,
       "candidate": "let-me-think/candidate.webp",
-      "original": "../../../public/emojis/let-me-think.webp",
+      "original": "../../../staging/emoji-enhancements/originals/let-me-think.webp",
       "originalAtlas": "let-me-think/original-atlas.png",
       "candidateAtlas": "let-me-think/candidate-atlas.png",
       "thumbnail": "let-me-think/thumbnail.webp",
@@ -1629,11 +1701,15 @@
         "blankFrames": 0,
         "transparentPixels": 2763051
       },
-      "qualityNote": null
+      "qualityNote": null,
+      "promotion": {
+        "status": "promoted",
+        "approvedSha256": "9703c78b7bea22783380c029f7ca7ec1eed8bba1a82d267f9f30f858ef78abdf"
+      }
     },
     {
       "name": "loading",
-      "source": "public/emojis/loading.webp",
+      "source": "staging/emoji-enhancements/originals/loading.webp",
       "sourceSha256": "a3dc5e0d442db330c4a1663c721acf14d5e1147ec86203c40112468a5655d5ed",
       "plan": {
         "kind": "art",
@@ -1669,7 +1745,7 @@
       "inference": "local",
       "sourceHasTransparentPixels": true,
       "candidate": "loading/candidate.webp",
-      "original": "../../../public/emojis/loading.webp",
+      "original": "../../../staging/emoji-enhancements/originals/loading.webp",
       "originalAtlas": "loading/original-atlas.png",
       "candidateAtlas": "loading/candidate-atlas.png",
       "thumbnail": "loading/thumbnail.webp",
@@ -1683,11 +1759,15 @@
         "blankFrames": 0,
         "transparentPixels": 2404039
       },
-      "qualityNote": null
+      "qualityNote": null,
+      "promotion": {
+        "status": "promoted",
+        "approvedSha256": "d314449707d1a3cbcf6abb4bd67333640140e12f9ba7e856d713e9c875945ee3"
+      }
     },
     {
       "name": "magic",
-      "source": "public/emojis/magic.webp",
+      "source": "staging/emoji-enhancements/originals/magic.webp",
       "sourceSha256": "38cf49fe0085b72be5bffbd0ef0d3df6be6f867f46bfa39a181af7b165e87b1e",
       "plan": {
         "kind": "photo",
@@ -1731,7 +1811,7 @@
       "inference": "local",
       "sourceHasTransparentPixels": true,
       "candidate": "magic/candidate.webp",
-      "original": "../../../public/emojis/magic.webp",
+      "original": "../../../staging/emoji-enhancements/originals/magic.webp",
       "originalAtlas": "magic/original-atlas.png",
       "candidateAtlas": "magic/candidate-atlas.png",
       "thumbnail": "magic/thumbnail.webp",
@@ -1745,11 +1825,15 @@
         "blankFrames": 0,
         "transparentPixels": 854871
       },
-      "qualityNote": null
+      "qualityNote": null,
+      "promotion": {
+        "status": "promoted",
+        "approvedSha256": "201a63ab7397629234ca86401a2dfd1c08c1eb692e4ad29a2bea02e7885713a1"
+      }
     },
     {
       "name": "meow_angry_intensifies",
-      "source": "public/emojis/meow_angry_intensifies.webp",
+      "source": "staging/emoji-enhancements/originals/meow_angry_intensifies.webp",
       "sourceSha256": "96fc0fd4f7df8f5efe9054854687ac8bf2bbe15642249447eb58434887c61d84",
       "plan": {
         "kind": "art",
@@ -1953,7 +2037,7 @@
       "inference": "local",
       "sourceHasTransparentPixels": true,
       "candidate": "meow_angry_intensifies/candidate.webp",
-      "original": "../../../public/emojis/meow_angry_intensifies.webp",
+      "original": "../../../staging/emoji-enhancements/originals/meow_angry_intensifies.webp",
       "originalAtlas": "meow_angry_intensifies/original-atlas.png",
       "candidateAtlas": "meow_angry_intensifies/candidate-atlas.png",
       "thumbnail": "meow_angry_intensifies/thumbnail.webp",
@@ -1967,11 +2051,15 @@
         "blankFrames": 0,
         "transparentPixels": 24328982
       },
-      "qualityNote": null
+      "qualityNote": null,
+      "promotion": {
+        "status": "promoted",
+        "approvedSha256": "9732a89ddda8d8f3ee2cf753e523b48a95e850d7158778867b6a0cd29c4261f7"
+      }
     },
     {
       "name": "meow_attention",
-      "source": "public/emojis/meow_attention.webp",
+      "source": "staging/emoji-enhancements/originals/meow_attention.webp",
       "sourceSha256": "7516cfd3eed591795fcbdf15794a45da338fa1b6a7c6d9533d2242116b559583",
       "plan": {
         "kind": "art",
@@ -2017,7 +2105,7 @@
       "inference": "local",
       "sourceHasTransparentPixels": true,
       "candidate": "meow_attention/candidate.webp",
-      "original": "../../../public/emojis/meow_attention.webp",
+      "original": "../../../staging/emoji-enhancements/originals/meow_attention.webp",
       "originalAtlas": "meow_attention/original-atlas.png",
       "candidateAtlas": "meow_attention/candidate-atlas.png",
       "thumbnail": "meow_attention/thumbnail.webp",
@@ -2031,11 +2119,15 @@
         "blankFrames": 0,
         "transparentPixels": 2350246
       },
-      "qualityNote": null
+      "qualityNote": null,
+      "promotion": {
+        "status": "promoted",
+        "approvedSha256": "191496af5a6fd2424479076d1729fcb398e926a8cdef334c00c89d31dbb33dc3"
+      }
     },
     {
       "name": "meow_bongo_rage",
-      "source": "public/emojis/meow_bongo_rage.webp",
+      "source": "staging/emoji-enhancements/originals/meow_bongo_rage.webp",
       "sourceSha256": "01efdf6348fafe22abb5bbb4db61cc4bc1775aa68fdcaf32fb53ecba7f4aba01",
       "plan": {
         "kind": "art",
@@ -2061,7 +2153,7 @@
       "inference": "local",
       "sourceHasTransparentPixels": true,
       "candidate": "meow_bongo_rage/candidate.webp",
-      "original": "../../../public/emojis/meow_bongo_rage.webp",
+      "original": "../../../staging/emoji-enhancements/originals/meow_bongo_rage.webp",
       "originalAtlas": "meow_bongo_rage/original-atlas.png",
       "candidateAtlas": "meow_bongo_rage/candidate-atlas.png",
       "thumbnail": "meow_bongo_rage/thumbnail.webp",
@@ -2075,11 +2167,15 @@
         "blankFrames": 0,
         "transparentPixels": 301436
       },
-      "qualityNote": null
+      "qualityNote": null,
+      "promotion": {
+        "status": "promoted",
+        "approvedSha256": "0985f420c513401f36ef6a16551c7b4883f6daab63c4cf7f14b65746f1b82768"
+      }
     },
     {
       "name": "meow_chips",
-      "source": "public/emojis/meow_chips.webp",
+      "source": "staging/emoji-enhancements/originals/meow_chips.webp",
       "sourceSha256": "3f5dd6d3800f0b75dac67c5f30c437de7879e2de982267fbf7f69aafc758feab",
       "plan": {
         "kind": "art",
@@ -2111,7 +2207,7 @@
       "inference": "local",
       "sourceHasTransparentPixels": true,
       "candidate": "meow_chips/candidate.webp",
-      "original": "../../../public/emojis/meow_chips.webp",
+      "original": "../../../staging/emoji-enhancements/originals/meow_chips.webp",
       "originalAtlas": "meow_chips/original-atlas.png",
       "candidateAtlas": "meow_chips/candidate-atlas.png",
       "thumbnail": "meow_chips/thumbnail.webp",
@@ -2125,11 +2221,15 @@
         "blankFrames": 0,
         "transparentPixels": 470099
       },
-      "qualityNote": null
+      "qualityNote": null,
+      "promotion": {
+        "status": "promoted",
+        "approvedSha256": "f2af8be089a9236a8c092453b1bf799d10c8aa250d39986533bb8df0fa9939a6"
+      }
     },
     {
       "name": "meow_clorox",
-      "source": "public/emojis/meow_clorox.webp",
+      "source": "staging/emoji-enhancements/originals/meow_clorox.webp",
       "sourceSha256": "8ad27851e985439685e7e5a592c44969a40e169200f7f7e2122f5ca502d84225",
       "plan": {
         "kind": "art",
@@ -2223,7 +2323,7 @@
       "inference": "local",
       "sourceHasTransparentPixels": true,
       "candidate": "meow_clorox/candidate.webp",
-      "original": "../../../public/emojis/meow_clorox.webp",
+      "original": "../../../staging/emoji-enhancements/originals/meow_clorox.webp",
       "originalAtlas": "meow_clorox/original-atlas.png",
       "candidateAtlas": "meow_clorox/candidate-atlas.png",
       "thumbnail": "meow_clorox/thumbnail.webp",
@@ -2237,11 +2337,15 @@
         "blankFrames": 0,
         "transparentPixels": 4121193
       },
-      "qualityNote": null
+      "qualityNote": null,
+      "promotion": {
+        "status": "promoted",
+        "approvedSha256": "345c4aabed7360bd29751ce0f21024635e3a0e556ac4cb0d9b38378026ce91c4"
+      }
     },
     {
       "name": "meow_cloroxsip",
-      "source": "public/emojis/meow_cloroxsip.webp",
+      "source": "staging/emoji-enhancements/originals/meow_cloroxsip.webp",
       "sourceSha256": "fe25879be19ace6734e51410bcc62c3ad45cde3f768aac1dee27a1f6492cb4ad",
       "plan": {
         "kind": "art",
@@ -2302,7 +2406,7 @@
       "inference": "local",
       "sourceHasTransparentPixels": true,
       "candidate": "meow_cloroxsip/candidate.webp",
-      "original": "../../../public/emojis/meow_cloroxsip.webp",
+      "original": "../../../staging/emoji-enhancements/originals/meow_cloroxsip.webp",
       "originalAtlas": "meow_cloroxsip/original-atlas.png",
       "candidateAtlas": "meow_cloroxsip/candidate-atlas.png",
       "thumbnail": "meow_cloroxsip/thumbnail.webp",
@@ -2316,11 +2420,15 @@
         "blankFrames": 0,
         "transparentPixels": 255822
       },
-      "qualityNote": null
+      "qualityNote": null,
+      "promotion": {
+        "status": "promoted",
+        "approvedSha256": "8a56f12bf9e1033184b93122ade1737029d966c85c0e3baa8d113bfe07bb314d"
+      }
     },
     {
       "name": "meow_code",
-      "source": "public/emojis/meow_code.webp",
+      "source": "staging/emoji-enhancements/originals/meow_code.webp",
       "sourceSha256": "08013d3dcf85913bf31c7552ded456b9ac519725fa2823c6ad248c0d67eb1236",
       "plan": {
         "kind": "art",
@@ -2360,7 +2468,7 @@
       "inference": "local",
       "sourceHasTransparentPixels": true,
       "candidate": "meow_code/candidate.webp",
-      "original": "../../../public/emojis/meow_code.webp",
+      "original": "../../../staging/emoji-enhancements/originals/meow_code.webp",
       "originalAtlas": "meow_code/original-atlas.png",
       "candidateAtlas": "meow_code/candidate-atlas.png",
       "thumbnail": "meow_code/thumbnail.webp",
@@ -2374,11 +2482,15 @@
         "blankFrames": 0,
         "transparentPixels": 1323979
       },
-      "qualityNote": null
+      "qualityNote": null,
+      "promotion": {
+        "status": "promoted",
+        "approvedSha256": "836e5842f22d654b4bda9fd516f63c4a0203116f5681b67a6467dd6563231f22"
+      }
     },
     {
       "name": "meow_coffeespitting",
-      "source": "public/emojis/meow_coffeespitting.webp",
+      "source": "staging/emoji-enhancements/originals/meow_coffeespitting.webp",
       "sourceSha256": "dbcf776afd85ce124196455afc2f7bdd78aa064749550f3c2f8eaedc76e390e6",
       "plan": {
         "kind": "art",
@@ -2547,7 +2659,7 @@
       "inference": "local",
       "sourceHasTransparentPixels": true,
       "candidate": "meow_coffeespitting/candidate.webp",
-      "original": "../../../public/emojis/meow_coffeespitting.webp",
+      "original": "../../../staging/emoji-enhancements/originals/meow_coffeespitting.webp",
       "originalAtlas": "meow_coffeespitting/original-atlas.png",
       "candidateAtlas": "meow_coffeespitting/candidate-atlas.png",
       "thumbnail": "meow_coffeespitting/thumbnail.webp",
@@ -2561,11 +2673,15 @@
         "blankFrames": 0,
         "transparentPixels": 9262422
       },
-      "qualityNote": null
+      "qualityNote": null,
+      "promotion": {
+        "status": "promoted",
+        "approvedSha256": "db834a25579c8739af73a81108b7f3651e5bfa3fb4ab371cba5f683cc7e6afc5"
+      }
     },
     {
       "name": "meow_cookie",
-      "source": "public/emojis/meow_cookie.webp",
+      "source": "staging/emoji-enhancements/originals/meow_cookie.webp",
       "sourceSha256": "daa99a0cf9a2488c7721519c382137a03cf5fc648641324c4bed4ad7d6109ad5",
       "plan": {
         "kind": "art",
@@ -2618,7 +2734,7 @@
       "inference": "local",
       "sourceHasTransparentPixels": true,
       "candidate": "meow_cookie/candidate.webp",
-      "original": "../../../public/emojis/meow_cookie.webp",
+      "original": "../../../staging/emoji-enhancements/originals/meow_cookie.webp",
       "originalAtlas": "meow_cookie/original-atlas.png",
       "candidateAtlas": "meow_cookie/candidate-atlas.png",
       "thumbnail": "meow_cookie/thumbnail.webp",
@@ -2632,11 +2748,15 @@
         "blankFrames": 0,
         "transparentPixels": 2311624
       },
-      "qualityNote": null
+      "qualityNote": null,
+      "promotion": {
+        "status": "promoted",
+        "approvedSha256": "6e7135d28d23a24573184163b38dc50810179f54051c5e6ad95e763b5c968e0d"
+      }
     },
     {
       "name": "meow_crying",
-      "source": "public/emojis/meow_crying.webp",
+      "source": "staging/emoji-enhancements/originals/meow_crying.webp",
       "sourceSha256": "503240a141521ff84a6f7f72d25ada624ecb8fedc30cace1cc08913dd5798d6d",
       "plan": {
         "kind": "art",
@@ -2683,7 +2803,7 @@
       "inference": "local",
       "sourceHasTransparentPixels": true,
       "candidate": "meow_crying/candidate.webp",
-      "original": "../../../public/emojis/meow_crying.webp",
+      "original": "../../../staging/emoji-enhancements/originals/meow_crying.webp",
       "originalAtlas": "meow_crying/original-atlas.png",
       "candidateAtlas": "meow_crying/candidate-atlas.png",
       "thumbnail": "meow_crying/thumbnail.webp",
@@ -2697,11 +2817,15 @@
         "blankFrames": 0,
         "transparentPixels": 1812870
       },
-      "qualityNote": null
+      "qualityNote": null,
+      "promotion": {
+        "status": "promoted",
+        "approvedSha256": "0a5afc7fdbc9b8c9e5617e41098bd81a63f818050872d85cf3bbb4c707cb3867"
+      }
     },
     {
       "name": "meow_derpy",
-      "source": "public/emojis/meow_derpy.webp",
+      "source": "staging/emoji-enhancements/originals/meow_derpy.webp",
       "sourceSha256": "74a5fa7cca4bd66aa7c19fdc40c80ee46462b4c4f3207ad1bcff4741a59b171d",
       "plan": {
         "kind": "art",
@@ -2778,7 +2902,7 @@
       "inference": "local",
       "sourceHasTransparentPixels": true,
       "candidate": "meow_derpy/candidate.webp",
-      "original": "../../../public/emojis/meow_derpy.webp",
+      "original": "../../../staging/emoji-enhancements/originals/meow_derpy.webp",
       "originalAtlas": "meow_derpy/original-atlas.png",
       "candidateAtlas": "meow_derpy/candidate-atlas.png",
       "thumbnail": "meow_derpy/thumbnail.webp",
@@ -2792,11 +2916,15 @@
         "blankFrames": 0,
         "transparentPixels": 6069326
       },
-      "qualityNote": null
+      "qualityNote": null,
+      "promotion": {
+        "status": "promoted",
+        "approvedSha256": "af0aeb884bd5b1e211383c688803a7c41b791ac95f819498e8984e44eb5bdf99"
+      }
     },
     {
       "name": "meow_drool",
-      "source": "public/emojis/meow_drool.webp",
+      "source": "staging/emoji-enhancements/originals/meow_drool.webp",
       "sourceSha256": "a35de63306b637f3759136de1e9694077c40f35ed4fe2560412dce3251f6e0b3",
       "plan": {
         "kind": "art",
@@ -2863,7 +2991,7 @@
       "inference": "local",
       "sourceHasTransparentPixels": true,
       "candidate": "meow_drool/candidate.webp",
-      "original": "../../../public/emojis/meow_drool.webp",
+      "original": "../../../staging/emoji-enhancements/originals/meow_drool.webp",
       "originalAtlas": "meow_drool/original-atlas.png",
       "candidateAtlas": "meow_drool/candidate-atlas.png",
       "thumbnail": "meow_drool/thumbnail.webp",
@@ -2877,11 +3005,15 @@
         "blankFrames": 0,
         "transparentPixels": 3064873
       },
-      "qualityNote": null
+      "qualityNote": null,
+      "promotion": {
+        "status": "promoted",
+        "approvedSha256": "a101de56a20dc436579a12190ca13c5b61c94b3c67d6646a702ed31d1bd4afae"
+      }
     },
     {
       "name": "meow_enjoy-rain",
-      "source": "public/emojis/meow_enjoy-rain.webp",
+      "source": "staging/emoji-enhancements/originals/meow_enjoy-rain.webp",
       "sourceSha256": "6f02821148762fc57494f033b72bfa1e95829dc843f1c6ff3a35d763e11c534c",
       "plan": {
         "kind": "art",
@@ -3055,7 +3187,7 @@
       "inference": "local",
       "sourceHasTransparentPixels": true,
       "candidate": "meow_enjoy-rain/candidate.webp",
-      "original": "../../../public/emojis/meow_enjoy-rain.webp",
+      "original": "../../../staging/emoji-enhancements/originals/meow_enjoy-rain.webp",
       "originalAtlas": "meow_enjoy-rain/original-atlas.png",
       "candidateAtlas": "meow_enjoy-rain/candidate-atlas.png",
       "thumbnail": "meow_enjoy-rain/thumbnail.webp",
@@ -3069,11 +3201,15 @@
         "blankFrames": 0,
         "transparentPixels": 21540570
       },
-      "qualityNote": null
+      "qualityNote": null,
+      "promotion": {
+        "status": "promoted",
+        "approvedSha256": "a4a48feb686da5b6c7c7b402cd91cdf6f93c3c031d227685909e4a791e5dab06"
+      }
     },
     {
       "name": "meow_enjoy-snow",
-      "source": "public/emojis/meow_enjoy-snow.webp",
+      "source": "staging/emoji-enhancements/originals/meow_enjoy-snow.webp",
       "sourceSha256": "7d1243e71c89ede23ec0de1f28b9282b3a306752e3aba35c94730bc5f8232a64",
       "plan": {
         "kind": "art",
@@ -3247,7 +3383,7 @@
       "inference": "local",
       "sourceHasTransparentPixels": true,
       "candidate": "meow_enjoy-snow/candidate.webp",
-      "original": "../../../public/emojis/meow_enjoy-snow.webp",
+      "original": "../../../staging/emoji-enhancements/originals/meow_enjoy-snow.webp",
       "originalAtlas": "meow_enjoy-snow/original-atlas.png",
       "candidateAtlas": "meow_enjoy-snow/candidate-atlas.png",
       "thumbnail": "meow_enjoy-snow/thumbnail.webp",
@@ -3261,11 +3397,15 @@
         "blankFrames": 0,
         "transparentPixels": 23021276
       },
-      "qualityNote": null
+      "qualityNote": null,
+      "promotion": {
+        "status": "promoted",
+        "approvedSha256": "cdd3882e81eef6458e2934c3302b5ff0f11304e3047a1c58ae4c2b2b8868b9ca"
+      }
     },
     {
       "name": "meow_fart",
-      "source": "public/emojis/meow_fart.webp",
+      "source": "staging/emoji-enhancements/originals/meow_fart.webp",
       "sourceSha256": "91bb4dda63a67522eb2c7fcbd28bbcbcdb746b7c62bd1ac96bd02ba383a0bf24",
       "plan": {
         "kind": "art",
@@ -3299,7 +3439,7 @@
       "inference": "local",
       "sourceHasTransparentPixels": true,
       "candidate": "meow_fart/candidate.webp",
-      "original": "../../../public/emojis/meow_fart.webp",
+      "original": "../../../staging/emoji-enhancements/originals/meow_fart.webp",
       "originalAtlas": "meow_fart/original-atlas.png",
       "candidateAtlas": "meow_fart/candidate-atlas.png",
       "thumbnail": "meow_fart/thumbnail.webp",
@@ -3313,11 +3453,15 @@
         "blankFrames": 0,
         "transparentPixels": 1374015
       },
-      "qualityNote": null
+      "qualityNote": null,
+      "promotion": {
+        "status": "promoted",
+        "approvedSha256": "7c2677085b31c8e1382fb432be0dcfc20e83af76ab56c67664d38b517bc00ee9"
+      }
     },
     {
       "name": "meow_glare-zoom",
-      "source": "public/emojis/meow_glare-zoom.webp",
+      "source": "staging/emoji-enhancements/originals/meow_glare-zoom.webp",
       "sourceSha256": "4965b33d7cccbebb620d8e42d1bf61aea76e1e6118f62df206260ab74c82a89f",
       "plan": {
         "kind": "art",
@@ -3371,7 +3515,7 @@
       "inference": "local",
       "sourceHasTransparentPixels": true,
       "candidate": "meow_glare-zoom/candidate.webp",
-      "original": "../../../public/emojis/meow_glare-zoom.webp",
+      "original": "../../../staging/emoji-enhancements/originals/meow_glare-zoom.webp",
       "originalAtlas": "meow_glare-zoom/original-atlas.png",
       "candidateAtlas": "meow_glare-zoom/candidate-atlas.png",
       "thumbnail": "meow_glare-zoom/thumbnail.webp",
@@ -3385,11 +3529,15 @@
         "blankFrames": 0,
         "transparentPixels": 342487
       },
-      "qualityNote": null
+      "qualityNote": null,
+      "promotion": {
+        "status": "promoted",
+        "approvedSha256": "61f1f228b870c07e7fb375a70e66cd72b520751429292244576387ca403a4940"
+      }
     },
     {
       "name": "meow_heart_bongo",
-      "source": "public/emojis/meow_heart_bongo.webp",
+      "source": "staging/emoji-enhancements/originals/meow_heart_bongo.webp",
       "sourceSha256": "9e88fb2d9d2ff6c7a3220c4401a38e1346d0cc0948d6078b57a6f84839d56eba",
       "plan": {
         "kind": "art",
@@ -3415,7 +3563,7 @@
       "inference": "local",
       "sourceHasTransparentPixels": true,
       "candidate": "meow_heart_bongo/candidate.webp",
-      "original": "../../../public/emojis/meow_heart_bongo.webp",
+      "original": "../../../staging/emoji-enhancements/originals/meow_heart_bongo.webp",
       "originalAtlas": "meow_heart_bongo/original-atlas.png",
       "candidateAtlas": "meow_heart_bongo/candidate-atlas.png",
       "thumbnail": "meow_heart_bongo/thumbnail.webp",
@@ -3429,11 +3577,15 @@
         "blankFrames": 0,
         "transparentPixels": 332722
       },
-      "qualityNote": null
+      "qualityNote": null,
+      "promotion": {
+        "status": "promoted",
+        "approvedSha256": "83e9fc37aa6c75a1e24e1678f6d6111521db7f7af469067280fab6b88605fed0"
+      }
     },
     {
       "name": "meow_lurk",
-      "source": "public/emojis/meow_lurk.webp",
+      "source": "staging/emoji-enhancements/originals/meow_lurk.webp",
       "sourceSha256": "5ef1e83b38721293e78003e6a97a19b786b1e8968927a20f288bcc98945f6154",
       "plan": {
         "kind": "art",
@@ -3484,7 +3636,7 @@
       "inference": "local",
       "sourceHasTransparentPixels": true,
       "candidate": "meow_lurk/candidate.webp",
-      "original": "../../../public/emojis/meow_lurk.webp",
+      "original": "../../../staging/emoji-enhancements/originals/meow_lurk.webp",
       "originalAtlas": "meow_lurk/original-atlas.png",
       "candidateAtlas": "meow_lurk/candidate-atlas.png",
       "thumbnail": "meow_lurk/thumbnail.webp",
@@ -3498,11 +3650,15 @@
         "blankFrames": 2,
         "transparentPixels": 5580088
       },
-      "qualityNote": null
+      "qualityNote": null,
+      "promotion": {
+        "status": "promoted",
+        "approvedSha256": "cea7dc9b832dc9d3f3ab7cd046ccc8fa64c59544f93956589c06448ebfdb8508"
+      }
     },
     {
       "name": "meow_nod",
-      "source": "public/emojis/meow_nod.webp",
+      "source": "staging/emoji-enhancements/originals/meow_nod.webp",
       "sourceSha256": "293d0001c620e584370bf581757e4bb78b3b3b6ab5a17d6ba45b56280ddfd0ae",
       "plan": {
         "kind": "art",
@@ -3637,7 +3793,7 @@
       "inference": "local",
       "sourceHasTransparentPixels": true,
       "candidate": "meow_nod/candidate.webp",
-      "original": "../../../public/emojis/meow_nod.webp",
+      "original": "../../../staging/emoji-enhancements/originals/meow_nod.webp",
       "originalAtlas": "meow_nod/original-atlas.png",
       "candidateAtlas": "meow_nod/candidate-atlas.png",
       "thumbnail": "meow_nod/thumbnail.webp",
@@ -3651,11 +3807,15 @@
         "blankFrames": 0,
         "transparentPixels": 8825018
       },
-      "qualityNote": null
+      "qualityNote": null,
+      "promotion": {
+        "status": "promoted",
+        "approvedSha256": "ef1fc4c2386b2561f0e7efd07b7b5bf4cb6cbe444ec2ab3ba39192d830463e9e"
+      }
     },
     {
       "name": "meow_noddies",
-      "source": "public/emojis/meow_noddies.webp",
+      "source": "staging/emoji-enhancements/originals/meow_noddies.webp",
       "sourceSha256": "215589d78f010c591ed0382f5b36e4db2a7ed8722c754fc9f10541b6c56e36a7",
       "plan": {
         "kind": "art",
@@ -3726,7 +3886,7 @@
       "inference": "local",
       "sourceHasTransparentPixels": true,
       "candidate": "meow_noddies/candidate.webp",
-      "original": "../../../public/emojis/meow_noddies.webp",
+      "original": "../../../staging/emoji-enhancements/originals/meow_noddies.webp",
       "originalAtlas": "meow_noddies/original-atlas.png",
       "candidateAtlas": "meow_noddies/candidate-atlas.png",
       "thumbnail": "meow_noddies/thumbnail.webp",
@@ -3740,11 +3900,15 @@
         "blankFrames": 0,
         "transparentPixels": 3881803
       },
-      "qualityNote": null
+      "qualityNote": null,
+      "promotion": {
+        "status": "promoted",
+        "approvedSha256": "48c4ead5367d2eb38bfb2ae9db7a5a00dc7d325df56c2ca1a3adab7e23a9dd47"
+      }
     },
     {
       "name": "meow_popcorn",
-      "source": "public/emojis/meow_popcorn.webp",
+      "source": "staging/emoji-enhancements/originals/meow_popcorn.webp",
       "sourceSha256": "f0c4d958498f0ba9cb2c9a0675ef1704fbdb2918e5551bb951b4c2730676d530",
       "plan": {
         "kind": "art",
@@ -3776,7 +3940,7 @@
       "inference": "local",
       "sourceHasTransparentPixels": true,
       "candidate": "meow_popcorn/candidate.webp",
-      "original": "../../../public/emojis/meow_popcorn.webp",
+      "original": "../../../staging/emoji-enhancements/originals/meow_popcorn.webp",
       "originalAtlas": "meow_popcorn/original-atlas.png",
       "candidateAtlas": "meow_popcorn/candidate-atlas.png",
       "thumbnail": "meow_popcorn/thumbnail.webp",
@@ -3790,11 +3954,15 @@
         "blankFrames": 0,
         "transparentPixels": 464947
       },
-      "qualityNote": null
+      "qualityNote": null,
+      "promotion": {
+        "status": "promoted",
+        "approvedSha256": "bc56d1f7b6dd8411947cea8916844259c543d08e28c943fd33b9b31bdfc3b396"
+      }
     },
     {
       "name": "meow_red-bull",
-      "source": "public/emojis/meow_red-bull.webp",
+      "source": "staging/emoji-enhancements/originals/meow_red-bull.webp",
       "sourceSha256": "8f81e364985fa1811d888f57f97b0244c45f591dd275bfb2b72090f4e0246666",
       "plan": {
         "kind": "art",
@@ -3965,7 +4133,7 @@
       "inference": "local",
       "sourceHasTransparentPixels": true,
       "candidate": "meow_red-bull/candidate.webp",
-      "original": "../../../public/emojis/meow_red-bull.webp",
+      "original": "../../../staging/emoji-enhancements/originals/meow_red-bull.webp",
       "originalAtlas": "meow_red-bull/original-atlas.png",
       "candidateAtlas": "meow_red-bull/candidate-atlas.png",
       "thumbnail": "meow_red-bull/thumbnail.webp",
@@ -3979,11 +4147,15 @@
         "blankFrames": 0,
         "transparentPixels": 7868527
       },
-      "qualityNote": null
+      "qualityNote": null,
+      "promotion": {
+        "status": "promoted",
+        "approvedSha256": "19ba0520428b56298dbe81947be673d0b17bf387b3b5a24071d04f35e43d9c2d"
+      }
     },
     {
       "name": "meow_sad-rain",
-      "source": "public/emojis/meow_sad-rain.webp",
+      "source": "staging/emoji-enhancements/originals/meow_sad-rain.webp",
       "sourceSha256": "55cf97b5d07ac5076775aa9beb98331c3bdf4488193e8e8b308f06e0b8ae73a1",
       "plan": {
         "kind": "art",
@@ -4107,7 +4279,7 @@
       "inference": "local",
       "sourceHasTransparentPixels": true,
       "candidate": "meow_sad-rain/candidate.webp",
-      "original": "../../../public/emojis/meow_sad-rain.webp",
+      "original": "../../../staging/emoji-enhancements/originals/meow_sad-rain.webp",
       "originalAtlas": "meow_sad-rain/original-atlas.png",
       "candidateAtlas": "meow_sad-rain/candidate-atlas.png",
       "thumbnail": "meow_sad-rain/thumbnail.webp",
@@ -4121,11 +4293,15 @@
         "blankFrames": 0,
         "transparentPixels": 10871253
       },
-      "qualityNote": null
+      "qualityNote": null,
+      "promotion": {
+        "status": "promoted",
+        "approvedSha256": "c06a294548bccea36fb4cbbfdcb238028b65565cb5fe2a1698fc76f7f8a07fc0"
+      }
     },
     {
       "name": "meow_thinkingsmirk",
-      "source": "public/emojis/meow_thinkingsmirk.webp",
+      "source": "staging/emoji-enhancements/originals/meow_thinkingsmirk.webp",
       "sourceSha256": "d76ec5079fa2baf6ce47879e7c21414c7f7a2897d7c7306c36f28c9ee22ad6df",
       "plan": {
         "kind": "art",
@@ -4159,7 +4335,7 @@
       "inference": "local",
       "sourceHasTransparentPixels": true,
       "candidate": "meow_thinkingsmirk/candidate.webp",
-      "original": "../../../public/emojis/meow_thinkingsmirk.webp",
+      "original": "../../../staging/emoji-enhancements/originals/meow_thinkingsmirk.webp",
       "originalAtlas": "meow_thinkingsmirk/original-atlas.png",
       "candidateAtlas": "meow_thinkingsmirk/candidate-atlas.png",
       "thumbnail": "meow_thinkingsmirk/thumbnail.webp",
@@ -4173,11 +4349,15 @@
         "blankFrames": 0,
         "transparentPixels": 834415
       },
-      "qualityNote": null
+      "qualityNote": null,
+      "promotion": {
+        "status": "promoted",
+        "approvedSha256": "29d46d01631cc889311eca232fb9618b6a7c5622f90015af627d41838e3390a9"
+      }
     },
     {
       "name": "meow-bongo-cat",
-      "source": "public/emojis/meow-bongo-cat.webp",
+      "source": "staging/emoji-enhancements/originals/meow-bongo-cat.webp",
       "sourceSha256": "0746f9563fa62f0047a2419c4a0878c6c2d5d9c08f344381ed3ae6c5fcb30bba",
       "plan": {
         "kind": "art",
@@ -4203,7 +4383,7 @@
       "inference": "local",
       "sourceHasTransparentPixels": true,
       "candidate": "meow-bongo-cat/candidate.webp",
-      "original": "../../../public/emojis/meow-bongo-cat.webp",
+      "original": "../../../staging/emoji-enhancements/originals/meow-bongo-cat.webp",
       "originalAtlas": "meow-bongo-cat/original-atlas.png",
       "candidateAtlas": "meow-bongo-cat/candidate-atlas.png",
       "thumbnail": "meow-bongo-cat/thumbnail.webp",
@@ -4217,11 +4397,15 @@
         "blankFrames": 0,
         "transparentPixels": 329137
       },
-      "qualityNote": null
+      "qualityNote": null,
+      "promotion": {
+        "status": "promoted",
+        "approvedSha256": "f5359f038a3d0f62d05d96171695780d0f82ee1abf42cf0900e9bbff11829554"
+      }
     },
     {
       "name": "meow-mic-drop",
-      "source": "public/emojis/meow-mic-drop.webp",
+      "source": "staging/emoji-enhancements/originals/meow-mic-drop.webp",
       "sourceSha256": "76cf0a0f3cb6f61bfaf17be241ac70fae0570db31987fb6b045743822a489cc0",
       "plan": {
         "kind": "art",
@@ -4253,7 +4437,7 @@
       "inference": "local",
       "sourceHasTransparentPixels": true,
       "candidate": "meow-mic-drop/candidate.webp",
-      "original": "../../../public/emojis/meow-mic-drop.webp",
+      "original": "../../../staging/emoji-enhancements/originals/meow-mic-drop.webp",
       "originalAtlas": "meow-mic-drop/original-atlas.png",
       "candidateAtlas": "meow-mic-drop/candidate-atlas.png",
       "thumbnail": "meow-mic-drop/thumbnail.webp",
@@ -4267,11 +4451,15 @@
         "blankFrames": 0,
         "transparentPixels": 954893
       },
-      "qualityNote": null
+      "qualityNote": null,
+      "promotion": {
+        "status": "promoted",
+        "approvedSha256": "fe1f7e88a14e471eac5e7993ae8ab424da7a26df15a40a6134999ef5d4054f77"
+      }
     },
     {
       "name": "meow-stretch",
-      "source": "public/emojis/meow-stretch.webp",
+      "source": "staging/emoji-enhancements/originals/meow-stretch.webp",
       "sourceSha256": "5401776edb12f76b78489d81462a6b96d8bf9d2a6a4d80bb83fbe03d0830ff64",
       "plan": {
         "kind": "art",
@@ -4534,7 +4722,7 @@
       "inference": "local",
       "sourceHasTransparentPixels": true,
       "candidate": "meow-stretch/candidate.webp",
-      "original": "../../../public/emojis/meow-stretch.webp",
+      "original": "../../../staging/emoji-enhancements/originals/meow-stretch.webp",
       "originalAtlas": "meow-stretch/original-atlas.png",
       "candidateAtlas": "meow-stretch/candidate-atlas.png",
       "thumbnail": "meow-stretch/thumbnail.webp",
@@ -4548,11 +4736,15 @@
         "blankFrames": 0,
         "transparentPixels": 13928346
       },
-      "qualityNote": null
+      "qualityNote": null,
+      "promotion": {
+        "status": "promoted",
+        "approvedSha256": "53d49029b490915d8e6fe7e546c939b109bb945382d4cb9c4be74dcb98a309c2"
+      }
     },
     {
       "name": "meow-wave-comfy",
-      "source": "public/emojis/meow-wave-comfy.webp",
+      "source": "staging/emoji-enhancements/originals/meow-wave-comfy.webp",
       "sourceSha256": "3ec7ac3bc218d20461afe6fe35641fdad4fab7407fc82a5ee32d4ed17770fd6b",
       "plan": {
         "kind": "art",
@@ -4578,7 +4770,7 @@
       "inference": "local",
       "sourceHasTransparentPixels": true,
       "candidate": "meow-wave-comfy/candidate.webp",
-      "original": "../../../public/emojis/meow-wave-comfy.webp",
+      "original": "../../../staging/emoji-enhancements/originals/meow-wave-comfy.webp",
       "originalAtlas": "meow-wave-comfy/original-atlas.png",
       "candidateAtlas": "meow-wave-comfy/candidate-atlas.png",
       "thumbnail": "meow-wave-comfy/thumbnail.webp",
@@ -4592,11 +4784,15 @@
         "blankFrames": 0,
         "transparentPixels": 199233
       },
-      "qualityNote": null
+      "qualityNote": null,
+      "promotion": {
+        "status": "promoted",
+        "approvedSha256": "86bff9459c1e8a67751bd765ba985caa58abf3e45e5472a287243042856f3a30"
+      }
     },
     {
       "name": "milchick_roll",
-      "source": "public/emojis/milchick_roll.webp",
+      "source": "staging/emoji-enhancements/originals/milchick_roll.webp",
       "sourceSha256": "569c5202cff93c252f77d7f702624a99eedf71d1beaa0f2155c5e5bff2b1706e",
       "plan": {
         "kind": "photo",
@@ -4639,7 +4835,7 @@
       "inference": "local",
       "sourceHasTransparentPixels": false,
       "candidate": "milchick_roll/candidate.webp",
-      "original": "../../../public/emojis/milchick_roll.webp",
+      "original": "../../../staging/emoji-enhancements/originals/milchick_roll.webp",
       "originalAtlas": "milchick_roll/original-atlas.png",
       "candidateAtlas": "milchick_roll/candidate-atlas.png",
       "thumbnail": "milchick_roll/thumbnail.webp",
@@ -4653,11 +4849,15 @@
         "blankFrames": 0,
         "transparentPixels": 0
       },
-      "qualityNote": null
+      "qualityNote": null,
+      "promotion": {
+        "status": "promoted",
+        "approvedSha256": "d0e57d3775d3e4c8eb73a0d90229c4b8d49af85fdb8b33bdc898a9fe8caa3077"
+      }
     },
     {
       "name": "nyancat",
-      "source": "public/emojis/nyancat.webp",
+      "source": "staging/emoji-enhancements/originals/nyancat.webp",
       "sourceSha256": "9faa73edcc7411d72ac33f80376e8bd136b7d63aeb405b0fd225e13092a0ed14",
       "plan": {
         "kind": "pixel",
@@ -4693,7 +4893,7 @@
       "inference": "local",
       "sourceHasTransparentPixels": true,
       "candidate": "nyancat/candidate.webp",
-      "original": "../../../public/emojis/nyancat.webp",
+      "original": "../../../staging/emoji-enhancements/originals/nyancat.webp",
       "originalAtlas": "nyancat/original-atlas.png",
       "candidateAtlas": "nyancat/candidate-atlas.png",
       "thumbnail": "nyancat/thumbnail.webp",
@@ -4707,11 +4907,15 @@
         "blankFrames": 0,
         "transparentPixels": 1404672
       },
-      "qualityNote": null
+      "qualityNote": null,
+      "promotion": {
+        "status": "promoted",
+        "approvedSha256": "33be46854071d43b04d322b42d6a1ada5638f42644138bb9f4365db1d6cb3eb1"
+      }
     },
     {
       "name": "roo-e",
-      "source": "public/emojis/roo-e.webp",
+      "source": "staging/emoji-enhancements/originals/roo-e.webp",
       "sourceSha256": "45e00c4fe0c5c29648037310a33c014ab9b30675f871c17e05aee1305a61845c",
       "plan": {
         "kind": "art",
@@ -4737,7 +4941,7 @@
       "inference": "local",
       "sourceHasTransparentPixels": true,
       "candidate": "roo-e/candidate.webp",
-      "original": "../../../public/emojis/roo-e.webp",
+      "original": "../../../staging/emoji-enhancements/originals/roo-e.webp",
       "originalAtlas": "roo-e/original-atlas.png",
       "candidateAtlas": "roo-e/candidate-atlas.png",
       "thumbnail": "roo-e/thumbnail.webp",
@@ -4751,11 +4955,15 @@
         "blankFrames": 0,
         "transparentPixels": 62759
       },
-      "qualityNote": null
+      "qualityNote": null,
+      "promotion": {
+        "status": "promoted",
+        "approvedSha256": "d5e70a406b6e31e17a2f656157e0694fefe96aef644c2d2cea139f86a2a64fe2"
+      }
     },
     {
       "name": "roo-redbutton",
-      "source": "public/emojis/roo-redbutton.webp",
+      "source": "staging/emoji-enhancements/originals/roo-redbutton.webp",
       "sourceSha256": "4d7717af61dd68a2a09a5049bfb39f77f85ca4e01b5607648bfa7d09b8ee52ab",
       "plan": {
         "kind": "art",
@@ -4802,7 +5010,7 @@
       "inference": "local",
       "sourceHasTransparentPixels": true,
       "candidate": "roo-redbutton/candidate.webp",
-      "original": "../../../public/emojis/roo-redbutton.webp",
+      "original": "../../../staging/emoji-enhancements/originals/roo-redbutton.webp",
       "originalAtlas": "roo-redbutton/original-atlas.png",
       "candidateAtlas": "roo-redbutton/candidate-atlas.png",
       "thumbnail": "roo-redbutton/thumbnail.webp",
@@ -4816,11 +5024,15 @@
         "blankFrames": 0,
         "transparentPixels": 231314
       },
-      "qualityNote": null
+      "qualityNote": null,
+      "promotion": {
+        "status": "promoted",
+        "approvedSha256": "af6b55d67c3cda66301dc5c0ca89bf90339d2a8dad5e5a81462c59448571902d"
+      }
     },
     {
       "name": "roorooq",
-      "source": "public/emojis/roorooq.webp",
+      "source": "staging/emoji-enhancements/originals/roorooq.webp",
       "sourceSha256": "00fc714d2af414b0f555f55c95be7815099928f8bc4716c284c341678d8d740b",
       "plan": {
         "kind": "art",
@@ -4850,7 +5062,7 @@
       "inference": "local",
       "sourceHasTransparentPixels": true,
       "candidate": "roorooq/candidate.webp",
-      "original": "../../../public/emojis/roorooq.webp",
+      "original": "../../../staging/emoji-enhancements/originals/roorooq.webp",
       "originalAtlas": "roorooq/original-atlas.png",
       "candidateAtlas": "roorooq/candidate-atlas.png",
       "thumbnail": "roorooq/thumbnail.webp",
@@ -4864,11 +5076,15 @@
         "blankFrames": 0,
         "transparentPixels": 381736
       },
-      "qualityNote": null
+      "qualityNote": null,
+      "promotion": {
+        "status": "promoted",
+        "approvedSha256": "3bea3aeb9cff7fd71f867e8c4cbda6181cb276f28e9e8be36920a8af926d6e0c"
+      }
     },
     {
       "name": "severance",
-      "source": "public/emojis/severance.webp",
+      "source": "staging/emoji-enhancements/originals/severance.webp",
       "sourceSha256": "1cc3e2b070ab957590489c3039bd65d5adb429b21fde6952af0d0af60f7b6df2",
       "plan": {
         "kind": "photo",
@@ -4934,7 +5150,7 @@
       "inference": "local",
       "sourceHasTransparentPixels": false,
       "candidate": "severance/candidate.webp",
-      "original": "../../../public/emojis/severance.webp",
+      "original": "../../../staging/emoji-enhancements/originals/severance.webp",
       "originalAtlas": "severance/original-atlas.png",
       "candidateAtlas": "severance/candidate-atlas.png",
       "thumbnail": "severance/thumbnail.webp",
@@ -4948,11 +5164,15 @@
         "blankFrames": 0,
         "transparentPixels": 0
       },
-      "qualityNote": null
+      "qualityNote": null,
+      "promotion": {
+        "status": "promoted",
+        "approvedSha256": "6550bf333fefa0358ad65eff57019778af9eeddeba831571d91a999af917357d"
+      }
     },
     {
       "name": "severance-dancing",
-      "source": "public/emojis/severance-dancing.webp",
+      "source": "staging/emoji-enhancements/originals/severance-dancing.webp",
       "sourceSha256": "da522992882dfa10b7d57f6dc94fb4204e94f870800108ae358c22ef0ab01021",
       "plan": {
         "kind": "photo",
@@ -5049,7 +5269,7 @@
       "inference": "local",
       "sourceHasTransparentPixels": false,
       "candidate": "severance-dancing/candidate.webp",
-      "original": "../../../public/emojis/severance-dancing.webp",
+      "original": "../../../staging/emoji-enhancements/originals/severance-dancing.webp",
       "originalAtlas": "severance-dancing/original-atlas.png",
       "candidateAtlas": "severance-dancing/candidate-atlas.png",
       "thumbnail": "severance-dancing/thumbnail.webp",
@@ -5063,11 +5283,15 @@
         "blankFrames": 0,
         "transparentPixels": 0
       },
-      "qualityNote": null
+      "qualityNote": null,
+      "promotion": {
+        "status": "promoted",
+        "approvedSha256": "9f681dc2109eb11173a965880a25d60111b00b9cb7e7c2a4813617b4a97ed573"
+      }
     },
     {
       "name": "severance-dancing-helly",
-      "source": "public/emojis/severance-dancing-helly.webp",
+      "source": "staging/emoji-enhancements/originals/severance-dancing-helly.webp",
       "sourceSha256": "ecb1d453b50c4e82bf01bcc3beb75ae94c49e5370dc045ed45d907fd98f03cf1",
       "plan": {
         "kind": "photo",
@@ -5127,7 +5351,7 @@
       "inference": "local",
       "sourceHasTransparentPixels": false,
       "candidate": "severance-dancing-helly/candidate.webp",
-      "original": "../../../public/emojis/severance-dancing-helly.webp",
+      "original": "../../../staging/emoji-enhancements/originals/severance-dancing-helly.webp",
       "originalAtlas": "severance-dancing-helly/original-atlas.png",
       "candidateAtlas": "severance-dancing-helly/candidate-atlas.png",
       "thumbnail": "severance-dancing-helly/thumbnail.webp",
@@ -5141,11 +5365,15 @@
         "blankFrames": 0,
         "transparentPixels": 0
       },
-      "qualityNote": null
+      "qualityNote": null,
+      "promotion": {
+        "status": "promoted",
+        "approvedSha256": "e7a6ecc3a99eae9074c828a8b3cd68998a479e08c3293a0047c8f1d03162241b"
+      }
     },
     {
       "name": "severance-dancing-mark",
-      "source": "public/emojis/severance-dancing-mark.webp",
+      "source": "staging/emoji-enhancements/originals/severance-dancing-mark.webp",
       "sourceSha256": "71767f8be4321d40181d149794c8c248d46e82b1ee5d7ed341a9cc2f85d77fa9",
       "plan": {
         "kind": "photo",
@@ -5203,7 +5431,7 @@
       "inference": "local",
       "sourceHasTransparentPixels": false,
       "candidate": "severance-dancing-mark/candidate.webp",
-      "original": "../../../public/emojis/severance-dancing-mark.webp",
+      "original": "../../../staging/emoji-enhancements/originals/severance-dancing-mark.webp",
       "originalAtlas": "severance-dancing-mark/original-atlas.png",
       "candidateAtlas": "severance-dancing-mark/candidate-atlas.png",
       "thumbnail": "severance-dancing-mark/thumbnail.webp",
@@ -5217,11 +5445,15 @@
         "blankFrames": 0,
         "transparentPixels": 0
       },
-      "qualityNote": null
+      "qualityNote": null,
+      "promotion": {
+        "status": "promoted",
+        "approvedSha256": "55ec682fa5739aeb792e80965d2f69f12922f2694c9105b8c891acee4872ce34"
+      }
     },
     {
       "name": "severance-running",
-      "source": "public/emojis/severance-running.webp",
+      "source": "staging/emoji-enhancements/originals/severance-running.webp",
       "sourceSha256": "45f51642c96fc4041a22e963932e4c3bb7ab9eef1d0d42265e801a3d3ee02179",
       "plan": {
         "kind": "photo-hybrid",
@@ -5648,7 +5880,7 @@
       "qualityNote": "Revised grain cleanup. Close-up detail and hallway are reconstructed; distant figure retains original poses. Awaiting renewed review.",
       "restorationSignature": "65571580043ceaf8915baee306c3a275eae910a7d016b3786cef1827a432127d",
       "candidate": "severance-running/candidate.webp",
-      "original": "../../../public/emojis/severance-running.webp",
+      "original": "../../../staging/emoji-enhancements/originals/severance-running.webp",
       "originalAtlas": "severance-running/original-atlas.png",
       "candidateAtlas": "severance-running/candidate-atlas.png",
       "thumbnail": "severance-running/thumbnail.webp",
@@ -5661,11 +5893,15 @@
         "maxAlphaCoverageDelta": 0,
         "blankFrames": 0,
         "transparentPixels": 0
+      },
+      "promotion": {
+        "status": "held-original",
+        "approvedSha256": null
       }
     },
     {
       "name": "side-eye",
-      "source": "public/emojis/side-eye.webp",
+      "source": "staging/emoji-enhancements/originals/side-eye.webp",
       "sourceSha256": "e201d86cba42e1f5e942951f084b4665ce046da7be9309322116f3767a80b1a5",
       "plan": {
         "kind": "photo",
@@ -5700,7 +5936,7 @@
       "inference": "local",
       "sourceHasTransparentPixels": false,
       "candidate": "side-eye/candidate.webp",
-      "original": "../../../public/emojis/side-eye.webp",
+      "original": "../../../staging/emoji-enhancements/originals/side-eye.webp",
       "originalAtlas": "side-eye/original-atlas.png",
       "candidateAtlas": "side-eye/candidate-atlas.png",
       "thumbnail": "side-eye/thumbnail.webp",
@@ -5714,11 +5950,15 @@
         "blankFrames": 0,
         "transparentPixels": 0
       },
-      "qualityNote": null
+      "qualityNote": null,
+      "promotion": {
+        "status": "promoted",
+        "approvedSha256": "038d740aae4cbcd3f6888cf72e909a24245523811030291b3a82ed914a9dc073"
+      }
     },
     {
       "name": "smart",
-      "source": "public/emojis/smart.webp",
+      "source": "staging/emoji-enhancements/originals/smart.webp",
       "sourceSha256": "99a0308fd6e2186fa4631c2f3a3bb8ca5523f10fa483c3d83a127e16e1d5e6aa",
       "plan": {
         "kind": "photo",
@@ -5765,7 +6005,7 @@
       "inference": "local",
       "sourceHasTransparentPixels": true,
       "candidate": "smart/candidate.webp",
-      "original": "../../../public/emojis/smart.webp",
+      "original": "../../../staging/emoji-enhancements/originals/smart.webp",
       "originalAtlas": "smart/original-atlas.png",
       "candidateAtlas": "smart/candidate-atlas.png",
       "thumbnail": "smart/thumbnail.webp",
@@ -5779,11 +6019,15 @@
         "blankFrames": 0,
         "transparentPixels": 2285200
       },
-      "qualityNote": null
+      "qualityNote": null,
+      "promotion": {
+        "status": "promoted",
+        "approvedSha256": "90ee2baee9dcef86f4a48489fb3ff46a9a52902256f1ea4161aad23884c7f3a2"
+      }
     },
     {
       "name": "southpark_nice",
-      "source": "public/emojis/southpark_nice.webp",
+      "source": "staging/emoji-enhancements/originals/southpark_nice.webp",
       "sourceSha256": "c11a4fce89e8f09410e90b12aa675a866bdfb5aa104cd655180567ef8c1b0661",
       "plan": {
         "kind": "art",
@@ -5825,7 +6069,7 @@
       "candidateFile": "experiments/image-enhancement/remaining-animations/southpark_nice/detail-preserved/candidate.webp",
       "restorationSignature": "75839947fbc32347abab9d0192fb842481ac1e317da598f4b5a412ff97351515",
       "candidate": "southpark_nice/candidate.webp",
-      "original": "../../../public/emojis/southpark_nice.webp",
+      "original": "../../../staging/emoji-enhancements/originals/southpark_nice.webp",
       "originalAtlas": "southpark_nice/original-atlas.png",
       "candidateAtlas": "southpark_nice/candidate-atlas.png",
       "thumbnail": "southpark_nice/thumbnail.webp",
@@ -5839,11 +6083,15 @@
         "blankFrames": 0,
         "transparentPixels": 0
       },
-      "qualityNote": null
+      "qualityNote": null,
+      "promotion": {
+        "status": "promoted",
+        "approvedSha256": "ad9ad0aab1cbd6709df468ab38971cea04bd0120ee7801b3587a2f6796354dc4"
+      }
     },
     {
       "name": "the_more_you_know",
-      "source": "public/emojis/the_more_you_know.webp",
+      "source": "staging/emoji-enhancements/originals/the_more_you_know.webp",
       "sourceSha256": "0db94f326075d88fe5d62168ca43b6c41077502fa9c200000a1989b62229037c",
       "plan": {
         "kind": "art",
@@ -5908,7 +6156,7 @@
       "inference": "local",
       "sourceHasTransparentPixels": false,
       "candidate": "the_more_you_know/candidate.webp",
-      "original": "../../../public/emojis/the_more_you_know.webp",
+      "original": "../../../staging/emoji-enhancements/originals/the_more_you_know.webp",
       "originalAtlas": "the_more_you_know/original-atlas.png",
       "candidateAtlas": "the_more_you_know/candidate-atlas.png",
       "thumbnail": "the_more_you_know/thumbnail.webp",
@@ -5922,11 +6170,15 @@
         "blankFrames": 0,
         "transparentPixels": 0
       },
-      "qualityNote": null
+      "qualityNote": null,
+      "promotion": {
+        "status": "promoted",
+        "approvedSha256": "9f3b3d00b6eab4b26b709913bb34c9f25d73dd5b1927eb6175b93ad116abf426"
+      }
     },
     {
       "name": "thinking-face-rotating",
-      "source": "public/emojis/thinking-face-rotating.webp",
+      "source": "staging/emoji-enhancements/originals/thinking-face-rotating.webp",
       "sourceSha256": "b04d7bf9698e3f50c6cd88c5e7c2996f01858d69724c5406a2c87701024535ef",
       "plan": {
         "kind": "art",
@@ -5980,7 +6232,7 @@
       "inference": "local",
       "sourceHasTransparentPixels": true,
       "candidate": "thinking-face-rotating/candidate.webp",
-      "original": "../../../public/emojis/thinking-face-rotating.webp",
+      "original": "../../../staging/emoji-enhancements/originals/thinking-face-rotating.webp",
       "originalAtlas": "thinking-face-rotating/original-atlas.png",
       "candidateAtlas": "thinking-face-rotating/candidate-atlas.png",
       "thumbnail": "thinking-face-rotating/thumbnail.webp",
@@ -5994,11 +6246,15 @@
         "blankFrames": 0,
         "transparentPixels": 2862594
       },
-      "qualityNote": null
+      "qualityNote": null,
+      "promotion": {
+        "status": "promoted",
+        "approvedSha256": "19d9a458f36930ec441ea440d06bea7dc7512d0ab9cd173719c6cc95b4338859"
+      }
     },
     {
       "name": "this-is-fine-fire",
-      "source": "public/emojis/this-is-fine-fire.webp",
+      "source": "staging/emoji-enhancements/originals/this-is-fine-fire.webp",
       "sourceSha256": "fdd601c1aec898936b4fd01f9b7ef6ade883ca07cd7217c3748b132ce07682c7",
       "plan": {
         "kind": "art",
@@ -6030,7 +6286,7 @@
       "inference": "local",
       "sourceHasTransparentPixels": true,
       "candidate": "this-is-fine-fire/candidate.webp",
-      "original": "../../../public/emojis/this-is-fine-fire.webp",
+      "original": "../../../staging/emoji-enhancements/originals/this-is-fine-fire.webp",
       "originalAtlas": "this-is-fine-fire/original-atlas.png",
       "candidateAtlas": "this-is-fine-fire/candidate-atlas.png",
       "thumbnail": "this-is-fine-fire/thumbnail.webp",
@@ -6044,11 +6300,15 @@
         "blankFrames": 0,
         "transparentPixels": 1113945
       },
-      "qualityNote": null
+      "qualityNote": null,
+      "promotion": {
+        "status": "promoted",
+        "approvedSha256": "d6bbcc7acc1bfbfb17fffc0ac2b068c533d1eb0bb87603d1ee8a57696de6fb10"
+      }
     },
     {
       "name": "try-not-to-cry",
-      "source": "public/emojis/try-not-to-cry.webp",
+      "source": "staging/emoji-enhancements/originals/try-not-to-cry.webp",
       "sourceSha256": "6556a768c34be0e708fbd96e7e6441ac035393778be1960cc84564989d63adb5",
       "plan": {
         "kind": "art",
@@ -6088,7 +6348,7 @@
       "inference": "local",
       "sourceHasTransparentPixels": true,
       "candidate": "try-not-to-cry/candidate.webp",
-      "original": "../../../public/emojis/try-not-to-cry.webp",
+      "original": "../../../staging/emoji-enhancements/originals/try-not-to-cry.webp",
       "originalAtlas": "try-not-to-cry/original-atlas.png",
       "candidateAtlas": "try-not-to-cry/candidate-atlas.png",
       "thumbnail": "try-not-to-cry/thumbnail.webp",
@@ -6102,11 +6362,15 @@
         "blankFrames": 0,
         "transparentPixels": 2658290
       },
-      "qualityNote": null
+      "qualityNote": null,
+      "promotion": {
+        "status": "promoted",
+        "approvedSha256": "3ebc142f944f72a3fda54f407e2457ddef7abd20014de32dd7cee8f4fa8ec1e7"
+      }
     },
     {
       "name": "typing_cat_kitten",
-      "source": "public/emojis/typing_cat_kitten.webp",
+      "source": "staging/emoji-enhancements/originals/typing_cat_kitten.webp",
       "sourceSha256": "af4e99ef089405c95fba2881c77c62eaa3d760767768fd1da9ec96b4a60ccfb9",
       "plan": {
         "kind": "art",
@@ -6150,7 +6414,7 @@
       "inference": "local",
       "sourceHasTransparentPixels": false,
       "candidate": "typing_cat_kitten/candidate.webp",
-      "original": "../../../public/emojis/typing_cat_kitten.webp",
+      "original": "../../../staging/emoji-enhancements/originals/typing_cat_kitten.webp",
       "originalAtlas": "typing_cat_kitten/original-atlas.png",
       "candidateAtlas": "typing_cat_kitten/candidate-atlas.png",
       "thumbnail": "typing_cat_kitten/thumbnail.webp",
@@ -6164,11 +6428,15 @@
         "blankFrames": 0,
         "transparentPixels": 187420
       },
-      "qualityNote": null
+      "qualityNote": null,
+      "promotion": {
+        "status": "promoted",
+        "approvedSha256": "8f7a01e071940693de974eb5efd61c035aa819f92f3b879e1f4acfcc282db49e"
+      }
     },
     {
       "name": "typingcat",
-      "source": "public/emojis/typingcat.webp",
+      "source": "staging/emoji-enhancements/originals/typingcat.webp",
       "sourceSha256": "b103ce3d6e7ffed015cd6c247fd5df766c94e88c16f602902985b12d942fea50",
       "plan": {
         "kind": "photo",
@@ -6220,7 +6488,7 @@
       "inference": "local",
       "sourceHasTransparentPixels": false,
       "candidate": "typingcat/candidate.webp",
-      "original": "../../../public/emojis/typingcat.webp",
+      "original": "../../../staging/emoji-enhancements/originals/typingcat.webp",
       "originalAtlas": "typingcat/original-atlas.png",
       "candidateAtlas": "typingcat/candidate-atlas.png",
       "thumbnail": "typingcat/thumbnail.webp",
@@ -6234,11 +6502,15 @@
         "blankFrames": 0,
         "transparentPixels": 0
       },
-      "qualityNote": null
+      "qualityNote": null,
+      "promotion": {
+        "status": "promoted",
+        "approvedSha256": "282513f65060bbc113075cfa078f606eb63beb420b03cb5927216b76023779ec"
+      }
     },
     {
       "name": "unikittyangry",
-      "source": "public/emojis/unikittyangry.webp",
+      "source": "staging/emoji-enhancements/originals/unikittyangry.webp",
       "sourceSha256": "6c5279a460b18425a7616f2f6986ca12a3ed0a1457f9932159620cb38f50f26f",
       "plan": {
         "kind": "pixel",
@@ -6276,7 +6548,7 @@
       "candidateFile": "experiments/image-enhancement/remaining-animations/unikittyangry/detail-preserved/candidate.webp",
       "restorationSignature": "085102bca35c5882fdcf29c98ec8a9a44eee4dd9194f5b70f889c2cbb199c42b",
       "candidate": "unikittyangry/candidate.webp",
-      "original": "../../../public/emojis/unikittyangry.webp",
+      "original": "../../../staging/emoji-enhancements/originals/unikittyangry.webp",
       "originalAtlas": "unikittyangry/original-atlas.png",
       "candidateAtlas": "unikittyangry/candidate-atlas.png",
       "thumbnail": "unikittyangry/thumbnail.webp",
@@ -6290,11 +6562,15 @@
         "blankFrames": 0,
         "transparentPixels": 1929872
       },
-      "qualityNote": null
+      "qualityNote": null,
+      "promotion": {
+        "status": "promoted",
+        "approvedSha256": "56ef026625fffab9fe71d7774c5b8573b07629b99bf5256b5cae8cdf4d552c02"
+      }
     },
     {
       "name": "watcat",
-      "source": "public/emojis/watcat.webp",
+      "source": "staging/emoji-enhancements/originals/watcat.webp",
       "sourceSha256": "32c93da3b886d2a05ae1aff9e81b6b4120e1e772cbb92e410e09c5e6191949a8",
       "plan": {
         "kind": "photo",
@@ -6332,7 +6608,7 @@
       "inference": "local",
       "sourceHasTransparentPixels": false,
       "candidate": "watcat/candidate.webp",
-      "original": "../../../public/emojis/watcat.webp",
+      "original": "../../../staging/emoji-enhancements/originals/watcat.webp",
       "originalAtlas": "watcat/original-atlas.png",
       "candidateAtlas": "watcat/candidate-atlas.png",
       "thumbnail": "watcat/thumbnail.webp",
@@ -6346,7 +6622,12 @@
         "blankFrames": 0,
         "transparentPixels": 0
       },
-      "qualityNote": null
+      "qualityNote": null,
+      "promotion": {
+        "status": "promoted",
+        "approvedSha256": "2bb84bcc3316499cc4c27f4559b623d2dacb6b2034a0bb9ca4fb3c5dfe941165"
+      }
     }
-  ]
+  ],
+  "promotionReceipt": "../promotion.json"
 }

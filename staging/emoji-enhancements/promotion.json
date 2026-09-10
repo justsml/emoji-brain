@@ -1,0 +1,2828 @@
+{
+  "userApproval": "I'm approving them, will make a few fixes later tho.",
+  "approvedAt": "2026-09-10T21:35:33.107Z",
+  "exception": "severance-running remains on its original pending the previously requested fix",
+  "items": [
+    {
+      "file": "50.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/50.webp",
+      "original": "staging/emoji-enhancements/originals/50.webp",
+      "originalSha256": "3acf5400a36f427d6f743d072a56f09beaa536786cfb72d0ec47e77073d1cdec",
+      "approvedSha256": "b97e65586aead33064438439c963077665d9e5d654f861e692b499dd89845b60"
+    },
+    {
+      "file": "99.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/99.webp",
+      "original": "staging/emoji-enhancements/originals/99.webp",
+      "originalSha256": "fe5acf7783856a36f5f4385e9d36f125cda8cddbe27748a227f49c07018d01ec",
+      "approvedSha256": "09c69bf9cd95acaedef21d59ffc5ed81eded65697d64192811a469854c4ca13a"
+    },
+    {
+      "file": "420.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/420.webp",
+      "original": "staging/emoji-enhancements/originals/420.webp",
+      "originalSha256": "0d22d9a8c77023388a846e80e8d7c66dc279d0149d2d9bba201338db8d832ec2",
+      "approvedSha256": "21c6d99aeda96a5ef0f4c6fe926911241b5d61cd9c2753cabd8d3b20f0bddd08"
+    },
+    {
+      "file": "1000.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/1000.webp",
+      "original": "staging/emoji-enhancements/originals/1000.webp",
+      "originalSha256": "3250d0814c6f0cf5db05c3d86dd5b002cd3364a3ab07283f30fcfd177cfe9697",
+      "approvedSha256": "dc497bbfdb753bf6a8b0188fc076a8995ac9161aa3e1ce7b89e36dc550e52bc0"
+    },
+    {
+      "file": "10000.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/10000.webp",
+      "original": "staging/emoji-enhancements/originals/10000.webp",
+      "originalSha256": "44050bdd9b695dc924b2c58fb29ad37a4afc8afa20370d7ba336a0a3c38441dc",
+      "approvedSha256": "6da7a07a7aa5bfab52f4b7f0cb268dc9b7be53181e8633e1805a2941a9573603"
+    },
+    {
+      "file": "100000.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/100000.webp",
+      "original": "staging/emoji-enhancements/originals/100000.webp",
+      "originalSha256": "85e09ed60460768e41592726cd2ecb01a399cd0180554f8bd6ecc03a01e67880",
+      "approvedSha256": "55238970f83fb49efd6a62ece2d91abb94efc78c9463b9c9aafa1d5d0db0dec8"
+    },
+    {
+      "file": "10-10.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/10-10.webp",
+      "original": "staging/emoji-enhancements/originals/10-10.webp",
+      "originalSha256": "9294ea19055f5e6e094c544faf66eb48e1c541e51a06f66dd8407687b8be3e08",
+      "approvedSha256": "d56e3dc7064cd6c3a12f1576031448cf1a4ed14f225feafb830b438d2aef8e0d"
+    },
+    {
+      "file": "abraham-thinkin.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/abraham-thinkin.webp",
+      "original": "staging/emoji-enhancements/originals/abraham-thinkin.webp",
+      "originalSha256": "fdbc9617f5a3c1c7fe36304422d96fd54e17d2b1099f1965a9c610655a47210a",
+      "approvedSha256": "c5e3825881fa7c5e2ca18a5ec208e602fcaa90af1d7b63ac8e5b2371a46a7f4a"
+    },
+    {
+      "file": "avocato.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/avocato.webp",
+      "original": "staging/emoji-enhancements/originals/avocato.webp",
+      "originalSha256": "8c25b182aabb89bac6e6bac65f9b24b72f49cdb7107d22dace62850a62e91fab",
+      "approvedSha256": "8b5b7adba72a0dd5052e8b20f5b96b30d93f57107f68fa776167011bd0fe0360"
+    },
+    {
+      "file": "awesome.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/awesome.webp",
+      "original": "staging/emoji-enhancements/originals/awesome.webp",
+      "originalSha256": "25900f85c48dc9fba39f4527f274683580224e7f71d8c65577ffae96f76a926a",
+      "approvedSha256": "911aeef648db7c0b2165516ef8ae542764b53ff14bb8daa55ff1a0d9923cacc3"
+    },
+    {
+      "file": "badtime.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/badtime.webp",
+      "original": "staging/emoji-enhancements/originals/badtime.webp",
+      "originalSha256": "9f6e17520cc58286b1ee2ef1577d09689a25b28420e2a1726078d0a50ecc77f3",
+      "approvedSha256": "28be27471357c021b3b2f4939afadf5607b69070bbbc726ca3247062fbbb3605"
+    },
+    {
+      "file": "bizcat.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/bizcat.webp",
+      "original": "staging/emoji-enhancements/originals/bizcat.webp",
+      "originalSha256": "f775c7dc08d78d6f0a7d6e0c37faed8ad665d853bd29a816c69c5872266c99b3",
+      "approvedSha256": "1298ed72264d1d49bc4b9c9a06c8281f32f8b2b46940f62e29e34c0460e39da2"
+    },
+    {
+      "file": "cat-confuse.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/cat-confuse.webp",
+      "original": "staging/emoji-enhancements/originals/cat-confuse.webp",
+      "originalSha256": "4d8ce809b334ed6ceed221de14dbfe3f91ce5810eaf61f6a7b45e9ddecbf6695",
+      "approvedSha256": "47fdb7c36c9666a35b01a67b6fa8fafdafbe33661f15ec4c86723ddd605a3c90"
+    },
+    {
+      "file": "cat-curious.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/cat-curious.webp",
+      "original": "staging/emoji-enhancements/originals/cat-curious.webp",
+      "originalSha256": "20ad3f0fe797759258628453e36b139c4f69b8c7bc845f230d6258986fb5d317",
+      "approvedSha256": "12352237e6129bb442018315a13b9ddc01589577c850e894fecf66d78a349ef6"
+    },
+    {
+      "file": "cat-fishing.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/cat-fishing.webp",
+      "original": "staging/emoji-enhancements/originals/cat-fishing.webp",
+      "originalSha256": "2868a12e172ec63cceb5cc66919d6143c25fcedce35f62678b570d51a9b600b6",
+      "approvedSha256": "3bcd50fa97be965ad81fb90381a69ccdab7697a3c786e0eea5832deaee22addb"
+    },
+    {
+      "file": "cat-meow-disappointed.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/cat-meow-disappointed.webp",
+      "original": "staging/emoji-enhancements/originals/cat-meow-disappointed.webp",
+      "originalSha256": "f2ab70a9612b29147969026aa30ac8620b0f5afa747155d86fc322c53b37713b",
+      "approvedSha256": "3534c179aadfa9266195f5633899c58fa0d361b3c4802285f4b5b3e4cb86fd11"
+    },
+    {
+      "file": "cat-meow-knife.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/cat-meow-knife.webp",
+      "original": "staging/emoji-enhancements/originals/cat-meow-knife.webp",
+      "originalSha256": "2bb47530b97dfe77e70a848897ed8a543179bf3e52f842b5f389e2007fedf2a4",
+      "approvedSha256": "7415cb65b75940c1ab595d8426e73d23de21970e2310be5a435ee421b265ad5c"
+    },
+    {
+      "file": "cat-meow-mask.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/cat-meow-mask.webp",
+      "original": "staging/emoji-enhancements/originals/cat-meow-mask.webp",
+      "originalSha256": "ee8d082a04401605bc0078487f5c97c1ef2575ae080be7ceb057dfb393f0dc26",
+      "approvedSha256": "4bc9c6426cbd33f2804e3ff102af14672f257fba873c977c9230ed4efa1af901"
+    },
+    {
+      "file": "cat-meow-shocked.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/cat-meow-shocked.webp",
+      "original": "staging/emoji-enhancements/originals/cat-meow-shocked.webp",
+      "originalSha256": "c7cee45bb4b90cb6220aadec9a9a5e2624acc5a2e398895e070eb8b3b11e3cd6",
+      "approvedSha256": "16dfb3f2034650cef87ffaa690253b57a08453300a348750b671faa9bdb9d667"
+    },
+    {
+      "file": "cat-meow-sip.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/cat-meow-sip.webp",
+      "original": "staging/emoji-enhancements/originals/cat-meow-sip.webp",
+      "originalSha256": "3acdd531bcdc02fecb37e9e6ba2f5598a49006884f8cb9fccc3e0bb641519800",
+      "approvedSha256": "845aa34364a899c33f378ec74a2147526b47493a6388031eca2ec192b8d33c30"
+    },
+    {
+      "file": "cat-nap.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/cat-nap.webp",
+      "original": "staging/emoji-enhancements/originals/cat-nap.webp",
+      "originalSha256": "9d5c5613e068962d5bf2332fe8a4d8632483a2d4c4ce08afb12708da3d4377bd",
+      "approvedSha256": "e891bc2afed39456fb506f3aa1d0aef39fa8f32a3450923d222c40ffb553a3fb"
+    },
+    {
+      "file": "cat-nap2.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/cat-nap2.webp",
+      "original": "staging/emoji-enhancements/originals/cat-nap2.webp",
+      "originalSha256": "8d9d29f0f1d28d94ced895821436603285bc988a1347c429294a3d6e0565235b",
+      "approvedSha256": "919c119363ad5e441270ee9cc327feaa92cc81355abcbb3dc2ea2975a3508028"
+    },
+    {
+      "file": "cat-orange.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/cat-orange.webp",
+      "original": "staging/emoji-enhancements/originals/cat-orange.webp",
+      "originalSha256": "ba5ba8da07852d6845f9be00e3f88f0063d0c55479b91492e064adb3d735b5e1",
+      "approvedSha256": "05fee12b98a1d9d934809f8f1b524d38c8e070862b4d1797a09109d59bd70a5f"
+    },
+    {
+      "file": "cat-yells-at-cloud.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/cat-yells-at-cloud.webp",
+      "original": "staging/emoji-enhancements/originals/cat-yells-at-cloud.webp",
+      "originalSha256": "4ef8c59c54c0f23c70c9fc704455855cfaa29f5edac20fb62dbca0cd0ad28d4f",
+      "approvedSha256": "8502a13cfe910c010aa2bd5bad0e17ba2047530c31bb89afaaf63a32e0f771a3"
+    },
+    {
+      "file": "cheers-leo.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/cheers-leo.webp",
+      "original": "staging/emoji-enhancements/originals/cheers-leo.webp",
+      "originalSha256": "c87d0bd2fa2cf81d62c2a5b9d6bf4d9339c32679350949a141acac1de8b8eb50",
+      "approvedSha256": "bdb9bc3bb9c3bb5db1eb1f0bea06e3b87ec82c412ce5e3e5d95562cfaaa7997c"
+    },
+    {
+      "file": "cheers-whiskey.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/cheers-whiskey.webp",
+      "original": "staging/emoji-enhancements/originals/cheers-whiskey.webp",
+      "originalSha256": "7b09c777f5cf2a383dbcbe9ccd18dd60580946c50b61210ddcfddbee3563dad5",
+      "approvedSha256": "247afee63d147b0e83c72dbc352472165dafd8715e4109528ab7ffbb2a56287a"
+    },
+    {
+      "file": "come-at-me-bro.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/come-at-me-bro.webp",
+      "original": "staging/emoji-enhancements/originals/come-at-me-bro.webp",
+      "originalSha256": "822eaab2b9fd38e35107ec0c0be51cae0bb916ea23e45cc0ebb543616994fed2",
+      "approvedSha256": "1a5cbc9e25b70f2b250a0eb17922dfdca209dd4884b7c287582a802c5a280300"
+    },
+    {
+      "file": "doge_notes.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/doge_notes.webp",
+      "original": "staging/emoji-enhancements/originals/doge_notes.webp",
+      "originalSha256": "6c5a3c5e646d528c5a23e845051d0cb0a1df34452526e45915533960a4210b53",
+      "approvedSha256": "7666d5c07164111baa0362d5a12e01d990cf58c4093c9930798644ddfd8ffb3e"
+    },
+    {
+      "file": "doge-finger-guns.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/doge-finger-guns.webp",
+      "original": "staging/emoji-enhancements/originals/doge-finger-guns.webp",
+      "originalSha256": "f063200d89b256743698fc7ba29af6c18d4709a5ec26681cb079af62cc40804d",
+      "approvedSha256": "0c1bfac58de38faa2a3c3b5d29e6fc832a0b05c3a1341b1c6c943db9354d6a00"
+    },
+    {
+      "file": "done.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/done.webp",
+      "original": "staging/emoji-enhancements/originals/done.webp",
+      "originalSha256": "98b37aad96169aa2d199e8e3679ec479c948e454fabd56ab3fea739109c4cbe2",
+      "approvedSha256": "08e51ec722845dad12e285c326b8756d5cf27f6991e31b0d1a74cec7a81923d0"
+    },
+    {
+      "file": "everythingisbroken.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/everythingisbroken.webp",
+      "original": "staging/emoji-enhancements/originals/everythingisbroken.webp",
+      "originalSha256": "5c81de026cbeef3011d5d1556eb8468edb7975dd9e8a44c88efe39c55aeaf005",
+      "approvedSha256": "f1d64856566b66456c1b51365a6cfc510616166e39844bc7a7c26cb50606b790"
+    },
+    {
+      "file": "fatcat.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/fatcat.webp",
+      "original": "staging/emoji-enhancements/originals/fatcat.webp",
+      "originalSha256": "b5e67dc42059ac8d9e9d6d3da0488058dad72a05e81e2836b2c9bf0b63d4a5be",
+      "approvedSha256": "463a2c309344c781c99f6b89c2f75b02579b0b18e92d273bdea97b3c032e9e29"
+    },
+    {
+      "file": "fingerguns_left.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/fingerguns_left.webp",
+      "original": "staging/emoji-enhancements/originals/fingerguns_left.webp",
+      "originalSha256": "afba2858484e6112eb3c5fe838ffbb62a0d44a466bb98f1951141b7a66a0f032",
+      "approvedSha256": "dd12f7cdbfef11a483cf307897950cd4e3d7e9b3ba069c7cd6d6c18e549d23c8"
+    },
+    {
+      "file": "fingerguns.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/fingerguns.webp",
+      "original": "staging/emoji-enhancements/originals/fingerguns.webp",
+      "originalSha256": "48336b3a71a66d8c047dd8210a01e8865c591104b8d16c4c66fc65802eaf257a",
+      "approvedSha256": "76a0b88d75756cc2456b4ac63f01ae9cda73ab99455987ae178b985dbe886cfb"
+    },
+    {
+      "file": "fingergunz.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/fingergunz.webp",
+      "original": "staging/emoji-enhancements/originals/fingergunz.webp",
+      "originalSha256": "64a8f201bb1469df8d680ad2764e8620207ea4a0690e9051bca65ca78623fddd",
+      "approvedSha256": "f731e2d75942449c3f202e707931cfdb72d01174fa239238afe70c6f6ac188ec"
+    },
+    {
+      "file": "fonzie.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/fonzie.webp",
+      "original": "staging/emoji-enhancements/originals/fonzie.webp",
+      "originalSha256": "db481e01a6e7636238293c5dd8806634f28de41a7ce5567d2f52e110be0f92ab",
+      "approvedSha256": "e6c2f8e723cc02899120cd67c40e29d51e1d282326ee57afce8d659e17dd6aaf"
+    },
+    {
+      "file": "fry_take_my_money.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/fry_take_my_money.webp",
+      "original": "staging/emoji-enhancements/originals/fry_take_my_money.webp",
+      "originalSha256": "0f2c5455d460784361629927943d60e8216236048e7915ad1ca7d6307a80d58b",
+      "approvedSha256": "35db051282b239ece9e47c125aeb7702003fae2a4066af69428460b5a9093f30"
+    },
+    {
+      "file": "fry.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/fry.webp",
+      "original": "staging/emoji-enhancements/originals/fry.webp",
+      "originalSha256": "e44855587803f7f4f7f55876668c0548cc0e7c0d32d2014f48fafa71f051d595",
+      "approvedSha256": "7bb764dd19afc110f90deba6b341f9b6976819e790582f88a2fd292e3ef13990"
+    },
+    {
+      "file": "golden_turd.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/golden_turd.webp",
+      "original": "staging/emoji-enhancements/originals/golden_turd.webp",
+      "originalSha256": "e7f3be71d24d95a8f9d8145a4a517c9235ccd7891e226093e9621f1faff956b0",
+      "approvedSha256": "46e3e6d484ca5ba8aa9822c192a061612820e7f0bd257bdb60dd904ed0103eb9"
+    },
+    {
+      "file": "hai-guys-cat.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/hai-guys-cat.webp",
+      "original": "staging/emoji-enhancements/originals/hai-guys-cat.webp",
+      "originalSha256": "d1e48b512422a82130f3f3c4455cbdadb3d4f0b2d2a856e33e4682edaecee579",
+      "approvedSha256": "2484d8ac09ae920eefce71399d607fa928fbb6ccb5377b35db95ce0870f6afb4"
+    },
+    {
+      "file": "happycat.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/happycat.webp",
+      "original": "staging/emoji-enhancements/originals/happycat.webp",
+      "originalSha256": "92dd9c99149d23ffb5caab045666035e47bbb6afebf184e0273bdfb9762ec545",
+      "approvedSha256": "ac61f41bb0171df110940ecb313a12a9537a215446584fa823f7973cee4a2257"
+    },
+    {
+      "file": "heart-mew-cat.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/heart-mew-cat.webp",
+      "original": "staging/emoji-enhancements/originals/heart-mew-cat.webp",
+      "originalSha256": "0e0120aa3dcf1db766a2ccb089230a1147e5080b6193036768f1c33135577132",
+      "approvedSha256": "56e58fd81dc9c8d3e3ed95b605bd5f30dee555e600ab85f80237fa810018fb07"
+    },
+    {
+      "file": "heycat.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/heycat.webp",
+      "original": "staging/emoji-enhancements/originals/heycat.webp",
+      "originalSha256": "05524f56cb2eca9529ffbdae48f394bacba5670d253e6d476845a327eb28b8f7",
+      "approvedSha256": "ba574c521f154504b7b49e2e5a1a411a30cae3e84ca81967bdf084edd7c3fd09"
+    },
+    {
+      "file": "i_have_no_idea_what_im_doing.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/i_have_no_idea_what_im_doing.webp",
+      "original": "staging/emoji-enhancements/originals/i_have_no_idea_what_im_doing.webp",
+      "originalSha256": "db7ded1679225ad32841967c975de4a0e57a30106df1b66e3f04aa971a9670cc",
+      "approvedSha256": "cb81793aada50d48284154f679f0641598567c6cc1f36cbb4e439ff3dee3f448"
+    },
+    {
+      "file": "lets-fucking-go.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/lets-fucking-go.webp",
+      "original": "staging/emoji-enhancements/originals/lets-fucking-go.webp",
+      "originalSha256": "1c63f39067cc028a8c01ac0fe3342aede1106cbd25b10ac8ecb4473b73cc7cae",
+      "approvedSha256": "62eb5a21dcb7cc749825daa1676b3bd243c16ec2b1f3b2548d85e21aa79881a6"
+    },
+    {
+      "file": "meow_ai.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_ai.webp",
+      "original": "staging/emoji-enhancements/originals/meow_ai.webp",
+      "originalSha256": "bd5275fbdcaeb66a78511ac9a21af154e4304cd9493e5141cc0a6f0bd017c835",
+      "approvedSha256": "b3fafbdbd17e19586b995a50d80ff0718d375523f3f50805178ca1b66edb8bd9"
+    },
+    {
+      "file": "meow_alien.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_alien.webp",
+      "original": "staging/emoji-enhancements/originals/meow_alien.webp",
+      "originalSha256": "cbaab85f9cbb0d7a1ffc3fe303ef7afa64bba1846678e0f38a130b9c90944482",
+      "approvedSha256": "0d0594639a8be4efea83a5ca2ef6c3e2f408bb7d9e3acf5589534c7528aeab13"
+    },
+    {
+      "file": "meow_angel.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_angel.webp",
+      "original": "staging/emoji-enhancements/originals/meow_angel.webp",
+      "originalSha256": "53858ebce5b0a0a09b4904c18d483a4c519518f0825762d85fb5004d0fbb360a",
+      "approvedSha256": "ef55685c63dd8b05f79fdadbaa5842adbfd7d0d9db9de7024ee2639e5aa69c33"
+    },
+    {
+      "file": "meow_angry_tableflip.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_angry_tableflip.webp",
+      "original": "staging/emoji-enhancements/originals/meow_angry_tableflip.webp",
+      "originalSha256": "c20703501fe5080907fef5ec45b5003e74027286cf6600d6c716b9cee6a57973",
+      "approvedSha256": "649873ee1287a0f661cae92b6c8c3d62c0ea4748d6f76677b13864310eb34453"
+    },
+    {
+      "file": "meow_angry.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_angry.webp",
+      "original": "staging/emoji-enhancements/originals/meow_angry.webp",
+      "originalSha256": "085726aa0e4c63288779bbcbca89c582970921fbfbff072c0f2f76e65c45f653",
+      "approvedSha256": "518d82df0dd3455c44e0e13435ec06c751b730813bea3c479e4144bdb21c7a6e"
+    },
+    {
+      "file": "meow_angrypats.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_angrypats.webp",
+      "original": "staging/emoji-enhancements/originals/meow_angrypats.webp",
+      "originalSha256": "ca104c048ed2f68467f5e8b2a95a912038ac0172d327ac68cfa94eef367fb222",
+      "approvedSha256": "d90bd4f8e13837dac636d63c15e37d625993506b182a7ef7efed1147a1000d9e"
+    },
+    {
+      "file": "meow_anime.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_anime.webp",
+      "original": "staging/emoji-enhancements/originals/meow_anime.webp",
+      "originalSha256": "a4676b35e384531a226bf4de540a3eb90594a9d286058efe3f8cf97ebb20665b",
+      "approvedSha256": "cad8ffa868549cb515b780349b32b8f9e5562461e2ae383b0697a031f3c56e61"
+    },
+    {
+      "file": "meow_artist.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_artist.webp",
+      "original": "staging/emoji-enhancements/originals/meow_artist.webp",
+      "originalSha256": "cd0636fd26e2cd0ba449ddffcb05c3b512b0b5138ffecd619e2ba04422c88135",
+      "approvedSha256": "c3ab370ace99b342e7e0162d639d208e728328dd30d7c048b3a03fa8fe06afa5"
+    },
+    {
+      "file": "meow_autism.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_autism.webp",
+      "original": "staging/emoji-enhancements/originals/meow_autism.webp",
+      "originalSha256": "4fb2757eeb23c47956f6a2cfb1de6bbea3bd0b6befd23b319e9cd9e9263b83b2",
+      "approvedSha256": "4b26aa8ea0a012cca78a470725b480d47268808f8e18d55fe9efd60358b4ac57"
+    },
+    {
+      "file": "meow_awauu.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_awauu.webp",
+      "original": "staging/emoji-enhancements/originals/meow_awauu.webp",
+      "originalSha256": "8078e65fbdbf26aa3a0a51a9c047938b444222cd0dd7db5124e4d849f014044a",
+      "approvedSha256": "727cb1dec6faa0474eb97dabeac9fe27e8d7bc4e3f5e9886c5abc40887d4ad03"
+    },
+    {
+      "file": "meow_aww.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_aww.webp",
+      "original": "staging/emoji-enhancements/originals/meow_aww.webp",
+      "originalSha256": "d018b1d522bcca248ceb0fd80265fda9df005460c2aad44a004f209f3f8245f7",
+      "approvedSha256": "e11034e01224305a4768cb5809725c07c334c7ad458d8102dc036cce0be51299"
+    },
+    {
+      "file": "meow_baguette_hero.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_baguette_hero.webp",
+      "original": "staging/emoji-enhancements/originals/meow_baguette_hero.webp",
+      "originalSha256": "40844b03735c44bd5fda66702f023af89178d3f4faa28d5d61ea7e576c1fd3fc",
+      "approvedSha256": "fc8bc1db8dfcf0d07461a88bd4b5030ae69096337a6a8d88918ba97f23cb61ff"
+    },
+    {
+      "file": "meow_bg.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_bg.webp",
+      "original": "staging/emoji-enhancements/originals/meow_bg.webp",
+      "originalSha256": "18a1d42b2522b3b5eb1ccf13435e369b1e423e32f4e4d88e30782dafb089a243",
+      "approvedSha256": "6c76d7eef6e4e9c011b7e0a08318599ca14fc8a4f166fdb500bfb73ea7c6ac24"
+    },
+    {
+      "file": "meow_bigsob_cry.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_bigsob_cry.webp",
+      "original": "staging/emoji-enhancements/originals/meow_bigsob_cry.webp",
+      "originalSha256": "ddec002e472ac1b1365d9809fc7901688d8f181d18941b488c1c19a8c0346b13",
+      "approvedSha256": "571ea2a900071a734cfece4136ffd263786e2e1426256667a6a6473e383ccd2d"
+    },
+    {
+      "file": "meow_birthday.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_birthday.webp",
+      "original": "staging/emoji-enhancements/originals/meow_birthday.webp",
+      "originalSha256": "14655e412d0f30bc980664bd9161b3ba5c77dc0dc7644891ead7d17ac7748965",
+      "approvedSha256": "ed620e009ac707b4416a0904ebdc08b66aa10fded30cf86b5cda80ac03da034a"
+    },
+    {
+      "file": "meow_black_cat.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_black_cat.webp",
+      "original": "staging/emoji-enhancements/originals/meow_black_cat.webp",
+      "originalSha256": "1abec4815a90294c99f602f1fb60bd3a5e0d66ce3f76b3c9bbe7e5f3d473ef05",
+      "approvedSha256": "bc7a529886a1e4bdb1029c1961fa7804d1b6f27669aa16160d706ed12d5eb6fc"
+    },
+    {
+      "file": "meow_boat-captain.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_boat-captain.webp",
+      "original": "staging/emoji-enhancements/originals/meow_boat-captain.webp",
+      "originalSha256": "c8e18e1dcffd257ef93b9a87ccde5d00515498609631170d1db8f896e77a4a32",
+      "approvedSha256": "829796bf43ffd5e0043a8505cd38f36c93c62dd76baa4fdc820412538ce4cf09"
+    },
+    {
+      "file": "meow_bongo.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_bongo.webp",
+      "original": "staging/emoji-enhancements/originals/meow_bongo.webp",
+      "originalSha256": "faf9614933e074bf7a727c93dc9c698764f54a0555dcfc80b257202494abea58",
+      "approvedSha256": "bd8f467d77f9a2773fa644a3c3dd54547b4b6d0a4abc4d80cb63b9ec1adb0132"
+    },
+    {
+      "file": "meow_boop.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_boop.webp",
+      "original": "staging/emoji-enhancements/originals/meow_boop.webp",
+      "originalSha256": "84e5a40e1ad8584d01de92646237786a1e4b1b7f5267e257bff9659efb48eeda",
+      "approvedSha256": "b02eedacaf36f3d81ee50ac7736070a43eea6ef9421d9c4e4d832ac59beb0e86"
+    },
+    {
+      "file": "meow_box.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_box.webp",
+      "original": "staging/emoji-enhancements/originals/meow_box.webp",
+      "originalSha256": "cb910a11cb98792575c90b016299d540fa0cf2ecc5beb50b069c2cab8a77902c",
+      "approvedSha256": "a588c0ec00a12a9b9c9ddd766f99e19059d83bd4ebfdbde618d8b89a2b212af0"
+    },
+    {
+      "file": "meow_broken_heart.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_broken_heart.webp",
+      "original": "staging/emoji-enhancements/originals/meow_broken_heart.webp",
+      "originalSha256": "11a2b8e6bde5de6dc94cac14a6e49639ad0a63e6ddcf555485898a5fc5056af9",
+      "approvedSha256": "d761399198930dcc665a74a8f8fe4eefc18d94a62c269584e2ca2a14aff88789"
+    },
+    {
+      "file": "meow_brokenheart.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_brokenheart.webp",
+      "original": "staging/emoji-enhancements/originals/meow_brokenheart.webp",
+      "originalSha256": "c03b75dd3c4d5dbca20d48d0dcf6337d43caa656c2f25ac7a1600b62bda84a0c",
+      "approvedSha256": "79ba8ec0bde461d234600122e33e05efceceb3dd6af80e1b4bca0052278bdbe5"
+    },
+    {
+      "file": "meow_caged.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_caged.webp",
+      "original": "staging/emoji-enhancements/originals/meow_caged.webp",
+      "originalSha256": "605a393d8bf569ef93de63de1536de9ba844d1a18bf5b2248d73db36e488820b",
+      "approvedSha256": "f0899ed4f1210044b412f08e0ebb461fcef895124b3937ec82ca2027954e5af0"
+    },
+    {
+      "file": "meow_candycanenom.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_candycanenom.webp",
+      "original": "staging/emoji-enhancements/originals/meow_candycanenom.webp",
+      "originalSha256": "ac3d8189c58580c3e06758c0c0070d7c1f56d0d517ae4e7d4803223156292b18",
+      "approvedSha256": "243eddf559495f285de9578fddb72bbb139962beb7cd579c3df752945974ad31"
+    },
+    {
+      "file": "meow_catdoggosnuggle.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_catdoggosnuggle.webp",
+      "original": "staging/emoji-enhancements/originals/meow_catdoggosnuggle.webp",
+      "originalSha256": "142e7892cc8b10aef124a226ad32d59d883771c7b6d0e3c944f713862deaf2e1",
+      "approvedSha256": "24c119cde534578f3b39c6679aa2db57376bad2fe57d94a0f902eac41e77f33a"
+    },
+    {
+      "file": "meow_catflip.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_catflip.webp",
+      "original": "staging/emoji-enhancements/originals/meow_catflip.webp",
+      "originalSha256": "7083eaeb595e9498fbb8e1b1debe2088ad8f9f40e53d8e3cfd999ec450f85258",
+      "approvedSha256": "1c7aec8b6bde863d3f50f171eae4075832be90417c0504dab7ed112fc532fb4a"
+    },
+    {
+      "file": "meow_coffee_sip.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_coffee_sip.webp",
+      "original": "staging/emoji-enhancements/originals/meow_coffee_sip.webp",
+      "originalSha256": "6567c9fc329d521af47127fbcd3a1631e3247fea741479c87f7265ae8fc139ea",
+      "approvedSha256": "7c51a131946dd9a53b551098f0e3ad8eca5162afaf2cf380b0ee093c4b796d63"
+    },
+    {
+      "file": "meow_coffee.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_coffee.webp",
+      "original": "staging/emoji-enhancements/originals/meow_coffee.webp",
+      "originalSha256": "f632acd1e608f63decbc3e0c09efd0bf73bf7db7e583e2a2d42c815292dd8e76",
+      "approvedSha256": "6b1f7f0b96dd37e9005946afb8f8d99b3229d4eca4c095f8899850668987e1a7"
+    },
+    {
+      "file": "meow_cold.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_cold.webp",
+      "original": "staging/emoji-enhancements/originals/meow_cold.webp",
+      "originalSha256": "612c50d0b3f3416d0c4881da4b826d10e26365c96b4841c7142e3566ef7dd175",
+      "approvedSha256": "30654d54136a55c935a30830424347be3d1db0aa440b783a6cb48a56b868e3d6"
+    },
+    {
+      "file": "meow_comfy.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_comfy.webp",
+      "original": "staging/emoji-enhancements/originals/meow_comfy.webp",
+      "originalSha256": "9222497006029cad7e9c3da161e932335151778647c7034c09cafa766cfa0059",
+      "approvedSha256": "754c7002f14468090ad41506aa85acf3dadf907c7c3694219db0288343fe5224"
+    },
+    {
+      "file": "meow_comfyangry.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_comfyangry.webp",
+      "original": "staging/emoji-enhancements/originals/meow_comfyangry.webp",
+      "originalSha256": "88e629173c72a630cba5a0aef60626c580db78465c60875a809fd43a95288625",
+      "approvedSha256": "188c2cb9b48ef9c0049eb049939b005bf68f1869417bc5db7635e6ac818e167a"
+    },
+    {
+      "file": "meow_comfyaww.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_comfyaww.webp",
+      "original": "staging/emoji-enhancements/originals/meow_comfyaww.webp",
+      "originalSha256": "391329d913bd4d6a85aed797ca0262fc1401b2bc2a0be12b2cdf1aa3a905bc9e",
+      "approvedSha256": "f6fa3007d8f670ca09e9f5982b246b03d2d6e56311233cc007cb86ba9d260069"
+    },
+    {
+      "file": "meow_comfywhatisthis.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_comfywhatisthis.webp",
+      "original": "staging/emoji-enhancements/originals/meow_comfywhatisthis.webp",
+      "originalSha256": "6a0f889b6518cdbf2de7671558307efeb512bf8243afd4df8fa65bde36a456b3",
+      "approvedSha256": "82412899fc318d58b19011cd2522b23d6b1fc33c95bc22a55e9bd2309f2b9501"
+    },
+    {
+      "file": "meow_cosmic.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_cosmic.webp",
+      "original": "staging/emoji-enhancements/originals/meow_cosmic.webp",
+      "originalSha256": "a12d0937053789bee3c958b70e9b3cf9c3ce3feb96e68b53b407c10a35092d13",
+      "approvedSha256": "48b01af6ade4399bfa1c91e17c7ddfbe7fd678fc6461d1ba0671e1c6c9a2226b"
+    },
+    {
+      "file": "meow_cowboy_smile.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_cowboy_smile.webp",
+      "original": "staging/emoji-enhancements/originals/meow_cowboy_smile.webp",
+      "originalSha256": "c119278db4c1c7e03e607ad0c1db6194f64bdcb9519f01006d8df4a7c6da5f65",
+      "approvedSha256": "efd75b02e42b89d0045d6b8fc0da51aa1a5e86c6218f3a590af03256fb0ae2e1"
+    },
+    {
+      "file": "meow_cry_laugh.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_cry_laugh.webp",
+      "original": "staging/emoji-enhancements/originals/meow_cry_laugh.webp",
+      "originalSha256": "e01645fb9dee1c59a117420d8df7a3980c95aa872c3c1f12539c684e4bc8685a",
+      "approvedSha256": "49f6b141f424274b7f881a87231928ba135698cae0418a7e78580ac943bec2cb"
+    },
+    {
+      "file": "meow_cry.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_cry.webp",
+      "original": "staging/emoji-enhancements/originals/meow_cry.webp",
+      "originalSha256": "70d7fba71ae51c31cdc430c54837a6fcacbbbb66a4a679104e3a89090da9d138",
+      "approvedSha256": "a4a871dcd201ff3945365b3cfafc627a6fe4ba43740d9707ebfeaacfbf32b701"
+    },
+    {
+      "file": "meow_deficit.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_deficit.webp",
+      "original": "staging/emoji-enhancements/originals/meow_deficit.webp",
+      "originalSha256": "b50f64002bbb2e58d65d544008c838b83546fe2d991c669056ac0159e89915ff",
+      "approvedSha256": "6173bd3a827f560e8eafeb167ae74d8c71fee7cf079a23901f7fc15b491ac3d9"
+    },
+    {
+      "file": "meow_devil.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_devil.webp",
+      "original": "staging/emoji-enhancements/originals/meow_devil.webp",
+      "originalSha256": "a66a8bbcdb9ad356d9cc40a1d7c81c8abf1af38d3aacf8d26751ab90d06b8968",
+      "approvedSha256": "0a718df5ec3dc435ba848583f73b7f7c375d6fbb70085b0e14abda2624ed0a1f"
+    },
+    {
+      "file": "meow_disputed.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_disputed.webp",
+      "original": "staging/emoji-enhancements/originals/meow_disputed.webp",
+      "originalSha256": "cfc5ab5137a6e8c70f2553a0df62d33007b3c8c5a2cf1ae2df003d360015af5b",
+      "approvedSha256": "3247e5e180f58e189a47917fb8ed08ab5abe35d028814b51ee6ed9073c3c4ea5"
+    },
+    {
+      "file": "meow_dizzy_puffy.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_dizzy_puffy.webp",
+      "original": "staging/emoji-enhancements/originals/meow_dizzy_puffy.webp",
+      "originalSha256": "d3e4f4b4125e0c16844b8c31dac7e06b2249ab7f0ddd1bca6b05a68eac9bdaf8",
+      "approvedSha256": "665ec32b7e508ad72de65d82229551599c7fc22a9ee5d2f26d5b20da0754c22a"
+    },
+    {
+      "file": "meow_dj.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_dj.webp",
+      "original": "staging/emoji-enhancements/originals/meow_dj.webp",
+      "originalSha256": "5afc2cf5f8f1b1379ee7f7d9accc24fc1730d6d8486442eb0c39e9a8d3662b74",
+      "approvedSha256": "30db367d9160ed88d75f0d421e2161f4fff5815a8b40e17f319b3777a921b5c9"
+    },
+    {
+      "file": "meow_dunno.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_dunno.webp",
+      "original": "staging/emoji-enhancements/originals/meow_dunno.webp",
+      "originalSha256": "063b2246047acaf7824c5c5e6765fab1d23e1816b8b673173aecfac9d8ef1fe0",
+      "approvedSha256": "4c920b992d1e60bae36c03e4204c6e34bfb2b6aadfce842b8b84b947f1861ab8"
+    },
+    {
+      "file": "meow_elf.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_elf.webp",
+      "original": "staging/emoji-enhancements/originals/meow_elf.webp",
+      "originalSha256": "57adb4f96b298657308b51cea12caf2f496755158ee4f0ef27b684f89cb4c806",
+      "approvedSha256": "57d7f549271dff82f2e36540097e1d19666c830b167abb27e12da464e9b78331"
+    },
+    {
+      "file": "meow_embarassed_covering_face.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_embarassed_covering_face.webp",
+      "original": "staging/emoji-enhancements/originals/meow_embarassed_covering_face.webp",
+      "originalSha256": "b3aee2db34dc4d9719b387145ea4f5b1197f0d8e54df1f2f2fbfcf051d9e217b",
+      "approvedSha256": "6a142134d06bc9c1140b43784ada6e4736678a216c57916bb3048efedd6d6b78"
+    },
+    {
+      "file": "meow_evilknife.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_evilknife.webp",
+      "original": "staging/emoji-enhancements/originals/meow_evilknife.webp",
+      "originalSha256": "654accc1b94c96a8cba87a34195c1b7e7021c519fe3eb6c6589e6afb1156f91f",
+      "approvedSha256": "51263b35e8100f03aba837e1846591f9298eb0228dafd16164574417dd465593"
+    },
+    {
+      "file": "meow_eyes-owo.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_eyes-owo.webp",
+      "original": "staging/emoji-enhancements/originals/meow_eyes-owo.webp",
+      "originalSha256": "f49000a5f3a71c2bb1849481d9c09866272262318a986254d94fc0ff1d25a97f",
+      "approvedSha256": "9272203283f9f0c3662f9f9a13cb416cfe063aa7aabe862d35a1726fc3208709"
+    },
+    {
+      "file": "meow_eyes.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_eyes.webp",
+      "original": "staging/emoji-enhancements/originals/meow_eyes.webp",
+      "originalSha256": "8695be134c17cd91c98f33799175ed6d6d6a05f80e3ac38f226f37aa214106a9",
+      "approvedSha256": "7f1d11d7d146ad1c1360d0c7f830be39eb331196cd65f712289ffe5dbe97541e"
+    },
+    {
+      "file": "meow_ez.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_ez.webp",
+      "original": "staging/emoji-enhancements/originals/meow_ez.webp",
+      "originalSha256": "a8a1331e5ae37a4f30ef00af117205879424a54aa6c9303c4ea2d3727a82e805",
+      "approvedSha256": "db8aaf87a170516b6e139f748719cf1c77663f3e5647b02b295bd459dc3d6fb6"
+    },
+    {
+      "file": "meow_facepalm.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_facepalm.webp",
+      "original": "staging/emoji-enhancements/originals/meow_facepalm.webp",
+      "originalSha256": "fb5b8281d9b26690ecf4ccbba3b866b0d9a8364fe4937feb116e6d25d49f7e3b",
+      "approvedSha256": "feb5453be1963eea2f8938eeb78271ae3f9733b2cf2f9e083ca7d522bd1fb8fa"
+    },
+    {
+      "file": "meow_fear.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_fear.webp",
+      "original": "staging/emoji-enhancements/originals/meow_fear.webp",
+      "originalSha256": "880315f71515dd820fcefb668e984a2659129b71d6cb8ad9585dd7f120cd5fb3",
+      "approvedSha256": "77b5586b84be7bea112f4c0c54862f3f82e0ee345ed2cdeaa861b584e474b69f"
+    },
+    {
+      "file": "meow_fearful.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_fearful.webp",
+      "original": "staging/emoji-enhancements/originals/meow_fearful.webp",
+      "originalSha256": "754da1ba30051bbd93304d803a93fc262f3e4fdcabf74265da35ab98da5a2eee",
+      "approvedSha256": "95859caeeb4a087b4c5ada4a502635a972079f46ba3db14ac6e1e981080b81b4"
+    },
+    {
+      "file": "meow_fingerguns.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_fingerguns.webp",
+      "original": "staging/emoji-enhancements/originals/meow_fingerguns.webp",
+      "originalSha256": "d7f306b6cc7b65a00f46c2f3dc53c55d991c5ebd17d70f12ca9c9e665ee3cd59",
+      "approvedSha256": "fe86a6bce7a9a15d0905bb6a74ef9c90575c3eb874b70dca22213ae813246a4b"
+    },
+    {
+      "file": "meow_fingerguns2.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_fingerguns2.webp",
+      "original": "staging/emoji-enhancements/originals/meow_fingerguns2.webp",
+      "originalSha256": "ac5742630aec4b6bdb04d6c68ad27a8308c677e576d34f5b40d3fecd83ad064d",
+      "approvedSha256": "c73680602d6afdb88878e2b5d668fcf0be32545d0e1cbede55177eff4613abcf"
+    },
+    {
+      "file": "meow_fingergunsrreverse.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_fingergunsrreverse.webp",
+      "original": "staging/emoji-enhancements/originals/meow_fingergunsrreverse.webp",
+      "originalSha256": "0666fc07b66284aa0bd1c9c43dd087f682a2efbee8e37eebefcf292202dcf5aa",
+      "approvedSha256": "d35243111b4aa8e11c4a55844fc385389ba375bec1de263749638b087b42a396"
+    },
+    {
+      "file": "meow_firefighter.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_firefighter.webp",
+      "original": "staging/emoji-enhancements/originals/meow_firefighter.webp",
+      "originalSha256": "99a28b3138d7d80ddb464be950d0c9d5be0b0d0fc2e9d0911ee10c59fca7927b",
+      "approvedSha256": "3cb9daf1c787246c8bdfb59ad5581689f6425806ae856b7b0d3f80a7a553a5fe"
+    },
+    {
+      "file": "meow_fistbumpleft.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_fistbumpleft.webp",
+      "original": "staging/emoji-enhancements/originals/meow_fistbumpleft.webp",
+      "originalSha256": "189d783f285c3e6166316f86ec968427ae7bdacbfdcf9516514573436fe125c4",
+      "approvedSha256": "872036acac559d43d93530019284f2ef6ca03f0f144891f91dc12ba35b5a62af"
+    },
+    {
+      "file": "meow_fistbumpright.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_fistbumpright.webp",
+      "original": "staging/emoji-enhancements/originals/meow_fistbumpright.webp",
+      "originalSha256": "4f03722a98cfb810216c8a69fff9eee498308e0372c8ea92b29a967c2ae62479",
+      "approvedSha256": "d2e3e76020511c2f6781a7493c6f7e2d510a4dd2dd22157667000b97fec1302e"
+    },
+    {
+      "file": "meow_floppy.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_floppy.webp",
+      "original": "staging/emoji-enhancements/originals/meow_floppy.webp",
+      "originalSha256": "01684fe285d048e5c66732446b16fb7a1629aa744935613ad7714767de514a35",
+      "approvedSha256": "5d47cdebf3b8853f92bdad14fa36bcdc440aaf6dd975579ae52fe95feff90964"
+    },
+    {
+      "file": "meow_frowningbig.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_frowningbig.webp",
+      "original": "staging/emoji-enhancements/originals/meow_frowningbig.webp",
+      "originalSha256": "1604232ff834c475bbf29c61e8ff056e77d77e9d5cb3a3cd98e313881fd3b013",
+      "approvedSha256": "cc52ede075fbcfb6e6547d105e5767f9ecee75ce9a6fdebe0e8152dfa9a5e71d"
+    },
+    {
+      "file": "meow_fux.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_fux.webp",
+      "original": "staging/emoji-enhancements/originals/meow_fux.webp",
+      "originalSha256": "7e8bfc8008e54f4153705a574e67bd322ddf266344ca829d1e5e1df8dbd83d45",
+      "approvedSha256": "49f9df90c0649d2f199e7045caa545b2ca0f548f2824b823532d978fce49dc6e"
+    },
+    {
+      "file": "meow_fuxpuffy.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_fuxpuffy.webp",
+      "original": "staging/emoji-enhancements/originals/meow_fuxpuffy.webp",
+      "originalSha256": "29c14091c4d99033612d0290986c33465667ae6ecc8a7e76db4a6b05134cf942",
+      "approvedSha256": "6dd280d2b3d363ba7f9e0e8d11ea95e7c01620ce97e89471f34abfc5153652b1"
+    },
+    {
+      "file": "meow_giggle.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_giggle.webp",
+      "original": "staging/emoji-enhancements/originals/meow_giggle.webp",
+      "originalSha256": "f6cb2fe3d3d64665764b2ca79f81a92000c1fa2796e72afe0e9f3558a0f69581",
+      "approvedSha256": "b37036bfe2a7df8a752242363a05665e821f9098cc86325aaec5981017d312e7"
+    },
+    {
+      "file": "meow_glare-sad.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_glare-sad.webp",
+      "original": "staging/emoji-enhancements/originals/meow_glare-sad.webp",
+      "originalSha256": "e177ac9d6060473ded7236fec3f0cb7b2aab138bfc36a07d1551ede84970ccbb",
+      "approvedSha256": "d50dd77e0f47ef2a80570061b2bc3460e4befb1d927157da55a8943ad71fd397"
+    },
+    {
+      "file": "meow_glare2.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_glare2.webp",
+      "original": "staging/emoji-enhancements/originals/meow_glare2.webp",
+      "originalSha256": "45e83820b0db677c9a575b229b8b9681ecac9e5d703b1232089e5f8fdc4e87d4",
+      "approvedSha256": "4b46aa9f9f2c4f9d150a904d61ca6732947ee925fdb70bdd70c46cfb18931302"
+    },
+    {
+      "file": "meow_googly-bongo.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_googly-bongo.webp",
+      "original": "staging/emoji-enhancements/originals/meow_googly-bongo.webp",
+      "originalSha256": "9d7299ce71573342ad941d2656f70fdd43f21283394136a221a6b29b7e82c64b",
+      "approvedSha256": "6cf5da8464acac189a5c73785e6825aaaeee720367a9bd56b4465e0d87639159"
+    },
+    {
+      "file": "meow_googly.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_googly.webp",
+      "original": "staging/emoji-enhancements/originals/meow_googly.webp",
+      "originalSha256": "c29438b59c46dea2d9217192a54c9d9de6229ba3655dd3d46fe399920c4287f2",
+      "approvedSha256": "078e86a50a0c8b2fea3eb6b757fea101c720ac9dde966ebade8ae897efbaedd8"
+    },
+    {
+      "file": "meow_grimace.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_grimace.webp",
+      "original": "staging/emoji-enhancements/originals/meow_grimace.webp",
+      "originalSha256": "cc2f69640b5cae4b61aabbbd2416174abb32723331268b6615947308081541a1",
+      "approvedSha256": "3a2fb17b4a159e62c7f99eebb28223e16dc79f823bf227cfbf21d61cd263d910"
+    },
+    {
+      "file": "meow_grimace2.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_grimace2.webp",
+      "original": "staging/emoji-enhancements/originals/meow_grimace2.webp",
+      "originalSha256": "344472c97411bcba44473e1c948d91536c601539d4141026f93e833cb90f9199",
+      "approvedSha256": "dfb47238c8881273eb4e9fcb5d5043dabdf427038eda6387ead94240e76dda7f"
+    },
+    {
+      "file": "meow_grumpy_coffee.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_grumpy_coffee.webp",
+      "original": "staging/emoji-enhancements/originals/meow_grumpy_coffee.webp",
+      "originalSha256": "f6b265138b78a224d99766fa3d9de080a5fc9a22f64c02bdccb00fd9d7c7d152",
+      "approvedSha256": "763dac3833d8d31e5d877df390a18099287ff67f44b09eadac0739125579ce6c"
+    },
+    {
+      "file": "meow_grumpy.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_grumpy.webp",
+      "original": "staging/emoji-enhancements/originals/meow_grumpy.webp",
+      "originalSha256": "492232dd16c8fb54c181cf4564af49134981314111e5860cd5b2aa27a4ebbe29",
+      "approvedSha256": "06096e63d66c523d66e19ddecf7b2a756ef53b40afd6a448c0f8b38e813c7a71"
+    },
+    {
+      "file": "meow_gummyattention.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_gummyattention.webp",
+      "original": "staging/emoji-enhancements/originals/meow_gummyattention.webp",
+      "originalSha256": "2a075aa14a87418eb865b715af24417f4965897a9a76ed60ec4c9d7b4baf1344",
+      "approvedSha256": "40b6f3b604209d2db1158cef70e888c494a44d4b424470d8c0c60fa858e0b7d7"
+    },
+    {
+      "file": "meow_hammer.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_hammer.webp",
+      "original": "staging/emoji-enhancements/originals/meow_hammer.webp",
+      "originalSha256": "5762ebf7a927903ab66dc17196ca5e4b187ac20297111e1ef0ac19244f48dd0d",
+      "approvedSha256": "116fea1900502eb5760a9a981b0c78326a143ee781fc219e17ee592212a16907"
+    },
+    {
+      "file": "meow_headache.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_headache.webp",
+      "original": "staging/emoji-enhancements/originals/meow_headache.webp",
+      "originalSha256": "4054cc099458ee198934b2effa162c80ed208c772e949e753634e28fc32d13cd",
+      "approvedSha256": "94fd0523ddfe034176c12488d3ef1b7cab59e0b661ac7645c32e86e15ba46a19"
+    },
+    {
+      "file": "meow_headphones.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_headphones.webp",
+      "original": "staging/emoji-enhancements/originals/meow_headphones.webp",
+      "originalSha256": "2918229d6a7b4cdc038da8642d9640256d2816815b79ceb8b72e82d68e901741",
+      "approvedSha256": "bcc2c043ce84b4d226cc1164ba2bc0dabd5d5b61e2356a5f2480ee387d21ae61"
+    },
+    {
+      "file": "meow_heart.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_heart.webp",
+      "original": "staging/emoji-enhancements/originals/meow_heart.webp",
+      "originalSha256": "29b17de2f0f298ae38baf458737e9c4dafbe872bdf4d1cb7710bd98735325f3b",
+      "approvedSha256": "cceba68643085032ae49d851129233a54b5193217b047fe74177ec7213bdce9f"
+    },
+    {
+      "file": "meow_hearts.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_hearts.webp",
+      "original": "staging/emoji-enhancements/originals/meow_hearts.webp",
+      "originalSha256": "79b8420b4e988bad41f9209e485a55d57b2c92f5523d6aac46ef25158ae60391",
+      "approvedSha256": "0ad45b5e62c7207af72a2a194a2b338174e08c34067549e5fbc0a9ec7d7ddfe2"
+    },
+    {
+      "file": "meow_helmut.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_helmut.webp",
+      "original": "staging/emoji-enhancements/originals/meow_helmut.webp",
+      "originalSha256": "e5b46cab466dbcff1f1f54807996f6bff2c34d314e481ccd41481033e85e1fb5",
+      "approvedSha256": "d73e05257de69ba40b848b717a4b1bab1491f8612ac4512f52096351d887c54d"
+    },
+    {
+      "file": "meow_highfive_team.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_highfive_team.webp",
+      "original": "staging/emoji-enhancements/originals/meow_highfive_team.webp",
+      "originalSha256": "f96d49a5c3457726755938b6dd6c73f9c8b2ce827d3c4a0304359b49af193998",
+      "approvedSha256": "21d2009309e17e24297f2af297fcc77b65d82f13ba376df0cbfb66ce126a307b"
+    },
+    {
+      "file": "meow_hiss.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_hiss.webp",
+      "original": "staging/emoji-enhancements/originals/meow_hiss.webp",
+      "originalSha256": "c97daa04351b8431c1d5c2111676d9bde4cae0725ca7e7cc245a21721828aeb5",
+      "approvedSha256": "80260d2628039b391987eada5583ad450bb2e3459110629192285c0fbc1e7bc7"
+    },
+    {
+      "file": "meow_hug.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_hug.webp",
+      "original": "staging/emoji-enhancements/originals/meow_hug.webp",
+      "originalSha256": "8a2cc57f883c6db5c73d775ebd7a66f9a30820ec0f37cde5a62ccd53c68883f8",
+      "approvedSha256": "c48fb7ff3885b770ce002b3e55057fb2af9ba7352425c8fec2817e8e659dc6bc"
+    },
+    {
+      "file": "meow_huh.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_huh.webp",
+      "original": "staging/emoji-enhancements/originals/meow_huh.webp",
+      "originalSha256": "cbdaf896cbab84d1823b01d441344eaef07385fca24ccfad51734bc4302bbf11",
+      "approvedSha256": "01becb9b9153398928fae6578e310c05dbae4cb3f619f4a19274d207025432b8"
+    },
+    {
+      "file": "meow_hungry.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_hungry.webp",
+      "original": "staging/emoji-enhancements/originals/meow_hungry.webp",
+      "originalSha256": "4b1afda9123193b2f3024e444b4dfa5fcc56eacc8c637c18bd8092a4d55d02d9",
+      "approvedSha256": "77b77a6e2b798b9dccc68b3e07f3091c2282f20e49efafdc49066f82aedb54a4"
+    },
+    {
+      "file": "meow_hyper.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_hyper.webp",
+      "original": "staging/emoji-enhancements/originals/meow_hyper.webp",
+      "originalSha256": "3b3f431035a897015574b0d777aabe2790091194d643e0d6ed0cb2290d076681",
+      "approvedSha256": "d38bbd34db644cd8d649b93bb4257458e46a462db823ba6cf58709d816765c8a"
+    },
+    {
+      "file": "meow_icecream_yum.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_icecream_yum.webp",
+      "original": "staging/emoji-enhancements/originals/meow_icecream_yum.webp",
+      "originalSha256": "f8c113183c36f611adc4ced81424f330faa599c18a298c40f4dd1b76f27629f9",
+      "approvedSha256": "e9a942c3f76ee18d082e0b7a46e539cd727dbb238f27f3c1741cf558fc04f5b9"
+    },
+    {
+      "file": "meow_icecream.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_icecream.webp",
+      "original": "staging/emoji-enhancements/originals/meow_icecream.webp",
+      "originalSha256": "b8464fee10d588a3b479ac43831ae293d77e4f4aaf30ea46c32d9069a5533dbc",
+      "approvedSha256": "923f7f908bbeb3cc03911611c491fd29ccadaf9197a34ed6d8ceb253cb9b6648"
+    },
+    {
+      "file": "meow_idea.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_idea.webp",
+      "original": "staging/emoji-enhancements/originals/meow_idea.webp",
+      "originalSha256": "76bec594a7b943a8df8e48e8e7f65a323a6e44edbe82ef418d0c4974189f501a",
+      "approvedSha256": "79b236e0548079d2d45f844641dbc960a30552e5a70d19f085b146f6b71bd63c"
+    },
+    {
+      "file": "meow_joy.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_joy.webp",
+      "original": "staging/emoji-enhancements/originals/meow_joy.webp",
+      "originalSha256": "7a0805b1e211a42530a4676fe3664f6eaa52fb98fc48a900ed7f375cc9588704",
+      "approvedSha256": "8ca09b545349ac222b20a5be8f633a32393c4659c2fef6376a6e3f41a877650d"
+    },
+    {
+      "file": "meow_just_right.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_just_right.webp",
+      "original": "staging/emoji-enhancements/originals/meow_just_right.webp",
+      "originalSha256": "3f9229ea581c28c05270b53f93f0c895c47d04d82d10dd365bcc4f5aa6f48eec",
+      "approvedSha256": "a4f74d47e8ed33d15ab2b7563a9079c0c67b348b276fd2a64da6630ed0fa992b"
+    },
+    {
+      "file": "meow_lord.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_lord.webp",
+      "original": "staging/emoji-enhancements/originals/meow_lord.webp",
+      "originalSha256": "94ab9bb2bec86b6ee76771971a1a2c2cf055d9e83ab7b435213e7ff79021c008",
+      "approvedSha256": "12a916d34bb1c98efdb87b4782544780e761e501560e9728b83e5164cdfc804c"
+    },
+    {
+      "file": "meow_mage.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_mage.webp",
+      "original": "staging/emoji-enhancements/originals/meow_mage.webp",
+      "originalSha256": "24465f255a072156898318b7536416705c7467fdc60178a6d7f2f7d90e6508f5",
+      "approvedSha256": "bb35433001f299cb78fdc8e68ce132b670c59484d624b827958e9479adb9e8fb"
+    },
+    {
+      "file": "meow_matcha.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_matcha.webp",
+      "original": "staging/emoji-enhancements/originals/meow_matcha.webp",
+      "originalSha256": "2de410688a037931824f49f4b9fb2442b526fd00ad14dc535fc37fca53465f2a",
+      "approvedSha256": "a3075f1a92db6ac6e9629e69d4d4b74aec8214fd4f58e3b957d5a340a52bf2e0"
+    },
+    {
+      "file": "meow_melt.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_melt.webp",
+      "original": "staging/emoji-enhancements/originals/meow_melt.webp",
+      "originalSha256": "1a0796bb6a25dc9ccd98b04c3f40079b3d0cd290ec03f39bfb3dea03197b1a36",
+      "approvedSha256": "6d027a781a75101b941697c605ca643f1c2d2f0c28630feb826258ab06e1f905"
+    },
+    {
+      "file": "meow_money.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_money.webp",
+      "original": "staging/emoji-enhancements/originals/meow_money.webp",
+      "originalSha256": "e6439b009dbe097d3d867dc773ab7ee7c29ccfa3de5b97b7fb8e5fbf64dc48a6",
+      "approvedSha256": "cb7e4a02b5a489bab586e44b17da733cb94b2c52d801039e8389edff496f5fa7"
+    },
+    {
+      "file": "meow_mustache.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_mustache.webp",
+      "original": "staging/emoji-enhancements/originals/meow_mustache.webp",
+      "originalSha256": "a6ee69b8c990fb75e081ffe488f60f297d8c6298b4edf6bd5ec54742e929d730",
+      "approvedSha256": "2ba1d21abe80c107eb8f1ffaf9d4e4d8b2c6c3b60d580f99b26e7c6186960e9f"
+    },
+    {
+      "file": "meow_nauseated.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_nauseated.webp",
+      "original": "staging/emoji-enhancements/originals/meow_nauseated.webp",
+      "originalSha256": "45b3d65522ff4586673e4e122facf87f8e129d430af95f2b18dcd1cc6eb82477",
+      "approvedSha256": "c4364436d5767ceb54db714eeee73dbed5b5b8cd02f48c92542606b22c35f94f"
+    },
+    {
+      "file": "meow_neon.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_neon.webp",
+      "original": "staging/emoji-enhancements/originals/meow_neon.webp",
+      "originalSha256": "45960f33ac616f3ae1a1cf9d66ede17df01cbed71809b44c1d45e1a9391c274b",
+      "approvedSha256": "b6db5666dc99b0a657477bc2a9ae9d04f583d5db84b8044b9dcc6c575e5688ac"
+    },
+    {
+      "file": "meow_nerd2.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_nerd2.webp",
+      "original": "staging/emoji-enhancements/originals/meow_nerd2.webp",
+      "originalSha256": "dded1cb72abc630c64497b4a1ab9f5414c13f8c4d477682e794ee70b84685329",
+      "approvedSha256": "cdbb7efc4795117aba835f41ff07f9d8a0c9787dff94708822d97b13e5b4ee51"
+    },
+    {
+      "file": "meow_nervoussweat.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_nervoussweat.webp",
+      "original": "staging/emoji-enhancements/originals/meow_nervoussweat.webp",
+      "originalSha256": "39e9b57d372c1cd859091b273e2e2971bdf18bca5e6454bd1663c4214f92a851",
+      "approvedSha256": "497f244ada9cf2cc9b8bb7fc0917b269be43a8ae561687424ac5fec4b577b526"
+    },
+    {
+      "file": "meow_ninja.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_ninja.webp",
+      "original": "staging/emoji-enhancements/originals/meow_ninja.webp",
+      "originalSha256": "f29a28a4a02cdc9e4c5201025eb66f1194552fd91c3d7b473c8fe1f75495c916",
+      "approvedSha256": "a75d7fa548a71b9c50bd2faf1b6a9879b3a9bf882ecfce45ebb0122f0882956d"
+    },
+    {
+      "file": "meow_ninjacaged.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_ninjacaged.webp",
+      "original": "staging/emoji-enhancements/originals/meow_ninjacaged.webp",
+      "originalSha256": "6997739de89f42aeff5a3f8f2a3a4e057f9729c98fed62f950a5d6dc30daf3f0",
+      "approvedSha256": "3d025cec831c9d5366c3cd8e0bbed9bcabaa5918f52063bded6917c4c946c7e6"
+    },
+    {
+      "file": "meow_no_me.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_no_me.webp",
+      "original": "staging/emoji-enhancements/originals/meow_no_me.webp",
+      "originalSha256": "970fe47f9b48f884f71e61f70edeaa4a9ecdab617417c77e05f0570b216d9096",
+      "approvedSha256": "6d35a737ac828b066e8eab171270b9c0d03b6540c553b44e7418cc0df9211f7b"
+    },
+    {
+      "file": "meow_no.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_no.webp",
+      "original": "staging/emoji-enhancements/originals/meow_no.webp",
+      "originalSha256": "ab064faf7da3ca378f9cd5973bd70582bb573cd2d8f2ff0bbbb620f4b4518078",
+      "approvedSha256": "e55f13f906d4829bf9caac8fe27a44e6bb386dbda18e8c1b41ec2f215fb9a709"
+    },
+    {
+      "file": "meow_noplease.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_noplease.webp",
+      "original": "staging/emoji-enhancements/originals/meow_noplease.webp",
+      "originalSha256": "174c3480ee802f255b4f180a590cc77909907977db0202efe2bb85c9204da5ad",
+      "approvedSha256": "80fcc19d25a66994205d5441996067332968f3c37f25c536a510543bd3731f12"
+    },
+    {
+      "file": "meow_notlike.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_notlike.webp",
+      "original": "staging/emoji-enhancements/originals/meow_notlike.webp",
+      "originalSha256": "c8dd6a09c6f7d9a3ddb348e8ce7f19d3f07045315d08bbc3972b523999919425",
+      "approvedSha256": "1b6ad1b8062f242512769c1f770eb840e7d1816e68b5b0c2941f3d658ba116a8"
+    },
+    {
+      "file": "meow_ok_u.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_ok_u.webp",
+      "original": "staging/emoji-enhancements/originals/meow_ok_u.webp",
+      "originalSha256": "883946eb6cec2e104dd1eb8ede55fdc5e3a72f51263a358e1a4c927a71512b60",
+      "approvedSha256": "c3e97fada37a5db39aa22e1a6a93882a280ca9af72ea68bb6a60532ff5e019d0"
+    },
+    {
+      "file": "meow_ok.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_ok.webp",
+      "original": "staging/emoji-enhancements/originals/meow_ok.webp",
+      "originalSha256": "1d618dc01109cf1e27f8e14b164612a525ee44646e1ffa9f2197e438dc46d0c1",
+      "approvedSha256": "b896f2d46058878e6eee731b7a3a7154416bb733fd8c1fa216075f124041bf22"
+    },
+    {
+      "file": "meow_onfire.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_onfire.webp",
+      "original": "staging/emoji-enhancements/originals/meow_onfire.webp",
+      "originalSha256": "005226f3014125828cf0ec1f9043a5aa947691d60fa41021974e337936629002",
+      "approvedSha256": "eb7d00ca7683be5e8db65393ba51a8d88e81178313878493672cda597febc660"
+    },
+    {
+      "file": "meow_outage.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_outage.webp",
+      "original": "staging/emoji-enhancements/originals/meow_outage.webp",
+      "originalSha256": "8478f7a5e6300010b93ef8bd1a379b176f1a9323e3be3f84d961983500d57c8e",
+      "approvedSha256": "48ff29be84c88651e5956a82e9e3c7374af59388ff726b1c0942f6bfb585511d"
+    },
+    {
+      "file": "meow_pat2.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_pat2.webp",
+      "original": "staging/emoji-enhancements/originals/meow_pat2.webp",
+      "originalSha256": "035d417508d74e4fec742eb1213bf2c43915dd41c315c7042cef2e229a931a7e",
+      "approvedSha256": "94605c1fd947ccf9970031b9b0b7459257f8cee38b220c93b5739615bbe8e1c0"
+    },
+    {
+      "file": "meow_paw2.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_paw2.webp",
+      "original": "staging/emoji-enhancements/originals/meow_paw2.webp",
+      "originalSha256": "a6173b690bdf48469db33c5aedab74ca975d6f58c5d78372978f1cbd3cc49c72",
+      "approvedSha256": "133f98bee2d21b1af3bec43ac866e1f0ea32f4e56daf95c2647e2193d6c368b9"
+    },
+    {
+      "file": "meow_peek.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_peek.webp",
+      "original": "staging/emoji-enhancements/originals/meow_peek.webp",
+      "originalSha256": "9876c3275f50e16ff585a33953f8d40278b9c0d86b4c19f240ec9f5c9480d891",
+      "approvedSha256": "1efbc0ac999cb674fd5fb837eb15093af188e8ab9c08067045eb60107d28edfb"
+    },
+    {
+      "file": "meow_peppermint.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_peppermint.webp",
+      "original": "staging/emoji-enhancements/originals/meow_peppermint.webp",
+      "originalSha256": "2d06a05bb4b4221abc3a33caa44cf8d4e2c91a5c10ca56a16609f263d48147e6",
+      "approvedSha256": "5c908ffc09326a7fd6091eddeb9f27bdb97a1a17bc7be95c083caf3813eb0120"
+    },
+    {
+      "file": "meow_perfecto.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_perfecto.webp",
+      "original": "staging/emoji-enhancements/originals/meow_perfecto.webp",
+      "originalSha256": "1b478af86c70bf738152c96bf48a27fb8668ca1bf5e820de60d033593dc3407f",
+      "approvedSha256": "9012d852514ff83fb2da40429ee2ec2a853f237870ff4afb9d24419617da944b"
+    },
+    {
+      "file": "meow_pikachu.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_pikachu.webp",
+      "original": "staging/emoji-enhancements/originals/meow_pikachu.webp",
+      "originalSha256": "d9e1424a2ca2ed1151eb3afb240c1fe170a156e7fa96462afdd8b0385aa5f6f5",
+      "approvedSha256": "5e1dd2d63b56c3169cb6e25ddb07a805b89222a57b53305f36ff64eaca3626bd"
+    },
+    {
+      "file": "meow_pink_hug.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_pink_hug.webp",
+      "original": "staging/emoji-enhancements/originals/meow_pink_hug.webp",
+      "originalSha256": "9a07ddd5efa7a49e69076e8425c69ae753a88409860d26b25897fe9d82d59af5",
+      "approvedSha256": "687398c0a4f9c823b8f8eef49fb2176ac2126e431e956e382a61b6e8056ce93a"
+    },
+    {
+      "file": "meow_pink_surprised.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_pink_surprised.webp",
+      "original": "staging/emoji-enhancements/originals/meow_pink_surprised.webp",
+      "originalSha256": "185716a1d15c3ab880c10e128926ed53b34a0e21e6180d8a2a0dae7380f6c1b6",
+      "approvedSha256": "933e1d7c015197c921b7a9cddf001e60f6159d4b3c0d04a27e5bb0f987875328"
+    },
+    {
+      "file": "meow_pirate.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_pirate.webp",
+      "original": "staging/emoji-enhancements/originals/meow_pirate.webp",
+      "originalSha256": "c24865f2197d7bc5c27f9ed82cfda9c1b3faf0116b12b19ad5a61317ffdcd0a2",
+      "approvedSha256": "eda9861fbbaa17b152b61157b3e09f2814da6764d150942708a7378225310be5"
+    },
+    {
+      "file": "meow_pizza.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_pizza.webp",
+      "original": "staging/emoji-enhancements/originals/meow_pizza.webp",
+      "originalSha256": "19bce62f6517c845e4c64fce07f0d3594dc5f84157c557f1fc125956e49aafa8",
+      "approvedSha256": "01f1a8d3c309d312456f8117b0c989030537d30e7b70284ac28360b8502333ad"
+    },
+    {
+      "file": "meow_popcornsweats.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_popcornsweats.webp",
+      "original": "staging/emoji-enhancements/originals/meow_popcornsweats.webp",
+      "originalSha256": "37fdbfffd455ce75041db91db18c0106890c4cf2cb1bafb6b41294b2f1f9be8e",
+      "approvedSha256": "8c1d4e78946ec10b58d94b7e07c84f62571063a801921d721498deb1e9ca0764"
+    },
+    {
+      "file": "meow_puffy_shy.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_puffy_shy.webp",
+      "original": "staging/emoji-enhancements/originals/meow_puffy_shy.webp",
+      "originalSha256": "db903a2ac204b7b049589073f973a7456ed3efe983231b68dabf172ca947d77d",
+      "approvedSha256": "67af8abe0421493661a563971f8a19d7e601381966b886d64d188d60a1f21f66"
+    },
+    {
+      "file": "meow_puffy-big-eyes.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_puffy-big-eyes.webp",
+      "original": "staging/emoji-enhancements/originals/meow_puffy-big-eyes.webp",
+      "originalSha256": "268b01dbf5091ac8bd1cf1c9cecdd94b8efcaa85a4eb79fdc38bdf1b48377900",
+      "approvedSha256": "d2352c7d4f8467afe9370b90e52a19b8abf252ff2a492b0895c17c88fcb84a7c"
+    },
+    {
+      "file": "meow_puffy-terrified.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_puffy-terrified.webp",
+      "original": "staging/emoji-enhancements/originals/meow_puffy-terrified.webp",
+      "originalSha256": "904788b2f0d1e781437b4f985ce69e4cca2c28ad2944cba5e0a613bf4cc4db58",
+      "approvedSha256": "ac3de07833f88f3fd75fcdfc210b3fef66b34eb0279cfd95c9c440085ba7c4b0"
+    },
+    {
+      "file": "meow_puffyblush.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_puffyblush.webp",
+      "original": "staging/emoji-enhancements/originals/meow_puffyblush.webp",
+      "originalSha256": "63ee63a765dfe35c44d18e646f19bd462687b1c01d242ee5b0f7487dbeab414e",
+      "approvedSha256": "70a8212cc73e2196c2207bcdb36f021a9eb4a2d7337a5c73bf2d70ed2f79b7d1"
+    },
+    {
+      "file": "meow_puffytears.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_puffytears.webp",
+      "original": "staging/emoji-enhancements/originals/meow_puffytears.webp",
+      "originalSha256": "f0e32afb328e8df5b935cec442c7f281a791fe3a86d38768355e0e0f7f0dafe5",
+      "approvedSha256": "f6af839050e62fbc6ec640bc2f94d3cdef27f84cf89b45ded260fa7c38e060fd"
+    },
+    {
+      "file": "meow_pumpkin.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_pumpkin.webp",
+      "original": "staging/emoji-enhancements/originals/meow_pumpkin.webp",
+      "originalSha256": "32c31a7c87f0a57c917603236de5bd9f507431511478b7efe8de7cf3dd0d2739",
+      "approvedSha256": "77783bb64d6c8da89a88cf8de1644efb19c914aff009b1ef1b88f8400971a785"
+    },
+    {
+      "file": "meow_pumpkinspicelatte.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_pumpkinspicelatte.webp",
+      "original": "staging/emoji-enhancements/originals/meow_pumpkinspicelatte.webp",
+      "originalSha256": "81c562b275ccb1fd93ffb65e46486f5f922ba23504f016e65b9be6b83a4856f0",
+      "approvedSha256": "b0a0ff5dcd2c9b135d730d5febdc8a1235192b7471290ae76987da7235d51fe1"
+    },
+    {
+      "file": "meow_queen.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_queen.webp",
+      "original": "staging/emoji-enhancements/originals/meow_queen.webp",
+      "originalSha256": "08ff6a2b31919e9d4c10a03b94e8bf8d53433f27a9cd95de79a935a7e76b55a9",
+      "approvedSha256": "0b4070013b54b10c965ebfca3d28188756e3adee6483d5cf15790bebd9fda8c3"
+    },
+    {
+      "file": "meow_reach.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_reach.webp",
+      "original": "staging/emoji-enhancements/originals/meow_reach.webp",
+      "originalSha256": "59fb867444866505bde16db2f64d3b336c4ec734ed26d9d14b5993f9180dc10f",
+      "approvedSha256": "472153c2ea9a4505e66d5329a44304ec2c9aa62007632d3a247ab15776e1411b"
+    },
+    {
+      "file": "meow_read.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_read.webp",
+      "original": "staging/emoji-enhancements/originals/meow_read.webp",
+      "originalSha256": "82da3ed649d968ed00146cff9517a78e695c53dbddaba4b29bf9bf4fcb2ef7cb",
+      "approvedSha256": "81354e68e16db23e80e12381c97b7c28c24b1f7bee6e87be3f5b0fd4563f52a5"
+    },
+    {
+      "file": "meow_sadlife.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_sadlife.webp",
+      "original": "staging/emoji-enhancements/originals/meow_sadlife.webp",
+      "originalSha256": "6194f33054606536af66e3f422aa8633d0296480498e009923784aa23930768b",
+      "approvedSha256": "c38ee105bd07d327622571cca748534999158b7dc25524882ba2786d861c0fb2"
+    },
+    {
+      "file": "meow_sadpats.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_sadpats.webp",
+      "original": "staging/emoji-enhancements/originals/meow_sadpats.webp",
+      "originalSha256": "64f56de4c2d0d14f55838a783bb850e1222b54270731603b3f14af263c0e892f",
+      "approvedSha256": "2c3da0c8c054dad878e754bb23c1bb66fc9e6d86a234ae42c831c906b453b00d"
+    },
+    {
+      "file": "meow_science.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_science.webp",
+      "original": "staging/emoji-enhancements/originals/meow_science.webp",
+      "originalSha256": "2a6b90f08a93ddb2fb2adc3644a99fa4a4abfac361af2c313fc8222002d2597f",
+      "approvedSha256": "f7223fdce5240a59ca11c14862bd694dc42bc7a1b584e7180f8b4a5028df4168"
+    },
+    {
+      "file": "meow_sick.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_sick.webp",
+      "original": "staging/emoji-enhancements/originals/meow_sick.webp",
+      "originalSha256": "a83fd58f1623c4161fb72ead1e012f703ef341ba3f3248e12c30cccaf157102e",
+      "approvedSha256": "27f145ffb2fa1b4738d802e5c358c30e34d0f2b313352eed7ae883c5f4b139d0"
+    },
+    {
+      "file": "meow_sleep_drool.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_sleep_drool.webp",
+      "original": "staging/emoji-enhancements/originals/meow_sleep_drool.webp",
+      "originalSha256": "99cd0ff875d1bab742b6b2cd7bd4e5597c494129026a6d6cd50060b42aa028b8",
+      "approvedSha256": "9b33a2a4a9aaffc44e8407ed55883f29a03eb1219d886947801f5f5909f450ac"
+    },
+    {
+      "file": "meow_sleep_zzz.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_sleep_zzz.webp",
+      "original": "staging/emoji-enhancements/originals/meow_sleep_zzz.webp",
+      "originalSha256": "9458ecc1c2cfb0e968507157aad8649f319b41682fe5ca726f653864999f88b0",
+      "approvedSha256": "ab07bcb861805fa2d6443781668d43f6adc3e01dc25ebaf0f26acff9696d1d51"
+    },
+    {
+      "file": "meow_sleep.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_sleep.webp",
+      "original": "staging/emoji-enhancements/originals/meow_sleep.webp",
+      "originalSha256": "6ebf218192de2786fd1e935dc12c89e9f0c4dbd737dbd2844e0ee4d818c35756",
+      "approvedSha256": "3249f3186726b3b298657a47b3e31ba46c33c4bc4d62f935753f3802fcc98cf8"
+    },
+    {
+      "file": "meow_sleepless.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_sleepless.webp",
+      "original": "staging/emoji-enhancements/originals/meow_sleepless.webp",
+      "originalSha256": "c950ea4d234747e277914843e5445923429771d5531dbb8aaaa5a6b00eb8da20",
+      "approvedSha256": "264a2dd5461152cd507478cf02e3be9ededd61696443ec4c51cdecf13940c869"
+    },
+    {
+      "file": "meow_sob.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_sob.webp",
+      "original": "staging/emoji-enhancements/originals/meow_sob.webp",
+      "originalSha256": "4b6373809f408028e8fb006d2ed64e34a3d23caddd0fdaf836d24175a4524ad3",
+      "approvedSha256": "853900dbba43010e2f6210154e2caf14f0f1131836812e1f6033a93c157a83d8"
+    },
+    {
+      "file": "meow_sorry.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_sorry.webp",
+      "original": "staging/emoji-enhancements/originals/meow_sorry.webp",
+      "originalSha256": "45d5b6bcf387c51a79eeb9c916a472753191be9a3ba5f68c1072b64e4f8c2ca7",
+      "approvedSha256": "875e80f38d608e021d78c5534c96b2f74dd4de11790ca35ef96a512b76760f51"
+    },
+    {
+      "file": "meow_stop.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_stop.webp",
+      "original": "staging/emoji-enhancements/originals/meow_stop.webp",
+      "originalSha256": "b70976f5d05b32291ff56854ecfc47596f62af16804148a68178207a1d63a984",
+      "approvedSha256": "1940e9629825a0d72140092023c699f4baeca56932900e5fa0185c5290f08133"
+    },
+    {
+      "file": "meow_sushi.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_sushi.webp",
+      "original": "staging/emoji-enhancements/originals/meow_sushi.webp",
+      "originalSha256": "6e632e5c89a319e047d4dc9001b43b28cd0615dbad30cc1cacdef4d542bdb65b",
+      "approvedSha256": "a9825f62716d64ca41e9a8f6e5364f61bf39cb63b2df1294c24b3c1343a78876"
+    },
+    {
+      "file": "meow_think.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_think.webp",
+      "original": "staging/emoji-enhancements/originals/meow_think.webp",
+      "originalSha256": "eb2c29563766ce4ef9338de05ebefbe115cc019fd14591e071153e3c338c2a10",
+      "approvedSha256": "90b24cfa7aff31bd6eebc6dab5a426b660f680273b16fcdc7ad1afa1fd7406d2"
+    },
+    {
+      "file": "meow_thinkingsmart.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_thinkingsmart.webp",
+      "original": "staging/emoji-enhancements/originals/meow_thinkingsmart.webp",
+      "originalSha256": "a24f5e1b598f3837cfeacdc15b112b39facb302c4d443a6c064170239633f8ca",
+      "approvedSha256": "2af322d4dec029ff0fe6108f04c441807e7298b930e93633fd9d8cb86d7e30a2"
+    },
+    {
+      "file": "meow_thinksmart.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_thinksmart.webp",
+      "original": "staging/emoji-enhancements/originals/meow_thinksmart.webp",
+      "originalSha256": "abcea348bd314bd5b84afa2e5265c7cea7a70fc5a39da0133d4713b61b555e7d",
+      "approvedSha256": "386f8fc4ffea90408b581ec42409b0a3e6ccb9319d1fdabe64a3960fa22d4388"
+    },
+    {
+      "file": "meow_this.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_this.webp",
+      "original": "staging/emoji-enhancements/originals/meow_this.webp",
+      "originalSha256": "d884ebe9a94dd000e4b3e6c8a05d38f79d1a5046c96496b8728cc812a349a717",
+      "approvedSha256": "fe6b2a5859ad0c04d52158dd4a47aa083d9f378410961d86f6363cf9648ca038"
+    },
+    {
+      "file": "meow_thonking.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_thonking.webp",
+      "original": "staging/emoji-enhancements/originals/meow_thonking.webp",
+      "originalSha256": "f4b9efd9c537b67ac56ba90c365c51e605d1ec0dfb9bbf5a02ccb11197e28246",
+      "approvedSha256": "9bf7348b30607cbe2aaff52585a9a04ac6632c969ee36e1f37d54f833ba4d8dd"
+    },
+    {
+      "file": "meow_trash.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_trash.webp",
+      "original": "staging/emoji-enhancements/originals/meow_trash.webp",
+      "originalSha256": "cf3cdd468615a26bdd84e2201b2c55f4e96313ff876ec5359df1880aecbff693",
+      "approvedSha256": "e31143409d6682d6a5245319b86b3ccb2b7e93ef8116e54cf72b4d18debb0684"
+    },
+    {
+      "file": "meow_unamused2.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_unamused2.webp",
+      "original": "staging/emoji-enhancements/originals/meow_unamused2.webp",
+      "originalSha256": "66cc0aebda4ca676fac0e1a3b134a2b6a18f7e7d3b648d3b04f730a2661034d8",
+      "approvedSha256": "c6aa39c5d71bf9c400d3b6ad77c08c5d7cddbc1c42bdcfa2db2123b6b385559a"
+    },
+    {
+      "file": "meow_verified.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_verified.webp",
+      "original": "staging/emoji-enhancements/originals/meow_verified.webp",
+      "originalSha256": "d982354ce89d95d60b39a89a29eaae6a061d8f9ae526acafdc20feec7c3d325f",
+      "approvedSha256": "9354865814a758383ce1f2f4af9b9ad36f5b1643eaa6408ecf1bc9492031e274"
+    },
+    {
+      "file": "meow_verysad.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_verysad.webp",
+      "original": "staging/emoji-enhancements/originals/meow_verysad.webp",
+      "originalSha256": "88b4150e70277f0640badd2adcdbf48e2521983713ddbff2c23b52225e55921c",
+      "approvedSha256": "f38989180ee04487a6eea1a771d468c04a5ab55978c76794b1f38b667ffb9e23"
+    },
+    {
+      "file": "meow_waitwhat.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_waitwhat.webp",
+      "original": "staging/emoji-enhancements/originals/meow_waitwhat.webp",
+      "originalSha256": "6779e8d05695a24a80a178e034ad8aaa697dbe4ed75fecc15a36efe596d19605",
+      "approvedSha256": "454e22ca0ae83868d44abb95784e433f68d43bed643f1394c94663524505c9d7"
+    },
+    {
+      "file": "meow_weary.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_weary.webp",
+      "original": "staging/emoji-enhancements/originals/meow_weary.webp",
+      "originalSha256": "925fb398730f095a55cfc2e26c3bee37ad5b14cf050ab4448fd9482c712d127d",
+      "approvedSha256": "94b84a0e91645d0f5552b71a0cb5ba2ad1e37746be71b5c519fd7edb5bfd97c7"
+    },
+    {
+      "file": "meow_wine.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_wine.webp",
+      "original": "staging/emoji-enhancements/originals/meow_wine.webp",
+      "originalSha256": "c92d5c0d93088bd7ef3bfb945d826642234c3a31b4add6d65a8979e9ae9589a2",
+      "approvedSha256": "1cae4a74a4a9231a6d792f52ce283df0adc6caf782e0aca9a41c1f58304afd4d"
+    },
+    {
+      "file": "meow_wink.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_wink.webp",
+      "original": "staging/emoji-enhancements/originals/meow_wink.webp",
+      "originalSha256": "67c8e4195fa9f7c8fafb073a2678bd655ae0fc46aa346446462d1aa2ea740b50",
+      "approvedSha256": "3aee2fa94057f872c44786767bfdf7f125270c36c23eb83cded4934776f1bce8"
+    },
+    {
+      "file": "meow_winktongue.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_winktongue.webp",
+      "original": "staging/emoji-enhancements/originals/meow_winktongue.webp",
+      "originalSha256": "c87a3612b4b6fa00a578ea5624c8201faf4b8382349704a27497e2a14c72ea8c",
+      "approvedSha256": "e50a67e449cc29b0844313793e738fb49ac38943cc3b6960ac074910de7f14aa"
+    },
+    {
+      "file": "meow_witch.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_witch.webp",
+      "original": "staging/emoji-enhancements/originals/meow_witch.webp",
+      "originalSha256": "ccf593b4d7e550fbfd1ce58ece8435e5cd92fdebeaa4487e6a3fa13d95044ad0",
+      "approvedSha256": "45debcc0ff16ff3358bc2b50cb8f797ff07c4bf7bf4e062ed68a32cf84156691"
+    },
+    {
+      "file": "meow_woah2.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_woah2.webp",
+      "original": "staging/emoji-enhancements/originals/meow_woah2.webp",
+      "originalSha256": "b9a23c05fa24e1512e41df55c70141631f3a7f5cb3642920a28e5a85ed0708d9",
+      "approvedSha256": "6a4d068eec30669e4a20bdedd57ce1fa3bc323e31f6339847438cddcccb05ad3"
+    },
+    {
+      "file": "meow_wow.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_wow.webp",
+      "original": "staging/emoji-enhancements/originals/meow_wow.webp",
+      "originalSha256": "c3b838b1eee9f75e70a6525e942a6b6e00359723e7a05ad925ecdeeb0a11e8c3",
+      "approvedSha256": "f03850f3acc9bcb8cf7c649b6be7a2ba7e4658874d1d0d5646a50ed5d26d99e0"
+    },
+    {
+      "file": "meow_yikes.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_yikes.webp",
+      "original": "staging/emoji-enhancements/originals/meow_yikes.webp",
+      "originalSha256": "7049f56462305f53d9d71d80bfa49f76ca408a6ca362cfd8863f1b9f57bc6248",
+      "approvedSha256": "8bf2a90608db9de0d550ebb51848d3492f812467e37a8dd03870f46fede42c6f"
+    },
+    {
+      "file": "meow_yw_welcome.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow_yw_welcome.webp",
+      "original": "staging/emoji-enhancements/originals/meow_yw_welcome.webp",
+      "originalSha256": "76e72cbf6d57e004c80b67022ca667532b8428ef6ae36b06379c867ec89b56c4",
+      "approvedSha256": "db9f2b9db17c26d60c769d038ae6843094e9b8804b700fb68eff877726a28e5c"
+    },
+    {
+      "file": "meow-bernie-mittens.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow-bernie-mittens.webp",
+      "original": "staging/emoji-enhancements/originals/meow-bernie-mittens.webp",
+      "originalSha256": "80abff233baa29792f6c52ae94150a62ba13924ced820169aa6dfddee34efae6",
+      "approvedSha256": "5cfd89c2a8bd767572adbff763655982074e88c04f3dab368e4e23ec941b0d0b"
+    },
+    {
+      "file": "meow-bigfan.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow-bigfan.webp",
+      "original": "staging/emoji-enhancements/originals/meow-bigfan.webp",
+      "originalSha256": "1176733bfcb300bf3c2015bf8d127bcd5d5b2aabcb6029b1bf8ee7c410e6f060",
+      "approvedSha256": "23f2a5ef574da108507d2b4f8eca6e8fc71d1ea4af04fd945a41867c785a2b12"
+    },
+    {
+      "file": "meow-cat.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow-cat.webp",
+      "original": "staging/emoji-enhancements/originals/meow-cat.webp",
+      "originalSha256": "5acd39e57168b6433fb299d745ae452a79bb9d8d9f63a08d5bd487a5fe13a329",
+      "approvedSha256": "8c1492d2c7b5a1b054b9dcd6c958b4f539479c0b0943a93a981bf0feac95309a"
+    },
+    {
+      "file": "meow-coffee.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow-coffee.webp",
+      "original": "staging/emoji-enhancements/originals/meow-coffee.webp",
+      "originalSha256": "16527ed38682a995a732f7126851d8eb7d5297ed972736b933222381b4a50025",
+      "approvedSha256": "e4390d3cde40432ded0093ae1510c0e252f557757361e637f420e159b03a3a2f"
+    },
+    {
+      "file": "meow-confounded.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow-confounded.webp",
+      "original": "staging/emoji-enhancements/originals/meow-confounded.webp",
+      "originalSha256": "6e10e3c094076b846467ad9439f8839b793b8d1041c175daaff72842426bb473",
+      "approvedSha256": "c54337b2f2484e4034419872a5c87f975cfe7926bf4c13787c522d39dcb7b1fe"
+    },
+    {
+      "file": "meow-devil.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow-devil.webp",
+      "original": "staging/emoji-enhancements/originals/meow-devil.webp",
+      "originalSha256": "7372d7dbb6aaf2fcdcf70c823540528bf910df6213cadf78f8ed956eef19ed3a",
+      "approvedSha256": "94e1d50cac70998726b489562fb7503e7c21967d573d14f988acf4f02add0b87"
+    },
+    {
+      "file": "meow-double-thumbs2.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow-double-thumbs2.webp",
+      "original": "staging/emoji-enhancements/originals/meow-double-thumbs2.webp",
+      "originalSha256": "225e468040a504c10ecd4b6886fbccd9da7cccb40ea074231a91503cac9d3c91",
+      "approvedSha256": "45a2e9fd263d2c5dd1410c0a67d1bca7610010938dbd717c4a3852f17b31c7e5"
+    },
+    {
+      "file": "meow-frowningbig.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow-frowningbig.webp",
+      "original": "staging/emoji-enhancements/originals/meow-frowningbig.webp",
+      "originalSha256": "b20868112d1a1076a2e93b35667b8254ddabc22ed0acf1525ff25ede2e0a8992",
+      "approvedSha256": "e491a75cd481947663c85fc3cce24ab160437f451659ad66f214fad51f568966"
+    },
+    {
+      "file": "meow-gift.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow-gift.webp",
+      "original": "staging/emoji-enhancements/originals/meow-gift.webp",
+      "originalSha256": "056967fbf93a85fa7045bcbe87f7f2e54967c556afb451787c075cbf8e329332",
+      "approvedSha256": "c53218e637a9e5c8da47bf71f629f18d0f9d75b02fed3e177439b0a796d13eff"
+    },
+    {
+      "file": "meow-notlikethis.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow-notlikethis.webp",
+      "original": "staging/emoji-enhancements/originals/meow-notlikethis.webp",
+      "originalSha256": "dc35cc8bd7273f8d86c947a750194a666e8c36092f18a062a3e2e4a66677ec05",
+      "approvedSha256": "7b38f2aeef38bae6b026c0aff991bb99698eb83b35005f5bbb8c9270d4d07cd3"
+    },
+    {
+      "file": "meow-peek-sip-glare.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow-peek-sip-glare.webp",
+      "original": "staging/emoji-enhancements/originals/meow-peek-sip-glare.webp",
+      "originalSha256": "5b563fbe5f6605c9259b1ab7ee254628d9f56af247babcac3199670bcce11ee4",
+      "approvedSha256": "eac8ccfa92db7f7bdd8d9bed5c69ec04f3b17b082eeb080ea06ebb924afa5b1d"
+    },
+    {
+      "file": "meow-pensive-pray.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow-pensive-pray.webp",
+      "original": "staging/emoji-enhancements/originals/meow-pensive-pray.webp",
+      "originalSha256": "c11a3192e2771f5b77697213674c6267589397f35d6fc16c43c369d16b388ee0",
+      "approvedSha256": "b25fa7e8fbe772a82fba4e45c13a0ccbcf75d762f5b9653cff81b868d9d81831"
+    },
+    {
+      "file": "meow-present-pink.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow-present-pink.webp",
+      "original": "staging/emoji-enhancements/originals/meow-present-pink.webp",
+      "originalSha256": "c6d178dca1e45507e6283cfe60c7abe92789eb5b9c91b516076987a10ca46c81",
+      "approvedSha256": "a5344553c1c08c74863d5fcba449d57b3b041658bc37a3ee8be852a00cdb8e3f"
+    },
+    {
+      "file": "meow-puffy-sup.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow-puffy-sup.webp",
+      "original": "staging/emoji-enhancements/originals/meow-puffy-sup.webp",
+      "originalSha256": "3e01e0b94f17f1753e56ca34d731ed5b5d6fcd229ccc587c8fefe4a4cc6b56d6",
+      "approvedSha256": "2f31dd184f82f7b5d6e0d17f9eb4ebadf5f4b159851c4c7ca657d9802a77eb0e"
+    },
+    {
+      "file": "meow-scream.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow-scream.webp",
+      "original": "staging/emoji-enhancements/originals/meow-scream.webp",
+      "originalSha256": "26f4665f013fd67a67b30d27830132e060bcd9221841fa9493f30a317b49688e",
+      "approvedSha256": "f41f56055757105bd732fde9087432a55fef5a2d1176e21cac289bed1cc4e201"
+    },
+    {
+      "file": "meow-shark.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow-shark.webp",
+      "original": "staging/emoji-enhancements/originals/meow-shark.webp",
+      "originalSha256": "0ae78f08ce2bdfeffb6bafb1f0fcd55e1d913fd3251c9e9554287411b83bf234",
+      "approvedSha256": "32bdc7462ff614496a8acdd1e6c42732e3b7dbef45a8088d50820823bc316689"
+    },
+    {
+      "file": "meow-stop.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow-stop.webp",
+      "original": "staging/emoji-enhancements/originals/meow-stop.webp",
+      "originalSha256": "d477a762d190f61a5a895f3d040f68868a1a28ba5600fc3184fdc02481b68c75",
+      "approvedSha256": "98c969b196212209c488cac823bb8e6b42bf0971d4122c0648bb40807d6eaa80"
+    },
+    {
+      "file": "meow-umm.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow-umm.webp",
+      "original": "staging/emoji-enhancements/originals/meow-umm.webp",
+      "originalSha256": "8348874433471bd685efcd5afabd270e269b4924386b400211df278c92630227",
+      "approvedSha256": "f8bb540858e046c5787d4ac40be6c349ae5d17e84c24b1f25140a63b7d595dfe"
+    },
+    {
+      "file": "meow-wizard.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meow-wizard.webp",
+      "original": "staging/emoji-enhancements/originals/meow-wizard.webp",
+      "originalSha256": "6a8e70312a726682466d18e3c0e8f89acf3f3a79f1d4173bd6d6768b2e2c5929",
+      "approvedSha256": "e511e1374164b8e990cca4aa8bac5e77f39a2b37345edb65c1caed1eb41f4f41"
+    },
+    {
+      "file": "meowby-maybe.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/meowby-maybe.webp",
+      "original": "staging/emoji-enhancements/originals/meowby-maybe.webp",
+      "originalSha256": "16a68268cbe98f6f7bd5317ed1798e3c020d6aee6951fb7780118ebb0a49be0b",
+      "approvedSha256": "781054d5f2f624626ac5ba0202c16288e6c7216cb864a174eedc5b7a94462476"
+    },
+    {
+      "file": "nice.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/nice.webp",
+      "original": "staging/emoji-enhancements/originals/nice.webp",
+      "originalSha256": "44c894021d14b995cd700236cfece2a47acb692635067114dd65d2b5381c2562",
+      "approvedSha256": "c1524f708408b03fcc5770c4e57f01526b419b3e32a1ece68783c2b2708b6d1b"
+    },
+    {
+      "file": "no_ragrets.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/no_ragrets.webp",
+      "original": "staging/emoji-enhancements/originals/no_ragrets.webp",
+      "originalSha256": "99e5f7ff843785f2d4752aa2adb017198dcde2cb147e26df60fd733e0d58c9d4",
+      "approvedSha256": "74001ec4609a2bec2cda394afab1f02bba832666961a977220887e49d9b96a23"
+    },
+    {
+      "file": "ohyeaaah.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/ohyeaaah.webp",
+      "original": "staging/emoji-enhancements/originals/ohyeaaah.webp",
+      "originalSha256": "6376c79cafd2e5d369cd13a4ffe63dc4b95b52d05ea3d38a76b507c1c1103540",
+      "approvedSha256": "af9a48f2a08d1b2ef1570b5968ae0ed29c56c6ca159b9372876910b35660be72"
+    },
+    {
+      "file": "oke.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/oke.webp",
+      "original": "staging/emoji-enhancements/originals/oke.webp",
+      "originalSha256": "bef263e050213f0494ada85106bea4fa0ea463f6b31cb778fd256a40677c1dff",
+      "approvedSha256": "3c8840bac711b144afed9121ea0942e9353f07fd33a543985145a577a2e5c12c"
+    },
+    {
+      "file": "old-man-yells-at-cloud.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/old-man-yells-at-cloud.webp",
+      "original": "staging/emoji-enhancements/originals/old-man-yells-at-cloud.webp",
+      "originalSha256": "67c1c4ddc646545c91898e85e3997194056b34b07cdb6f8478070b6330afe46e",
+      "approvedSha256": "b9490346afacd21c39c7fb97b7907df5e43fb93d26cfd40beabe35efeedd67c4"
+    },
+    {
+      "file": "old-man-yells-at-comcast.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/old-man-yells-at-comcast.webp",
+      "original": "staging/emoji-enhancements/originals/old-man-yells-at-comcast.webp",
+      "originalSha256": "4b0bf7cf39bd7d0715343510a5bf0a582ec7bce47f9063d71a17b072f7f32dde",
+      "approvedSha256": "e96c9af1020ad2a7b13b2ce52f78b3209392e63b18831bd5495c02958167870e"
+    },
+    {
+      "file": "oof.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/oof.webp",
+      "original": "staging/emoji-enhancements/originals/oof.webp",
+      "originalSha256": "4115de4e01db381ffa24f0531a38a0060f234e2b96cf4f7314e930bdca2e9810",
+      "approvedSha256": "b2a92a80acf98d92c5d903205f597ecfaa87439d5b8417e74c50e5d29c0459ca"
+    },
+    {
+      "file": "pikachu-think.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/pikachu-think.webp",
+      "original": "staging/emoji-enhancements/originals/pikachu-think.webp",
+      "originalSha256": "69dabbdbbe04774b0254000cbedee7f32a80c724dfbcb86749ec0083244cdb74",
+      "approvedSha256": "18a0fbf7346150a785da83c18363601e85d6ef14ba0ad1f9f509cae15d4c04ac"
+    },
+    {
+      "file": "roo-aww.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/roo-aww.webp",
+      "original": "staging/emoji-enhancements/originals/roo-aww.webp",
+      "originalSha256": "a924d2c6f605a5f8c3688801c4ab6efbcca326533fa5c6c8bacefee61b1c2d3f",
+      "approvedSha256": "df360fd651990566c3e6c0bb67f3537c4705387307fbd11ce4847372692184bf"
+    },
+    {
+      "file": "roo-blank.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/roo-blank.webp",
+      "original": "staging/emoji-enhancements/originals/roo-blank.webp",
+      "originalSha256": "5eb901fd1086985a9521643c7a553df858e65349aa17110998af3b65bbebe022",
+      "approvedSha256": "9629605fb5a949247ca9aad9080667ec65e29eb8eb2d4657ae15ede1a36ba92c"
+    },
+    {
+      "file": "roo-blind.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/roo-blind.webp",
+      "original": "staging/emoji-enhancements/originals/roo-blind.webp",
+      "originalSha256": "b7220f82cfa31e8bc0145faea73cde3fd1fd877817249c94ef3a431ffc8dd441",
+      "approvedSha256": "8ffa74c19488028e558dd54e4564255ef351d247c6890aeee039d216693ec461"
+    },
+    {
+      "file": "roo-bot.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/roo-bot.webp",
+      "original": "staging/emoji-enhancements/originals/roo-bot.webp",
+      "originalSha256": "ed09467999441073454d826f1d81213620c5d5b0694e1a577206ef4184248f64",
+      "approvedSha256": "ba074b006a2f0dabb922a9a294e28e1d7034b34cb7c2582395f750f9385cb83b"
+    },
+    {
+      "file": "roo-cop.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/roo-cop.webp",
+      "original": "staging/emoji-enhancements/originals/roo-cop.webp",
+      "originalSha256": "adea277faa80c795f3d306e8a1ef8ad35e498d1b9dbc39b287eb459c102c90eb",
+      "approvedSha256": "b1042080f9e9fc4844ede696bbac491b66cbfa1680c2e88d52f3838c04b84286"
+    },
+    {
+      "file": "roo-cry.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/roo-cry.webp",
+      "original": "staging/emoji-enhancements/originals/roo-cry.webp",
+      "originalSha256": "488f22c0ee7c766aad39723ad96a57472b4f1721715a63175704f0fac44205d6",
+      "approvedSha256": "93499c4bf79dbfbcbaa6928226958d43b92dbf9ba92f3fce3bcff521e7bdfba7"
+    },
+    {
+      "file": "roo-cult.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/roo-cult.webp",
+      "original": "staging/emoji-enhancements/originals/roo-cult.webp",
+      "originalSha256": "eb2ff07d6146ac964767a8fa1ce3099b56faecef03b9184b8ddd185113d459be",
+      "approvedSha256": "cb7b88f82fe2fa625cd885427d4fc33d3d400c6202702012be6c2b42d9d2dc49"
+    },
+    {
+      "file": "roo-derp.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/roo-derp.webp",
+      "original": "staging/emoji-enhancements/originals/roo-derp.webp",
+      "originalSha256": "db5ada136f4c10574ec3abf5c97295190a066206d9a6356b507eb90e5107c992",
+      "approvedSha256": "e5e7f46c414d87f1f5e7fc0e2d4973f220c86378a6cc4d3ba650d5700a1f1d2a"
+    },
+    {
+      "file": "roo-devil.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/roo-devil.webp",
+      "original": "staging/emoji-enhancements/originals/roo-devil.webp",
+      "originalSha256": "b5e925d4f42dffc9af823bb35ec5677a56b62feb652aab9daa2199a2e0efaa5f",
+      "approvedSha256": "eb301240f23f314d8e093385b2d91250200da5819a8a0642bb0cbbdde4be59f2"
+    },
+    {
+      "file": "roo-duck.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/roo-duck.webp",
+      "original": "staging/emoji-enhancements/originals/roo-duck.webp",
+      "originalSha256": "6c7a6fdc17ff04dad004b3f58eee86dbf6c1e33d6bda85f9056f4b8a85f2739e",
+      "approvedSha256": "b10edcfa1487c1482d081ce1ce8b6afaf5370cefa14f535f6b3e2a00adc9859f"
+    },
+    {
+      "file": "roo-ez.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/roo-ez.webp",
+      "original": "staging/emoji-enhancements/originals/roo-ez.webp",
+      "originalSha256": "86e9d78618105401def3647aeb1cfc5a10f8b0c8bd95066cf091bddaf09fe75e",
+      "approvedSha256": "4a5bd0c99438568692e1e51488e40c5ffc0692af937a1e89d20ff94594926cd6"
+    },
+    {
+      "file": "roo-gift.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/roo-gift.webp",
+      "original": "staging/emoji-enhancements/originals/roo-gift.webp",
+      "originalSha256": "798e6f1b24743be2779883cf2ac3a1d8e1c466c8c8f780fa94fc883f1ab06f42",
+      "approvedSha256": "7c20c36e71c41542a13e1e83b51a7556d6ca5a61e0da8bf604b81e06e2b37d20"
+    },
+    {
+      "file": "roo-happy.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/roo-happy.webp",
+      "original": "staging/emoji-enhancements/originals/roo-happy.webp",
+      "originalSha256": "4136f9abfa6f42bc371d6da2b1238b0dd474c773c9f38887dc09a9ff68304b4b",
+      "approvedSha256": "96860ace812d85253ca1012f663db95a4f1fa745c153429b296422cff6a73fbf"
+    },
+    {
+      "file": "roo-innocent.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/roo-innocent.webp",
+      "original": "staging/emoji-enhancements/originals/roo-innocent.webp",
+      "originalSha256": "8123fabecfe48b67d2a1313f58ad9f69592ef0364768f820e019c1e9995431c3",
+      "approvedSha256": "24f69a81ac52b1f093d89b5dcdb10658c0353d2c8de2c9d40c2255fad0ff59b5"
+    },
+    {
+      "file": "roo-lick.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/roo-lick.webp",
+      "original": "staging/emoji-enhancements/originals/roo-lick.webp",
+      "originalSha256": "52f3cbe8c5db9268cf1609af0070f0ac13dae086090fbfd54be1b6f78a29861d",
+      "approvedSha256": "df1fee304bccaba2b0068285d72099f41cad59270e839dad0800a5f0e8aa52bc"
+    },
+    {
+      "file": "roo-nap.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/roo-nap.webp",
+      "original": "staging/emoji-enhancements/originals/roo-nap.webp",
+      "originalSha256": "bf533c9ef1affe46d86deb0b14ebe14baba6d88484448bb6f4b3916deaaa5dee",
+      "approvedSha256": "2326ecee55ec7defe56ce86f00870d3f20e76a329771954480df2bef5ffb956b"
+    },
+    {
+      "file": "roo-nom.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/roo-nom.webp",
+      "original": "staging/emoji-enhancements/originals/roo-nom.webp",
+      "originalSha256": "e44a700011d5d70f16e91fddb5843fee36d531db5b321b433d1e11a524fa4faa",
+      "approvedSha256": "b1e63e1874b99012c2fd652a6ce9c504b44654d981d2be1d223c469a9b031494"
+    },
+    {
+      "file": "roo-omg.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/roo-omg.webp",
+      "original": "staging/emoji-enhancements/originals/roo-omg.webp",
+      "originalSha256": "2f87f2e58884eb04269261eb62bca5825454daeb26e9507a19dfe6a75f345dd3",
+      "approvedSha256": "d1456436a1ce054c328caa0c5859e479245d81886ddf1f2223f82d1018afbbcd"
+    },
+    {
+      "file": "roo-rheee.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/roo-rheee.webp",
+      "original": "staging/emoji-enhancements/originals/roo-rheee.webp",
+      "originalSha256": "427bb9d4c81702ce6557372f2f6af2c5c4d234c56e7462bf7c359e8676dabaf0",
+      "approvedSha256": "967016dbfeca76fa269b0df7112afabe118b7cafb1990c720bf18b7f6291ae1b"
+    },
+    {
+      "file": "roo-scared.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/roo-scared.webp",
+      "original": "staging/emoji-enhancements/originals/roo-scared.webp",
+      "originalSha256": "8c5aa5b5857f045a61080b22a9bc00c6901ab88db578e972256ccb6e45d31fe5",
+      "approvedSha256": "89bd673588543b9b57148b7f28922c5795bc43f5453b91f465d9de35a68cc941"
+    },
+    {
+      "file": "roo-sellout.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/roo-sellout.webp",
+      "original": "staging/emoji-enhancements/originals/roo-sellout.webp",
+      "originalSha256": "0bfcf165301a2d54f7b509473c01b259859b2d5390818d5538ebcc44ea01597e",
+      "approvedSha256": "f1f0fb679862b52c589dcc3bff2e3f2b3191d55f0d691026fb76f0203a03b0aa"
+    },
+    {
+      "file": "roo-sip.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/roo-sip.webp",
+      "original": "staging/emoji-enhancements/originals/roo-sip.webp",
+      "originalSha256": "818be999d64203b55926d1d8fd71f3c9a53ab792c88c710b613abf846b71b86e",
+      "approvedSha256": "d1885849481a764ddbe5583dcc0a9aadd6d7c80a38b79210afdd0de3513943fc"
+    },
+    {
+      "file": "roo-think.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/roo-think.webp",
+      "original": "staging/emoji-enhancements/originals/roo-think.webp",
+      "originalSha256": "0c23fd39e762df34aa4e975a44b599e224aa7469f7a6fad5ff7964604478049d",
+      "approvedSha256": "ae506fc50ccfb9b5c4b1826273f723fe7f5fd4e2e0c9b21d15c31c7f7b153979"
+    },
+    {
+      "file": "roocry.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/roocry.webp",
+      "original": "staging/emoji-enhancements/originals/roocry.webp",
+      "originalSha256": "334924e1fe4a892e905bf80047e4ca02026338a9a98524d78ccb66341ac93e39",
+      "approvedSha256": "c28f770efd54c420143ab151c14f5f77b2a66bfc1c828ab96499f91d7e391d46"
+    },
+    {
+      "file": "rooderp.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/rooderp.webp",
+      "original": "staging/emoji-enhancements/originals/rooderp.webp",
+      "originalSha256": "62fd81aee19892c0d280cb77344cb7c18975b614a1f2786697c4a264a79b38fb",
+      "approvedSha256": "0c0fb5452768e170997703db7defae4d49ffd265bdd8c49f570ce2e10b0d5b82"
+    },
+    {
+      "file": "sad_keanu.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/sad_keanu.webp",
+      "original": "staging/emoji-enhancements/originals/sad_keanu.webp",
+      "originalSha256": "c0f8c67ba9b196c019388c3024089f6a148d63d66e21a6bc1781c6867bc4100c",
+      "approvedSha256": "8aa0971feb6353c1f326ed458aa3dcd24456318213100a9b29fb46d8fa940881"
+    },
+    {
+      "file": "sadcat.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/sadcat.webp",
+      "original": "staging/emoji-enhancements/originals/sadcat.webp",
+      "originalSha256": "7cea97b10e105a6dce9667ce5a471dedb10f64a07b24b5cd695ca64ea5c49cf4",
+      "approvedSha256": "1d27f181dc6037766103e08fd9995398079f9f00f9618d768bf9681a1c53deb4"
+    },
+    {
+      "file": "severance-working.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/severance-working.webp",
+      "original": "staging/emoji-enhancements/originals/severance-working.webp",
+      "originalSha256": "94ed9a824a68c019a6b6e048cffe700969434a178ec46291fb335bf7715abd8e",
+      "approvedSha256": "7020f454a0c0dde917dd3a0ed0934be3869da24936850941c5b714ec98f73a7b"
+    },
+    {
+      "file": "shruggy-grimace.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/shruggy-grimace.webp",
+      "original": "staging/emoji-enhancements/originals/shruggy-grimace.webp",
+      "originalSha256": "374c2ba01674bbb8adf82a8e4b1ff753865374987edfd091745ec76c7e779d19",
+      "approvedSha256": "b81d6311f17eb6b9752e16d89d2854888dc2f547a2933f3158039980807497ff"
+    },
+    {
+      "file": "success.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/success.webp",
+      "original": "staging/emoji-enhancements/originals/success.webp",
+      "originalSha256": "3e2f0412854b71833dc45bea770673d4a357d1ab5271282836163c3ffd68546c",
+      "approvedSha256": "f937d1508d029b02e573e293b75398c6794e018996d3b2c1acc2446f77406d4b"
+    },
+    {
+      "file": "thank_you.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/thank_you.webp",
+      "original": "staging/emoji-enhancements/originals/thank_you.webp",
+      "originalSha256": "144b375fce1919aefa6610a3ab4013526f68ee7d04d7604ced878bd46e57ede3",
+      "approvedSha256": "fe7a1cec848da41427ce6ee77be09bda9d0c1879c0685f4a35337135fa9dddde"
+    },
+    {
+      "file": "think-eyes.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/think-eyes.webp",
+      "original": "staging/emoji-enhancements/originals/think-eyes.webp",
+      "originalSha256": "800d922a1bd9bf8da2f85177a0103f24b98894cddf80d96dfcc149e00174466a",
+      "approvedSha256": "652a1f968f1062ae1f0b9258bdb182e7269076edb40772e89564257bc5bb4401"
+    },
+    {
+      "file": "thinkies.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/thinkies.webp",
+      "original": "staging/emoji-enhancements/originals/thinkies.webp",
+      "originalSha256": "96deb8279e913c0ea432db5ec321dc08b6d5f60038464075ebc54015b9e9f1aa",
+      "approvedSha256": "f1b04eacf67dd9bf5ee5ec9c28670d4db7ba9a4c0a35d03109c5b10dc7aeb833"
+    },
+    {
+      "file": "unikitty.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/unikitty.webp",
+      "original": "staging/emoji-enhancements/originals/unikitty.webp",
+      "originalSha256": "15da919343851eb5044c945c03cdcd5e93ba24d9791294113d1b63e077381b80",
+      "approvedSha256": "9dca983df4518078ef9726723e5d0cb63b5282cdcd76e754e7a515428e03ae80"
+    },
+    {
+      "file": "unikittyhappy.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/unikittyhappy.webp",
+      "original": "staging/emoji-enhancements/originals/unikittyhappy.webp",
+      "originalSha256": "0665c723ab5bb15e23a274faecb0191a94b216a1308242ad8e131d9a40941dc2",
+      "approvedSha256": "b237430f0aad2f517817cec9020bc0414f3fb0dd9ce382dfa5e9bf03f317ccb1"
+    },
+    {
+      "file": "unikittysad.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/unikittysad.webp",
+      "original": "staging/emoji-enhancements/originals/unikittysad.webp",
+      "originalSha256": "1d4939a8dc5db075049c4cfacb62b25c3aca249e1bbad11fdfa1a18fa4135207",
+      "approvedSha256": "eeb2803a1ffd84b15e9ec0bdb8896fa3b900cad54bc3596e9d735d6825b17207"
+    },
+    {
+      "file": "weed.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/stills/candidates/weed.webp",
+      "original": "staging/emoji-enhancements/originals/weed.webp",
+      "originalSha256": "bdc4dfab3163c43ce6b796be01a8126ad3b08f4685e4399d294b7657ed220c40",
+      "approvedSha256": "30cf36137ce1625e8834464dc0bfc79de7bcab5ecc584b00cd11bf6eb1a05622"
+    },
+    {
+      "file": "awkward.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/animated-pilot/awkward/esrgan.webp",
+      "original": "staging/emoji-enhancements/originals/awkward.webp",
+      "originalSha256": "e801f1b0ea90ab1a9a323abee4cf62de67feebce8d4765e35d2e21d6f87af706",
+      "approvedSha256": "033937192743c4c9d3f86b22bb6d4ae6118b14e97b87ea077aa2d5cd724a60ec"
+    },
+    {
+      "file": "bongo-cat.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/animated-pilot/bongo-cat/esrgan.webp",
+      "original": "staging/emoji-enhancements/originals/bongo-cat.webp",
+      "originalSha256": "e8e2c50e26f03819af275adaf02ce01fe62211017ed7f0f0fd1acef259481877",
+      "approvedSha256": "920ae4b8036f103e746904b817c7b455b2995fdf03c86f1b65dcad77c7c4906e"
+    },
+    {
+      "file": "clapclap-e.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/animated-pilot/clapclap-e/esrgan.webp",
+      "original": "staging/emoji-enhancements/originals/clapclap-e.webp",
+      "originalSha256": "97a718834babfeb4f890f277982cb86bb96deb0586c6646974634da1eaf5d1bf",
+      "approvedSha256": "a3527cd0ca7c4f31f3f30be6990a829797f012c6165010d2fa752b8edbf06ea7"
+    },
+    {
+      "file": "eyetwitch.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/animated-pilot/eyetwitch/nano.webp",
+      "original": "staging/emoji-enhancements/originals/eyetwitch.webp",
+      "originalSha256": "105ae809a57cec0fb947e91a1ce0320465d28db7440e78a26c97165cd026b2fa",
+      "approvedSha256": "4f7bb924a36e7631251dd80069fde5971165cb4b566be2a00a6ef90cb9ad6401"
+    },
+    {
+      "file": "meow-devil-intensifies.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/animated-pilot/meow-devil-intensifies/tuned.webp",
+      "original": "staging/emoji-enhancements/originals/meow-devil-intensifies.webp",
+      "originalSha256": "63e17068ff5d1860b1b74d6de0fff70e86abbb016751ea9c7f4fff7958bb3c7e",
+      "approvedSha256": "9cb3411abb264b9102ab30599594fab03cce07627b0e652ce0a5b0c0ac527ac6"
+    },
+    {
+      "file": "meow_bongotap.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/animated-pilot/meow_bongotap/esrgan.webp",
+      "original": "staging/emoji-enhancements/originals/meow_bongotap.webp",
+      "originalSha256": "fc0f9c3aea36796a87db01d75f4317c2cdcfae42f28323f6496b143c520cb748",
+      "approvedSha256": "8811bfd5c52d5b1eae206bdd9c029be0127acbe94b171b35179ef4939f65f8b9"
+    },
+    {
+      "file": "meow_bread_disappear.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/animated-pilot/meow_bread_disappear/esrgan.webp",
+      "original": "staging/emoji-enhancements/originals/meow_bread_disappear.webp",
+      "originalSha256": "4280ca3927a014f7ac7e87b48eee58382016102d67bb8caa06e2adb8945df1b2",
+      "approvedSha256": "c976e2f83e06ab935b5054b4325efc47b3bc309ade13fe059ed699074ebb78b9"
+    },
+    {
+      "file": "meow_hyper_think.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/animated-pilot/meow_hyper_think/tuned.webp",
+      "original": "staging/emoji-enhancements/originals/meow_hyper_think.webp",
+      "originalSha256": "1c3d74330c74a11fdd76bf82f478260294114398cbec4f0907bf3d86eb10ea76",
+      "approvedSha256": "f5d1d1b4a4a6def38ffff3eb6a57f0cf092626a278124c6b459c0f852c1103f0"
+    },
+    {
+      "file": "panda-omg.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/animated-pilot/panda-omg/esrgan.webp",
+      "original": "staging/emoji-enhancements/originals/panda-omg.webp",
+      "originalSha256": "1fd0744276c36a0bbeef0e997c04edbc81fc7bb19034056b64378e32a087fe38",
+      "approvedSha256": "3138b04334b7a3e92ea3cd284b9516acfc451d2263b13b6a0aed51f88e65b92f"
+    },
+    {
+      "file": "roo-aww-intensifies.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/animated-pilot/roo-aww-intensifies/esrgan.webp",
+      "original": "staging/emoji-enhancements/originals/roo-aww-intensifies.webp",
+      "originalSha256": "d6a59194839ec06c9995a9e3714ee0156ca77031626666cb9b554233577dd8f9",
+      "approvedSha256": "49c5747ae3d350320f63998704f0ce22be47ac78f512dd56afe087c4faae385a"
+    },
+    {
+      "file": "thankyou.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/animated-pilot/thankyou/esrgan.webp",
+      "original": "staging/emoji-enhancements/originals/thankyou.webp",
+      "originalSha256": "1b6b66084a2862ec49980068fcc3ba7e0924276a309aaa50663130f3e452ca49",
+      "approvedSha256": "89e996dee1aa667391c9f17b511036b57a57cee25b77cf3978b01a7cfc6184a4"
+    },
+    {
+      "file": "this_is_fine.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/animated-pilot/this_is_fine/esrgan.webp",
+      "original": "staging/emoji-enhancements/originals/this_is_fine.webp",
+      "originalSha256": "de2dd3c74efcc1c6058588194886e82b317d6f2ad3bfe469526cf1c619f20ac9",
+      "approvedSha256": "caaf4888337da2672feeb487fd383a077b3c0688d885104cf0219f49054b19a8"
+    },
+    {
+      "file": "ablobcatknitsweats.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/remaining-animations/ablobcatknitsweats/candidate.webp",
+      "original": "staging/emoji-enhancements/originals/ablobcatknitsweats.webp",
+      "originalSha256": "1f58bc905dee97df6a3ce1d7af90052e42b9f208e4679161722e3ded7e860dbb",
+      "approvedSha256": "fd6566a2784861381ac88410f1464c4e1e58703a775ec40e061a92c67cb8c079"
+    },
+    {
+      "file": "alert.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/remaining-animations/alert/candidate.webp",
+      "original": "staging/emoji-enhancements/originals/alert.webp",
+      "originalSha256": "2b3f659c5fb8bd30ec5877088f577f3da502d578ba75e84fcf65c39fdb58d857",
+      "approvedSha256": "fb478c6da24d9dee2ecde93ea5a6c852e041934e472b2dc74264eb83c5de3634"
+    },
+    {
+      "file": "awkward_side_eye.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/remaining-animations/awkward_side_eye/candidate.webp",
+      "original": "staging/emoji-enhancements/originals/awkward_side_eye.webp",
+      "originalSha256": "a001d8b5858b0ae2311577f627510d1ff6f4d4f53ada3a40ebef7e1f33886526",
+      "approvedSha256": "9e881b46e97930fa1e7a5038da05b020c773cf19b3f7d7e0da7026d01db0a64e"
+    },
+    {
+      "file": "bongo-cat-drumming.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/remaining-animations/bongo-cat-drumming/candidate.webp",
+      "original": "staging/emoji-enhancements/originals/bongo-cat-drumming.webp",
+      "originalSha256": "27446c9f8679dc8f3692e5969803834dc038ebfff15902ed9daa396db57a250b",
+      "approvedSha256": "8d996a4f46911ee3d1d8acc6923aae0fa036876513aa5f48ce83232e6afddd92"
+    },
+    {
+      "file": "bongo-cat-jumbo.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/remaining-animations/bongo-cat-jumbo/candidate.webp",
+      "original": "staging/emoji-enhancements/originals/bongo-cat-jumbo.webp",
+      "originalSha256": "087b3910f9936ff9382f578389190afd40a71046c3f33d429eda1e7ae2edff8f",
+      "approvedSha256": "9a6304c998568e7540ff50365360ff619208f9331585d8126d6b251729d1961c"
+    },
+    {
+      "file": "boxcat.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/remaining-animations/boxcat/candidate.webp",
+      "original": "staging/emoji-enhancements/originals/boxcat.webp",
+      "originalSha256": "193f38929d7748c54cf7748cf9f91571d98f27c564573d34f06de867a29319c3",
+      "approvedSha256": "36baf310c1bbe82944868232c23584564745136dcaa64abcda069dee990aeaa9"
+    },
+    {
+      "file": "cat-meow-hearts.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/remaining-animations/cat-meow-hearts/candidate.webp",
+      "original": "staging/emoji-enhancements/originals/cat-meow-hearts.webp",
+      "originalSha256": "34315e4d26c868e73a92b2b01ec01eab3ad260736eae5ad80d5cb8c6319f2903",
+      "approvedSha256": "b340dc3ba4ccb22d318b52b03d7fce17049d2e179ac26c52a7287dd56b07770f"
+    },
+    {
+      "file": "cat_money.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/remaining-animations/cat_money/candidate.webp",
+      "original": "staging/emoji-enhancements/originals/cat_money.webp",
+      "originalSha256": "0d0158ec60cb04eacc6bfad3dae8766be61bcbbb7ca6abd706420806f1c25c60",
+      "approvedSha256": "da398cb4684213af5cbbef63396dbaccd3aa66cbf6b68b11425586c0f110f114"
+    },
+    {
+      "file": "catdance.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/remaining-animations/catdance/candidate.webp",
+      "original": "staging/emoji-enhancements/originals/catdance.webp",
+      "originalSha256": "db3dbecf6fa77e9e8ef5d9963ce2ae3b531d42554c07b1014c4015c1985d180e",
+      "approvedSha256": "9f772411b5906afd5584c0c8242636aedfc1feb35be607a136fad18fe18d68e0"
+    },
+    {
+      "file": "cheers.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/remaining-animations/cheers/candidate.webp",
+      "original": "staging/emoji-enhancements/originals/cheers.webp",
+      "originalSha256": "152c9c683b45b1d662ab5aa200e2bab63e4f6e0a18b798944827fd02ac7a8471",
+      "approvedSha256": "86c3fde264fea0b936640151a8e25c85a60f64f54415e2d24bf93954e005a4d1"
+    },
+    {
+      "file": "crying_bear.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/remaining-animations/crying_bear/candidate.webp",
+      "original": "staging/emoji-enhancements/originals/crying_bear.webp",
+      "originalSha256": "ebab7600d468556bae627e26b1c3555e62af59fa17e52a28d9f79be6b0a78eaa",
+      "approvedSha256": "37b9f4feb1e109df8ed6eb58277f2e17daf6007b9f24be10e8e8e3901d2a66ca"
+    },
+    {
+      "file": "dumpster-fire.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/remaining-animations/dumpster-fire/candidate.webp",
+      "original": "staging/emoji-enhancements/originals/dumpster-fire.webp",
+      "originalSha256": "69f5d873934e1a379a722df8925ab873b4774b3ce7f96e79042c7ccec29bd42c",
+      "approvedSha256": "fe0d2117f14cfa43750aca0bfd63890228635ba1de567bb1f300525054d4db5f"
+    },
+    {
+      "file": "elmo-fire.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/remaining-animations/elmo-fire/candidate.webp",
+      "original": "staging/emoji-enhancements/originals/elmo-fire.webp",
+      "originalSha256": "2633a1f8349240c22cbba8b6be8f55764579b2d07b6ca12f25b15cd179aa8fab",
+      "approvedSha256": "a5b58d9e136c5f4210515edc31627c2f99ebd15c40e83283b847fa7d6067e3b8"
+    },
+    {
+      "file": "extreme-teamwork.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/remaining-animations/extreme-teamwork/candidate.webp",
+      "original": "staging/emoji-enhancements/originals/extreme-teamwork.webp",
+      "originalSha256": "b908f97d576393b84da4bcfc75da10ee1e3da1eef0d4d1780e31165483135f75",
+      "approvedSha256": "4f0249e68614d92c51e42aa038a7b0b2c84f9db277b24c186aa7b51976d2fe9b"
+    },
+    {
+      "file": "happykitty.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/remaining-animations/happykitty/candidate.webp",
+      "original": "staging/emoji-enhancements/originals/happykitty.webp",
+      "originalSha256": "b77a1b60af075a704182c7721c8d084d315bfc344fe70ddafdfe7ff53baa84b4",
+      "approvedSha256": "d030cfdefb956b381eb939c63f00f353d534321b33c1b10293628c9c973c3b83"
+    },
+    {
+      "file": "hypecat.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/remaining-animations/hypecat/candidate.webp",
+      "original": "staging/emoji-enhancements/originals/hypecat.webp",
+      "originalSha256": "4d2e3af230e1e474b11eb835e8b4a0850f40d2e45776a89f906b890b2cc9d0fd",
+      "approvedSha256": "bcbd723ce345d8e138eb0aaa840fb2fd1feae4b57fb8b5c34acbb7a35b76bc33"
+    },
+    {
+      "file": "keanu-thanks.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/remaining-animations/keanu-thanks/candidate.webp",
+      "original": "staging/emoji-enhancements/originals/keanu-thanks.webp",
+      "originalSha256": "939a091df483e8ac730ef0689d341f52a0c5a0c8b99f319bcf6a3d22bdba1567",
+      "approvedSha256": "17aa88a7b7677002bcd70f032bd0c904cea3c98f75e6da3e0c84fb1fe22c496f"
+    },
+    {
+      "file": "keanu_thanks.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/remaining-animations/keanu_thanks/candidate.webp",
+      "original": "staging/emoji-enhancements/originals/keanu_thanks.webp",
+      "originalSha256": "24fac7e378dc017bc7954f1ddc4d5939bcd8fc50d878a79f9a3f59bd9050ca2a",
+      "approvedSha256": "deb99bc506dd59a207e00343b58e3bf8dca1c948b5d33aada6d2cbd8cff5c08d"
+    },
+    {
+      "file": "let-me-think.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/remaining-animations/let-me-think/candidate.webp",
+      "original": "staging/emoji-enhancements/originals/let-me-think.webp",
+      "originalSha256": "49c1920fe9199dbb8ec074b3d274255e81fa148a09370b836c409c5f80e5b114",
+      "approvedSha256": "9703c78b7bea22783380c029f7ca7ec1eed8bba1a82d267f9f30f858ef78abdf"
+    },
+    {
+      "file": "loading.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/remaining-animations/loading/candidate.webp",
+      "original": "staging/emoji-enhancements/originals/loading.webp",
+      "originalSha256": "a3dc5e0d442db330c4a1663c721acf14d5e1147ec86203c40112468a5655d5ed",
+      "approvedSha256": "d314449707d1a3cbcf6abb4bd67333640140e12f9ba7e856d713e9c875945ee3"
+    },
+    {
+      "file": "magic.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/remaining-animations/magic/candidate.webp",
+      "original": "staging/emoji-enhancements/originals/magic.webp",
+      "originalSha256": "38cf49fe0085b72be5bffbd0ef0d3df6be6f867f46bfa39a181af7b165e87b1e",
+      "approvedSha256": "201a63ab7397629234ca86401a2dfd1c08c1eb692e4ad29a2bea02e7885713a1"
+    },
+    {
+      "file": "meow-bongo-cat.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/remaining-animations/meow-bongo-cat/candidate.webp",
+      "original": "staging/emoji-enhancements/originals/meow-bongo-cat.webp",
+      "originalSha256": "0746f9563fa62f0047a2419c4a0878c6c2d5d9c08f344381ed3ae6c5fcb30bba",
+      "approvedSha256": "f5359f038a3d0f62d05d96171695780d0f82ee1abf42cf0900e9bbff11829554"
+    },
+    {
+      "file": "meow-mic-drop.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/remaining-animations/meow-mic-drop/candidate.webp",
+      "original": "staging/emoji-enhancements/originals/meow-mic-drop.webp",
+      "originalSha256": "76cf0a0f3cb6f61bfaf17be241ac70fae0570db31987fb6b045743822a489cc0",
+      "approvedSha256": "fe1f7e88a14e471eac5e7993ae8ab424da7a26df15a40a6134999ef5d4054f77"
+    },
+    {
+      "file": "meow-stretch.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/remaining-animations/meow-stretch/candidate.webp",
+      "original": "staging/emoji-enhancements/originals/meow-stretch.webp",
+      "originalSha256": "5401776edb12f76b78489d81462a6b96d8bf9d2a6a4d80bb83fbe03d0830ff64",
+      "approvedSha256": "53d49029b490915d8e6fe7e546c939b109bb945382d4cb9c4be74dcb98a309c2"
+    },
+    {
+      "file": "meow-wave-comfy.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/remaining-animations/meow-wave-comfy/candidate.webp",
+      "original": "staging/emoji-enhancements/originals/meow-wave-comfy.webp",
+      "originalSha256": "3ec7ac3bc218d20461afe6fe35641fdad4fab7407fc82a5ee32d4ed17770fd6b",
+      "approvedSha256": "86bff9459c1e8a67751bd765ba985caa58abf3e45e5472a287243042856f3a30"
+    },
+    {
+      "file": "meow_angry_intensifies.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/remaining-animations/meow_angry_intensifies/candidate.webp",
+      "original": "staging/emoji-enhancements/originals/meow_angry_intensifies.webp",
+      "originalSha256": "96fc0fd4f7df8f5efe9054854687ac8bf2bbe15642249447eb58434887c61d84",
+      "approvedSha256": "9732a89ddda8d8f3ee2cf753e523b48a95e850d7158778867b6a0cd29c4261f7"
+    },
+    {
+      "file": "meow_attention.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/remaining-animations/meow_attention/candidate.webp",
+      "original": "staging/emoji-enhancements/originals/meow_attention.webp",
+      "originalSha256": "7516cfd3eed591795fcbdf15794a45da338fa1b6a7c6d9533d2242116b559583",
+      "approvedSha256": "191496af5a6fd2424479076d1729fcb398e926a8cdef334c00c89d31dbb33dc3"
+    },
+    {
+      "file": "meow_bongo_rage.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/remaining-animations/meow_bongo_rage/candidate.webp",
+      "original": "staging/emoji-enhancements/originals/meow_bongo_rage.webp",
+      "originalSha256": "01efdf6348fafe22abb5bbb4db61cc4bc1775aa68fdcaf32fb53ecba7f4aba01",
+      "approvedSha256": "0985f420c513401f36ef6a16551c7b4883f6daab63c4cf7f14b65746f1b82768"
+    },
+    {
+      "file": "meow_chips.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/remaining-animations/meow_chips/candidate.webp",
+      "original": "staging/emoji-enhancements/originals/meow_chips.webp",
+      "originalSha256": "3f5dd6d3800f0b75dac67c5f30c437de7879e2de982267fbf7f69aafc758feab",
+      "approvedSha256": "f2af8be089a9236a8c092453b1bf799d10c8aa250d39986533bb8df0fa9939a6"
+    },
+    {
+      "file": "meow_clorox.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/remaining-animations/meow_clorox/candidate.webp",
+      "original": "staging/emoji-enhancements/originals/meow_clorox.webp",
+      "originalSha256": "8ad27851e985439685e7e5a592c44969a40e169200f7f7e2122f5ca502d84225",
+      "approvedSha256": "345c4aabed7360bd29751ce0f21024635e3a0e556ac4cb0d9b38378026ce91c4"
+    },
+    {
+      "file": "meow_cloroxsip.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/remaining-animations/meow_cloroxsip/candidate.webp",
+      "original": "staging/emoji-enhancements/originals/meow_cloroxsip.webp",
+      "originalSha256": "fe25879be19ace6734e51410bcc62c3ad45cde3f768aac1dee27a1f6492cb4ad",
+      "approvedSha256": "8a56f12bf9e1033184b93122ade1737029d966c85c0e3baa8d113bfe07bb314d"
+    },
+    {
+      "file": "meow_code.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/remaining-animations/meow_code/candidate.webp",
+      "original": "staging/emoji-enhancements/originals/meow_code.webp",
+      "originalSha256": "08013d3dcf85913bf31c7552ded456b9ac519725fa2823c6ad248c0d67eb1236",
+      "approvedSha256": "836e5842f22d654b4bda9fd516f63c4a0203116f5681b67a6467dd6563231f22"
+    },
+    {
+      "file": "meow_coffeespitting.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/remaining-animations/meow_coffeespitting/candidate.webp",
+      "original": "staging/emoji-enhancements/originals/meow_coffeespitting.webp",
+      "originalSha256": "dbcf776afd85ce124196455afc2f7bdd78aa064749550f3c2f8eaedc76e390e6",
+      "approvedSha256": "db834a25579c8739af73a81108b7f3651e5bfa3fb4ab371cba5f683cc7e6afc5"
+    },
+    {
+      "file": "meow_cookie.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/remaining-animations/meow_cookie/candidate.webp",
+      "original": "staging/emoji-enhancements/originals/meow_cookie.webp",
+      "originalSha256": "daa99a0cf9a2488c7721519c382137a03cf5fc648641324c4bed4ad7d6109ad5",
+      "approvedSha256": "6e7135d28d23a24573184163b38dc50810179f54051c5e6ad95e763b5c968e0d"
+    },
+    {
+      "file": "meow_crying.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/remaining-animations/meow_crying/candidate.webp",
+      "original": "staging/emoji-enhancements/originals/meow_crying.webp",
+      "originalSha256": "503240a141521ff84a6f7f72d25ada624ecb8fedc30cace1cc08913dd5798d6d",
+      "approvedSha256": "0a5afc7fdbc9b8c9e5617e41098bd81a63f818050872d85cf3bbb4c707cb3867"
+    },
+    {
+      "file": "meow_derpy.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/remaining-animations/meow_derpy/candidate.webp",
+      "original": "staging/emoji-enhancements/originals/meow_derpy.webp",
+      "originalSha256": "74a5fa7cca4bd66aa7c19fdc40c80ee46462b4c4f3207ad1bcff4741a59b171d",
+      "approvedSha256": "af0aeb884bd5b1e211383c688803a7c41b791ac95f819498e8984e44eb5bdf99"
+    },
+    {
+      "file": "meow_drool.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/remaining-animations/meow_drool/candidate.webp",
+      "original": "staging/emoji-enhancements/originals/meow_drool.webp",
+      "originalSha256": "a35de63306b637f3759136de1e9694077c40f35ed4fe2560412dce3251f6e0b3",
+      "approvedSha256": "a101de56a20dc436579a12190ca13c5b61c94b3c67d6646a702ed31d1bd4afae"
+    },
+    {
+      "file": "meow_enjoy-rain.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/remaining-animations/meow_enjoy-rain/candidate.webp",
+      "original": "staging/emoji-enhancements/originals/meow_enjoy-rain.webp",
+      "originalSha256": "6f02821148762fc57494f033b72bfa1e95829dc843f1c6ff3a35d763e11c534c",
+      "approvedSha256": "a4a48feb686da5b6c7c7b402cd91cdf6f93c3c031d227685909e4a791e5dab06"
+    },
+    {
+      "file": "meow_enjoy-snow.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/remaining-animations/meow_enjoy-snow/candidate.webp",
+      "original": "staging/emoji-enhancements/originals/meow_enjoy-snow.webp",
+      "originalSha256": "7d1243e71c89ede23ec0de1f28b9282b3a306752e3aba35c94730bc5f8232a64",
+      "approvedSha256": "cdd3882e81eef6458e2934c3302b5ff0f11304e3047a1c58ae4c2b2b8868b9ca"
+    },
+    {
+      "file": "meow_fart.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/remaining-animations/meow_fart/candidate.webp",
+      "original": "staging/emoji-enhancements/originals/meow_fart.webp",
+      "originalSha256": "91bb4dda63a67522eb2c7fcbd28bbcbcdb746b7c62bd1ac96bd02ba383a0bf24",
+      "approvedSha256": "7c2677085b31c8e1382fb432be0dcfc20e83af76ab56c67664d38b517bc00ee9"
+    },
+    {
+      "file": "meow_glare-zoom.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/remaining-animations/meow_glare-zoom/candidate.webp",
+      "original": "staging/emoji-enhancements/originals/meow_glare-zoom.webp",
+      "originalSha256": "4965b33d7cccbebb620d8e42d1bf61aea76e1e6118f62df206260ab74c82a89f",
+      "approvedSha256": "61f1f228b870c07e7fb375a70e66cd72b520751429292244576387ca403a4940"
+    },
+    {
+      "file": "meow_heart_bongo.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/remaining-animations/meow_heart_bongo/candidate.webp",
+      "original": "staging/emoji-enhancements/originals/meow_heart_bongo.webp",
+      "originalSha256": "9e88fb2d9d2ff6c7a3220c4401a38e1346d0cc0948d6078b57a6f84839d56eba",
+      "approvedSha256": "83e9fc37aa6c75a1e24e1678f6d6111521db7f7af469067280fab6b88605fed0"
+    },
+    {
+      "file": "meow_lurk.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/remaining-animations/meow_lurk/candidate.webp",
+      "original": "staging/emoji-enhancements/originals/meow_lurk.webp",
+      "originalSha256": "5ef1e83b38721293e78003e6a97a19b786b1e8968927a20f288bcc98945f6154",
+      "approvedSha256": "cea7dc9b832dc9d3f3ab7cd046ccc8fa64c59544f93956589c06448ebfdb8508"
+    },
+    {
+      "file": "meow_nod.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/remaining-animations/meow_nod/candidate.webp",
+      "original": "staging/emoji-enhancements/originals/meow_nod.webp",
+      "originalSha256": "293d0001c620e584370bf581757e4bb78b3b3b6ab5a17d6ba45b56280ddfd0ae",
+      "approvedSha256": "ef1fc4c2386b2561f0e7efd07b7b5bf4cb6cbe444ec2ab3ba39192d830463e9e"
+    },
+    {
+      "file": "meow_noddies.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/remaining-animations/meow_noddies/candidate.webp",
+      "original": "staging/emoji-enhancements/originals/meow_noddies.webp",
+      "originalSha256": "215589d78f010c591ed0382f5b36e4db2a7ed8722c754fc9f10541b6c56e36a7",
+      "approvedSha256": "48c4ead5367d2eb38bfb2ae9db7a5a00dc7d325df56c2ca1a3adab7e23a9dd47"
+    },
+    {
+      "file": "meow_popcorn.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/remaining-animations/meow_popcorn/candidate.webp",
+      "original": "staging/emoji-enhancements/originals/meow_popcorn.webp",
+      "originalSha256": "f0c4d958498f0ba9cb2c9a0675ef1704fbdb2918e5551bb951b4c2730676d530",
+      "approvedSha256": "bc56d1f7b6dd8411947cea8916844259c543d08e28c943fd33b9b31bdfc3b396"
+    },
+    {
+      "file": "meow_red-bull.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/remaining-animations/meow_red-bull/candidate.webp",
+      "original": "staging/emoji-enhancements/originals/meow_red-bull.webp",
+      "originalSha256": "8f81e364985fa1811d888f57f97b0244c45f591dd275bfb2b72090f4e0246666",
+      "approvedSha256": "19ba0520428b56298dbe81947be673d0b17bf387b3b5a24071d04f35e43d9c2d"
+    },
+    {
+      "file": "meow_sad-rain.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/remaining-animations/meow_sad-rain/candidate.webp",
+      "original": "staging/emoji-enhancements/originals/meow_sad-rain.webp",
+      "originalSha256": "55cf97b5d07ac5076775aa9beb98331c3bdf4488193e8e8b308f06e0b8ae73a1",
+      "approvedSha256": "c06a294548bccea36fb4cbbfdcb238028b65565cb5fe2a1698fc76f7f8a07fc0"
+    },
+    {
+      "file": "meow_thinkingsmirk.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/remaining-animations/meow_thinkingsmirk/candidate.webp",
+      "original": "staging/emoji-enhancements/originals/meow_thinkingsmirk.webp",
+      "originalSha256": "d76ec5079fa2baf6ce47879e7c21414c7f7a2897d7c7306c36f28c9ee22ad6df",
+      "approvedSha256": "29d46d01631cc889311eca232fb9618b6a7c5622f90015af627d41838e3390a9"
+    },
+    {
+      "file": "milchick_roll.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/remaining-animations/milchick_roll/candidate.webp",
+      "original": "staging/emoji-enhancements/originals/milchick_roll.webp",
+      "originalSha256": "569c5202cff93c252f77d7f702624a99eedf71d1beaa0f2155c5e5bff2b1706e",
+      "approvedSha256": "d0e57d3775d3e4c8eb73a0d90229c4b8d49af85fdb8b33bdc898a9fe8caa3077"
+    },
+    {
+      "file": "nyancat.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/remaining-animations/nyancat/candidate.webp",
+      "original": "staging/emoji-enhancements/originals/nyancat.webp",
+      "originalSha256": "9faa73edcc7411d72ac33f80376e8bd136b7d63aeb405b0fd225e13092a0ed14",
+      "approvedSha256": "33be46854071d43b04d322b42d6a1ada5638f42644138bb9f4365db1d6cb3eb1"
+    },
+    {
+      "file": "roo-e.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/remaining-animations/roo-e/candidate.webp",
+      "original": "staging/emoji-enhancements/originals/roo-e.webp",
+      "originalSha256": "45e00c4fe0c5c29648037310a33c014ab9b30675f871c17e05aee1305a61845c",
+      "approvedSha256": "d5e70a406b6e31e17a2f656157e0694fefe96aef644c2d2cea139f86a2a64fe2"
+    },
+    {
+      "file": "roo-redbutton.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/remaining-animations/roo-redbutton/candidate.webp",
+      "original": "staging/emoji-enhancements/originals/roo-redbutton.webp",
+      "originalSha256": "4d7717af61dd68a2a09a5049bfb39f77f85ca4e01b5607648bfa7d09b8ee52ab",
+      "approvedSha256": "af6b55d67c3cda66301dc5c0ca89bf90339d2a8dad5e5a81462c59448571902d"
+    },
+    {
+      "file": "roorooq.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/remaining-animations/roorooq/candidate.webp",
+      "original": "staging/emoji-enhancements/originals/roorooq.webp",
+      "originalSha256": "00fc714d2af414b0f555f55c95be7815099928f8bc4716c284c341678d8d740b",
+      "approvedSha256": "3bea3aeb9cff7fd71f867e8c4cbda6181cb276f28e9e8be36920a8af926d6e0c"
+    },
+    {
+      "file": "severance-dancing-helly.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/remaining-animations/severance-dancing-helly/candidate.webp",
+      "original": "staging/emoji-enhancements/originals/severance-dancing-helly.webp",
+      "originalSha256": "ecb1d453b50c4e82bf01bcc3beb75ae94c49e5370dc045ed45d907fd98f03cf1",
+      "approvedSha256": "e7a6ecc3a99eae9074c828a8b3cd68998a479e08c3293a0047c8f1d03162241b"
+    },
+    {
+      "file": "severance-dancing-mark.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/remaining-animations/severance-dancing-mark/candidate.webp",
+      "original": "staging/emoji-enhancements/originals/severance-dancing-mark.webp",
+      "originalSha256": "71767f8be4321d40181d149794c8c248d46e82b1ee5d7ed341a9cc2f85d77fa9",
+      "approvedSha256": "55ec682fa5739aeb792e80965d2f69f12922f2694c9105b8c891acee4872ce34"
+    },
+    {
+      "file": "severance-dancing.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/remaining-animations/severance-dancing/candidate.webp",
+      "original": "staging/emoji-enhancements/originals/severance-dancing.webp",
+      "originalSha256": "da522992882dfa10b7d57f6dc94fb4204e94f870800108ae358c22ef0ab01021",
+      "approvedSha256": "9f681dc2109eb11173a965880a25d60111b00b9cb7e7c2a4813617b4a97ed573"
+    },
+    {
+      "file": "severance-running.webp",
+      "status": "held-original",
+      "originalSha256": "45f51642c96fc4041a22e963932e4c3bb7ab9eef1d0d42265e801a3d3ee02179"
+    },
+    {
+      "file": "severance.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/remaining-animations/severance/candidate.webp",
+      "original": "staging/emoji-enhancements/originals/severance.webp",
+      "originalSha256": "1cc3e2b070ab957590489c3039bd65d5adb429b21fde6952af0d0af60f7b6df2",
+      "approvedSha256": "6550bf333fefa0358ad65eff57019778af9eeddeba831571d91a999af917357d"
+    },
+    {
+      "file": "side-eye.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/remaining-animations/side-eye/candidate.webp",
+      "original": "staging/emoji-enhancements/originals/side-eye.webp",
+      "originalSha256": "e201d86cba42e1f5e942951f084b4665ce046da7be9309322116f3767a80b1a5",
+      "approvedSha256": "038d740aae4cbcd3f6888cf72e909a24245523811030291b3a82ed914a9dc073"
+    },
+    {
+      "file": "smart.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/remaining-animations/smart/candidate.webp",
+      "original": "staging/emoji-enhancements/originals/smart.webp",
+      "originalSha256": "99a0308fd6e2186fa4631c2f3a3bb8ca5523f10fa483c3d83a127e16e1d5e6aa",
+      "approvedSha256": "90ee2baee9dcef86f4a48489fb3ff46a9a52902256f1ea4161aad23884c7f3a2"
+    },
+    {
+      "file": "southpark_nice.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/remaining-animations/southpark_nice/candidate.webp",
+      "original": "staging/emoji-enhancements/originals/southpark_nice.webp",
+      "originalSha256": "c11a4fce89e8f09410e90b12aa675a866bdfb5aa104cd655180567ef8c1b0661",
+      "approvedSha256": "ad9ad0aab1cbd6709df468ab38971cea04bd0120ee7801b3587a2f6796354dc4"
+    },
+    {
+      "file": "the_more_you_know.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/remaining-animations/the_more_you_know/candidate.webp",
+      "original": "staging/emoji-enhancements/originals/the_more_you_know.webp",
+      "originalSha256": "0db94f326075d88fe5d62168ca43b6c41077502fa9c200000a1989b62229037c",
+      "approvedSha256": "9f3b3d00b6eab4b26b709913bb34c9f25d73dd5b1927eb6175b93ad116abf426"
+    },
+    {
+      "file": "thinking-face-rotating.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/remaining-animations/thinking-face-rotating/candidate.webp",
+      "original": "staging/emoji-enhancements/originals/thinking-face-rotating.webp",
+      "originalSha256": "b04d7bf9698e3f50c6cd88c5e7c2996f01858d69724c5406a2c87701024535ef",
+      "approvedSha256": "19d9a458f36930ec441ea440d06bea7dc7512d0ab9cd173719c6cc95b4338859"
+    },
+    {
+      "file": "this-is-fine-fire.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/remaining-animations/this-is-fine-fire/candidate.webp",
+      "original": "staging/emoji-enhancements/originals/this-is-fine-fire.webp",
+      "originalSha256": "fdd601c1aec898936b4fd01f9b7ef6ade883ca07cd7217c3748b132ce07682c7",
+      "approvedSha256": "d6bbcc7acc1bfbfb17fffc0ac2b068c533d1eb0bb87603d1ee8a57696de6fb10"
+    },
+    {
+      "file": "try-not-to-cry.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/remaining-animations/try-not-to-cry/candidate.webp",
+      "original": "staging/emoji-enhancements/originals/try-not-to-cry.webp",
+      "originalSha256": "6556a768c34be0e708fbd96e7e6441ac035393778be1960cc84564989d63adb5",
+      "approvedSha256": "3ebc142f944f72a3fda54f407e2457ddef7abd20014de32dd7cee8f4fa8ec1e7"
+    },
+    {
+      "file": "typing_cat_kitten.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/remaining-animations/typing_cat_kitten/candidate.webp",
+      "original": "staging/emoji-enhancements/originals/typing_cat_kitten.webp",
+      "originalSha256": "af4e99ef089405c95fba2881c77c62eaa3d760767768fd1da9ec96b4a60ccfb9",
+      "approvedSha256": "8f7a01e071940693de974eb5efd61c035aa819f92f3b879e1f4acfcc282db49e"
+    },
+    {
+      "file": "typingcat.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/remaining-animations/typingcat/candidate.webp",
+      "original": "staging/emoji-enhancements/originals/typingcat.webp",
+      "originalSha256": "b103ce3d6e7ffed015cd6c247fd5df766c94e88c16f602902985b12d942fea50",
+      "approvedSha256": "282513f65060bbc113075cfa078f606eb63beb420b03cb5927216b76023779ec"
+    },
+    {
+      "file": "unikittyangry.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/remaining-animations/unikittyangry/candidate.webp",
+      "original": "staging/emoji-enhancements/originals/unikittyangry.webp",
+      "originalSha256": "6c5279a460b18425a7616f2f6986ca12a3ed0a1457f9932159620cb38f50f26f",
+      "approvedSha256": "56ef026625fffab9fe71d7774c5b8573b07629b99bf5256b5cae8cdf4d552c02"
+    },
+    {
+      "file": "watcat.webp",
+      "status": "promoted",
+      "source": "staging/emoji-enhancements/remaining-animations/watcat/candidate.webp",
+      "original": "staging/emoji-enhancements/originals/watcat.webp",
+      "originalSha256": "32c93da3b886d2a05ae1aff9e81b6b4120e1e772cbb92e410e09c5e6191949a8",
+      "approvedSha256": "2bb84bcc3316499cc4c27f4559b623d2dacb6b2034a0bb9ca4fb3c5dfe941165"
+    }
+  ]
+}

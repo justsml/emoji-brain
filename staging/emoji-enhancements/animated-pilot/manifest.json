@@ -1,5 +1,5 @@
 {
-  "status": "pending-human-approval",
+  "status": "preferred-variants-promoted",
   "count": 12,
   "billing": {
     "provider": "OpenRouter",
@@ -84,7 +84,7 @@
       "name": "awkward",
       "subject": "Two poses of the same red-brown cartoon monkey awkwardly glancing; preserve each eye position and green shirt collar.",
       "effect": false,
-      "source": "public/emojis/awkward.webp",
+      "source": "staging/emoji-enhancements/originals/awkward.webp",
       "frames": 2,
       "delays": [
         2000,
@@ -193,13 +193,17 @@
         "preferred": "esrgan",
         "nanoSuitable": "needs-review",
         "notes": "Both retain the monkey silhouette. Check the gaze change and the original unequal 2-second / 1-second holds; Nano adds slight gradients."
+      },
+      "promotion": {
+        "status": "promoted",
+        "approvedSha256": "033937192743c4c9d3f86b22bb6d4ae6118b14e97b87ea077aa2d5cd724a60ec"
       }
     },
     {
       "name": "bongo-cat",
       "subject": "Two poses of the white outlined Bongo Cat with tiny pink paw pads. Preserve which paw is raised in each frame.",
       "effect": false,
-      "source": "public/emojis/bongo-cat.webp",
+      "source": "staging/emoji-enhancements/originals/bongo-cat.webp",
       "frames": 2,
       "delays": [
         100,
@@ -308,13 +312,17 @@
         "preferred": "esrgan",
         "nanoSuitable": "needs-review",
         "notes": "Local restoration smooths the original outline while retaining the paw pads and expression. Check that alternating paws remain distinct."
+      },
+      "promotion": {
+        "status": "promoted",
+        "approvedSha256": "920ae4b8036f103e746904b817c7b455b2995fdf03c86f1b65dcad77c7c4906e"
       }
     },
     {
       "name": "clapclap-e",
       "subject": "Three poses of the same simple white outlined smiling stick figure clapping. Preserve the exact hand positions in each frame.",
       "effect": false,
-      "source": "public/emojis/clapclap-e.webp",
+      "source": "staging/emoji-enhancements/originals/clapclap-e.webp",
       "frames": 3,
       "delays": [
         40,
@@ -413,13 +421,17 @@
         "nanoSuitable": false,
         "notes": "Local restoration retains the clap poses and white body. Nano added a panel grid and failed transparency; that unusable candidate is excluded.",
         "excludeNano": true
+      },
+      "promotion": {
+        "status": "promoted",
+        "approvedSha256": "a3527cd0ca7c4f31f3f30be6990a829797f012c6165010d2fa752b8edbf06ea7"
       }
     },
     {
       "name": "eyetwitch",
       "subject": "Seven frames of the same yellow smiley with uneven white eyes, tiny pupils, horizontal orange mouth and twitching eyelid. Preserve the small differences and their order.",
       "effect": false,
-      "source": "public/emojis/eyetwitch.webp",
+      "source": "staging/emoji-enhancements/originals/eyetwitch.webp",
       "frames": 7,
       "delays": [
         100,
@@ -552,13 +564,17 @@
           "esrgan"
         ],
         "notes": "The second Nano prompt produces crisp edges and retains the seven eyelid poses. It adds a gold outer rim; verify that stylistic change. Local restoration has edge artifacts and is shown as a rejected comparison."
+      },
+      "promotion": {
+        "status": "promoted",
+        "approvedSha256": "4f7bb924a36e7631251dd80069fde5971165cb4b566be2a00a6ef90cb9ad6401"
       }
     },
     {
       "name": "meow-devil-intensifies",
       "subject": "Ten frames of the red devil meow cat with horns and wicked expression. Preserve the jitter, blurred outlines and ghosting exactly; no stabilization.",
       "effect": true,
-      "source": "public/emojis/meow-devil-intensifies.webp",
+      "source": "staging/emoji-enhancements/originals/meow-devil-intensifies.webp",
       "frames": 10,
       "delays": [
         20,
@@ -724,13 +740,17 @@
         "preferred": "tuned",
         "nanoSuitable": "needs-review",
         "notes": "Preserve the jitter and slight edge softness. The blend retains original alpha and 80% original color. Nano needed per-frame white-background cleanup and offers little improvement over local restoration."
+      },
+      "promotion": {
+        "status": "promoted",
+        "approvedSha256": "9cb3411abb264b9102ab30599594fab03cce07627b0e652ce0a5b0c0ac527ac6"
       }
     },
     {
       "name": "meow_bongotap",
       "subject": "Two alternating yellow meow cat paw-tap poses. Preserve paw positions, BLACK eyes, BLACK mouth, BLACK whiskers and exact tiny red motion marks. Never turn dark facial features white.",
       "effect": false,
-      "source": "public/emojis/meow_bongotap.webp",
+      "source": "staging/emoji-enhancements/originals/meow_bongotap.webp",
       "frames": 2,
       "delays": [
         100,
@@ -838,13 +858,17 @@
         "preferred": "esrgan",
         "nanoSuitable": false,
         "notes": "Prefer the local restoration. Nano adds angry eyebrows and a heavy outline, changing the expression; retain it only as a rejected comparison. The first Nano attempt also recolored the face and was excluded."
+      },
+      "promotion": {
+        "status": "promoted",
+        "approvedSha256": "8811bfd5c52d5b1eae206bdd9c029be0127acbe94b171b35179ef4939f65f8b9"
       }
     },
     {
       "name": "meow_bread_disappear",
       "subject": "Six frames of a yellow meow cat gradually disappearing behind a slice of bread. Preserve exactly how much cat is occluded in each frame, and the stationary bread geometry.",
       "effect": false,
-      "source": "public/emojis/meow_bread_disappear.webp",
+      "source": "staging/emoji-enhancements/originals/meow_bread_disappear.webp",
       "frames": 6,
       "delays": [
         180,
@@ -969,13 +993,17 @@
         "preferred": "esrgan",
         "nanoSuitable": "needs-review",
         "notes": "Local restoration keeps the disappearing-cat sequence and flat bread colors. Nano adds gradients and changes the bread contour slightly between frames; inspect the stationary bread for wobble."
+      },
+      "promotion": {
+        "status": "promoted",
+        "approvedSha256": "c976e2f83e06ab935b5054b4325efc47b3bc309ade13fe059ed699074ebb78b9"
       }
     },
     {
       "name": "meow_hyper_think",
       "subject": "Six frames of the yellow thinking meow cat, hand on chin, with INTENTIONAL directional motion blur and jitter. Preserve the softness, trails and per-frame displacement. Do not stabilize or sharpen away the effect.",
       "effect": true,
-      "source": "public/emojis/meow_hyper_think.webp",
+      "source": "staging/emoji-enhancements/originals/meow_hyper_think.webp",
       "frames": 6,
       "delays": [
         20,
@@ -1119,13 +1147,17 @@
         "preferred": "tuned",
         "nanoSuitable": "needs-review",
         "notes": "Intentional blur: the effect-preserving blend retains original alpha and 80% original color. Full restoration smooths the outer silhouette more strongly. Compare the hand trails and jitter at 0.25× speed."
+      },
+      "promotion": {
+        "status": "promoted",
+        "approvedSha256": "f5d1d1b4a4a6def38ffff3eb6a57f0cf092626a278124c6b459c0f852c1103f0"
       }
     },
     {
       "name": "panda-omg",
       "subject": "Two poses of the same gray and white surprised panda with large dark eyes and long pink tongue.",
       "effect": false,
-      "source": "public/emojis/panda-omg.webp",
+      "source": "staging/emoji-enhancements/originals/panda-omg.webp",
       "frames": 2,
       "delays": [
         200,
@@ -1235,13 +1267,17 @@
         "preferred": "esrgan",
         "nanoSuitable": "needs-review",
         "notes": "The original has an embedded opaque white background. It was removed before local restoration. Compare the eye highlights and tongue shape against Nano."
+      },
+      "promotion": {
+        "status": "promoted",
+        "approvedSha256": "3138b04334b7a3e92ea3cd284b9516acfc451d2263b13b6a0aed51f88e65b92f"
       }
     },
     {
       "name": "roo-aww-intensifies",
       "subject": "Nine cropped close-up frames of the same cream-and-gray roo panda with huge dark eyes and open pink mouth. Preserve exact shake offsets, zoom, frame crop and intensity; never center or stabilize the character.",
       "effect": true,
-      "source": "public/emojis/roo-aww-intensifies.webp",
+      "source": "staging/emoji-enhancements/originals/roo-aww-intensifies.webp",
       "frames": 9,
       "delays": [
         30,
@@ -1401,13 +1437,17 @@
         "preferred": "esrgan",
         "nanoSuitable": false,
         "notes": "Prefer full local restoration here: the effect is mainly positional shaking, which remains frame-specific, while low-resolution contours are improved. The blend is gentler. Nano retains blockiness and introduces eye/alpha defects."
+      },
+      "promotion": {
+        "status": "promoted",
+        "approvedSha256": "49c5747ae3d350320f63998704f0ce22be47ac78f512dd56afe087c4faae385a"
       }
     },
     {
       "name": "thankyou",
       "subject": "Two frames of the same pink outlined lettering: THANK on top and YOU below. Exact case and spelling; preserve pulsing size difference.",
       "effect": false,
-      "source": "public/emojis/thankyou.webp",
+      "source": "staging/emoji-enhancements/originals/thankyou.webp",
       "frames": 2,
       "delays": [
         250,
@@ -1517,13 +1557,17 @@
         "preferred": "esrgan",
         "nanoSuitable": "needs-review",
         "notes": "Check the exact THANK YOU lettering, small hearts and pulsing size. Nano required reconstruction of the white sticker border after matting; local restoration preserves it from the source."
+      },
+      "promotion": {
+        "status": "promoted",
+        "approvedSha256": "89e996dee1aa667391c9f17b511036b57a57cee25b77cf3978b01a7cfc6184a4"
       }
     },
     {
       "name": "this_is_fine",
       "subject": "Four frames of the same cartoon dog in a hat sitting in flames. Preserve all flames and frame-specific changes, original expression and warm palette. No added text.",
       "effect": false,
-      "source": "public/emojis/this_is_fine.webp",
+      "source": "staging/emoji-enhancements/originals/this_is_fine.webp",
       "frames": 4,
       "delays": [
         100,
@@ -1640,7 +1684,12 @@
         "preferred": "esrgan",
         "nanoSuitable": "needs-review",
         "notes": "Local restoration cleans compression while preserving the dog and changing flames. Nano retains much of the blocky texture; compare the fire rather than treating all motion as blur."
+      },
+      "promotion": {
+        "status": "promoted",
+        "approvedSha256": "caaf4888337da2672feeb487fd383a077b3c0688d885104cf0219f49054b19a8"
       }
     }
-  ]
+  ],
+  "promotionReceipt": "../promotion.json"
 }
