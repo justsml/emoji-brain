@@ -30,6 +30,13 @@ export const emojiLabeler = async (inputImage: string) => {
 
   const result = await generateText({
     model: labellingModel(),
+    // Best-effort repeatability; a seed cannot guarantee identical provider output.
+    // Keep Gemini 3's default sampling settings per Google's guidance.
+    seed: 42,
+    providerOptions: {
+      google: { thinkingConfig: { thinkingLevel: 'minimal' } },
+      openrouter: { reasoning: { effort: 'minimal' } },
+    },
     instructions: dedent`
           You are an emoji labeling assistant. Analyze the provided emoji image and generate a JSON object with 'categories' and 'tags'.
           
