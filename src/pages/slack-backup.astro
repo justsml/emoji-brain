@@ -1,0 +1,32 @@
+---
+import Layout from '../layouts/Layout.astro';
+import metadata from '../data/emoji-metadata.json';
+---
+<Layout title="Back up Slack emojis · Emoji Explorer" imageCount={metadata.emojis.length}>
+  <main style="max-width:48rem;margin:2rem auto;padding:1.5rem;line-height:1.7">
+    <h2 style="font-size:2rem;font-weight:700">Back up your Slack emojis</h2>
+    <p>Save your workspace’s custom emojis, aliases, and metadata in numbered ZIP files, with 200 emojis per file.</p>
+    <ol style="list-style:decimal;padding-left:1.5rem;margin:1rem 0">
+      <li>Copy the script below.</li>
+      <li>Open <code>https://YOUR-WORKSPACE.slack.com/customize/emoji</code> while signed in.</li>
+      <li>Open developer tools → Console, paste the script, and press Enter.</li>
+      <li>Allow downloads and leave the tab open. Safari starts with a test ZIP; verify it saved, then click “Test saved — start backup”.</li>
+    </ol>
+    <button id="copy-backup" class="rail-link" style="border:1px solid;padding:.6rem 1rem;border-radius:.5rem">Copy backup script</button>
+    <a href="/scripts/slack-emoji-backup.js" download style="margin-left:1rem;text-decoration:underline">Download script</a>
+    <p id="copy-status" role="status"></p>
+    <p>Each ZIP contains image files and a <code>manifest.json</code> with base64, byte sizes, image dimensions, dates, aliases, and metadata returned by Slack. Dimensions describe Slack’s hosted images; the original pre-upload dimensions may be unavailable.</p>
+    <p>Keep the backup panel open until you have verified every ZIP downloaded. Its links let you retry blocked downloads. Image failures are recorded in the manifest and console report.</p>
+    <p>To change the batch size, run <code is:raw>globalThis.slackEmojiBackupOptions = { batchSize: 200 };</code> before pasting the script. Values from 1 to 1,000 are supported.</p>
+    <p>Processing happens in your browser. The script loads fflate from jsDelivr and reads Slack’s emoji API and image URLs. Backups include the workspace metadata Slack exposes, such as uploader IDs and names.</p>
+    <a href="/" style="text-decoration:underline">Back to Emoji Explorer</a>
+  </main>
+</Layout>
+<script>
+  import script from '../../public/scripts/slack-emoji-backup.js?raw';
+  document.querySelector('#copy-backup')?.addEventListener('click', async () => {
+    const status = document.querySelector('#copy-status')!;
+    try { await navigator.clipboard.writeText(script); status.textContent = 'Copied. Paste into the Console on your Slack customize/emoji page.'; }
+    catch { status.textContent = 'Clipboard unavailable. Download the script, open it as text, and copy its contents.'; }
+  });
+</script>

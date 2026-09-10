@@ -56,6 +56,22 @@ Emoji Explorer (`emoji-brain`) is a self-hostable, static [Astro](https://astro.
 
 For Slack, sign in to your workspace and open `https://YOUR-WORKSPACE.slack.com/customize/emoji`. Open your browser's developer tools, select **Console**, paste the generated script, and press **Enter**. Leave the page open to see progress and the final counts. Your workspace must allow you to add custom emoji.
 
+### Back up a Slack workspace
+
+Use **Back up Slack emojis** in the site navigation, or copy [slack-emoji-backup.js](public/scripts/slack-emoji-backup.js) into DevTools Console on your signed-in workspace’s `/customize/emoji` page. No selection in Emoji Explorer is required.
+
+- Enumerates `emoji.adminList` pages and validates the reported total before downloading images.
+- Automatically requests numbered ZIP downloads, **200 emoji records per ZIP** by default. Set `globalThis.slackEmojiBackupOptions = { batchSize: 100 };` before running to change it (1–1,000).
+- Each ZIP includes images and `manifest.json`: names, alias targets, dates, all returned emoji metadata, image base64, MIME type, actual byte count, intrinsic dimensions, and available HTTP metadata. Animated image bytes remain unchanged. Dates absent from Slack remain null; raw date fields remain in metadata. Dimensions are those Slack serves, not necessarily the pre-upload originals.
+- Resolves custom alias chains across batches. Aliases to unavailable/built-in targets retain their target name without inventing image data. Image failures remain in the manifest; failed dimension decoding still preserves image bytes.
+- Safari immediately gets `test-save.zip` after the ZIP library loads. Allow downloads, verify the test file, then click **Test saved — start backup**. Every batch also retains a manual save link for blocked downloads. A browser download request is not proof the file reached disk.
+- Progress and errors appear in the page panel and `globalThis.slackEmojiBackupReport`. Stop retains completed batches; rerunning starts a new backup. After verifying downloads, `releaseSlackEmojiBackup()` releases retained ZIP memory and removes the panel. Reduce batch size for large images; retained ZIP links consume memory until released or the tab closes.
+
+Uses pinned [fflate 0.8.3](https://github.com/101arrowz/fflate) from jsDelivr, with stored image bytes and compressed JSON. No package installation is required. The page token stays in the browser and is sent only to Slack’s same-origin API. ZIPs include workspace metadata, including uploader information when Slack supplies it.
+
+The supplied HAR confirmed POST form fields `token`, `page`, and `count` for `emoji.adminList`, but omitted the response body. Pagination and record handling are fixture-tested; the private endpoint and real Safari download permission behavior still require a live workspace check. Image servers must permit browser CORS reads. The exporter reports failures rather than producing opaque/unreadable image data.
+
+
 Plain-text export copies filenames. HTML, CSS, and Markdown exports reference images on the site you exported from; ZIP includes the image files themselves.
 
 ## Run locally

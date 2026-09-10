@@ -36,3 +36,15 @@ Source/reference search remains the best first step when the tiny original has i
 - SeedVR2 hosted model: https://replicate.com/zsxkib/seedvr2 — video/still restoration, 3B/7B; pilot needed because it did little on our tiny stills.
 - Topaz video upscale: https://replicate.com/topazlabs/video-upscale — alternative video restoration candidate.
 - WebP format specification: https://developers.google.com/speed/webp/docs/riff_container — frame durations, loop count, alpha, blending and disposal.
+
+## Reviewed quality distinctions
+
+The first-frame reblur score is an edge-softness diagnostic, not enhancement priority or permission to deblur. User annotations live in `scripts/emoji-quality-reviews.json` and appear alongside raw scores in the generated table. These annotations are a small reviewed set, not evidence that the metric generalizes across the catalog.
+
+- `roo-cult` and `thinkies`: relatively clean lines at small size; preserve linework with conservative upscaling.
+- `milchick_roll`, `meow_coffeespitting`, `meow_dj`, and `side-eye`: user-identified pixelation/blur; prioritize detail restoration, retaining motion and expression.
+- `meow_angry_intensifies` and `meow_hyper_think`: preserve intentional softness, shake, motion trails, ghosting and their frame-to-frame variation. A sharper but less expressive animation fails review. Review other effect-heavy animations individually rather than inferring intent from filename alone.
+
+Before processing animations, inspect playback and representative frames across the complete loop. Separate unwanted degradation from authored effects; never use first-frame score alone to choose a deblur route. If an effect cannot be separated reliably, use conservative upscaling and compare the looping result at emoji display size.
+
+When reconstruction fails, search for the closest larger source or approximation by visible features, rather than merely the same name or species. Save the reference URL and dimensions, identify matching and differing features, and distinguish verified source identity from approximation. References should preserve distinctive artificial features too: sadcat's digitally watery enlarged eyes are required, not an anatomical error to normalize. Compare candidates with the original before using them. New references cannot establish missing motion; retain original timing and effect behavior.

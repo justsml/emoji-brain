@@ -1,0 +1,10 @@
+{
+  "roo-cult.webp": {"category":"Clean lines; small","action":"Conservative upscale; preserve linework","provenance":"User visual review"},
+  "thinkies.webp": {"category":"Clean lines; small","action":"Conservative upscale; preserve linework","provenance":"User visual review"},
+  "milchick_roll.webp": {"category":"Pixelated / blurry","action":"Restore detail; review full motion and seek larger reference if needed","provenance":"User visual review"},
+  "meow_coffeespitting.webp": {"category":"Pixelated / blurry","action":"Restore detail; preserve authored motion and seek larger reference if needed","provenance":"User visual review"},
+  "meow_dj.webp": {"category":"Pixelated / blurry","action":"Restore detail; seek larger reference if enhancement loses identity","provenance":"User visual review"},
+  "side-eye.webp": {"category":"Pixelated / blurry","action":"Restore detail; seek larger reference if enhancement loses expression","provenance":"User visual review"},
+  "meow_angry_intensifies.webp": {"category":"Intentional effect blur","action":"Preserve shake, ghosting and blur variation; no automatic deblur","provenance":"User instruction: anger intensifies"},
+  "meow_hyper_think.webp": {"category":"Intentional effect blur","action":"Preserve frantic motion and artistic softness; no automatic deblur","provenance":"User instruction: meow hyperthink"}
+}
