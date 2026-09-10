@@ -1,9 +1,15 @@
 {
-  "version": 1,
+  "version": 2,
   "settings": {
     "webpQuality": 90,
     "alphaQuality": 100,
     "sizes": [
+      64,
+      128,
+      256
+    ],
+    "previewSizes": [
+      64,
       128,
       256
     ],
@@ -16,6 +22,13 @@
       "sourceSha256": "b97e65586aead33064438439c963077665d9e5d654f861e692b499dd89845b60",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/50.webp",
+            "bytes": 2134
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/50.webp",
@@ -30,6 +43,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/50.webp",
+          "bytes": 2134
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/50.webp",
+          "bytes": 5008
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/50.webp",
+          "bytes": 12152
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/50.webp",
+        "bytes": 64590,
+        "width": 1024,
+        "height": 1024
       }
     },
     "99": {
@@ -38,6 +75,13 @@
       "sourceSha256": "09c69bf9cd95acaedef21d59ffc5ed81eded65697d64192811a469854c4ca13a",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/99.webp",
+            "bytes": 2170
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/99.webp",
@@ -52,6 +96,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/99.webp",
+          "bytes": 2170
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/99.webp",
+          "bytes": 5194
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/99.webp",
+          "bytes": 13302
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/99.webp",
+        "bytes": 81914,
+        "width": 1024,
+        "height": 1024
       }
     },
     "420": {
@@ -60,6 +128,13 @@
       "sourceSha256": "21c6d99aeda96a5ef0f4c6fe926911241b5d61cd9c2753cabd8d3b20f0bddd08",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/420.webp",
+            "bytes": 2356
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/420.webp",
@@ -74,6 +149,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/420.webp",
+          "bytes": 2356
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/420.webp",
+          "bytes": 5082
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/420.webp",
+          "bytes": 11926
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/420.webp",
+        "bytes": 68372,
+        "width": 1024,
+        "height": 1024
       }
     },
     "1000": {
@@ -82,6 +181,13 @@
       "sourceSha256": "dc497bbfdb753bf6a8b0188fc076a8995ac9161aa3e1ce7b89e36dc550e52bc0",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/1000.webp",
+            "bytes": 2256
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/1000.webp",
@@ -96,6 +202,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/1000.webp",
+          "bytes": 2256
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/1000.webp",
+          "bytes": 5650
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/1000.webp",
+          "bytes": 14214
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/1000.webp",
+        "bytes": 84214,
+        "width": 1024,
+        "height": 1024
       }
     },
     "10000": {
@@ -104,6 +234,13 @@
       "sourceSha256": "6da7a07a7aa5bfab52f4b7f0cb268dc9b7be53181e8633e1805a2941a9573603",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/10000.webp",
+            "bytes": 2294
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/10000.webp",
@@ -118,6 +255,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/10000.webp",
+          "bytes": 2294
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/10000.webp",
+          "bytes": 6200
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/10000.webp",
+          "bytes": 15372
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/10000.webp",
+        "bytes": 89830,
+        "width": 1024,
+        "height": 1024
       }
     },
     "100000": {
@@ -126,6 +287,13 @@
       "sourceSha256": "55238970f83fb49efd6a62ece2d91abb94efc78c9463b9c9aafa1d5d0db0dec8",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/100000.webp",
+            "bytes": 2162
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/100000.webp",
@@ -140,6 +308,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/100000.webp",
+          "bytes": 2162
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/100000.webp",
+          "bytes": 5840
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/100000.webp",
+          "bytes": 15562
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/100000.webp",
+        "bytes": 107042,
+        "width": 1024,
+        "height": 434
       }
     },
     "10-10": {
@@ -148,6 +340,13 @@
       "sourceSha256": "d56e3dc7064cd6c3a12f1576031448cf1a4ed14f225feafb830b438d2aef8e0d",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/10-10.webp",
+            "bytes": 3076
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/10-10.webp",
@@ -162,6 +361,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/10-10.webp",
+          "bytes": 3076
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/10-10.webp",
+          "bytes": 7510
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/10-10.webp",
+          "bytes": 18030
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/10-10.webp",
+        "bytes": 85864,
+        "width": 1024,
+        "height": 1024
       }
     },
     "abraham-thinkin": {
@@ -170,6 +393,13 @@
       "sourceSha256": "c5e3825881fa7c5e2ca18a5ec208e602fcaa90af1d7b63ac8e5b2371a46a7f4a",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/abraham-thinkin.webp",
+            "bytes": 2194
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/abraham-thinkin.webp",
@@ -184,6 +414,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/abraham-thinkin.webp",
+          "bytes": 2194
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/abraham-thinkin.webp",
+          "bytes": 4670
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/abraham-thinkin.webp",
+          "bytes": 10200
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/abraham-thinkin.webp",
+        "bytes": 56384,
+        "width": 1024,
+        "height": 1024
       }
     },
     "avocato": {
@@ -192,6 +446,13 @@
       "sourceSha256": "8b5b7adba72a0dd5052e8b20f5b96b30d93f57107f68fa776167011bd0fe0360",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/avocato.webp",
+            "bytes": 2188
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/avocato.webp",
@@ -206,6 +467,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/avocato.webp",
+          "bytes": 2188
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/avocato.webp",
+          "bytes": 4892
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/avocato.webp",
+          "bytes": 11670
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/avocato.webp",
+        "bytes": 61590,
+        "width": 824,
+        "height": 1024
       }
     },
     "awesome": {
@@ -214,6 +499,13 @@
       "sourceSha256": "911aeef648db7c0b2165516ef8ae542764b53ff14bb8daa55ff1a0d9923cacc3",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/awesome.webp",
+            "bytes": 2646
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/awesome.webp",
@@ -228,6 +520,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/awesome.webp",
+          "bytes": 2646
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/awesome.webp",
+          "bytes": 5972
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/awesome.webp",
+          "bytes": 13098
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/awesome.webp",
+        "bytes": 64700,
+        "width": 1024,
+        "height": 1024
       }
     },
     "badtime": {
@@ -236,6 +552,13 @@
       "sourceSha256": "28be27471357c021b3b2f4939afadf5607b69070bbbc726ca3247062fbbb3605",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/badtime.webp",
+            "bytes": 1982
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/badtime.webp",
@@ -250,6 +573,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/badtime.webp",
+          "bytes": 1982
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/badtime.webp",
+          "bytes": 4676
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/badtime.webp",
+          "bytes": 10480
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/badtime.webp",
+        "bytes": 59030,
+        "width": 1024,
+        "height": 1024
       }
     },
     "bizcat": {
@@ -258,6 +605,13 @@
       "sourceSha256": "1298ed72264d1d49bc4b9c9a06c8281f32f8b2b46940f62e29e34c0460e39da2",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/bizcat.webp",
+            "bytes": 1484
+          }
+        },
         "128": {
           "webp": {
             "quality": 90,
@@ -272,6 +626,30 @@
             "bytes": 9106
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/bizcat.webp",
+          "bytes": 1484
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/bizcat.webp",
+          "bytes": 3532
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/bizcat.webp",
+          "bytes": 9106
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/bizcat.webp",
+        "bytes": 68350,
+        "width": 1024,
+        "height": 1024
       }
     },
     "cat-confuse": {
@@ -280,6 +658,13 @@
       "sourceSha256": "47fdb7c36c9666a35b01a67b6fa8fafdafbe33661f15ec4c86723ddd605a3c90",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/cat-confuse.webp",
+            "bytes": 1970
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/cat-confuse.webp",
@@ -294,6 +679,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/cat-confuse.webp",
+          "bytes": 1970
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/cat-confuse.webp",
+          "bytes": 4778
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/cat-confuse.webp",
+          "bytes": 11292
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/cat-confuse.webp",
+        "bytes": 64050,
+        "width": 1024,
+        "height": 1024
       }
     },
     "cat-curious": {
@@ -302,6 +711,13 @@
       "sourceSha256": "12352237e6129bb442018315a13b9ddc01589577c850e894fecf66d78a349ef6",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/cat-curious.webp",
+            "bytes": 2072
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/cat-curious.webp",
@@ -316,6 +732,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/cat-curious.webp",
+          "bytes": 2072
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/cat-curious.webp",
+          "bytes": 4450
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/cat-curious.webp",
+          "bytes": 10674
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/cat-curious.webp",
+        "bytes": 64236,
+        "width": 1024,
+        "height": 1024
       }
     },
     "cat-fishing": {
@@ -324,6 +764,13 @@
       "sourceSha256": "3bcd50fa97be965ad81fb90381a69ccdab7697a3c786e0eea5832deaee22addb",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/cat-fishing.webp",
+            "bytes": 2644
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/cat-fishing.webp",
@@ -338,6 +785,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/cat-fishing.webp",
+          "bytes": 2644
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/cat-fishing.webp",
+          "bytes": 6546
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/cat-fishing.webp",
+          "bytes": 15896
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/cat-fishing.webp",
+        "bytes": 87200,
+        "width": 1024,
+        "height": 1024
       }
     },
     "cat-meow-disappointed": {
@@ -346,6 +817,13 @@
       "sourceSha256": "3534c179aadfa9266195f5633899c58fa0d361b3c4802285f4b5b3e4cb86fd11",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/cat-meow-disappointed.webp",
+            "bytes": 2552
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/cat-meow-disappointed.webp",
@@ -360,6 +838,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/cat-meow-disappointed.webp",
+          "bytes": 2552
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/cat-meow-disappointed.webp",
+          "bytes": 5688
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/cat-meow-disappointed.webp",
+          "bytes": 12622
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/cat-meow-disappointed.webp",
+        "bytes": 68114,
+        "width": 1024,
+        "height": 1024
       }
     },
     "cat-meow-knife": {
@@ -368,6 +870,13 @@
       "sourceSha256": "7415cb65b75940c1ab595d8426e73d23de21970e2310be5a435ee421b265ad5c",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/cat-meow-knife.webp",
+            "bytes": 2024
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/cat-meow-knife.webp",
@@ -382,6 +891,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/cat-meow-knife.webp",
+          "bytes": 2024
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/cat-meow-knife.webp",
+          "bytes": 4304
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/cat-meow-knife.webp",
+          "bytes": 9766
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/cat-meow-knife.webp",
+        "bytes": 50242,
+        "width": 1024,
+        "height": 1024
       }
     },
     "cat-meow-mask": {
@@ -390,6 +923,13 @@
       "sourceSha256": "4bc9c6426cbd33f2804e3ff102af14672f257fba873c977c9230ed4efa1af901",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/cat-meow-mask.webp",
+            "bytes": 2326
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/cat-meow-mask.webp",
@@ -404,6 +944,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/cat-meow-mask.webp",
+          "bytes": 2326
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/cat-meow-mask.webp",
+          "bytes": 4776
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/cat-meow-mask.webp",
+          "bytes": 10802
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/cat-meow-mask.webp",
+        "bytes": 57652,
+        "width": 1024,
+        "height": 1024
       }
     },
     "cat-meow-shocked": {
@@ -412,6 +976,13 @@
       "sourceSha256": "16dfb3f2034650cef87ffaa690253b57a08453300a348750b671faa9bdb9d667",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/cat-meow-shocked.webp",
+            "bytes": 2406
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/cat-meow-shocked.webp",
@@ -426,6 +997,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/cat-meow-shocked.webp",
+          "bytes": 2406
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/cat-meow-shocked.webp",
+          "bytes": 5080
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/cat-meow-shocked.webp",
+          "bytes": 11150
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/cat-meow-shocked.webp",
+        "bytes": 58462,
+        "width": 1024,
+        "height": 1024
       }
     },
     "cat-meow-sip": {
@@ -434,6 +1029,13 @@
       "sourceSha256": "845aa34364a899c33f378ec74a2147526b47493a6388031eca2ec192b8d33c30",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/cat-meow-sip.webp",
+            "bytes": 2388
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/cat-meow-sip.webp",
@@ -448,6 +1050,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/cat-meow-sip.webp",
+          "bytes": 2388
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/cat-meow-sip.webp",
+          "bytes": 5158
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/cat-meow-sip.webp",
+          "bytes": 11626
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/cat-meow-sip.webp",
+        "bytes": 62006,
+        "width": 1024,
+        "height": 1024
       }
     },
     "cat-nap": {
@@ -456,6 +1082,13 @@
       "sourceSha256": "e891bc2afed39456fb506f3aa1d0aef39fa8f32a3450923d222c40ffb553a3fb",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/cat-nap.webp",
+            "bytes": 2278
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/cat-nap.webp",
@@ -470,6 +1103,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/cat-nap.webp",
+          "bytes": 2278
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/cat-nap.webp",
+          "bytes": 5492
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/cat-nap.webp",
+          "bytes": 14078
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/cat-nap.webp",
+        "bytes": 90404,
+        "width": 1024,
+        "height": 1024
       }
     },
     "cat-nap2": {
@@ -478,6 +1135,13 @@
       "sourceSha256": "919c119363ad5e441270ee9cc327feaa92cc81355abcbb3dc2ea2975a3508028",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/cat-nap2.webp",
+            "bytes": 1670
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/cat-nap2.webp",
@@ -492,6 +1156,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/cat-nap2.webp",
+          "bytes": 1670
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/cat-nap2.webp",
+          "bytes": 3884
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/cat-nap2.webp",
+          "bytes": 9740
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/cat-nap2.webp",
+        "bytes": 55746,
+        "width": 1024,
+        "height": 1024
       }
     },
     "cat-orange": {
@@ -500,6 +1188,13 @@
       "sourceSha256": "05fee12b98a1d9d934809f8f1b524d38c8e070862b4d1797a09109d59bd70a5f",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/cat-orange.webp",
+            "bytes": 2370
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/cat-orange.webp",
@@ -514,6 +1209,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/cat-orange.webp",
+          "bytes": 2370
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/cat-orange.webp",
+          "bytes": 5340
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/cat-orange.webp",
+          "bytes": 12896
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/cat-orange.webp",
+        "bytes": 69460,
+        "width": 1024,
+        "height": 1024
       }
     },
     "cat-yells-at-cloud": {
@@ -522,6 +1241,13 @@
       "sourceSha256": "8502a13cfe910c010aa2bd5bad0e17ba2047530c31bb89afaaf63a32e0f771a3",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/cat-yells-at-cloud.webp",
+            "bytes": 2102
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/cat-yells-at-cloud.webp",
@@ -536,6 +1262,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/cat-yells-at-cloud.webp",
+          "bytes": 2102
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/cat-yells-at-cloud.webp",
+          "bytes": 5070
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/cat-yells-at-cloud.webp",
+          "bytes": 12478
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/cat-yells-at-cloud.webp",
+        "bytes": 74928,
+        "width": 1024,
+        "height": 1024
       }
     },
     "cheers-leo": {
@@ -544,6 +1294,13 @@
       "sourceSha256": "bdb9bc3bb9c3bb5db1eb1f0bea06e3b87ec82c412ce5e3e5d95562cfaaa7997c",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/cheers-leo.webp",
+            "bytes": 2034
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/cheers-leo.webp",
@@ -558,6 +1315,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/cheers-leo.webp",
+          "bytes": 2034
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/cheers-leo.webp",
+          "bytes": 5014
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/cheers-leo.webp",
+          "bytes": 12424
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/cheers-leo.webp",
+        "bytes": 77594,
+        "width": 1024,
+        "height": 1024
       }
     },
     "cheers-whiskey": {
@@ -566,6 +1347,13 @@
       "sourceSha256": "247afee63d147b0e83c72dbc352472165dafd8715e4109528ab7ffbb2a56287a",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/cheers-whiskey.webp",
+            "bytes": 3410
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/cheers-whiskey.webp",
@@ -580,6 +1368,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/cheers-whiskey.webp",
+          "bytes": 3410
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/cheers-whiskey.webp",
+          "bytes": 9270
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/cheers-whiskey.webp",
+          "bytes": 25752
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/cheers-whiskey.webp",
+        "bytes": 171072,
+        "width": 1024,
+        "height": 1024
       }
     },
     "come-at-me-bro": {
@@ -588,6 +1400,13 @@
       "sourceSha256": "1a5cbc9e25b70f2b250a0eb17922dfdca209dd4884b7c287582a802c5a280300",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/come-at-me-bro.webp",
+            "bytes": 2122
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/come-at-me-bro.webp",
@@ -602,6 +1421,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/come-at-me-bro.webp",
+          "bytes": 2122
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/come-at-me-bro.webp",
+          "bytes": 5106
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/come-at-me-bro.webp",
+          "bytes": 12062
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/come-at-me-bro.webp",
+        "bytes": 70698,
+        "width": 1024,
+        "height": 1024
       }
     },
     "doge_notes": {
@@ -610,6 +1453,13 @@
       "sourceSha256": "7666d5c07164111baa0362d5a12e01d990cf58c4093c9930798644ddfd8ffb3e",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/doge_notes.webp",
+            "bytes": 2506
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/doge_notes.webp",
@@ -624,6 +1474,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/doge_notes.webp",
+          "bytes": 2506
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/doge_notes.webp",
+          "bytes": 6904
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/doge_notes.webp",
+          "bytes": 19250
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/doge_notes.webp",
+        "bytes": 127202,
+        "width": 1024,
+        "height": 1024
       }
     },
     "doge-finger-guns": {
@@ -632,6 +1506,13 @@
       "sourceSha256": "0c1bfac58de38faa2a3c3b5d29e6fc832a0b05c3a1341b1c6c943db9354d6a00",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/doge-finger-guns.webp",
+            "bytes": 2634
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/doge-finger-guns.webp",
@@ -646,6 +1527,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/doge-finger-guns.webp",
+          "bytes": 2634
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/doge-finger-guns.webp",
+          "bytes": 5438
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/doge-finger-guns.webp",
+          "bytes": 11862
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/doge-finger-guns.webp",
+        "bytes": 65108,
+        "width": 1024,
+        "height": 1024
       }
     },
     "done": {
@@ -654,6 +1559,13 @@
       "sourceSha256": "08e51ec722845dad12e285c326b8756d5cf27f6991e31b0d1a74cec7a81923d0",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/done.webp",
+            "bytes": 2450
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/done.webp",
@@ -668,6 +1580,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/done.webp",
+          "bytes": 2450
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/done.webp",
+          "bytes": 5852
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/done.webp",
+          "bytes": 13764
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/done.webp",
+        "bytes": 68818,
+        "width": 1024,
+        "height": 764
       }
     },
     "everythingisbroken": {
@@ -676,6 +1612,13 @@
       "sourceSha256": "f1d64856566b66456c1b51365a6cfc510616166e39844bc7a7c26cb50606b790",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/everythingisbroken.webp",
+            "bytes": 2640
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/everythingisbroken.webp",
@@ -690,6 +1633,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/everythingisbroken.webp",
+          "bytes": 2640
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/everythingisbroken.webp",
+          "bytes": 6486
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/everythingisbroken.webp",
+          "bytes": 16652
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/everythingisbroken.webp",
+        "bytes": 110888,
+        "width": 1024,
+        "height": 1024
       }
     },
     "fatcat": {
@@ -698,6 +1665,13 @@
       "sourceSha256": "463a2c309344c781c99f6b89c2f75b02579b0b18e92d273bdea97b3c032e9e29",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/fatcat.webp",
+            "bytes": 1558
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/fatcat.webp",
@@ -712,6 +1686,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/fatcat.webp",
+          "bytes": 1558
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/fatcat.webp",
+          "bytes": 3170
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/fatcat.webp",
+          "bytes": 7208
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/fatcat.webp",
+        "bytes": 36282,
+        "width": 1024,
+        "height": 1024
       }
     },
     "fingerguns_left": {
@@ -720,6 +1718,13 @@
       "sourceSha256": "dd12f7cdbfef11a483cf307897950cd4e3d7e9b3ba069c7cd6d6c18e549d23c8",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/fingerguns_left.webp",
+            "bytes": 1810
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/fingerguns_left.webp",
@@ -734,6 +1739,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/fingerguns_left.webp",
+          "bytes": 1810
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/fingerguns_left.webp",
+          "bytes": 4348
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/fingerguns_left.webp",
+          "bytes": 10506
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/fingerguns_left.webp",
+        "bytes": 54412,
+        "width": 1024,
+        "height": 1024
       }
     },
     "fingerguns": {
@@ -742,6 +1771,13 @@
       "sourceSha256": "76a0b88d75756cc2456b4ac63f01ae9cda73ab99455987ae178b985dbe886cfb",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/fingerguns.webp",
+            "bytes": 1658
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/fingerguns.webp",
@@ -756,6 +1792,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/fingerguns.webp",
+          "bytes": 1658
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/fingerguns.webp",
+          "bytes": 3604
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/fingerguns.webp",
+          "bytes": 8436
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/fingerguns.webp",
+        "bytes": 46706,
+        "width": 1024,
+        "height": 1024
       }
     },
     "fingergunz": {
@@ -764,6 +1824,13 @@
       "sourceSha256": "f731e2d75942449c3f202e707931cfdb72d01174fa239238afe70c6f6ac188ec",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/fingergunz.webp",
+            "bytes": 1804
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/fingergunz.webp",
@@ -778,6 +1845,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/fingergunz.webp",
+          "bytes": 1804
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/fingergunz.webp",
+          "bytes": 4072
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/fingergunz.webp",
+          "bytes": 9480
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/fingergunz.webp",
+        "bytes": 56530,
+        "width": 1024,
+        "height": 1024
       }
     },
     "fonzie": {
@@ -786,6 +1877,13 @@
       "sourceSha256": "e6c2f8e723cc02899120cd67c40e29d51e1d282326ee57afce8d659e17dd6aaf",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/fonzie.webp",
+            "bytes": 1988
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/fonzie.webp",
@@ -800,6 +1898,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/fonzie.webp",
+          "bytes": 1988
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/fonzie.webp",
+          "bytes": 4928
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/fonzie.webp",
+          "bytes": 11790
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/fonzie.webp",
+        "bytes": 67058,
+        "width": 963,
+        "height": 1024
       }
     },
     "fry_take_my_money": {
@@ -808,6 +1930,13 @@
       "sourceSha256": "35db051282b239ece9e47c125aeb7702003fae2a4066af69428460b5a9093f30",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/fry_take_my_money.webp",
+            "bytes": 2994
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/fry_take_my_money.webp",
@@ -822,6 +1951,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/fry_take_my_money.webp",
+          "bytes": 2994
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/fry_take_my_money.webp",
+          "bytes": 8344
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/fry_take_my_money.webp",
+          "bytes": 23132
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/fry_take_my_money.webp",
+        "bytes": 60406,
+        "width": 512,
+        "height": 512
       }
     },
     "fry": {
@@ -830,6 +1983,13 @@
       "sourceSha256": "7bb764dd19afc110f90deba6b341f9b6976819e790582f88a2fd292e3ef13990",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/fry.webp",
+            "bytes": 2592
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/fry.webp",
@@ -844,6 +2004,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/fry.webp",
+          "bytes": 2592
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/fry.webp",
+          "bytes": 6492
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/fry.webp",
+          "bytes": 17718
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/fry.webp",
+        "bytes": 47106,
+        "width": 512,
+        "height": 512
       }
     },
     "golden_turd": {
@@ -852,6 +2036,13 @@
       "sourceSha256": "46e3e6d484ca5ba8aa9822c192a061612820e7f0bd257bdb60dd904ed0103eb9",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/golden_turd.webp",
+            "bytes": 2290
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/golden_turd.webp",
@@ -866,6 +2057,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/golden_turd.webp",
+          "bytes": 2290
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/golden_turd.webp",
+          "bytes": 4920
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/golden_turd.webp",
+          "bytes": 11374
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/golden_turd.webp",
+        "bytes": 66506,
+        "width": 1024,
+        "height": 1024
       }
     },
     "hai-guys-cat": {
@@ -874,6 +2089,13 @@
       "sourceSha256": "2484d8ac09ae920eefce71399d607fa928fbb6ccb5377b35db95ce0870f6afb4",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/hai-guys-cat.webp",
+            "bytes": 2214
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/hai-guys-cat.webp",
@@ -888,6 +2110,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/hai-guys-cat.webp",
+          "bytes": 2214
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/hai-guys-cat.webp",
+          "bytes": 5470
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/hai-guys-cat.webp",
+          "bytes": 13070
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/hai-guys-cat.webp",
+        "bytes": 71902,
+        "width": 1024,
+        "height": 1024
       }
     },
     "happycat": {
@@ -896,6 +2142,13 @@
       "sourceSha256": "ac61f41bb0171df110940ecb313a12a9537a215446584fa823f7973cee4a2257",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/happycat.webp",
+            "bytes": 2758
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/happycat.webp",
@@ -910,6 +2163,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/happycat.webp",
+          "bytes": 2758
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/happycat.webp",
+          "bytes": 8782
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/happycat.webp",
+          "bytes": 28176
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/happycat.webp",
+        "bytes": 220708,
+        "width": 1024,
+        "height": 1024
       }
     },
     "heart-mew-cat": {
@@ -918,6 +2195,13 @@
       "sourceSha256": "56e58fd81dc9c8d3e3ed95b605bd5f30dee555e600ab85f80237fa810018fb07",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/heart-mew-cat.webp",
+            "bytes": 3052
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/heart-mew-cat.webp",
@@ -932,6 +2216,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/heart-mew-cat.webp",
+          "bytes": 3052
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/heart-mew-cat.webp",
+          "bytes": 7178
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/heart-mew-cat.webp",
+          "bytes": 17438
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/heart-mew-cat.webp",
+        "bytes": 96128,
+        "width": 1024,
+        "height": 1024
       }
     },
     "heycat": {
@@ -940,6 +2248,13 @@
       "sourceSha256": "ba574c521f154504b7b49e2e5a1a411a30cae3e84ca81967bdf084edd7c3fd09",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/heycat.webp",
+            "bytes": 2112
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/heycat.webp",
@@ -954,6 +2269,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/heycat.webp",
+          "bytes": 2112
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/heycat.webp",
+          "bytes": 4852
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/heycat.webp",
+          "bytes": 12118
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/heycat.webp",
+        "bytes": 87118,
+        "width": 1024,
+        "height": 1024
       }
     },
     "i_have_no_idea_what_im_doing": {
@@ -962,6 +2301,13 @@
       "sourceSha256": "cb81793aada50d48284154f679f0641598567c6cc1f36cbb4e439ff3dee3f448",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/i_have_no_idea_what_im_doing.webp",
+            "bytes": 2616
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/i_have_no_idea_what_im_doing.webp",
@@ -976,6 +2322,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/i_have_no_idea_what_im_doing.webp",
+          "bytes": 2616
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/i_have_no_idea_what_im_doing.webp",
+          "bytes": 6930
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/i_have_no_idea_what_im_doing.webp",
+          "bytes": 21952
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/i_have_no_idea_what_im_doing.webp",
+        "bytes": 249072,
+        "width": 1024,
+        "height": 1024
       }
     },
     "lets-fucking-go": {
@@ -984,6 +2354,13 @@
       "sourceSha256": "62eb5a21dcb7cc749825daa1676b3bd243c16ec2b1f3b2548d85e21aa79881a6",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/lets-fucking-go.webp",
+            "bytes": 3460
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/lets-fucking-go.webp",
@@ -998,6 +2375,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/lets-fucking-go.webp",
+          "bytes": 3460
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/lets-fucking-go.webp",
+          "bytes": 8922
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/lets-fucking-go.webp",
+          "bytes": 21934
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/lets-fucking-go.webp",
+        "bytes": 115292,
+        "width": 1024,
+        "height": 1024
       }
     },
     "meow_ai": {
@@ -1006,6 +2407,13 @@
       "sourceSha256": "b3fafbdbd17e19586b995a50d80ff0718d375523f3f50805178ca1b66edb8bd9",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/meow_ai.webp",
+            "bytes": 2148
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/meow_ai.webp",
@@ -1020,6 +2428,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/meow_ai.webp",
+          "bytes": 2148
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/meow_ai.webp",
+          "bytes": 4748
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/meow_ai.webp",
+          "bytes": 10952
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/meow_ai.webp",
+        "bytes": 57584,
+        "width": 1024,
+        "height": 1024
       }
     },
     "meow_alien": {
@@ -1028,6 +2460,13 @@
       "sourceSha256": "0d0594639a8be4efea83a5ca2ef6c3e2f408bb7d9e3acf5589534c7528aeab13",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/meow_alien.webp",
+            "bytes": 1810
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/meow_alien.webp",
@@ -1042,6 +2481,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/meow_alien.webp",
+          "bytes": 1810
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/meow_alien.webp",
+          "bytes": 4214
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/meow_alien.webp",
+          "bytes": 9648
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/meow_alien.webp",
+        "bytes": 55786,
+        "width": 1024,
+        "height": 1024
       }
     },
     "meow_angel": {
@@ -1050,6 +2513,13 @@
       "sourceSha256": "ef55685c63dd8b05f79fdadbaa5842adbfd7d0d9db9de7024ee2639e5aa69c33",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/meow_angel.webp",
+            "bytes": 2120
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/meow_angel.webp",
@@ -1064,6 +2534,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/meow_angel.webp",
+          "bytes": 2120
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/meow_angel.webp",
+          "bytes": 4738
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/meow_angel.webp",
+          "bytes": 10756
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/meow_angel.webp",
+        "bytes": 56038,
+        "width": 1024,
+        "height": 1024
       }
     },
     "meow_angry_tableflip": {
@@ -1072,6 +2566,13 @@
       "sourceSha256": "649873ee1287a0f661cae92b6c8c3d62c0ea4748d6f76677b13864310eb34453",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/meow_angry_tableflip.webp",
+            "bytes": 2504
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/meow_angry_tableflip.webp",
@@ -1086,6 +2587,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/meow_angry_tableflip.webp",
+          "bytes": 2504
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/meow_angry_tableflip.webp",
+          "bytes": 5716
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/meow_angry_tableflip.webp",
+          "bytes": 13668
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/meow_angry_tableflip.webp",
+        "bytes": 76568,
+        "width": 1024,
+        "height": 1024
       }
     },
     "meow_angry": {
@@ -1094,6 +2619,13 @@
       "sourceSha256": "518d82df0dd3455c44e0e13435ec06c751b730813bea3c479e4144bdb21c7a6e",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/meow_angry.webp",
+            "bytes": 2044
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/meow_angry.webp",
@@ -1108,6 +2640,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/meow_angry.webp",
+          "bytes": 2044
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/meow_angry.webp",
+          "bytes": 4430
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/meow_angry.webp",
+          "bytes": 10040
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/meow_angry.webp",
+        "bytes": 58444,
+        "width": 1024,
+        "height": 1024
       }
     },
     "meow_angrypats": {
@@ -1116,6 +2672,13 @@
       "sourceSha256": "d90bd4f8e13837dac636d63c15e37d625993506b182a7ef7efed1147a1000d9e",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/meow_angrypats.webp",
+            "bytes": 2486
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/meow_angrypats.webp",
@@ -1130,6 +2693,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/meow_angrypats.webp",
+          "bytes": 2486
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/meow_angrypats.webp",
+          "bytes": 5176
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/meow_angrypats.webp",
+          "bytes": 11724
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/meow_angrypats.webp",
+        "bytes": 61266,
+        "width": 1024,
+        "height": 1024
       }
     },
     "meow_anime": {
@@ -1138,6 +2725,13 @@
       "sourceSha256": "cad8ffa868549cb515b780349b32b8f9e5562461e2ae383b0697a031f3c56e61",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/meow_anime.webp",
+            "bytes": 2328
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/meow_anime.webp",
@@ -1152,6 +2746,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/meow_anime.webp",
+          "bytes": 2328
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/meow_anime.webp",
+          "bytes": 5064
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/meow_anime.webp",
+          "bytes": 11878
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/meow_anime.webp",
+        "bytes": 67578,
+        "width": 1024,
+        "height": 1024
       }
     },
     "meow_artist": {
@@ -1160,6 +2778,13 @@
       "sourceSha256": "c3ab370ace99b342e7e0162d639d208e728328dd30d7c048b3a03fa8fe06afa5",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/meow_artist.webp",
+            "bytes": 2382
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/meow_artist.webp",
@@ -1174,6 +2799,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/meow_artist.webp",
+          "bytes": 2382
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/meow_artist.webp",
+          "bytes": 5328
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/meow_artist.webp",
+          "bytes": 11968
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/meow_artist.webp",
+        "bytes": 62814,
+        "width": 1024,
+        "height": 1024
       }
     },
     "meow_autism": {
@@ -1182,6 +2831,13 @@
       "sourceSha256": "4b26aa8ea0a012cca78a470725b480d47268808f8e18d55fe9efd60358b4ac57",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/meow_autism.webp",
+            "bytes": 2466
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/meow_autism.webp",
@@ -1196,6 +2852,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/meow_autism.webp",
+          "bytes": 2466
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/meow_autism.webp",
+          "bytes": 5504
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/meow_autism.webp",
+          "bytes": 12024
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/meow_autism.webp",
+        "bytes": 25458,
+        "width": 512,
+        "height": 512
       }
     },
     "meow_awauu": {
@@ -1204,6 +2884,13 @@
       "sourceSha256": "727cb1dec6faa0474eb97dabeac9fe27e8d7bc4e3f5e9886c5abc40887d4ad03",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/meow_awauu.webp",
+            "bytes": 1900
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/meow_awauu.webp",
@@ -1218,6 +2905,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/meow_awauu.webp",
+          "bytes": 1900
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/meow_awauu.webp",
+          "bytes": 4094
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/meow_awauu.webp",
+          "bytes": 8828
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/meow_awauu.webp",
+        "bytes": 46422,
+        "width": 1024,
+        "height": 1024
       }
     },
     "meow_aww": {
@@ -1226,6 +2937,13 @@
       "sourceSha256": "e11034e01224305a4768cb5809725c07c334c7ad458d8102dc036cce0be51299",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/meow_aww.webp",
+            "bytes": 2378
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/meow_aww.webp",
@@ -1240,6 +2958,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/meow_aww.webp",
+          "bytes": 2378
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/meow_aww.webp",
+          "bytes": 5304
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/meow_aww.webp",
+          "bytes": 12040
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/meow_aww.webp",
+        "bytes": 65632,
+        "width": 1024,
+        "height": 1024
       }
     },
     "meow_baguette_hero": {
@@ -1248,6 +2990,13 @@
       "sourceSha256": "fc8bc1db8dfcf0d07461a88bd4b5030ae69096337a6a8d88918ba97f23cb61ff",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/meow_baguette_hero.webp",
+            "bytes": 1620
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/meow_baguette_hero.webp",
@@ -1262,6 +3011,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/meow_baguette_hero.webp",
+          "bytes": 1620
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/meow_baguette_hero.webp",
+          "bytes": 3666
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/meow_baguette_hero.webp",
+          "bytes": 8234
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/meow_baguette_hero.webp",
+        "bytes": 45380,
+        "width": 1024,
+        "height": 1024
       }
     },
     "meow_bg": {
@@ -1270,6 +3043,13 @@
       "sourceSha256": "6c76d7eef6e4e9c011b7e0a08318599ca14fc8a4f166fdb500bfb73ea7c6ac24",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/meow_bg.webp",
+            "bytes": 2214
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/meow_bg.webp",
@@ -1284,6 +3064,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/meow_bg.webp",
+          "bytes": 2214
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/meow_bg.webp",
+          "bytes": 4666
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/meow_bg.webp",
+          "bytes": 10360
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/meow_bg.webp",
+        "bytes": 55534,
+        "width": 1024,
+        "height": 1024
       }
     },
     "meow_bigsob_cry": {
@@ -1292,6 +3096,13 @@
       "sourceSha256": "571ea2a900071a734cfece4136ffd263786e2e1426256667a6a6473e383ccd2d",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/meow_bigsob_cry.webp",
+            "bytes": 2452
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/meow_bigsob_cry.webp",
@@ -1306,6 +3117,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/meow_bigsob_cry.webp",
+          "bytes": 2452
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/meow_bigsob_cry.webp",
+          "bytes": 5400
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/meow_bigsob_cry.webp",
+          "bytes": 11908
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/meow_bigsob_cry.webp",
+        "bytes": 61426,
+        "width": 1024,
+        "height": 1024
       }
     },
     "meow_birthday": {
@@ -1314,6 +3149,13 @@
       "sourceSha256": "ed620e009ac707b4416a0904ebdc08b66aa10fded30cf86b5cda80ac03da034a",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/meow_birthday.webp",
+            "bytes": 2662
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/meow_birthday.webp",
@@ -1328,6 +3170,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/meow_birthday.webp",
+          "bytes": 2662
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/meow_birthday.webp",
+          "bytes": 6308
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/meow_birthday.webp",
+          "bytes": 14862
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/meow_birthday.webp",
+        "bytes": 81358,
+        "width": 1024,
+        "height": 1024
       }
     },
     "meow_black_cat": {
@@ -1336,6 +3202,13 @@
       "sourceSha256": "bc7a529886a1e4bdb1029c1961fa7804d1b6f27669aa16160d706ed12d5eb6fc",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/meow_black_cat.webp",
+            "bytes": 1698
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/meow_black_cat.webp",
@@ -1350,6 +3223,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/meow_black_cat.webp",
+          "bytes": 1698
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/meow_black_cat.webp",
+          "bytes": 3604
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/meow_black_cat.webp",
+          "bytes": 8472
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/meow_black_cat.webp",
+        "bytes": 46806,
+        "width": 1024,
+        "height": 1024
       }
     },
     "meow_boat-captain": {
@@ -1358,6 +3255,13 @@
       "sourceSha256": "829796bf43ffd5e0043a8505cd38f36c93c62dd76baa4fdc820412538ce4cf09",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/meow_boat-captain.webp",
+            "bytes": 2606
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/meow_boat-captain.webp",
@@ -1372,6 +3276,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/meow_boat-captain.webp",
+          "bytes": 2606
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/meow_boat-captain.webp",
+          "bytes": 5996
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/meow_boat-captain.webp",
+          "bytes": 14234
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/meow_boat-captain.webp",
+        "bytes": 77606,
+        "width": 1024,
+        "height": 1024
       }
     },
     "meow_bongo": {
@@ -1380,6 +3308,13 @@
       "sourceSha256": "bd8f467d77f9a2773fa644a3c3dd54547b4b6d0a4abc4d80cb63b9ec1adb0132",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/meow_bongo.webp",
+            "bytes": 1966
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/meow_bongo.webp",
@@ -1394,6 +3329,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/meow_bongo.webp",
+          "bytes": 1966
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/meow_bongo.webp",
+          "bytes": 4276
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/meow_bongo.webp",
+          "bytes": 9790
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/meow_bongo.webp",
+        "bytes": 56864,
+        "width": 1024,
+        "height": 1024
       }
     },
     "meow_boop": {
@@ -1402,6 +3361,13 @@
       "sourceSha256": "b02eedacaf36f3d81ee50ac7736070a43eea6ef9421d9c4e4d832ac59beb0e86",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/meow_boop.webp",
+            "bytes": 2086
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/meow_boop.webp",
@@ -1416,6 +3382,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/meow_boop.webp",
+          "bytes": 2086
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/meow_boop.webp",
+          "bytes": 4578
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/meow_boop.webp",
+          "bytes": 10140
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/meow_boop.webp",
+        "bytes": 53694,
+        "width": 1024,
+        "height": 1024
       }
     },
     "meow_box": {
@@ -1424,6 +3414,13 @@
       "sourceSha256": "a588c0ec00a12a9b9c9ddd766f99e19059d83bd4ebfdbde618d8b89a2b212af0",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/meow_box.webp",
+            "bytes": 2392
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/meow_box.webp",
@@ -1438,6 +3435,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/meow_box.webp",
+          "bytes": 2392
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/meow_box.webp",
+          "bytes": 5120
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/meow_box.webp",
+          "bytes": 11360
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/meow_box.webp",
+        "bytes": 58092,
+        "width": 1024,
+        "height": 1024
       }
     },
     "meow_broken_heart": {
@@ -1446,6 +3467,13 @@
       "sourceSha256": "d761399198930dcc665a74a8f8fe4eefc18d94a62c269584e2ca2a14aff88789",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/meow_broken_heart.webp",
+            "bytes": 2232
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/meow_broken_heart.webp",
@@ -1460,6 +3488,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/meow_broken_heart.webp",
+          "bytes": 2232
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/meow_broken_heart.webp",
+          "bytes": 4882
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/meow_broken_heart.webp",
+          "bytes": 10804
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/meow_broken_heart.webp",
+        "bytes": 58326,
+        "width": 1024,
+        "height": 1024
       }
     },
     "meow_brokenheart": {
@@ -1468,6 +3520,13 @@
       "sourceSha256": "79ba8ec0bde461d234600122e33e05efceceb3dd6af80e1b4bca0052278bdbe5",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/meow_brokenheart.webp",
+            "bytes": 2632
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/meow_brokenheart.webp",
@@ -1482,6 +3541,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/meow_brokenheart.webp",
+          "bytes": 2632
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/meow_brokenheart.webp",
+          "bytes": 6008
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/meow_brokenheart.webp",
+          "bytes": 13150
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/meow_brokenheart.webp",
+        "bytes": 66096,
+        "width": 1024,
+        "height": 1024
       }
     },
     "meow_caged": {
@@ -1490,6 +3573,13 @@
       "sourceSha256": "f0899ed4f1210044b412f08e0ebb461fcef895124b3937ec82ca2027954e5af0",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/meow_caged.webp",
+            "bytes": 2420
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/meow_caged.webp",
@@ -1504,6 +3594,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/meow_caged.webp",
+          "bytes": 2420
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/meow_caged.webp",
+          "bytes": 4906
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/meow_caged.webp",
+          "bytes": 11062
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/meow_caged.webp",
+        "bytes": 51248,
+        "width": 1024,
+        "height": 1024
       }
     },
     "meow_candycanenom": {
@@ -1512,6 +3626,13 @@
       "sourceSha256": "243eddf559495f285de9578fddb72bbb139962beb7cd579c3df752945974ad31",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/meow_candycanenom.webp",
+            "bytes": 2272
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/meow_candycanenom.webp",
@@ -1526,6 +3647,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/meow_candycanenom.webp",
+          "bytes": 2272
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/meow_candycanenom.webp",
+          "bytes": 5210
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/meow_candycanenom.webp",
+          "bytes": 11684
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/meow_candycanenom.webp",
+        "bytes": 61424,
+        "width": 1024,
+        "height": 1024
       }
     },
     "meow_catdoggosnuggle": {
@@ -1534,6 +3679,13 @@
       "sourceSha256": "24c119cde534578f3b39c6679aa2db57376bad2fe57d94a0f902eac41e77f33a",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/meow_catdoggosnuggle.webp",
+            "bytes": 2236
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/meow_catdoggosnuggle.webp",
@@ -1548,6 +3700,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/meow_catdoggosnuggle.webp",
+          "bytes": 2236
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/meow_catdoggosnuggle.webp",
+          "bytes": 4928
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/meow_catdoggosnuggle.webp",
+          "bytes": 11586
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/meow_catdoggosnuggle.webp",
+        "bytes": 65062,
+        "width": 1024,
+        "height": 1024
       }
     },
     "meow_catflip": {
@@ -1556,6 +3732,13 @@
       "sourceSha256": "1c7aec8b6bde863d3f50f171eae4075832be90417c0504dab7ed112fc532fb4a",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/meow_catflip.webp",
+            "bytes": 2034
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/meow_catflip.webp",
@@ -1570,6 +3753,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/meow_catflip.webp",
+          "bytes": 2034
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/meow_catflip.webp",
+          "bytes": 4420
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/meow_catflip.webp",
+          "bytes": 10394
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/meow_catflip.webp",
+        "bytes": 54476,
+        "width": 1024,
+        "height": 1024
       }
     },
     "meow_coffee_sip": {
@@ -1578,6 +3785,13 @@
       "sourceSha256": "7c51a131946dd9a53b551098f0e3ad8eca5162afaf2cf380b0ee093c4b796d63",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/meow_coffee_sip.webp",
+            "bytes": 1756
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/meow_coffee_sip.webp",
@@ -1592,6 +3806,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/meow_coffee_sip.webp",
+          "bytes": 1756
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/meow_coffee_sip.webp",
+          "bytes": 3874
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/meow_coffee_sip.webp",
+          "bytes": 8628
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/meow_coffee_sip.webp",
+        "bytes": 46828,
+        "width": 1024,
+        "height": 1024
       }
     },
     "meow_coffee": {
@@ -1600,6 +3838,13 @@
       "sourceSha256": "6b1f7f0b96dd37e9005946afb8f8d99b3229d4eca4c095f8899850668987e1a7",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/meow_coffee.webp",
+            "bytes": 2614
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/meow_coffee.webp",
@@ -1614,6 +3859,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/meow_coffee.webp",
+          "bytes": 2614
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/meow_coffee.webp",
+          "bytes": 5554
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/meow_coffee.webp",
+          "bytes": 12890
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/meow_coffee.webp",
+        "bytes": 65446,
+        "width": 1024,
+        "height": 1024
       }
     },
     "meow_cold": {
@@ -4548,6 +6817,13 @@
       "sourceSha256": "5cfd89c2a8bd767572adbff763655982074e88c04f3dab368e4e23ec941b0d0b",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/meow-bernie-mittens.webp",
+            "bytes": 3458
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/meow-bernie-mittens.webp",
@@ -4562,6 +6838,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/meow-bernie-mittens.webp",
+          "bytes": 3458
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/meow-bernie-mittens.webp",
+          "bytes": 8328
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/meow-bernie-mittens.webp",
+          "bytes": 20402
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/meow-bernie-mittens.webp",
+        "bytes": 112928,
+        "width": 1024,
+        "height": 1024
       }
     },
     "meow-bigfan": {
@@ -4570,6 +6870,13 @@
       "sourceSha256": "23f2a5ef574da108507d2b4f8eca6e8fc71d1ea4af04fd945a41867c785a2b12",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/meow-bigfan.webp",
+            "bytes": 2382
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/meow-bigfan.webp",
@@ -4584,6 +6891,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/meow-bigfan.webp",
+          "bytes": 2382
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/meow-bigfan.webp",
+          "bytes": 5410
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/meow-bigfan.webp",
+          "bytes": 12132
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/meow-bigfan.webp",
+        "bytes": 62296,
+        "width": 1024,
+        "height": 1024
       }
     },
     "meow-cat": {
@@ -4592,6 +6923,13 @@
       "sourceSha256": "8c1492d2c7b5a1b054b9dcd6c958b4f539479c0b0943a93a981bf0feac95309a",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/meow-cat.webp",
+            "bytes": 2724
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/meow-cat.webp",
@@ -4606,6 +6944,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/meow-cat.webp",
+          "bytes": 2724
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/meow-cat.webp",
+          "bytes": 6618
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/meow-cat.webp",
+          "bytes": 16646
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/meow-cat.webp",
+        "bytes": 91492,
+        "width": 1024,
+        "height": 1024
       }
     },
     "meow-coffee": {
@@ -4614,6 +6976,13 @@
       "sourceSha256": "e4390d3cde40432ded0093ae1510c0e252f557757361e637f420e159b03a3a2f",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/meow-coffee.webp",
+            "bytes": 2278
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/meow-coffee.webp",
@@ -4628,6 +6997,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/meow-coffee.webp",
+          "bytes": 2278
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/meow-coffee.webp",
+          "bytes": 4888
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/meow-coffee.webp",
+          "bytes": 11414
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/meow-coffee.webp",
+        "bytes": 63146,
+        "width": 1024,
+        "height": 1024
       }
     },
     "meow-confounded": {
@@ -4636,6 +7029,13 @@
       "sourceSha256": "c54337b2f2484e4034419872a5c87f975cfe7926bf4c13787c522d39dcb7b1fe",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/meow-confounded.webp",
+            "bytes": 2066
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/meow-confounded.webp",
@@ -4650,6 +7050,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/meow-confounded.webp",
+          "bytes": 2066
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/meow-confounded.webp",
+          "bytes": 4384
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/meow-confounded.webp",
+          "bytes": 10332
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/meow-confounded.webp",
+        "bytes": 57990,
+        "width": 1024,
+        "height": 1024
       }
     },
     "meow-devil": {
@@ -4658,6 +7082,13 @@
       "sourceSha256": "94e1d50cac70998726b489562fb7503e7c21967d573d14f988acf4f02add0b87",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/meow-devil.webp",
+            "bytes": 1838
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/meow-devil.webp",
@@ -4672,6 +7103,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/meow-devil.webp",
+          "bytes": 1838
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/meow-devil.webp",
+          "bytes": 4004
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/meow-devil.webp",
+          "bytes": 8858
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/meow-devil.webp",
+        "bytes": 47300,
+        "width": 1024,
+        "height": 1024
       }
     },
     "meow-double-thumbs2": {
@@ -4680,6 +7135,13 @@
       "sourceSha256": "45a2e9fd263d2c5dd1410c0a67d1bca7610010938dbd717c4a3852f17b31c7e5",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/meow-double-thumbs2.webp",
+            "bytes": 2846
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/meow-double-thumbs2.webp",
@@ -4694,6 +7156,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/meow-double-thumbs2.webp",
+          "bytes": 2846
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/meow-double-thumbs2.webp",
+          "bytes": 6412
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/meow-double-thumbs2.webp",
+          "bytes": 14712
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/meow-double-thumbs2.webp",
+        "bytes": 76302,
+        "width": 1024,
+        "height": 1024
       }
     },
     "meow-frowningbig": {
@@ -4702,6 +7188,13 @@
       "sourceSha256": "e491a75cd481947663c85fc3cce24ab160437f451659ad66f214fad51f568966",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/meow-frowningbig.webp",
+            "bytes": 1748
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/meow-frowningbig.webp",
@@ -4716,6 +7209,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/meow-frowningbig.webp",
+          "bytes": 1748
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/meow-frowningbig.webp",
+          "bytes": 3696
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/meow-frowningbig.webp",
+          "bytes": 8362
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/meow-frowningbig.webp",
+        "bytes": 45398,
+        "width": 1024,
+        "height": 824
       }
     },
     "meow-gift": {
@@ -4724,6 +7241,13 @@
       "sourceSha256": "c53218e637a9e5c8da47bf71f629f18d0f9d75b02fed3e177439b0a796d13eff",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/meow-gift.webp",
+            "bytes": 2412
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/meow-gift.webp",
@@ -4738,6 +7262,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/meow-gift.webp",
+          "bytes": 2412
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/meow-gift.webp",
+          "bytes": 5458
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/meow-gift.webp",
+          "bytes": 11830
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/meow-gift.webp",
+        "bytes": 62424,
+        "width": 1024,
+        "height": 1024
       }
     },
     "meow-notlikethis": {
@@ -4746,6 +7294,13 @@
       "sourceSha256": "7b38f2aeef38bae6b026c0aff991bb99698eb83b35005f5bbb8c9270d4d07cd3",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/meow-notlikethis.webp",
+            "bytes": 2172
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/meow-notlikethis.webp",
@@ -4760,6 +7315,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/meow-notlikethis.webp",
+          "bytes": 2172
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/meow-notlikethis.webp",
+          "bytes": 5080
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/meow-notlikethis.webp",
+          "bytes": 11086
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/meow-notlikethis.webp",
+        "bytes": 56244,
+        "width": 1024,
+        "height": 1024
       }
     },
     "meow-peek-sip-glare": {
@@ -4768,6 +7347,13 @@
       "sourceSha256": "eac8ccfa92db7f7bdd8d9bed5c69ec04f3b17b082eeb080ea06ebb924afa5b1d",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/meow-peek-sip-glare.webp",
+            "bytes": 2246
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/meow-peek-sip-glare.webp",
@@ -4782,6 +7368,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/meow-peek-sip-glare.webp",
+          "bytes": 2246
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/meow-peek-sip-glare.webp",
+          "bytes": 4626
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/meow-peek-sip-glare.webp",
+          "bytes": 10144
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/meow-peek-sip-glare.webp",
+        "bytes": 50580,
+        "width": 1024,
+        "height": 1024
       }
     },
     "meow-pensive-pray": {
@@ -4790,6 +7400,13 @@
       "sourceSha256": "b25fa7e8fbe772a82fba4e45c13a0ccbcf75d762f5b9653cff81b868d9d81831",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/meow-pensive-pray.webp",
+            "bytes": 2152
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/meow-pensive-pray.webp",
@@ -4804,6 +7421,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/meow-pensive-pray.webp",
+          "bytes": 2152
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/meow-pensive-pray.webp",
+          "bytes": 4732
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/meow-pensive-pray.webp",
+          "bytes": 11156
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/meow-pensive-pray.webp",
+        "bytes": 60398,
+        "width": 1024,
+        "height": 1024
       }
     },
     "meow-present-pink": {
@@ -4812,6 +7453,13 @@
       "sourceSha256": "a5344553c1c08c74863d5fcba449d57b3b041658bc37a3ee8be852a00cdb8e3f",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/meow-present-pink.webp",
+            "bytes": 2198
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/meow-present-pink.webp",
@@ -4826,6 +7474,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/meow-present-pink.webp",
+          "bytes": 2198
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/meow-present-pink.webp",
+          "bytes": 4960
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/meow-present-pink.webp",
+          "bytes": 11128
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/meow-present-pink.webp",
+        "bytes": 60642,
+        "width": 1024,
+        "height": 1024
       }
     },
     "meow-puffy-sup": {
@@ -4834,6 +7506,13 @@
       "sourceSha256": "2f31dd184f82f7b5d6e0d17f9eb4ebadf5f4b159851c4c7ca657d9802a77eb0e",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/meow-puffy-sup.webp",
+            "bytes": 2596
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/meow-puffy-sup.webp",
@@ -4848,6 +7527,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/meow-puffy-sup.webp",
+          "bytes": 2596
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/meow-puffy-sup.webp",
+          "bytes": 5604
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/meow-puffy-sup.webp",
+          "bytes": 12954
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/meow-puffy-sup.webp",
+        "bytes": 64960,
+        "width": 1024,
+        "height": 1024
       }
     },
     "meow-scream": {
@@ -4856,6 +7559,13 @@
       "sourceSha256": "f41f56055757105bd732fde9087432a55fef5a2d1176e21cac289bed1cc4e201",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/meow-scream.webp",
+            "bytes": 1982
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/meow-scream.webp",
@@ -4870,6 +7580,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/meow-scream.webp",
+          "bytes": 1982
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/meow-scream.webp",
+          "bytes": 4430
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/meow-scream.webp",
+          "bytes": 10212
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/meow-scream.webp",
+        "bytes": 57864,
+        "width": 1024,
+        "height": 1024
       }
     },
     "meow-shark": {
@@ -4878,6 +7612,13 @@
       "sourceSha256": "32bdc7462ff614496a8acdd1e6c42732e3b7dbef45a8088d50820823bc316689",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/meow-shark.webp",
+            "bytes": 2498
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/meow-shark.webp",
@@ -4892,6 +7633,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/meow-shark.webp",
+          "bytes": 2498
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/meow-shark.webp",
+          "bytes": 5842
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/meow-shark.webp",
+          "bytes": 11928
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/meow-shark.webp",
+        "bytes": 24124,
+        "width": 512,
+        "height": 512
       }
     },
     "meow-stop": {
@@ -4900,6 +7665,13 @@
       "sourceSha256": "98c969b196212209c488cac823bb8e6b42bf0971d4122c0648bb40807d6eaa80",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/meow-stop.webp",
+            "bytes": 2248
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/meow-stop.webp",
@@ -4914,6 +7686,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/meow-stop.webp",
+          "bytes": 2248
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/meow-stop.webp",
+          "bytes": 5016
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/meow-stop.webp",
+          "bytes": 11376
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/meow-stop.webp",
+        "bytes": 60370,
+        "width": 1024,
+        "height": 824
       }
     },
     "meow-umm": {
@@ -4922,6 +7718,13 @@
       "sourceSha256": "f8bb540858e046c5787d4ac40be6c349ae5d17e84c24b1f25140a63b7d595dfe",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/meow-umm.webp",
+            "bytes": 2346
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/meow-umm.webp",
@@ -4936,6 +7739,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/meow-umm.webp",
+          "bytes": 2346
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/meow-umm.webp",
+          "bytes": 4776
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/meow-umm.webp",
+          "bytes": 10752
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/meow-umm.webp",
+        "bytes": 55828,
+        "width": 1024,
+        "height": 1024
       }
     },
     "meow-wizard": {
@@ -4944,6 +7771,13 @@
       "sourceSha256": "e511e1374164b8e990cca4aa8bac5e77f39a2b37345edb65c1caed1eb41f4f41",
       "animated": false,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/meow-wizard.webp",
+            "bytes": 2122
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/meow-wizard.webp",
@@ -4958,6 +7792,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/meow-wizard.webp",
+          "bytes": 2122
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/meow-wizard.webp",
+          "bytes": 4538
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/meow-wizard.webp",
+          "bytes": 10168
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/meow-wizard.webp",
+        "bytes": 52630,
+        "width": 1024,
+        "height": 1024
       }
     },
     "meowby-maybe": {
@@ -5978,6 +8836,13 @@
       "sourceSha256": "033937192743c4c9d3f86b22bb6d4ae6118b14e97b87ea077aa2d5cd724a60ec",
       "animated": true,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/awkward.webp",
+            "bytes": 3632
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/awkward.webp",
@@ -5992,6 +8857,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/awkward.webp",
+          "bytes": 1830
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/awkward.webp",
+          "bytes": 4304
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/awkward.webp",
+          "bytes": 10268
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/awkward.webp",
+        "bytes": 48874,
+        "width": 512,
+        "height": 512
       }
     },
     "bongo-cat": {
@@ -6000,6 +8889,13 @@
       "sourceSha256": "920ae4b8036f103e746904b817c7b455b2995fdf03c86f1b65dcad77c7c4906e",
       "animated": true,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/bongo-cat.webp",
+            "bytes": 4280
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/bongo-cat.webp",
@@ -6014,6 +8910,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/bongo-cat.webp",
+          "bytes": 2138
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/bongo-cat.webp",
+          "bytes": 4694
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/bongo-cat.webp",
+          "bytes": 11524
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/bongo-cat.webp",
+        "bytes": 45198,
+        "width": 512,
+        "height": 512
       }
     },
     "clapclap-e": {
@@ -6022,6 +8942,13 @@
       "sourceSha256": "a3527cd0ca7c4f31f3f30be6990a829797f012c6165010d2fa752b8edbf06ea7",
       "animated": true,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/clapclap-e.webp",
+            "bytes": 6856
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/clapclap-e.webp",
@@ -6036,6 +8963,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/clapclap-e.webp",
+          "bytes": 2338
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/clapclap-e.webp",
+          "bytes": 4886
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/clapclap-e.webp",
+          "bytes": 10478
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/clapclap-e.webp",
+        "bytes": 65660,
+        "width": 512,
+        "height": 512
       }
     },
     "eyetwitch": {
@@ -6044,6 +8995,13 @@
       "sourceSha256": "4f7bb924a36e7631251dd80069fde5971165cb4b566be2a00a6ef90cb9ad6401",
       "animated": true,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/eyetwitch.webp",
+            "bytes": 14932
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/eyetwitch.webp",
@@ -6058,6 +9016,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/eyetwitch.webp",
+          "bytes": 2216
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/eyetwitch.webp",
+          "bytes": 5092
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/eyetwitch.webp",
+          "bytes": 11880
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/eyetwitch.webp",
+        "bytes": 185906,
+        "width": 512,
+        "height": 512
       }
     },
     "meow-devil-intensifies": {
@@ -6066,6 +9048,13 @@
       "sourceSha256": "9cb3411abb264b9102ab30599594fab03cce07627b0e652ce0a5b0c0ac527ac6",
       "animated": true,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/meow-devil-intensifies.webp",
+            "bytes": 21990
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/meow-devil-intensifies.webp",
@@ -6080,6 +9069,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/meow-devil-intensifies.webp",
+          "bytes": 2226
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/meow-devil-intensifies.webp",
+          "bytes": 4428
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/meow-devil-intensifies.webp",
+          "bytes": 8774
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/meow-devil-intensifies.webp",
+        "bytes": 175852,
+        "width": 512,
+        "height": 512
       }
     },
     "meow_bongotap": {
@@ -6088,6 +9101,13 @@
       "sourceSha256": "8811bfd5c52d5b1eae206bdd9c029be0127acbe94b171b35179ef4939f65f8b9",
       "animated": true,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/meow_bongotap.webp",
+            "bytes": 4574
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/meow_bongotap.webp",
@@ -6102,6 +9122,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/meow_bongotap.webp",
+          "bytes": 2784
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/meow_bongotap.webp",
+          "bytes": 5954
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/meow_bongotap.webp",
+          "bytes": 14282
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/meow_bongotap.webp",
+        "bytes": 58270,
+        "width": 512,
+        "height": 512
       }
     },
     "meow_bread_disappear": {
@@ -6110,6 +9154,13 @@
       "sourceSha256": "c976e2f83e06ab935b5054b4325efc47b3bc309ade13fe059ed699074ebb78b9",
       "animated": true,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/meow_bread_disappear.webp",
+            "bytes": 8446
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/meow_bread_disappear.webp",
@@ -6124,6 +9175,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/meow_bread_disappear.webp",
+          "bytes": 1960
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/meow_bread_disappear.webp",
+          "bytes": 4274
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/meow_bread_disappear.webp",
+          "bytes": 10628
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/meow_bread_disappear.webp",
+        "bytes": 102576,
+        "width": 512,
+        "height": 512
       }
     },
     "meow_hyper_think": {
@@ -6242,6 +9317,13 @@
       "sourceSha256": "fd6566a2784861381ac88410f1464c4e1e58703a775ec40e061a92c67cb8c079",
       "animated": true,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/ablobcatknitsweats.webp",
+            "bytes": 21842
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/ablobcatknitsweats.webp",
@@ -6256,6 +9338,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/ablobcatknitsweats.webp",
+          "bytes": 2502
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/ablobcatknitsweats.webp",
+          "bytes": 5878
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/ablobcatknitsweats.webp",
+          "bytes": 14206
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/ablobcatknitsweats.webp",
+        "bytes": 328796,
+        "width": 512,
+        "height": 440
       }
     },
     "alert": {
@@ -6264,6 +9370,13 @@
       "sourceSha256": "fb478c6da24d9dee2ecde93ea5a6c852e041934e472b2dc74264eb83c5de3634",
       "animated": true,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/alert.webp",
+            "bytes": 25776
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/alert.webp",
@@ -6278,6 +9391,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/alert.webp",
+          "bytes": 1682
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/alert.webp",
+          "bytes": 3552
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/alert.webp",
+          "bytes": 8970
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/alert.webp",
+        "bytes": 356634,
+        "width": 512,
+        "height": 512
       }
     },
     "awkward_side_eye": {
@@ -6286,6 +9423,13 @@
       "sourceSha256": "9e881b46e97930fa1e7a5038da05b020c773cf19b3f7d7e0da7026d01db0a64e",
       "animated": true,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/awkward_side_eye.webp",
+            "bytes": 20866
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/awkward_side_eye.webp",
@@ -6300,6 +9444,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/awkward_side_eye.webp",
+          "bytes": 1092
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/awkward_side_eye.webp",
+          "bytes": 2660
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/awkward_side_eye.webp",
+          "bytes": 6388
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/awkward_side_eye.webp",
+        "bytes": 308180,
+        "width": 512,
+        "height": 512
       }
     },
     "bongo-cat-drumming": {
@@ -6308,6 +9476,13 @@
       "sourceSha256": "8d996a4f46911ee3d1d8acc6923aae0fa036876513aa5f48ce83232e6afddd92",
       "animated": true,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/bongo-cat-drumming.webp",
+            "bytes": 4926
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/bongo-cat-drumming.webp",
@@ -6322,6 +9497,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/bongo-cat-drumming.webp",
+          "bytes": 2576
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/bongo-cat-drumming.webp",
+          "bytes": 6314
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/bongo-cat-drumming.webp",
+          "bytes": 15004
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/bongo-cat-drumming.webp",
+        "bytes": 64386,
+        "width": 512,
+        "height": 512
       }
     },
     "bongo-cat-jumbo": {
@@ -6330,6 +9529,13 @@
       "sourceSha256": "9a6304c998568e7540ff50365360ff619208f9331585d8126d6b251729d1961c",
       "animated": true,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/bongo-cat-jumbo.webp",
+            "bytes": 8000
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/bongo-cat-jumbo.webp",
@@ -6344,6 +9550,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/bongo-cat-jumbo.webp",
+          "bytes": 960
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/bongo-cat-jumbo.webp",
+          "bytes": 2326
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/bongo-cat-jumbo.webp",
+          "bytes": 5408
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/bongo-cat-jumbo.webp",
+        "bytes": 152078,
+        "width": 512,
+        "height": 288
       }
     },
     "boxcat": {
@@ -6352,6 +9582,13 @@
       "sourceSha256": "36baf310c1bbe82944868232c23584564745136dcaa64abcda069dee990aeaa9",
       "animated": true,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/boxcat.webp",
+            "bytes": 16120
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/boxcat.webp",
@@ -6366,6 +9603,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/boxcat.webp",
+          "bytes": 1680
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/boxcat.webp",
+          "bytes": 4832
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/boxcat.webp",
+          "bytes": 14350
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/boxcat.webp",
+        "bytes": 484534,
+        "width": 512,
+        "height": 512
       }
     },
     "cat-meow-hearts": {
@@ -6374,6 +9635,13 @@
       "sourceSha256": "b340dc3ba4ccb22d318b52b03d7fce17049d2e179ac26c52a7287dd56b07770f",
       "animated": true,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/cat-meow-hearts.webp",
+            "bytes": 52442
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/cat-meow-hearts.webp",
@@ -6388,6 +9656,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/cat-meow-hearts.webp",
+          "bytes": 840
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/cat-meow-hearts.webp",
+          "bytes": 1728
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/cat-meow-hearts.webp",
+          "bytes": 4018
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/cat-meow-hearts.webp",
+        "bytes": 645840,
+        "width": 460,
+        "height": 512
       }
     },
     "cat_money": {
@@ -6396,6 +9688,13 @@
       "sourceSha256": "da398cb4684213af5cbbef63396dbaccd3aa66cbf6b68b11425586c0f110f114",
       "animated": true,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/cat_money.webp",
+            "bytes": 30062
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/cat_money.webp",
@@ -6410,6 +9709,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/cat_money.webp",
+          "bytes": 2654
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/cat_money.webp",
+          "bytes": 7032
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/cat_money.webp",
+          "bytes": 19560
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/cat_money.webp",
+        "bytes": 572306,
+        "width": 512,
+        "height": 432
       }
     },
     "catdance": {
@@ -6418,6 +9741,13 @@
       "sourceSha256": "9f772411b5906afd5584c0c8242636aedfc1feb35be607a136fad18fe18d68e0",
       "animated": true,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/catdance.webp",
+            "bytes": 17136
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/catdance.webp",
@@ -6432,6 +9762,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/catdance.webp",
+          "bytes": 1762
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/catdance.webp",
+          "bytes": 4150
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/catdance.webp",
+          "bytes": 9992
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/catdance.webp",
+        "bytes": 256862,
+        "width": 512,
+        "height": 512
       }
     },
     "cheers": {
@@ -6440,6 +9794,13 @@
       "sourceSha256": "86c3fde264fea0b936640151a8e25c85a60f64f54415e2d24bf93954e005a4d1",
       "animated": true,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/cheers.webp",
+            "bytes": 99436
+          }
+        },
         "128": {
           "webp": {
             "quality": 70,
@@ -6454,6 +9815,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/cheers.webp",
+          "bytes": 1692
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/cheers.webp",
+          "bytes": 3718
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/cheers.webp",
+          "bytes": 7746
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/cheers.webp",
+        "bytes": 1119574,
+        "width": 512,
+        "height": 512
       }
     },
     "crying_bear": {
@@ -6462,6 +9847,13 @@
       "sourceSha256": "37b9f4feb1e109df8ed6eb58277f2e17daf6007b9f24be10e8e8e3901d2a66ca",
       "animated": true,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/crying_bear.webp",
+            "bytes": 101932
+          }
+        },
         "128": {
           "webp": {
             "quality": 60,
@@ -6476,6 +9868,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/crying_bear.webp",
+          "bytes": 2484
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/crying_bear.webp",
+          "bytes": 6072
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/crying_bear.webp",
+          "bytes": 13918
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/crying_bear.webp",
+        "bytes": 1364232,
+        "width": 512,
+        "height": 512
       }
     },
     "dumpster-fire": {
@@ -6484,6 +9900,13 @@
       "sourceSha256": "fe0d2117f14cfa43750aca0bfd63890228635ba1de567bb1f300525054d4db5f",
       "animated": true,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/dumpster-fire.webp",
+            "bytes": 32800
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/dumpster-fire.webp",
@@ -6498,6 +9921,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/dumpster-fire.webp",
+          "bytes": 2878
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/dumpster-fire.webp",
+          "bytes": 7500
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/dumpster-fire.webp",
+          "bytes": 19410
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/dumpster-fire.webp",
+        "bytes": 614244,
+        "width": 512,
+        "height": 512
       }
     },
     "elmo-fire": {
@@ -6506,6 +9953,13 @@
       "sourceSha256": "a5b58d9e136c5f4210515edc31627c2f99ebd15c40e83283b847fa7d6067e3b8",
       "animated": true,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/elmo-fire.webp",
+            "bytes": 23354
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/elmo-fire.webp",
@@ -6520,6 +9974,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/elmo-fire.webp",
+          "bytes": 1568
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/elmo-fire.webp",
+          "bytes": 3902
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/elmo-fire.webp",
+          "bytes": 8790
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/elmo-fire.webp",
+        "bytes": 288350,
+        "width": 512,
+        "height": 512
       }
     },
     "extreme-teamwork": {
@@ -6528,6 +10006,13 @@
       "sourceSha256": "4f0249e68614d92c51e42aa038a7b0b2c84f9db277b24c186aa7b51976d2fe9b",
       "animated": true,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/extreme-teamwork.webp",
+            "bytes": 8822
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/extreme-teamwork.webp",
@@ -6542,6 +10027,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/extreme-teamwork.webp",
+          "bytes": 2096
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/extreme-teamwork.webp",
+          "bytes": 4984
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/extreme-teamwork.webp",
+          "bytes": 11456
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/extreme-teamwork.webp",
+        "bytes": 110032,
+        "width": 512,
+        "height": 512
       }
     },
     "happykitty": {
@@ -6550,6 +10059,13 @@
       "sourceSha256": "d030cfdefb956b381eb939c63f00f353d534321b33c1b10293628c9c973c3b83",
       "animated": true,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/happykitty.webp",
+            "bytes": 48024
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/happykitty.webp",
@@ -6564,6 +10080,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/happykitty.webp",
+          "bytes": 2082
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/happykitty.webp",
+          "bytes": 5132
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/happykitty.webp",
+          "bytes": 14086
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/happykitty.webp",
+        "bytes": 895158,
+        "width": 512,
+        "height": 408
       }
     },
     "hypecat": {
@@ -6572,6 +10112,13 @@
       "sourceSha256": "bcbd723ce345d8e138eb0aaa840fb2fd1feae4b57fb8b5c34acbb7a35b76bc33",
       "animated": true,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/hypecat.webp",
+            "bytes": 14696
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/hypecat.webp",
@@ -6586,6 +10133,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/hypecat.webp",
+          "bytes": 1606
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/hypecat.webp",
+          "bytes": 4192
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/hypecat.webp",
+          "bytes": 9950
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/hypecat.webp",
+        "bytes": 256382,
+        "width": 512,
+        "height": 512
       }
     },
     "keanu-thanks": {
@@ -6594,6 +10165,13 @@
       "sourceSha256": "17aa88a7b7677002bcd70f032bd0c904cea3c98f75e6da3e0c84fb1fe22c496f",
       "animated": true,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/keanu-thanks.webp",
+            "bytes": 77276
+          }
+        },
         "128": {
           "webp": {
             "quality": 80,
@@ -6608,6 +10186,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/keanu-thanks.webp",
+          "bytes": 2162
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/keanu-thanks.webp",
+          "bytes": 5064
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/keanu-thanks.webp",
+          "bytes": 13184
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/keanu-thanks.webp",
+        "bytes": 1161404,
+        "width": 512,
+        "height": 512
       }
     },
     "keanu_thanks": {
@@ -6616,6 +10218,13 @@
       "sourceSha256": "deb99bc506dd59a207e00343b58e3bf8dca1c948b5d33aada6d2cbd8cff5c08d",
       "animated": true,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/keanu_thanks.webp",
+            "bytes": 45888
+          }
+        },
         "128": {
           "webp": {
             "path": "/emoji-delivery/128/keanu_thanks.webp",
@@ -6630,6 +10239,30 @@
             "quality": 90
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/keanu_thanks.webp",
+          "bytes": 1314
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/keanu_thanks.webp",
+          "bytes": 2626
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/keanu_thanks.webp",
+          "bytes": 5810
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/keanu_thanks.webp",
+        "bytes": 535034,
+        "width": 512,
+        "height": 512
       }
     },
     "let-me-think": {
@@ -6638,6 +10271,13 @@
       "sourceSha256": "9703c78b7bea22783380c029f7ca7ec1eed8bba1a82d267f9f30f858ef78abdf",
       "animated": true,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/let-me-think.webp",
+            "bytes": 61376
+          }
+        },
         "128": {
           "webp": {
             "quality": 80,
@@ -6652,6 +10292,30 @@
             "bytes": 317108
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/let-me-think.webp",
+          "bytes": 2102
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/let-me-think.webp",
+          "bytes": 4692
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/let-me-think.webp",
+          "bytes": 10846
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/let-me-think.webp",
+        "bytes": 780966,
+        "width": 512,
+        "height": 512
       }
     },
     "loading": {
@@ -6660,6 +10324,13 @@
       "sourceSha256": "d314449707d1a3cbcf6abb4bd67333640140e12f9ba7e856d713e9c875945ee3",
       "animated": true,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/loading.webp",
+            "bytes": 26530
+          }
+        },
         "128": {
           "webp": {
             "quality": 90,
@@ -6674,6 +10345,30 @@
             "bytes": 167866
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/loading.webp",
+          "bytes": 2350
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/loading.webp",
+          "bytes": 5612
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/loading.webp",
+          "bytes": 14792
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/loading.webp",
+        "bytes": 435202,
+        "width": 512,
+        "height": 512
       }
     },
     "magic": {
@@ -6682,6 +10377,13 @@
       "sourceSha256": "201a63ab7397629234ca86401a2dfd1c08c1eb692e4ad29a2bea02e7885713a1",
       "animated": true,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/magic.webp",
+            "bytes": 45472
+          }
+        },
         "128": {
           "webp": {
             "quality": 80,
@@ -6696,6 +10398,30 @@
             "bytes": 345280
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/magic.webp",
+          "bytes": 2266
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/magic.webp",
+          "bytes": 6732
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/magic.webp",
+          "bytes": 18730
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/magic.webp",
+        "bytes": 906012,
+        "width": 512,
+        "height": 512
       }
     },
     "meow-bongo-cat": {
@@ -6704,6 +10430,13 @@
       "sourceSha256": "f5359f038a3d0f62d05d96171695780d0f82ee1abf42cf0900e9bbff11829554",
       "animated": true,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/meow-bongo-cat.webp",
+            "bytes": 3758
+          }
+        },
         "128": {
           "webp": {
             "quality": 90,
@@ -6718,6 +10451,30 @@
             "bytes": 23870
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/meow-bongo-cat.webp",
+          "bytes": 2340
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/meow-bongo-cat.webp",
+          "bytes": 5634
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/meow-bongo-cat.webp",
+          "bytes": 14384
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/meow-bongo-cat.webp",
+        "bytes": 64244,
+        "width": 512,
+        "height": 512
       }
     },
     "meow-mic-drop": {
@@ -6726,6 +10483,13 @@
       "sourceSha256": "fe1f7e88a14e471eac5e7993ae8ab424da7a26df15a40a6134999ef5d4054f77",
       "animated": true,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/meow-mic-drop.webp",
+            "bytes": 12614
+          }
+        },
         "128": {
           "webp": {
             "quality": 90,
@@ -6740,6 +10504,30 @@
             "bytes": 70716
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/meow-mic-drop.webp",
+          "bytes": 1950
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/meow-mic-drop.webp",
+          "bytes": 4370
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/meow-mic-drop.webp",
+          "bytes": 10722
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/meow-mic-drop.webp",
+        "bytes": 178962,
+        "width": 512,
+        "height": 512
       }
     },
     "meow-stretch": {
@@ -6748,6 +10536,13 @@
       "sourceSha256": "53d49029b490915d8e6fe7e546c939b109bb945382d4cb9c4be74dcb98a309c2",
       "animated": true,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/meow-stretch.webp",
+            "bytes": 319268
+          }
+        },
         "128": {
           "webp": {
             "quality": 60,
@@ -6762,6 +10557,30 @@
             "bytes": 1561042
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/meow-stretch.webp",
+          "bytes": 2318
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/meow-stretch.webp",
+          "bytes": 4732
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/meow-stretch.webp",
+          "bytes": 11754
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/meow-stretch.webp",
+        "bytes": 3515134,
+        "width": 512,
+        "height": 512
       }
     },
     "meow-wave-comfy": {
@@ -6770,6 +10589,13 @@
       "sourceSha256": "86bff9459c1e8a67751bd765ba985caa58abf3e45e5472a287243042856f3a30",
       "animated": true,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/meow-wave-comfy.webp",
+            "bytes": 2432
+          }
+        },
         "128": {
           "webp": {
             "quality": 90,
@@ -6784,6 +10610,30 @@
             "bytes": 13104
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/meow-wave-comfy.webp",
+          "bytes": 2154
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/meow-wave-comfy.webp",
+          "bytes": 5138
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/meow-wave-comfy.webp",
+          "bytes": 11912
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/meow-wave-comfy.webp",
+        "bytes": 30400,
+        "width": 512,
+        "height": 512
       }
     },
     "meow_angry_intensifies": {
@@ -6792,6 +10642,13 @@
       "sourceSha256": "9732a89ddda8d8f3ee2cf753e523b48a95e850d7158778867b6a0cd29c4261f7",
       "animated": true,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/meow_angry_intensifies.webp",
+            "bytes": 319684
+          }
+        },
         "128": {
           "webp": {
             "quality": 60,
@@ -6806,6 +10663,30 @@
             "bytes": 1655708
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/meow_angry_intensifies.webp",
+          "bytes": 1796
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/meow_angry_intensifies.webp",
+          "bytes": 3962
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/meow_angry_intensifies.webp",
+          "bytes": 9100
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/meow_angry_intensifies.webp",
+        "bytes": 3801118,
+        "width": 512,
+        "height": 512
       }
     },
     "meow_attention": {
@@ -6814,6 +10695,13 @@
       "sourceSha256": "191496af5a6fd2424479076d1729fcb398e926a8cdef334c00c89d31dbb33dc3",
       "animated": true,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/meow_attention.webp",
+            "bytes": 48030
+          }
+        },
         "128": {
           "webp": {
             "quality": 90,
@@ -6828,6 +10716,30 @@
             "bytes": 272416
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/meow_attention.webp",
+          "bytes": 2104
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/meow_attention.webp",
+          "bytes": 4846
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/meow_attention.webp",
+          "bytes": 11852
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/meow_attention.webp",
+        "bytes": 695172,
+        "width": 488,
+        "height": 512
       }
     },
     "meow_bongo_rage": {
@@ -6836,6 +10748,13 @@
       "sourceSha256": "0985f420c513401f36ef6a16551c7b4883f6daab63c4cf7f14b65746f1b82768",
       "animated": true,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/meow_bongo_rage.webp",
+            "bytes": 4256
+          }
+        },
         "128": {
           "webp": {
             "quality": 90,
@@ -6850,6 +10769,30 @@
             "bytes": 25298
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/meow_bongo_rage.webp",
+          "bytes": 2574
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/meow_bongo_rage.webp",
+          "bytes": 6090
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/meow_bongo_rage.webp",
+          "bytes": 15098
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/meow_bongo_rage.webp",
+        "bytes": 64186,
+        "width": 512,
+        "height": 512
       }
     },
     "meow_chips": {
@@ -6858,6 +10801,13 @@
       "sourceSha256": "f2af8be089a9236a8c092453b1bf799d10c8aa250d39986533bb8df0fa9939a6",
       "animated": true,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/meow_chips.webp",
+            "bytes": 20494
+          }
+        },
         "128": {
           "webp": {
             "quality": 90,
@@ -6872,6 +10822,30 @@
             "bytes": 119038
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/meow_chips.webp",
+          "bytes": 2664
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/meow_chips.webp",
+          "bytes": 6338
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/meow_chips.webp",
+          "bytes": 15496
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/meow_chips.webp",
+        "bytes": 318778,
+        "width": 512,
+        "height": 512
       }
     },
     "meow_clorox": {
@@ -6880,6 +10854,13 @@
       "sourceSha256": "345c4aabed7360bd29751ce0f21024635e3a0e556ac4cb0d9b38378026ce91c4",
       "animated": true,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/meow_clorox.webp",
+            "bytes": 155770
+          }
+        },
         "128": {
           "webp": {
             "quality": 60,
@@ -6894,6 +10875,30 @@
             "bytes": 866568
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/meow_clorox.webp",
+          "bytes": 2370
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/meow_clorox.webp",
+          "bytes": 5680
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/meow_clorox.webp",
+          "bytes": 13468
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/meow_clorox.webp",
+        "bytes": 2036788,
+        "width": 512,
+        "height": 512
       }
     },
     "meow_cloroxsip": {
@@ -6902,6 +10907,13 @@
       "sourceSha256": "8a56f12bf9e1033184b93122ade1737029d966c85c0e3baa8d113bfe07bb314d",
       "animated": true,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/meow_cloroxsip.webp",
+            "bytes": 72078
+          }
+        },
         "128": {
           "webp": {
             "quality": 80,
@@ -6916,6 +10928,30 @@
             "bytes": 318742
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/meow_cloroxsip.webp",
+          "bytes": 2046
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/meow_cloroxsip.webp",
+          "bytes": 4160
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/meow_cloroxsip.webp",
+          "bytes": 8802
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/meow_cloroxsip.webp",
+        "bytes": 705074,
+        "width": 512,
+        "height": 512
       }
     },
     "meow_code": {
@@ -6924,6 +10960,13 @@
       "sourceSha256": "836e5842f22d654b4bda9fd516f63c4a0203116f5681b67a6467dd6563231f22",
       "animated": true,
       "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/meow_code.webp",
+            "bytes": 28914
+          }
+        },
         "128": {
           "webp": {
             "quality": 90,
@@ -6938,6 +10981,30 @@
             "bytes": 164334
           }
         }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/meow_code.webp",
+          "bytes": 1518
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/meow_code.webp",
+          "bytes": 3450
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/meow_code.webp",
+          "bytes": 8712
+        }
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/meow_code.webp",
+        "bytes": 392448,
+        "width": 512,
+        "height": 512
       }
     },
     "meow_coffeespitting": {
