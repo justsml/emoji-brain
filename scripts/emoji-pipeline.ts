@@ -92,9 +92,15 @@ export async function checkEmojis(root: string) {
   }
   return { total: rows.length, errors, pendingLabels, invalid: rows.filter(r => r.issues.length).length, averageScore: rows.length ? Math.round(rows.reduce((n, r) => n + r.score, 0) / rows.length) : 0, rows };
 }
+function rowNotes(row: Entry, report: Awaited<ReturnType<typeof checkEmojis>>) {
+  const issues = [...row.issues];
+  if (report.pendingLabels.includes(`public/emojis/${row.filename}`)) issues.push('Pending labelling');
+  return `${issues.length ? '❌ ' : ''}${[...issues, ...(row.duplicateOf ? [`Same content: ${row.duplicateOf}`] : [])].join('; ') || 'ok'}`;
+}
+
 export function reportMarkdown(report: Awaited<ReturnType<typeof checkEmojis>>) {
   const escape = (v: any) => String(v).replace(/\|/g, '\\|').replace(/[\r\n]/g, ' ');
-  return [`${report.total} emojis; ${report.invalid} invalid; average completeness ${report.averageScore}%.`, ...report.errors, '', '| File | Exists / prior | Hash | Modified | Type | Fields / 12 | Tags | Aliases | Categories | Score | Issues / duplicate |', '|---|---|---|---|---|---|---|---|---|---|---|', ...report.rows.map(r => `| ${[r.filename, `${r.exists} / ${r.prior}`, r.hash, r.modified, r.type, r.fields, r.tags, r.aliases, r.categories, `${r.score}%`, [...r.issues, ...(r.duplicateOf ? [`Same content: ${r.duplicateOf}`] : [])].join('; ')].map(escape).join(' | ')} |`)].join('\n');
+  return [`${report.total} emojis; ${report.invalid} invalid; average completeness ${report.averageScore}%.`, ...report.errors.map(error => `❌ ${error}`), '', '| File | Exists / prior | Hash | Type | Fields / 12 | Tags | Aliases | Categories | Score | Issues / duplicate |', '|---|---|---|---|---|---|---|---|---|---|', ...report.rows.map(r => `| ${[r.filename, `${r.exists} / ${r.prior}`, r.hash, r.type, r.fields, r.tags, r.aliases, r.categories, `${r.score}%`, rowNotes(r, report)].map(escape).join(' | ')} |`)].join('\n');
 }
 
 export function reportTable(report: Awaited<ReturnType<typeof checkEmojis>>) {
@@ -102,16 +108,16 @@ export function reportTable(report: Awaited<ReturnType<typeof checkEmojis>>) {
     { title: 'File', width: 32, value: (r: Entry) => r.filename },
     { title: 'Present', width: 7, value: (r: Entry) => r.exists && r.prior ? 'yes' : `${r.exists ? 'file' : 'no file'}` },
     { title: 'Hash', width: 9, value: (r: Entry) => r.hash },
-    { title: 'Mtime', width: 9, value: (r: Entry) => r.modified },
     { title: 'Type', width: 7, value: (r: Entry) => r.type },
     { title: 'Fields', width: 6, value: (r: Entry) => `${r.fields}/12` },
     { title: 'T/A/C', width: 7, value: (r: Entry) => `${r.tags}/${r.aliases}/${r.categories}` },
     { title: 'Score', width: 5, value: (r: Entry) => `${r.score}%` },
-    { title: 'Notes', width: 38, value: (r: Entry) => [...r.issues, ...(r.duplicateOf ? [`duplicate of ${r.duplicateOf}`] : [])].join('; ') || 'ok' },
+    { title: 'Notes', width: 38, value: (r: Entry) => rowNotes(r, report) },
   ];
   const fit = (value: unknown, width: number) => {
     const clean = String(value).replace(/[\r\n]/g, ' ');
-    return (clean.length > width ? `${clean.slice(0, width - 1)}…` : clean).padEnd(width);
+    const textWidth = width - (clean.startsWith('❌') ? 1 : 0);
+    return (clean.length > textWidth ? `${clean.slice(0, textWidth - 1)}…` : clean).padEnd(textWidth);
   };
   const line = (left: string, middle: string, right: string, fill = '─') =>
     left + columns.map(column => fill.repeat(column.width + 2)).join(middle) + right;
@@ -119,7 +125,7 @@ export function reportTable(report: Awaited<ReturnType<typeof checkEmojis>>) {
   const summary = `${report.total} emojis  •  ${report.invalid} invalid  •  ${report.averageScore}% average completeness`;
   return [
     summary,
-    ...report.errors.map(error => `ERROR: ${error}`),
+    ...report.errors.map(error => `❌ ${error}`),
     line('┌', '┬', '┐'),
     row(columns.map(column => column.title)),
     line('├', '┼', '┤'),

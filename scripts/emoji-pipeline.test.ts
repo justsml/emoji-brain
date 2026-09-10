@@ -134,6 +134,10 @@ test('reports render readable terminal and GitHub tables', async () => {
   expect(reportTable(report)).toContain('│ File');
   expect(reportTable(report)).toContain('│ cat.webp');
   expect(reportMarkdown(report)).toContain('| File | Exists / prior |');
+  expect(reportTable(report)).not.toContain('Mtime');
+  expect(reportMarkdown(report)).not.toContain('Modified');
+  expect(reportTable(report)).toContain('❌ Pending labelling');
+  expect(reportMarkdown(report)).toContain('❌ Pending labelling');
 });
 test('animated ingest retains frames and generates a static preview', async () => {
   const root = await fixture();
