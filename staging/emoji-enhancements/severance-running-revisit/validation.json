@@ -1,0 +1,90 @@
+{
+  "passed": true,
+  "productionUnchanged": true,
+  "sceneCutFrame": 27,
+  "framesChecked": 720,
+  "items": [
+    {
+      "file": "source-recovered-64.webp",
+      "width": 64,
+      "height": 64,
+      "frames": 88,
+      "sourceHolds": 90,
+      "durationMs": 4500,
+      "alphaExact": true,
+      "bytes": 94062
+    },
+    {
+      "file": "source-recovered-128.webp",
+      "width": 128,
+      "height": 128,
+      "frames": 88,
+      "sourceHolds": 90,
+      "durationMs": 4500,
+      "alphaExact": true,
+      "bytes": 121132,
+      "slackSizeOk": true
+    },
+    {
+      "file": "source-recovered-256.webp",
+      "width": 256,
+      "height": 256,
+      "frames": 88,
+      "sourceHolds": 90,
+      "durationMs": 4500,
+      "alphaExact": true,
+      "bytes": 559330
+    },
+    {
+      "file": "source-recovered.webp",
+      "width": 512,
+      "height": 512,
+      "frames": 88,
+      "sourceHolds": 90,
+      "durationMs": 4500,
+      "alphaExact": true,
+      "bytes": 1527392
+    },
+    {
+      "file": "topaz-recovered-64.webp",
+      "width": 64,
+      "height": 64,
+      "frames": 89,
+      "sourceHolds": 90,
+      "durationMs": 4500,
+      "alphaExact": true,
+      "bytes": 96004
+    },
+    {
+      "file": "topaz-recovered-128.webp",
+      "width": 128,
+      "height": 128,
+      "frames": 89,
+      "sourceHolds": 90,
+      "durationMs": 4500,
+      "alphaExact": true,
+      "bytes": 123826,
+      "slackSizeOk": true
+    },
+    {
+      "file": "topaz-recovered-256.webp",
+      "width": 256,
+      "height": 256,
+      "frames": 90,
+      "sourceHolds": 90,
+      "durationMs": 4500,
+      "alphaExact": true,
+      "bytes": 513990
+    },
+    {
+      "file": "topaz-recovered.webp",
+      "width": 512,
+      "height": 512,
+      "frames": 90,
+      "sourceHolds": 90,
+      "durationMs": 4500,
+      "alphaExact": true,
+      "bytes": 1112222
+    }
+  ]
+}
