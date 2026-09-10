@@ -14,7 +14,8 @@
     "check-emojis": "bun scripts/check-emojis.ts",
     "update-emojis": "bun scripts/update-emojis.ts",
     "generate:emoji-delivery": "node scripts/generate-emoji-delivery-batches.mjs",
-    "check:emoji-delivery": "node scripts/validate-emoji-delivery.mjs"
+    "check:emoji-delivery": "node scripts/validate-emoji-delivery.mjs",
+    "test:e2e:performance": "playwright test --config=playwright.performance.config.ts"
   },
   "dependencies": {
     "@ai-sdk/google": "^4.0.64",

@@ -167,6 +167,9 @@ pnpm exec playwright install chromium
 # E2E tests run against the production preview, so build first
 pnpm build
 pnpm test:e2e
+
+# Full-catalog scroll/export benchmarks at half-speed CPU on 3G and 4G
+pnpm test:e2e:performance
 ```
 
 Playwright starts the preview server at `http://localhost:4321`. See [`TESTING.md`](TESTING.md) for test locations and configuration.
