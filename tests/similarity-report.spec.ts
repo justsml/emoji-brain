@@ -1,10 +1,29 @@
 import { test, expect } from '@playwright/test';
-import { readFile } from 'node:fs/promises';
+import { readFile, mkdtemp, mkdir, writeFile, rm } from 'node:fs/promises';
+import { tmpdir } from 'node:os';
+import sharp from 'sharp';
+import { processSimilarity } from '../scripts/similarity-pipeline';
+import { writeSimilarityReport } from '../scripts/similarity-report';
 import { resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 
+let root: string;
+test.beforeAll(async () => {
+  root = await mkdtemp(resolve(tmpdir(), 'emoji-browser-review-'));
+  await mkdir(resolve(root, 'public/emojis'), { recursive: true });
+  await mkdir(resolve(root, 'src/data'), { recursive: true });
+  const emojis = ['query', 'near', 'far'].map(id => ({ id, filename: `${id}.png`, path: `/emojis/${id}.png` }));
+  for (const [i, emoji] of emojis.entries()) {
+    await sharp({ create: { width: 16, height: 16, channels: 4, background: ['#ef3333', '#e83333', '#3333ee'][i] } }).png().toFile(resolve(root, 'public/emojis', emoji.filename));
+  }
+  await writeFile(resolve(root, 'src/data/emoji-metadata.json'), JSON.stringify({ emojis }));
+  const result = await processSimilarity(root, { progress: () => {} });
+  await writeSimilarityReport(root, resolve(root, 'review.html'), result, [{ id: 'query', filename: 'query.png', category: 'synthetic test fixture', split: 'tuning' }]);
+});
+test.afterAll(async () => { if (root) await rm(root, { recursive: true, force: true }); });
+
 test('review report validates judgments, preserves drafts, and exports attributed grades', async ({ page }) => {
-  await page.goto(pathToFileURL(resolve('.cache/similarity/review.html')).href);
+  await page.goto(pathToFileURL(resolve(root, 'review.html')).href);
   const payload = JSON.parse((await page.locator('#data').textContent())!);
   const query = payload.queries.find((q: { id: string }) => payload.lists[q.id].color.length);
   expect(query).toBeTruthy();
