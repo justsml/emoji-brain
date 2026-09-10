@@ -1,0 +1,1379 @@
+{
+  "date": "2026-09-10",
+  "scope": "All 271 stills compared with originals at 128px on dark background; recovery subset additionally reviewed with alpha masks; repaired examples checked on dark and white backgrounds. All 29 Roo images reviewed, including first/middle/last frames of four animations.",
+  "finding": "Recovery receipts confirm low-credit failures and local BiRefNet fallback. Some masks removed clothing, accessories and body details; source-supported interior repair also left opaque canvas strips. The presence of a credit error alone does not imply a bad output.",
+  "repairMethod": "Reuse existing generated RGB, remove border-connected canvas. Roo-innocent white chest additionally restored using source alpha/color support. Roo-sellout required a background-only generation edit before matting.",
+  "repaired": [
+    "roo-blind",
+    "roo-bot",
+    "roo-duck",
+    "roo-gift",
+    "roo-innocent",
+    "roo-sellout",
+    "roo-sip",
+    "roocry",
+    "severance-working",
+    "thank_you",
+    "think-eyes",
+    "unikittysad"
+  ],
+  "bizcat": "Restored intentional multicolor background from existing generated RGB; opaque by design.",
+  "remaining": "No additional obvious alpha defects found in the 128px still comparison pass. This is visual triage, not human approval or proof of every pixel.",
+  "items": [
+    {
+      "file": "10-10.webp",
+      "candidateSha256": "d56e3dc7064cd6c3a12f1576031448cf1a4ed14f225feafb830b438d2aef8e0d",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "1000.webp",
+      "candidateSha256": "dc497bbfdb753bf6a8b0188fc076a8995ac9161aa3e1ce7b89e36dc550e52bc0",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "10000.webp",
+      "candidateSha256": "6da7a07a7aa5bfab52f4b7f0cb268dc9b7be53181e8633e1805a2941a9573603",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "100000.webp",
+      "candidateSha256": "55238970f83fb49efd6a62ece2d91abb94efc78c9463b9c9aafa1d5d0db0dec8",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "420.webp",
+      "candidateSha256": "21c6d99aeda96a5ef0f4c6fe926911241b5d61cd9c2753cabd8d3b20f0bddd08",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "50.webp",
+      "candidateSha256": "b97e65586aead33064438439c963077665d9e5d654f861e692b499dd89845b60",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "99.webp",
+      "candidateSha256": "09c69bf9cd95acaedef21d59ffc5ed81eded65697d64192811a469854c4ca13a",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "abraham-thinkin.webp",
+      "candidateSha256": "c5e3825881fa7c5e2ca18a5ec208e602fcaa90af1d7b63ac8e5b2371a46a7f4a",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "avocato.webp",
+      "candidateSha256": "8b5b7adba72a0dd5052e8b20f5b96b30d93f57107f68fa776167011bd0fe0360",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "awesome.webp",
+      "candidateSha256": "911aeef648db7c0b2165516ef8ae542764b53ff14bb8daa55ff1a0d9923cacc3",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "badtime.webp",
+      "candidateSha256": "28be27471357c021b3b2f4939afadf5607b69070bbbc726ca3247062fbbb3605",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "bizcat.webp",
+      "candidateSha256": "1298ed72264d1d49bc4b9c9a06c8281f32f8b2b46940f62e29e34c0460e39da2",
+      "review": "colors-restored"
+    },
+    {
+      "file": "cat-confuse.webp",
+      "candidateSha256": "47fdb7c36c9666a35b01a67b6fa8fafdafbe33661f15ec4c86723ddd605a3c90",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "cat-curious.webp",
+      "candidateSha256": "12352237e6129bb442018315a13b9ddc01589577c850e894fecf66d78a349ef6",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "cat-fishing.webp",
+      "candidateSha256": "3bcd50fa97be965ad81fb90381a69ccdab7697a3c786e0eea5832deaee22addb",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "cat-meow-disappointed.webp",
+      "candidateSha256": "3534c179aadfa9266195f5633899c58fa0d361b3c4802285f4b5b3e4cb86fd11",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "cat-meow-knife.webp",
+      "candidateSha256": "7415cb65b75940c1ab595d8426e73d23de21970e2310be5a435ee421b265ad5c",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "cat-meow-mask.webp",
+      "candidateSha256": "4bc9c6426cbd33f2804e3ff102af14672f257fba873c977c9230ed4efa1af901",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "cat-meow-shocked.webp",
+      "candidateSha256": "16dfb3f2034650cef87ffaa690253b57a08453300a348750b671faa9bdb9d667",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "cat-meow-sip.webp",
+      "candidateSha256": "845aa34364a899c33f378ec74a2147526b47493a6388031eca2ec192b8d33c30",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "cat-nap.webp",
+      "candidateSha256": "e891bc2afed39456fb506f3aa1d0aef39fa8f32a3450923d222c40ffb553a3fb",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "cat-nap2.webp",
+      "candidateSha256": "919c119363ad5e441270ee9cc327feaa92cc81355abcbb3dc2ea2975a3508028",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "cat-orange.webp",
+      "candidateSha256": "05fee12b98a1d9d934809f8f1b524d38c8e070862b4d1797a09109d59bd70a5f",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "cat-yells-at-cloud.webp",
+      "candidateSha256": "8502a13cfe910c010aa2bd5bad0e17ba2047530c31bb89afaaf63a32e0f771a3",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "cheers-leo.webp",
+      "candidateSha256": "bdb9bc3bb9c3bb5db1eb1f0bea06e3b87ec82c412ce5e3e5d95562cfaaa7997c",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "cheers-whiskey.webp",
+      "candidateSha256": "247afee63d147b0e83c72dbc352472165dafd8715e4109528ab7ffbb2a56287a",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "come-at-me-bro.webp",
+      "candidateSha256": "1a5cbc9e25b70f2b250a0eb17922dfdca209dd4884b7c287582a802c5a280300",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "doge_notes.webp",
+      "candidateSha256": "7666d5c07164111baa0362d5a12e01d990cf58c4093c9930798644ddfd8ffb3e",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "doge-finger-guns.webp",
+      "candidateSha256": "0c1bfac58de38faa2a3c3b5d29e6fc832a0b05c3a1341b1c6c943db9354d6a00",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "done.webp",
+      "candidateSha256": "08e51ec722845dad12e285c326b8756d5cf27f6991e31b0d1a74cec7a81923d0",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "everythingisbroken.webp",
+      "candidateSha256": "f1d64856566b66456c1b51365a6cfc510616166e39844bc7a7c26cb50606b790",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "fatcat.webp",
+      "candidateSha256": "463a2c309344c781c99f6b89c2f75b02579b0b18e92d273bdea97b3c032e9e29",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "fingerguns_left.webp",
+      "candidateSha256": "dd12f7cdbfef11a483cf307897950cd4e3d7e9b3ba069c7cd6d6c18e549d23c8",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "fingerguns.webp",
+      "candidateSha256": "76a0b88d75756cc2456b4ac63f01ae9cda73ab99455987ae178b985dbe886cfb",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "fingergunz.webp",
+      "candidateSha256": "f731e2d75942449c3f202e707931cfdb72d01174fa239238afe70c6f6ac188ec",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "fonzie.webp",
+      "candidateSha256": "e6c2f8e723cc02899120cd67c40e29d51e1d282326ee57afce8d659e17dd6aaf",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "fry_take_my_money.webp",
+      "candidateSha256": "35db051282b239ece9e47c125aeb7702003fae2a4066af69428460b5a9093f30",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "fry.webp",
+      "candidateSha256": "7bb764dd19afc110f90deba6b341f9b6976819e790582f88a2fd292e3ef13990",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "golden_turd.webp",
+      "candidateSha256": "46e3e6d484ca5ba8aa9822c192a061612820e7f0bd257bdb60dd904ed0103eb9",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "hai-guys-cat.webp",
+      "candidateSha256": "2484d8ac09ae920eefce71399d607fa928fbb6ccb5377b35db95ce0870f6afb4",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "happycat.webp",
+      "candidateSha256": "ac61f41bb0171df110940ecb313a12a9537a215446584fa823f7973cee4a2257",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "heart-mew-cat.webp",
+      "candidateSha256": "56e58fd81dc9c8d3e3ed95b605bd5f30dee555e600ab85f80237fa810018fb07",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "heycat.webp",
+      "candidateSha256": "ba574c521f154504b7b49e2e5a1a411a30cae3e84ca81967bdf084edd7c3fd09",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "i_have_no_idea_what_im_doing.webp",
+      "candidateSha256": "cb81793aada50d48284154f679f0641598567c6cc1f36cbb4e439ff3dee3f448",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "lets-fucking-go.webp",
+      "candidateSha256": "62eb5a21dcb7cc749825daa1676b3bd243c16ec2b1f3b2548d85e21aa79881a6",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_ai.webp",
+      "candidateSha256": "b3fafbdbd17e19586b995a50d80ff0718d375523f3f50805178ca1b66edb8bd9",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_alien.webp",
+      "candidateSha256": "0d0594639a8be4efea83a5ca2ef6c3e2f408bb7d9e3acf5589534c7528aeab13",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_angel.webp",
+      "candidateSha256": "ef55685c63dd8b05f79fdadbaa5842adbfd7d0d9db9de7024ee2639e5aa69c33",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_angry_tableflip.webp",
+      "candidateSha256": "649873ee1287a0f661cae92b6c8c3d62c0ea4748d6f76677b13864310eb34453",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_angry.webp",
+      "candidateSha256": "518d82df0dd3455c44e0e13435ec06c751b730813bea3c479e4144bdb21c7a6e",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_angrypats.webp",
+      "candidateSha256": "d90bd4f8e13837dac636d63c15e37d625993506b182a7ef7efed1147a1000d9e",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_anime.webp",
+      "candidateSha256": "cad8ffa868549cb515b780349b32b8f9e5562461e2ae383b0697a031f3c56e61",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_artist.webp",
+      "candidateSha256": "c3ab370ace99b342e7e0162d639d208e728328dd30d7c048b3a03fa8fe06afa5",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_autism.webp",
+      "candidateSha256": "4b26aa8ea0a012cca78a470725b480d47268808f8e18d55fe9efd60358b4ac57",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_awauu.webp",
+      "candidateSha256": "727cb1dec6faa0474eb97dabeac9fe27e8d7bc4e3f5e9886c5abc40887d4ad03",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_aww.webp",
+      "candidateSha256": "e11034e01224305a4768cb5809725c07c334c7ad458d8102dc036cce0be51299",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_baguette_hero.webp",
+      "candidateSha256": "fc8bc1db8dfcf0d07461a88bd4b5030ae69096337a6a8d88918ba97f23cb61ff",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_bg.webp",
+      "candidateSha256": "6c76d7eef6e4e9c011b7e0a08318599ca14fc8a4f166fdb500bfb73ea7c6ac24",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_bigsob_cry.webp",
+      "candidateSha256": "571ea2a900071a734cfece4136ffd263786e2e1426256667a6a6473e383ccd2d",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_birthday.webp",
+      "candidateSha256": "ed620e009ac707b4416a0904ebdc08b66aa10fded30cf86b5cda80ac03da034a",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_black_cat.webp",
+      "candidateSha256": "bc7a529886a1e4bdb1029c1961fa7804d1b6f27669aa16160d706ed12d5eb6fc",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_boat-captain.webp",
+      "candidateSha256": "829796bf43ffd5e0043a8505cd38f36c93c62dd76baa4fdc820412538ce4cf09",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_bongo.webp",
+      "candidateSha256": "bd8f467d77f9a2773fa644a3c3dd54547b4b6d0a4abc4d80cb63b9ec1adb0132",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_boop.webp",
+      "candidateSha256": "b02eedacaf36f3d81ee50ac7736070a43eea6ef9421d9c4e4d832ac59beb0e86",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_box.webp",
+      "candidateSha256": "a588c0ec00a12a9b9c9ddd766f99e19059d83bd4ebfdbde618d8b89a2b212af0",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_broken_heart.webp",
+      "candidateSha256": "d761399198930dcc665a74a8f8fe4eefc18d94a62c269584e2ca2a14aff88789",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_brokenheart.webp",
+      "candidateSha256": "79ba8ec0bde461d234600122e33e05efceceb3dd6af80e1b4bca0052278bdbe5",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_caged.webp",
+      "candidateSha256": "f0899ed4f1210044b412f08e0ebb461fcef895124b3937ec82ca2027954e5af0",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_candycanenom.webp",
+      "candidateSha256": "243eddf559495f285de9578fddb72bbb139962beb7cd579c3df752945974ad31",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_catdoggosnuggle.webp",
+      "candidateSha256": "24c119cde534578f3b39c6679aa2db57376bad2fe57d94a0f902eac41e77f33a",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_catflip.webp",
+      "candidateSha256": "1c7aec8b6bde863d3f50f171eae4075832be90417c0504dab7ed112fc532fb4a",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_coffee_sip.webp",
+      "candidateSha256": "7c51a131946dd9a53b551098f0e3ad8eca5162afaf2cf380b0ee093c4b796d63",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_coffee.webp",
+      "candidateSha256": "6b1f7f0b96dd37e9005946afb8f8d99b3229d4eca4c095f8899850668987e1a7",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_cold.webp",
+      "candidateSha256": "30654d54136a55c935a30830424347be3d1db0aa440b783a6cb48a56b868e3d6",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_comfy.webp",
+      "candidateSha256": "754c7002f14468090ad41506aa85acf3dadf907c7c3694219db0288343fe5224",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_comfyangry.webp",
+      "candidateSha256": "188c2cb9b48ef9c0049eb049939b005bf68f1869417bc5db7635e6ac818e167a",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_comfyaww.webp",
+      "candidateSha256": "f6fa3007d8f670ca09e9f5982b246b03d2d6e56311233cc007cb86ba9d260069",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_comfywhatisthis.webp",
+      "candidateSha256": "82412899fc318d58b19011cd2522b23d6b1fc33c95bc22a55e9bd2309f2b9501",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_cosmic.webp",
+      "candidateSha256": "48b01af6ade4399bfa1c91e17c7ddfbe7fd678fc6461d1ba0671e1c6c9a2226b",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_cowboy_smile.webp",
+      "candidateSha256": "efd75b02e42b89d0045d6b8fc0da51aa1a5e86c6218f3a590af03256fb0ae2e1",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_cry_laugh.webp",
+      "candidateSha256": "49f6b141f424274b7f881a87231928ba135698cae0418a7e78580ac943bec2cb",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_cry.webp",
+      "candidateSha256": "a4a871dcd201ff3945365b3cfafc627a6fe4ba43740d9707ebfeaacfbf32b701",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_deficit.webp",
+      "candidateSha256": "6173bd3a827f560e8eafeb167ae74d8c71fee7cf079a23901f7fc15b491ac3d9",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_devil.webp",
+      "candidateSha256": "0a718df5ec3dc435ba848583f73b7f7c375d6fbb70085b0e14abda2624ed0a1f",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_disputed.webp",
+      "candidateSha256": "3247e5e180f58e189a47917fb8ed08ab5abe35d028814b51ee6ed9073c3c4ea5",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_dizzy_puffy.webp",
+      "candidateSha256": "665ec32b7e508ad72de65d82229551599c7fc22a9ee5d2f26d5b20da0754c22a",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_dj.webp",
+      "candidateSha256": "30db367d9160ed88d75f0d421e2161f4fff5815a8b40e17f319b3777a921b5c9",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_dunno.webp",
+      "candidateSha256": "4c920b992d1e60bae36c03e4204c6e34bfb2b6aadfce842b8b84b947f1861ab8",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_elf.webp",
+      "candidateSha256": "57d7f549271dff82f2e36540097e1d19666c830b167abb27e12da464e9b78331",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_embarassed_covering_face.webp",
+      "candidateSha256": "6a142134d06bc9c1140b43784ada6e4736678a216c57916bb3048efedd6d6b78",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_evilknife.webp",
+      "candidateSha256": "51263b35e8100f03aba837e1846591f9298eb0228dafd16164574417dd465593",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_eyes-owo.webp",
+      "candidateSha256": "9272203283f9f0c3662f9f9a13cb416cfe063aa7aabe862d35a1726fc3208709",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_eyes.webp",
+      "candidateSha256": "7f1d11d7d146ad1c1360d0c7f830be39eb331196cd65f712289ffe5dbe97541e",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_ez.webp",
+      "candidateSha256": "db8aaf87a170516b6e139f748719cf1c77663f3e5647b02b295bd459dc3d6fb6",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_facepalm.webp",
+      "candidateSha256": "feb5453be1963eea2f8938eeb78271ae3f9733b2cf2f9e083ca7d522bd1fb8fa",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_fear.webp",
+      "candidateSha256": "77b5586b84be7bea112f4c0c54862f3f82e0ee345ed2cdeaa861b584e474b69f",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_fearful.webp",
+      "candidateSha256": "95859caeeb4a087b4c5ada4a502635a972079f46ba3db14ac6e1e981080b81b4",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_fingerguns.webp",
+      "candidateSha256": "fe86a6bce7a9a15d0905bb6a74ef9c90575c3eb874b70dca22213ae813246a4b",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_fingerguns2.webp",
+      "candidateSha256": "c73680602d6afdb88878e2b5d668fcf0be32545d0e1cbede55177eff4613abcf",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_fingergunsrreverse.webp",
+      "candidateSha256": "d35243111b4aa8e11c4a55844fc385389ba375bec1de263749638b087b42a396",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_firefighter.webp",
+      "candidateSha256": "3cb9daf1c787246c8bdfb59ad5581689f6425806ae856b7b0d3f80a7a553a5fe",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_fistbumpleft.webp",
+      "candidateSha256": "872036acac559d43d93530019284f2ef6ca03f0f144891f91dc12ba35b5a62af",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_fistbumpright.webp",
+      "candidateSha256": "d2e3e76020511c2f6781a7493c6f7e2d510a4dd2dd22157667000b97fec1302e",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_floppy.webp",
+      "candidateSha256": "5d47cdebf3b8853f92bdad14fa36bcdc440aaf6dd975579ae52fe95feff90964",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_frowningbig.webp",
+      "candidateSha256": "cc52ede075fbcfb6e6547d105e5767f9ecee75ce9a6fdebe0e8152dfa9a5e71d",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_fux.webp",
+      "candidateSha256": "49f9df90c0649d2f199e7045caa545b2ca0f548f2824b823532d978fce49dc6e",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_fuxpuffy.webp",
+      "candidateSha256": "6dd280d2b3d363ba7f9e0e8d11ea95e7c01620ce97e89471f34abfc5153652b1",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_giggle.webp",
+      "candidateSha256": "b37036bfe2a7df8a752242363a05665e821f9098cc86325aaec5981017d312e7",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_glare-sad.webp",
+      "candidateSha256": "d50dd77e0f47ef2a80570061b2bc3460e4befb1d927157da55a8943ad71fd397",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_glare2.webp",
+      "candidateSha256": "4b46aa9f9f2c4f9d150a904d61ca6732947ee925fdb70bdd70c46cfb18931302",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_googly-bongo.webp",
+      "candidateSha256": "6cf5da8464acac189a5c73785e6825aaaeee720367a9bd56b4465e0d87639159",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_googly.webp",
+      "candidateSha256": "078e86a50a0c8b2fea3eb6b757fea101c720ac9dde966ebade8ae897efbaedd8",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_grimace.webp",
+      "candidateSha256": "3a2fb17b4a159e62c7f99eebb28223e16dc79f823bf227cfbf21d61cd263d910",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_grimace2.webp",
+      "candidateSha256": "dfb47238c8881273eb4e9fcb5d5043dabdf427038eda6387ead94240e76dda7f",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_grumpy_coffee.webp",
+      "candidateSha256": "763dac3833d8d31e5d877df390a18099287ff67f44b09eadac0739125579ce6c",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_grumpy.webp",
+      "candidateSha256": "06096e63d66c523d66e19ddecf7b2a756ef53b40afd6a448c0f8b38e813c7a71",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_gummyattention.webp",
+      "candidateSha256": "40b6f3b604209d2db1158cef70e888c494a44d4b424470d8c0c60fa858e0b7d7",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_hammer.webp",
+      "candidateSha256": "116fea1900502eb5760a9a981b0c78326a143ee781fc219e17ee592212a16907",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_headache.webp",
+      "candidateSha256": "94fd0523ddfe034176c12488d3ef1b7cab59e0b661ac7645c32e86e15ba46a19",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_headphones.webp",
+      "candidateSha256": "bcc2c043ce84b4d226cc1164ba2bc0dabd5d5b61e2356a5f2480ee387d21ae61",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_heart.webp",
+      "candidateSha256": "cceba68643085032ae49d851129233a54b5193217b047fe74177ec7213bdce9f",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_hearts.webp",
+      "candidateSha256": "0ad45b5e62c7207af72a2a194a2b338174e08c34067549e5fbc0a9ec7d7ddfe2",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_helmut.webp",
+      "candidateSha256": "d73e05257de69ba40b848b717a4b1bab1491f8612ac4512f52096351d887c54d",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_highfive_team.webp",
+      "candidateSha256": "21d2009309e17e24297f2af297fcc77b65d82f13ba376df0cbfb66ce126a307b",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_hiss.webp",
+      "candidateSha256": "80260d2628039b391987eada5583ad450bb2e3459110629192285c0fbc1e7bc7",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_hug.webp",
+      "candidateSha256": "c48fb7ff3885b770ce002b3e55057fb2af9ba7352425c8fec2817e8e659dc6bc",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_huh.webp",
+      "candidateSha256": "01becb9b9153398928fae6578e310c05dbae4cb3f619f4a19274d207025432b8",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_hungry.webp",
+      "candidateSha256": "77b77a6e2b798b9dccc68b3e07f3091c2282f20e49efafdc49066f82aedb54a4",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_hyper.webp",
+      "candidateSha256": "d38bbd34db644cd8d649b93bb4257458e46a462db823ba6cf58709d816765c8a",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_icecream_yum.webp",
+      "candidateSha256": "e9a942c3f76ee18d082e0b7a46e539cd727dbb238f27f3c1741cf558fc04f5b9",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_icecream.webp",
+      "candidateSha256": "923f7f908bbeb3cc03911611c491fd29ccadaf9197a34ed6d8ceb253cb9b6648",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_idea.webp",
+      "candidateSha256": "79b236e0548079d2d45f844641dbc960a30552e5a70d19f085b146f6b71bd63c",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_joy.webp",
+      "candidateSha256": "8ca09b545349ac222b20a5be8f633a32393c4659c2fef6376a6e3f41a877650d",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_just_right.webp",
+      "candidateSha256": "a4f74d47e8ed33d15ab2b7563a9079c0c67b348b276fd2a64da6630ed0fa992b",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_lord.webp",
+      "candidateSha256": "12a916d34bb1c98efdb87b4782544780e761e501560e9728b83e5164cdfc804c",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_mage.webp",
+      "candidateSha256": "bb35433001f299cb78fdc8e68ce132b670c59484d624b827958e9479adb9e8fb",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_matcha.webp",
+      "candidateSha256": "a3075f1a92db6ac6e9629e69d4d4b74aec8214fd4f58e3b957d5a340a52bf2e0",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_melt.webp",
+      "candidateSha256": "6d027a781a75101b941697c605ca643f1c2d2f0c28630feb826258ab06e1f905",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_money.webp",
+      "candidateSha256": "cb7e4a02b5a489bab586e44b17da733cb94b2c52d801039e8389edff496f5fa7",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_mustache.webp",
+      "candidateSha256": "2ba1d21abe80c107eb8f1ffaf9d4e4d8b2c6c3b60d580f99b26e7c6186960e9f",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_nauseated.webp",
+      "candidateSha256": "c4364436d5767ceb54db714eeee73dbed5b5b8cd02f48c92542606b22c35f94f",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_neon.webp",
+      "candidateSha256": "b6db5666dc99b0a657477bc2a9ae9d04f583d5db84b8044b9dcc6c575e5688ac",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_nerd2.webp",
+      "candidateSha256": "cdbb7efc4795117aba835f41ff07f9d8a0c9787dff94708822d97b13e5b4ee51",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_nervoussweat.webp",
+      "candidateSha256": "497f244ada9cf2cc9b8bb7fc0917b269be43a8ae561687424ac5fec4b577b526",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_ninja.webp",
+      "candidateSha256": "a75d7fa548a71b9c50bd2faf1b6a9879b3a9bf882ecfce45ebb0122f0882956d",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_ninjacaged.webp",
+      "candidateSha256": "3d025cec831c9d5366c3cd8e0bbed9bcabaa5918f52063bded6917c4c946c7e6",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_no_me.webp",
+      "candidateSha256": "6d35a737ac828b066e8eab171270b9c0d03b6540c553b44e7418cc0df9211f7b",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_no.webp",
+      "candidateSha256": "e55f13f906d4829bf9caac8fe27a44e6bb386dbda18e8c1b41ec2f215fb9a709",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_noplease.webp",
+      "candidateSha256": "80fcc19d25a66994205d5441996067332968f3c37f25c536a510543bd3731f12",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_notlike.webp",
+      "candidateSha256": "1b6ad1b8062f242512769c1f770eb840e7d1816e68b5b0c2941f3d658ba116a8",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_ok_u.webp",
+      "candidateSha256": "c3e97fada37a5db39aa22e1a6a93882a280ca9af72ea68bb6a60532ff5e019d0",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_ok.webp",
+      "candidateSha256": "b896f2d46058878e6eee731b7a3a7154416bb733fd8c1fa216075f124041bf22",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_onfire.webp",
+      "candidateSha256": "eb7d00ca7683be5e8db65393ba51a8d88e81178313878493672cda597febc660",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_outage.webp",
+      "candidateSha256": "48ff29be84c88651e5956a82e9e3c7374af59388ff726b1c0942f6bfb585511d",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_pat2.webp",
+      "candidateSha256": "94605c1fd947ccf9970031b9b0b7459257f8cee38b220c93b5739615bbe8e1c0",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_paw2.webp",
+      "candidateSha256": "133f98bee2d21b1af3bec43ac866e1f0ea32f4e56daf95c2647e2193d6c368b9",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_peek.webp",
+      "candidateSha256": "1efbc0ac999cb674fd5fb837eb15093af188e8ab9c08067045eb60107d28edfb",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_peppermint.webp",
+      "candidateSha256": "5c908ffc09326a7fd6091eddeb9f27bdb97a1a17bc7be95c083caf3813eb0120",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_perfecto.webp",
+      "candidateSha256": "9012d852514ff83fb2da40429ee2ec2a853f237870ff4afb9d24419617da944b",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_pikachu.webp",
+      "candidateSha256": "5e1dd2d63b56c3169cb6e25ddb07a805b89222a57b53305f36ff64eaca3626bd",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_pink_hug.webp",
+      "candidateSha256": "687398c0a4f9c823b8f8eef49fb2176ac2126e431e956e382a61b6e8056ce93a",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_pink_surprised.webp",
+      "candidateSha256": "933e1d7c015197c921b7a9cddf001e60f6159d4b3c0d04a27e5bb0f987875328",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_pirate.webp",
+      "candidateSha256": "eda9861fbbaa17b152b61157b3e09f2814da6764d150942708a7378225310be5",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_pizza.webp",
+      "candidateSha256": "01f1a8d3c309d312456f8117b0c989030537d30e7b70284ac28360b8502333ad",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_popcornsweats.webp",
+      "candidateSha256": "8c1d4e78946ec10b58d94b7e07c84f62571063a801921d721498deb1e9ca0764",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_puffy_shy.webp",
+      "candidateSha256": "67af8abe0421493661a563971f8a19d7e601381966b886d64d188d60a1f21f66",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_puffy-big-eyes.webp",
+      "candidateSha256": "d2352c7d4f8467afe9370b90e52a19b8abf252ff2a492b0895c17c88fcb84a7c",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_puffy-terrified.webp",
+      "candidateSha256": "ac3de07833f88f3fd75fcdfc210b3fef66b34eb0279cfd95c9c440085ba7c4b0",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_puffyblush.webp",
+      "candidateSha256": "70a8212cc73e2196c2207bcdb36f021a9eb4a2d7337a5c73bf2d70ed2f79b7d1",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_puffytears.webp",
+      "candidateSha256": "f6af839050e62fbc6ec640bc2f94d3cdef27f84cf89b45ded260fa7c38e060fd",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_pumpkin.webp",
+      "candidateSha256": "77783bb64d6c8da89a88cf8de1644efb19c914aff009b1ef1b88f8400971a785",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_pumpkinspicelatte.webp",
+      "candidateSha256": "b0a0ff5dcd2c9b135d730d5febdc8a1235192b7471290ae76987da7235d51fe1",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_queen.webp",
+      "candidateSha256": "0b4070013b54b10c965ebfca3d28188756e3adee6483d5cf15790bebd9fda8c3",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_reach.webp",
+      "candidateSha256": "472153c2ea9a4505e66d5329a44304ec2c9aa62007632d3a247ab15776e1411b",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_read.webp",
+      "candidateSha256": "81354e68e16db23e80e12381c97b7c28c24b1f7bee6e87be3f5b0fd4563f52a5",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_sadlife.webp",
+      "candidateSha256": "c38ee105bd07d327622571cca748534999158b7dc25524882ba2786d861c0fb2",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_sadpats.webp",
+      "candidateSha256": "2c3da0c8c054dad878e754bb23c1bb66fc9e6d86a234ae42c831c906b453b00d",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_science.webp",
+      "candidateSha256": "f7223fdce5240a59ca11c14862bd694dc42bc7a1b584e7180f8b4a5028df4168",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_sick.webp",
+      "candidateSha256": "27f145ffb2fa1b4738d802e5c358c30e34d0f2b313352eed7ae883c5f4b139d0",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_sleep_drool.webp",
+      "candidateSha256": "9b33a2a4a9aaffc44e8407ed55883f29a03eb1219d886947801f5f5909f450ac",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_sleep_zzz.webp",
+      "candidateSha256": "ab07bcb861805fa2d6443781668d43f6adc3e01dc25ebaf0f26acff9696d1d51",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_sleep.webp",
+      "candidateSha256": "3249f3186726b3b298657a47b3e31ba46c33c4bc4d62f935753f3802fcc98cf8",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_sleepless.webp",
+      "candidateSha256": "264a2dd5461152cd507478cf02e3be9ededd61696443ec4c51cdecf13940c869",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_sob.webp",
+      "candidateSha256": "853900dbba43010e2f6210154e2caf14f0f1131836812e1f6033a93c157a83d8",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_sorry.webp",
+      "candidateSha256": "875e80f38d608e021d78c5534c96b2f74dd4de11790ca35ef96a512b76760f51",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_stop.webp",
+      "candidateSha256": "1940e9629825a0d72140092023c699f4baeca56932900e5fa0185c5290f08133",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_sushi.webp",
+      "candidateSha256": "a9825f62716d64ca41e9a8f6e5364f61bf39cb63b2df1294c24b3c1343a78876",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_think.webp",
+      "candidateSha256": "90b24cfa7aff31bd6eebc6dab5a426b660f680273b16fcdc7ad1afa1fd7406d2",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_thinkingsmart.webp",
+      "candidateSha256": "2af322d4dec029ff0fe6108f04c441807e7298b930e93633fd9d8cb86d7e30a2",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_thinksmart.webp",
+      "candidateSha256": "386f8fc4ffea90408b581ec42409b0a3e6ccb9319d1fdabe64a3960fa22d4388",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_this.webp",
+      "candidateSha256": "fe6b2a5859ad0c04d52158dd4a47aa083d9f378410961d86f6363cf9648ca038",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_thonking.webp",
+      "candidateSha256": "9bf7348b30607cbe2aaff52585a9a04ac6632c969ee36e1f37d54f833ba4d8dd",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_trash.webp",
+      "candidateSha256": "e31143409d6682d6a5245319b86b3ccb2b7e93ef8116e54cf72b4d18debb0684",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_unamused2.webp",
+      "candidateSha256": "c6aa39c5d71bf9c400d3b6ad77c08c5d7cddbc1c42bdcfa2db2123b6b385559a",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_verified.webp",
+      "candidateSha256": "9354865814a758383ce1f2f4af9b9ad36f5b1643eaa6408ecf1bc9492031e274",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_verysad.webp",
+      "candidateSha256": "f38989180ee04487a6eea1a771d468c04a5ab55978c76794b1f38b667ffb9e23",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_waitwhat.webp",
+      "candidateSha256": "454e22ca0ae83868d44abb95784e433f68d43bed643f1394c94663524505c9d7",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_weary.webp",
+      "candidateSha256": "94b84a0e91645d0f5552b71a0cb5ba2ad1e37746be71b5c519fd7edb5bfd97c7",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_wine.webp",
+      "candidateSha256": "1cae4a74a4a9231a6d792f52ce283df0adc6caf782e0aca9a41c1f58304afd4d",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_wink.webp",
+      "candidateSha256": "3aee2fa94057f872c44786767bfdf7f125270c36c23eb83cded4934776f1bce8",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_winktongue.webp",
+      "candidateSha256": "e50a67e449cc29b0844313793e738fb49ac38943cc3b6960ac074910de7f14aa",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_witch.webp",
+      "candidateSha256": "45debcc0ff16ff3358bc2b50cb8f797ff07c4bf7bf4e062ed68a32cf84156691",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_woah2.webp",
+      "candidateSha256": "6a4d068eec30669e4a20bdedd57ce1fa3bc323e31f6339847438cddcccb05ad3",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_wow.webp",
+      "candidateSha256": "f03850f3acc9bcb8cf7c649b6be7a2ba7e4658874d1d0d5646a50ed5d26d99e0",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_yikes.webp",
+      "candidateSha256": "8bf2a90608db9de0d550ebb51848d3492f812467e37a8dd03870f46fede42c6f",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow_yw_welcome.webp",
+      "candidateSha256": "db9f2b9db17c26d60c769d038ae6843094e9b8804b700fb68eff877726a28e5c",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow-bernie-mittens.webp",
+      "candidateSha256": "5cfd89c2a8bd767572adbff763655982074e88c04f3dab368e4e23ec941b0d0b",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow-bigfan.webp",
+      "candidateSha256": "23f2a5ef574da108507d2b4f8eca6e8fc71d1ea4af04fd945a41867c785a2b12",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow-cat.webp",
+      "candidateSha256": "8c1492d2c7b5a1b054b9dcd6c958b4f539479c0b0943a93a981bf0feac95309a",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow-coffee.webp",
+      "candidateSha256": "e4390d3cde40432ded0093ae1510c0e252f557757361e637f420e159b03a3a2f",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow-confounded.webp",
+      "candidateSha256": "c54337b2f2484e4034419872a5c87f975cfe7926bf4c13787c522d39dcb7b1fe",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow-devil.webp",
+      "candidateSha256": "94e1d50cac70998726b489562fb7503e7c21967d573d14f988acf4f02add0b87",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow-double-thumbs2.webp",
+      "candidateSha256": "45a2e9fd263d2c5dd1410c0a67d1bca7610010938dbd717c4a3852f17b31c7e5",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow-frowningbig.webp",
+      "candidateSha256": "e491a75cd481947663c85fc3cce24ab160437f451659ad66f214fad51f568966",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow-gift.webp",
+      "candidateSha256": "c53218e637a9e5c8da47bf71f629f18d0f9d75b02fed3e177439b0a796d13eff",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow-notlikethis.webp",
+      "candidateSha256": "7b38f2aeef38bae6b026c0aff991bb99698eb83b35005f5bbb8c9270d4d07cd3",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow-peek-sip-glare.webp",
+      "candidateSha256": "eac8ccfa92db7f7bdd8d9bed5c69ec04f3b17b082eeb080ea06ebb924afa5b1d",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow-pensive-pray.webp",
+      "candidateSha256": "b25fa7e8fbe772a82fba4e45c13a0ccbcf75d762f5b9653cff81b868d9d81831",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow-present-pink.webp",
+      "candidateSha256": "a5344553c1c08c74863d5fcba449d57b3b041658bc37a3ee8be852a00cdb8e3f",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow-puffy-sup.webp",
+      "candidateSha256": "2f31dd184f82f7b5d6e0d17f9eb4ebadf5f4b159851c4c7ca657d9802a77eb0e",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow-scream.webp",
+      "candidateSha256": "f41f56055757105bd732fde9087432a55fef5a2d1176e21cac289bed1cc4e201",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow-shark.webp",
+      "candidateSha256": "32bdc7462ff614496a8acdd1e6c42732e3b7dbef45a8088d50820823bc316689",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow-stop.webp",
+      "candidateSha256": "98c969b196212209c488cac823bb8e6b42bf0971d4122c0648bb40807d6eaa80",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow-umm.webp",
+      "candidateSha256": "f8bb540858e046c5787d4ac40be6c349ae5d17e84c24b1f25140a63b7d595dfe",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meow-wizard.webp",
+      "candidateSha256": "e511e1374164b8e990cca4aa8bac5e77f39a2b37345edb65c1caed1eb41f4f41",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "meowby-maybe.webp",
+      "candidateSha256": "781054d5f2f624626ac5ba0202c16288e6c7216cb864a174eedc5b7a94462476",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "nice.webp",
+      "candidateSha256": "c1524f708408b03fcc5770c4e57f01526b419b3e32a1ece68783c2b2708b6d1b",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "no_ragrets.webp",
+      "candidateSha256": "74001ec4609a2bec2cda394afab1f02bba832666961a977220887e49d9b96a23",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "ohyeaaah.webp",
+      "candidateSha256": "af9a48f2a08d1b2ef1570b5968ae0ed29c56c6ca159b9372876910b35660be72",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "oke.webp",
+      "candidateSha256": "3c8840bac711b144afed9121ea0942e9353f07fd33a543985145a577a2e5c12c",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "old-man-yells-at-cloud.webp",
+      "candidateSha256": "b9490346afacd21c39c7fb97b7907df5e43fb93d26cfd40beabe35efeedd67c4",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "old-man-yells-at-comcast.webp",
+      "candidateSha256": "e96c9af1020ad2a7b13b2ce52f78b3209392e63b18831bd5495c02958167870e",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "oof.webp",
+      "candidateSha256": "b2a92a80acf98d92c5d903205f597ecfaa87439d5b8417e74c50e5d29c0459ca",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "pikachu-think.webp",
+      "candidateSha256": "18a0fbf7346150a785da83c18363601e85d6ef14ba0ad1f9f509cae15d4c04ac",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "roo-aww.webp",
+      "candidateSha256": "df360fd651990566c3e6c0bb67f3537c4705387307fbd11ce4847372692184bf",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "roo-blank.webp",
+      "candidateSha256": "9629605fb5a949247ca9aad9080667ec65e29eb8eb2d4657ae15ede1a36ba92c",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "roo-blind.webp",
+      "candidateSha256": "8ffa74c19488028e558dd54e4564255ef351d247c6890aeee039d216693ec461",
+      "review": "repaired"
+    },
+    {
+      "file": "roo-bot.webp",
+      "candidateSha256": "ba074b006a2f0dabb922a9a294e28e1d7034b34cb7c2582395f750f9385cb83b",
+      "review": "repaired"
+    },
+    {
+      "file": "roo-cop.webp",
+      "candidateSha256": "b1042080f9e9fc4844ede696bbac491b66cbfa1680c2e88d52f3838c04b84286",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "roo-cry.webp",
+      "candidateSha256": "93499c4bf79dbfbcbaa6928226958d43b92dbf9ba92f3fce3bcff521e7bdfba7",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "roo-cult.webp",
+      "candidateSha256": "cb7b88f82fe2fa625cd885427d4fc33d3d400c6202702012be6c2b42d9d2dc49",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "roo-derp.webp",
+      "candidateSha256": "e5e7f46c414d87f1f5e7fc0e2d4973f220c86378a6cc4d3ba650d5700a1f1d2a",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "roo-devil.webp",
+      "candidateSha256": "eb301240f23f314d8e093385b2d91250200da5819a8a0642bb0cbbdde4be59f2",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "roo-duck.webp",
+      "candidateSha256": "b10edcfa1487c1482d081ce1ce8b6afaf5370cefa14f535f6b3e2a00adc9859f",
+      "review": "repaired"
+    },
+    {
+      "file": "roo-ez.webp",
+      "candidateSha256": "4a5bd0c99438568692e1e51488e40c5ffc0692af937a1e89d20ff94594926cd6",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "roo-gift.webp",
+      "candidateSha256": "7c20c36e71c41542a13e1e83b51a7556d6ca5a61e0da8bf604b81e06e2b37d20",
+      "review": "repaired"
+    },
+    {
+      "file": "roo-happy.webp",
+      "candidateSha256": "96860ace812d85253ca1012f663db95a4f1fa745c153429b296422cff6a73fbf",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "roo-innocent.webp",
+      "candidateSha256": "24f69a81ac52b1f093d89b5dcdb10658c0353d2c8de2c9d40c2255fad0ff59b5",
+      "review": "repaired"
+    },
+    {
+      "file": "roo-lick.webp",
+      "candidateSha256": "df1fee304bccaba2b0068285d72099f41cad59270e839dad0800a5f0e8aa52bc",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "roo-nap.webp",
+      "candidateSha256": "2326ecee55ec7defe56ce86f00870d3f20e76a329771954480df2bef5ffb956b",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "roo-nom.webp",
+      "candidateSha256": "b1e63e1874b99012c2fd652a6ce9c504b44654d981d2be1d223c469a9b031494",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "roo-omg.webp",
+      "candidateSha256": "d1456436a1ce054c328caa0c5859e479245d81886ddf1f2223f82d1018afbbcd",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "roo-rheee.webp",
+      "candidateSha256": "967016dbfeca76fa269b0df7112afabe118b7cafb1990c720bf18b7f6291ae1b",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "roo-scared.webp",
+      "candidateSha256": "89bd673588543b9b57148b7f28922c5795bc43f5453b91f465d9de35a68cc941",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "roo-sellout.webp",
+      "candidateSha256": "f1f0fb679862b52c589dcc3bff2e3f2b3191d55f0d691026fb76f0203a03b0aa",
+      "review": "repaired"
+    },
+    {
+      "file": "roo-sip.webp",
+      "candidateSha256": "d1885849481a764ddbe5583dcc0a9aadd6d7c80a38b79210afdd0de3513943fc",
+      "review": "repaired"
+    },
+    {
+      "file": "roo-think.webp",
+      "candidateSha256": "ae506fc50ccfb9b5c4b1826273f723fe7f5fd4e2e0c9b21d15c31c7f7b153979",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "roocry.webp",
+      "candidateSha256": "c28f770efd54c420143ab151c14f5f77b2a66bfc1c828ab96499f91d7e391d46",
+      "review": "repaired"
+    },
+    {
+      "file": "rooderp.webp",
+      "candidateSha256": "0c0fb5452768e170997703db7defae4d49ffd265bdd8c49f570ce2e10b0d5b82",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "sad_keanu.webp",
+      "candidateSha256": "8aa0971feb6353c1f326ed458aa3dcd24456318213100a9b29fb46d8fa940881",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "sadcat.webp",
+      "candidateSha256": "1d27f181dc6037766103e08fd9995398079f9f00f9618d768bf9681a1c53deb4",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "severance-working.webp",
+      "candidateSha256": "7020f454a0c0dde917dd3a0ed0934be3869da24936850941c5b714ec98f73a7b",
+      "review": "repaired"
+    },
+    {
+      "file": "shruggy-grimace.webp",
+      "candidateSha256": "b81d6311f17eb6b9752e16d89d2854888dc2f547a2933f3158039980807497ff",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "success.webp",
+      "candidateSha256": "f937d1508d029b02e573e293b75398c6794e018996d3b2c1acc2446f77406d4b",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "thank_you.webp",
+      "candidateSha256": "fe7a1cec848da41427ce6ee77be09bda9d0c1879c0685f4a35337135fa9dddde",
+      "review": "repaired"
+    },
+    {
+      "file": "think-eyes.webp",
+      "candidateSha256": "652a1f968f1062ae1f0b9258bdb182e7269076edb40772e89564257bc5bb4401",
+      "review": "repaired"
+    },
+    {
+      "file": "thinkies.webp",
+      "candidateSha256": "f1b04eacf67dd9bf5ee5ec9c28670d4db7ba9a4c0a35d03109c5b10dc7aeb833",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "unikitty.webp",
+      "candidateSha256": "9dca983df4518078ef9726723e5d0cb63b5282cdcd76e754e7a515428e03ae80",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "unikittyhappy.webp",
+      "candidateSha256": "b237430f0aad2f517817cec9020bc0414f3fb0dd9ce382dfa5e9bf03f317ccb1",
+      "review": "visually-reviewed"
+    },
+    {
+      "file": "unikittysad.webp",
+      "candidateSha256": "eeb2803a1ffd84b15e9ec0bdb8896fa3b900cad54bc3596e9d735d6825b17207",
+      "review": "repaired"
+    },
+    {
+      "file": "weed.webp",
+      "candidateSha256": "30cf36137ce1625e8834464dc0bfc79de7bcab5ecc584b00cd11bf6eb1a05622",
+      "review": "visually-reviewed"
+    }
+  ]
+}

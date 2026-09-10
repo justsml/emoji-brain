@@ -13,9 +13,9 @@ for(const r of manifest.items){
  if(hash(source)!==r.sourceSha256||hash(candidate)!==r.candidateSha256)throw Error('Stale hash '+r.file);
  if(r.approval!=='pending')throw Error('Unexpected approval '+r.file);
  const meta=await sharp(candidate,{animated:true}).metadata();
- if(!meta.hasAlpha||(meta.pages??1)!==1)throw Error('Not a transparent still '+r.file);
+ if((!r.preserveBackground&&!meta.hasAlpha)||(meta.pages??1)!==1)throw Error('Not a transparent still '+r.file);
  const alpha=await sharp(candidate).ensureAlpha().extractChannel('alpha').raw().toBuffer();
- if(!alpha.includes(0)||!alpha.includes(255))throw Error('Missing alpha range '+r.file);
+ if(!r.preserveBackground&&(!alpha.includes(0)||!alpha.includes(255)))throw Error('Missing alpha range '+r.file);
 }
 const browser=await chromium.launch({headless:true});
 try{
