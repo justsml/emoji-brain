@@ -13,7 +13,7 @@ const allEmojis: EmojiMetadata[] = (emojiMetadata.emojis || []).map(
 // const categories = Array.from(new Set(allEmojis.flatMap(emoji => emoji.categories))).filter(Boolean);
 ---
 
-<Layout title="Emoji Explorer">
+<Layout title="Emoji Explorer" imageCount={allEmojis.length}>
   <div class="emoji-app w-full h-fit">
     <EmojiExplorerApp client:only="react" initialEmojis={allEmojis} />
   </div>

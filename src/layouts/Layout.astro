@@ -4,9 +4,10 @@ import "../styles/globals.css";
 
 interface Props {
   title: string;
+  imageCount: number;
 }
 
-const { title } = Astro.props;
+const { title, imageCount } = Astro.props;
 
 // The hero is made of the collection itself — real stickers from the set.
 const heroStickers = [
@@ -107,7 +108,7 @@ const heroStickers = [
               Emoji Explorer
             </h1>
             <p class="masthead-lede">
-              A hand-collected sheet of <b>402 stickers</b>. Pick the ones you want,
+              A hand-collected sheet of <b>{imageCount.toLocaleString("en-US")} stickers</b>. Pick the ones you want,
               then paste a single script into Slack to upload the lot.
             </p>
           </div>
