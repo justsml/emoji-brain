@@ -1,6 +1,6 @@
 # Severance-running revisit
 
-Pending review. Production remains the original 64px animation.
+Approved and promoted: recovered + Topaz. User approval: “approved, promote recovered topaz”. The original 64px animation is archived.
 
 The larger GIFDB copy contains the exact two-shot sequence (889×500, 112 frames at 25fps). Center cropping and monotonic frame sampling reconstruct the original 90 holds at 20fps, including its cut at frame 27. The crop is based on the original composition. All output images are WebP.
 
@@ -10,6 +10,6 @@ Two Replicate Topaz predictions succeeded: median-filtered original (`wwwx0ngjeh
 
 512px masters and 64/256px previews use quality90. The 128px Slack files use quality70 to fit under128KiB (121132 and123826 bytes). Alpha quality is100. The source is fully opaque; its alpha is retained exactly. No background was removed. Lossless intermediates and provider videos remain in ignored experiments.
 
-Validation checks source/candidate hashes, unchanged production, monotonic mapping, scene cut, dimensions, original4500ms duration,50ms hold boundaries, loop, and every decoded alpha pixel. Small-size WebP encoding may merge identical consecutive frames while preserving their duration. The browser review uses the actual file for the selected size.
+Validation checks source/candidate hashes, production matching the approved hash, monotonic mapping, scene cut, dimensions, original4500ms duration,50ms hold boundaries, loop, and every decoded alpha pixel. Small-size WebP encoding may merge identical consecutive frames while preserving their duration. The browser review uses the actual file for the selected size.
 
 Reproduce using `node scripts/emoji-enhancement/revisit-severance-running.mjs`, then `node scripts/emoji-enhancement/validate-severance-revisit.mjs`. The cached paid prediction is reused only when its input matches. Credential is read by the existing Replicate helper from the local environment; it is not stored here.

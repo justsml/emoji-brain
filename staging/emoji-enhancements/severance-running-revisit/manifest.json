@@ -1,5 +1,5 @@
 {
-  "status": "pending-human-review",
+  "status": "approved-promoted",
   "source": "staging/emoji-enhancements/originals/severance-running.webp",
   "sourceSha256": "45f51642c96fc4041a22e963932e4c3bb7ab9eef1d0d42265e801a3d3ee02179",
   "reference": {
@@ -233,5 +233,11 @@
     "id": "wwwx0ngjehrmr0d0hnes44zyg4",
     "input": "Median-filtered 64px original",
     "reason": "Less speckling, but blotchy walls and face remain; recovered source is substantially better."
+  },
+  "approval": {
+    "userStatement": "approved, promote recovered topaz",
+    "approvedAt": "2026-09-10T22:19:33.557Z",
+    "candidate": "topaz-recovered.webp",
+    "approvedSha256": "30c140b70146cad4ddd8464673840999119ae6d7396b2871cfbdcf64f60a5613"
   }
 }

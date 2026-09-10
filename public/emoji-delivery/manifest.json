@@ -18037,30 +18037,30 @@
       }
     },
     "severance-running": {
-      "source": "public/emojis/severance-running.webp",
-      "basis": "original-awaiting-review",
-      "sourceSha256": "45f51642c96fc4041a22e963932e4c3bb7ab9eef1d0d42265e801a3d3ee02179",
+      "source": "staging/emoji-enhancements/severance-running-revisit/topaz-recovered.webp",
+      "basis": "enhanced-approved",
+      "sourceSha256": "30c140b70146cad4ddd8464673840999119ae6d7396b2871cfbdcf64f60a5613",
       "animated": true,
       "variants": {
         "64": {
           "webp": {
             "quality": 90,
             "path": "/emoji-delivery/64/severance-running.webp",
-            "bytes": 186712
+            "bytes": 97758
           }
         },
         "128": {
           "webp": {
-            "quality": 60,
+            "quality": 70,
             "path": "/emoji-delivery/128/severance-running.webp",
-            "bytes": 193068
+            "bytes": 122224
           }
         },
         "256": {
           "webp": {
             "quality": 90,
             "path": "/emoji-delivery/256/severance-running.webp",
-            "bytes": 860776
+            "bytes": 534652
           }
         }
       },
@@ -18068,25 +18068,25 @@
         "64": {
           "quality": 90,
           "path": "/emoji-delivery/previews/64/severance-running.webp",
-          "bytes": 2296
+          "bytes": 1204
         },
         "128": {
           "quality": 90,
           "path": "/emoji-delivery/previews/128/severance-running.webp",
-          "bytes": 5276
+          "bytes": 2850
         },
         "256": {
           "quality": 90,
           "path": "/emoji-delivery/previews/256/severance-running.webp",
-          "bytes": 11010
+          "bytes": 6848
         }
       },
       "original": {
         "quality": 90,
         "path": "/emoji-delivery/original/severance-running.webp",
-        "bytes": 186712,
-        "width": 64,
-        "height": 64
+        "bytes": 1101498,
+        "width": 512,
+        "height": 512
       }
     },
     "severance": {

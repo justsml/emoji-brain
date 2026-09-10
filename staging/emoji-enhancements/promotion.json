@@ -1,7 +1,6 @@
 {
   "userApproval": "I'm approving them, will make a few fixes later tho.",
   "approvedAt": "2026-09-10T22:00:40.196Z",
-  "exception": "severance-running remains on its original pending the previously requested fix",
   "items": [
     {
       "file": "50.webp",
@@ -2725,8 +2724,17 @@
     },
     {
       "file": "severance-running.webp",
-      "status": "held-original",
-      "originalSha256": "45f51642c96fc4041a22e963932e4c3bb7ab9eef1d0d42265e801a3d3ee02179"
+      "status": "promoted",
+      "originalSha256": "45f51642c96fc4041a22e963932e4c3bb7ab9eef1d0d42265e801a3d3ee02179",
+      "source": "staging/emoji-enhancements/severance-running-revisit/topaz-recovered.webp",
+      "original": "staging/emoji-enhancements/originals/severance-running.webp",
+      "approvedSha256": "30c140b70146cad4ddd8464673840999119ae6d7396b2871cfbdcf64f60a5613",
+      "approval": {
+        "userStatement": "approved, promote recovered topaz",
+        "approvedAt": "2026-09-10T22:19:33.557Z",
+        "candidate": "topaz-recovered.webp",
+        "approvedSha256": "30c140b70146cad4ddd8464673840999119ae6d7396b2871cfbdcf64f60a5613"
+      }
     },
     {
       "file": "severance.webp",

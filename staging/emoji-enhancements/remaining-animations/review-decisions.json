@@ -295,7 +295,12 @@
     {
       "name": "severance-running",
       "candidateSha256": "6a01aa5d1901f075700d23645a0aa5bf3ff1d798903ee3ca9028ceff88a57c38",
-      "decision": "revision-requested"
+      "decision": "revision-requested",
+      "supersededBy": {
+        "manifest": "../severance-running-revisit/manifest.json",
+        "status": "approved-promoted",
+        "userStatement": "approved, promote recovered topaz"
+      }
     },
     {
       "name": "side-eye",

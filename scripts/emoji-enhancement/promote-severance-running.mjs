@@ -1,0 +1,26 @@
+import fs from 'node:fs/promises';
+import sharp from 'sharp';
+import {createHash} from 'node:crypto';
+const dir='staging/emoji-enhancements/severance-running-revisit';
+const manifest=JSON.parse(await fs.readFile(dir+'/manifest.json'));
+const candidate=manifest.candidates.find(r=>r.name==='topaz-recovered');
+const bytes=await fs.readFile(dir+'/'+candidate.file),hash=b=>createHash('sha256').update(b).digest('hex');
+if(hash(bytes)!==candidate.sha256)throw Error('Candidate changed since review');
+const approval={userStatement:'approved, promote recovered topaz',approvedAt:new Date().toISOString(),candidate:candidate.file,approvedSha256:candidate.sha256};
+const original='staging/emoji-enhancements/originals/severance-running.webp';
+if(hash(await fs.readFile(original))!==manifest.sourceSha256)throw Error('Original archive changed');
+const target='public/emojis/severance-running.webp';
+if(hash(await fs.readFile(target))!==candidate.sha256){await fs.writeFile(target+'.tmp',bytes);await fs.rename(target+'.tmp',target);}
+Object.assign(manifest,{status:'approved-promoted',approval});
+await fs.writeFile(dir+'/manifest.json',JSON.stringify(manifest,null,2)+'\n');
+const receiptFile='staging/emoji-enhancements/promotion.json';
+const receipt=JSON.parse(await fs.readFile(receiptFile));delete receipt.exception;
+Object.assign(receipt.items.find(r=>r.file==='severance-running.webp'),{status:'promoted',source:dir+'/'+candidate.file,original,originalSha256:manifest.sourceSha256,approvedSha256:candidate.sha256,approval});
+await fs.writeFile(receiptFile,JSON.stringify(receipt,null,2)+'\n');
+const metadataFile='src/data/emoji-metadata.json',catalog=JSON.parse(await fs.readFile(metadataFile));
+const row=catalog.emojis.find(r=>r.filename==='severance-running.webp'),meta=await sharp(bytes,{animated:true}).metadata();
+if(row.hash!==candidate.sha256)row.labelProvenance={method:'carried-forward-after-approved-upscale',fromHash:row.labelHash??row.hash,approvalReceipt:receiptFile};
+Object.assign(row,{hash:candidate.sha256,labelHash:candidate.sha256,size:bytes.length,width:meta.width,height:meta.pageHeight,animated:true,modified:(await fs.stat(target)).mtime.toISOString()});
+catalog.lastUpdated=new Date().toISOString();await fs.writeFile(metadataFile,JSON.stringify(catalog,null,2)+'\n');
+await sharp(bytes).resize(256,256,{fit:'inside'}).webp({quality:82}).toFile('public/emojis/still/severance-running.webp');
+console.log('Promoted approved recovered Topaz candidate',candidate.sha256);

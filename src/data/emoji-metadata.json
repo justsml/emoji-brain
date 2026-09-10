@@ -1,6 +1,6 @@
 {
   "total": 353,
-  "lastUpdated": "2026-09-10T22:00:43.585Z",
+  "lastUpdated": "2026-09-10T22:19:33.590Z",
   "emojis": [
     {
       "id": "df167e0a",
@@ -11268,14 +11268,19 @@
         "grainy"
       ],
       "created": "2025-04-12T03:57:22.518Z",
-      "size": 202082,
-      "width": 64,
-      "height": 64,
+      "size": 1112222,
+      "width": 512,
+      "height": 512,
       "animated": true,
       "aliases": [],
-      "hash": "45f51642c96fc4041a22e963932e4c3bb7ab9eef1d0d42265e801a3d3ee02179",
-      "modified": "2026-04-15T02:25:28.819Z",
-      "labelHash": "45f51642c96fc4041a22e963932e4c3bb7ab9eef1d0d42265e801a3d3ee02179"
+      "hash": "30c140b70146cad4ddd8464673840999119ae6d7396b2871cfbdcf64f60a5613",
+      "modified": "2026-09-10T22:19:33.566Z",
+      "labelHash": "30c140b70146cad4ddd8464673840999119ae6d7396b2871cfbdcf64f60a5613",
+      "labelProvenance": {
+        "method": "carried-forward-after-approved-upscale",
+        "fromHash": "45f51642c96fc4041a22e963932e4c3bb7ab9eef1d0d42265e801a3d3ee02179",
+        "approvalReceipt": "staging/emoji-enhancements/promotion.json"
+      }
     },
     {
       "id": "d4670922",

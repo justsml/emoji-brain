@@ -6,17 +6,21 @@ const delivery=JSON.parse(await fs.readFile('public/emoji-delivery/manifest.json
 const hash=bytes=>createHash('sha256').update(bytes).digest('hex');
 await fs.mkdir(archive,{recursive:true});
 try{await fs.copyFile('src/data/emoji-metadata.json',archive+'/emoji-metadata.json',fs.constants.COPYFILE_EXCL)}catch(e){if(e.code!=='EEXIST')throw e}
-const receipt={userApproval:"I'm approving them, will make a few fixes later tho.",approvedAt:new Date().toISOString(),exception:'severance-running remains on its original pending the previously requested fix',items:[]};
+const revisit=JSON.parse(await fs.readFile(root+'/severance-running-revisit/manifest.json'));
+const severanceApproved=revisit.status==='approved-promoted';
+const receipt={...JSON.parse(await fs.readFile(root+'/promotion.json')),userApproval:"I'm approving them, will make a few fixes later tho.",approvedAt:new Date().toISOString(),exception:'severance-running remains on its original pending the previously requested fix',items:[]};
 for(const [name,row]of Object.entries(delivery.items)){
  const file=name+'.webp',target='public/emojis/'+file,backup=archive+'/'+file;
  try{await fs.copyFile(target,backup,fs.constants.COPYFILE_EXCL)}catch(e){if(e.code!=='EEXIST')throw e}
  const original=await fs.readFile(backup);
- if(name==='severance-running'){receipt.items.push({file,status:'held-original',originalSha256:hash(original)});continue;}
+ if(name==='severance-running'&&!severanceApproved){receipt.items.push({file,status:'held-original',originalSha256:hash(original)});continue;}
  const candidate=await fs.readFile(row.source);
  if(hash(candidate)!==row.sourceSha256)throw Error('Stale candidate '+name);
+ if(name==='severance-running'&&severanceApproved&&hash(candidate)!==revisit.approval.approvedSha256)throw Error('Severance delivery does not match approval');
  if(hash(await fs.readFile(target))!==hash(candidate)){await fs.writeFile(target+'.tmp',candidate);await fs.rename(target+'.tmp',target);}
  receipt.items.push({file,status:'promoted',source:row.source,original:backup,originalSha256:hash(original),approvedSha256:hash(candidate)});
 }
+if(severanceApproved){delete receipt.exception;const row=receipt.items.find(r=>r.file==='severance-running.webp');if(row.approvedSha256!==revisit.approval.approvedSha256)throw Error('Severance delivery does not match approval');row.approval=revisit.approval;}
 await fs.writeFile(root+'/promotion.json',JSON.stringify(receipt,null,2)+'\n');
 // Review galleries continue to show the genuine pre-enhancement originals.
 for(const group of ['stills','animated-pilot','remaining-animations']){

@@ -12,6 +12,12 @@ for(const group of ['stills','animated-pilot','remaining-animations']){
  for(const r of m.items){const name=r.name??r.file.replace(/\.webp$/,'');const file=group==='animated-pilot'?r.variants.find(v=>v.key===r.review.preferred).file:r.candidate;sources.set(name,{source:`${staging}/${group}/${file}`,basis:'enhanced'});}
 }
 sources.set('severance-running',{source:'public/emojis/severance-running.webp',basis:'original-awaiting-review'});
+const revisit=JSON.parse(await fs.readFile(`${staging}/severance-running-revisit/manifest.json`));
+if(revisit.status==='approved-promoted'){
+ const source=`${staging}/severance-running-revisit/${revisit.approval.candidate}`;
+ if(createHash('sha256').update(await fs.readFile(source)).digest('hex')!==revisit.approval.approvedSha256)throw Error('Approved Severance candidate changed');
+ sources.set('severance-running',{source,basis:'enhanced-approved'});
+}
 await fs.mkdir(root,{recursive:true});
 let previous;try{previous=JSON.parse(await fs.readFile(root+'/manifest.json'))}catch{}
 const manifest={version:2,settings:{webpQuality:90,alphaQuality:100,sizes:[64,128,256],previewSizes:[64,128,256],slackTargetBytes:128000},items:{...previous?.items}};

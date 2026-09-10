@@ -1,24 +1,28 @@
 {
-  "count": 2,
-  "framesChecked": 8,
+  "count": 1,
+  "framesChecked": 360,
   "maxMeanAlphaError": 0,
-  "previewBytes": 26600,
+  "previewBytes": 10902,
   "totals": {
     "64": {
-      "webp": 3200,
+      "webp": 97758,
       "webpOver": []
     },
     "128": {
-      "webp": 7002,
+      "webp": 122224,
       "webpOver": []
     },
     "256": {
-      "webp": 16398,
-      "webpOver": []
+      "webp": 534652,
+      "webpOver": [
+        "severance-running"
+      ]
     },
     "original": {
-      "webp": 82154,
-      "webpOver": []
+      "webp": 1101498,
+      "webpOver": [
+        "severance-running"
+      ]
     }
   }
 }

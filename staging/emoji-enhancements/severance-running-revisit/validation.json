@@ -1,6 +1,6 @@
 {
   "passed": true,
-  "productionUnchanged": true,
+  "productionMatchesApproval": true,
   "sceneCutFrame": 27,
   "framesChecked": 720,
   "items": [
