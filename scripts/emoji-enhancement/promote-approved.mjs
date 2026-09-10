@@ -38,12 +38,13 @@ const catalog=JSON.parse(await fs.readFile(metadataFile));
 for(const entry of catalog.emojis){
  const file='public/emojis/'+entry.filename,bytes=await fs.readFile(file),sha=hash(bytes);
  const meta=await sharp(bytes,{animated:true}).metadata();
- if(entry.hash!==sha){
+ const changed=entry.hash!==sha;
+ if(changed){
   entry.labelProvenance={method:'carried-forward-after-approved-upscale',fromHash:entry.labelHash??entry.hash,approvalReceipt:root+'/promotion.json'};
   entry.labelHash=sha;
  }
  Object.assign(entry,{hash:sha,size:bytes.length,width:meta.width,height:meta.pageHeight??meta.height,animated:(meta.pages??1)>1,modified:(await fs.stat(file)).mtime.toISOString()});
- if(entry.animated)await sharp(bytes).resize({width:256,height:256,fit:'inside',withoutEnlargement:true}).webp({quality:82}).toFile('public/emojis/still/'+entry.filename);
+ if(entry.animated&&(changed||await fs.access('public/emojis/still/'+entry.filename).then(()=>false,()=>true)))await sharp(bytes).resize({width:256,height:256,fit:'inside',withoutEnlargement:true}).webp({quality:82}).toFile('public/emojis/still/'+entry.filename);
 }
 catalog.lastUpdated=new Date().toISOString();
 await fs.writeFile(metadataFile,JSON.stringify(catalog,null,2)+'\n');

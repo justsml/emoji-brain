@@ -1,6 +1,6 @@
 {
   "total": 353,
-  "lastUpdated": "2026-09-10T21:35:38.821Z",
+  "lastUpdated": "2026-09-10T22:00:43.585Z",
   "emojis": [
     {
       "id": "df167e0a",
@@ -124,17 +124,17 @@
         "score"
       ],
       "created": "2025-04-12T03:57:25.942Z",
-      "size": 266436,
-      "width": 1024,
-      "height": 434,
+      "size": 29658,
+      "width": 1584,
+      "height": 672,
       "aliases": [],
-      "hash": "55238970f83fb49efd6a62ece2d91abb94efc78c9463b9c9aafa1d5d0db0dec8",
-      "modified": "2026-09-10T21:34:29.163Z",
+      "hash": "6e9b7bbd0dc799a602ac92f3cb846933b5ae97cf6384830938811d39fcbbe0fe",
+      "modified": "2026-09-10T22:00:40.211Z",
       "animated": false,
-      "labelHash": "55238970f83fb49efd6a62ece2d91abb94efc78c9463b9c9aafa1d5d0db0dec8",
+      "labelHash": "6e9b7bbd0dc799a602ac92f3cb846933b5ae97cf6384830938811d39fcbbe0fe",
       "labelProvenance": {
         "method": "carried-forward-after-approved-upscale",
-        "fromHash": "85e09ed60460768e41592726cd2ecb01a399cd0180554f8bd6ecc03a01e67880",
+        "fromHash": "55238970f83fb49efd6a62ece2d91abb94efc78c9463b9c9aafa1d5d0db0dec8",
         "approvalReceipt": "staging/emoji-enhancements/promotion.json"
       }
     },
@@ -222,17 +222,17 @@
         "score"
       ],
       "created": "2026-04-14T15:24:25.501Z",
-      "size": 283896,
+      "size": 17316,
       "width": 1024,
       "height": 1024,
       "aliases": [],
-      "hash": "09c69bf9cd95acaedef21d59ffc5ed81eded65697d64192811a469854c4ca13a",
-      "modified": "2026-09-10T21:34:29.151Z",
+      "hash": "b231ede2164a8d65a1e77010666a422882802c6dd59fe3b1630b863ee0ddee19",
+      "modified": "2026-09-10T22:00:40.203Z",
       "animated": false,
-      "labelHash": "09c69bf9cd95acaedef21d59ffc5ed81eded65697d64192811a469854c4ca13a",
+      "labelHash": "b231ede2164a8d65a1e77010666a422882802c6dd59fe3b1630b863ee0ddee19",
       "labelProvenance": {
         "method": "carried-forward-after-approved-upscale",
-        "fromHash": "fe5acf7783856a36f5f4385e9d36f125cda8cddbe27748a227f49c07018d01ec",
+        "fromHash": "09c69bf9cd95acaedef21d59ffc5ed81eded65697d64192811a469854c4ca13a",
         "approvalReceipt": "staging/emoji-enhancements/promotion.json"
       }
     },

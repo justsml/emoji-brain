@@ -1,0 +1,24 @@
+{
+  "count": 2,
+  "framesChecked": 8,
+  "maxMeanAlphaError": 0,
+  "previewBytes": 26600,
+  "totals": {
+    "64": {
+      "webp": 3200,
+      "webpOver": []
+    },
+    "128": {
+      "webp": 7002,
+      "webpOver": []
+    },
+    "256": {
+      "webp": 16398,
+      "webpOver": []
+    },
+    "original": {
+      "webp": 82154,
+      "webpOver": []
+    }
+  }
+}

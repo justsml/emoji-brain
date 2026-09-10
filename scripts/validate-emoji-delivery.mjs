@@ -4,6 +4,7 @@ import {createHash} from 'node:crypto';
 sharp.concurrency(2);
 sharp.cache({memory:32,files:0,items:8});
 const root='public/emoji-delivery';
+const only=process.argv.find(arg=>arg.startsWith('--only='))?.slice(7).split(',');
 const manifest=JSON.parse(await fs.readFile(`${root}/manifest.json`));
 const files=(await fs.readdir('public/emojis')).filter(f=>f.endsWith('.webp'));
 if(files.length!==Object.keys(manifest.items).length||files.some(f=>!manifest.items[f.slice(0,-5)]))throw Error('Incomplete delivery catalog');
@@ -11,7 +12,7 @@ const totals=Object.fromEntries([64,128,256,'original'].map(size=>[size,{webp:0,
 let previewBytes=0;
 let count=0,framesChecked=0,maxAlphaError=0;
 for(const size of [64,128,256,'original'])if((await fs.readdir(`${root}/${size}`)).some(f=>!f.endsWith('.webp')))throw Error('Non-WebP delivery file');
-for(const [name,r] of Object.entries(manifest.items)){
+for(const [name,r] of Object.entries(manifest.items).filter(([name])=>!only||only.includes(name))){
   const source=await fs.readFile(r.source);
   if(createHash('sha256').update(source).digest('hex')!==r.sourceSha256)throw Error('Stale source '+name);
   const original=await sharp(source,{animated:true}).metadata();
@@ -52,4 +53,4 @@ for(const [name,r] of Object.entries(manifest.items)){
 }
 const report={count,framesChecked,maxMeanAlphaError:maxAlphaError,previewBytes,totals};
 console.log(JSON.stringify(report,null,2));
-await fs.writeFile(`${root}/validation.json`,JSON.stringify(report,null,2)+'\n');
+await fs.writeFile(`${root}/${only?'validation-latest-corrections':'validation'}.json`,JSON.stringify(report,null,2)+'\n');

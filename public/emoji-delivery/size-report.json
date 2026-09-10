@@ -3,22 +3,22 @@
   "totals": {
     "64": {
       "files": 353,
-      "bytes": 5376710,
-      "previewBytes": 785550
+      "bytes": 5375578,
+      "previewBytes": 784418
     },
     "128": {
       "files": 353,
-      "bytes": 9769982,
-      "previewBytes": 1784974
+      "bytes": 9765950,
+      "previewBytes": 1780942
     },
     "256": {
       "files": 353,
-      "bytes": 29452836,
-      "previewBytes": 4182274
+      "bytes": 29440290,
+      "previewBytes": 4169808
     },
     "original": {
       "files": 353,
-      "bytes": 79527898
+      "bytes": 79421096
     }
   }
 }

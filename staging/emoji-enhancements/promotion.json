@@ -1,6 +1,6 @@
 {
   "userApproval": "I'm approving them, will make a few fixes later tho.",
-  "approvedAt": "2026-09-10T21:35:33.107Z",
+  "approvedAt": "2026-09-10T22:00:40.196Z",
   "exception": "severance-running remains on its original pending the previously requested fix",
   "items": [
     {
@@ -17,7 +17,7 @@
       "source": "staging/emoji-enhancements/stills/candidates/99.webp",
       "original": "staging/emoji-enhancements/originals/99.webp",
       "originalSha256": "fe5acf7783856a36f5f4385e9d36f125cda8cddbe27748a227f49c07018d01ec",
-      "approvedSha256": "09c69bf9cd95acaedef21d59ffc5ed81eded65697d64192811a469854c4ca13a"
+      "approvedSha256": "b231ede2164a8d65a1e77010666a422882802c6dd59fe3b1630b863ee0ddee19"
     },
     {
       "file": "420.webp",
@@ -49,7 +49,7 @@
       "source": "staging/emoji-enhancements/stills/candidates/100000.webp",
       "original": "staging/emoji-enhancements/originals/100000.webp",
       "originalSha256": "85e09ed60460768e41592726cd2ecb01a399cd0180554f8bd6ecc03a01e67880",
-      "approvedSha256": "55238970f83fb49efd6a62ece2d91abb94efc78c9463b9c9aafa1d5d0db0dec8"
+      "approvedSha256": "6e9b7bbd0dc799a602ac92f3cb846933b5ae97cf6384830938811d39fcbbe0fe"
     },
     {
       "file": "10-10.webp",
@@ -2824,5 +2824,13 @@
       "originalSha256": "32c93da3b886d2a05ae1aff9e81b6b4120e1e772cbb92e410e09c5e6191949a8",
       "approvedSha256": "2bb84bcc3316499cc4c27f4559b623d2dacb6b2034a0bb9ca4fb3c5dfe941165"
     }
-  ]
+  ],
+  "corrections": {
+    "userRequest": "100000.webp looks jank w/ bad transparency, and 99.webp shouldn't have that outline",
+    "files": [
+      "100000.webp",
+      "99.webp"
+    ],
+    "method": "Reused generated RGB; retained only reviewed numeral and underline fill components and rebuilt alpha."
+  }
 }

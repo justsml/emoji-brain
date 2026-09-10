@@ -1,6 +1,6 @@
-# Approved still emojis
+# Still emoji candidates
 
-All 271 still candidates were approved by the user and promoted. See [the promotion receipt](../promotion.json) for exact approved hashes and archived original paths. The comparison gallery continues to display the pre-enhancement originals.
+271 lossless WebP candidates, pending human approval. Transparency is preserved where appropriate; intentional backgrounds such as Bizcat’s colors are retained. Open index.html for original/candidate comparisons on light, dark and checkerboard backgrounds. No production images have been replaced.
 
 Review expression, species/person identity, text, intentional softness, alpha (especially eye whites), and the 32px preview. Record approval against the candidate SHA-256 in manifest.json; changed bytes invalidate any prior approval. A committed file is not an approved file.
 
