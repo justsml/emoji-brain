@@ -1,7 +1,8 @@
 import type { ReactElement, KeyboardEvent } from "react";
 import { memo, useCallback, useMemo, useState, useEffect, useRef } from "react";
 import type { EmojiMetadata } from "../types/emoji";
-import { cn, stillSrc } from "../lib/utils";
+import { cn } from "../lib/utils";
+import { emojiAsset, previewSrcSet } from "../lib/emojiAssets";
 import { GRID_SCALES } from "./GridScaleSlider";
 import { useMarqueeSelection, type MarqueeMode } from "../hooks/useMarqueeSelection";
 import "../styles/emoji-cards.css";
@@ -51,13 +52,17 @@ const AnimatedImage = ({
   // of them at once means the grid can never hold a cached raster, which is what
   // makes the page blank out while scrolling. Stills stay put; only the sticker
   // under the pointer plays.
-  const src = isPlaying ? emoji.path : stillSrc(emoji);
+  const playing = emoji.animated && isPlaying;
+  const src = emojiAsset(emoji.filename, playing ? (width <= 96 ? 128 : 256) : 128, !playing);
   return (
     <img
       src={src}
+      srcSet={playing ? undefined : previewSrcSet(emoji.filename)}
+      sizes={`${Math.ceil(width * 0.92)}px`}
       alt={alt}
       className="emoji-card-image"
       width={width}
+      height={width}
       loading="lazy"
       decoding="async"
       fetchPriority="low"
@@ -102,7 +107,7 @@ const EmojiCell = ({
   const name = emoji.filename.split("/").pop()?.replace(/\.[^.]+$/, "") || emoji.filename;
 
   return (
-    <div className="min-w-0" role="gridcell" data-id={emoji.id} style={{ contain: "layout style" }}>
+    <div className="emoji-cell min-w-0" role="gridcell" data-id={emoji.id} style={{ height: `calc(${imageWidth}px + 1.509375rem)` }}>
       <button
         type="button"
         className={cn(
@@ -204,7 +209,7 @@ const EmojiGrid = ({
     }
     
     return () => {};
-  }, []);
+  }, [emojis.length === 0]);
 
   const handleKeyDown = useCallback((e: KeyboardEvent, index: number, colCount: number) => {
     switch (e.key) {
@@ -235,16 +240,6 @@ const EmojiGrid = ({
     }
   }, [emojis, onSetFocusedIndex, onToggleSelection, onAnnounceSelection, selectedEmojis]);
 
-  if (emojis.length === 0) {
-    return (
-      <div className="emoji-empty">
-        <img src="/emojis/cat-confuse.webp" alt="" aria-hidden="true" width="72" height="72" />
-        <h2>Nothing on the sheet matches that</h2>
-        <p>Search by name, or by what an emoji is doing — try “cat”, “fire”, “thumbs”, or “party”.</p>
-      </div>
-    );
-  }
-
   // Only stickers that releasing would actually change get the preview treatment.
   const previewIds = useMemo(() => {
     if (!marquee) return null;
@@ -258,6 +253,16 @@ const EmojiGrid = ({
   const marqueeLabel = marquee
     ? `${marquee.mode === "remove" ? "Remove" : "Select"} ${hitCount} ${hitCount === 1 ? "emoji" : "emojis"}`
     : "";
+
+  if (emojis.length === 0) {
+    return (
+      <div className="emoji-empty">
+        <img src="/emoji-delivery/previews/128/cat-confuse.webp" alt="" aria-hidden="true" width="72" height="72" />
+        <h2>Nothing on the sheet matches that</h2>
+        <p>Search by name, or by what an emoji is doing — try “cat”, “fire”, “thumbs”, or “party”.</p>
+      </div>
+    );
+  }
 
   return (
     <div
@@ -285,7 +290,7 @@ const EmojiGrid = ({
               isFocused={focusedIndex === index}
               preview={marquee && previewIds?.has(emoji.id) ? marquee.mode : null}
               columnCount={columnCount}
-              imageWidth={GRID_SCALES[gridScale] ?? GRID_SCALES[0]}
+              imageWidth={Math.max(1, (width - GRID_GAP * (columnCount - 1)) / columnCount)}
               onToggle={onToggleSelection}
               onKeyDown={handleKeyDown}
               onFocusChange={onSetFocusedIndex}

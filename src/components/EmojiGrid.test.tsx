@@ -62,7 +62,8 @@ describe('EmojiGrid Component', () => {
     expect(emojiImages).toHaveLength(mockEmojis.length);
     
     emojiImages.forEach((img, index) => {
-      expect(img).toHaveAttribute('src', mockEmojis[index].path);
+      expect(img).toHaveAttribute('src', `/emoji-delivery/previews/128/${mockEmojis[index].filename.replace(/\.[^.]+$/, '')}.webp`);
+      expect(img).toHaveAttribute('srcset', expect.stringContaining('/previews/64/'));
       expect(img).toHaveAttribute('alt', mockEmojis[index].filename);
     });
   });

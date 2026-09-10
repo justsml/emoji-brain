@@ -1,9 +1,9 @@
 import { useState, useRef, useCallback, useEffect } from "react";
 import { Button } from "./ui/button";
 import type { EmojiMetadata } from "../types/emoji";
-import { getAbsoluteUrl, stillSrc } from "../lib/utils";
-import { generateCompactSlackBrowserScript } from "../lib/slackBrowserScript";
-import { loadSlackImages } from "../lib/slackDelivery";
+import { getAbsoluteUrl } from "../lib/utils";
+import { runExportWorker } from "../lib/exportWorker";
+import { emojiAsset, markdownTable } from "../lib/emojiAssets";
 import { CheckSquare, XSquare, ChevronDown, Copy, LoaderCircle, X, Check, Trash2, Link } from "lucide-react";
 import "../styles/sheet-tray.css";
 
@@ -20,7 +20,6 @@ interface EmojiExportProps {
 }
 
 export function EmojiExport({ selectedEmojis, onClearSelection, onDeselectVisible, onSelectAll, filteredEmojis, gridScale, onRemoveEmoji, shareUrl }: EmojiExportProps) {
-  const [slackSize, setSlackSize] = useState<128 | 256>(128);
   const [exportStatus, setExportStatus] = useState<string>("");
   const [isExporting, setIsExporting] = useState(false);
   const [copiedScript, setCopiedScript] = useState<{ megabytes: string; count: number } | null>(null);
@@ -38,21 +37,21 @@ export function EmojiExport({ selectedEmojis, onClearSelection, onDeselectVisibl
     statusTimerRef.current = setTimeout(() => setExportStatus(""), 5000);
   }, []);
 
-  const exportAsPlainText = useCallback(() => {
+  const exportAsPlainText = useCallback(async () => {
     const text = selectedEmojis.map((emoji) => emoji.filename).join("\n");
-    navigator.clipboard.writeText(text);
+    await navigator.clipboard.writeText(text);
     setStatusWithTimeout("Copied filenames to clipboard!");
   }, [selectedEmojis, setStatusWithTimeout]);
 
-  const exportAsHtml = useCallback(() => {
+  const exportAsHtml = useCallback(async () => {
     const html = selectedEmojis
       .map((emoji) => `<img src="${getAbsoluteUrl(emoji.path)}" alt="${emoji.filename}" />`)
       .join("\n");
-    navigator.clipboard.writeText(html);
+    await navigator.clipboard.writeText(html);
     setStatusWithTimeout("Copied HTML to clipboard!");
   }, [selectedEmojis, setStatusWithTimeout]);
 
-  const exportAsCss = useCallback(() => {
+  const exportAsCss = useCallback(async () => {
     const css = selectedEmojis
       .map(
         (emoji) => `.emoji-${emoji.id} {
@@ -63,19 +62,13 @@ export function EmojiExport({ selectedEmojis, onClearSelection, onDeselectVisibl
 }`
       )
       .join("\n\n");
-    navigator.clipboard.writeText(css);
+    await navigator.clipboard.writeText(css);
     setStatusWithTimeout("Copied CSS to clipboard!");
   }, [selectedEmojis, setStatusWithTimeout]);
 
-  const exportAsMarkdownTable = useCallback(() => {
-    const header = "| Emoji | Filename |\n|---|---|";
-    const rows = selectedEmojis
-      .map(
-        (emoji) => `| ![${emoji.filename}](${getAbsoluteUrl(emoji.path)}) | ${emoji.filename} |`
-      )
-      .join("\n");
-    const markdown = `${header}\n${rows}`;
-    navigator.clipboard.writeText(markdown);
+  const exportAsMarkdownTable = useCallback(async () => {
+    const markdown = markdownTable(selectedEmojis.map(emoji => emoji.filename), window.location.origin);
+    await navigator.clipboard.writeText(markdown);
     setStatusWithTimeout("Copied Markdown Table to clipboard!");
   }, [selectedEmojis, setStatusWithTimeout]);
 
@@ -90,69 +83,45 @@ export function EmojiExport({ selectedEmojis, onClearSelection, onDeselectVisibl
     }
   }, [shareUrl, selectedEmojis.length, setStatusWithTimeout]);
 
-  const exportSlackUploadScript = useCallback(async () => {
+  const exportFiles = useCallback(async (kind: 'slack' | 'zip') => {
     if (isExporting || selectedEmojis.length === 0) return;
+    const controller = new AbortController();
+    abortControllerRef.current = controller;
     setIsExporting(true);
     setCopiedScript(null);
     if (statusTimerRef.current) clearTimeout(statusTimerRef.current);
+    setExportStatus(`Preparing 0 of ${selectedEmojis.length} emojis…`);
     try {
-      setExportStatus(`Preparing 0 of ${selectedEmojis.length} emojis…`);
-      const images = await loadSlackImages(selectedEmojis.map(emoji => emoji.filename), slackSize, count => {
-        setExportStatus(`Prepared ${count} of ${selectedEmojis.length} emojis…`);
-      });
-      const script = await generateCompactSlackBrowserScript(images);
-      const megabytes = (new Blob([script]).size / 1_000_000).toFixed(3);
-      setExportStatus("Copying script to clipboard…");
-      await navigator.clipboard.writeText(script);
-      setCopiedScript({ megabytes, count: images.length });
-      setStatusWithTimeout(`Copied Slack script · ${megabytes} MB`);
+      const result = await runExportWorker({kind, filenames: selectedEmojis.map(e => e.filename), origin: window.location.origin}, controller.signal, setExportStatus);
+      if (result.kind === 'slack') {
+        const megabytes = (new Blob([result.script]).size / 1_000_000).toFixed(3);
+        await navigator.clipboard.writeText(result.script);
+        setCopiedScript({megabytes, count: result.count});
+        setStatusWithTimeout(`Copied Slack script · ${megabytes} MB`);
+      } else {
+        const url = URL.createObjectURL(new Blob([result.buffer], {type: 'application/zip'}));
+        const a = document.createElement('a');
+        a.href = url; a.download = 'selected-emojis.zip';
+        document.body.appendChild(a); a.click(); a.remove();
+        setTimeout(() => URL.revokeObjectURL(url), 1000);
+        setStatusWithTimeout('ZIP downloaded!');
+      }
     } catch (error) {
-      console.error("Error creating Slack upload script:", error);
-      setStatusWithTimeout(error instanceof Error ? `Could not copy the Slack script: ${error.message}` : "Could not copy the Slack script. Please try again.");
+      if (!controller.signal.aborted) setStatusWithTimeout(`Could not export: ${error instanceof Error ? error.message : String(error)}`);
     } finally {
-      setIsExporting(false);
+      if (abortControllerRef.current === controller) {
+        abortControllerRef.current = null;
+        setIsExporting(false);
+      }
     }
-  }, [selectedEmojis, setStatusWithTimeout, isExporting, slackSize]);
+  }, [selectedEmojis, isExporting, setStatusWithTimeout]);
 
-  const downloadZip = useCallback(async () => {
+  const cancelExport = () => {
     abortControllerRef.current?.abort();
-    abortControllerRef.current = new AbortController();
-
-    try {
-      setExportStatus("Preparing ZIP...");
-      const JSZip = (await import("jszip")).default;
-      const zip = new JSZip();
-
-      for (const emoji of selectedEmojis) {
-        if (abortControllerRef.current?.signal.aborted) {
-          throw new DOMException('Aborted', 'AbortError');
-        }
-        const response = await fetch(getAbsoluteUrl(emoji.path), {
-          signal: abortControllerRef.current.signal
-        });
-        const blob = await response.blob();
-        zip.file(emoji.filename, blob);
-      }
-
-      const content = await zip.generateAsync({ type: "blob" });
-      const url = URL.createObjectURL(content);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = "selected-emojis.zip";
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
-
-      setStatusWithTimeout("ZIP downloaded!");
-    } catch (error) {
-      if (error instanceof DOMException && error.name === 'AbortError') {
-        return;
-      }
-      console.error("Error creating ZIP:", error);
-      setStatusWithTimeout("Error creating ZIP");
-    }
-  }, [selectedEmojis, setStatusWithTimeout]);
+    abortControllerRef.current = null;
+    setIsExporting(false);
+    setStatusWithTimeout('Export canceled');
+  };
 
   useEffect(() => {
     return () => {
@@ -172,7 +141,7 @@ export function EmojiExport({ selectedEmojis, onClearSelection, onDeselectVisibl
 
   const runExport = (action: () => void | Promise<void>) => {
     exportMenuRef.current?.hidePopover?.();
-    void action();
+    Promise.resolve().then(action).catch(error => setStatusWithTimeout(`Could not export: ${error instanceof Error ? error.message : String(error)}`));
   };
 
   return (
@@ -233,7 +202,9 @@ export function EmojiExport({ selectedEmojis, onClearSelection, onDeselectVisibl
                 {/* stills only: the tray sits on a blurred backdrop, so an
                     animating chip would force it to re-blur every frame */}
                 <img
-                  src={stillSrc(emoji)}
+                  src={emojiAsset(emoji.filename, 64, true)}
+                  width={32}
+                  height={32}
                   alt={emoji.filename}
                   loading="lazy"
                   decoding="async"
@@ -290,13 +261,9 @@ export function EmojiExport({ selectedEmojis, onClearSelection, onDeselectVisibl
           </Button>
         )}
         <div className="flex items-center">
-          <select aria-label="Slack image size" value={slackSize} disabled={isExporting} onChange={e => setSlackSize(Number(e.target.value) as 128 | 256)} className="mr-2 rounded border bg-background px-2 py-1 text-sm">
-            <option value={128}>128px · Slack</option>
-            <option value={256}>256px</option>
-          </select>
           <Button
             ref={scriptButtonRef}
-            onClick={exportSlackUploadScript}
+            onClick={() => void exportFiles('slack')}
             disabled={selectedEmojis.length === 0 || isExporting}
             className="h-9 gap-2 rounded-r-none px-4 font-semibold"
           >
@@ -317,11 +284,12 @@ export function EmojiExport({ selectedEmojis, onClearSelection, onDeselectVisibl
             <button type="button" role="menuitem" onClick={() => runExport(exportAsHtml)}>HTML</button>
             <button type="button" role="menuitem" onClick={() => runExport(exportAsCss)}>CSS</button>
             <button type="button" role="menuitem" onClick={() => runExport(exportAsMarkdownTable)}>Markdown Table</button>
-            <button type="button" role="menuitem" onClick={() => runExport(downloadZip)}>ZIP File</button>
+            <button type="button" role="menuitem" onClick={() => runExport(() => exportFiles('zip'))}>ZIP File</button>
           </div>
         </div>
       </div>
 
+      {isExporting && <button type="button" onClick={cancelExport}>Cancel export</button>}
       {exportStatus && (
         <div role="status" className="sheet-status animate-in fade-in">
           {exportStatus}

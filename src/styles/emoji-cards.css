@@ -264,3 +264,7 @@
   color: hsl(var(--muted-foreground));
   text-decoration: line-through;
 }
+
+/* Skip off-screen contents while retaining card geometry and DOM navigation. */
+.emoji-cell { content-visibility: auto; contain: layout style paint; }
+.emoji-cell:hover, .emoji-cell:focus-within, .emoji-cell:has(.emoji-card-selected) { content-visibility: visible; contain: layout style; }

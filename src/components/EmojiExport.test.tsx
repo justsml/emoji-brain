@@ -6,15 +6,8 @@ import { EmojiExport } from "./EmojiExport";
 import { render } from "../test-utils/test-utils";
 import type { EmojiMetadata } from "../types/emoji";
 
-vi.mock("jszip", () => {
-  function JSZipMock() {
-    this.file = vi.fn();
-    this.generateAsync = vi.fn().mockResolvedValue(new Blob());
-  }
-  return {
-    default: JSZipMock,
-  };
-});
+import {runExportWorker} from '../lib/exportWorker';
+vi.mock('../lib/exportWorker',()=>({runExportWorker:vi.fn()}));
 
 describe("EmojiExport Component", () => {
   const mockSelectedEmojis: EmojiMetadata[] = [
@@ -54,6 +47,9 @@ describe("EmojiExport Component", () => {
 
   beforeEach(() => {
     vi.clearAllMocks();
+    vi.mocked(runExportWorker).mockImplementation(async request => request.kind === 'zip'
+      ? {kind:'zip',buffer:new ArrayBuffer(0)}
+      : {kind:'slack',script:'// /api/emoji.add emoji1.webp',count:request.filenames.length});
     vi.stubGlobal("CompressionStream", undefined);
 
     Object.defineProperty(navigator, "clipboard", {
@@ -184,7 +180,7 @@ describe("EmojiExport Component", () => {
       expect(screen.getByText("ZIP downloaded!")).toBeInTheDocument();
     });
 
-    expect(global.fetch).toHaveBeenCalledTimes(2);
+    expect(runExportWorker).toHaveBeenCalledWith(expect.objectContaining({kind:'zip',filenames:['emoji1.webp','emoji2.webp']}),expect.any(AbortSignal),expect.any(Function));
     expect(URL.createObjectURL).toHaveBeenCalled();
   });
 
@@ -201,7 +197,7 @@ describe("EmojiExport Component", () => {
     expect(navigator.clipboard.writeText).toHaveBeenCalledWith(
       expect.stringContaining("emoji1.webp")
     );
-    expect(fetch).toHaveBeenCalledWith(expect.stringContaining("/emoji-delivery/128/emoji1.webp"));
+    expect(runExportWorker).toHaveBeenCalledWith(expect.objectContaining({kind:'slack'}),expect.any(AbortSignal),expect.any(Function));
     const script = vi.mocked(navigator.clipboard.writeText).mock.calls[0][0];
     const megabytes = (new Blob([script]).size / 1_000_000).toFixed(3);
     expect(screen.getByRole("status")).toHaveTextContent(`Copied Slack script · ${megabytes} MB`);
@@ -222,7 +218,7 @@ describe("EmojiExport Component", () => {
     vi.mocked(navigator.clipboard.writeText).mockRejectedValueOnce(new Error("Clipboard unavailable"));
     renderExport();
     await userEvent.click(screen.getByRole("button", { name: "Copy Slack script" }));
-    await vi.waitFor(() => expect(screen.getByRole("status")).toHaveTextContent("Could not copy the Slack script"));
+    await vi.waitFor(() => expect(screen.getByRole("status")).toHaveTextContent("Could not export"));
     expect(screen.queryByRole("region", { name: "Three steps to get them into Slack" })).not.toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Copy Slack script" })).toBeEnabled();
     consoleError.mockRestore();
