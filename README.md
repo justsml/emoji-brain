@@ -1,9 +1,43 @@
+<div align="center">
+
+<img src="public/emojis/meow_birthday.webp" alt="" width="72" height="72">
+
 # Emoji Explorer
 
-[![Vercel demo](https://img.shields.io/badge/Demo-Vercel-000000?logo=vercel)](https://emoji-brain.vercel.app/)
-[![Netlify demo](https://img.shields.io/badge/Demo-Netlify-00C7B7?logo=netlify&logoColor=white)](https://emoji-brain.netlify.app/)
+**Browse a hand-collected sheet of 350+ custom emoji and stickers, pick your favorites, and paste one script into Slack to upload the lot.**
 
-Browse a hand-collected library of custom emoji and stickers, pick your favorites, and export them for Slack or the web. Emoji Explorer (`emoji-brain`) is a self-hostable, static Astro app with a React interface—no backend required.
+[![CI](https://github.com/justsml/emoji-brain/actions/workflows/emojis.yml/badge.svg?branch=main)](https://github.com/justsml/emoji-brain/actions/workflows/emojis.yml)
+[![Last commit](https://img.shields.io/github/last-commit/justsml/emoji-brain/main?logo=git&logoColor=white)](https://github.com/justsml/emoji-brain/commits/main)
+[![Issues](https://img.shields.io/github/issues/justsml/emoji-brain?logo=github)](https://github.com/justsml/emoji-brain/issues)
+[![Stars](https://img.shields.io/github/stars/justsml/emoji-brain?style=flat&logo=github)](https://github.com/justsml/emoji-brain/stargazers)
+
+[![Live on Vercel](https://img.shields.io/badge/Live-Vercel-000000?logo=vercel)](https://emoji-brain.vercel.app/)
+[![Live on Netlify](https://img.shields.io/badge/Live-Netlify-00C7B7?logo=netlify&logoColor=white)](https://emoji-brain.netlify.app/)
+[![Emoji count](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjustsml%2Femoji-brain%2Fmain%2Fsrc%2Fdata%2Femoji-metadata.json&query=%24.total&label=emoji&color=ff4f8b&logo=slack&logoColor=white)](public/emojis/)
+[![PRs welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/justsml/emoji-brain/pulls)
+
+[![Astro](https://img.shields.io/badge/Astro-7-BC52EE?logo=astro&logoColor=white)](https://astro.build/)
+[![React](https://img.shields.io/badge/React-19-20232A?logo=react&logoColor=61DAFB)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-7-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
+[![Pagefind](https://img.shields.io/badge/Search-Pagefind-1E1E1E)](https://pagefind.app/)
+[![Node](https://img.shields.io/badge/Node.js-24-5FA04E?logo=nodedotjs&logoColor=white)](https://nodejs.org/)
+[![pnpm](https://img.shields.io/badge/pnpm-11-F69220?logo=pnpm&logoColor=white)](https://pnpm.io/)
+[![Playwright](https://img.shields.io/badge/E2E-Playwright-2EAD33?logo=playwright&logoColor=white)](https://playwright.dev/)
+[![Vitest](https://img.shields.io/badge/Tests-Vitest-6E9F18?logo=vitest&logoColor=white)](https://vitest.dev/)
+
+<a href="https://emoji-brain.vercel.app/">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="docs/screenshot-dark.webp">
+    <img src="docs/screenshot-light.webp" alt="Emoji Explorer: a searchable grid of custom emoji laid out on a cutting-mat sheet, with a Copy Slack script button in the tray" width="100%">
+  </picture>
+</a>
+
+<sub>Click the preview to open the live app. Screenshot follows your GitHub color scheme.</sub>
+
+</div>
+
+Emoji Explorer (`emoji-brain`) is a self-hostable, static [Astro](https://astro.build/) app with a React interface and no backend. Search, select, then export to Slack, ZIP, HTML, CSS, or Markdown.
 
 ## What you can do
 
