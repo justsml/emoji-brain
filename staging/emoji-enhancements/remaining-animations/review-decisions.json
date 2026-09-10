@@ -1,0 +1,356 @@
+{
+  "userStatement": "the only image not ready to promote is the severance-running animation, it is extremely grainy",
+  "scope": "70 remaining animation candidates reviewed in this gallery",
+  "decisions": [
+    {
+      "name": "ablobcatknitsweats",
+      "candidateSha256": "fd6566a2784861381ac88410f1464c4e1e58703a775ec40e061a92c67cb8c079",
+      "decision": "approved-for-promotion"
+    },
+    {
+      "name": "alert",
+      "candidateSha256": "fb478c6da24d9dee2ecde93ea5a6c852e041934e472b2dc74264eb83c5de3634",
+      "decision": "approved-for-promotion"
+    },
+    {
+      "name": "awkward_side_eye",
+      "candidateSha256": "9e881b46e97930fa1e7a5038da05b020c773cf19b3f7d7e0da7026d01db0a64e",
+      "decision": "approved-for-promotion"
+    },
+    {
+      "name": "bongo-cat-drumming",
+      "candidateSha256": "8d996a4f46911ee3d1d8acc6923aae0fa036876513aa5f48ce83232e6afddd92",
+      "decision": "approved-for-promotion"
+    },
+    {
+      "name": "bongo-cat-jumbo",
+      "candidateSha256": "9a6304c998568e7540ff50365360ff619208f9331585d8126d6b251729d1961c",
+      "decision": "approved-for-promotion"
+    },
+    {
+      "name": "boxcat",
+      "candidateSha256": "36baf310c1bbe82944868232c23584564745136dcaa64abcda069dee990aeaa9",
+      "decision": "approved-for-promotion"
+    },
+    {
+      "name": "cat_money",
+      "candidateSha256": "da398cb4684213af5cbbef63396dbaccd3aa66cbf6b68b11425586c0f110f114",
+      "decision": "approved-for-promotion"
+    },
+    {
+      "name": "cat-meow-hearts",
+      "candidateSha256": "b340dc3ba4ccb22d318b52b03d7fce17049d2e179ac26c52a7287dd56b07770f",
+      "decision": "approved-for-promotion"
+    },
+    {
+      "name": "catdance",
+      "candidateSha256": "9f772411b5906afd5584c0c8242636aedfc1feb35be607a136fad18fe18d68e0",
+      "decision": "approved-for-promotion"
+    },
+    {
+      "name": "cheers",
+      "candidateSha256": "86c3fde264fea0b936640151a8e25c85a60f64f54415e2d24bf93954e005a4d1",
+      "decision": "approved-for-promotion"
+    },
+    {
+      "name": "crying_bear",
+      "candidateSha256": "37b9f4feb1e109df8ed6eb58277f2e17daf6007b9f24be10e8e8e3901d2a66ca",
+      "decision": "approved-for-promotion"
+    },
+    {
+      "name": "dumpster-fire",
+      "candidateSha256": "fe0d2117f14cfa43750aca0bfd63890228635ba1de567bb1f300525054d4db5f",
+      "decision": "approved-for-promotion"
+    },
+    {
+      "name": "elmo-fire",
+      "candidateSha256": "a5b58d9e136c5f4210515edc31627c2f99ebd15c40e83283b847fa7d6067e3b8",
+      "decision": "approved-for-promotion"
+    },
+    {
+      "name": "extreme-teamwork",
+      "candidateSha256": "4f0249e68614d92c51e42aa038a7b0b2c84f9db277b24c186aa7b51976d2fe9b",
+      "decision": "approved-for-promotion"
+    },
+    {
+      "name": "happykitty",
+      "candidateSha256": "d030cfdefb956b381eb939c63f00f353d534321b33c1b10293628c9c973c3b83",
+      "decision": "approved-for-promotion"
+    },
+    {
+      "name": "hypecat",
+      "candidateSha256": "bcbd723ce345d8e138eb0aaa840fb2fd1feae4b57fb8b5c34acbb7a35b76bc33",
+      "decision": "approved-for-promotion"
+    },
+    {
+      "name": "keanu_thanks",
+      "candidateSha256": "deb99bc506dd59a207e00343b58e3bf8dca1c948b5d33aada6d2cbd8cff5c08d",
+      "decision": "approved-for-promotion"
+    },
+    {
+      "name": "keanu-thanks",
+      "candidateSha256": "17aa88a7b7677002bcd70f032bd0c904cea3c98f75e6da3e0c84fb1fe22c496f",
+      "decision": "approved-for-promotion"
+    },
+    {
+      "name": "let-me-think",
+      "candidateSha256": "9703c78b7bea22783380c029f7ca7ec1eed8bba1a82d267f9f30f858ef78abdf",
+      "decision": "approved-for-promotion"
+    },
+    {
+      "name": "loading",
+      "candidateSha256": "d314449707d1a3cbcf6abb4bd67333640140e12f9ba7e856d713e9c875945ee3",
+      "decision": "approved-for-promotion"
+    },
+    {
+      "name": "magic",
+      "candidateSha256": "201a63ab7397629234ca86401a2dfd1c08c1eb692e4ad29a2bea02e7885713a1",
+      "decision": "approved-for-promotion"
+    },
+    {
+      "name": "meow_angry_intensifies",
+      "candidateSha256": "9732a89ddda8d8f3ee2cf753e523b48a95e850d7158778867b6a0cd29c4261f7",
+      "decision": "approved-for-promotion"
+    },
+    {
+      "name": "meow_attention",
+      "candidateSha256": "191496af5a6fd2424479076d1729fcb398e926a8cdef334c00c89d31dbb33dc3",
+      "decision": "approved-for-promotion"
+    },
+    {
+      "name": "meow_bongo_rage",
+      "candidateSha256": "0985f420c513401f36ef6a16551c7b4883f6daab63c4cf7f14b65746f1b82768",
+      "decision": "approved-for-promotion"
+    },
+    {
+      "name": "meow_chips",
+      "candidateSha256": "f2af8be089a9236a8c092453b1bf799d10c8aa250d39986533bb8df0fa9939a6",
+      "decision": "approved-for-promotion"
+    },
+    {
+      "name": "meow_clorox",
+      "candidateSha256": "345c4aabed7360bd29751ce0f21024635e3a0e556ac4cb0d9b38378026ce91c4",
+      "decision": "approved-for-promotion"
+    },
+    {
+      "name": "meow_cloroxsip",
+      "candidateSha256": "8a56f12bf9e1033184b93122ade1737029d966c85c0e3baa8d113bfe07bb314d",
+      "decision": "approved-for-promotion"
+    },
+    {
+      "name": "meow_code",
+      "candidateSha256": "836e5842f22d654b4bda9fd516f63c4a0203116f5681b67a6467dd6563231f22",
+      "decision": "approved-for-promotion"
+    },
+    {
+      "name": "meow_coffeespitting",
+      "candidateSha256": "db834a25579c8739af73a81108b7f3651e5bfa3fb4ab371cba5f683cc7e6afc5",
+      "decision": "approved-for-promotion"
+    },
+    {
+      "name": "meow_cookie",
+      "candidateSha256": "6e7135d28d23a24573184163b38dc50810179f54051c5e6ad95e763b5c968e0d",
+      "decision": "approved-for-promotion"
+    },
+    {
+      "name": "meow_crying",
+      "candidateSha256": "0a5afc7fdbc9b8c9e5617e41098bd81a63f818050872d85cf3bbb4c707cb3867",
+      "decision": "approved-for-promotion"
+    },
+    {
+      "name": "meow_derpy",
+      "candidateSha256": "af0aeb884bd5b1e211383c688803a7c41b791ac95f819498e8984e44eb5bdf99",
+      "decision": "approved-for-promotion"
+    },
+    {
+      "name": "meow_drool",
+      "candidateSha256": "a101de56a20dc436579a12190ca13c5b61c94b3c67d6646a702ed31d1bd4afae",
+      "decision": "approved-for-promotion"
+    },
+    {
+      "name": "meow_enjoy-rain",
+      "candidateSha256": "a4a48feb686da5b6c7c7b402cd91cdf6f93c3c031d227685909e4a791e5dab06",
+      "decision": "approved-for-promotion"
+    },
+    {
+      "name": "meow_enjoy-snow",
+      "candidateSha256": "cdd3882e81eef6458e2934c3302b5ff0f11304e3047a1c58ae4c2b2b8868b9ca",
+      "decision": "approved-for-promotion"
+    },
+    {
+      "name": "meow_fart",
+      "candidateSha256": "7c2677085b31c8e1382fb432be0dcfc20e83af76ab56c67664d38b517bc00ee9",
+      "decision": "approved-for-promotion"
+    },
+    {
+      "name": "meow_glare-zoom",
+      "candidateSha256": "61f1f228b870c07e7fb375a70e66cd72b520751429292244576387ca403a4940",
+      "decision": "approved-for-promotion"
+    },
+    {
+      "name": "meow_heart_bongo",
+      "candidateSha256": "83e9fc37aa6c75a1e24e1678f6d6111521db7f7af469067280fab6b88605fed0",
+      "decision": "approved-for-promotion"
+    },
+    {
+      "name": "meow_lurk",
+      "candidateSha256": "cea7dc9b832dc9d3f3ab7cd046ccc8fa64c59544f93956589c06448ebfdb8508",
+      "decision": "approved-for-promotion"
+    },
+    {
+      "name": "meow_nod",
+      "candidateSha256": "ef1fc4c2386b2561f0e7efd07b7b5bf4cb6cbe444ec2ab3ba39192d830463e9e",
+      "decision": "approved-for-promotion"
+    },
+    {
+      "name": "meow_noddies",
+      "candidateSha256": "48c4ead5367d2eb38bfb2ae9db7a5a00dc7d325df56c2ca1a3adab7e23a9dd47",
+      "decision": "approved-for-promotion"
+    },
+    {
+      "name": "meow_popcorn",
+      "candidateSha256": "bc56d1f7b6dd8411947cea8916844259c543d08e28c943fd33b9b31bdfc3b396",
+      "decision": "approved-for-promotion"
+    },
+    {
+      "name": "meow_red-bull",
+      "candidateSha256": "19ba0520428b56298dbe81947be673d0b17bf387b3b5a24071d04f35e43d9c2d",
+      "decision": "approved-for-promotion"
+    },
+    {
+      "name": "meow_sad-rain",
+      "candidateSha256": "c06a294548bccea36fb4cbbfdcb238028b65565cb5fe2a1698fc76f7f8a07fc0",
+      "decision": "approved-for-promotion"
+    },
+    {
+      "name": "meow_thinkingsmirk",
+      "candidateSha256": "29d46d01631cc889311eca232fb9618b6a7c5622f90015af627d41838e3390a9",
+      "decision": "approved-for-promotion"
+    },
+    {
+      "name": "meow-bongo-cat",
+      "candidateSha256": "f5359f038a3d0f62d05d96171695780d0f82ee1abf42cf0900e9bbff11829554",
+      "decision": "approved-for-promotion"
+    },
+    {
+      "name": "meow-mic-drop",
+      "candidateSha256": "fe1f7e88a14e471eac5e7993ae8ab424da7a26df15a40a6134999ef5d4054f77",
+      "decision": "approved-for-promotion"
+    },
+    {
+      "name": "meow-stretch",
+      "candidateSha256": "53d49029b490915d8e6fe7e546c939b109bb945382d4cb9c4be74dcb98a309c2",
+      "decision": "approved-for-promotion"
+    },
+    {
+      "name": "meow-wave-comfy",
+      "candidateSha256": "86bff9459c1e8a67751bd765ba985caa58abf3e45e5472a287243042856f3a30",
+      "decision": "approved-for-promotion"
+    },
+    {
+      "name": "milchick_roll",
+      "candidateSha256": "d0e57d3775d3e4c8eb73a0d90229c4b8d49af85fdb8b33bdc898a9fe8caa3077",
+      "decision": "approved-for-promotion"
+    },
+    {
+      "name": "nyancat",
+      "candidateSha256": "33be46854071d43b04d322b42d6a1ada5638f42644138bb9f4365db1d6cb3eb1",
+      "decision": "approved-for-promotion"
+    },
+    {
+      "name": "roo-e",
+      "candidateSha256": "d5e70a406b6e31e17a2f656157e0694fefe96aef644c2d2cea139f86a2a64fe2",
+      "decision": "approved-for-promotion"
+    },
+    {
+      "name": "roo-redbutton",
+      "candidateSha256": "af6b55d67c3cda66301dc5c0ca89bf90339d2a8dad5e5a81462c59448571902d",
+      "decision": "approved-for-promotion"
+    },
+    {
+      "name": "roorooq",
+      "candidateSha256": "3bea3aeb9cff7fd71f867e8c4cbda6181cb276f28e9e8be36920a8af926d6e0c",
+      "decision": "approved-for-promotion"
+    },
+    {
+      "name": "severance",
+      "candidateSha256": "6550bf333fefa0358ad65eff57019778af9eeddeba831571d91a999af917357d",
+      "decision": "approved-for-promotion"
+    },
+    {
+      "name": "severance-dancing",
+      "candidateSha256": "9f681dc2109eb11173a965880a25d60111b00b9cb7e7c2a4813617b4a97ed573",
+      "decision": "approved-for-promotion"
+    },
+    {
+      "name": "severance-dancing-helly",
+      "candidateSha256": "e7a6ecc3a99eae9074c828a8b3cd68998a479e08c3293a0047c8f1d03162241b",
+      "decision": "approved-for-promotion"
+    },
+    {
+      "name": "severance-dancing-mark",
+      "candidateSha256": "55ec682fa5739aeb792e80965d2f69f12922f2694c9105b8c891acee4872ce34",
+      "decision": "approved-for-promotion"
+    },
+    {
+      "name": "severance-running",
+      "candidateSha256": "6a01aa5d1901f075700d23645a0aa5bf3ff1d798903ee3ca9028ceff88a57c38",
+      "decision": "revision-requested"
+    },
+    {
+      "name": "side-eye",
+      "candidateSha256": "038d740aae4cbcd3f6888cf72e909a24245523811030291b3a82ed914a9dc073",
+      "decision": "approved-for-promotion"
+    },
+    {
+      "name": "smart",
+      "candidateSha256": "90ee2baee9dcef86f4a48489fb3ff46a9a52902256f1ea4161aad23884c7f3a2",
+      "decision": "approved-for-promotion"
+    },
+    {
+      "name": "southpark_nice",
+      "candidateSha256": "ad9ad0aab1cbd6709df468ab38971cea04bd0120ee7801b3587a2f6796354dc4",
+      "decision": "approved-for-promotion"
+    },
+    {
+      "name": "the_more_you_know",
+      "candidateSha256": "9f3b3d00b6eab4b26b709913bb34c9f25d73dd5b1927eb6175b93ad116abf426",
+      "decision": "approved-for-promotion"
+    },
+    {
+      "name": "thinking-face-rotating",
+      "candidateSha256": "19d9a458f36930ec441ea440d06bea7dc7512d0ab9cd173719c6cc95b4338859",
+      "decision": "approved-for-promotion"
+    },
+    {
+      "name": "this-is-fine-fire",
+      "candidateSha256": "d6bbcc7acc1bfbfb17fffc0ac2b068c533d1eb0bb87603d1ee8a57696de6fb10",
+      "decision": "approved-for-promotion"
+    },
+    {
+      "name": "try-not-to-cry",
+      "candidateSha256": "3ebc142f944f72a3fda54f407e2457ddef7abd20014de32dd7cee8f4fa8ec1e7",
+      "decision": "approved-for-promotion"
+    },
+    {
+      "name": "typing_cat_kitten",
+      "candidateSha256": "8f7a01e071940693de974eb5efd61c035aa819f92f3b879e1f4acfcc282db49e",
+      "decision": "approved-for-promotion"
+    },
+    {
+      "name": "typingcat",
+      "candidateSha256": "282513f65060bbc113075cfa078f606eb63beb420b03cb5927216b76023779ec",
+      "decision": "approved-for-promotion"
+    },
+    {
+      "name": "unikittyangry",
+      "candidateSha256": "56ef026625fffab9fe71d7774c5b8573b07629b99bf5256b5cae8cdf4d552c02",
+      "decision": "approved-for-promotion"
+    },
+    {
+      "name": "watcat",
+      "candidateSha256": "2bb84bcc3316499cc4c27f4559b623d2dacb6b2034a0bb9ca4fb3c5dfe941165",
+      "decision": "approved-for-promotion"
+    }
+  ]
+}

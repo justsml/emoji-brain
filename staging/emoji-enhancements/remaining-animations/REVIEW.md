@@ -1,10 +1,10 @@
 # Remaining animation candidates
 
-70 candidates, 2683 original frames. All are pending human review. No production files were changed. The previous 12 pilot animations were not regenerated.
+70 candidates, 2683 original frames. The other 69 candidates are approved for promotion in review-decisions.json. The revised severance-running candidate awaits renewed review. No production files were changed. The previous 12 pilot animations were not regenerated.
 
-The local models and route are recorded per image. Photo clips preserve their scene and original alpha; people were restored without generative face replacement. Boxcat is a separately identified Nano reconstruction after local restoration failed to recover its damaged colors. Flat artwork uses the selected dual-background restoration. Intentional blur, glow and particles use source-alpha-preserving blends. Nyan Cat and Unikitty retain pixel art, and the existing 1080p bongo animation is resized without model processing.
+The local models and route are recorded per image. Photo clips preserve their scene and original alpha; generative exceptions are identified per image. Boxcat is a Nano reconstruction after local restoration failed to recover its damaged colors. Severance-running was revised with clean same-scene references after the grainy local version was rejected. Flat artwork uses the selected dual-background restoration. Intentional blur, glow and particles use source-alpha-preserving blends. Nyan Cat and Unikitty retain pixel art, and the existing 1080p bongo animation is resized without model processing.
 
-Every frame duration and loop count is retained, including repeated and blank frames. Preview atlases load one animation at a time and show synchronized 256px / 32px comparisons. Downloads have a 512px longest edge. Local restoration used no paid model API. The Boxcat Nano trial reported $0.14 of OpenRouter usage.
+Every frame duration and loop count is retained, including repeated and blank frames. Preview atlases load one animation at a time and show synchronized 256px / 32px comparisons. Downloads have a 512px longest edge. Local restoration used no paid model API. Nano trials reported $1.50 of OpenRouter usage.
 
 | Name | Route | Blend | Frames | Notes |
 | --- | --- | --- | --- | --- |
@@ -66,7 +66,7 @@ Every frame duration and loop count is retained, including repeated and blank fr
 | severance-dancing | photo | 0.75 | 73 | General photo restoration blended with source; preserve likeness, scene, motion and original alpha. |
 | severance-dancing-helly | photo | 0.75 | 36 | General photo restoration blended with source; preserve likeness, scene, motion and original alpha. |
 | severance-dancing-mark | photo | 0.75 | 34 | General photo restoration blended with source; preserve likeness, scene, motion and original alpha. |
-| severance-running | photo | 0.75 | 90 | General photo restoration blended with source; preserve likeness, scene, motion and original alpha. |
+| severance-running | photo-hybrid | 1 | 90 | Reference-guided Nano close-ups; original moving figure composited over a clean reconstructed hallway for the distant shot. Exact original frame durations and looping. |
 | side-eye | photo | 0.75 | 11 | General photo restoration blended with source; preserve likeness, scene, motion and original alpha. |
 | smart | photo | 0.75 | 23 | General photo restoration blended with source; preserve likeness, scene, motion and original alpha. |
 | southpark_nice | art | 0.6 | 15 | Blend with original retains facial stubble, nose detail and lettering. |

@@ -47,3 +47,11 @@ Photo clips use the official compact `realesr-general-x4v3` model with equal str
 Plain white canvases are removed only for three hand-reviewed outlined animations. Photo scenes and existing source cutouts retain their backgrounds/alpha. An optional per-image `selection.json` in the ignored experiment directory can select a reviewed exception, bound to the source hash; the staged manifest records the actual selected model, prompt and output hash. Boxcat uses this exception after a Nano trial recovered colors that local restoration could not.
 
 `preserve-animation-details.mjs` selects local frame refinements for South Park facial texture and Unikitty pixel art without rerunning a model. After an exception changes, `stage-remaining-animations.mjs --only=name1,name2` refreshes those entries in an existing complete gallery; run the full validator afterward.
+
+## Severance-running revision
+
+`reconstruct-severance-running.mjs` restores only the rejected animation in 15-frame sheets. Close-ups use clean Milchick stills from the linked Tenor clip as references; wide shots use a separate prompt to preserve the distant figure scale and running direction. Existing successful sheets are reused. The model calls are paid. Inputs and provider receipts remain in the ignored experiment directory; selected prompts and source links are retained in the staged manifest. `repair-severance-running.mjs --sample` reproduces the rejected local despeckling comparison.
+
+`review-decisions.json` records user approval against exact candidate hashes. A revised candidate needs a new review; approval of its earlier hash does not transfer. The gallery accepts a name fragment such as `#severance-running`.
+
+The full Nano wide-shot trials were rejected for changed scale, poses and layout. The selected hybrid uses only the first 27 Nano close-up frames. `severance-temporal-clean.py` estimates foreground from original wide-shot frames and composites it over one clean reconstructed hallway; `select-severance-hybrid.mjs` restores and muxes that hybrid. The original wide-shot figure remains low-detail, but no per-frame generative poses are substituted. The staged cost includes rejected image trials.
