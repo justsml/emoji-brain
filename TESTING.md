@@ -4,7 +4,7 @@ Use pnpm. Install Chromium once with `pnpm exec playwright install chromium`.
 
 ```sh
 pnpm test                           # Vitest unit/component tests
-pnpm test -- --maxWorkers=1         # Serial run on a resource-constrained machine
+pnpm exec vitest run --maxWorkers=1         # Serial run on a resource-constrained machine
 pnpm build && pnpm test:e2e         # Functional browser tests
 pnpm test:e2e:performance           # Builds automatically, then throttled performance tests
 ```
@@ -56,3 +56,5 @@ Open the report with `pnpm exec playwright show-report playwright-report/perform
 - `tests/performance/*.performance.spec.ts`: throttled browser performance tests.
 - `tests/performance/metrics.ts`: CDP profiles and browser instrumentation.
 - `playwright.performance.config.ts`: isolated serial performance runner.
+
+Latest local measurements are retained in [`docs/performance-latest.json`](docs/performance-latest.json). That run detected export responsiveness budget failures under concurrent host load; it is not a passing baseline. The deliberate-stall control passed.

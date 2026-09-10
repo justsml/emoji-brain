@@ -113,6 +113,9 @@ for (const profile of profiles) test(`${profile.name}: cold load, scrolling and 
     expect(pagefind.filter(url=>new URL(url).pathname==='/pagefind/pagefind.js')).toHaveLength(1);
     expect(pagefind.filter(url=>url.includes('/fragment/'))).toHaveLength(0);
     expect(errors).toEqual([]);
+  } catch(error) {
+    report.failure=String(error);
+    throw error;
   } finally {
     if(!report.export)report.interruptedPhase=await Promise.race([snapshot(page).catch(error=>({error:String(error)})),new Promise(resolve=>setTimeout(()=>resolve({error:'Page did not answer the final metrics probe within 2s'}),2000))]);
     report.testErrors=testInfo.errors.map(error=>error.message);
