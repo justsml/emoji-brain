@@ -58,13 +58,25 @@ For Slack, sign in to your workspace and open `https://YOUR-WORKSPACE.slack.com/
 
 ### Optimized WebP delivery
 
-The console exporter uses **128×128 WebP** by default, with a **256×256 WebP** option. Both stills and animations stay WebP. The generated script compresses its embedded image data with native gzip when that reduces the final script size; it needs no ZIP library or remote decoder. Existing ZIP exports continue to include the catalog originals.
+All delivered images are WebP, including animations:
 
-Run `pnpm generate:emoji-delivery` to rebuild `public/emoji-delivery/` from the chosen enhancement candidates. Encoding runs sequential batches of 16 in fresh processes, with two Sharp threads. Unchanged source hashes reuse existing files. `pnpm check:emoji-delivery` verifies coverage, dimensions, source hashes, playback duration/looping, and decoded alpha at every source frame timestamp. The review page is `/emoji-delivery/index.html`.
+| Export | Image assets |
+|---|---|
+| Slack console script | Fixed 128×128 |
+| ZIP | Full-resolution enhanced dimensions, WebP quality 90, alpha quality 100 |
+| Markdown table | One emoji per row: linked full-resolution name, then 64px, 128px and 256px previews |
 
-Images use transparent padding to preserve aspect ratio, WebP quality 90 and alpha quality 100. At 128px, larger animations try quality 80, 70 and 60 to approach Slack's recommended 128 KB size. Longer animations may remain above that target; frames and timing are retained. The exporter includes these files and reports Slack's response rather than treating the recommendation as a hard upload limit. The unapproved `severance-running` enhancement is held back, so its delivery versions use the original animation.
+ZIP fetching/assembly and Slack base64/gzip/script encoding run in a dedicated worker, with four concurrent downloads, progress, cancellation and worker cleanup. ZIP stores the already-compressed WebPs without another compression pass. Clipboard writes and download initiation stay on the main thread. Small text exports remain on the main thread.
 
-Transparency repairs and Bizcat's intentional colored background are recorded in [the still alpha audit](staging/emoji-enhancements/stills/alpha-audit.json). Staged enhancements remain available for human review; production originals are unchanged.
+The card grid uses pre-generated 64/128/256px stills with real `srcset` candidates; it loads small animated WebPs only on hover/focus/tap. The selection tray uses 64px stills. Fixed cell geometry and `content-visibility: auto` skip off-screen rendering while retaining keyboard and marquee selection targets. Frosted surfaces, shadows and hover styling are preserved.
+
+Run `pnpm generate:emoji-delivery` to rebuild `public/emoji-delivery/` from the chosen enhancement candidates. Encoding runs sequential batches of eight in fresh processes with two Sharp threads. Unchanged source hashes reuse existing files. `pnpm check:emoji-delivery` verifies coverage, dimensions, source hashes, full-size quality settings, still previews, playback duration/looping, and decoded alpha at every source frame timestamp. The comparison page is `/emoji-delivery/index.html`.
+
+Sized images use transparent padding to preserve aspect ratio, WebP quality 90 and alpha quality 100. At 128px, larger animations try quality 80, 70 and 60 to approach Slack's recommended 128 KB size. Longer animations may remain above that target; frames and timing are retained.
+
+Pagefind has one lazy browser loader and uses its own shared worker. Focus warms it; empty pages and the Slack backup page do not load it. A 120ms input debounce skips superseded queries, and matched-ID facets reuse the catalog already in memory without per-result fragment downloads or excerpt generation. The build indexes each emoji once and reuses a content-fingerprinted index when search inputs and generated files are unchanged, including an update followed by a build. Client props explicitly exclude hashes and provenance bookkeeping.
+
+352 approved upscales are promoted to `public/emojis`; `severance-running` remains on its original pending its requested fix. [The promotion receipt](staging/emoji-enhancements/promotion.json) binds approval to exact hashes. Pre-enhancement originals and metadata are archived under `staging/emoji-enhancements/originals/`. Existing semantic labels were carried forward with explicit provenance, not regenerated. [The alpha audit](staging/emoji-enhancements/stills/alpha-audit.json) records transparency repairs and Bizcat's intentional colored background.
 
 ### Back up a Slack workspace
 

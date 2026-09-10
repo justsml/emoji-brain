@@ -8,7 +8,8 @@ import emojiMetadata from "../data/emoji-metadata.json"; // Assuming this path i
 // Keep catalog bookkeeping on the server instead of serializing it into the
 // client island. The explorer only needs the fields left in each record.
 const allEmojis: EmojiMetadata[] = (emojiMetadata.emojis || []).map(
-  ({ hash: _hash, modified: _modified, created: _created, ...emoji }) => emoji,
+  ({id, filename, path, animated, size, tags, categories, aliases}) =>
+    ({id, filename, path, animated, size, tags, categories, aliases}),
 );
 // const categories = Array.from(new Set(allEmojis.flatMap(emoji => emoji.categories))).filter(Boolean);
 ---

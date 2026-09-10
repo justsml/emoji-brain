@@ -1,5 +1,6 @@
-import React, { useState, useCallback, useEffect } from "react";
+import React, { useState, useCallback, useEffect, useMemo } from "react";
 import type { EmojiMetadata } from "../types/emoji";
+import {getPagefind} from "../lib/pagefindClient";
 import SearchBar from "./SearchBar";
 import EmojiGrid from "./EmojiGrid";
 import GridScaleSlider from "./GridScaleSlider";
@@ -73,16 +74,26 @@ async function pagefindSearch(
   searchTerm: string,
   initialEmojis: EmojiMetadata[],
   onProgress: (loaded: number, total: number) => void,
+  isCurrent: () => boolean,
 ): Promise<EmojiMetadata[]> {
   const term = searchTerm.trim();
-  if (!window.pagefind) {
+  let client;
+  try { client = await getPagefind(); } catch {
     const query = term.toLowerCase();
     return initialEmojis.filter((emoji) =>
       [emoji.filename, ...emoji.tags, ...emoji.categories].join(" ").toLowerCase().includes(query)
     );
   }
 
-  const response = await window.pagefind.search(term, { sort: { filename: "asc" } });
+  if(!isCurrent())return [];
+  const response = await client.search(term, { sort: { filename: "asc" } });
+  if(!isCurrent())return [];
+  const matchedIds=response.filters?.emoji_id;
+  if(matchedIds){
+    const results=initialEmojis.filter(emoji=>(matchedIds[emoji.id]??0)>0).sort((a,b)=>a.filename.localeCompare(b.filename));
+    onProgress(results.length,results.length);
+    return results;
+  }
   const emojiById = new Map(initialEmojis.map((emoji) => [emoji.id, emoji]));
   let loaded = 0;
   onProgress(loaded, response.results.length);
@@ -177,11 +188,12 @@ const _EmojiExplorerApp: React.FC<EmojiExplorerAppProps> = ({
     setIsSearching(true);
     setSearchStatus(`Finding matches for “${searchTerm.trim()}”…`);
     setSearchProgress(undefined);
+    const timer = setTimeout(() => {
     pagefindSearch(searchTerm, initialEmojis, (loaded, total) => {
       if (!current) return;
       setSearchStatus(`Preparing ${loaded.toLocaleString()} of ${total.toLocaleString()} matches…`);
       setSearchProgress(total > 0 ? Math.round(loaded / total * 100) : 100);
-    }).then((results) => {
+    }, () => current).then((results) => {
       if (!current) return;
       setSearchResults(results);
       setSearchStatus(`${results.length.toLocaleString()} matches for “${searchTerm.trim()}”`);
@@ -192,14 +204,16 @@ const _EmojiExplorerApp: React.FC<EmojiExplorerAppProps> = ({
     }).finally(() => {
       if (current) setIsSearching(false);
     });
-    return () => { current = false; };
+    }, 120);
+    return () => { current = false; clearTimeout(timer); };
   }, [searchTerm, initialEmojis, setIsSearching]);
 
+  const selectedIds = useMemo(() => new Set(selectedEmojis.map(emoji => emoji.id)), [selectedEmojis]);
   useEffect(() => {
     setFilteredEmojis(showSelectedOnly
-      ? searchResults.filter((emoji) => selectedEmojis.some((selected) => selected.id === emoji.id))
+      ? searchResults.filter((emoji) => selectedIds.has(emoji.id))
       : searchResults);
-  }, [searchResults, showSelectedOnly, selectedEmojis, setFilteredEmojis]);
+  }, [searchResults, showSelectedOnly, selectedIds, setFilteredEmojis]);
 
   const handleAnnounceSelection = useCallback((emoji: EmojiMetadata, isSelected: boolean) => {
     announceSelection(emoji, isSelected);

@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import '../styles/search.css';
 import { Check, Link, Search } from 'lucide-react';
+import {warmPagefind} from '../lib/pagefindClient';
+import {emojiAsset} from '../lib/emojiAssets';
 import type { EmojiMetadata } from '../types/emoji';
 
 interface SearchBarProps {
@@ -75,6 +77,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
           className="emoji-search-input"
           value={inputValue}
           onChange={handleChange}
+          onFocus={warmPagefind}
         />
         <span className="emoji-search-count">
           {count.toLocaleString()}<span className="sr-only"> results</span>
@@ -114,7 +117,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
                 className="p-1 hover:bg-accent rounded"
               >
                 <img
-                  src={emoji.path}
+                  src={emojiAsset(emoji.filename, 64, true)}
                   alt={emoji.filename}
                   className="w-6 h-6"
                 />

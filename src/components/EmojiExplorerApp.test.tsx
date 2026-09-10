@@ -2,6 +2,8 @@ import { act, fireEvent, render, screen, waitFor } from '@testing-library/react'
 import { afterEach, expect, it, vi } from 'vitest';
 import EmojiExplorerApp from './EmojiExplorerApp';
 
+vi.mock('../lib/pagefindClient',()=>({getPagefind:()=>window.pagefind?Promise.resolve(window.pagefind):Promise.reject(new Error('offline')),warmPagefind:()=>{}}));
+
 vi.mock('./EmojiGrid', () => ({ default: ({ emojis, selectedEmojis, onToggleSelection }: any) => (
   <div>{emojis.map((emoji: any) => <button key={emoji.id} onClick={() => onToggleSelection(emoji)} aria-pressed={selectedEmojis.some((selected: any) => selected.id === emoji.id)}>{emoji.filename}</button>)}</div>
 ) }));
@@ -27,7 +29,9 @@ it('keeps previous results mounted, reports preparation, and ignores late search
   const original = screen.getByRole('button', { name: 'original.png' });
   fireEvent.change(input, { target: { value: 'first' } });
   expect(original).toBeInTheDocument();
+  await waitFor(()=>expect(window.pagefind!.search).toHaveBeenCalledTimes(1));
   fireEvent.change(input, { target: { value: 'second' } });
+  await waitFor(()=>expect(window.pagefind!.search).toHaveBeenCalledTimes(2));
   await act(async () => second.resolve({ results: [{ data: () => metadata.promise }] }));
   expect(screen.getByRole('progressbar')).toHaveAttribute('aria-valuenow', '0');
   expect(original).toBeInTheDocument();
@@ -48,10 +52,12 @@ it('retains results on failure and clearing invalidates a pending request', asyn
   render(<EmojiExplorerApp initialEmojis={initial} />);
   const input = screen.getByRole('searchbox');
   fireEvent.change(input, { target: { value: 'failure' } });
+  await waitFor(()=>expect(window.pagefind!.search).toHaveBeenCalledTimes(1));
   await act(async () => failing.reject(new Error('offline')));
   expect(screen.getByRole('status')).toHaveTextContent('previous results are still here');
   expect(screen.getByRole('button', { name: 'original.png' })).toBeInTheDocument();
   fireEvent.change(input, { target: { value: 'pending' } });
+  await waitFor(()=>expect(window.pagefind!.search).toHaveBeenCalledTimes(2));
   fireEvent.change(input, { target: { value: '' } });
   await act(async () => pending.resolve(response('pending')));
   expect(screen.getByRole('button', { name: 'original.png' })).toBeInTheDocument();
@@ -87,4 +93,14 @@ it('opens a shared link onto its search and selection, then cleans the address b
   await waitFor(() => expect(screen.getByRole('button', { name: 'ten.png' })).toHaveAttribute('aria-pressed', 'true'));
   await waitFor(() => expect(screen.queryByRole('button', { name: 'other.png' })).not.toBeInTheDocument());
   expect(window.location.search).toBe('');
+});
+
+it('coalesces fast typing and uses matched IDs without loading redundant fragments',async()=>{
+  const load=vi.fn();
+  window.pagefind={search:vi.fn().mockResolvedValue({results:[{data:load}],filters:{emoji_id:{original:1}}})} as any;
+  render(<EmojiExplorerApp initialEmojis={initial}/>);
+  const input=screen.getByRole('searchbox');
+  fireEvent.change(input,{target:{value:'o'}});fireEvent.change(input,{target:{value:'or'}});fireEvent.change(input,{target:{value:'original'}});
+  await waitFor(()=>expect(screen.getByRole('status')).toHaveTextContent('1 matches'));
+  expect(window.pagefind!.search).toHaveBeenCalledTimes(1);expect(load).not.toHaveBeenCalled();
 });
