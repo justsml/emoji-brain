@@ -1,0 +1,5 @@
+import fs from 'node:fs/promises';import sharp from 'sharp';import {decodeAnimation} from './animation-frames.mjs';
+const root='experiments/image-enhancement/animated-pilot';const names=process.argv[2].split(',');const layers=[];let y=0;
+const label=(text,left,top,w=900)=>layers.push({input:Buffer.from(`<svg width="${w}" height="20"><text x="3" y="15" font-family="Arial" font-size="12" fill="white">${text}</text></svg>`),left,top});
+for(const name of names){const result=JSON.parse(await fs.readFile(root+'/'+name+'/result.json'));label(name,0,y);y+=22;for(const key of ['original','esrgan',...(result.effect?['tuned']:[]),...(result.status==='complete'?['nano']:[])]){label(key,0,y,95);const anim=await decodeAnimation(key==='original'?'public/emojis/'+name+'.webp':root+'/'+name+'/'+key+'.webp');for(let i=0;i<anim.frames.length;i++)layers.push({input:await sharp(anim.frames[i],{raw:{width:anim.width,height:anim.height,channels:4}}).resize(80,80).flatten({background:'#17202c'}).png().toBuffer(),left:100+i*80,top:y});y+=82;}y+=8;}
+await sharp({create:{width:900,height:y,channels:3,background:'#17202c'}}).composite(layers).png().toFile(process.argv[3]);
