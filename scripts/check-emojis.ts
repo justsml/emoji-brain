@@ -10,14 +10,14 @@ try {
     if (args.some(a => a !== '--json' && !a.startsWith('--report='))) throw new Error('Unknown option; use --help');
     const report = await checkEmojis(process.cwd());
     const output = args.includes('--json') ? JSON.stringify(report, null, 2) : reportTable(report);
+    const guidance = checkFailed(report) ? recoveryGuidance(report) : '';
+    const markdown = `${reportMarkdown(report)}\n${guidance ? `\n${guidance}\n` : ''}`;
     console.log(output);
     const destination = args.find(a => a.startsWith('--report='))?.slice(9);
-    if (destination) await fs.writeFile(destination, `${output}\n`);
-    if (process.env.GITHUB_STEP_SUMMARY) await fs.appendFile(process.env.GITHUB_STEP_SUMMARY, `${reportMarkdown(report)}\n`);
+    if (destination) await fs.writeFile(destination, args.includes('--json') ? `${output}\n` : markdown);
+    if (process.env.GITHUB_STEP_SUMMARY) await fs.appendFile(process.env.GITHUB_STEP_SUMMARY, markdown);
     if (checkFailed(report)) {
-      const guidance = recoveryGuidance(report);
       console.error(guidance);
-      if (process.env.GITHUB_STEP_SUMMARY) await fs.appendFile(process.env.GITHUB_STEP_SUMMARY, `\n${guidance}\n`);
       process.exitCode = 1;
     }
   }

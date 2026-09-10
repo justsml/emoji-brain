@@ -58,6 +58,12 @@ test('unlabelled images block checks and missing keys explain recovery before in
   expect(check.stderr).toContain('key is configured locally');
   expect(check.stderr).not.toContain('test-key-do-not-print');
   expect(await fs.readFile(summary, 'utf8')).toContain('pnpm update-emojis --update=changes');
+  const artifact = path.join(root, 'report.md');
+  expect(run('check-emojis.ts', [`--report=${artifact}`]).status).toBe(1);
+  const markdown = await fs.readFile(artifact, 'utf8');
+  expect(markdown).toContain('| File |');
+  expect(markdown).toContain('pnpm update-emojis --update=changes');
+  expect(markdown).toContain('public/emojis/ingest/dog.png');
   await updateEmojis(root, 'changes', async () => JSON.stringify({ tags: ['animal'], categories: ['animal'] }));
   expect(checkFailed(await checkEmojis(root))).toBe(false);
   expect(run('check-emojis.ts').status).toBe(0);
