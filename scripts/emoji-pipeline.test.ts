@@ -34,7 +34,7 @@ test('offline conversion, change tracking, label selection and metadata preserva
   await fs.utimes(file, new Date(), new Date('2024-01-01'));
   let report = await checkEmojis(root);
   expect(report.rows[0].modified).toBe('changed');
-  expect(report.invalid).toBe(1);
+  expect(report.invalid).toBe(0);
   await updateEmojis(root, 'changes', label);
   expect(calls).toBe(1);
   await picture(file, 'blue');

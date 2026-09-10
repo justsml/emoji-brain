@@ -69,7 +69,7 @@ export async function checkEmojis(root: string) {
         row.hash = entry?.hash ? (entry.hash === info.hash ? 'same' : 'changed') : 'untracked';
         row.modified = entry?.modified ? (entry.modified === info.modified ? 'same' : 'changed') : 'untracked';
         if (row.hash === 'changed') issues.push('Image hash changed');
-        if (row.modified === 'changed') issues.push('Image modified date changed');
+        // Filesystem timestamps change on checkout; content changes are validated by hash.
         if (hashes.has(info.hash)) row.duplicateOf = hashes.get(info.hash);
         else hashes.set(info.hash, filename);
         if (row.type !== 'webp') issues.push('Needs WebP conversion');
