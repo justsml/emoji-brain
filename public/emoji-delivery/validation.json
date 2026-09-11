@@ -1,31 +1,41 @@
 {
-  "count": 353,
-  "framesChecked": 12036,
+  "count": 351,
+  "framesChecked": 11157,
   "maxMeanAlphaError": 0.177734375,
-  "previewBytes": 6752798,
+  "previewBytes": 6687210,
+  "slackCap": 127000,
+  "slackIncompatible": [],
+  "frameDropped": [
+    "meow-stretch@64: 79/239 frames",
+    "meow_angry_intensifies@64: 59/180 frames",
+    "meow_clorox@64: 53/70 frames",
+    "meow_coffeespitting@64: 48/145 frames",
+    "meow_enjoy-rain@64: 60/150 frames",
+    "meow_enjoy-snow@64: 60/150 frames",
+    "meow_nod@64: 83/111 frames",
+    "meow_red-bull@64: 59/147 frames",
+    "meow_sad-rain@64: 60/100 frames"
+  ],
   "totals": {
+    "32": {
+      "webp": 0,
+      "webpOver": []
+    },
     "64": {
-      "webp": 5376710,
-      "webpOver": [
-        "meow-stretch",
-        "meow_angry_intensifies",
-        "meow_clorox",
-        "meow_coffeespitting",
-        "meow_enjoy-rain",
-        "meow_enjoy-snow",
-        "meow_nod",
-        "meow_red-bull",
-        "meow_sad-rain",
-        "severance-running"
-      ]
+      "webp": 3882548,
+      "webpOver": []
     },
     "128": {
-      "webp": 9769982,
+      "webp": 11999518,
       "webpOver": [
+        "cheers",
         "crying_bear",
+        "let-me-think",
+        "magic",
         "meow-stretch",
         "meow_angry_intensifies",
         "meow_clorox",
+        "meow_cloroxsip",
         "meow_coffeespitting",
         "meow_derpy",
         "meow_enjoy-rain",
@@ -34,11 +44,13 @@
         "meow_noddies",
         "meow_red-bull",
         "meow_sad-rain",
-        "severance-running"
+        "severance-dancing",
+        "severance-running",
+        "thinking-face-rotating"
       ]
     },
     "256": {
-      "webp": 29452836,
+      "webp": 28668998,
       "webpOver": [
         "alert",
         "boxcat",
@@ -48,7 +60,6 @@
         "crying_bear",
         "dumpster-fire",
         "happykitty",
-        "keanu-thanks",
         "keanu_thanks",
         "let-me-think",
         "loading",
@@ -88,9 +99,10 @@
       ]
     },
     "original": {
-      "webp": 79527898,
+      "webp": 79093664,
       "webpOver": [
         "cheers-whiskey",
+        "doge_notes",
         "happycat",
         "i_have_no_idea_what_im_doing",
         "sadcat",
@@ -112,7 +124,6 @@
         "elmo-fire",
         "happykitty",
         "hypecat",
-        "keanu-thanks",
         "keanu_thanks",
         "let-me-think",
         "loading",
