@@ -5873,67 +5873,6 @@
         "height": 1024
       }
     },
-    "meow_fearful": {
-      "source": "staging/emoji-enhancements/stills/candidates/meow_fearful.webp",
-      "basis": "enhanced",
-      "sourceSha256": "95859caeeb4a087b4c5ada4a502635a972079f46ba3db14ac6e1e981080b81b4",
-      "animated": false,
-      "variants": {
-        "64": {
-          "webp": {
-            "quality": 90,
-            "path": "/emoji-delivery/64/meow_fearful.webp",
-            "bytes": 2010,
-            "slackGzipBytes": 2120
-          }
-        },
-        "128": {
-          "webp": {
-            "path": "/emoji-delivery/128/meow_fearful.webp",
-            "bytes": 4442,
-            "quality": 90,
-            "slackGzipBytes": 4556
-          }
-        },
-        "256": {
-          "webp": {
-            "path": "/emoji-delivery/256/meow_fearful.webp",
-            "bytes": 10466,
-            "quality": 90,
-            "slackGzipBytes": 10591
-          }
-        }
-      },
-      "previews": {
-        "64": {
-          "quality": 90,
-          "path": "/emoji-delivery/previews/64/meow_fearful.webp",
-          "bytes": 2010
-        },
-        "128": {
-          "quality": 90,
-          "path": "/emoji-delivery/previews/128/meow_fearful.webp",
-          "bytes": 4464
-        },
-        "256": {
-          "quality": 90,
-          "path": "/emoji-delivery/previews/256/meow_fearful.webp",
-          "bytes": 10478
-        }
-      },
-      "highestSlackCompatible": {
-        "size": 256,
-        "path": "/emoji-delivery/256/meow_fearful.webp",
-        "bytes": 10466
-      },
-      "original": {
-        "quality": 90,
-        "path": "/emoji-delivery/original/meow_fearful.webp",
-        "bytes": 57294,
-        "width": 1024,
-        "height": 1024
-      }
-    },
     "meow_fingerguns": {
       "source": "staging/emoji-enhancements/stills/candidates/meow_fingerguns.webp",
       "basis": "enhanced",
@@ -17022,24 +16961,21 @@
           "webp": {
             "quality": 90,
             "path": "/emoji-delivery/64/panda-omg.webp",
-            "bytes": 5666,
-            "slackGzipBytes": 5769
+            "bytes": 5666
           }
         },
         "128": {
           "webp": {
-            "path": "/emoji-delivery/128/panda-omg.webp",
-            "bytes": 11648,
             "quality": 90,
-            "slackGzipBytes": 11770
+            "path": "/emoji-delivery/128/panda-omg.webp",
+            "bytes": 11902
           }
         },
         "256": {
           "webp": {
-            "path": "/emoji-delivery/256/panda-omg.webp",
-            "bytes": 24086,
             "quality": 90,
-            "slackGzipBytes": 24263
+            "path": "/emoji-delivery/256/panda-omg.webp",
+            "bytes": 24746
           }
         }
       },
@@ -17063,7 +16999,7 @@
       "highestSlackCompatible": {
         "size": 256,
         "path": "/emoji-delivery/256/panda-omg.webp",
-        "bytes": 24086
+        "bytes": 24746
       },
       "original": {
         "quality": 90,
@@ -17083,24 +17019,21 @@
           "webp": {
             "quality": 90,
             "path": "/emoji-delivery/64/roo-aww-intensifies.webp",
-            "bytes": 18628,
-            "slackGzipBytes": 18585
+            "bytes": 18628
           }
         },
         "128": {
           "webp": {
-            "path": "/emoji-delivery/128/roo-aww-intensifies.webp",
-            "bytes": 38426,
             "quality": 90,
-            "slackGzipBytes": 38504
+            "path": "/emoji-delivery/128/roo-aww-intensifies.webp",
+            "bytes": 39048
           }
         },
         "256": {
           "webp": {
-            "path": "/emoji-delivery/256/roo-aww-intensifies.webp",
-            "bytes": 79118,
             "quality": 90,
-            "slackGzipBytes": 79320
+            "path": "/emoji-delivery/256/roo-aww-intensifies.webp",
+            "bytes": 80514
           }
         }
       },
@@ -17124,7 +17057,7 @@
       "highestSlackCompatible": {
         "size": 256,
         "path": "/emoji-delivery/256/roo-aww-intensifies.webp",
-        "bytes": 79118
+        "bytes": 80514
       },
       "original": {
         "quality": 90,
@@ -17144,24 +17077,21 @@
           "webp": {
             "quality": 90,
             "path": "/emoji-delivery/64/thankyou.webp",
-            "bytes": 4930,
-            "slackGzipBytes": 5037
+            "bytes": 4930
           }
         },
         "128": {
           "webp": {
-            "path": "/emoji-delivery/128/thankyou.webp",
-            "bytes": 11848,
             "quality": 90,
-            "slackGzipBytes": 11981
+            "path": "/emoji-delivery/128/thankyou.webp",
+            "bytes": 11990
           }
         },
         "256": {
           "webp": {
-            "path": "/emoji-delivery/256/thankyou.webp",
-            "bytes": 27950,
             "quality": 90,
-            "slackGzipBytes": 28151
+            "path": "/emoji-delivery/256/thankyou.webp",
+            "bytes": 28696
           }
         }
       },
@@ -17185,7 +17115,7 @@
       "highestSlackCompatible": {
         "size": 256,
         "path": "/emoji-delivery/256/thankyou.webp",
-        "bytes": 27950
+        "bytes": 28696
       },
       "original": {
         "quality": 90,
@@ -17205,24 +17135,21 @@
           "webp": {
             "quality": 90,
             "path": "/emoji-delivery/64/this_is_fine.webp",
-            "bytes": 15296,
-            "slackGzipBytes": 15373
+            "bytes": 15296
           }
         },
         "128": {
           "webp": {
-            "path": "/emoji-delivery/128/this_is_fine.webp",
-            "bytes": 39690,
             "quality": 90,
-            "slackGzipBytes": 39869
+            "path": "/emoji-delivery/128/this_is_fine.webp",
+            "bytes": 40056
           }
         },
         "256": {
           "webp": {
-            "path": "/emoji-delivery/256/this_is_fine.webp",
-            "bytes": 100552,
             "quality": 90,
-            "slackGzipBytes": 101043
+            "path": "/emoji-delivery/256/this_is_fine.webp",
+            "bytes": 102084
           }
         }
       },
@@ -17246,7 +17173,7 @@
       "highestSlackCompatible": {
         "size": 256,
         "path": "/emoji-delivery/256/this_is_fine.webp",
-        "bytes": 100552
+        "bytes": 102084
       },
       "original": {
         "quality": 90,
@@ -17568,9 +17495,9 @@
         },
         "256": {
           "webp": {
-            "quality": 85,
+            "quality": 90,
             "path": "/emoji-delivery/256/boxcat.webp",
-            "bytes": 118164
+            "bytes": 157424
           }
         }
       },
@@ -17592,9 +17519,9 @@
         }
       },
       "highestSlackCompatible": {
-        "size": 256,
-        "path": "/emoji-delivery/256/boxcat.webp",
-        "bytes": 118164
+        "size": 128,
+        "path": "/emoji-delivery/128/boxcat.webp",
+        "bytes": 48208
       },
       "original": {
         "quality": 90,
@@ -17916,9 +17843,9 @@
         },
         "256": {
           "webp": {
-            "quality": 80,
+            "quality": 90,
             "path": "/emoji-delivery/256/dumpster-fire.webp",
-            "bytes": 178032
+            "bytes": 227838
           }
         }
       },
@@ -18090,9 +18017,9 @@
         },
         "256": {
           "webp": {
-            "quality": 80,
+            "quality": 90,
             "path": "/emoji-delivery/256/happykitty.webp",
-            "bytes": 263684
+            "bytes": 326784
           }
         }
       },
@@ -18322,9 +18249,9 @@
         },
         "256": {
           "webp": {
-            "quality": 80,
+            "quality": 90,
             "path": "/emoji-delivery/256/loading.webp",
-            "bytes": 137478
+            "bytes": 167866
           }
         }
       },
@@ -18373,16 +18300,16 @@
         },
         "128": {
           "webp": {
-            "quality": 85,
+            "quality": 90,
             "path": "/emoji-delivery/128/magic.webp",
-            "bytes": 108966
+            "bytes": 129798
           }
         },
         "256": {
           "webp": {
-            "quality": 80,
+            "quality": 90,
             "path": "/emoji-delivery/256/magic.webp",
-            "bytes": 228010
+            "bytes": 345280
           }
         }
       },
@@ -18404,9 +18331,9 @@
         }
       },
       "highestSlackCompatible": {
-        "size": 128,
-        "path": "/emoji-delivery/128/magic.webp",
-        "bytes": 108966
+        "size": 64,
+        "path": "/emoji-delivery/64/magic.webp",
+        "bytes": 45472
       },
       "original": {
         "quality": 90,
@@ -19081,22 +19008,16 @@
         },
         "128": {
           "webp": {
-            "quality": 80,
+            "quality": 90,
             "path": "/emoji-delivery/128/meow_coffeespitting.webp",
-            "bytes": 194198,
-            "frameKeep": 0.33,
-            "frames": 48,
-            "sourceFrames": 145
+            "bytes": 762954
           }
         },
         "256": {
           "webp": {
-            "quality": 80,
+            "quality": 90,
             "path": "/emoji-delivery/256/meow_coffeespitting.webp",
-            "bytes": 429990,
-            "frameKeep": 0.33,
-            "frames": 48,
-            "sourceFrames": 145
+            "bytes": 1698184
           }
         }
       },
@@ -19210,12 +19131,9 @@
         },
         "256": {
           "webp": {
-            "quality": 85,
+            "quality": 90,
             "path": "/emoji-delivery/256/meow_crying.webp",
-            "bytes": 120604,
-            "frameKeep": 0.5,
-            "frames": 12,
-            "sourceFrames": 23
+            "bytes": 278970
           }
         }
       },
@@ -19237,9 +19155,9 @@
         }
       },
       "highestSlackCompatible": {
-        "size": 256,
-        "path": "/emoji-delivery/256/meow_crying.webp",
-        "bytes": 120604
+        "size": 128,
+        "path": "/emoji-delivery/128/meow_crying.webp",
+        "bytes": 114256
       },
       "original": {
         "quality": 90,
@@ -19266,20 +19184,14 @@
           "webp": {
             "quality": 90,
             "path": "/emoji-delivery/128/meow_derpy.webp",
-            "bytes": 101316,
-            "frameKeep": 0.4,
-            "frames": 21,
-            "sourceFrames": 53
+            "bytes": 247912
           }
         },
         "256": {
           "webp": {
-            "quality": 80,
+            "quality": 90,
             "path": "/emoji-delivery/256/meow_derpy.webp",
-            "bytes": 166194,
-            "frameKeep": 0.33,
-            "frames": 17,
-            "sourceFrames": 53
+            "bytes": 611918
           }
         }
       },
@@ -19301,9 +19213,9 @@
         }
       },
       "highestSlackCompatible": {
-        "size": 128,
-        "path": "/emoji-delivery/128/meow_derpy.webp",
-        "bytes": 101316
+        "size": 64,
+        "path": "/emoji-delivery/64/meow_derpy.webp",
+        "bytes": 107504
       },
       "original": {
         "quality": 90,
@@ -19389,22 +19301,16 @@
         },
         "128": {
           "webp": {
-            "quality": 80,
+            "quality": 90,
             "path": "/emoji-delivery/128/meow_enjoy-rain.webp",
-            "bytes": 186148,
-            "frameKeep": 0.33,
-            "frames": 50,
-            "sourceFrames": 150
+            "bytes": 673454
           }
         },
         "256": {
           "webp": {
-            "quality": 80,
+            "quality": 90,
             "path": "/emoji-delivery/256/meow_enjoy-rain.webp",
-            "bytes": 478248,
-            "frameKeep": 0.33,
-            "frames": 50,
-            "sourceFrames": 150
+            "bytes": 1781824
           }
         }
       },
@@ -19456,22 +19362,16 @@
         },
         "128": {
           "webp": {
-            "quality": 80,
+            "quality": 90,
             "path": "/emoji-delivery/128/meow_enjoy-snow.webp",
-            "bytes": 205112,
-            "frameKeep": 0.33,
-            "frames": 50,
-            "sourceFrames": 150
+            "bytes": 755222
           }
         },
         "256": {
           "webp": {
-            "quality": 80,
+            "quality": 90,
             "path": "/emoji-delivery/256/meow_enjoy-snow.webp",
-            "bytes": 522566,
-            "frameKeep": 0.33,
-            "frames": 50,
-            "sourceFrames": 150
+            "bytes": 1965518
           }
         }
       },
@@ -19527,9 +19427,9 @@
         },
         "256": {
           "webp": {
-            "quality": 85,
+            "quality": 90,
             "path": "/emoji-delivery/256/meow_fart.webp",
-            "bytes": 120150
+            "bytes": 132172
           }
         }
       },
@@ -19551,9 +19451,9 @@
         }
       },
       "highestSlackCompatible": {
-        "size": 256,
-        "path": "/emoji-delivery/256/meow_fart.webp",
-        "bytes": 120150
+        "size": 128,
+        "path": "/emoji-delivery/128/meow_fart.webp",
+        "bytes": 50890
       },
       "original": {
         "quality": 90,
@@ -19587,10 +19487,7 @@
           "webp": {
             "quality": 90,
             "path": "/emoji-delivery/256/meow_glare-zoom.webp",
-            "bytes": 110328,
-            "frameKeep": 0.5,
-            "frames": 15,
-            "sourceFrames": 30
+            "bytes": 218440
           }
         }
       },
@@ -19612,9 +19509,9 @@
         }
       },
       "highestSlackCompatible": {
-        "size": 256,
-        "path": "/emoji-delivery/256/meow_glare-zoom.webp",
-        "bytes": 110328
+        "size": 128,
+        "path": "/emoji-delivery/128/meow_glare-zoom.webp",
+        "bytes": 99526
       },
       "original": {
         "quality": 90,
@@ -19704,9 +19601,9 @@
         },
         "256": {
           "webp": {
-            "quality": 85,
+            "quality": 90,
             "path": "/emoji-delivery/256/meow_lurk.webp",
-            "bytes": 116270
+            "bytes": 128450
           }
         }
       },
@@ -19728,9 +19625,9 @@
         }
       },
       "highestSlackCompatible": {
-        "size": 256,
-        "path": "/emoji-delivery/256/meow_lurk.webp",
-        "bytes": 116270
+        "size": 128,
+        "path": "/emoji-delivery/128/meow_lurk.webp",
+        "bytes": 50434
       },
       "original": {
         "quality": 90,
@@ -19758,22 +19655,16 @@
         },
         "128": {
           "webp": {
-            "quality": 85,
+            "quality": 90,
             "path": "/emoji-delivery/128/meow_nod.webp",
-            "bytes": 115506,
-            "frameKeep": 0.33,
-            "frames": 37,
-            "sourceFrames": 111
+            "bytes": 373294
           }
         },
         "256": {
           "webp": {
-            "quality": 80,
+            "quality": 90,
             "path": "/emoji-delivery/256/meow_nod.webp",
-            "bytes": 254398,
-            "frameKeep": 0.33,
-            "frames": 37,
-            "sourceFrames": 111
+            "bytes": 926014
           }
         }
       },
@@ -19795,9 +19686,9 @@
         }
       },
       "highestSlackCompatible": {
-        "size": 128,
-        "path": "/emoji-delivery/128/meow_nod.webp",
-        "bytes": 115506
+        "size": 64,
+        "path": "/emoji-delivery/64/meow_nod.webp",
+        "bytes": 126262
       },
       "original": {
         "quality": 90,
@@ -19823,18 +19714,9 @@
         },
         "128": {
           "webp": {
-            "quality": 80,
-            "path": "/emoji-delivery/128/meow_noddies.webp",
-            "bytes": 186836,
-            "slackGzipBytes": 186653
-          }
-        },
-        "256": {
-          "webp": {
             "quality": 90,
-            "path": "/emoji-delivery/256/meow_noddies.webp",
-            "bytes": 579308,
-            "slackGzipBytes": 580820
+            "path": "/emoji-delivery/128/meow_noddies.webp",
+            "bytes": 227194
           }
         }
       },
@@ -19894,8 +19776,7 @@
           "webp": {
             "quality": 90,
             "path": "/emoji-delivery/256/meow_popcorn.webp",
-            "bytes": 97990,
-            "slackGzipBytes": 98360
+            "bytes": 97990
           }
         }
       },
@@ -19935,36 +19816,28 @@
       "sourceSha256": "19ba0520428b56298dbe81947be673d0b17bf387b3b5a24071d04f35e43d9c2d",
       "animated": true,
       "variants": {
-        "32": {
-          "webp": {
-            "quality": 85,
-            "path": "/emoji-delivery/32/meow_red-bull.webp",
-            "bytes": 124240,
-            "slackGzipBytes": 116549
-          }
-        },
         "64": {
           "webp": {
-            "quality": 80,
+            "quality": 90,
             "path": "/emoji-delivery/64/meow_red-bull.webp",
-            "bytes": 239730,
-            "slackGzipBytes": 232565
+            "bytes": 124638,
+            "frameKeep": 0.4,
+            "frames": 59,
+            "sourceFrames": 147
           }
         },
         "128": {
           "webp": {
-            "quality": 80,
+            "quality": 90,
             "path": "/emoji-delivery/128/meow_red-bull.webp",
-            "bytes": 563980,
-            "slackGzipBytes": 557480
+            "bytes": 721274
           }
         },
         "256": {
           "webp": {
             "quality": 90,
             "path": "/emoji-delivery/256/meow_red-bull.webp",
-            "bytes": 1592626,
-            "slackGzipBytes": 1573138
+            "bytes": 1592626
           }
         }
       },
@@ -19986,9 +19859,9 @@
         }
       },
       "highestSlackCompatible": {
-        "size": 32,
-        "path": "/emoji-delivery/32/meow_red-bull.webp",
-        "bytes": 124240
+        "size": 64,
+        "path": "/emoji-delivery/64/meow_red-bull.webp",
+        "bytes": 124638
       },
       "original": {
         "quality": 90,
@@ -20004,36 +19877,28 @@
       "sourceSha256": "c06a294548bccea36fb4cbbfdcb238028b65565cb5fe2a1698fc76f7f8a07fc0",
       "animated": true,
       "variants": {
-        "32": {
-          "webp": {
-            "quality": 90,
-            "path": "/emoji-delivery/32/meow_sad-rain.webp",
-            "bytes": 85818,
-            "slackGzipBytes": 80418
-          }
-        },
         "64": {
           "webp": {
-            "quality": 80,
+            "quality": 90,
             "path": "/emoji-delivery/64/meow_sad-rain.webp",
-            "bytes": 147370,
-            "slackGzipBytes": 145560
+            "bytes": 111352,
+            "frameKeep": 0.6,
+            "frames": 60,
+            "sourceFrames": 100
           }
         },
         "128": {
           "webp": {
-            "quality": 80,
+            "quality": 90,
             "path": "/emoji-delivery/128/meow_sad-rain.webp",
-            "bytes": 347480,
-            "slackGzipBytes": 347242
+            "bytes": 428804
           }
         },
         "256": {
           "webp": {
             "quality": 90,
             "path": "/emoji-delivery/256/meow_sad-rain.webp",
-            "bytes": 1101422,
-            "slackGzipBytes": 1104751
+            "bytes": 1101422
           }
         }
       },
@@ -20055,9 +19920,9 @@
         }
       },
       "highestSlackCompatible": {
-        "size": 32,
-        "path": "/emoji-delivery/32/meow_sad-rain.webp",
-        "bytes": 85818
+        "size": 64,
+        "path": "/emoji-delivery/64/meow_sad-rain.webp",
+        "bytes": 111352
       },
       "original": {
         "quality": 90,
@@ -20077,24 +19942,21 @@
           "webp": {
             "quality": 90,
             "path": "/emoji-delivery/64/meow_thinkingsmirk.webp",
-            "bytes": 8364,
-            "slackGzipBytes": 8124
+            "bytes": 8364
           }
         },
         "128": {
           "webp": {
             "quality": 90,
             "path": "/emoji-delivery/128/meow_thinkingsmirk.webp",
-            "bytes": 17622,
-            "slackGzipBytes": 17614
+            "bytes": 17622
           }
         },
         "256": {
           "webp": {
             "quality": 90,
             "path": "/emoji-delivery/256/meow_thinkingsmirk.webp",
-            "bytes": 39804,
-            "slackGzipBytes": 39930
+            "bytes": 39804
           }
         }
       },
@@ -20138,24 +20000,21 @@
           "webp": {
             "quality": 90,
             "path": "/emoji-delivery/64/milchick_roll.webp",
-            "bytes": 26806,
-            "slackGzipBytes": 26052
+            "bytes": 26806
           }
         },
         "128": {
           "webp": {
             "quality": 90,
             "path": "/emoji-delivery/128/milchick_roll.webp",
-            "bytes": 53672,
-            "slackGzipBytes": 53119
+            "bytes": 53672
           }
         },
         "256": {
           "webp": {
             "quality": 90,
             "path": "/emoji-delivery/256/milchick_roll.webp",
-            "bytes": 114086,
-            "slackGzipBytes": 114354
+            "bytes": 114086
           }
         }
       },
@@ -20199,24 +20058,21 @@
           "webp": {
             "quality": 90,
             "path": "/emoji-delivery/64/nyancat.webp",
-            "bytes": 22464,
-            "slackGzipBytes": 22235
+            "bytes": 22464
           }
         },
         "128": {
           "webp": {
             "quality": 90,
             "path": "/emoji-delivery/128/nyancat.webp",
-            "bytes": 48212,
-            "slackGzipBytes": 48213
+            "bytes": 48212
           }
         },
         "256": {
           "webp": {
             "quality": 90,
             "path": "/emoji-delivery/256/nyancat.webp",
-            "bytes": 94444,
-            "slackGzipBytes": 94733
+            "bytes": 94444
           }
         }
       },
@@ -20260,24 +20116,21 @@
           "webp": {
             "quality": 90,
             "path": "/emoji-delivery/64/roo-e.webp",
-            "bytes": 4720,
-            "slackGzipBytes": 4811
+            "bytes": 4720
           }
         },
         "128": {
           "webp": {
             "quality": 90,
             "path": "/emoji-delivery/128/roo-e.webp",
-            "bytes": 9700,
-            "slackGzipBytes": 9810
+            "bytes": 9700
           }
         },
         "256": {
           "webp": {
             "quality": 90,
             "path": "/emoji-delivery/256/roo-e.webp",
-            "bytes": 20592,
-            "slackGzipBytes": 20710
+            "bytes": 20592
           }
         }
       },
@@ -20321,24 +20174,21 @@
           "webp": {
             "quality": 90,
             "path": "/emoji-delivery/64/roo-redbutton.webp",
-            "bytes": 34604,
-            "slackGzipBytes": 34289
+            "bytes": 34604
           }
         },
         "128": {
           "webp": {
             "quality": 90,
             "path": "/emoji-delivery/128/roo-redbutton.webp",
-            "bytes": 84278,
-            "slackGzipBytes": 84257
+            "bytes": 84278
           }
         },
         "256": {
           "webp": {
             "quality": 90,
             "path": "/emoji-delivery/256/roo-redbutton.webp",
-            "bytes": 194094,
-            "slackGzipBytes": 194639
+            "bytes": 194094
           }
         }
       },
@@ -20382,24 +20232,21 @@
           "webp": {
             "quality": 90,
             "path": "/emoji-delivery/64/roorooq.webp",
-            "bytes": 12740,
-            "slackGzipBytes": 6577
+            "bytes": 12740
           }
         },
         "128": {
           "webp": {
             "quality": 90,
             "path": "/emoji-delivery/128/roorooq.webp",
-            "bytes": 27928,
-            "slackGzipBytes": 28030
+            "bytes": 27928
           }
         },
         "256": {
           "webp": {
             "quality": 90,
             "path": "/emoji-delivery/256/roorooq.webp",
-            "bytes": 62370,
-            "slackGzipBytes": 62629
+            "bytes": 62370
           }
         }
       },
@@ -20443,24 +20290,21 @@
           "webp": {
             "quality": 90,
             "path": "/emoji-delivery/64/severance-dancing-helly.webp",
-            "bytes": 52270,
-            "slackGzipBytes": 51506
+            "bytes": 52270
           }
         },
         "128": {
           "webp": {
             "quality": 90,
             "path": "/emoji-delivery/128/severance-dancing-helly.webp",
-            "bytes": 120264,
-            "slackGzipBytes": 120041
+            "bytes": 120264
           }
         },
         "256": {
           "webp": {
             "quality": 90,
             "path": "/emoji-delivery/256/severance-dancing-helly.webp",
-            "bytes": 278538,
-            "slackGzipBytes": 279239
+            "bytes": 278538
           }
         }
       },
@@ -20504,24 +20348,21 @@
           "webp": {
             "quality": 90,
             "path": "/emoji-delivery/64/severance-dancing-mark.webp",
-            "bytes": 48192,
-            "slackGzipBytes": 47415
+            "bytes": 48192
           }
         },
         "128": {
           "webp": {
             "quality": 90,
             "path": "/emoji-delivery/128/severance-dancing-mark.webp",
-            "bytes": 109488,
-            "slackGzipBytes": 109108
+            "bytes": 109488
           }
         },
         "256": {
           "webp": {
             "quality": 90,
             "path": "/emoji-delivery/256/severance-dancing-mark.webp",
-            "bytes": 242158,
-            "slackGzipBytes": 242682
+            "bytes": 242158
           }
         }
       },
@@ -20565,24 +20406,21 @@
           "webp": {
             "quality": 90,
             "path": "/emoji-delivery/64/severance-dancing.webp",
-            "bytes": 85986,
-            "slackGzipBytes": 84077
+            "bytes": 85986
           }
         },
         "128": {
           "webp": {
-            "quality": 80,
+            "quality": 90,
             "path": "/emoji-delivery/128/severance-dancing.webp",
-            "bytes": 115750,
-            "slackGzipBytes": 114228
+            "bytes": 197836
           }
         },
         "256": {
           "webp": {
             "quality": 90,
             "path": "/emoji-delivery/256/severance-dancing.webp",
-            "bytes": 476592,
-            "slackGzipBytes": 477351
+            "bytes": 476592
           }
         }
       },
@@ -20604,9 +20442,9 @@
         }
       },
       "highestSlackCompatible": {
-        "size": 128,
-        "path": "/emoji-delivery/128/severance-dancing.webp",
-        "bytes": 115750
+        "size": 64,
+        "path": "/emoji-delivery/64/severance-dancing.webp",
+        "bytes": 85986
       },
       "original": {
         "quality": 90,
@@ -20626,24 +20464,21 @@
           "webp": {
             "quality": 90,
             "path": "/emoji-delivery/64/severance-running.webp",
-            "bytes": 97758,
-            "slackGzipBytes": 95304
+            "bytes": 97758
           }
         },
         "128": {
           "webp": {
-            "quality": 80,
+            "quality": 90,
             "path": "/emoji-delivery/128/severance-running.webp",
-            "bytes": 151758,
-            "slackGzipBytes": 149715
+            "bytes": 231996
           }
         },
         "256": {
           "webp": {
             "quality": 90,
             "path": "/emoji-delivery/256/severance-running.webp",
-            "bytes": 534652,
-            "slackGzipBytes": 535089
+            "bytes": 534652
           }
         }
       },
@@ -20687,24 +20522,21 @@
           "webp": {
             "quality": 90,
             "path": "/emoji-delivery/64/severance.webp",
-            "bytes": 51682,
-            "slackGzipBytes": 50763
+            "bytes": 51682
           }
         },
         "128": {
           "webp": {
             "quality": 90,
             "path": "/emoji-delivery/128/severance.webp",
-            "bytes": 110752,
-            "slackGzipBytes": 110070
+            "bytes": 110752
           }
         },
         "256": {
           "webp": {
             "quality": 90,
             "path": "/emoji-delivery/256/severance.webp",
-            "bytes": 239152,
-            "slackGzipBytes": 239361
+            "bytes": 239152
           }
         }
       },
@@ -20748,24 +20580,21 @@
           "webp": {
             "quality": 90,
             "path": "/emoji-delivery/64/side-eye.webp",
-            "bytes": 11056,
-            "slackGzipBytes": 10935
+            "bytes": 11056
           }
         },
         "128": {
           "webp": {
             "quality": 90,
             "path": "/emoji-delivery/128/side-eye.webp",
-            "bytes": 27994,
-            "slackGzipBytes": 27960
+            "bytes": 27994
           }
         },
         "256": {
           "webp": {
             "quality": 90,
             "path": "/emoji-delivery/256/side-eye.webp",
-            "bytes": 65374,
-            "slackGzipBytes": 65529
+            "bytes": 65374
           }
         }
       },
@@ -20809,24 +20638,21 @@
           "webp": {
             "quality": 90,
             "path": "/emoji-delivery/64/smart.webp",
-            "bytes": 39276,
-            "slackGzipBytes": 36916
+            "bytes": 39276
           }
         },
         "128": {
           "webp": {
             "quality": 90,
             "path": "/emoji-delivery/128/smart.webp",
-            "bytes": 95048,
-            "slackGzipBytes": 94941
+            "bytes": 95048
           }
         },
         "256": {
           "webp": {
             "quality": 90,
             "path": "/emoji-delivery/256/smart.webp",
-            "bytes": 239476,
-            "slackGzipBytes": 239086
+            "bytes": 239476
           }
         }
       },
@@ -20870,24 +20696,21 @@
           "webp": {
             "quality": 90,
             "path": "/emoji-delivery/64/southpark_nice.webp",
-            "bytes": 15760,
-            "slackGzipBytes": 15708
+            "bytes": 15760
           }
         },
         "128": {
           "webp": {
             "quality": 90,
             "path": "/emoji-delivery/128/southpark_nice.webp",
-            "bytes": 36034,
-            "slackGzipBytes": 36047
+            "bytes": 36034
           }
         },
         "256": {
           "webp": {
             "quality": 90,
             "path": "/emoji-delivery/256/southpark_nice.webp",
-            "bytes": 67972,
-            "slackGzipBytes": 68219
+            "bytes": 67972
           }
         }
       },
@@ -20931,24 +20754,21 @@
           "webp": {
             "quality": 90,
             "path": "/emoji-delivery/64/the_more_you_know.webp",
-            "bytes": 35368,
-            "slackGzipBytes": 34208
+            "bytes": 35368
           }
         },
         "128": {
           "webp": {
             "quality": 90,
             "path": "/emoji-delivery/128/the_more_you_know.webp",
-            "bytes": 81334,
-            "slackGzipBytes": 80638
+            "bytes": 81334
           }
         },
         "256": {
           "webp": {
             "quality": 90,
             "path": "/emoji-delivery/256/the_more_you_know.webp",
-            "bytes": 192242,
-            "slackGzipBytes": 192210
+            "bytes": 192242
           }
         }
       },
@@ -20992,24 +20812,21 @@
           "webp": {
             "quality": 90,
             "path": "/emoji-delivery/64/thinking-face-rotating.webp",
-            "bytes": 65372,
-            "slackGzipBytes": 64899
+            "bytes": 65372
           }
         },
         "128": {
           "webp": {
-            "quality": 80,
+            "quality": 90,
             "path": "/emoji-delivery/128/thinking-face-rotating.webp",
-            "bytes": 123468,
-            "slackGzipBytes": 123467
+            "bytes": 150956
           }
         },
         "256": {
           "webp": {
             "quality": 90,
             "path": "/emoji-delivery/256/thinking-face-rotating.webp",
-            "bytes": 368834,
-            "slackGzipBytes": 370108
+            "bytes": 368834
           }
         }
       },
@@ -21031,9 +20848,9 @@
         }
       },
       "highestSlackCompatible": {
-        "size": 128,
-        "path": "/emoji-delivery/128/thinking-face-rotating.webp",
-        "bytes": 123468
+        "size": 64,
+        "path": "/emoji-delivery/64/thinking-face-rotating.webp",
+        "bytes": 65372
       },
       "original": {
         "quality": 90,
@@ -21053,24 +20870,21 @@
           "webp": {
             "quality": 90,
             "path": "/emoji-delivery/64/this-is-fine-fire.webp",
-            "bytes": 23532,
-            "slackGzipBytes": 23527
+            "bytes": 23532
           }
         },
         "128": {
           "webp": {
             "quality": 90,
             "path": "/emoji-delivery/128/this-is-fine-fire.webp",
-            "bytes": 59232,
-            "slackGzipBytes": 59434
+            "bytes": 59232
           }
         },
         "256": {
           "webp": {
             "quality": 90,
             "path": "/emoji-delivery/256/this-is-fine-fire.webp",
-            "bytes": 154704,
-            "slackGzipBytes": 155395
+            "bytes": 154704
           }
         }
       },
@@ -21114,24 +20928,21 @@
           "webp": {
             "quality": 90,
             "path": "/emoji-delivery/64/try-not-to-cry.webp",
-            "bytes": 35518,
-            "slackGzipBytes": 31186
+            "bytes": 35518
           }
         },
         "128": {
           "webp": {
             "quality": 90,
             "path": "/emoji-delivery/128/try-not-to-cry.webp",
-            "bytes": 88642,
-            "slackGzipBytes": 88869
+            "bytes": 88642
           }
         },
         "256": {
           "webp": {
             "quality": 90,
             "path": "/emoji-delivery/256/try-not-to-cry.webp",
-            "bytes": 219060,
-            "slackGzipBytes": 219948
+            "bytes": 219060
           }
         }
       },
@@ -21175,24 +20986,21 @@
           "webp": {
             "quality": 90,
             "path": "/emoji-delivery/64/typing_cat_kitten.webp",
-            "bytes": 38824,
-            "slackGzipBytes": 38371
+            "bytes": 38824
           }
         },
         "128": {
           "webp": {
             "quality": 90,
             "path": "/emoji-delivery/128/typing_cat_kitten.webp",
-            "bytes": 94422,
-            "slackGzipBytes": 94221
+            "bytes": 94422
           }
         },
         "256": {
           "webp": {
             "quality": 90,
             "path": "/emoji-delivery/256/typing_cat_kitten.webp",
-            "bytes": 211710,
-            "slackGzipBytes": 210587
+            "bytes": 211710
           }
         }
       },
@@ -21236,24 +21044,21 @@
           "webp": {
             "quality": 90,
             "path": "/emoji-delivery/64/typingcat.webp",
-            "bytes": 40128,
-            "slackGzipBytes": 39549
+            "bytes": 40128
           }
         },
         "128": {
           "webp": {
             "quality": 90,
             "path": "/emoji-delivery/128/typingcat.webp",
-            "bytes": 88050,
-            "slackGzipBytes": 87825
+            "bytes": 88050
           }
         },
         "256": {
           "webp": {
             "quality": 90,
             "path": "/emoji-delivery/256/typingcat.webp",
-            "bytes": 197856,
-            "slackGzipBytes": 198266
+            "bytes": 197856
           }
         }
       },
@@ -21297,24 +21102,21 @@
           "webp": {
             "quality": 90,
             "path": "/emoji-delivery/64/unikittyangry.webp",
-            "bytes": 18028,
-            "slackGzipBytes": 17914
+            "bytes": 18028
           }
         },
         "128": {
           "webp": {
             "quality": 90,
             "path": "/emoji-delivery/128/unikittyangry.webp",
-            "bytes": 41472,
-            "slackGzipBytes": 41513
+            "bytes": 41472
           }
         },
         "256": {
           "webp": {
             "quality": 90,
             "path": "/emoji-delivery/256/unikittyangry.webp",
-            "bytes": 80566,
-            "slackGzipBytes": 80611
+            "bytes": 80566
           }
         }
       },
@@ -21358,24 +21160,21 @@
           "webp": {
             "quality": 90,
             "path": "/emoji-delivery/64/watcat.webp",
-            "bytes": 29212,
-            "slackGzipBytes": 29045
+            "bytes": 29212
           }
         },
         "128": {
           "webp": {
             "quality": 90,
             "path": "/emoji-delivery/128/watcat.webp",
-            "bytes": 92742,
-            "slackGzipBytes": 92910
+            "bytes": 92742
           }
         },
         "256": {
           "webp": {
             "quality": 90,
             "path": "/emoji-delivery/256/watcat.webp",
-            "bytes": 253776,
-            "slackGzipBytes": 254733
+            "bytes": 253776
           }
         }
       },
