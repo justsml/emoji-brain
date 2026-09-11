@@ -126,11 +126,13 @@ interface EmojiProviderProps {
 export function EmojiProvider({ children, initialEmojis }: EmojiProviderProps) {
   // ids only: stored records go stale when the catalog is deduped, leaving the
   // tray pointing at files that no longer exist.
-  const [storedSelection, setStoredSelection] = useLocalStorage<unknown>(SELECTION_STORAGE_KEY, []);
+  // `null` initialValue is a sentinel for "nothing stored yet" (first visit),
+  // distinct from an explicit `[]` (user deselected everything).
+  const [storedSelection, setStoredSelection] = useLocalStorage<unknown>(SELECTION_STORAGE_KEY, null);
 
   const [state, dispatch] = useReducer(emojiReducer, {
     ...initialState,
-    selectedEmojis: reconcileSelection(storedSelection, initialEmojis),
+    selectedEmojis: storedSelection === null ? initialEmojis : reconcileSelection(storedSelection, initialEmojis),
     filteredEmojis: initialEmojis,
   });
 
