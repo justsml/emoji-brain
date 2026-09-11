@@ -78,6 +78,23 @@ test('ZIP downloads the native-size quality-90 WebPs and Markdown includes all p
   const zip=await JSZip.loadAsync(await fs.readFile((await download.path())!));
   const original=await fs.readFile('public/emoji-delivery/original/'+filename);
   expect(await zip.file(filename)!.async('nodebuffer')).toEqual(original);
+  const optimized=await fs.readFile('public/emoji-delivery/256/'+filename);
+  expect(await zip.file('slack/images/'+filename)!.async('nodebuffer')).toEqual(optimized);
+  const {tmpdir}=await import('node:os'),{join,dirname}=await import('node:path');
+  const directory=await fs.mkdtemp(join(tmpdir(),'emoji-built-zip-'));
+  try {
+    for(const [name,file] of Object.entries(zip.files))if(!file.dir){const path=join(directory,name);await fs.mkdir(dirname(path),{recursive:true});await fs.writeFile(path,await file.async('nodebuffer'));}
+    const {promisify}=await import('node:util'),{execFile}=await import('node:child_process');
+    await promisify(execFile)('sh',['generate-slack-script.sh'],{cwd:directory});
+    const script=await fs.readFile(join(directory,'slack-upload.js'),'utf8');
+    expect(Buffer.byteLength(script)).toBeLessThan(8_000_000);
+    const packed=script.match(/const encoded = "([A-Za-z0-9+/=]+)"/);
+    const {gunzipSync}=await import('node:zlib');
+    const images=packed?JSON.parse(gunzipSync(Buffer.from(packed[1],'base64')).toString()):JSON.parse(script.match(/const images = (\[.*\]);/)![1]);
+    expect(images).toHaveLength(1);
+    expect(Buffer.from(images[0].base64,'base64')).toEqual(optimized);
+  } finally {await fs.rm(directory,{recursive:true,force:true});}
+
   await page.getByRole('button',{name:'Other export options'}).click();
   await page.getByRole('menuitem',{name:'Markdown Table'}).click();
   await expect.poll(()=>page.evaluate(()=>(window as any).copiedEmojiScript)).toContain('/emoji-delivery/original/');
@@ -155,6 +172,7 @@ test('full Slack script yields during payload decoding at half-speed CPU', async
   },script);
   // Hostname validation follows full payload decoding; no Slack API is called.
   expect(metrics.error).toContain('Run this script on your Slack workspace');
+  await test.info().attach('full-slack-decode.json',{body:JSON.stringify({...metrics,scriptBytes:Buffer.byteLength(script)}),contentType:'application/json'});
   expect(metrics.maxGap).toBeLessThan(500);
   await probe.close();
 });

@@ -68,7 +68,7 @@ All delivered images are WebP, including animations:
 
 For optional upgrades of smaller exact-name Slack emojis, choose **Other export options → Slack script: replace smaller…**. It opens a preview in Slack and requires an originals backup and confirmation before replacing anything. See [the replacement workflow](docs/slack-emoji-replacements.md).
 
-Slack export measures the finished script and tries 256px stills / 128px animations, then 256/64, 128/64 and 64/64. The first combination below **8,000,000 UTF-8 bytes** wins; if none fits, select fewer emojis. The receipt lists counts and resolutions. Select fewer images to make room for larger versions. The same cap includes the optional replacement UI. Each asset is fetched at most once per export while the worker checks smaller combinations.
+Slack export uses precomputed per-image gzip estimates to choose among 256px stills / 128px animations, then 256/64, 128/64 and 64/64. It measures the finished script and steps down if needed to stay below **8,000,000 UTF-8 bytes**; if none fits, select fewer emojis. The receipt lists counts and resolutions. Select fewer images to make room for larger versions. The same cap includes the optional replacement UI. Each asset is fetched at most once per export while the worker checks smaller combinations.
 
 ZIPs preserve the full-size originals at the root and include a separate `slack/images` folder. Run `sh generate-slack-script.sh` after extracting (Node.js 18+, no packages or network required) to produce `slack-upload.js` from those optimized images. On macOS, `pbcopy < slack-upload.js` copies it. The generator refuses oversized scripts; remove some images from `slack/images` to export a subset. It uses the normal uploader without deletion.
 

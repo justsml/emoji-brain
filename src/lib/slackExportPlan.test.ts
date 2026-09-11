@@ -37,3 +37,21 @@ it('still supplies minimum assets for an oversized ZIP, whose generator enforces
  expect(result.assets.map(a=>a.size)).toEqual([64,64]);
  expect(result.scriptBytes).toBeGreaterThan(100);
 });
+
+it('uses catalog estimates to avoid downloading oversized candidate tiers',async()=>{
+ vi.stubGlobal('Blob',Blob);vi.stubGlobal('CompressionStream',undefined);
+ const selection=structuredClone(rows);
+ for(const {row} of selection)for(const [size,variant] of Object.entries(row.variants))variant.webp.slackGzipBytes=Number(size)> (row.animated?64:128)?100_000:100;
+ const load=vi.fn(async(assets:any[])=>assets.map(a=>new Uint8Array(a.bytes)));
+ const result=await planSlackExport(selection,load,()=>{},{},base+6000);
+ expect(result.assets.map(a=>a.size)).toEqual([128,64]);
+ expect(load).toHaveBeenCalledTimes(1);
+});
+it('still enforces actual bytes if stored estimates are too small',async()=>{
+ vi.stubGlobal('Blob',Blob);vi.stubGlobal('CompressionStream',undefined);
+ const selection=structuredClone(rows);
+ for(const {row} of selection)for(const variant of Object.values(row.variants))variant.webp.slackGzipBytes=1;
+ const result=await planSlackExport(selection,async assets=>assets.map(a=>new Uint8Array(a.bytes)),()=>{},{},base+2900);
+ expect(result.assets.map(a=>a.size)).toEqual([128,64]);
+ expect(result.scriptBytes).toBeLessThan(base+2900);
+});

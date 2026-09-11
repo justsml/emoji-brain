@@ -1,7 +1,7 @@
-import {generateCompactSlackBrowserScript, type SlackScriptImage} from './slackBrowserScript';
+import {generateCompactSlackBrowserScript, generateSlackBrowserScript, type SlackScriptImage} from './slackBrowserScript';
 
 export const SLACK_SCRIPT_LIMIT = 8_000_000;
-export type DeliveryAsset = {path: string; bytes: number};
+export type DeliveryAsset = {path: string; bytes: number; slackGzipBytes?: number};
 export type DeliveryRow = {animated: boolean; original: DeliveryAsset; variants: Record<string, {webp: DeliveryAsset}>};
 export type SlackResolution = {animated: boolean; size: number; count: number};
 export type SlackAsset = DeliveryAsset & {filename: string; animated: boolean; size: number};
@@ -16,6 +16,9 @@ export async function planSlackExport(
   limit = SLACK_SCRIPT_LIMIT,
 ): Promise<SlackPlan> {
   if (!rows.length) throw Error('Select at least one emoji');
+  // Stored per-image gzip estimates avoid downloading clearly oversized tiers.
+  // The final script is always measured; estimates are never a safety boundary.
+  const overhead = new Blob([generateSlackBrowserScript([],options)]).size + 1024;
   const attempted = new Set<string>();
   let smallest: SlackPlan | undefined;
   for (const [stillSize, animatedSize] of [[256,128], [256,64], [128,64], [64,64]]) {
@@ -25,6 +28,11 @@ export async function planSlackExport(
       if (!asset) throw Error(`Missing ${size}px WebP: ${filename}`);
       return {...asset, filename, size, animated: row.animated};
     });
+    if ((stillSize !== 64 || animatedSize !== 64) && assets.every(a => Number.isFinite(a.slackGzipBytes))) {
+      const estimate = 4 * Math.ceil(assets.reduce((sum,a) => sum + a.slackGzipBytes!,0)/3) + overhead;
+      // Leave 1% tolerance for per-stream headers and shared dictionaries.
+      if (estimate >= limit * 1.01) continue;
+    }
     const key = assets.map(a => a.path).join('\n');
     if (attempted.has(key)) continue;
     attempted.add(key);
