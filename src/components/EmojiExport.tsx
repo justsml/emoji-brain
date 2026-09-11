@@ -94,6 +94,10 @@ export function EmojiExport({ selectedEmojis, onClearSelection, onDeselectVisibl
     try {
       const result = await runExportWorker({kind, filenames: selectedEmojis.map(e => e.filename), origin: window.location.origin, replaceSmaller}, controller.signal, setExportStatus);
       if (result.kind === 'slack') {
+        setExportStatus('Copying script to clipboard… Please wait; large exports may briefly pause your browser.');
+        // Let React commit and the browser paint the message before clipboard work.
+        await new Promise<void>(resolve => requestAnimationFrame(() => requestAnimationFrame(() => resolve())));
+        if (controller.signal.aborted) return;
         const megabytes = (new Blob([result.script]).size / 1_000_000).toFixed(3);
         await navigator.clipboard.writeText(result.script);
         setCopiedScript({megabytes, count: result.count, replaceSmaller});
@@ -165,6 +169,7 @@ export function EmojiExport({ selectedEmojis, onClearSelection, onDeselectVisibl
           <li>Open your browser’s developer tools and select the <strong>Console</strong> tab.</li>
           <li>Paste the script and press <strong>Enter</strong>. Leave the page open while it uploads — the console reports each emoji and a final count.</li>
         </ol>
+        {Number(copiedScript.megabytes) >= 1 && <p className="slack-guide-note">Pasting a large script can briefly pause DevTools. Give it time to finish, then press Enter once. Image preparation reports progress in the console.</p>}
         <p className="slack-guide-note">Your workspace must allow you to add custom emoji. The console lists any names or images Slack rejects.</p>
       </section>
     )}

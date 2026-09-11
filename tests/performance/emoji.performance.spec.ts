@@ -99,7 +99,7 @@ for (const profile of profiles) test(`${profile.name}: cold load, scrolling and 
     report.scriptBytes=Buffer.byteLength(script);report.scriptSha256=createHash('sha256').update(script).digest('hex');
     expect(report.scriptBytes).toBeLessThan(16_000_000);
     expect(report.scriptBytes).toBeLessThan(expectedBytes*1.4+100_000);
-    const packed=script.match(/atob\("([A-Za-z0-9+/=]+)"\)/);
+    const packed=script.match(/const encoded = "([A-Za-z0-9+/=]+)"/);
     expect(packed,'Expected compact gzip payload').not.toBeNull();
     const images=JSON.parse(gunzipSync(Buffer.from(packed![1],'base64')).toString());
     expect(images).toHaveLength(catalog.length);expect(new Set(images.map((i:any)=>i.filename)).size).toBe(catalog.length);

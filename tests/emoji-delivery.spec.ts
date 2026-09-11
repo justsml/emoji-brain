@@ -126,3 +126,31 @@ test('Pagefind is lazy, uses one engine, and avoids redundant result fragments',
   const index=await (await page.request.get('/pagefind/pagefind-entry.json')).json();
   expect(index.languages.en.page_count).toBe(353);
 });
+
+test('full Slack script yields during payload decoding at half-speed CPU', async ({page,context}) => {
+  test.setTimeout(90_000);
+  await page.addInitScript(() => Object.defineProperty(navigator,'clipboard',{value:{writeText:async(text:string)=>{(window as any).copiedEmojiScript=text;}}}));
+  await page.goto('/');
+  await page.getByTitle('Select All Visible', {exact:true}).click();
+  await page.getByRole('button',{name:'Copy Slack script',exact:true}).click();
+  await expect(page.getByLabel('Close Slack instructions')).toBeVisible({timeout:60_000});
+  const script = await page.evaluate(() => (window as any).copiedEmojiScript as string);
+  const probe = await context.newPage();
+  const cdp = await context.newCDPSession(probe);
+  await cdp.send('Emulation.setCPUThrottlingRate',{rate:2});
+  const metrics = await probe.evaluate(async script => {
+    let last=performance.now(), maxGap=0, frame=0;
+    const tick=()=>{const now=performance.now();maxGap=Math.max(maxGap,now-last);last=now;frame=requestAnimationFrame(tick);};
+    frame=requestAnimationFrame(tick);
+    await new Promise(resolve=>setTimeout(resolve,40));
+    let error='';
+    try { await (0,eval)(script); } catch(e) { error=String(e); }
+    await new Promise(resolve=>setTimeout(resolve,40));
+    cancelAnimationFrame(frame);
+    return {maxGap,error};
+  },script);
+  // Hostname validation follows full payload decoding; no Slack API is called.
+  expect(metrics.error).toContain('Run this script on your Slack workspace');
+  expect(metrics.maxGap).toBeLessThan(500);
+  await probe.close();
+});

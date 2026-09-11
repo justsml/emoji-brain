@@ -1,0 +1,21 @@
+# Slack export payload and decoding
+
+Measured from the delivery manifest on 2026-09-10 (353 emojis, 82 animated).
+
+| Export | Animated WebP bytes | Still WebP bytes | Gzipped, base64 payload bytes |
+| --- | ---: | ---: | ---: |
+| Current: all 128px | 8,315,662 | 1,379,444 | 12,836,952 |
+| Comparison: animations 64px, stills 128px | 4,670,062 | 1,379,444 | 7,928,820 |
+
+The 64px comparison saves 37.6% of downloaded image bytes and 38.2% of embedded payload bytes. Script code adds a few KB. These are actual existing assets, not a pixel-area estimate. 128px remains the export default to preserve detail.
+
+The compact script previously decoded its entire base64 payload with `Uint8Array.from(atob(...), callback)`. An isolated Chromium comparison at 2x CPU slowdown with a 9.6 MB decoded payload measured:
+
+| Decoder | Elapsed | Largest frame gap |
+| --- | ---: | ---: |
+| Previous full-payload conversion | 2,043 ms | 2,048 ms |
+| 64 KiB base64 chunks, yielding between chunks | 923 ms | 20 ms |
+
+This isolates data conversion; it does not measure DevTools paste parsing, clipboard access, uploads, or end-to-end export time. The generated script now uses bounded chunks and yields. The app paints a clipboard-stage wait message before copying, and large-export instructions explain the possible DevTools paste pause.
+
+The functional browser suite exercises the actual full-catalog generated script at 2x CPU slowdown and requires its maximum frame gap to remain below 500 ms. It runs on a blank page and stops at the Slack hostname guard after decoding; it never contacts Slack. The separate 3G/4G export suite continues to measure application responsiveness and network behavior. Its earlier failures have not been declared resolved by this decoder change.
