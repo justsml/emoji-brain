@@ -1,5 +1,5 @@
 import type { ReactElement, KeyboardEvent } from "react";
-import { memo, useCallback, useMemo, useState, useEffect, useRef } from "react";
+import { memo, useCallback, useMemo, useState, useEffect, useLayoutEffect, useRef } from "react";
 import type { EmojiMetadata } from "../types/emoji";
 import { cn } from "../lib/utils";
 import { emojiAsset, previewSrcSet } from "../lib/emojiAssets";
@@ -190,7 +190,10 @@ const EmojiGrid = ({
 
   const { columnCount } = calculateLayout(width, gridScale);
 
-  useEffect(() => {
+  // Measured before the browser paints: a first frame laid out at the guessed
+  // width would resize every cell once the real width arrived, and 352 cells
+  // moving at once was the largest layout shift on the page.
+  useLayoutEffect(() => {
     if (!parentRef.current) return;
     
     const updateWidth = () => {
