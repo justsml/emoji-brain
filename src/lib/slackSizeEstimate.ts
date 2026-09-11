@@ -19,8 +19,21 @@ export const EXPORT_TIERS = [
 
 export type ExportTier = {still: number; animated: number};
 
-/** The fields the estimator needs; `gzip` is keyed by pixel size. */
-export type SizedEmoji = {animated?: boolean; gzip?: Record<string, number>};
+/**
+ * The fields the estimator needs; `gzip` is keyed by pixel size.
+ * `maxSlackSize` is the catalog's recorded ceiling for this image — the largest
+ * variant inside Slack's per-emoji cap.
+ */
+export type SizedEmoji = {animated?: boolean; gzip?: Record<string, number>; maxSlackSize?: number};
+
+/**
+ * The size an image ships at: the tier, unless Slack's per-emoji cap forces
+ * this particular one smaller. Shared with the planner so the figures shown
+ * and the images sent can never disagree.
+ */
+export function slackSizeFor(emoji: {animated?: boolean; maxSlackSize?: number}, tierSize: number): number {
+  return emoji.maxSlackSize ? Math.min(tierSize, emoji.maxSlackSize) : tierSize;
+}
 
 export type TierEstimate = ExportTier & {
   stillCount: number;
@@ -40,7 +53,7 @@ export function estimateTierBytes(emojis: SizedEmoji[], tier: ExportTier, overhe
   let payload = 0;
   let measured = true;
   for (const emoji of emojis) {
-    const size = emoji.animated ? tier.animated : tier.still;
+    const size = slackSizeFor(emoji, emoji.animated ? tier.animated : tier.still);
     const gzip = emoji.gzip?.[String(size)];
     if (Number.isFinite(gzip)) payload += gzip as number;
     else measured = false;

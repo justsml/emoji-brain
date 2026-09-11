@@ -22,4 +22,9 @@ export interface EmojiMetadata {
   gzip?: Record<string, number>
   /** Bytes of the full-resolution source, for pricing a ZIP of the originals. */
   originalBytes?: number
+  /**
+   * Largest variant inside Slack's per-emoji byte cap. A few long animations
+   * ship smaller than their tier because of it.
+   */
+  maxSlackSize?: number
 }

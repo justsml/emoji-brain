@@ -189,6 +189,8 @@ export function EmojiExport({ selectedEmojis, onClearSelection, onDeselectVisibl
           {copiedScript.pinned
             ? ' — the size you chose.'
             : ' — sized automatically to keep the script under 8 MB.'}
+          {copiedScript.resolutions.filter(r => r.animated).length > 1 &&
+            ' A few long animations ship smaller than the rest: Slack refuses any single emoji over 128 KB.'}
         </p>
         <p className="slack-guide-note">Select fewer emojis to make room for larger images, up to 256px stills and 128px animations. ZIP exports include full-size originals and a local Slack script generator.</p>
         {copiedScript.replaceSmaller && <p>The script opens a replacement preview in Slack. Save the originals backup and confirm the selected changes before anything is deleted.</p>}

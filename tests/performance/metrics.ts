@@ -56,7 +56,7 @@ export async function throttle(page: Page, profile: Profile) {
   });
   await cdp.send('Target.setAutoAttach', {autoAttach: true, waitForDebuggerOnStart: true, flatten: false, filter: [{type: 'worker'}, {type: 'shared_worker'}, {exclude: true}]});
   const networkEvidence=()=>workers.map(worker=>{
-   const records=[...networkRequests.values()].filter(r=>r.workerUrl===worker.url&&/\/emoji-delivery\/(64|128|256)\//.test(r.url??''));
+   const records=[...networkRequests.values()].filter(r=>r.workerUrl===worker.url&&/\/emoji-delivery\/(32|64|128|256)\//.test(r.url??''));
    const throttled=records.filter(r=>r.ruleId&&ruleIds.includes(r.ruleId));
    return {...worker,requests:records.length,throttledRequests:throttled.length,networkApplied:records.length>0&&throttled.length===records.length};
   });

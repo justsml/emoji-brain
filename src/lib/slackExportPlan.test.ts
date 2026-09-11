@@ -38,6 +38,32 @@ it('still supplies minimum assets for an oversized ZIP, whose generator enforces
  expect(result.scriptBytes).toBeGreaterThan(100);
 });
 
+it('never ships an image above the Slack per-emoji cap',async()=>{
+ vi.stubGlobal('Blob',Blob);vi.stubGlobal('CompressionStream',undefined);
+ const selection=structuredClone(rows);
+ // the animation only fits at 64px; the still is unconstrained
+ selection[1].row.highestSlackCompatible={size:64,path:'/true/64',bytes:640};
+ const result=await planSlackExport(selection,async assets=>assets.map(a=>new Uint8Array(a.bytes)),()=>{},{},base+6000);
+ expect(result.assets.map(a=>[a.filename,a.size])).toEqual([['still.webp',256],['animated.webp',64]]);
+});
+it('reports every size shipped when the cap makes a group non-uniform',async()=>{
+ vi.stubGlobal('Blob',Blob);vi.stubGlobal('CompressionStream',undefined);
+ const capped={filename:'capped.webp',row:{...row(true),highestSlackCompatible:{size:32,path:'/true/32',bytes:320}}};
+ capped.row.variants[32]={webp:{path:'/true/32',bytes:320}};
+ const result=await planSlackExport([...structuredClone(rows),capped],async assets=>assets.map(a=>new Uint8Array(a.bytes)),()=>{},{},base+9000);
+ expect(result.resolutions).toEqual([
+  {animated:false,size:256,count:1},
+  {animated:true,size:128,count:1},
+  {animated:true,size:32,count:1},
+ ]);
+});
+it('lets the cap override even a pinned tier',async()=>{
+ vi.stubGlobal('Blob',Blob);vi.stubGlobal('CompressionStream',undefined);
+ const selection=structuredClone(rows);
+ selection[1].row.highestSlackCompatible={size:64,path:'/true/64',bytes:640};
+ const result=await planSlackExport(selection,async assets=>assets.map(a=>new Uint8Array(a.bytes)),()=>{},{tier:{still:256,animated:128}},base+9000);
+ expect(result.assets.map(a=>a.size)).toEqual([256,64]);
+});
 it('honours a pinned tier instead of walking the ladder',async()=>{
  vi.stubGlobal('Blob',Blob);vi.stubGlobal('CompressionStream',undefined);
  const load=vi.fn(async(assets:any[])=>assets.map(a=>new Uint8Array(a.bytes)));

@@ -1,6 +1,7 @@
 import fs from 'node:fs/promises';
 import sharp from 'sharp';
 import {createHash} from 'node:crypto';
+import {highestSlackCompatible} from './slack-compatibility.mjs';
 sharp.concurrency(2);
 sharp.cache({memory:32,files:0,items:8});
 const root='public/emoji-delivery';
@@ -8,15 +9,18 @@ const only=process.argv.find(arg=>arg.startsWith('--only='))?.slice(7).split(','
 const manifest=JSON.parse(await fs.readFile(`${root}/manifest.json`));
 const files=(await fs.readdir('public/emojis')).filter(f=>f.endsWith('.webp'));
 if(files.length!==Object.keys(manifest.items).length||files.some(f=>!manifest.items[f.slice(0,-5)]))throw Error('Incomplete delivery catalog');
-const totals=Object.fromEntries([64,128,256,'original'].map(size=>[size,{webp:0,webpOver:[]}]));
+const cap=manifest.settings.slackTargetBytes;
+const incompatible=[];
+const totals=Object.fromEntries([32,64,128,256,'original'].map(size=>[size,{webp:0,webpOver:[]}]));
 let previewBytes=0;
 let count=0,framesChecked=0,maxAlphaError=0;
-for(const size of [64,128,256,'original'])if((await fs.readdir(`${root}/${size}`)).some(f=>!f.endsWith('.webp')))throw Error('Non-WebP delivery file');
+for(const size of [32,64,128,256,'original'])if((await fs.readdir(`${root}/${size}`).catch(()=>[])).some(f=>!f.endsWith('.webp')))throw Error('Non-WebP delivery file');
 for(const [name,r] of Object.entries(manifest.items).filter(([name])=>!only||only.includes(name))){
   const source=await fs.readFile(r.source);
   if(createHash('sha256').update(source).digest('hex')!==r.sourceSha256)throw Error('Stale source '+name);
   const original=await sharp(source,{animated:true}).metadata();
-  for(const size of [64,128,256,'original']){
+  // 32px exists only for animations that cannot reach the cap at 64px
+  for(const size of [...(r.variants[32]?[32]:[]),64,128,256,'original']){
     if(size!=='original'&&(Object.keys(r.variants[size]).join()!=='webp'))throw Error('Non-WebP manifest variant '+name);
     const v=size==='original'?r.original:r.variants[size].webp,bytes=await fs.readFile('public'+v.path),meta=await sharp(bytes,{animated:true}).metadata();
     if(meta.format!=='webp'||bytes.length!==v.bytes||meta.width!==(size==='original'?original.width:size)||(meta.pageHeight??meta.height)!==(size==='original'?(original.pageHeight??original.height):size))throw Error('Invalid output '+v.path);
@@ -37,8 +41,14 @@ for(const [name,r] of Object.entries(manifest.items).filter(([name])=>!only||onl
       time+=original.delay?.[frame]??0;framesChecked++;
     }
     totals[size].webp+=bytes.length;
-    if(bytes.length>128000)totals[size].webpOver.push(name);
+    if(bytes.length>cap)totals[size].webpOver.push(name);
   }
+  // The recorded ceiling is what the exporter trusts to stay inside Slack's
+  // per-emoji limit, so it has to match the bytes actually on disk.
+  const expected=highestSlackCompatible(r.variants,cap);
+  if(JSON.stringify(r.highestSlackCompatible??null)!==JSON.stringify(expected))throw Error('Wrong highestSlackCompatible '+name);
+  if(expected&&expected.bytes>cap)throw Error('Slack ceiling over cap '+name);
+  if(!expected)incompatible.push(name);
   if(r.original.quality!==90)throw Error('Original is not quality 90 '+name);
   for(const size of [64,128,256]){
     const preview=r.previews[size],bytes=await fs.readFile('public'+preview.path),meta=await sharp(bytes,{animated:true}).metadata();
@@ -51,6 +61,6 @@ for(const [name,r] of Object.entries(manifest.items).filter(([name])=>!only||onl
   }
   if(++count%25===0)console.log('VALIDATED',count);
 }
-const report={count,framesChecked,maxMeanAlphaError:maxAlphaError,previewBytes,totals};
+const report={count,framesChecked,maxMeanAlphaError:maxAlphaError,previewBytes,slackCap:cap,slackIncompatible:incompatible,totals};
 console.log(JSON.stringify(report,null,2));
 await fs.writeFile(`${root}/${only?'validation-latest-corrections':'validation'}.json`,JSON.stringify(report,null,2)+'\n');

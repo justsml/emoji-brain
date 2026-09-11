@@ -1,5 +1,5 @@
 import {it, expect} from 'vitest';
-import {EXPORT_TIERS, estimateTierBytes, estimateTiers, bestTier, formatBytes, type SizedEmoji} from './slackSizeEstimate';
+import {EXPORT_TIERS, estimateTierBytes, estimateTiers, bestTier, formatBytes, slackSizeFor, type SizedEmoji} from './slackSizeEstimate';
 
 const still = (gzip: number): SizedEmoji => ({animated: false, gzip: {64: gzip, 128: gzip * 2, 256: gzip * 4}});
 const animated = (gzip: number): SizedEmoji => ({animated: true, gzip: {64: gzip, 128: gzip * 2, 256: gzip * 4}});
@@ -47,6 +47,19 @@ it('falls back to the smallest tier when nothing fits, rather than nothing at al
   const rows = estimateTiers([still(9_000_000)], 0, 8_000_000);
   expect(rows.every(row => !row.fits)).toBe(true);
   expect(bestTier(rows)!.still).toBe(64);
+});
+
+it('holds an image to its Slack ceiling without raising the others', () => {
+  expect(slackSizeFor({maxSlackSize: 32}, 256)).toBe(32);
+  expect(slackSizeFor({maxSlackSize: 256}, 128)).toBe(128);
+  // a catalog entry with no recorded ceiling follows the tier
+  expect(slackSizeFor({}, 256)).toBe(256);
+});
+
+it('prices a capped image at the size it will actually ship', () => {
+  const capped: SizedEmoji = {animated: true, maxSlackSize: 64, gzip: {64: 100, 128: 9_000, 256: 90_000}};
+  // the 256/128 tier cannot charge this one 128px, because it ships at 64
+  expect(estimateTierBytes([capped], {still: 256, animated: 128}, 0).bytes).toBe(4 * Math.ceil(100 / 3));
 });
 
 it('formats bytes at a precision people can act on', () => {

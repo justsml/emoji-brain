@@ -1,27 +1,83 @@
 {
-  "count": 2,
-  "framesChecked": 164,
-  "maxMeanAlphaError": 0,
-  "previewBytes": 25370,
+  "count": 14,
+  "framesChecked": 7574,
+  "maxMeanAlphaError": 0.34375,
+  "previewBytes": 265300,
+  "slackCap": 127000,
+  "slackIncompatible": [],
   "totals": {
-    "64": {
-      "webp": 54034,
+    "32": {
+      "webp": 874488,
       "webpOver": []
+    },
+    "64": {
+      "webp": 2407042,
+      "webpOver": [
+        "meow-stretch",
+        "meow_angry_intensifies",
+        "meow_coffeespitting",
+        "meow_enjoy-rain",
+        "meow_enjoy-snow",
+        "meow_nod",
+        "meow_red-bull",
+        "meow_sad-rain"
+      ]
     },
     "128": {
-      "webp": 114938,
-      "webpOver": []
+      "webp": 5247292,
+      "webpOver": [
+        "cheers",
+        "crying_bear",
+        "meow-stretch",
+        "meow_angry_intensifies",
+        "meow_clorox",
+        "meow_coffeespitting",
+        "meow_derpy",
+        "meow_enjoy-rain",
+        "meow_enjoy-snow",
+        "meow_nod",
+        "meow_noddies",
+        "meow_red-bull",
+        "meow_sad-rain",
+        "severance-running"
+      ]
     },
     "256": {
-      "webp": 262452,
+      "webp": 15892976,
       "webpOver": [
-        "keanu_thanks"
+        "cheers",
+        "crying_bear",
+        "meow-stretch",
+        "meow_angry_intensifies",
+        "meow_clorox",
+        "meow_coffeespitting",
+        "meow_derpy",
+        "meow_enjoy-rain",
+        "meow_enjoy-snow",
+        "meow_nod",
+        "meow_noddies",
+        "meow_red-bull",
+        "meow_sad-rain",
+        "severance-running"
       ]
     },
     "original": {
-      "webp": 621546,
+      "webp": 38356610,
       "webpOver": [
-        "keanu_thanks"
+        "cheers",
+        "crying_bear",
+        "meow-stretch",
+        "meow_angry_intensifies",
+        "meow_clorox",
+        "meow_coffeespitting",
+        "meow_derpy",
+        "meow_enjoy-rain",
+        "meow_enjoy-snow",
+        "meow_nod",
+        "meow_noddies",
+        "meow_red-bull",
+        "meow_sad-rain",
+        "severance-running"
       ]
     }
   }

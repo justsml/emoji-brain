@@ -1,9 +1,11 @@
 import {generateCompactSlackBrowserScript, generateSlackBrowserScript, type SlackScriptImage} from './slackBrowserScript';
-import {EXPORT_TIERS, SLACK_SCRIPT_LIMIT, type ExportTier} from './slackSizeEstimate';
+import {EXPORT_TIERS, SLACK_SCRIPT_LIMIT, slackSizeFor, type ExportTier} from './slackSizeEstimate';
 
 export {SLACK_SCRIPT_LIMIT};
 export type DeliveryAsset = {path: string; bytes: number; slackGzipBytes?: number};
-export type DeliveryRow = {animated: boolean; original: DeliveryAsset; variants: Record<string, {webp: DeliveryAsset}>};
+/** Largest variant inside Slack's per-emoji byte cap; null when none is. */
+export type SlackCeiling = {size: number; path: string; bytes: number} | null;
+export type DeliveryRow = {animated: boolean; original: DeliveryAsset; variants: Record<string, {webp: DeliveryAsset}>; highestSlackCompatible?: SlackCeiling};
 export type SlackResolution = {animated: boolean; size: number; count: number};
 export type SlackAsset = DeliveryAsset & {filename: string; animated: boolean; size: number};
 export type SlackPlan = {script: string; scriptBytes: number; resolutions: SlackResolution[]; assets: SlackAsset[]};
@@ -30,7 +32,10 @@ export async function planSlackExport(
   let smallest: SlackPlan | undefined;
   for (const {still: stillSize, animated: animatedSize} of ladder) {
     const assets = rows.map(({filename,row}) => {
-      const size = row.animated ? animatedSize : stillSize;
+      // Slack refuses a custom emoji over its per-emoji cap, so the catalog's
+      // recorded ceiling overrides the tier for that image. A long animation
+      // drops to 64 or 32px while everything around it stays large.
+      const size = slackSizeFor({animated: row.animated, maxSlackSize: row.highestSlackCompatible?.size}, row.animated ? animatedSize : stillSize);
       const asset = row.variants[String(size)]?.webp;
       if (!asset) throw Error(`Missing ${size}px WebP: ${filename}`);
       return {...asset, filename, size, animated: row.animated};
@@ -53,10 +58,14 @@ export async function planSlackExport(
     progress('Checking compressed script size…');
     const script = await generateCompactSlackBrowserScript(images,options);
     const scriptBytes = new Blob([script]).size;
+    // Capped images make a group non-uniform, so report every size actually
+    // shipped rather than claiming the first one stands for the rest.
     const resolutions: SlackResolution[] = [];
     for (const animated of [false,true]) {
       const group = assets.filter(asset => asset.animated === animated);
-      if (group.length) resolutions.push({animated,size:group[0].size,count:group.length});
+      for (const size of [...new Set(group.map(asset => asset.size))].sort((a,b) => b-a)) {
+        resolutions.push({animated,size,count:group.filter(asset => asset.size === size).length});
+      }
     }
     smallest = {script,scriptBytes,resolutions,assets};
     if (scriptBytes < limit || options.tier) return smallest;

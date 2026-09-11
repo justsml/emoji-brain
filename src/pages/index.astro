@@ -19,6 +19,7 @@ const scriptOverheadBytes = new Blob([generateSlackBrowserScript([])]).size + 10
 const deliveryItems = deliveryManifest.items as Record<string, {
   variants: Record<string, {webp: {bytes: number; slackGzipBytes?: number}}>;
   original: {bytes: number};
+  highestSlackCompatible?: {size: number} | null;
 }>;
 const deliveryRow = (filename: string) => deliveryItems[filename.replace(/\.[^.]+$/, "")];
 const gzipByEmoji = (filename: string): Record<string, number> | undefined => {
@@ -36,27 +37,13 @@ const gzipByEmoji = (filename: string): Record<string, number> | undefined => {
 // client island. The explorer only needs the fields left in each record.
 const allEmojis: EmojiMetadata[] = (emojiMetadata.emojis || []).map(
   ({id, filename, path, animated, size, tags, categories, aliases}) =>
-    ({id, filename, path, animated, size, tags, categories, aliases, gzip: gzipByEmoji(filename), originalBytes: deliveryRow(filename)?.original.bytes}),
+    ({id, filename, path, animated, size, tags, categories, aliases, gzip: gzipByEmoji(filename), originalBytes: deliveryRow(filename)?.original.bytes, maxSlackSize: deliveryRow(filename)?.highestSlackCompatible?.size}),
 );
 // const categories = Array.from(new Set(allEmojis.flatMap(emoji => emoji.categories))).filter(Boolean);
 ---
 
 <Layout title="Emoji Explorer" imageCount={allEmojis.length}>
   <aside class="collection-note" aria-label="About the collection">
-    <dl class="collection-specs">
-      <div>
-        <dt>Stills</dt>
-        <dd>1024<span>px</span></dd>
-      </div>
-      <div>
-        <dt>Animated</dt>
-        <dd>512<span>px</span></dd>
-      </div>
-      <div>
-        <dt>Per export</dt>
-        <dd>8<span>MB</span></dd>
-      </div>
-    </dl>
     <p class="collection-note-copy">
       Everything here is upscaled, so it still reads at full size. The export
       script sizes each image to fit your whole selection into one paste —

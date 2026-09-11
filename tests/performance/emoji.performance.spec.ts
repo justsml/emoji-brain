@@ -6,7 +6,15 @@ import {profiles, throttle, installMetrics, begin, snapshot, cpuMetrics} from '.
 
 const manifest = JSON.parse(await fs.readFile('public/emoji-delivery/manifest.json', 'utf8'));
 const catalog = Object.keys(manifest.items);
-const expectedBytes = catalog.reduce((n,name)=>n+manifest.items[name].variants[manifest.items[name].animated?'64':'128'].webp.bytes,0);
+const slackCap = manifest.settings.slackTargetBytes;
+// A full-catalog export settles on 128px stills / 64px animations, except where
+// Slack's per-emoji cap forces an image smaller still.
+const shippedSize = (name: string) => {
+  const row = manifest.items[name];
+  return Math.min(row.animated ? 64 : 128, row.highestSlackCompatible?.size ?? Infinity);
+};
+const shippedAsset = (name: string) => manifest.items[name].variants[shippedSize(name)].webp;
+const expectedBytes = catalog.reduce((n,name)=>n+shippedAsset(name).bytes,0);
 
 test('sampler detects a deliberate main-thread freeze', async ({page, context}, testInfo) => {
   await context.grantPermissions(['clipboard-read', 'clipboard-write']);
@@ -105,11 +113,18 @@ for (const profile of profiles) test(`${profile.name}: cold load, scrolling and 
     expect(images).toHaveLength(catalog.length);expect(new Set(images.map((i:any)=>i.filename)).size).toBe(catalog.length);
     for(const image of images){
       expect(image.mimeType).toBe('image/webp');
-      const row=manifest.items[image.filename.slice(0,-5)];
-      const asset=row.variants[row.animated?'64':'128'].webp;
+      const name=image.filename.slice(0,-5);
+      const asset=shippedAsset(name);
+      const bytes=Buffer.from(image.base64,'base64');
       const original=await fs.readFile('public'+asset.path);
-      expect(createHash('sha256').update(Buffer.from(image.base64,'base64')).digest('hex')).toBe(createHash('sha256').update(original).digest('hex'));
+      expect(createHash('sha256').update(bytes).digest('hex')).toBe(createHash('sha256').update(original).digest('hex'));
+      // Slack refuses any single emoji over the cap, so no exported image may
+      // exceed it however the planner sized the rest of the sheet.
+      expect(bytes.length,`${name} exceeds the Slack per-emoji cap`).toBeLessThanOrEqual(slackCap);
     }
+    report.largestImageBytes=Math.max(...images.map((i:any)=>Buffer.from(i.base64,'base64').length));
+    report.shippedSizes=Object.entries(images.reduce((counts:Record<string,number>,i:any)=>{
+      const size=shippedSize(i.filename.slice(0,-5));counts[size]=(counts[size]??0)+1;return counts;},{}));
     const pagefind=requests.filter(url=>url.includes('/pagefind/'));
     expect(pagefind.filter(url=>new URL(url).pathname==='/pagefind/pagefind.js')).toHaveLength(1);
     expect(pagefind.filter(url=>url.includes('/fragment/'))).toHaveLength(0);

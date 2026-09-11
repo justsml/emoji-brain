@@ -24,7 +24,7 @@ it('keeps previous results mounted, reports preparation, and ignores late search
   const second = deferred();
   const metadata = deferred();
   window.pagefind = { search: vi.fn().mockReturnValueOnce(first.promise).mockReturnValueOnce(second.promise) } as any;
-  render(<EmojiExplorerApp initialEmojis={initial} />);
+  render(<EmojiExplorerApp initialEmojis={initial} scriptOverheadBytes={5_000} />);
   const input = screen.getByRole('searchbox');
   const original = screen.getByRole('button', { name: 'original.png' });
   fireEvent.change(input, { target: { value: 'first' } });
@@ -49,7 +49,7 @@ it('retains results on failure and clearing invalidates a pending request', asyn
   const pending = deferred();
   vi.spyOn(console, 'error').mockImplementation(() => {});
   window.pagefind = { search: vi.fn().mockReturnValueOnce(failing.promise).mockReturnValueOnce(pending.promise) } as any;
-  render(<EmojiExplorerApp initialEmojis={initial} />);
+  render(<EmojiExplorerApp initialEmojis={initial} scriptOverheadBytes={5_000} />);
   const input = screen.getByRole('searchbox');
   fireEvent.change(input, { target: { value: 'failure' } });
   await waitFor(()=>expect(window.pagefind!.search).toHaveBeenCalledTimes(1));
@@ -66,7 +66,7 @@ it('retains results on failure and clearing invalidates a pending request', asyn
 });
 
 it('can search local metadata before the index is available', async () => {
-  render(<EmojiExplorerApp initialEmojis={initial} />);
+  render(<EmojiExplorerApp initialEmojis={initial} scriptOverheadBytes={5_000} />);
   fireEvent.change(screen.getByRole('searchbox'), { target: { value: 'missing' } });
   await waitFor(() => expect(screen.queryByRole('button', { name: 'original.png' })).not.toBeInTheDocument());
   fireEvent.change(screen.getByRole('searchbox'), { target: { value: 'original' } });
@@ -75,7 +75,7 @@ it('can search local metadata before the index is available', async () => {
 
 it('keeps original filenames and paths for indexed matches', async () => {
   window.pagefind = { search: vi.fn().mockResolvedValue({ results: [{ data: async () => ({ meta: { id: 'original' }, url: '/emojis/original.png/', raw_url: '/search-document/' }) }] }) } as any;
-  render(<EmojiExplorerApp initialEmojis={initial} />);
+  render(<EmojiExplorerApp initialEmojis={initial} scriptOverheadBytes={5_000} />);
   fireEvent.change(screen.getByRole('searchbox'), { target: { value: 'original' } });
   await waitFor(() => expect(screen.getByRole('status')).toHaveTextContent('1 matches'));
   expect(screen.getByRole('button', { name: 'original.png' })).toBeInTheDocument();
@@ -88,7 +88,7 @@ it('opens a shared link onto its search and selection, then cleans the address b
   ];
   const { packIds } = await import('../lib/shareLink');
   window.history.replaceState(null, '', `/?q=ten&s=${packIds(['df167e0a'])}`);
-  render(<EmojiExplorerApp initialEmojis={emojis} />);
+  render(<EmojiExplorerApp initialEmojis={emojis} scriptOverheadBytes={5_000} />);
   expect(screen.getByRole('searchbox')).toHaveValue('ten');
   await waitFor(() => expect(screen.getByRole('button', { name: 'ten.png' })).toHaveAttribute('aria-pressed', 'true'));
   await waitFor(() => expect(screen.queryByRole('button', { name: 'other.png' })).not.toBeInTheDocument());
@@ -98,7 +98,7 @@ it('opens a shared link onto its search and selection, then cleans the address b
 it('coalesces fast typing and uses matched IDs without loading redundant fragments',async()=>{
   const load=vi.fn();
   window.pagefind={search:vi.fn().mockResolvedValue({results:[{data:load}],filters:{emoji_id:{original:1}}})} as any;
-  render(<EmojiExplorerApp initialEmojis={initial}/>);
+  render(<EmojiExplorerApp initialEmojis={initial} scriptOverheadBytes={5_000}/>);
   const input=screen.getByRole('searchbox');
   fireEvent.change(input,{target:{value:'o'}});fireEvent.change(input,{target:{value:'or'}});fireEvent.change(input,{target:{value:'original'}});
   await waitFor(()=>expect(screen.getByRole('status')).toHaveTextContent('1 matches'));
