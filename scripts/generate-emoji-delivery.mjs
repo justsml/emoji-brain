@@ -2,7 +2,8 @@ import fs from 'node:fs/promises';
 import sharp from 'sharp';
 import {createHash} from 'node:crypto';
 import {highestSlackCompatible} from './slack-compatibility.mjs';
-import {maxMeanAlphaError} from './alpha-fidelity.mjs';
+import {maxMeanAlphaError, alphaFromRaw} from './alpha-fidelity.mjs';
+import {allowedKeeps, pickFrames, stripFrames} from './frame-drop.mjs';
 sharp.concurrency(2);
 sharp.cache({memory:32,files:0,items:16});
 const batchSize=Number(process.argv.find(a=>a.startsWith('--batch-size='))?.split('=')[1]??8);
@@ -34,6 +35,43 @@ const slackCap=manifest.settings.slackTargetBytes;
 // drops below 80 — past that the artwork visibly degrades — so the last resort
 // is a slower encode at the same quality rather than a cheaper-looking one.
 const encodeAttempts=[{quality:90,effort:4},{quality:85,effort:4},{quality:80,effort:4},{quality:80,effort:6}];
+const MAX_ALPHA_ERROR=0.5;
+
+/**
+ * Fit one variant inside the cap, spending redundant frames before quality.
+ * Frame count is the outer ladder because these animations run at 39–50 fps
+ * and a 64px emoji renders nothing like that, so the first frames dropped cost
+ * the viewer nothing; quality is only reduced once the frame ladder runs out.
+ */
+async function encodeVariant({rgba,info,size,pages,delays,path,loop}){
+ const pageBytes=info.width*size*4;
+ const keeps=allowedKeeps(pages,delays);
+ let output,plan;
+ for(const keep of keeps){
+  const {frames,delays:folded}=pickFrames(pages,delays,keep);
+  const strip=keep===1?rgba:stripFrames(rgba,frames,pageBytes);
+  let expected;
+  // Hold quality at 90 while frames remain to spend; open the quality ladder
+  // only on the last rung, where nothing else is left to give.
+  const attempts=keep===keeps[keeps.length-1]?encodeAttempts:[encodeAttempts[0]];
+  for(const {quality,effort} of attempts){
+   const raw={width:size,height:size*frames.length,channels:4,pageHeight:size};
+   output=await writeImage(sharp(strip,{raw}),path,quality,{effort,loop,delay:folded,minSize:true,mixed:true});
+   plan={keep,frames:frames.length,of:pages};
+   if(output.bytes>slackCap)continue;
+   // Only an encode that deviates from the proven baseline needs verifying
+   // here: full frames at quality 90 has never failed the delivery
+   // validator, which checks every variant independently either way.
+   const deviates=pages>1&&(keep<1||quality<90);
+   if(deviates){
+    expected??=alphaFromRaw(strip);
+    if(await maxMeanAlphaError(expected,folded,await fs.readFile('public'+output.path))>MAX_ALPHA_ERROR)continue;
+   }
+   return {output,plan};
+  }
+ }
+ return {output,plan};
+}
 let processed=0;
 async function exists(v){return v&&await fs.access('public'+v.path).then(()=>true,()=>false)}
 async function writeImage(pipeline,path,quality,options={}){
@@ -49,18 +87,27 @@ for(const [name,choice] of sources){
  const entry={...choice,sourceSha256:sha,animated:(m.pages??1)>1,variants:{},previews:{}};
  const resize={fit:'contain',background:'#00000000',kernel:['nyancat','unikittyangry'].includes(name)?'nearest':'lanczos3'};
  let changed=false;
- for(const size of [64,128,256]){
+ // 128px and 256px are on-site display images and are never constrained by
+ // Slack's per-emoji cap — only whichever size actually ships to Slack needs
+ // to fit it, decided afterward by highestSlackCompatible. They always render
+ // at quality 90 with every source frame. Only 64px (and the 32px fallback
+ // below) trade frames, then quality, to fit the cap.
+ for(const size of [128,256]){
   const cached=prior?.variants[size]?.webp;
   if(await exists(cached)){entry.variants[size]={webp:cached};continue;}
   changed=true;
-  const {data}=await sharp(bytes,{animated:true}).resize(size,size,resize).ensureAlpha().raw().toBuffer({resolveWithObject:true});
-  const raw={width:size,height:size*(m.pages??1),channels:4,pageHeight:size};
-  let output;
-  for(const {quality,effort} of encodeAttempts){
-   output=await writeImage(sharp(data,{raw}),`/emoji-delivery/${size}/${name}.webp`,quality,{effort,loop:m.loop??0,delay:m.delay,minSize:true,mixed:true});
-   if(output.bytes<=slackCap)break;
+  entry.variants[size]={webp:await writeImage(sharp(bytes,{animated:true}).resize(size,size,resize).ensureAlpha(),`/emoji-delivery/${size}/${name}.webp`,90,{loop:m.loop??0,delay:m.delay,minSize:true,mixed:true})};
+ }
+ {
+  const size=64;
+  const cached=prior?.variants[size]?.webp;
+  if(await exists(cached)){entry.variants[size]={webp:cached};}
+  else{
+   changed=true;
+   const {data,info}=await sharp(bytes,{animated:true}).resize(size,size,resize).ensureAlpha().raw().toBuffer({resolveWithObject:true});
+   const {output,plan}=await encodeVariant({rgba:data,info,size,pages:m.pages??1,delays:m.delay??[],path:`/emoji-delivery/${size}/${name}.webp`,loop:m.loop??0});
+   entry.variants[size]={webp:plan.keep<1?{...output,frameKeep:plan.keep,frames:plan.frames,sourceFrames:plan.of}:output};
   }
-  entry.variants[size]={webp:output};
  }
  // A last rung, cut only for the handful of long animations that cannot reach
  // the cap at 64px. Generating it for the whole catalog would be 352 files
@@ -70,18 +117,9 @@ for(const [name,choice] of sources){
   if(await exists(cached))entry.variants[32]={webp:cached};
   else{
    changed=true;
-   const {data}=await sharp(bytes,{animated:true}).resize(32,32,resize).ensureAlpha().raw().toBuffer({resolveWithObject:true});
-   const raw={width:32,height:32*(m.pages??1),channels:4,pageHeight:32};
-   let output;
-   // The fallback rung is pushed hardest, so it is accepted only when it is
-   // both inside the cap and faithful: encoders are not monotonic in quality,
-   // and a larger file here can carry cleaner alpha than a smaller one.
-   for(const {quality,effort} of encodeAttempts){
-    output=await writeImage(sharp(data,{raw}),`/emoji-delivery/32/${name}.webp`,quality,{effort,loop:m.loop??0,delay:m.delay,minSize:true,mixed:true});
-    if(output.bytes>slackCap)continue;
-    if(await maxMeanAlphaError(bytes,await fs.readFile('public'+output.path),32,resize.kernel)<=0.5)break;
-   }
-   entry.variants[32]={webp:output};
+   const {data,info}=await sharp(bytes,{animated:true}).resize(32,32,resize).ensureAlpha().raw().toBuffer({resolveWithObject:true});
+   const {output,plan}=await encodeVariant({rgba:data,info,size:32,pages:m.pages??1,delays:m.delay??[],path:`/emoji-delivery/32/${name}.webp`,loop:m.loop??0});
+   entry.variants[32]={webp:plan.keep<1?{...output,frameKeep:plan.keep,frames:plan.frames,sourceFrames:plan.of}:output};
   }
  }
  for(const size of [64,128,256]){

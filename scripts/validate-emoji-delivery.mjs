@@ -2,6 +2,7 @@ import fs from 'node:fs/promises';
 import sharp from 'sharp';
 import {createHash} from 'node:crypto';
 import {highestSlackCompatible} from './slack-compatibility.mjs';
+import {pickFrames, MIN_FPS} from './frame-drop.mjs';
 sharp.concurrency(2);
 sharp.cache({memory:32,files:0,items:8});
 const root='public/emoji-delivery';
@@ -11,6 +12,7 @@ const files=(await fs.readdir('public/emojis')).filter(f=>f.endsWith('.webp'));
 if(files.length!==Object.keys(manifest.items).length||files.some(f=>!manifest.items[f.slice(0,-5)]))throw Error('Incomplete delivery catalog');
 const cap=manifest.settings.slackTargetBytes;
 const incompatible=[];
+const frameDropped=[];
 const totals=Object.fromEntries([32,64,128,256,'original'].map(size=>[size,{webp:0,webpOver:[]}]));
 let previewBytes=0;
 let count=0,framesChecked=0,maxAlphaError=0;
@@ -25,20 +27,32 @@ for(const [name,r] of Object.entries(manifest.items).filter(([name])=>!only||onl
     const v=size==='original'?r.original:r.variants[size].webp,bytes=await fs.readFile('public'+v.path),meta=await sharp(bytes,{animated:true}).metadata();
     if(meta.format!=='webp'||bytes.length!==v.bytes||meta.width!==(size==='original'?original.width:size)||(meta.pageHeight??meta.height)!==(size==='original'?(original.pageHeight??original.height):size))throw Error('Invalid output '+v.path);
     if(r.animated&&((meta.pages??1)<2||(meta.delay??[]).reduce((a,b)=>a+b,0)!==original.delay.reduce((a,b)=>a+b,0)||(meta.loop??0)!==(original.loop??0)))throw Error('Changed playback '+v.path);
-    // Compare decoded alpha at every source frame's timestamp, including holds
-    // that the WebP encoder may losslessly coalesce into a longer frame.
+    // A variant may deliberately carry fewer frames than the source to fit
+    // Slack's cap. Rebuild the frame set it was meant to have — total duration
+    // unchanged — and check that, so a dropped frame is never read as damage.
+    const {frames:keptFrames,delays:keptDelays}=v.frameKeep
+      ? pickFrames(original.pages??1,original.delay??[],v.frameKeep)
+      : {frames:[...Array(original.pages??1).keys()],delays:original.delay??[]};
+    if(v.frameKeep){
+      if(keptFrames.length!==v.frames||(original.pages??1)!==v.sourceFrames)throw Error('Frame plan does not match manifest '+v.path);
+      if(keptFrames.length/(keptDelays.reduce((a,b)=>a+b,0)/1000)<MIN_FPS)throw Error('Below the frame-rate floor '+v.path);
+      if(keptDelays.reduce((a,b)=>a+b,0)!==original.delay.reduce((a,b)=>a+b,0))throw Error('Changed duration '+v.path);
+    }
+    // Compare decoded alpha at every intended frame's timestamp, including
+    // holds that the WebP encoder may losslessly coalesce into a longer frame.
     let reference=sharp(source,{animated:true});
     if(size!=='original')reference=reference.resize(size,size,{fit:'contain',background:'#00000000',kernel:['nyancat','unikittyangry'].includes(name)?'nearest':'lanczos3'});
     const expected=await reference.ensureAlpha().extractChannel('alpha').raw().toBuffer();
     const actual=await sharp(bytes,{animated:true}).ensureAlpha().extractChannel('alpha').raw().toBuffer();
     let targetFrame=0,targetEnd=meta.delay?.[0]??Infinity,time=0;
-    for(let frame=0;frame<(original.pages??1);frame++){
+    for(let index=0;index<keptFrames.length;index++){
+      const frame=keptFrames[index];
       while(time>=targetEnd&&targetFrame<(meta.pages??1)-1)targetEnd+=meta.delay[++targetFrame];
       let error=0;const pixels=meta.width*(meta.pageHeight??meta.height);
       for(let p=0;p<pixels;p++)error+=Math.abs(expected[frame*pixels+p]-actual[targetFrame*pixels+p]);
       const mean=error/pixels;maxAlphaError=Math.max(maxAlphaError,mean);
       if(mean>0.5)throw Error(`Changed alpha ${v.path} frame ${frame}: mean error ${mean}`);
-      time+=original.delay?.[frame]??0;framesChecked++;
+      time+=keptDelays[index]??0;framesChecked++;
     }
     totals[size].webp+=bytes.length;
     if(bytes.length>cap)totals[size].webpOver.push(name);
@@ -49,6 +63,8 @@ for(const [name,r] of Object.entries(manifest.items).filter(([name])=>!only||onl
   if(JSON.stringify(r.highestSlackCompatible??null)!==JSON.stringify(expected))throw Error('Wrong highestSlackCompatible '+name);
   if(expected&&expected.bytes>cap)throw Error('Slack ceiling over cap '+name);
   if(!expected)incompatible.push(name);
+  for(const [size,variant] of Object.entries(r.variants))
+    if(variant.webp.frameKeep)frameDropped.push(`${name}@${size}: ${variant.webp.frames}/${variant.webp.sourceFrames} frames`);
   if(r.original.quality!==90)throw Error('Original is not quality 90 '+name);
   for(const size of [64,128,256]){
     const preview=r.previews[size],bytes=await fs.readFile('public'+preview.path),meta=await sharp(bytes,{animated:true}).metadata();
@@ -61,6 +77,6 @@ for(const [name,r] of Object.entries(manifest.items).filter(([name])=>!only||onl
   }
   if(++count%25===0)console.log('VALIDATED',count);
 }
-const report={count,framesChecked,maxMeanAlphaError:maxAlphaError,previewBytes,slackCap:cap,slackIncompatible:incompatible,totals};
+const report={count,framesChecked,maxMeanAlphaError:maxAlphaError,previewBytes,slackCap:cap,slackIncompatible:incompatible,frameDropped,totals};
 console.log(JSON.stringify(report,null,2));
 await fs.writeFile(`${root}/${only?'validation-latest-corrections':'validation'}.json`,JSON.stringify(report,null,2)+'\n');
