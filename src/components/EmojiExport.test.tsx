@@ -49,7 +49,7 @@ describe("EmojiExport Component", () => {
     vi.clearAllMocks();
     vi.mocked(runExportWorker).mockImplementation(async request => request.kind === 'zip'
       ? {kind:'zip',buffer:new ArrayBuffer(0)}
-      : {kind:'slack',script:'// /api/emoji.add emoji1.webp',count:request.filenames.length});
+      : {kind:'slack',script:'// /api/emoji.add emoji1.webp',scriptBytes:29,count:request.filenames.length,resolutions:[{animated:false,size:256,count:request.filenames.length}]});
     vi.stubGlobal("CompressionStream", undefined);
 
     Object.defineProperty(navigator, "clipboard", {

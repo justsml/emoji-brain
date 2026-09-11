@@ -1,12 +1,12 @@
 import {test,expect} from '@playwright/test';
 import {createHash} from 'node:crypto';
 
-test('console export uses a worker and fixed 128px WebP and uploads identical bytes in a mocked browser',async({page,context})=>{
+test('console export uses a worker and adaptive WebP and uploads identical bytes in a mocked browser',async({page,context})=>{
   await page.addInitScript(()=>Object.defineProperty(navigator,'clipboard',{value:{writeText:async(text:string)=>{(window as any).copiedEmojiScript=text;}}}));
   await page.goto('/');
   await page.locator('div[role="gridcell"] button').first().click();
   await expect(page.getByLabel('Slack image size')).toHaveCount(0);
-  for(const size of [128]){
+  for(const size of [256]){
     const workerCreated=page.waitForEvent('worker');
     const assetResponse=page.waitForResponse(r=>r.url().includes(`/emoji-delivery/${size}/`)&&r.url().endsWith('.webp'));
     await page.getByRole('button',{name:'Copy Slack script',exact:true}).click();
@@ -14,6 +14,7 @@ test('console export uses a worker and fixed 128px WebP and uploads identical by
     const asset=await assetResponse;
     const expected=await (await import('node:fs/promises')).readFile('public'+new URL(asset.url()).pathname);
     await expect(page.getByLabel('Close Slack instructions')).toBeVisible();
+    await expect(page.getByLabel('Exported image resolutions')).toContainText('1 still at 256×256');
     const script=await page.evaluate(()=>(window as any).copiedEmojiScript);
     const mock=await context.newPage();
     await mock.route('https://emoji-export-test.slack.com/**',route=>route.fulfill({contentType:'text/html',body:'<input name="token" value="fixture-token">'}));
@@ -134,7 +135,10 @@ test('full Slack script yields during payload decoding at half-speed CPU', async
   await page.getByTitle('Select All Visible', {exact:true}).click();
   await page.getByRole('button',{name:'Copy Slack script',exact:true}).click();
   await expect(page.getByLabel('Close Slack instructions')).toBeVisible({timeout:60_000});
+  await expect(page.getByLabel('Exported image resolutions')).toContainText('271 still at 128×128');
+  await expect(page.getByLabel('Exported image resolutions')).toContainText('82 animated at 64×64');
   const script = await page.evaluate(() => (window as any).copiedEmojiScript as string);
+  expect(Buffer.byteLength(script)).toBeLessThan(8_000_000);
   const probe = await context.newPage();
   const cdp = await context.newCDPSession(probe);
   await cdp.send('Emulation.setCPUThrottlingRate',{rate:2});

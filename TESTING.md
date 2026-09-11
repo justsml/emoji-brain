@@ -22,7 +22,7 @@ These are explicit synthetic profiles, not universal cellular standards. [CDP CP
 
 A separate control test deliberately stalls the main thread for 650ms and proves the sampler detects it. This is excluded from application measurements.
 
-Each profile covers cold navigation, native wheel scrolling from top to bottom and back while images load, selection of the full current catalog, and the actual Slack-export worker and clipboard write. Search input and scrolling continue throughout export. The script is decoded after measurement and every embedded WebP is compared by hash with its 128px delivery asset. No script is run on Slack and no emojis are uploaded.
+Each profile covers cold navigation, native wheel scrolling from top to bottom and back while images load, selection of the full current catalog, and the actual Slack-export worker and clipboard write. Search input and scrolling continue throughout export. The script is decoded after measurement and every embedded WebP is compared by hash with its selected delivery asset (currently 128px stills and 64px animations for the full catalog). No script is run on Slack and no emojis are uploaded.
 
 The JSON attachment `performance-metrics.json` records:
 
@@ -43,7 +43,7 @@ Layout-shift sum is diagnostic and is not session-window CLS. LCP is an observed
 | Longest scroll/export frame gap or main-thread task | <500ms |
 | Search input round trip during export | <1s |
 | Complete full-catalog export | <90s on 4G; <180s on 3G |
-| Slack script | <16MB and <1.4× embedded image bytes + 100KB |
+| Slack script | <8MB and <1.4× embedded image bytes + 100KB |
 
 These are regression ceilings, not claims of ideal UX. Inspect the attached measurements when a gate fails; do not automatically raise the thresholds. The catalog is read from the delivery manifest, so newly added emojis are included. Script-size gates catch accidental full-resolution exports or excessive serialization overhead. Pagefind must remain lazy, load one client, and avoid per-result fragment fetches.
 

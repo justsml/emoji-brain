@@ -12,7 +12,7 @@ for(const scenario of ['replace','restore','changed','alias','delete-rejected','
   await expect(page.getByLabel('Close Slack instructions')).toBeVisible();
   const script=await page.evaluate(()=>(window as any).copiedEmojiScript);
   const old=await sharp({create:{width:16,height:16,channels:4,background:'#1268ae'}}).webp({lossless:true}).toBuffer();
-  const newer=await fs.readFile('public/emoji-delivery/128/'+filename);
+  const newer=await fs.readFile('public/emoji-delivery/256/'+filename);
   const mock=await context.newPage();await mock.route('https://emoji-replace-test.slack.com/**',route=>route.fulfill({contentType:'text/html',body:'<input name="token" value="fixture-token">'}));
   await mock.goto('https://emoji-replace-test.slack.com/customize/emoji');mock.on('dialog',dialog=>dialog.accept());
   await mock.evaluate(({name,old,scenario})=>{

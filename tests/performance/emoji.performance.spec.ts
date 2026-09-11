@@ -6,7 +6,7 @@ import {profiles, throttle, installMetrics, begin, snapshot, cpuMetrics} from '.
 
 const manifest = JSON.parse(await fs.readFile('public/emoji-delivery/manifest.json', 'utf8'));
 const catalog = Object.keys(manifest.items);
-const expectedBytes = catalog.reduce((n,name)=>n+manifest.items[name].variants['128'].webp.bytes,0);
+const expectedBytes = catalog.reduce((n,name)=>n+manifest.items[name].variants[manifest.items[name].animated?'64':'128'].webp.bytes,0);
 
 test('sampler detects a deliberate main-thread freeze', async ({page, context}, testInfo) => {
   await context.grantPermissions(['clipboard-read', 'clipboard-write']);
@@ -97,7 +97,7 @@ for (const profile of profiles) test(`${profile.name}: cold load, scrolling and 
     // Capture/parse after performance sampling, outside the measured workload.
     const script=await page.evaluate(()=>(window as any).__perf.script as string);
     report.scriptBytes=Buffer.byteLength(script);report.scriptSha256=createHash('sha256').update(script).digest('hex');
-    expect(report.scriptBytes).toBeLessThan(16_000_000);
+    expect(report.scriptBytes).toBeLessThan(8_000_000);
     expect(report.scriptBytes).toBeLessThan(expectedBytes*1.4+100_000);
     const packed=script.match(/const encoded = "([A-Za-z0-9+/=]+)"/);
     expect(packed,'Expected compact gzip payload').not.toBeNull();
@@ -105,7 +105,8 @@ for (const profile of profiles) test(`${profile.name}: cold load, scrolling and 
     expect(images).toHaveLength(catalog.length);expect(new Set(images.map((i:any)=>i.filename)).size).toBe(catalog.length);
     for(const image of images){
       expect(image.mimeType).toBe('image/webp');
-      const asset=manifest.items[image.filename.slice(0,-5)].variants['128'].webp;
+      const row=manifest.items[image.filename.slice(0,-5)];
+      const asset=row.variants[row.animated?'64':'128'].webp;
       const original=await fs.readFile('public'+asset.path);
       expect(createHash('sha256').update(Buffer.from(image.base64,'base64')).digest('hex')).toBe(createHash('sha256').update(original).digest('hex'));
     }

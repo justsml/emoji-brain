@@ -93,11 +93,18 @@ export async function generateCompactSlackBrowserScript(images: SlackScriptImage
   for (let offset = 0; offset < bytes.length; offset += 0x8000) {
     binary += String.fromCharCode(...bytes.subarray(offset, offset + 0x8000));
   }
+  const decode = slackPayloadDecoder(btoa(binary));
+  const compact = plain.replace(`const images = ${json};`, `const images = ${decode};`);
+  return new Blob([compact]).size < new Blob([plain]).size ? compact : plain;
+}
+
+/** Shared by browser exports and the dependency-free ZIP generator. */
+export function slackPayloadDecoder(encoded: string): string {
   // Yield between bounded chunks: Array.from over the full payload creates a
   // multi-second main-thread task for a complete catalog in Slack's browser.
-  const decode = `await (async () => {
+  return `await (async () => {
     console.log('[slack-emoji-upload] Preparing images… Please keep this page open.');
-    const encoded = ${JSON.stringify(btoa(binary))};
+    const encoded = ${JSON.stringify(encoded)};
     const chunks = [];
     for (let offset = 0; offset < encoded.length; offset += 65536) {
       const binary = atob(encoded.slice(offset, offset + 65536));
@@ -108,6 +115,4 @@ export async function generateCompactSlackBrowserScript(images: SlackScriptImage
     }
     return JSON.parse(await new Response(new Blob(chunks).stream().pipeThrough(new DecompressionStream('gzip'))).text());
   })()`;
-  const compact = plain.replace(`const images = ${json};`, `const images = ${decode};`);
-  return new Blob([compact]).size < new Blob([plain]).size ? compact : plain;
 }

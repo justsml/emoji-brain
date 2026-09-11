@@ -2,6 +2,7 @@ import { useState, useRef, useCallback, useEffect } from "react";
 import { Button } from "./ui/button";
 import type { EmojiMetadata } from "../types/emoji";
 import { getAbsoluteUrl } from "../lib/utils";
+import type { SlackResolution } from '../lib/slackExportPlan';
 import { runExportWorker } from "../lib/exportWorker";
 import { emojiAsset, markdownTable } from "../lib/emojiAssets";
 import { CheckSquare, XSquare, ChevronDown, Copy, LoaderCircle, X, Check, Trash2, Link } from "lucide-react";
@@ -22,7 +23,7 @@ interface EmojiExportProps {
 export function EmojiExport({ selectedEmojis, onClearSelection, onDeselectVisible, onSelectAll, filteredEmojis, gridScale, onRemoveEmoji, shareUrl }: EmojiExportProps) {
   const [exportStatus, setExportStatus] = useState<string>("");
   const [isExporting, setIsExporting] = useState(false);
-  const [copiedScript, setCopiedScript] = useState<{ megabytes: string; count: number; replaceSmaller: boolean } | null>(null);
+  const [copiedScript, setCopiedScript] = useState<{ megabytes: string; count: number; replaceSmaller: boolean; resolutions: SlackResolution[] } | null>(null);
   const statusTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const scriptButtonRef = useRef<HTMLButtonElement>(null);
   const closeInstructionsRef = useRef<HTMLButtonElement>(null);
@@ -98,9 +99,9 @@ export function EmojiExport({ selectedEmojis, onClearSelection, onDeselectVisibl
         // Let React commit and the browser paint the message before clipboard work.
         await new Promise<void>(resolve => requestAnimationFrame(() => requestAnimationFrame(() => resolve())));
         if (controller.signal.aborted) return;
-        const megabytes = (new Blob([result.script]).size / 1_000_000).toFixed(3);
+        const megabytes = (result.scriptBytes / 1_000_000).toFixed(3);
         await navigator.clipboard.writeText(result.script);
-        setCopiedScript({megabytes, count: result.count, replaceSmaller});
+        setCopiedScript({megabytes, count: result.count, replaceSmaller, resolutions: result.resolutions});
         setStatusWithTimeout(`Copied Slack script · ${megabytes} MB`);
       } else {
         const url = URL.createObjectURL(new Blob([result.buffer], {type: 'application/zip'}));
@@ -163,6 +164,11 @@ export function EmojiExport({ selectedEmojis, onClearSelection, onDeselectVisibl
           </div>
           <Button ref={closeInstructionsRef} variant="ghost" size="icon" aria-label="Close Slack instructions" onClick={closeInstructions}><X className="h-4 w-4" /></Button>
         </div>
+        <p className="slack-guide-note" aria-label="Exported image resolutions">
+          {copiedScript.resolutions.map(r => `${r.count} ${r.animated ? 'animated' : 'still'} at ${r.size}×${r.size}`).join(' · ')}
+          {' — sized automatically to keep the script under 8 MB.'}
+        </p>
+        <p className="slack-guide-note">Select fewer emojis to make room for larger images, up to 256px stills and 128px animations. ZIP exports include full-size originals and a local Slack script generator.</p>
         {copiedScript.replaceSmaller && <p>The script opens a replacement preview in Slack. Save the originals backup and confirm the selected changes before anything is deleted.</p>}
         <ol>
           <li>Sign in to your workspace and open <code>https://YOUR-WORKSPACE.slack.com/customize/emoji</code>.</li>

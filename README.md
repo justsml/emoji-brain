@@ -62,11 +62,15 @@ All delivered images are WebP, including animations:
 
 | Export | Image assets |
 |---|---|
-| Slack console script | Fixed 128×128 |
-| ZIP | Full-resolution enhanced dimensions, WebP quality 90, alpha quality 100 |
+| Slack console script | Adaptive, under 8 MB: up to 256px stills / 128px animations |
+| ZIP | Full-resolution WebP@90 originals, plus optimized Slack images and a local generator |
 | Markdown table | One emoji per row: linked full-resolution name, then 64px, 128px and 256px previews |
 
 For optional upgrades of smaller exact-name Slack emojis, choose **Other export options → Slack script: replace smaller…**. It opens a preview in Slack and requires an originals backup and confirmation before replacing anything. See [the replacement workflow](docs/slack-emoji-replacements.md).
+
+Slack export measures the finished script and tries 256px stills / 128px animations, then 256/64, 128/64 and 64/64. The first combination below **8,000,000 UTF-8 bytes** wins; if none fits, select fewer emojis. The receipt lists counts and resolutions. Select fewer images to make room for larger versions. The same cap includes the optional replacement UI. Each asset is fetched at most once per export while the worker checks smaller combinations.
+
+ZIPs preserve the full-size originals at the root and include a separate `slack/images` folder. Run `sh generate-slack-script.sh` after extracting (Node.js 18+, no packages or network required) to produce `slack-upload.js` from those optimized images. On macOS, `pbcopy < slack-upload.js` copies it. The generator refuses oversized scripts; remove some images from `slack/images` to export a subset. It uses the normal uploader without deletion.
 
 ZIP fetching/assembly and Slack base64/gzip/script encoding run in a dedicated worker, with four concurrent downloads, progress, cancellation and worker cleanup. ZIP stores the already-compressed WebPs without another compression pass. Clipboard writes and download initiation stay on the main thread. Small text exports remain on the main thread.
 
