@@ -1,9 +1,9 @@
 {
   "command": "pnpm test:e2e:performance",
-  "testedCommit": "8ae2beb02267e641183db987df943cef8d08cb78",
+  "testedCommit": "16f006ec2d1aa9630827486be380378ff762a0e5",
   "status": "performance-budgets-failed",
   "control": "Deliberate 650ms page task detected successfully",
-  "environmentNote": "Local host had substantial concurrent load from other applications. Do not treat these failures as isolated device benchmarks or attribute their cause to application code alone. Budgets were not relaxed.",
+  "environmentNote": "Local Chromium, 2x CPU slowdown, 3G and 4G network rules verified on all selected variant requests. These are local measurements, not isolated hardware benchmarks. The strict p95 frame-gap gate remains below 50ms; no budgets were relaxed.",
   "measurements": [
     {
       "profile": {
@@ -17,7 +17,7 @@
         "exportBudgetMs": 90000
       },
       "catalogCount": 353,
-      "expectedImageBytes": 9695106,
+      "expectedImageBytes": 6049506,
       "browser": "153.0.8010.12",
       "viewport": {
         "width": 1440,
@@ -27,85 +27,85 @@
         "platform": "darwin",
         "arch": "arm64"
       },
-      "readyMs": 1962,
+      "readyMs": 1561,
       "load": {
         "phase": "load",
-        "durationMs": 1901.300000011921,
-        "frames": 77,
-        "p95FrameGapMs": 50.100000000000136,
-        "maxFrameGapMs": 166.60000000000002,
-        "longTaskCount": 4,
-        "maxLongTaskMs": 150,
-        "blockingMs": 129,
-        "fcpMs": 324,
-        "lcpMs": 340,
+        "durationMs": 1486.5999999940395,
+        "frames": 57,
+        "p95FrameGapMs": 66.60000000000014,
+        "maxFrameGapMs": 150,
+        "longTaskCount": 2,
+        "maxLongTaskMs": 137,
+        "blockingMs": 93,
+        "fcpMs": 356,
+        "lcpMs": 364,
         "layoutShiftSum": 0.6463298943262925
       },
-      "initialTransferBytes": 279678,
+      "initialTransferBytes": 237064,
       "scroll": {
         "phase": "scroll",
-        "durationMs": 9918.600000023842,
-        "frames": 432,
+        "durationMs": 6418.800000011921,
+        "frames": 284,
         "p95FrameGapMs": 33.40000000000009,
-        "maxFrameGapMs": 200,
+        "maxFrameGapMs": 266.6999999999998,
         "longTaskCount": 0,
         "maxLongTaskMs": 0,
         "blockingMs": 0,
-        "fcpMs": 324,
-        "lcpMs": 340,
+        "fcpMs": 356,
+        "lcpMs": 364,
         "layoutShiftSum": 0.6463298943262925
       },
       "scrollCpuBefore": {
-        "Nodes": 5946,
-        "LayoutDuration": 0.123187,
-        "RecalcStyleDuration": 0.065778,
-        "ScriptDuration": 0.249289,
-        "TaskDuration": 1.045297,
-        "JSHeapUsedSize": 6690092
+        "Nodes": 5948,
+        "LayoutDuration": 0.113558,
+        "RecalcStyleDuration": 0.06228,
+        "ScriptDuration": 0.272481,
+        "TaskDuration": 0.854964,
+        "JSHeapUsedSize": 6748812
       },
       "scrollCpuAfter": {
-        "Nodes": 5967,
-        "LayoutDuration": 0.267219,
-        "RecalcStyleDuration": 0.07859,
-        "ScriptDuration": 0.289756,
-        "TaskDuration": 3.050026,
-        "JSHeapUsedSize": 7003640
+        "Nodes": 5969,
+        "LayoutDuration": 0.276735,
+        "RecalcStyleDuration": 0.073647,
+        "ScriptDuration": 0.305263,
+        "TaskDuration": 2.933512,
+        "JSHeapUsedSize": 7035664
       },
       "exportCpuBefore": {
-        "Nodes": 5257,
-        "LayoutDuration": 0.331476,
-        "RecalcStyleDuration": 0.206694,
-        "ScriptDuration": 0.377635,
-        "TaskDuration": 4.290457,
-        "JSHeapUsedSize": 7030576
+        "Nodes": 7042,
+        "LayoutDuration": 0.328463,
+        "RecalcStyleDuration": 0.194649,
+        "ScriptDuration": 0.389478,
+        "TaskDuration": 3.648925,
+        "JSHeapUsedSize": 9002664
       },
-      "exportMs": 46332,
+      "exportMs": 19380,
       "export": {
         "phase": "export",
-        "durationMs": 46404,
-        "frames": 1869,
-        "p95FrameGapMs": 33.400000000001455,
-        "maxFrameGapMs": 533.2999999999993,
-        "longTaskCount": 57,
-        "maxLongTaskMs": 501,
-        "blockingMs": 3445,
-        "fcpMs": 324,
-        "lcpMs": 340,
-        "layoutShiftSum": 5.948170323199991
+        "durationMs": 19533.70000001788,
+        "frames": 706,
+        "p95FrameGapMs": 50,
+        "maxFrameGapMs": 283.3999999999978,
+        "longTaskCount": 34,
+        "maxLongTaskMs": 261,
+        "blockingMs": 1626,
+        "fcpMs": 356,
+        "lcpMs": 364,
+        "layoutShiftSum": 5.320040310992959
       },
       "exportCpuAfter": {
-        "Nodes": 28845,
-        "LayoutDuration": 0.8874,
-        "RecalcStyleDuration": 0.861797,
-        "ScriptDuration": 2.862587,
-        "TaskDuration": 21.609712,
-        "JSHeapUsedSize": 26304620
+        "Nodes": 1677,
+        "LayoutDuration": 0.902826,
+        "RecalcStyleDuration": 0.691646,
+        "ScriptDuration": 2.908221,
+        "TaskDuration": 14.054254,
+        "JSHeapUsedSize": 22569916
       },
-      "inputProbes": 34,
-      "maxInputRoundTripMs": 2057,
+      "inputProbes": 30,
+      "maxInputRoundTripMs": 136,
       "workers": [
         {
-          "url": "http://localhost:4322/_astro/export.worker-D9zAFggq.js",
+          "url": "http://localhost:4322/_astro/export.worker-CDgi59rU.js",
           "networkApplied": true,
           "requests": 353,
           "throttledRequests": 353
@@ -117,12 +117,10 @@
           "throttledRequests": 0
         }
       ],
-      "scriptBytes": 12841477,
-      "scriptSha256": "5d7cf0dd86d765c47f5f8377524f4bcff0c5d8b7b5fc5fada34b7e3ed79dcb20",
+      "scriptBytes": 7935527,
+      "scriptSha256": "e3230b07ba1f73118c2a970360df5cb98672547c401b211c2b7bfcc444aab4a0",
       "testErrors": [
-        "Error: expect(received).toBeLessThan(expected)\n\nExpected: < 1000\nReceived:   2057",
-        "Error: expect(received).toBeLessThan(expected)\n\nExpected: < 500\nReceived:   533.2999999999993",
-        "Error: expect(received).toBeLessThan(expected)\n\nExpected: < 500\nReceived:   501"
+        "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: < \u001b[32m50\u001b[39m\nReceived:   \u001b[31m50\u001b[39m"
       ],
       "errors": []
     },
@@ -138,7 +136,7 @@
         "exportBudgetMs": 180000
       },
       "catalogCount": 353,
-      "expectedImageBytes": 9695106,
+      "expectedImageBytes": 6049506,
       "browser": "153.0.8010.12",
       "viewport": {
         "width": 1440,
@@ -148,76 +146,85 @@
         "platform": "darwin",
         "arch": "arm64"
       },
-      "readyMs": 3180,
+      "readyMs": 2378,
       "load": {
         "phase": "load",
-        "durationMs": 2887.0999999940395,
-        "frames": 123,
-        "p95FrameGapMs": 33.40000000000009,
+        "durationMs": 2169.100000023842,
+        "frames": 106,
+        "p95FrameGapMs": 16.800000000000068,
         "maxFrameGapMs": 100,
-        "longTaskCount": 3,
-        "maxLongTaskMs": 107,
-        "blockingMs": 81,
-        "fcpMs": 756,
-        "lcpMs": 768,
+        "longTaskCount": 1,
+        "maxLongTaskMs": 87,
+        "blockingMs": 37,
+        "fcpMs": 528,
+        "lcpMs": 536,
         "layoutShiftSum": 0.6463298943262925
       },
-      "initialTransferBytes": 222608,
+      "initialTransferBytes": 184498,
       "scroll": {
         "phase": "scroll",
-        "durationMs": 9514.600000023842,
-        "frames": 434,
-        "p95FrameGapMs": 33.399999999999636,
-        "maxFrameGapMs": 83.40000000000055,
-        "longTaskCount": 1,
-        "maxLongTaskMs": 50,
+        "durationMs": 6325.9000000059605,
+        "frames": 306,
+        "p95FrameGapMs": 33.40000000000009,
+        "maxFrameGapMs": 50,
+        "longTaskCount": 0,
+        "maxLongTaskMs": 0,
         "blockingMs": 0,
-        "fcpMs": 756,
-        "lcpMs": 768,
+        "fcpMs": 528,
+        "lcpMs": 536,
         "layoutShiftSum": 0.6463298943262925
       },
       "scrollCpuBefore": {
-        "Nodes": 5946,
-        "LayoutDuration": 0.110055,
-        "RecalcStyleDuration": 0.057755,
-        "ScriptDuration": 0.240449,
-        "TaskDuration": 0.910607,
-        "JSHeapUsedSize": 6639572
+        "Nodes": 5948,
+        "LayoutDuration": 0.071228,
+        "RecalcStyleDuration": 0.044103,
+        "ScriptDuration": 0.166432,
+        "TaskDuration": 0.521951,
+        "JSHeapUsedSize": 6700100
       },
       "scrollCpuAfter": {
-        "Nodes": 5967,
-        "LayoutDuration": 0.261457,
-        "RecalcStyleDuration": 0.074627,
-        "ScriptDuration": 0.281344,
-        "TaskDuration": 3.324627,
-        "JSHeapUsedSize": 6930212
+        "Nodes": 5969,
+        "LayoutDuration": 0.194443,
+        "RecalcStyleDuration": 0.052362,
+        "ScriptDuration": 0.196799,
+        "TaskDuration": 2.472963,
+        "JSHeapUsedSize": 6990368
       },
       "exportCpuBefore": {
-        "Nodes": 5252,
-        "LayoutDuration": 0.337188,
-        "RecalcStyleDuration": 0.19186,
-        "ScriptDuration": 0.386726,
-        "TaskDuration": 4.523192,
-        "JSHeapUsedSize": 6463252
+        "Nodes": 7042,
+        "LayoutDuration": 0.260834,
+        "RecalcStyleDuration": 0.160106,
+        "ScriptDuration": 0.302056,
+        "TaskDuration": 3.369204,
+        "JSHeapUsedSize": 6758524
       },
-      "interruptedPhase": {
+      "exportMs": 50677,
+      "export": {
         "phase": "export",
-        "durationMs": 76507.09999999404,
-        "frames": 2887,
+        "durationMs": 50760.70000001788,
+        "frames": 1938,
         "p95FrameGapMs": 50,
-        "maxFrameGapMs": 666.6000000000022,
-        "longTaskCount": 123,
-        "maxLongTaskMs": 688,
-        "blockingMs": 7961,
-        "fcpMs": 756,
-        "lcpMs": 768,
-        "layoutShiftSum": 10.78253615698543
+        "maxFrameGapMs": 516.6999999999971,
+        "longTaskCount": 92,
+        "maxLongTaskMs": 507,
+        "blockingMs": 4550,
+        "fcpMs": 528,
+        "lcpMs": 536,
+        "layoutShiftSum": 12.191003656533312
       },
-      "testErrors": [],
-      "errors": [],
+      "exportCpuAfter": {
+        "Nodes": 5740,
+        "LayoutDuration": 1.820279,
+        "RecalcStyleDuration": 1.432124,
+        "ScriptDuration": 6.538787,
+        "TaskDuration": 29.475796,
+        "JSHeapUsedSize": 26207104
+      },
+      "inputProbes": 79,
+      "maxInputRoundTripMs": 338,
       "workers": [
         {
-          "url": "http://localhost:4322/_astro/export.worker-D9zAFggq.js",
+          "url": "http://localhost:4322/_astro/export.worker-CDgi59rU.js",
           "networkApplied": true,
           "requests": 353,
           "throttledRequests": 353
@@ -229,7 +236,14 @@
           "throttledRequests": 0
         }
       ],
-      "failure": "TimeoutError: locator.fill exceeded 2000ms while waiting for Search emojis to become actionable (preserved from Playwright error context)."
+      "scriptBytes": 7935527,
+      "scriptSha256": "e3230b07ba1f73118c2a970360df5cb98672547c401b211c2b7bfcc444aab4a0",
+      "testErrors": [
+        "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: < \u001b[32m50\u001b[39m\nReceived:   \u001b[31m50\u001b[39m",
+        "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: < \u001b[32m500\u001b[39m\nReceived:   \u001b[31m516.6999999999971\u001b[39m",
+        "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: < \u001b[32m500\u001b[39m\nReceived:   \u001b[31m507\u001b[39m"
+      ],
+      "errors": []
     }
   ]
 }
