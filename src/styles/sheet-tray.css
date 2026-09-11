@@ -493,6 +493,13 @@
   outline: none;
 }
 
+@keyframes sheet-flash {
+  0%, 100% { background: transparent; color: inherit; }
+  30% { background: hsl(var(--primary) / 0.25); color: hsl(var(--primary)); }
+}
+.sheet-flash { animation: sheet-flash 0.9s ease-out; }
+
 @media (prefers-reduced-motion: reduce) {
   .sheet-estimate, .sheet-estimate-meter i, .size-option { transition: none; }
+  .sheet-flash { animation: none; }
 }

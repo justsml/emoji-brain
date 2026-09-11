@@ -32,6 +32,8 @@ export function EmojiExport({ selectedEmojis, onClearSelection, onDeselectVisibl
   const [copiedScript, setCopiedScript] = useState<{ megabytes: string; count: number; replaceSmaller: boolean; resolutions: SlackResolution[]; pinned: boolean } | null>(null);
   const statusTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const scriptButtonRef = useRef<HTMLButtonElement>(null);
+  const selectAllButtonRef = useRef<HTMLButtonElement>(null);
+  const [flashSelectAll, setFlashSelectAll] = useState(false);
   const closeInstructionsRef = useRef<HTMLButtonElement>(null);
   const abortControllerRef = useRef<AbortController | null>(null);
   const exportMenuRef = useRef<HTMLDivElement>(null);
@@ -158,6 +160,13 @@ export function EmojiExport({ selectedEmojis, onClearSelection, onDeselectVisibl
     if (!offered) setPinnedTier(null);
   }, [pinnedTier, estimates.tiers]);
 
+  const nudgeSelectAll = () => {
+    if (selectedEmojis.length > 0) return;
+    selectAllButtonRef.current?.focus();
+    setFlashSelectAll(true);
+    setTimeout(() => setFlashSelectAll(false), 900);
+  };
+
   const closeInstructions = () => {
     setCopiedScript(null);
     scriptButtonRef.current?.focus();
@@ -265,9 +274,10 @@ export function EmojiExport({ selectedEmojis, onClearSelection, onDeselectVisibl
           </button>
         )}
         <Button
+          ref={selectAllButtonRef}
           variant="ghost"
           onClick={onSelectAll}
-          className="h-9 w-9 p-0 hover:bg-primary/10 hover:text-primary"
+          className={`h-9 w-9 p-0 hover:bg-primary/10 hover:text-primary${flashSelectAll ? " sheet-flash" : ""}`}
           size="sm"
           title="Select All Visible"
         >
@@ -309,15 +319,21 @@ export function EmojiExport({ selectedEmojis, onClearSelection, onDeselectVisibl
           </Button>
         )}
         <div className="flex items-center">
-          <Button
-            ref={scriptButtonRef}
-            onClick={() => void exportFiles('slack')}
-            disabled={selectedEmojis.length === 0 || isExporting}
-            className="h-9 gap-2 rounded-r-none px-4 font-semibold"
+          <span
+            title={selectedEmojis.length === 0 ? "Select some emojis first, or click Select All" : undefined}
+            onMouseEnter={nudgeSelectAll}
+            onClick={nudgeSelectAll}
           >
-            {isExporting ? <LoaderCircle className="h-4 w-4 animate-spin motion-reduce:animate-none" /> : <Copy className="h-4 w-4" />}
-            {isExporting ? "Preparing…" : "Copy Slack script"}
-          </Button>
+            <Button
+              ref={scriptButtonRef}
+              onClick={() => void exportFiles('slack')}
+              disabled={selectedEmojis.length === 0 || isExporting}
+              className="h-9 gap-2 rounded-r-none px-4 font-semibold"
+            >
+              {isExporting ? <LoaderCircle className="h-4 w-4 animate-spin motion-reduce:animate-none" /> : <Copy className="h-4 w-4" />}
+              {isExporting ? "Preparing…" : "Copy Slack script"}
+            </Button>
+          </span>
           <Button
             aria-label="Other export options"
             aria-haspopup="menu"
