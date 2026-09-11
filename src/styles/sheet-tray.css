@@ -277,40 +277,222 @@
 @media (prefers-reduced-motion: reduce) {
   .sheet-chip, .sheet-chip img, .sheet-chip::after { transition: none; }
 }
+/* --- the export estimate -------------------------------------------------- */
+
+/* What this sheet will weigh, and the way into changing it. */
+.sheet-estimate {
+  position: relative;
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin-right: 0.4rem;
+  padding: 0.25rem 0.1rem 0.5rem;
+  border: 0;
+  background: none;
+  color: hsl(var(--muted-foreground));
+  cursor: pointer;
+  font: inherit;
+  white-space: nowrap;
+  transition: color 130ms ease;
+}
+.sheet-estimate:hover { color: hsl(var(--foreground)); }
+.sheet-estimate:focus-visible { outline: 2px solid hsl(var(--cut)); outline-offset: 2px; }
+
+.sheet-estimate-px {
+  color: hsl(var(--foreground));
+  font-family: var(--font-display);
+  font-size: 0.9375rem;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+.sheet-estimate-px small { font-size: 0.6875rem; font-weight: 500; opacity: 0.7; }
+.sheet-estimate-bytes { font-size: 0.75rem; font-variant-numeric: tabular-nums; }
+
+/* the fill reads as a fuel gauge against the 8 MB ceiling */
+.sheet-estimate-meter {
+  position: absolute;
+  left: 0.1rem;
+  right: 0.1rem;
+  bottom: 0.25rem;
+  height: 2px;
+  background: hsl(var(--foreground) / 0.16);
+}
+.sheet-estimate-meter i {
+  display: block;
+  height: 100%;
+  background: hsl(var(--rule));
+  transition: width 220ms ease;
+}
+.sheet-estimate[data-pinned="true"] .sheet-estimate-meter i { background: hsl(var(--cut)); }
+.sheet-estimate[data-over="true"] { color: hsl(var(--destructive)); }
+.sheet-estimate[data-over="true"] .sheet-estimate-px,
+.sheet-estimate[data-over="true"] .sheet-estimate-meter i { color: hsl(var(--destructive)); background: hsl(var(--destructive)); }
+.sheet-estimate[data-over="true"] .sheet-estimate-px { background: none; }
+
+@media (max-width: 560px) {
+  .sheet-estimate-bytes { display: none; }
+}
+
+/* --- export options ------------------------------------------------------- */
+
 .export-menu {
   position: fixed;
   inset: auto 1rem 4.75rem auto;
   margin: 0;
-  min-width: 11rem;
-  padding: 0.3rem;
-  border: 1px solid hsl(var(--border) / 0.6);
-  border-radius: 0.25rem;
+  width: min(23rem, calc(100vw - 2rem));
+  padding: 0;
+  border: 0;
+  border-top: 2px solid hsl(var(--cut));
+  border-radius: 3px;
   background: hsl(var(--popover));
   color: hsl(var(--popover-foreground));
-  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  box-shadow: 0 18px 44px -14px hsl(var(--lift) / 0.55);
 }
 
-.export-menu::backdrop {
-  background: transparent;
+.export-menu::backdrop { background: transparent; }
+
+.export-menu h3 {
+  margin: 0;
+  color: hsl(var(--muted-foreground));
+  font-family: var(--font-ui);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
 }
 
-.export-menu button {
+.size-options-head {
   display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.8rem 0.9rem 0.55rem;
+  color: hsl(var(--muted-foreground));
+  font-size: 0.75rem;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Each size is a row on a ruled sheet: the choice is marked by weight and a
+   rule, never by a filled box. */
+.size-option {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
   width: 100%;
-  cursor: pointer;
+  padding: 0.5rem 0.9rem;
   border: 0;
-  border-radius: 0.2rem;
-  background: transparent;
-  padding: 0.45rem 0.6rem;
+  border-top: 1px solid hsl(var(--rule) / 0.22);
+  background: none;
   color: inherit;
+  cursor: pointer;
   font: inherit;
+  text-align: left;
+  transition: background-color 120ms ease;
+}
+.size-option:hover { background: hsl(var(--foreground) / 0.05); }
+.size-option:focus-visible { outline: 2px solid hsl(var(--cut)); outline-offset: -2px; }
+
+.size-option-mark {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 1rem;
+  height: 1rem;
+  color: hsl(var(--cut));
+}
+
+.size-option-name {
+  flex: 1;
+  min-width: 0;
+  font-family: var(--font-display);
+  font-size: 0.9375rem;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+.size-option-name small {
+  display: block;
+  color: hsl(var(--muted-foreground));
+  font-family: var(--font-ui);
+  font-size: 0.6875rem;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.size-option-figures {
+  flex-shrink: 0;
+  width: 6.5rem;
+  text-align: right;
+}
+.size-option-px {
+  display: block;
+  font-family: var(--font-display);
   font-size: 0.875rem;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+}
+.size-option-bytes {
+  display: block;
+  color: hsl(var(--muted-foreground));
+  font-size: 0.75rem;
+  font-variant-numeric: tabular-nums;
+}
+
+/* every row against the same 8 MB ceiling, so the rows compare at a glance */
+.size-option-bar {
+  display: block;
+  height: 2px;
+  margin-top: 0.3rem;
+  background: hsl(var(--foreground) / 0.14);
+}
+.size-option-bar i {
+  display: block;
+  height: 100%;
+  background: hsl(var(--rule));
+}
+
+.size-option[data-active="true"] { background: hsl(var(--foreground) / 0.05); }
+.size-option[data-active="true"] .size-option-name { color: hsl(var(--foreground)); }
+.size-option[data-active="true"] .size-option-bar i { background: hsl(var(--cut)); }
+
+.size-option[data-over="true"] .size-option-name small,
+.size-option[data-over="true"] .size-option-bytes { color: hsl(var(--destructive)); }
+.size-option[data-over="true"] .size-option-bar i { background: hsl(var(--destructive)); }
+
+/* the originals sit apart: a download, not another rung on the Slack ladder */
+.size-option-originals { border-top-color: hsl(var(--rule) / 0.5); }
+.size-option-originals .size-option-mark { color: hsl(var(--muted-foreground)); }
+.size-option-originals:hover .size-option-mark { color: hsl(var(--foreground)); }
+.size-option-originals .size-option-bytes { color: hsl(var(--muted-foreground)); }
+
+.export-formats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.15rem;
+  padding: 0.7rem 0.6rem 0.6rem;
+  border-top: 1px solid hsl(var(--rule) / 0.35);
+}
+.export-formats h3 { width: 100%; padding: 0 0.3rem 0.35rem; }
+
+.export-menu .export-formats button {
+  border: 0;
+  border-radius: 2px;
+  background: transparent;
+  padding: 0.35rem 0.5rem;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.8125rem;
   text-align: left;
 }
-
-.export-menu button:hover,
-.export-menu button:focus-visible {
+.export-menu .export-formats button:hover,
+.export-menu .export-formats button:focus-visible {
   background: hsl(var(--accent));
   color: hsl(var(--accent-foreground));
   outline: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sheet-estimate, .sheet-estimate-meter i, .size-option { transition: none; }
 }

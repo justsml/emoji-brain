@@ -1,7 +1,8 @@
 import JSZip from 'jszip';
 import {planSlackExport, type DeliveryAsset, type DeliveryRow, type SlackResolution} from './slackExportPlan';
 import {addSlackZipTools} from './slackZipTools';
-export type ExportRequest = {kind: 'zip' | 'slack'; filenames: string[]; origin: string; replaceSmaller?: boolean};
+import type {ExportTier} from './slackSizeEstimate';
+export type ExportRequest = {kind: 'zip' | 'slack'; filenames: string[]; origin: string; replaceSmaller?: boolean; tier?: ExportTier};
 export type ExportResult = {kind: 'zip'; buffer: ArrayBuffer} | {kind: 'slack'; script: string; scriptBytes: number; count: number; resolutions: SlackResolution[]};
 type NamedAsset = DeliveryAsset & {filename: string};
 export async function prepareExport(request: ExportRequest, progress: (text: string) => void): Promise<ExportResult> {
@@ -41,7 +42,7 @@ export async function prepareExport(request: ExportRequest, progress: (text: str
     assets.forEach((asset,index)=>zip.file(asset.filename,data[index]));
     cache.clear();
   }
-  const plan = await planSlackExport(rows,load,progress,{replaceSmaller:request.replaceSmaller,allowOversizeArchive:!!zip});
+  const plan = await planSlackExport(rows,load,progress,{replaceSmaller:request.replaceSmaller,allowOversizeArchive:!!zip,tier:request.tier});
   if (zip) {
     addSlackZipTools(zip,plan,await load(plan.assets));
     // WebPs are already compressed. STORE avoids another heavy deflate pass.

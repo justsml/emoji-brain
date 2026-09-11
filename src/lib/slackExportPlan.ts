@@ -1,18 +1,24 @@
 import {generateCompactSlackBrowserScript, generateSlackBrowserScript, type SlackScriptImage} from './slackBrowserScript';
+import {EXPORT_TIERS, SLACK_SCRIPT_LIMIT, type ExportTier} from './slackSizeEstimate';
 
-export const SLACK_SCRIPT_LIMIT = 8_000_000;
+export {SLACK_SCRIPT_LIMIT};
 export type DeliveryAsset = {path: string; bytes: number; slackGzipBytes?: number};
 export type DeliveryRow = {animated: boolean; original: DeliveryAsset; variants: Record<string, {webp: DeliveryAsset}>};
 export type SlackResolution = {animated: boolean; size: number; count: number};
 export type SlackAsset = DeliveryAsset & {filename: string; animated: boolean; size: number};
 export type SlackPlan = {script: string; scriptBytes: number; resolutions: SlackResolution[]; assets: SlackAsset[]};
 
-/** Prefer larger stills, with one uniform resolution for each media type. */
+/**
+ * Prefer larger stills, with one uniform resolution for each media type.
+ * `tier` pins the ladder to a single rung: the caller has chosen those pixel
+ * sizes deliberately, so the result is returned even when it overruns the
+ * clipboard limit, and the UI warns rather than the planner refusing.
+ */
 export async function planSlackExport(
   rows: {filename: string; row: DeliveryRow}[],
   load: (assets: SlackAsset[]) => Promise<Uint8Array[]>,
   progress: (text: string) => void,
-  options: {replaceSmaller?: boolean; allowOversizeArchive?: boolean} = {},
+  options: {replaceSmaller?: boolean; allowOversizeArchive?: boolean; tier?: ExportTier} = {},
   limit = SLACK_SCRIPT_LIMIT,
 ): Promise<SlackPlan> {
   if (!rows.length) throw Error('Select at least one emoji');
@@ -20,15 +26,16 @@ export async function planSlackExport(
   // The final script is always measured; estimates are never a safety boundary.
   const overhead = new Blob([generateSlackBrowserScript([],options)]).size + 1024;
   const attempted = new Set<string>();
+  const ladder = options.tier ? [options.tier] : EXPORT_TIERS;
   let smallest: SlackPlan | undefined;
-  for (const [stillSize, animatedSize] of [[256,128], [256,64], [128,64], [64,64]]) {
+  for (const {still: stillSize, animated: animatedSize} of ladder) {
     const assets = rows.map(({filename,row}) => {
       const size = row.animated ? animatedSize : stillSize;
       const asset = row.variants[String(size)]?.webp;
       if (!asset) throw Error(`Missing ${size}px WebP: ${filename}`);
       return {...asset, filename, size, animated: row.animated};
     });
-    if ((stillSize !== 64 || animatedSize !== 64) && assets.every(a => Number.isFinite(a.slackGzipBytes))) {
+    if (!options.tier && (stillSize !== 64 || animatedSize !== 64) && assets.every(a => Number.isFinite(a.slackGzipBytes))) {
       const estimate = 4 * Math.ceil(assets.reduce((sum,a) => sum + a.slackGzipBytes!,0)/3) + overhead;
       // Leave 1% tolerance for per-stream headers and shared dictionaries.
       if (estimate >= limit * 1.01) continue;
@@ -52,7 +59,7 @@ export async function planSlackExport(
       if (group.length) resolutions.push({animated,size:group[0].size,count:group.length});
     }
     smallest = {script,scriptBytes,resolutions,assets};
-    if (scriptBytes < limit) return smallest;
+    if (scriptBytes < limit || options.tier) return smallest;
   }
   if (options.allowOversizeArchive && smallest) return smallest;
   throw Error('Even the 64px images exceed the 8 MB clipboard limit. Select fewer emojis and export in batches.');

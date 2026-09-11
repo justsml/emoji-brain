@@ -68,6 +68,8 @@ declare global {
 
 interface EmojiExplorerAppProps {
   initialEmojis: EmojiMetadata[];
+  /** Fixed weight of the uploader script, measured at build time. */
+  scriptOverheadBytes: number;
 }
 
 async function pagefindSearch(
@@ -116,6 +118,7 @@ async function pagefindSearch(
 
 const _EmojiExplorerApp: React.FC<EmojiExplorerAppProps> = ({
   initialEmojis,
+  scriptOverheadBytes,
 }) => {
   const {
     selectedEmojis,
@@ -264,6 +267,7 @@ const _EmojiExplorerApp: React.FC<EmojiExplorerAppProps> = ({
           gridScale={gridScale}
           onRemoveEmoji={handleEmojiSelect}
           shareUrl={selectionShareUrl}
+          scriptOverheadBytes={scriptOverheadBytes}
         />
       </div>
     </ErrorBoundary>
@@ -275,7 +279,7 @@ const EmojiExplorerWrapper = (
 ) => {
   return (
     <EmojiProviderWrapper initialEmojis={props.initialEmojis}>
-      <_EmojiExplorerApp initialEmojis={props.initialEmojis} />
+      <_EmojiExplorerApp initialEmojis={props.initialEmojis} scriptOverheadBytes={props.scriptOverheadBytes} />
     </EmojiProviderWrapper>
   );
 };

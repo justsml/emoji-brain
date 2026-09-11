@@ -38,6 +38,26 @@ it('still supplies minimum assets for an oversized ZIP, whose generator enforces
  expect(result.scriptBytes).toBeGreaterThan(100);
 });
 
+it('honours a pinned tier instead of walking the ladder',async()=>{
+ vi.stubGlobal('Blob',Blob);vi.stubGlobal('CompressionStream',undefined);
+ const load=vi.fn(async(assets:any[])=>assets.map(a=>new Uint8Array(a.bytes)));
+ const result=await planSlackExport(rows,load,()=>{},{tier:{still:128,animated:64}},base+6000);
+ expect(result.assets.map(a=>a.size)).toEqual([128,64]);
+ expect(load).toHaveBeenCalledTimes(1);
+});
+it('returns a pinned tier the user chose even when it overruns the limit',async()=>{
+ vi.stubGlobal('Blob',Blob);vi.stubGlobal('CompressionStream',undefined);
+ const result=await planSlackExport(rows,async assets=>assets.map(a=>new Uint8Array(a.bytes)),()=>{},{tier:{still:256,animated:128}},100);
+ expect(result.assets.map(a=>a.size)).toEqual([256,128]);
+ expect(result.scriptBytes).toBeGreaterThan(100);
+});
+it('does not let a stored estimate skip a pinned tier',async()=>{
+ vi.stubGlobal('Blob',Blob);vi.stubGlobal('CompressionStream',undefined);
+ const selection=structuredClone(rows);
+ for(const {row} of selection)for(const variant of Object.values(row.variants))variant.webp.slackGzipBytes=100_000;
+ const result=await planSlackExport(selection,async assets=>assets.map(a=>new Uint8Array(a.bytes)),()=>{},{tier:{still:256,animated:128}},base+6000);
+ expect(result.assets.map(a=>a.size)).toEqual([256,128]);
+});
 it('uses catalog estimates to avoid downloading oversized candidate tiers',async()=>{
  vi.stubGlobal('Blob',Blob);vi.stubGlobal('CompressionStream',undefined);
  const selection=structuredClone(rows);

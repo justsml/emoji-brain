@@ -4,12 +4,39 @@ import Layout from "../layouts/Layout.astro";
 import EmojiExplorerApp from "../components/EmojiExplorerApp"; // Import the main app component
 import type { EmojiMetadata } from "../types/emoji";
 import emojiMetadata from "../data/emoji-metadata.json"; // Assuming this path is correct
+import deliveryManifest from "../../public/emoji-delivery/manifest.json";
+import { generateSlackBrowserScript } from "../lib/slackBrowserScript";
+
+// The uploader script's fixed weight, measured here rather than in the browser:
+// it is constant for a build, and importing the generator client-side would
+// ship the whole Slack uploader to every visitor to learn one number. The
+// planner adds the same 1 KB margin before it measures the real thing.
+const scriptOverheadBytes = new Blob([generateSlackBrowserScript([])]).size + 1024;
+
+// The compressed weight of every variant, so the tray can price an export
+// before downloading anything. Three numbers per emoji ship to the client; the
+// 500 KB manifest they come from stays on the server.
+const deliveryItems = deliveryManifest.items as Record<string, {
+  variants: Record<string, {webp: {bytes: number; slackGzipBytes?: number}}>;
+  original: {bytes: number};
+}>;
+const deliveryRow = (filename: string) => deliveryItems[filename.replace(/\.[^.]+$/, "")];
+const gzipByEmoji = (filename: string): Record<string, number> | undefined => {
+  const variants = deliveryRow(filename)?.variants;
+  if (!variants) return undefined;
+  return Object.fromEntries(
+    Object.entries(variants).map(([size, {webp}]) =>
+      // A handful of rows predate the stored estimate; raw bytes are within a
+      // percent for already-compressed WebP and keep the tray honest.
+      [size, webp.slackGzipBytes ?? Math.round(webp.bytes * 1.01)]),
+  );
+};
 
 // Keep catalog bookkeeping on the server instead of serializing it into the
 // client island. The explorer only needs the fields left in each record.
 const allEmojis: EmojiMetadata[] = (emojiMetadata.emojis || []).map(
   ({id, filename, path, animated, size, tags, categories, aliases}) =>
-    ({id, filename, path, animated, size, tags, categories, aliases}),
+    ({id, filename, path, animated, size, tags, categories, aliases, gzip: gzipByEmoji(filename), originalBytes: deliveryRow(filename)?.original.bytes}),
 );
 // const categories = Array.from(new Set(allEmojis.flatMap(emoji => emoji.categories))).filter(Boolean);
 ---
@@ -32,11 +59,12 @@ const allEmojis: EmojiMetadata[] = (emojiMetadata.emojis || []).map(
     </dl>
     <p class="collection-note-copy">
       Everything here is upscaled, so it still reads at full size. The export
-      script sizes each image to fit your whole selection into one paste — pick
-      fewer, get bigger.
+      script sizes each image to fit your whole selection into one paste —
+      <!-- the explorer takes this over once it hydrates, pricing your sheet live -->
+      <span id="export-estimate"><span data-estimate-fallback>pick fewer, get bigger.</span></span>
     </p>
   </aside>
   <div class="emoji-app w-full h-fit">
-    <EmojiExplorerApp client:only="react" initialEmojis={allEmojis} />
+    <EmojiExplorerApp client:only="react" initialEmojis={allEmojis} scriptOverheadBytes={scriptOverheadBytes} />
   </div>
 </Layout>

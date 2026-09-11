@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
-import { screen } from "@testing-library/react";
+import { screen, fireEvent } from "@testing-library/react";
 import type { ComponentProps } from "react";
 import userEvent from "@testing-library/user-event";
 import { EmojiExport } from "./EmojiExport";
@@ -41,6 +41,7 @@ describe("EmojiExport Component", () => {
         filteredEmojis={mockSelectedEmojis}
         gridScale={1}
         onRemoveEmoji={vi.fn()}
+        scriptOverheadBytes={5_000}
         {...overrides}
       />
     );
@@ -108,6 +109,31 @@ describe("EmojiExport Component", () => {
     expect(screen.getByLabelText("1 selected")).toBeInTheDocument();
   });
 
+  it("prices the sheet from catalog figures and pins the size the user picks", async () => {
+    // 2 stills; at 256px the payload is 4 * ceil(20000/3) = 26668 bytes over the overhead
+    const sized = mockSelectedEmojis.map(emoji => ({...emoji, gzip: {64: 1_000, 128: 4_000, 256: 10_000}}));
+    renderExport({selectedEmojis: sized, filteredEmojis: sized});
+
+    expect(screen.getByRole("button", {name: /Choose the image size/})).toHaveAccessibleName(/256 px, about 32 KB/);
+
+    // jsdom keeps a closed popover out of the accessibility tree, so reach the
+    // rows directly rather than depending on popover invoker support
+    const row = (name: RegExp) => screen.getByRole("menuitemradio", {name, hidden: true});
+    expect(row(/Best fit/)).toHaveAttribute("aria-checked", "true");
+
+    fireEvent.click(row(/^128 px/));
+    expect(row(/^128 px/)).toHaveAttribute("aria-checked", "true");
+    expect(row(/Best fit/)).toHaveAttribute("aria-checked", "false");
+    expect(screen.getByRole("button", {name: /Choose the image size/})).toHaveAccessibleName(/128 px, about 16 KB/);
+
+    await userEvent.click(screen.getByRole("button", {name: "Copy Slack script"}));
+    expect(runExportWorker).toHaveBeenCalledWith(
+      expect.objectContaining({kind: "slack", tier: {still: 128, animated: 64}}),
+      expect.any(AbortSignal),
+      expect.any(Function),
+    );
+  });
+
   it("shows export dropdown when clicking the Export button", async () => {
     renderExport();
 
@@ -117,7 +143,8 @@ describe("EmojiExport Component", () => {
     expect(screen.getByText("Plain Text")).toBeInTheDocument();
     expect(screen.getByText("HTML")).toBeInTheDocument();
     expect(screen.getByText("CSS")).toBeInTheDocument();
-    expect(screen.getByText("ZIP File")).toBeInTheDocument();
+    // full resolution is offered with the sizes, not among the clipboard formats
+    expect(screen.getByText("Originals")).toBeInTheDocument();
   });
 
   it("calls clipboard API when exporting as plain text", async () => {
@@ -167,13 +194,13 @@ describe("EmojiExport Component", () => {
     expect(screen.getByText("Copied CSS to clipboard!")).toBeInTheDocument();
   });
 
-  it("creates a ZIP file when exporting as ZIP", async () => {
+  it("creates a ZIP file when downloading the originals", async () => {
     renderExport();
 
     const exportButton = screen.getByRole("button", { name: "Other export options" });
     await userEvent.click(exportButton);
 
-    const zipOption = screen.getByText("ZIP File");
+    const zipOption = screen.getByText("Originals");
     await userEvent.click(zipOption);
 
     await vi.waitFor(() => {
