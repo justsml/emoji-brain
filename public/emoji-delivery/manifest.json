@@ -16593,33 +16593,30 @@
       }
     },
     "extreme-teamwork": {
-      "source": "staging/emoji-enhancements/remaining-animations/extreme-teamwork/candidate.webp",
-      "basis": "enhanced",
-      "sourceSha256": "4f0249e68614d92c51e42aa038a7b0b2c84f9db277b24c186aa7b51976d2fe9b",
+      "source": "public/emojis/extreme-teamwork.webp",
+      "basis": "background-cleaned",
+      "sourceSha256": "2793f7b69f63753558bc101fddc47a3c20d87967872638cf03f74482a9f8ff56",
       "animated": true,
       "variants": {
         "64": {
           "webp": {
             "quality": 90,
             "path": "/emoji-delivery/64/extreme-teamwork.webp",
-            "bytes": 8822,
-            "slackGzipBytes": 8846
+            "bytes": 8146
           }
         },
         "128": {
           "webp": {
-            "path": "/emoji-delivery/128/extreme-teamwork.webp",
-            "bytes": 20224,
             "quality": 90,
-            "slackGzipBytes": 20333
+            "path": "/emoji-delivery/128/extreme-teamwork.webp",
+            "bytes": 17822
           }
         },
         "256": {
           "webp": {
-            "path": "/emoji-delivery/256/extreme-teamwork.webp",
-            "bytes": 46570,
             "quality": 90,
-            "slackGzipBytes": 46804
+            "path": "/emoji-delivery/256/extreme-teamwork.webp",
+            "bytes": 40338
           }
         }
       },
@@ -16627,23 +16624,23 @@
         "64": {
           "quality": 90,
           "path": "/emoji-delivery/previews/64/extreme-teamwork.webp",
-          "bytes": 2096
+          "bytes": 1988
         },
         "128": {
           "quality": 90,
           "path": "/emoji-delivery/previews/128/extreme-teamwork.webp",
-          "bytes": 4984
+          "bytes": 4214
         },
         "256": {
           "quality": 90,
           "path": "/emoji-delivery/previews/256/extreme-teamwork.webp",
-          "bytes": 11456
+          "bytes": 9418
         }
       },
       "original": {
         "quality": 90,
         "path": "/emoji-delivery/original/extreme-teamwork.webp",
-        "bytes": 110032,
+        "bytes": 86512,
         "width": 512,
         "height": 512
       }
@@ -16756,62 +16753,6 @@
         "quality": 90,
         "path": "/emoji-delivery/original/hypecat.webp",
         "bytes": 256382,
-        "width": 512,
-        "height": 512
-      }
-    },
-    "keanu-thanks": {
-      "source": "staging/emoji-enhancements/remaining-animations/keanu-thanks/candidate.webp",
-      "basis": "enhanced",
-      "sourceSha256": "17aa88a7b7677002bcd70f032bd0c904cea3c98f75e6da3e0c84fb1fe22c496f",
-      "animated": true,
-      "variants": {
-        "64": {
-          "webp": {
-            "quality": 90,
-            "path": "/emoji-delivery/64/keanu-thanks.webp",
-            "bytes": 77276,
-            "slackGzipBytes": 68143
-          }
-        },
-        "128": {
-          "webp": {
-            "quality": 80,
-            "path": "/emoji-delivery/128/keanu-thanks.webp",
-            "bytes": 126860,
-            "slackGzipBytes": 108318
-          }
-        },
-        "256": {
-          "webp": {
-            "path": "/emoji-delivery/256/keanu-thanks.webp",
-            "bytes": 467202,
-            "quality": 90,
-            "slackGzipBytes": 451683
-          }
-        }
-      },
-      "previews": {
-        "64": {
-          "quality": 90,
-          "path": "/emoji-delivery/previews/64/keanu-thanks.webp",
-          "bytes": 2162
-        },
-        "128": {
-          "quality": 90,
-          "path": "/emoji-delivery/previews/128/keanu-thanks.webp",
-          "bytes": 5064
-        },
-        "256": {
-          "quality": 90,
-          "path": "/emoji-delivery/previews/256/keanu-thanks.webp",
-          "bytes": 13184
-        }
-      },
-      "original": {
-        "quality": 90,
-        "path": "/emoji-delivery/original/keanu-thanks.webp",
-        "bytes": 1161404,
         "width": 512,
         "height": 512
       }

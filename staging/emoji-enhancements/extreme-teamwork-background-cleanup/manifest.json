@@ -1,0 +1,22 @@
+{
+  "name": "extreme-teamwork",
+  "source": "public/emojis/extreme-teamwork.webp",
+  "previousSha256": "4f0249e68614d92c51e42aa038a7b0b2c84f9db277b24c186aa7b51976d2fe9b",
+  "candidateSha256": "2793f7b69f63753558bc101fddc47a3c20d87967872638cf03f74482a9f8ff56",
+  "method": "imagegen background cleanup of five-frame atlas",
+  "instruction": "Clean up generated upscale background artifacts",
+  "crop": {
+    "top": 145,
+    "height": 429,
+    "width": 2171,
+    "frames": 5
+  },
+  "delays": [
+    60,
+    60,
+    60,
+    60,
+    60
+  ],
+  "loop": 0
+}

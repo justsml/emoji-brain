@@ -1,6 +1,6 @@
 {
-  "total": 353,
-  "lastUpdated": "2026-09-10T22:19:33.590Z",
+  "total": 352,
+  "lastUpdated": "2026-09-11T17:53:10.485Z",
   "emojis": [
     {
       "id": "df167e0a",
@@ -1598,18 +1598,18 @@
         "predator"
       ],
       "created": "2025-04-12T03:57:23.546Z",
-      "size": 1194944,
+      "size": 883834,
       "width": 512,
       "height": 512,
       "animated": true,
       "aliases": [],
-      "hash": "4f0249e68614d92c51e42aa038a7b0b2c84f9db277b24c186aa7b51976d2fe9b",
-      "modified": "2026-09-10T21:34:30.449Z",
-      "labelHash": "4f0249e68614d92c51e42aa038a7b0b2c84f9db277b24c186aa7b51976d2fe9b",
+      "hash": "2793f7b69f63753558bc101fddc47a3c20d87967872638cf03f74482a9f8ff56",
+      "modified": "2026-09-11T17:53:10.466Z",
+      "labelHash": "2793f7b69f63753558bc101fddc47a3c20d87967872638cf03f74482a9f8ff56",
       "labelProvenance": {
-        "method": "carried-forward-after-approved-upscale",
-        "fromHash": "b908f97d576393b84da4bcfc75da10ee1e3da1eef0d4d1780e31165483135f75",
-        "approvalReceipt": "staging/emoji-enhancements/promotion.json"
+        "method": "carried-forward-after-background-cleanup",
+        "fromHash": "4f0249e68614d92c51e42aa038a7b0b2c84f9db277b24c186aa7b51976d2fe9b",
+        "approvalReceipt": "staging/emoji-enhancements/extreme-teamwork-background-cleanup/manifest.json"
       }
     },
     {
@@ -2177,37 +2177,6 @@
       "labelProvenance": {
         "method": "carried-forward-after-approved-upscale",
         "fromHash": "24fac7e378dc017bc7954f1ddc4d5939bcd8fc50d878a79f9a3f59bd9050ca2a",
-        "approvalReceipt": "staging/emoji-enhancements/promotion.json"
-      }
-    },
-    {
-      "id": "c3bbb93c",
-      "filename": "keanu-thanks.webp",
-      "path": "/emojis/keanu-thanks.webp",
-      "categories": [
-        "celebrity",
-        "person"
-      ],
-      "tags": [
-        "keanu reeves",
-        "actor",
-        "beard",
-        "long hair",
-        "serious",
-        "john wick"
-      ],
-      "created": "2025-04-12T03:57:25.486Z",
-      "size": 9465044,
-      "width": 512,
-      "height": 512,
-      "animated": true,
-      "aliases": [],
-      "hash": "17aa88a7b7677002bcd70f032bd0c904cea3c98f75e6da3e0c84fb1fe22c496f",
-      "modified": "2026-09-10T21:34:30.515Z",
-      "labelHash": "17aa88a7b7677002bcd70f032bd0c904cea3c98f75e6da3e0c84fb1fe22c496f",
-      "labelProvenance": {
-        "method": "carried-forward-after-approved-upscale",
-        "fromHash": "939a091df483e8ac730ef0689d341f52a0c5a0c8b99f319bcf6a3d22bdba1567",
         "approvalReceipt": "staging/emoji-enhancements/promotion.json"
       }
     },

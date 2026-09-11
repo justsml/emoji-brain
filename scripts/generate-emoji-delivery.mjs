@@ -11,6 +11,10 @@ for(const group of ['stills','animated-pilot','remaining-animations']){
  const m=JSON.parse(await fs.readFile(`${staging}/${group}/manifest.json`));
  for(const r of m.items){const name=r.name??r.file.replace(/\.webp$/,'');const file=group==='animated-pilot'?r.variants.find(v=>v.key===r.review.preferred).file:r.candidate;sources.set(name,{source:`${staging}/${group}/${file}`,basis:'enhanced'});}
 }
+// Archived enhancement candidates must not resurrect removed catalog entries.
+const catalogNames=new Set((await fs.readdir('public/emojis')).filter(f=>f.endsWith('.webp')).map(f=>f.slice(0,-5)));
+for(const name of sources.keys())if(!catalogNames.has(name))sources.delete(name);
+sources.set('extreme-teamwork',{source:'public/emojis/extreme-teamwork.webp',basis:'background-cleaned'});
 sources.set('severance-running',{source:'public/emojis/severance-running.webp',basis:'original-awaiting-review'});
 const revisit=JSON.parse(await fs.readFile(`${staging}/severance-running-revisit/manifest.json`));
 if(revisit.status==='approved-promoted'){

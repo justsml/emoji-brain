@@ -1,27 +1,27 @@
 {
-  "count": 1,
-  "framesChecked": 360,
+  "count": 2,
+  "framesChecked": 164,
   "maxMeanAlphaError": 0,
-  "previewBytes": 10902,
+  "previewBytes": 25370,
   "totals": {
     "64": {
-      "webp": 97758,
+      "webp": 54034,
       "webpOver": []
     },
     "128": {
-      "webp": 122224,
+      "webp": 114938,
       "webpOver": []
     },
     "256": {
-      "webp": 534652,
+      "webp": 262452,
       "webpOver": [
-        "severance-running"
+        "keanu_thanks"
       ]
     },
     "original": {
-      "webp": 1101498,
+      "webp": 621546,
       "webpOver": [
-        "severance-running"
+        "keanu_thanks"
       ]
     }
   }
