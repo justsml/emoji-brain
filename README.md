@@ -58,6 +58,8 @@ For Slack, sign in to your workspace and open `https://YOUR-WORKSPACE.slack.com/
 
 ### Optimized WebP delivery
 
+For the restoration history, review lessons and reusable workflow, see the [source image restoration playbook](docs/source-image-restoration.md).
+
 All delivered images are WebP, including animations:
 
 | Export | Image assets |
