@@ -4,7 +4,7 @@
 
 # Emoji Explorer
 
-**Browse a hand-collected sheet of 350+ custom emoji and stickers, pick your favorites, and paste one script into Slack to upload the lot.**
+**Browse 350+ upscaled emojis and stickers inspired by other collections, pick your favorites, and paste one script into Slack to upload the lot.**
 
 [![CI](https://github.com/justsml/emoji-brain/actions/workflows/emojis.yml/badge.svg?branch=main)](https://github.com/justsml/emoji-brain/actions/workflows/emojis.yml)
 [![Last commit](https://img.shields.io/github/last-commit/justsml/emoji-brain/main?logo=git&logoColor=white)](https://github.com/justsml/emoji-brain/commits/main)
@@ -38,6 +38,11 @@
 </div>
 
 Emoji Explorer (`emoji-brain`) is a self-hostable, static [Astro](https://astro.build/) app with a React interface and no backend. Search, select, then export to Slack, ZIP, HTML, CSS, or Markdown.
+
+> [!TIP]
+> **✨ Big emojis. Smart Slack exports.**
+>
+> All emojis are available at **1024 × 1024 for stills** and **512 × 512 for animations**. Download the full-resolution collection, or take your favorites to Slack: the export script automatically balances image size with how many you select, packing the images into one script **under 8 MB**. Fewer emojis leave room for larger images.
 
 ## What you can do
 

@@ -1,9 +1,33 @@
 /* ---------------------------------------------------------------------------
    The sheet: everything cut out so far, and the one action that matters.
    A flat bar ruled off from the mat rather than a floating rounded card.
+
+   The bar runs inverted against the mat — ink on paper, paper on ink — so the
+   one destination on the page is never in doubt. The whole token contract is
+   re-declared here rather than restyled piece by piece: every control inside
+   (shadcn buttons, the export menu, the chips) already reads these variables,
+   so flipping them flips the bar's entire interior with it.
    --------------------------------------------------------------------------- */
 
 .sheet-tray {
+  --background: 158 26% 11%;
+  --foreground: 152 14% 93%;
+  --muted-foreground: 152 10% 70%;
+  --border: 156 12% 30%;
+  --input: 156 12% 30%;
+  --primary: 342 92% 62%;
+  --primary-foreground: 342 60% 10%;
+  --accent: 154 12% 22%;
+  --accent-foreground: 152 14% 93%;
+  --destructive: 6 76% 64%;
+  --destructive-foreground: 0 0% 100%;
+  --popover: 157 16% 15%;
+  --popover-foreground: 152 14% 93%;
+  --ring: 342 92% 62%;
+  --rule: 172 45% 46%;
+  --cut: 342 95% 68%;
+  --lift: 0 0% 0%;
+
   position: fixed;
   bottom: 0;
   left: 0;
@@ -15,10 +39,35 @@
   justify-content: space-between;
   gap: 0.75rem 1.5rem;
   padding: 0.6rem 2rem;
-  border-top: 1px solid hsl(var(--rule) / 0.5);
-  background: hsl(var(--background) / 0.93);
-  backdrop-filter: blur(16px);
+  border-top: 1px solid hsl(var(--rule) / 0.55);
+  color: hsl(var(--foreground));
+  /* frosted, but only just: the mat's grid should ghost through the bar
+     without ever competing with the type sitting on it */
+  background: hsl(var(--background) / 0.86);
+  backdrop-filter: blur(20px) saturate(1.35);
 }
+
+/* on a dark mat the inversion runs the other way: a paper strip */
+.dark .sheet-tray {
+  --background: 152 12% 89%;
+  --foreground: 158 28% 10%;
+  --muted-foreground: 158 9% 36%;
+  --border: 155 12% 74%;
+  --input: 155 12% 74%;
+  --primary: 341 74% 45%;
+  --primary-foreground: 0 0% 100%;
+  --accent: 155 12% 80%;
+  --accent-foreground: 158 28% 12%;
+  --destructive: 6 72% 45%;
+  --destructive-foreground: 0 0% 100%;
+  --popover: 150 18% 96%;
+  --popover-foreground: 158 28% 10%;
+  --ring: 341 74% 45%;
+  --rule: 172 45% 34%;
+  --cut: 341 74% 45%;
+  --lift: 158 30% 25%;
+}
+
 @supports not (backdrop-filter: blur(1px)) {
   .sheet-tray { background: hsl(var(--background)); }
 }

@@ -15,6 +15,27 @@ const allEmojis: EmojiMetadata[] = (emojiMetadata.emojis || []).map(
 ---
 
 <Layout title="Emoji Explorer" imageCount={allEmojis.length}>
+  <aside class="collection-note" aria-label="About the collection">
+    <dl class="collection-specs">
+      <div>
+        <dt>Stills</dt>
+        <dd>1024<span>px</span></dd>
+      </div>
+      <div>
+        <dt>Animated</dt>
+        <dd>512<span>px</span></dd>
+      </div>
+      <div>
+        <dt>Per export</dt>
+        <dd>8<span>MB</span></dd>
+      </div>
+    </dl>
+    <p class="collection-note-copy">
+      Everything here is upscaled, so it still reads at full size. The export
+      script sizes each image to fit your whole selection into one paste — pick
+      fewer, get bigger.
+    </p>
+  </aside>
   <div class="emoji-app w-full h-fit">
     <EmojiExplorerApp client:only="react" initialEmojis={allEmojis} />
   </div>
