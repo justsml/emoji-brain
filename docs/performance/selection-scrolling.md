@@ -42,3 +42,17 @@ These are total task durations per scenario, not per frame. The baseline
 comparison restored the selected-card CSS exception before scroll sampling;
 load timings are not a controlled comparison. The experiment can be reproduced
 with `SCROLL_CONTAINMENT_EXPERIMENT=1` before the benchmark command.
+
+## Deferred selection persistence
+
+`useLocalStorage` now updates React state synchronously and schedules both
+serialization and storage writes with `requestIdleCallback` (one-second maximum
+wait), or a 250 ms timer fallback. Committed changes replace the pending value,
+so a rapid sequence produces one write of the latest selection. Page hiding,
+pagehide, and unmount flush pending data to preserve immediate reload/navigation.
+The storage API itself is synchronous; this change moves and coalesces the work,
+it does not make a storage call preemptible.
+
+Unit tests verify coalescing, immediate state visibility, lifecycle flushing,
+and the timer fallback. Browser tests verify immediate reload after deselecting
+one emoji and after deselecting everything.

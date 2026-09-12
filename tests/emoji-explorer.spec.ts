@@ -106,6 +106,7 @@ test("should filter emojis when searching", async ({ page }) => {
 // });
 
 test("should select and deselect emojis", async ({ page }) => {
+  await page.getByTitle("Deselect visible").click();
   await expect(page.getByText("No emojis selected")).toBeVisible();
   await page.locator('div[role="gridcell"] button').first().click();
   await expect(page.getByLabel("1 selected")).toBeVisible();
@@ -136,7 +137,7 @@ test("should show export options when emojis are selected", async ({
   await expect(page.getByText("HTML")).toBeVisible();
   await expect(page.getByText("CSS")).toBeVisible();
   await expect(page.getByText("Markdown Table")).toBeVisible();
-  await expect(page.getByText("ZIP File")).toBeVisible();
+  await expect(page.getByRole("menuitem", {name: /^Originals/})).toBeVisible();
 });
 
 test("should be responsive", async ({ page }) => {
@@ -147,4 +148,17 @@ test("should be responsive", async ({ page }) => {
   // Test mobile layout
   await page.setViewportSize({ width: 375, height: 667 });
   await expect(page.getByRole("grid", { name: "Emoji results" })).toBeVisible();
+});
+
+
+test("persists a selection when reloading immediately after a click", async ({page}) => {
+  const cells = page.locator('[role="gridcell"] button');
+  await expect(cells.first()).toHaveAttribute('aria-pressed', 'true');
+  await cells.first().click();
+  await page.reload();
+  await expect(cells.first()).toHaveAttribute('aria-pressed', 'false');
+  await expect(cells.nth(1)).toHaveAttribute('aria-pressed', 'true');
+  await page.getByTitle('Deselect visible').click();
+  await page.reload();
+  await expect(page.getByText('No emojis selected')).toBeVisible();
 });
