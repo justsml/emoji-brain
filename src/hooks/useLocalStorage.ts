@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useEffect, useLayoutEffect, useCallback, useRef } from 'react';
 
 export function useLocalStorage<T>(key: string, initialValue: T): [T, (value: T | ((prev: T) => T)) => void] {
   const [storedValue, setStoredValue] = useState<T>(() => {
@@ -32,7 +32,9 @@ export function useLocalStorage<T>(key: string, initialValue: T): [T, (value: T 
     }
   }, []);
 
-  useEffect(() => {
+  // Record committed state before a navigation can fire pagehide. Only the
+  // pending snapshot and timer are updated here; serialization stays deferred.
+  useLayoutEffect(() => {
     if (pending.current && pending.current.key !== key) flush();
     pending.current = {key, value: storedValue};
     // Coalesce rapid changes. The timeout bounds persistence delay on a busy

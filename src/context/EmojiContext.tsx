@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useReducer, useCallback, useEffect, useMemo, type ReactNode } from 'react';
+import React, { createContext, useContext, useReducer, useCallback, useLayoutEffect, useMemo, type ReactNode } from 'react';
 import type { EmojiMetadata } from '../types/emoji';
 import { useLocalStorage } from '../hooks/useLocalStorage';
 import { SELECTION_STORAGE_KEY, reconcileSelection } from '../lib/selectionStorage';
@@ -142,7 +142,7 @@ export function EmojiProvider({ children, initialEmojis }: EmojiProviderProps) {
     filteredEmojis: initialEmojis,
   }));
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     setStoredSelection(state.selectedEmojis.map(emoji => emoji.id));
   }, [state.selectedEmojis, setStoredSelection]);
 
