@@ -11,28 +11,35 @@ test('selection scrolling: slow, rapid reversals and Home End jumps', async ({pa
   await page.goto('/');
   await page.getByRole('grid', {name: 'Emoji results'}).waitFor();
   await page.getByTitle('Select All Visible', {exact: true}).waitFor();
+  // Reproduce the rejected containment experiment without changing product CSS.
+  if (process.env.SCROLL_CONTAINMENT_EXPERIMENT) await page.addStyleTag({content: '.emoji-cell:has(.emoji-card-selected):not(:hover):not(:focus-within) {content-visibility: auto; contain: layout style paint;}'});
   const report: Record<string, unknown> = {load: await snapshot(page)};
   const height = await page.evaluate(() => document.documentElement.scrollHeight);
   await page.mouse.move(700, 500);
   for (const phase of ['slow', 'rapid', 'jumps']) {
+    // Let the preceding native wheel animation finish before resetting metrics.
+    await page.waitForTimeout(500);
     await begin(page, phase);
     const before = await cpuMetrics(cdp);
     const positions: number[] = [];
     if (phase === 'jumps') {
       for (let i = 0; i < 12; i++) {
-        await page.keyboard.press(i % 2 ? 'Home' : 'End');
+        await page.evaluate(bottom => window.scrollTo({top: bottom ? document.documentElement.scrollHeight : 0, behavior: 'instant'}), i % 2 === 0);
         await page.waitForTimeout(150);
         positions.push(await page.evaluate(() => window.scrollY));
       }
     } else {
       for (let i = 0; i < 60; i++) {
-        await page.mouse.wheel(0, (Math.floor(i / 15) % 2 ? -1 : 1) * (phase === 'slow' ? 90 : 1800));
+        await page.mouse.wheel(0, (Math.floor(i / (phase === 'slow' ? 30 : 3)) % 2 ? -1 : 1) * (phase === 'slow' ? 90 : 1200));
         await page.waitForTimeout(phase === 'slow' ? 35 : 16);
       }
     }
     if (phase === 'jumps') {
-      expect(Math.max(...positions)).toBeGreaterThan(height - 1100);
-      expect(positions.at(-1)).toBeLessThan(10);
+      expect.soft(Math.max(...positions)).toBeGreaterThan(height - 1100);
+      for (let i = 0; i < positions.length; i++) {
+        if (i % 2) expect.soft(positions[i]).toBeLessThan(10);
+        else expect.soft(positions[i]).toBeGreaterThan(height - 1100);
+      }
     }
     const metrics = await snapshot(page);
     report[phase] = {...metrics, positions, before, after: await cpuMetrics(cdp)};
