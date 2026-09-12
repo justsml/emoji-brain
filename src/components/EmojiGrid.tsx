@@ -33,7 +33,7 @@ interface EmojiCellProps {
   columnCount: number;
   imageWidth: number;
   onToggle: (emoji: EmojiMetadata, event?: React.MouseEvent) => void;
-  onKeyDown: (e: KeyboardEvent, index: number, columnCount: number) => void;
+  onKeyDown: (e: KeyboardEvent, index: number, columnCount: number, isSelected: boolean) => void;
   onFocusChange: (index: number) => void;
 }
 
@@ -95,8 +95,8 @@ const EmojiCell = ({
   }, [onToggle, emoji]);
 
   const handleKeyDown = useCallback((e: KeyboardEvent) => {
-    onKeyDown(e, index, columnCount);
-  }, [onKeyDown, index, columnCount]);
+    onKeyDown(e, index, columnCount, isSelected);
+  }, [onKeyDown, index, columnCount, isSelected]);
 
   const handleFocus = useCallback(() => {
     if (emoji.animated) setIsPlaying(true);
@@ -226,7 +226,7 @@ const EmojiGrid = ({
     return () => {};
   }, [emojis.length === 0]);
 
-  const handleKeyDown = useCallback((e: KeyboardEvent, index: number, colCount: number) => {
+  const handleKeyDown = useCallback((e: KeyboardEvent, index: number, colCount: number, isSelected: boolean) => {
     switch (e.key) {
       case "ArrowRight":
         e.preventDefault();
@@ -249,11 +249,11 @@ const EmojiGrid = ({
         e.preventDefault();
         if (index >= 0 && index < emojis.length) {
           onToggleSelection(emojis[index]);
-          onAnnounceSelection(emojis[index], !selectedEmojis.some(e => e.id === emojis[index].id));
+          onAnnounceSelection(emojis[index], !isSelected);
         }
         break;
     }
-  }, [emojis, onSetFocusedIndex, onToggleSelection, onAnnounceSelection, selectedEmojis]);
+  }, [emojis, onSetFocusedIndex, onToggleSelection, onAnnounceSelection]);
 
   // Only stickers that releasing would actually change get the preview treatment.
   const previewIds = useMemo(() => {

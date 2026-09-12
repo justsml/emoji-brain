@@ -54,3 +54,41 @@ it('reconciles persisted catalog records only when initializing the provider', a
     expect(reconcile).toHaveBeenCalledTimes(1);
   } finally {reconcile.mockRestore();}
 });
+
+
+it('does not rerender consumers just to mirror selection into persistence', async () => {
+  localStorage.clear();
+  const rendered = vi.fn();
+  function Consumer() {
+    const {selectedEmojis, resetSelection} = useEmojiContext();
+    rendered();
+    return <button onClick={resetSelection}>{selectedEmojis.length} on sheet</button>;
+  }
+  const user = userEvent.setup();
+  render(<EmojiProvider initialEmojis={emojis}><Consumer /></EmojiProvider>);
+  expect(rendered).toHaveBeenCalledTimes(1);
+  await user.click(screen.getByRole('button', {name: '3 on sheet'}));
+  expect(screen.getByRole('button', {name: '0 on sheet'})).toBeInTheDocument();
+  expect(rendered).toHaveBeenCalledTimes(2);
+});
+
+
+it('ignores repeated search, focus and size values without notifying consumers', async () => {
+  localStorage.clear();
+  const rendered = vi.fn();
+  function Consumer() {
+    const context = useEmojiContext();
+    rendered();
+    return <button onClick={() => {
+      context.setIsSearching(false);
+      context.setFocusedIndex(0);
+      context.setGridScale(0);
+      context.setShowSelectedOnly(false);
+      context.setFilteredEmojis(emojis);
+    }}>repeat current values</button>;
+  }
+  const user = userEvent.setup();
+  render(<EmojiProvider initialEmojis={emojis}><Consumer /></EmojiProvider>);
+  await user.click(screen.getByRole('button', {name: 'repeat current values'}));
+  expect(rendered).toHaveBeenCalledTimes(1);
+});

@@ -56,3 +56,22 @@ it('uses a deferred timer when idle callbacks are unavailable', () => {
     unmount();
   } finally {vi.useRealTimers();}
 });
+
+it('flushes on tab hiding even if idle time has not arrived', () => {
+  const {result} = renderHook(() => useLocalStorage('selection', [] as string[]));
+  act(() => result.current[1](['latest']));
+  vi.spyOn(document, 'visibilityState', 'get').mockReturnValue('hidden');
+  act(() => document.dispatchEvent(new Event('visibilitychange')));
+  expect(JSON.parse(localStorage.getItem('selection')!)).toEqual(['latest']);
+  expect(idle.size).toBe(0);
+});
+
+it('keeps the UI usable when storage is full', () => {
+  vi.spyOn(window.localStorage, 'setItem').mockImplementation(() => {throw new DOMException('full', 'QuotaExceededError');});
+  const warn = vi.spyOn(console, 'warn').mockImplementation(() => {});
+  const {result} = renderHook(() => useLocalStorage('selection', [] as string[]));
+  act(() => result.current[1](['latest']));
+  expect(() => runIdle()).not.toThrow();
+  expect(result.current[0]).toEqual(['latest']);
+  expect(warn).toHaveBeenCalledWith('LocalStorage quota exceeded');
+});

@@ -73,3 +73,44 @@ enter playback state, and click/focus playback stays immediate. Unmount cancels
 pending timers. A browser regression test first observed an animation request
 from a 20 ms crossing; after the change the same crossing made zero animation
 requests, with deliberate hover and focus playback both passing.
+
+## Avoid duplicate consumer renders
+
+Memoize the context value so storage mirroring does not notify every consumer
+again. Reducer updates for unchanged focus, search status, filter-array identity,
+selected-only mode, and grid size now return the existing state. Tests verify
+one initial consumer render, one additional render for a selection change, and
+no additional render for repeated current values. Actual changes still notify
+consumers normally.
+
+## Renderer matters
+
+The default headless Chromium on this host uses SwiftShader with software
+compositing/rasterization. Windowed Chromium uses ANGLE Metal on Apple M2 with
+GPU compositing and rasterization enabled. The benchmark now records GPU device
+and feature status. Add `--headed` to run the GPU-backed comparison. Do not
+interpret software renderer limits as a measurement of physical display FPS.
+
+Forcing `will-change: transform` on every image was also rejected: it made the
+software renderer slower during rapid XL scrolling. The experiment is available
+with `SCROLL_LAYER_EXPERIMENT=1`; it is not applied in product CSS.
+
+## Keep unrelated cards memoized
+
+The grid keyboard handler no longer captures the entire selection. Each cell
+passes its current selected flag when handling a key. Changing one selection
+therefore changes only that card's props, rather than replacing the keyboard
+callback on every card. The render regression test changed from all three
+fixture cards rendering to just the changed card; keyboard selection and
+announcement tests remain in the full unit suite.
+
+For GPU rendering without a desktop window, run:
+
+```sh
+PERF_FULL_CHROMIUM=1 pnpm exec playwright test --config=playwright.performance.config.ts scroll.performance.spec.ts --repeat-each=3
+```
+
+This uses the [documented full Chromium headless mode](https://playwright.dev/docs/browsers#chromium-new-headless-mode).
+Always inspect the recorded renderer status: the channel alone is not a GPU
+guarantee. A windowed run was interrupted because the host desktop was locked;
+that run is not performance evidence.

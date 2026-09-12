@@ -2,6 +2,7 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { screen, act } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import EmojiGrid from './EmojiGrid';
+import * as emojiAssets from '../lib/emojiAssets';
 import type { EmojiMetadata } from '../types/emoji';
 import { render } from '../test-utils/test-utils';
 
@@ -251,4 +252,18 @@ describe('EmojiGrid drag selection', () => {
     act(() => { window.dispatchEvent(pointer('pointermove', 150, 150, { pointerType: 'touch' })); });
     expect(screen.queryByTestId('emoji-marquee')).toBeNull();
   });
+});
+
+
+it('only rerenders the changed card when selection changes', () => {
+  const emojis: EmojiMetadata[] = ['one', 'two', 'three'].map(id => ({id, filename: `${id}.webp`, path: `/emojis/${id}.webp`, categories: [], tags: [], created: '', size: 1}));
+  const props = {emojis, focusedIndex: 0, gridScale: 0, onToggleSelection: vi.fn(), onSetFocusedIndex: vi.fn(), onAnnounceSelection: vi.fn()};
+  const preview = vi.spyOn(emojiAssets, 'previewSrcSet');
+  try {
+    const {rerender} = render(<EmojiGrid {...props} selectedEmojis={[]} />);
+    preview.mockClear();
+    rerender(<EmojiGrid {...props} selectedEmojis={[emojis[1]]} />);
+    expect(screen.getByRole('button', {name: 'two.webp'})).toHaveAttribute('aria-pressed', 'true');
+    expect(preview).toHaveBeenCalledTimes(1);
+  } finally {preview.mockRestore();}
 });

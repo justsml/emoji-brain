@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useReducer, useCallback, useEffect, type ReactNode } from 'react';
+import React, { createContext, useContext, useReducer, useCallback, useEffect, useMemo, type ReactNode } from 'react';
 import type { EmojiMetadata } from '../types/emoji';
 import { useLocalStorage } from '../hooks/useLocalStorage';
 import { SELECTION_STORAGE_KEY, reconcileSelection } from '../lib/selectionStorage';
@@ -86,27 +86,31 @@ function emojiReducer(state: EmojiState, action: EmojiAction): EmojiState {
         selectedEmojis: [],
         focusedIndex: 0,
       };
-    case 'SET_FOCUSED_INDEX':
-      return {
-        ...state,
-        focusedIndex: Math.max(0, Math.min(action.payload, state.filteredEmojis.length - 1)),
-      };
+    case 'SET_FOCUSED_INDEX': {
+      const focusedIndex = Math.max(0, Math.min(action.payload, state.filteredEmojis.length - 1));
+      if (focusedIndex === state.focusedIndex) return state;
+      return {...state, focusedIndex};
+    }
     case 'SET_FILTERED_EMOJIS':
+      if (state.filteredEmojis === action.payload) return state;
       return {
         ...state,
         filteredEmojis: action.payload,
       };
     case 'SET_IS_SEARCHING':
+      if (state.isSearching === action.payload) return state;
       return {
         ...state,
         isSearching: action.payload,
       };
     case 'SET_SHOW_SELECTED_ONLY':
+      if (state.showSelectedOnly === action.payload) return state;
       return {
         ...state,
         showSelectedOnly: action.payload,
       };
     case 'SET_GRID_SCALE':
+      if (state.gridScale === action.payload) return state;
       return {
         ...state,
         gridScale: action.payload,
@@ -185,7 +189,7 @@ export function EmojiProvider({ children, initialEmojis }: EmojiProviderProps) {
   const announceSelection = useCallback((_emoji: EmojiMetadata, _isSelected: boolean) => {
   }, []);
 
-  const value: EmojiContextType = {
+  const value = useMemo<EmojiContextType>(() => ({
     ...state,
     toggleEmojiSelection,
     selectAllVisible,
@@ -198,7 +202,9 @@ export function EmojiProvider({ children, initialEmojis }: EmojiProviderProps) {
     setShowSelectedOnly,
     setGridScale,
     announceSelection,
-  };
+  }), [state, toggleEmojiSelection, selectAllVisible, deselectVisible,
+    replaceSelection, resetSelection, setFocusedIndex, setFilteredEmojis,
+    setIsSearching, setShowSelectedOnly, setGridScale, announceSelection]);
 
   return <EmojiContext.Provider value={value}>{children}</EmojiContext.Provider>;
 }
