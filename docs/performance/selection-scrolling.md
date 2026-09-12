@@ -112,5 +112,33 @@ PERF_FULL_CHROMIUM=1 pnpm exec playwright test --config=playwright.performance.c
 
 This uses the [documented full Chromium headless mode](https://playwright.dev/docs/browsers#chromium-new-headless-mode).
 Always inspect the recorded renderer status: the channel alone is not a GPU
-guarantee. A windowed run was interrupted because the host desktop was locked;
-that run is not performance evidence.
+guarantee. Initial full-browser runs stalled on the external font request while the
+desktop was also locked; those startup results are excluded from the steady
+scroll comparison. The locally hosted font fix allowed the full headless GPU
+run to finish normally.
+
+## Remove a blocking external font stylesheet
+
+The full-browser investigation exposed a real startup failure: while the Google
+Fonts stylesheet was pending, the selection island remained blank. The inline
+script following that stylesheet and module startup depended on stylesheet
+completion. A regression test holds the external stylesheet indefinitely and
+requires an interactive grid within three seconds; it failed before this fix.
+
+Bricolage Grotesque and Instrument Sans now load from the site's own WOFF2
+assets, with the same variable weight ranges and Unicode subsets. The two Latin
+subsets are preloaded (about 107 KB combined), and `font-display: swap` preserves
+text rendering if a font itself is slow. This removes the external stylesheet
+and connection handshakes from startup. License texts and exact download URLs,
+byte lengths, and SHA-256 hashes are in `public/fonts/`.
+
+
+The faster startup exposed an immediate-navigation race in the first deferred
+persistence implementation. Pending values are now captured in layout effects
+(commit phase); only serialization and the write wait for idle. Ten consecutive
+browser runs passed the immediate-selection/empty-selection reload test.
+
+Phone screenshots also exposed clipped export controls. The action row now
+wraps within the viewport; the existing bottom clearance accommodates the
+wrapped controls. The visible-image regression checks both decoded stickers and
+control bounds on desktop and phone widths.

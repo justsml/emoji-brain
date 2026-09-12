@@ -102,7 +102,7 @@ body {
   padding-bottom: 5rem; /* clears the fixed sheet bar */
 }
 @media (max-width: 560px) {
-  .page-shell { padding-bottom: 8.5rem; } /* the bar wraps to two rows */
+  .page-shell { padding-bottom: 8.5rem; } /* clears wrapped sheet controls */
 }
 
 /* --- masthead ------------------------------------------------------------ */
