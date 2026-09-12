@@ -1,9 +1,14 @@
 import {test,expect} from '@playwright/test';
 import {createHash} from 'node:crypto';
+import fs from 'node:fs/promises';
+const catalog = Object.values(JSON.parse(await fs.readFile('public/emoji-delivery/manifest.json', 'utf8')).items) as {animated: boolean}[];
+const animatedCount = catalog.filter(emoji => emoji.animated).length;
+const stillCount = catalog.length - animatedCount;
 
 test('console export uses a worker and adaptive WebP and uploads identical bytes in a mocked browser',async({page,context})=>{
   await page.addInitScript(()=>Object.defineProperty(navigator,'clipboard',{value:{writeText:async(text:string)=>{(window as any).copiedEmojiScript=text;}}}));
   await page.goto('/');
+  await page.getByTitle('Deselect visible').click();
   await page.locator('div[role="gridcell"] button').first().click();
   await expect(page.getByLabel('Slack image size')).toHaveCount(0);
   for(const size of [256]){
@@ -67,12 +72,13 @@ test('grid requests pre-generated still previews, plays a small animation only o
 test('ZIP downloads the native-size quality-90 WebPs and Markdown includes all preview sizes',async({page})=>{
   await page.addInitScript(()=>Object.defineProperty(navigator,'clipboard',{value:{writeText:async(text:string)=>{(window as any).copiedEmojiScript=text;}}}));
   await page.goto('/');
+  await page.getByTitle('Deselect visible').click();
   const button=page.locator('[role="gridcell"] button').first();
   const filename=(await button.getAttribute('aria-label'))!.split(',')[0];
   await button.click();
   await page.getByRole('button',{name:'Other export options'}).click();
   const downloaded=page.waitForEvent('download');
-  await page.getByRole('menuitem',{name:'ZIP File'}).click();
+  await page.getByRole('menuitem',{name:/^Originals/}).click();
   const download=await downloaded;
   const fs=await import('node:fs/promises'),JSZip=(await import('jszip')).default;
   const zip=await JSZip.loadAsync(await fs.readFile((await download.path())!));
@@ -111,7 +117,7 @@ test('export can be canceled while the grid remains interactive',async({page,con
   await page.locator('[role="gridcell"] button').first().click();
   await page.getByRole('button',{name:'Other export options'}).click();
   const created=page.waitForEvent('worker');
-  await page.getByRole('menuitem',{name:'ZIP File'}).click();
+  await page.getByRole('menuitem',{name:/^Originals/}).click();
   await created;
   await page.getByPlaceholder('Search emojis...').fill('roo');
   await page.getByRole('button',{name:'Cancel export',exact:true}).click();
@@ -142,7 +148,7 @@ test('Pagefind is lazy, uses one engine, and avoids redundant result fragments',
   expect(requests.filter(url=>new URL(url).pathname==='/pagefind/pagefind.js')).toHaveLength(1);
   expect(page.workers().filter(worker=>worker.url().includes('pagefind-worker'))).toHaveLength(1);
   const index=await (await page.request.get('/pagefind/pagefind-entry.json')).json();
-  expect(index.languages.en.page_count).toBe(353);
+  expect(index.languages.en.page_count).toBe(catalog.length);
 });
 
 test('full Slack script yields during payload decoding at half-speed CPU', async ({page,context}) => {
@@ -152,8 +158,8 @@ test('full Slack script yields during payload decoding at half-speed CPU', async
   await page.getByTitle('Select All Visible', {exact:true}).click();
   await page.getByRole('button',{name:'Copy Slack script',exact:true}).click();
   await expect(page.getByLabel('Close Slack instructions')).toBeVisible({timeout:60_000});
-  await expect(page.getByLabel('Exported image resolutions')).toContainText('271 still at 128×128');
-  await expect(page.getByLabel('Exported image resolutions')).toContainText('82 animated at 64×64');
+  await expect(page.getByLabel('Exported image resolutions')).toContainText(`${stillCount} still at 128×128`);
+  await expect(page.getByLabel('Exported image resolutions')).toContainText(`${animatedCount} animated at 64×64`);
   const script = await page.evaluate(() => (window as any).copiedEmojiScript as string);
   expect(Buffer.byteLength(script)).toBeLessThan(8_000_000);
   const probe = await context.newPage();

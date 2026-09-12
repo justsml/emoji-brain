@@ -5,7 +5,9 @@ import fs from 'node:fs/promises';
 for(const scenario of ['replace','restore','changed','alias','delete-rejected','lost-acknowledgement','restore-failure'] as const)test(`optional Slack replacement: ${scenario}`,async({page,context})=>{
   test.setTimeout(60_000);
   await page.addInitScript(()=>Object.defineProperty(navigator,'clipboard',{value:{writeText:async(text:string)=>{(window as any).copiedEmojiScript=text;}}}));
-  await page.goto('/');const first=page.locator('[role="gridcell"] button').first();
+  await page.goto('/');
+  await page.getByTitle('Deselect visible').click();
+  const first=page.locator('[role="gridcell"] button').first();
   const filename=(await first.getAttribute('aria-label'))!.split(',')[0],name=filename.replace(/\.webp$/,'').toLowerCase();
   await first.click();await page.getByRole('button',{name:'Other export options'}).click();
   await page.getByRole('menuitem',{name:'Slack script: replace smaller…'}).click();

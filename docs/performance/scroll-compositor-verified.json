@@ -1,0 +1,161 @@
+{
+  "load": {
+    "phase": "load",
+    "durationMs": 382.69999998807907,
+    "frames": 11,
+    "p95FrameGapMs": 116.69999999999999,
+    "maxFrameGapMs": 116.69999999999999,
+    "longTaskCount": 1,
+    "maxLongTaskMs": 93,
+    "blockingMs": 43,
+    "fcpMs": 96,
+    "lcpMs": 96,
+    "layoutShiftSum": 0
+  },
+  "scenario": {
+    "name": "desktop-small",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "size": "Small"
+  },
+  "browser": "153.0.8010.12",
+  "renderer": {
+    "devices": [
+      {
+        "vendorId": 4203,
+        "deviceId": 0,
+        "vendorString": "Google Inc. (Apple)",
+        "deviceString": "ANGLE (Apple, ANGLE Metal Renderer: Apple M2, Version 26.6.2 (Build 25G83))",
+        "driverVendor": "Apple",
+        "driverVersion": "26.6.2"
+      }
+    ],
+    "features": {
+      "2d_canvas": "enabled",
+      "direct_rendering_display_compositor": "disabled_off_ok",
+      "gpu_compositing": "enabled",
+      "multiple_raster_threads": "enabled_on",
+      "opengl": "enabled_on",
+      "rasterization": "enabled",
+      "raw_draw": "disabled_off_ok",
+      "skia_graphite": "enabled_on",
+      "trees_in_viz": "disabled_off",
+      "video_decode": "enabled",
+      "video_encode": "enabled",
+      "webgl": "enabled",
+      "webgpu": "enabled",
+      "webnn": "disabled_off"
+    }
+  },
+  "slow": {
+    "phase": "slow",
+    "durationMs": 3892.100000023842,
+    "frames": 231,
+    "p95FrameGapMs": 16.799999999999727,
+    "maxFrameGapMs": 33.299999999999955,
+    "longTaskCount": 0,
+    "maxLongTaskMs": 0,
+    "blockingMs": 0,
+    "fcpMs": 96,
+    "lcpMs": 96,
+    "layoutShiftSum": 0,
+    "positions": [],
+    "before": {
+      "Nodes": 7139,
+      "LayoutDuration": 0.061426,
+      "RecalcStyleDuration": 0.046508,
+      "ScriptDuration": 0.129167,
+      "TaskDuration": 0.586143,
+      "JSHeapUsedSize": 9613024
+    },
+    "after": {
+      "Nodes": 7139,
+      "LayoutDuration": 0.065327,
+      "RecalcStyleDuration": 0.084487,
+      "ScriptDuration": 0.150524,
+      "TaskDuration": 1.446074,
+      "JSHeapUsedSize": 9022380
+    }
+  },
+  "compositor": {
+    "source": "Chromium ScrollJankV4",
+    "scrollFrames": 60,
+    "jankyScrollFrames": 0,
+    "traceSha256": "86f24bcebc2d79b71d95017c13e6695a0e18c9c35d618a7a29c53316c3cb0488"
+  },
+  "rapid": {
+    "phase": "rapid",
+    "durationMs": 2863.300000011921,
+    "frames": 157,
+    "p95FrameGapMs": 16.800000000000182,
+    "maxFrameGapMs": 100.10000000000036,
+    "longTaskCount": 0,
+    "maxLongTaskMs": 0,
+    "blockingMs": 0,
+    "fcpMs": 96,
+    "lcpMs": 96,
+    "layoutShiftSum": 0,
+    "positions": [],
+    "before": {
+      "Nodes": 5352,
+      "LayoutDuration": 0.065327,
+      "RecalcStyleDuration": 0.084487,
+      "ScriptDuration": 0.151429,
+      "TaskDuration": 1.47197,
+      "JSHeapUsedSize": 6813008
+    },
+    "after": {
+      "Nodes": 5352,
+      "LayoutDuration": 0.065327,
+      "RecalcStyleDuration": 0.111052,
+      "ScriptDuration": 0.174495,
+      "TaskDuration": 2.206012,
+      "JSHeapUsedSize": 6846788
+    }
+  },
+  "jumps": {
+    "phase": "jumps",
+    "durationMs": 1847.800000011921,
+    "frames": 109,
+    "p95FrameGapMs": 16.799999999999272,
+    "maxFrameGapMs": 33.29999999999927,
+    "longTaskCount": 0,
+    "maxLongTaskMs": 0,
+    "blockingMs": 0,
+    "fcpMs": 96,
+    "lcpMs": 96,
+    "layoutShiftSum": 0,
+    "positions": [
+      2450,
+      0,
+      2450,
+      0,
+      2450,
+      0,
+      2450,
+      0,
+      2450,
+      0,
+      2450,
+      0
+    ],
+    "before": {
+      "Nodes": 5352,
+      "LayoutDuration": 0.065327,
+      "RecalcStyleDuration": 0.111052,
+      "ScriptDuration": 0.174658,
+      "TaskDuration": 2.209782,
+      "JSHeapUsedSize": 6853828
+    },
+    "after": {
+      "Nodes": 5352,
+      "LayoutDuration": 0.065327,
+      "RecalcStyleDuration": 0.12046,
+      "ScriptDuration": 0.178737,
+      "TaskDuration": 2.580642,
+      "JSHeapUsedSize": 6961896
+    }
+  }
+}

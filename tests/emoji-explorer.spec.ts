@@ -207,9 +207,9 @@ test('visible stickers stay decoded across page-end and page-home jumps', async 
     expect(await page.locator('.sheet-actions button').evaluateAll(buttons => buttons.filter(button => button.getClientRects().length).every(button => {const rect = button.getBoundingClientRect(); return rect.left >= 0 && rect.right <= innerWidth + 1;}))).toBe(true);
     for (const end of [true, false, true, false]) {
       await page.evaluate(end => window.scrollTo({top: end ? document.documentElement.scrollHeight : 0, behavior: 'instant'}), end);
-      await expect.poll(() => page.locator('[role="gridcell"]').evaluateAll(cells => {
+      await expect.poll(() => page.locator('[role="gridcell"]').evaluateAll(async cells => {
         const visible = cells.filter(cell => {const rect = cell.getBoundingClientRect(); return rect.bottom > 100 && rect.top < innerHeight - 150;});
-        return visible.length > 0 && visible.every(cell => {const img = cell.querySelector('img')!; return img.complete && img.naturalWidth > 0;});
+        return visible.length > 0 && (await Promise.all(visible.map(async cell => {const img = cell.querySelector('img')!; try {await img.decode(); return img.naturalWidth > 0;} catch {return false;}}))).every(Boolean);
       })).toBe(true);
     }
     await testInfo.attach(`grid-${viewport.width}-home.png`, {body: await page.screenshot(), contentType: 'image/png'});
@@ -220,4 +220,20 @@ test('visible stickers stay decoded across page-end and page-home jumps', async 
   const fonts = await page.evaluate(() => Array.from(document.fonts).filter(font => font.status === 'loaded').map(font => font.family));
   expect(fonts).toContain('Bricolage Grotesque');
   expect(fonts).toContain('Instrument Sans');
+});
+
+test('native Home End and page keys scroll without changing the selection', async ({page}) => {
+  await page.getByRole('grid', {name: 'Emoji results'}).waitFor();
+  const selected = await page.locator('[role="gridcell"] button[aria-pressed="true"]').count();
+  await page.keyboard.press('End');
+  await expect.poll(() => page.evaluate(() => Math.abs(scrollY - (document.documentElement.scrollHeight - innerHeight)))).toBeLessThan(3);
+  await page.keyboard.press('Home');
+  await expect.poll(() => page.evaluate(() => scrollY)).toBeLessThan(3);
+  await page.keyboard.press('PageDown');
+  await expect.poll(() => page.evaluate(() => scrollY)).toBeGreaterThan(100);
+  // Allow the native key-scroll animation to settle before reversing it.
+  await page.waitForTimeout(400);
+  await page.keyboard.press('PageUp');
+  await expect.poll(() => page.evaluate(() => scrollY)).toBeLessThan(3);
+  expect(await page.locator('[role="gridcell"] button[aria-pressed="true"]').count()).toBe(selected);
 });

@@ -1,0 +1,258 @@
+[
+  {
+    "profile": {
+      "name": "4g-half-cpu",
+      "cpuRate": 2,
+      "latency": 40,
+      "downloadThroughput": 500000,
+      "uploadThroughput": 375000,
+      "connectionType": "cellular4g",
+      "readyBudgetMs": 15000,
+      "exportBudgetMs": 90000
+    },
+    "catalogCount": 351,
+    "expectedImageBytes": 4642998,
+    "browser": "153.0.8010.12",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "host": {
+      "platform": "darwin",
+      "arch": "arm64"
+    },
+    "readyMs": 1013,
+    "load": {
+      "phase": "load",
+      "durationMs": 952.3000000119209,
+      "frames": 39,
+      "p95FrameGapMs": 16.700000000000045,
+      "maxFrameGapMs": 100,
+      "longTaskCount": 1,
+      "maxLongTaskMs": 77,
+      "blockingMs": 27,
+      "fcpMs": 296,
+      "lcpMs": 296,
+      "layoutShiftSum": 0.0007900362594039352
+    },
+    "initialTransferBytes": 331527,
+    "scroll": {
+      "phase": "scroll",
+      "durationMs": 5119.900000035763,
+      "frames": 302,
+      "p95FrameGapMs": 16.799999999999727,
+      "maxFrameGapMs": 50,
+      "longTaskCount": 0,
+      "maxLongTaskMs": 0,
+      "blockingMs": 0,
+      "fcpMs": 296,
+      "lcpMs": 296,
+      "layoutShiftSum": 0.0007900362594039352
+    },
+    "scrollCpuBefore": {
+      "Nodes": 7135,
+      "LayoutDuration": 0.048518,
+      "RecalcStyleDuration": 0.028533,
+      "ScriptDuration": 0.110238,
+      "TaskDuration": 0.330111,
+      "JSHeapUsedSize": 8803864
+    },
+    "scrollCpuAfter": {
+      "Nodes": 7135,
+      "LayoutDuration": 0.111752,
+      "RecalcStyleDuration": 0.031607,
+      "ScriptDuration": 0.12276,
+      "TaskDuration": 1.591693,
+      "JSHeapUsedSize": 9096572
+    },
+    "exportCpuBefore": {
+      "Nodes": 7137,
+      "LayoutDuration": 0.111752,
+      "RecalcStyleDuration": 0.032844,
+      "ScriptDuration": 0.131588,
+      "TaskDuration": 1.65548,
+      "JSHeapUsedSize": 8690792
+    },
+    "exportMs": 13807,
+    "export": {
+      "phase": "export",
+      "durationMs": 13808,
+      "frames": 776,
+      "p95FrameGapMs": 16.799999999999272,
+      "maxFrameGapMs": 83.39999999999964,
+      "longTaskCount": 0,
+      "maxLongTaskMs": 0,
+      "blockingMs": 0,
+      "fcpMs": 296,
+      "lcpMs": 296,
+      "layoutShiftSum": 0.7542088818208673
+    },
+    "exportCpuAfter": {
+      "Nodes": 1796,
+      "LayoutDuration": 0.261107,
+      "RecalcStyleDuration": 0.169778,
+      "ScriptDuration": 0.89428,
+      "TaskDuration": 4.427859,
+      "JSHeapUsedSize": 18664980
+    },
+    "inputProbes": 26,
+    "maxInputRoundTripMs": 42,
+    "workers": [
+      {
+        "url": "http://localhost:4322/_astro/export.worker-YY12AItZ.js",
+        "networkApplied": true,
+        "requests": 351,
+        "throttledRequests": 351
+      },
+      {
+        "url": "http://localhost:4322/pagefind/pagefind-worker.js",
+        "networkApplied": false,
+        "requests": 0,
+        "throttledRequests": 0
+      }
+    ],
+    "scriptBytes": 6105399,
+    "scriptSha256": "d1f136884cce1bd6ca144f1f0fbe1fd9557d6353e681a20257701f225f5235c1",
+    "largestImageBytes": 126262,
+    "shippedSizes": [
+      [
+        "64",
+        81
+      ],
+      [
+        "128",
+        270
+      ]
+    ],
+    "testErrors": [],
+    "errors": []
+  },
+  {
+    "profile": {
+      "name": "3g-half-cpu",
+      "cpuRate": 2,
+      "latency": 150,
+      "downloadThroughput": 200000,
+      "uploadThroughput": 93750,
+      "connectionType": "cellular3g",
+      "readyBudgetMs": 30000,
+      "exportBudgetMs": 180000
+    },
+    "catalogCount": 351,
+    "expectedImageBytes": 4642998,
+    "browser": "153.0.8010.12",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "host": {
+      "platform": "darwin",
+      "arch": "arm64"
+    },
+    "readyMs": 2332,
+    "load": {
+      "phase": "load",
+      "durationMs": 2161.800000011921,
+      "frames": 99,
+      "p95FrameGapMs": 16.799999999999955,
+      "maxFrameGapMs": 99.99999999999977,
+      "longTaskCount": 1,
+      "maxLongTaskMs": 80,
+      "blockingMs": 30,
+      "fcpMs": 612,
+      "lcpMs": 612,
+      "layoutShiftSum": 0.0007900362594039352
+    },
+    "initialTransferBytes": 296741,
+    "scroll": {
+      "phase": "scroll",
+      "durationMs": 5042.800000011921,
+      "frames": 301,
+      "p95FrameGapMs": 16.799999999999727,
+      "maxFrameGapMs": 16.800000000000182,
+      "longTaskCount": 0,
+      "maxLongTaskMs": 0,
+      "blockingMs": 0,
+      "fcpMs": 612,
+      "lcpMs": 612,
+      "layoutShiftSum": 0.0007900362594039352
+    },
+    "scrollCpuBefore": {
+      "Nodes": 7135,
+      "LayoutDuration": 0.055425,
+      "RecalcStyleDuration": 0.0305,
+      "ScriptDuration": 0.113196,
+      "TaskDuration": 0.364746,
+      "JSHeapUsedSize": 8812064
+    },
+    "scrollCpuAfter": {
+      "Nodes": 7135,
+      "LayoutDuration": 0.09344,
+      "RecalcStyleDuration": 0.032865,
+      "ScriptDuration": 0.123166,
+      "TaskDuration": 1.318884,
+      "JSHeapUsedSize": 9084244
+    },
+    "exportCpuBefore": {
+      "Nodes": 7137,
+      "LayoutDuration": 0.094861,
+      "RecalcStyleDuration": 0.033318,
+      "ScriptDuration": 0.131589,
+      "TaskDuration": 1.405772,
+      "JSHeapUsedSize": 8662128
+    },
+    "exportMs": 40271,
+    "export": {
+      "phase": "export",
+      "durationMs": 40272.40000003576,
+      "frames": 2279,
+      "p95FrameGapMs": 16.799999999999272,
+      "maxFrameGapMs": 83.30000000000291,
+      "longTaskCount": 0,
+      "maxLongTaskMs": 0,
+      "blockingMs": 0,
+      "fcpMs": 612,
+      "lcpMs": 612,
+      "layoutShiftSum": 1.6167671195927362
+    },
+    "exportCpuAfter": {
+      "Nodes": 28456,
+      "LayoutDuration": 0.495792,
+      "RecalcStyleDuration": 0.342158,
+      "ScriptDuration": 1.848275,
+      "TaskDuration": 8.489786,
+      "JSHeapUsedSize": 25488956
+    },
+    "inputProbes": 76,
+    "maxInputRoundTripMs": 23,
+    "workers": [
+      {
+        "url": "http://localhost:4322/_astro/export.worker-YY12AItZ.js",
+        "networkApplied": true,
+        "requests": 351,
+        "throttledRequests": 351
+      },
+      {
+        "url": "http://localhost:4322/pagefind/pagefind-worker.js",
+        "networkApplied": false,
+        "requests": 0,
+        "throttledRequests": 0
+      }
+    ],
+    "scriptBytes": 6105399,
+    "scriptSha256": "d1f136884cce1bd6ca144f1f0fbe1fd9557d6353e681a20257701f225f5235c1",
+    "largestImageBytes": 126262,
+    "shippedSizes": [
+      [
+        "64",
+        81
+      ],
+      [
+        "128",
+        270
+      ]
+    ],
+    "testErrors": [],
+    "errors": []
+  }
+]

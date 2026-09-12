@@ -3,7 +3,7 @@ import base from './playwright.config';
 export default defineConfig(base, {
   testMatch: '**/*.performance.spec.ts',
   testIgnore: [],
-  projects: [{name:'chromium',use:{browserName:'chromium',viewport:{width:1440,height:1000}}}],
+  projects: [{name:'chromium',use:{browserName:'chromium',channel:process.env.PERF_FULL_CHROMIUM ? 'chromium' : undefined,viewport:{width:1440,height:1000}}}],
   fullyParallel: false,
   workers: 1,
   retries: 0,

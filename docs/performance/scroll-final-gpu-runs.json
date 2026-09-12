@@ -1,0 +1,1850 @@
+[
+  {
+    "load": {
+      "phase": "load",
+      "durationMs": 412.0999999642372,
+      "frames": 9,
+      "p95FrameGapMs": 99.9,
+      "maxFrameGapMs": 99.9,
+      "longTaskCount": 1,
+      "maxLongTaskMs": 91,
+      "blockingMs": 41,
+      "fcpMs": 144,
+      "lcpMs": 144,
+      "layoutShiftSum": 0
+    },
+    "scenario": {
+      "name": "desktop-small",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "size": "Small"
+    },
+    "renderer": {
+      "devices": [
+        {
+          "vendorId": 4203,
+          "deviceId": 0,
+          "vendorString": "Google Inc. (Apple)",
+          "deviceString": "ANGLE (Apple, ANGLE Metal Renderer: Apple M2, Version 26.6.2 (Build 25G83))",
+          "driverVendor": "Apple",
+          "driverVersion": "26.6.2"
+        }
+      ],
+      "features": {
+        "2d_canvas": "enabled",
+        "direct_rendering_display_compositor": "disabled_off_ok",
+        "gpu_compositing": "enabled",
+        "multiple_raster_threads": "enabled_on",
+        "opengl": "enabled_on",
+        "rasterization": "enabled",
+        "raw_draw": "disabled_off_ok",
+        "skia_graphite": "enabled_on",
+        "trees_in_viz": "disabled_off",
+        "video_decode": "enabled",
+        "video_encode": "enabled",
+        "webgl": "enabled",
+        "webgpu": "enabled",
+        "webnn": "disabled_off"
+      }
+    },
+    "slow": {
+      "phase": "slow",
+      "durationMs": 3905.100000023842,
+      "frames": 232,
+      "p95FrameGapMs": 16.700000000000273,
+      "maxFrameGapMs": 33.5,
+      "longTaskCount": 0,
+      "maxLongTaskMs": 0,
+      "blockingMs": 0,
+      "fcpMs": 144,
+      "lcpMs": 144,
+      "layoutShiftSum": 0,
+      "positions": [],
+      "before": {
+        "Nodes": 7139,
+        "LayoutDuration": 0.062997,
+        "RecalcStyleDuration": 0.048513,
+        "ScriptDuration": 0.129381,
+        "TaskDuration": 0.6055,
+        "JSHeapUsedSize": 9618084
+      },
+      "after": {
+        "Nodes": 5352,
+        "LayoutDuration": 0.068575,
+        "RecalcStyleDuration": 0.085584,
+        "ScriptDuration": 0.151554,
+        "TaskDuration": 1.480052,
+        "JSHeapUsedSize": 6944280
+      }
+    },
+    "rapid": {
+      "phase": "rapid",
+      "durationMs": 2953.800000011921,
+      "frames": 157,
+      "p95FrameGapMs": 16.800000000000182,
+      "maxFrameGapMs": 133.30000000000018,
+      "longTaskCount": 0,
+      "maxLongTaskMs": 0,
+      "blockingMs": 0,
+      "fcpMs": 144,
+      "lcpMs": 144,
+      "layoutShiftSum": 0,
+      "positions": [],
+      "before": {
+        "Nodes": 5352,
+        "LayoutDuration": 0.068575,
+        "RecalcStyleDuration": 0.085584,
+        "ScriptDuration": 0.151712,
+        "TaskDuration": 1.486567,
+        "JSHeapUsedSize": 6947532
+      },
+      "after": {
+        "Nodes": 5352,
+        "LayoutDuration": 0.068575,
+        "RecalcStyleDuration": 0.104721,
+        "ScriptDuration": 0.16794,
+        "TaskDuration": 2.070785,
+        "JSHeapUsedSize": 7322856
+      }
+    },
+    "jumps": {
+      "phase": "jumps",
+      "durationMs": 1854,
+      "frames": 109,
+      "p95FrameGapMs": 16.700000000000728,
+      "maxFrameGapMs": 33.29999999999927,
+      "longTaskCount": 0,
+      "maxLongTaskMs": 0,
+      "blockingMs": 0,
+      "fcpMs": 144,
+      "lcpMs": 144,
+      "layoutShiftSum": 0,
+      "positions": [
+        2450,
+        0,
+        2450,
+        0,
+        2450,
+        0,
+        2450,
+        0,
+        2450,
+        0,
+        2450,
+        0
+      ],
+      "before": {
+        "Nodes": 5352,
+        "LayoutDuration": 0.068575,
+        "RecalcStyleDuration": 0.106426,
+        "ScriptDuration": 0.170104,
+        "TaskDuration": 2.135747,
+        "JSHeapUsedSize": 6832040
+      },
+      "after": {
+        "Nodes": 5352,
+        "LayoutDuration": 0.068575,
+        "RecalcStyleDuration": 0.115567,
+        "ScriptDuration": 0.173282,
+        "TaskDuration": 2.468246,
+        "JSHeapUsedSize": 6928748
+      }
+    }
+  },
+  {
+    "load": {
+      "phase": "load",
+      "durationMs": 332.4000000357628,
+      "frames": 11,
+      "p95FrameGapMs": 99.89999999999998,
+      "maxFrameGapMs": 99.89999999999998,
+      "longTaskCount": 1,
+      "maxLongTaskMs": 85,
+      "blockingMs": 35,
+      "fcpMs": 60,
+      "lcpMs": 60,
+      "layoutShiftSum": 0
+    },
+    "scenario": {
+      "name": "desktop-xl",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "size": "Extra large"
+    },
+    "renderer": {
+      "devices": [
+        {
+          "vendorId": 4203,
+          "deviceId": 0,
+          "vendorString": "Google Inc. (Apple)",
+          "deviceString": "ANGLE (Apple, ANGLE Metal Renderer: Apple M2, Version 26.6.2 (Build 25G83))",
+          "driverVendor": "Apple",
+          "driverVersion": "26.6.2"
+        }
+      ],
+      "features": {
+        "2d_canvas": "enabled",
+        "direct_rendering_display_compositor": "disabled_off_ok",
+        "gpu_compositing": "enabled",
+        "multiple_raster_threads": "enabled_on",
+        "opengl": "enabled_on",
+        "rasterization": "enabled",
+        "raw_draw": "disabled_off_ok",
+        "skia_graphite": "enabled_on",
+        "trees_in_viz": "disabled_off",
+        "video_decode": "enabled",
+        "video_encode": "enabled",
+        "webgl": "enabled",
+        "webgpu": "enabled",
+        "webnn": "disabled_off"
+      }
+    },
+    "slow": {
+      "phase": "slow",
+      "durationMs": 2999.5,
+      "frames": 179,
+      "p95FrameGapMs": 16.799999999999727,
+      "maxFrameGapMs": 16.800000000000182,
+      "longTaskCount": 0,
+      "maxLongTaskMs": 0,
+      "blockingMs": 0,
+      "fcpMs": 60,
+      "lcpMs": 60,
+      "layoutShiftSum": 0,
+      "positions": [],
+      "before": {
+        "Nodes": 7138,
+        "LayoutDuration": 0.068039,
+        "RecalcStyleDuration": 0.035308,
+        "ScriptDuration": 0.135223,
+        "TaskDuration": 0.599102,
+        "JSHeapUsedSize": 10935880
+      },
+      "after": {
+        "Nodes": 7138,
+        "LayoutDuration": 0.068039,
+        "RecalcStyleDuration": 0.035308,
+        "ScriptDuration": 0.138675,
+        "TaskDuration": 0.764595,
+        "JSHeapUsedSize": 11002084
+      }
+    },
+    "rapid": {
+      "phase": "rapid",
+      "durationMs": 1993.4000000357628,
+      "frames": 119,
+      "p95FrameGapMs": 16.800000000000182,
+      "maxFrameGapMs": 16.800000000000182,
+      "longTaskCount": 0,
+      "maxLongTaskMs": 0,
+      "blockingMs": 0,
+      "fcpMs": 60,
+      "lcpMs": 60,
+      "layoutShiftSum": 0,
+      "positions": [],
+      "before": {
+        "Nodes": 7138,
+        "LayoutDuration": 0.068039,
+        "RecalcStyleDuration": 0.035308,
+        "ScriptDuration": 0.139088,
+        "TaskDuration": 0.770791,
+        "JSHeapUsedSize": 11005212
+      },
+      "after": {
+        "Nodes": 7138,
+        "LayoutDuration": 0.068039,
+        "RecalcStyleDuration": 0.035308,
+        "ScriptDuration": 0.141803,
+        "TaskDuration": 1.054441,
+        "JSHeapUsedSize": 11054852
+      }
+    },
+    "jumps": {
+      "phase": "jumps",
+      "durationMs": 1846.8999999761581,
+      "frames": 110,
+      "p95FrameGapMs": 16.700000000000728,
+      "maxFrameGapMs": 16.700000000000728,
+      "longTaskCount": 0,
+      "maxLongTaskMs": 0,
+      "blockingMs": 0,
+      "fcpMs": 60,
+      "lcpMs": 60,
+      "layoutShiftSum": 0,
+      "positions": [
+        14723,
+        0,
+        14723,
+        0,
+        14723,
+        0,
+        14723,
+        0,
+        14723,
+        0,
+        14723,
+        0
+      ],
+      "before": {
+        "Nodes": 5351,
+        "LayoutDuration": 0.068039,
+        "RecalcStyleDuration": 0.035308,
+        "ScriptDuration": 0.142224,
+        "TaskDuration": 1.076206,
+        "JSHeapUsedSize": 7367784
+      },
+      "after": {
+        "Nodes": 5351,
+        "LayoutDuration": 0.069276,
+        "RecalcStyleDuration": 0.035308,
+        "ScriptDuration": 0.143276,
+        "TaskDuration": 1.222615,
+        "JSHeapUsedSize": 7514276
+      }
+    }
+  },
+  {
+    "load": {
+      "phase": "load",
+      "durationMs": 295.19999998807907,
+      "frames": 10,
+      "p95FrameGapMs": 99.89999999999998,
+      "maxFrameGapMs": 99.89999999999998,
+      "longTaskCount": 1,
+      "maxLongTaskMs": 82,
+      "blockingMs": 32,
+      "fcpMs": 60,
+      "lcpMs": 60,
+      "layoutShiftSum": 0
+    },
+    "scenario": {
+      "name": "mobile-small",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "size": "Small"
+    },
+    "renderer": {
+      "devices": [
+        {
+          "vendorId": 4203,
+          "deviceId": 0,
+          "vendorString": "Google Inc. (Apple)",
+          "deviceString": "ANGLE (Apple, ANGLE Metal Renderer: Apple M2, Version 26.6.2 (Build 25G83))",
+          "driverVendor": "Apple",
+          "driverVersion": "26.6.2"
+        }
+      ],
+      "features": {
+        "2d_canvas": "enabled",
+        "direct_rendering_display_compositor": "disabled_off_ok",
+        "gpu_compositing": "enabled",
+        "multiple_raster_threads": "enabled_on",
+        "opengl": "enabled_on",
+        "rasterization": "enabled",
+        "raw_draw": "disabled_off_ok",
+        "skia_graphite": "enabled_on",
+        "trees_in_viz": "disabled_off",
+        "video_decode": "enabled",
+        "video_encode": "enabled",
+        "webgl": "enabled",
+        "webgpu": "enabled",
+        "webnn": "disabled_off"
+      }
+    },
+    "slow": {
+      "phase": "slow",
+      "durationMs": 3004.199999988079,
+      "frames": 179,
+      "p95FrameGapMs": 16.700000000000273,
+      "maxFrameGapMs": 16.800000000000182,
+      "longTaskCount": 0,
+      "maxLongTaskMs": 0,
+      "blockingMs": 0,
+      "fcpMs": 60,
+      "lcpMs": 60,
+      "layoutShiftSum": 0,
+      "positions": [],
+      "before": {
+        "Nodes": 7139,
+        "LayoutDuration": 0.053568,
+        "RecalcStyleDuration": 0.025465,
+        "ScriptDuration": 0.108326,
+        "TaskDuration": 0.371555,
+        "JSHeapUsedSize": 8871808
+      },
+      "after": {
+        "Nodes": 7139,
+        "LayoutDuration": 0.058626,
+        "RecalcStyleDuration": 0.025465,
+        "ScriptDuration": 0.114259,
+        "TaskDuration": 0.705061,
+        "JSHeapUsedSize": 8998016
+      }
+    },
+    "rapid": {
+      "phase": "rapid",
+      "durationMs": 1956.6000000238419,
+      "frames": 116,
+      "p95FrameGapMs": 16.700000000000728,
+      "maxFrameGapMs": 16.800000000000182,
+      "longTaskCount": 0,
+      "maxLongTaskMs": 0,
+      "blockingMs": 0,
+      "fcpMs": 60,
+      "lcpMs": 60,
+      "layoutShiftSum": 0,
+      "positions": [],
+      "before": {
+        "Nodes": 7139,
+        "LayoutDuration": 0.058626,
+        "RecalcStyleDuration": 0.025465,
+        "ScriptDuration": 0.114369,
+        "TaskDuration": 0.708548,
+        "JSHeapUsedSize": 9001180
+      },
+      "after": {
+        "Nodes": 7139,
+        "LayoutDuration": 0.059443,
+        "RecalcStyleDuration": 0.025465,
+        "ScriptDuration": 0.11657,
+        "TaskDuration": 1.030472,
+        "JSHeapUsedSize": 9056384
+      }
+    },
+    "jumps": {
+      "phase": "jumps",
+      "durationMs": 1848.199999988079,
+      "frames": 110,
+      "p95FrameGapMs": 16.799999999999272,
+      "maxFrameGapMs": 16.800000000000182,
+      "longTaskCount": 0,
+      "maxLongTaskMs": 0,
+      "blockingMs": 0,
+      "fcpMs": 60,
+      "lcpMs": 60,
+      "layoutShiftSum": 0,
+      "positions": [
+        10212,
+        0,
+        10212,
+        0,
+        10212,
+        0,
+        10212,
+        0,
+        10212,
+        0,
+        10212,
+        0
+      ],
+      "before": {
+        "Nodes": 7139,
+        "LayoutDuration": 0.059443,
+        "RecalcStyleDuration": 0.025465,
+        "ScriptDuration": 0.118121,
+        "TaskDuration": 1.039097,
+        "JSHeapUsedSize": 9063172
+      },
+      "after": {
+        "Nodes": 7139,
+        "LayoutDuration": 0.060853,
+        "RecalcStyleDuration": 0.025465,
+        "ScriptDuration": 0.122424,
+        "TaskDuration": 1.212608,
+        "JSHeapUsedSize": 9255296
+      }
+    }
+  },
+  {
+    "load": {
+      "phase": "load",
+      "durationMs": 292,
+      "frames": 11,
+      "p95FrameGapMs": 83.39999999999998,
+      "maxFrameGapMs": 83.39999999999998,
+      "longTaskCount": 1,
+      "maxLongTaskMs": 83,
+      "blockingMs": 33,
+      "fcpMs": 64,
+      "lcpMs": 64,
+      "layoutShiftSum": 0
+    },
+    "scenario": {
+      "name": "mobile-xl",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "size": "Extra large"
+    },
+    "renderer": {
+      "devices": [
+        {
+          "vendorId": 4203,
+          "deviceId": 0,
+          "vendorString": "Google Inc. (Apple)",
+          "deviceString": "ANGLE (Apple, ANGLE Metal Renderer: Apple M2, Version 26.6.2 (Build 25G83))",
+          "driverVendor": "Apple",
+          "driverVersion": "26.6.2"
+        }
+      ],
+      "features": {
+        "2d_canvas": "enabled",
+        "direct_rendering_display_compositor": "disabled_off_ok",
+        "gpu_compositing": "enabled",
+        "multiple_raster_threads": "enabled_on",
+        "opengl": "enabled_on",
+        "rasterization": "enabled",
+        "raw_draw": "disabled_off_ok",
+        "skia_graphite": "enabled_on",
+        "trees_in_viz": "disabled_off",
+        "video_decode": "enabled",
+        "video_encode": "enabled",
+        "webgl": "enabled",
+        "webgpu": "enabled",
+        "webnn": "disabled_off"
+      }
+    },
+    "slow": {
+      "phase": "slow",
+      "durationMs": 3547.399999976158,
+      "frames": 212,
+      "p95FrameGapMs": 16.799999999999727,
+      "maxFrameGapMs": 16.800000000000182,
+      "longTaskCount": 0,
+      "maxLongTaskMs": 0,
+      "blockingMs": 0,
+      "fcpMs": 64,
+      "lcpMs": 64,
+      "layoutShiftSum": 0,
+      "positions": [],
+      "before": {
+        "Nodes": 7138,
+        "LayoutDuration": 0.054778,
+        "RecalcStyleDuration": 0.031742,
+        "ScriptDuration": 0.126161,
+        "TaskDuration": 0.473174,
+        "JSHeapUsedSize": 9584136
+      },
+      "after": {
+        "Nodes": 7138,
+        "LayoutDuration": 0.054778,
+        "RecalcStyleDuration": 0.047467,
+        "ScriptDuration": 0.135622,
+        "TaskDuration": 1.157442,
+        "JSHeapUsedSize": 9903536
+      }
+    },
+    "rapid": {
+      "phase": "rapid",
+      "durationMs": 2896,
+      "frames": 173,
+      "p95FrameGapMs": 16.800000000000182,
+      "maxFrameGapMs": 16.800000000000182,
+      "longTaskCount": 0,
+      "maxLongTaskMs": 0,
+      "blockingMs": 0,
+      "fcpMs": 64,
+      "lcpMs": 64,
+      "layoutShiftSum": 0,
+      "positions": [],
+      "before": {
+        "Nodes": 5351,
+        "LayoutDuration": 0.054778,
+        "RecalcStyleDuration": 0.047467,
+        "ScriptDuration": 0.135755,
+        "TaskDuration": 1.176898,
+        "JSHeapUsedSize": 7379916
+      },
+      "after": {
+        "Nodes": 5351,
+        "LayoutDuration": 0.054778,
+        "RecalcStyleDuration": 0.081651,
+        "ScriptDuration": 0.150289,
+        "TaskDuration": 2.06143,
+        "JSHeapUsedSize": 8106096
+      }
+    },
+    "jumps": {
+      "phase": "jumps",
+      "durationMs": 1849.1000000238419,
+      "frames": 110,
+      "p95FrameGapMs": 16.700000000000728,
+      "maxFrameGapMs": 16.80000000000109,
+      "longTaskCount": 0,
+      "maxLongTaskMs": 0,
+      "blockingMs": 0,
+      "fcpMs": 64,
+      "lcpMs": 64,
+      "layoutShiftSum": 0,
+      "positions": [
+        138291,
+        0,
+        138291,
+        0,
+        138291,
+        0,
+        138291,
+        0,
+        138291,
+        0,
+        138291,
+        0
+      ],
+      "before": {
+        "Nodes": 5351,
+        "LayoutDuration": 0.054778,
+        "RecalcStyleDuration": 0.082347,
+        "ScriptDuration": 0.150519,
+        "TaskDuration": 2.116739,
+        "JSHeapUsedSize": 7385408
+      },
+      "after": {
+        "Nodes": 5351,
+        "LayoutDuration": 0.05534,
+        "RecalcStyleDuration": 0.087226,
+        "ScriptDuration": 0.153368,
+        "TaskDuration": 2.54218,
+        "JSHeapUsedSize": 7488072
+      }
+    }
+  },
+  {
+    "load": {
+      "phase": "load",
+      "durationMs": 341.60000002384186,
+      "frames": 14,
+      "p95FrameGapMs": 116.60000000000002,
+      "maxFrameGapMs": 116.60000000000002,
+      "longTaskCount": 1,
+      "maxLongTaskMs": 84,
+      "blockingMs": 34,
+      "fcpMs": 64,
+      "lcpMs": 80,
+      "layoutShiftSum": 0.000255787037037037
+    },
+    "scenario": {
+      "name": "desktop-small",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "size": "Small"
+    },
+    "renderer": {
+      "devices": [
+        {
+          "vendorId": 4203,
+          "deviceId": 0,
+          "vendorString": "Google Inc. (Apple)",
+          "deviceString": "ANGLE (Apple, ANGLE Metal Renderer: Apple M2, Version 26.6.2 (Build 25G83))",
+          "driverVendor": "Apple",
+          "driverVersion": "26.6.2"
+        }
+      ],
+      "features": {
+        "2d_canvas": "enabled",
+        "direct_rendering_display_compositor": "disabled_off_ok",
+        "gpu_compositing": "enabled",
+        "multiple_raster_threads": "enabled_on",
+        "opengl": "enabled_on",
+        "rasterization": "enabled",
+        "raw_draw": "disabled_off_ok",
+        "skia_graphite": "enabled_on",
+        "trees_in_viz": "disabled_off",
+        "video_decode": "enabled",
+        "video_encode": "enabled",
+        "webgl": "enabled",
+        "webgpu": "enabled",
+        "webnn": "disabled_off"
+      }
+    },
+    "slow": {
+      "phase": "slow",
+      "durationMs": 3900.5,
+      "frames": 231,
+      "p95FrameGapMs": 16.799999999999955,
+      "maxFrameGapMs": 33.30000000000018,
+      "longTaskCount": 0,
+      "maxLongTaskMs": 0,
+      "blockingMs": 0,
+      "fcpMs": 64,
+      "lcpMs": 80,
+      "layoutShiftSum": 0.000255787037037037,
+      "positions": [],
+      "before": {
+        "Nodes": 7139,
+        "LayoutDuration": 0.065129,
+        "RecalcStyleDuration": 0.024142,
+        "ScriptDuration": 0.11262,
+        "TaskDuration": 0.49756,
+        "JSHeapUsedSize": 9551760
+      },
+      "after": {
+        "Nodes": 5352,
+        "LayoutDuration": 0.069506,
+        "RecalcStyleDuration": 0.061858,
+        "ScriptDuration": 0.13323,
+        "TaskDuration": 1.346845,
+        "JSHeapUsedSize": 6962064
+      }
+    },
+    "rapid": {
+      "phase": "rapid",
+      "durationMs": 2887.399999976158,
+      "frames": 156,
+      "p95FrameGapMs": 16.800000000000182,
+      "maxFrameGapMs": 83.30000000000018,
+      "longTaskCount": 0,
+      "maxLongTaskMs": 0,
+      "blockingMs": 0,
+      "fcpMs": 64,
+      "lcpMs": 80,
+      "layoutShiftSum": 0.000255787037037037,
+      "positions": [],
+      "before": {
+        "Nodes": 5352,
+        "LayoutDuration": 0.069506,
+        "RecalcStyleDuration": 0.061858,
+        "ScriptDuration": 0.133359,
+        "TaskDuration": 1.353522,
+        "JSHeapUsedSize": 6965340
+      },
+      "after": {
+        "Nodes": 5352,
+        "LayoutDuration": 0.069506,
+        "RecalcStyleDuration": 0.083654,
+        "ScriptDuration": 0.151718,
+        "TaskDuration": 1.942801,
+        "JSHeapUsedSize": 7376924
+      }
+    },
+    "jumps": {
+      "phase": "jumps",
+      "durationMs": 1855.800000011921,
+      "frames": 110,
+      "p95FrameGapMs": 16.799999999999272,
+      "maxFrameGapMs": 16.80000000000109,
+      "longTaskCount": 0,
+      "maxLongTaskMs": 0,
+      "blockingMs": 0,
+      "fcpMs": 64,
+      "lcpMs": 80,
+      "layoutShiftSum": 0.000255787037037037,
+      "positions": [
+        2450,
+        0,
+        2450,
+        0,
+        2450,
+        0,
+        2450,
+        0,
+        2450,
+        0,
+        2450,
+        0
+      ],
+      "before": {
+        "Nodes": 5352,
+        "LayoutDuration": 0.069506,
+        "RecalcStyleDuration": 0.084949,
+        "ScriptDuration": 0.153258,
+        "TaskDuration": 2.003869,
+        "JSHeapUsedSize": 6845088
+      },
+      "after": {
+        "Nodes": 5352,
+        "LayoutDuration": 0.069506,
+        "RecalcStyleDuration": 0.093789,
+        "ScriptDuration": 0.156564,
+        "TaskDuration": 2.347773,
+        "JSHeapUsedSize": 6945176
+      }
+    }
+  },
+  {
+    "load": {
+      "phase": "load",
+      "durationMs": 331.39999997615814,
+      "frames": 11,
+      "p95FrameGapMs": 100,
+      "maxFrameGapMs": 100,
+      "longTaskCount": 1,
+      "maxLongTaskMs": 81,
+      "blockingMs": 31,
+      "fcpMs": 60,
+      "lcpMs": 60,
+      "layoutShiftSum": 0
+    },
+    "scenario": {
+      "name": "desktop-xl",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "size": "Extra large"
+    },
+    "renderer": {
+      "devices": [
+        {
+          "vendorId": 4203,
+          "deviceId": 0,
+          "vendorString": "Google Inc. (Apple)",
+          "deviceString": "ANGLE (Apple, ANGLE Metal Renderer: Apple M2, Version 26.6.2 (Build 25G83))",
+          "driverVendor": "Apple",
+          "driverVersion": "26.6.2"
+        }
+      ],
+      "features": {
+        "2d_canvas": "enabled",
+        "direct_rendering_display_compositor": "disabled_off_ok",
+        "gpu_compositing": "enabled",
+        "multiple_raster_threads": "enabled_on",
+        "opengl": "enabled_on",
+        "rasterization": "enabled",
+        "raw_draw": "disabled_off_ok",
+        "skia_graphite": "enabled_on",
+        "trees_in_viz": "disabled_off",
+        "video_decode": "enabled",
+        "video_encode": "enabled",
+        "webgl": "enabled",
+        "webgpu": "enabled",
+        "webnn": "disabled_off"
+      }
+    },
+    "slow": {
+      "phase": "slow",
+      "durationMs": 2999.399999976158,
+      "frames": 179,
+      "p95FrameGapMs": 16.799999999999727,
+      "maxFrameGapMs": 16.800000000000182,
+      "longTaskCount": 0,
+      "maxLongTaskMs": 0,
+      "blockingMs": 0,
+      "fcpMs": 60,
+      "lcpMs": 60,
+      "layoutShiftSum": 0,
+      "positions": [],
+      "before": {
+        "Nodes": 7138,
+        "LayoutDuration": 0.065774,
+        "RecalcStyleDuration": 0.034383,
+        "ScriptDuration": 0.136611,
+        "TaskDuration": 0.577007,
+        "JSHeapUsedSize": 9763000
+      },
+      "after": {
+        "Nodes": 7138,
+        "LayoutDuration": 0.065774,
+        "RecalcStyleDuration": 0.034383,
+        "ScriptDuration": 0.14093,
+        "TaskDuration": 0.749777,
+        "JSHeapUsedSize": 9832808
+      }
+    },
+    "rapid": {
+      "phase": "rapid",
+      "durationMs": 2010.1000000238419,
+      "frames": 118,
+      "p95FrameGapMs": 16.800000000000182,
+      "maxFrameGapMs": 33.399999999999636,
+      "longTaskCount": 0,
+      "maxLongTaskMs": 0,
+      "blockingMs": 0,
+      "fcpMs": 60,
+      "lcpMs": 60,
+      "layoutShiftSum": 0,
+      "positions": [],
+      "before": {
+        "Nodes": 7138,
+        "LayoutDuration": 0.065774,
+        "RecalcStyleDuration": 0.034383,
+        "ScriptDuration": 0.141167,
+        "TaskDuration": 0.75659,
+        "JSHeapUsedSize": 9835984
+      },
+      "after": {
+        "Nodes": 7138,
+        "LayoutDuration": 0.065774,
+        "RecalcStyleDuration": 0.034383,
+        "ScriptDuration": 0.14412,
+        "TaskDuration": 1.0601,
+        "JSHeapUsedSize": 9909612
+      }
+    },
+    "jumps": {
+      "phase": "jumps",
+      "durationMs": 1840.800000011921,
+      "frames": 109,
+      "p95FrameGapMs": 16.700000000000728,
+      "maxFrameGapMs": 16.80000000000109,
+      "longTaskCount": 0,
+      "maxLongTaskMs": 0,
+      "blockingMs": 0,
+      "fcpMs": 60,
+      "lcpMs": 60,
+      "layoutShiftSum": 0,
+      "positions": [
+        14723,
+        0,
+        14723,
+        0,
+        14723,
+        0,
+        14723,
+        0,
+        14723,
+        0,
+        14723,
+        0
+      ],
+      "before": {
+        "Nodes": 5351,
+        "LayoutDuration": 0.065774,
+        "RecalcStyleDuration": 0.034383,
+        "ScriptDuration": 0.144568,
+        "TaskDuration": 1.079576,
+        "JSHeapUsedSize": 7363976
+      },
+      "after": {
+        "Nodes": 5351,
+        "LayoutDuration": 0.066814,
+        "RecalcStyleDuration": 0.034383,
+        "ScriptDuration": 0.145992,
+        "TaskDuration": 1.21103,
+        "JSHeapUsedSize": 7490392
+      }
+    }
+  },
+  {
+    "load": {
+      "phase": "load",
+      "durationMs": 291.5,
+      "frames": 11,
+      "p95FrameGapMs": 83.30000000000001,
+      "maxFrameGapMs": 83.30000000000001,
+      "longTaskCount": 1,
+      "maxLongTaskMs": 77,
+      "blockingMs": 27,
+      "fcpMs": 60,
+      "lcpMs": 60,
+      "layoutShiftSum": 0
+    },
+    "scenario": {
+      "name": "mobile-small",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "size": "Small"
+    },
+    "renderer": {
+      "devices": [
+        {
+          "vendorId": 4203,
+          "deviceId": 0,
+          "vendorString": "Google Inc. (Apple)",
+          "deviceString": "ANGLE (Apple, ANGLE Metal Renderer: Apple M2, Version 26.6.2 (Build 25G83))",
+          "driverVendor": "Apple",
+          "driverVersion": "26.6.2"
+        }
+      ],
+      "features": {
+        "2d_canvas": "enabled",
+        "direct_rendering_display_compositor": "disabled_off_ok",
+        "gpu_compositing": "enabled",
+        "multiple_raster_threads": "enabled_on",
+        "opengl": "enabled_on",
+        "rasterization": "enabled",
+        "raw_draw": "disabled_off_ok",
+        "skia_graphite": "enabled_on",
+        "trees_in_viz": "disabled_off",
+        "video_decode": "enabled",
+        "video_encode": "enabled",
+        "webgl": "enabled",
+        "webgpu": "enabled",
+        "webnn": "disabled_off"
+      }
+    },
+    "slow": {
+      "phase": "slow",
+      "durationMs": 3013.5,
+      "frames": 180,
+      "p95FrameGapMs": 16.700000000000273,
+      "maxFrameGapMs": 16.800000000000182,
+      "longTaskCount": 0,
+      "maxLongTaskMs": 0,
+      "blockingMs": 0,
+      "fcpMs": 60,
+      "lcpMs": 60,
+      "layoutShiftSum": 0,
+      "positions": [],
+      "before": {
+        "Nodes": 7139,
+        "LayoutDuration": 0.049094,
+        "RecalcStyleDuration": 0.026667,
+        "ScriptDuration": 0.107667,
+        "TaskDuration": 0.386693,
+        "JSHeapUsedSize": 8886756
+      },
+      "after": {
+        "Nodes": 7139,
+        "LayoutDuration": 0.055021,
+        "RecalcStyleDuration": 0.026986,
+        "ScriptDuration": 0.113043,
+        "TaskDuration": 0.720313,
+        "JSHeapUsedSize": 9014188
+      }
+    },
+    "rapid": {
+      "phase": "rapid",
+      "durationMs": 1947.9000000357628,
+      "frames": 116,
+      "p95FrameGapMs": 16.799999999999272,
+      "maxFrameGapMs": 16.800000000000182,
+      "longTaskCount": 0,
+      "maxLongTaskMs": 0,
+      "blockingMs": 0,
+      "fcpMs": 60,
+      "lcpMs": 60,
+      "layoutShiftSum": 0,
+      "positions": [],
+      "before": {
+        "Nodes": 7139,
+        "LayoutDuration": 0.055021,
+        "RecalcStyleDuration": 0.026986,
+        "ScriptDuration": 0.113205,
+        "TaskDuration": 0.728075,
+        "JSHeapUsedSize": 9017340
+      },
+      "after": {
+        "Nodes": 7139,
+        "LayoutDuration": 0.056093,
+        "RecalcStyleDuration": 0.026986,
+        "ScriptDuration": 0.115955,
+        "TaskDuration": 1.058345,
+        "JSHeapUsedSize": 9073992
+      }
+    },
+    "jumps": {
+      "phase": "jumps",
+      "durationMs": 1839.800000011921,
+      "frames": 110,
+      "p95FrameGapMs": 16.799999999999272,
+      "maxFrameGapMs": 16.800000000000182,
+      "longTaskCount": 0,
+      "maxLongTaskMs": 0,
+      "blockingMs": 0,
+      "fcpMs": 60,
+      "lcpMs": 60,
+      "layoutShiftSum": 0,
+      "positions": [
+        10212,
+        0,
+        10212,
+        0,
+        10212,
+        0,
+        10212,
+        0,
+        10212,
+        0,
+        10212,
+        0
+      ],
+      "before": {
+        "Nodes": 7139,
+        "LayoutDuration": 0.056093,
+        "RecalcStyleDuration": 0.026986,
+        "ScriptDuration": 0.116067,
+        "TaskDuration": 1.061125,
+        "JSHeapUsedSize": 9078884
+      },
+      "after": {
+        "Nodes": 7139,
+        "LayoutDuration": 0.0577,
+        "RecalcStyleDuration": 0.026986,
+        "ScriptDuration": 0.11877,
+        "TaskDuration": 1.212903,
+        "JSHeapUsedSize": 9271004
+      }
+    }
+  },
+  {
+    "load": {
+      "phase": "load",
+      "durationMs": 303.7000000476837,
+      "frames": 14,
+      "p95FrameGapMs": 83.30000000000001,
+      "maxFrameGapMs": 83.30000000000001,
+      "longTaskCount": 1,
+      "maxLongTaskMs": 79,
+      "blockingMs": 29,
+      "fcpMs": 48,
+      "lcpMs": 64,
+      "layoutShiftSum": 0.0007614573200546674
+    },
+    "scenario": {
+      "name": "mobile-xl",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "size": "Extra large"
+    },
+    "renderer": {
+      "devices": [
+        {
+          "vendorId": 4203,
+          "deviceId": 0,
+          "vendorString": "Google Inc. (Apple)",
+          "deviceString": "ANGLE (Apple, ANGLE Metal Renderer: Apple M2, Version 26.6.2 (Build 25G83))",
+          "driverVendor": "Apple",
+          "driverVersion": "26.6.2"
+        }
+      ],
+      "features": {
+        "2d_canvas": "enabled",
+        "direct_rendering_display_compositor": "disabled_off_ok",
+        "gpu_compositing": "enabled",
+        "multiple_raster_threads": "enabled_on",
+        "opengl": "enabled_on",
+        "rasterization": "enabled",
+        "raw_draw": "disabled_off_ok",
+        "skia_graphite": "enabled_on",
+        "trees_in_viz": "disabled_off",
+        "video_decode": "enabled",
+        "video_encode": "enabled",
+        "webgl": "enabled",
+        "webgpu": "enabled",
+        "webnn": "disabled_off"
+      }
+    },
+    "slow": {
+      "phase": "slow",
+      "durationMs": 3600.400000035763,
+      "frames": 215,
+      "p95FrameGapMs": 16.799999999999955,
+      "maxFrameGapMs": 16.800000000000182,
+      "longTaskCount": 0,
+      "maxLongTaskMs": 0,
+      "blockingMs": 0,
+      "fcpMs": 48,
+      "lcpMs": 64,
+      "layoutShiftSum": 0.0007614573200546674,
+      "positions": [],
+      "before": {
+        "Nodes": 7138,
+        "LayoutDuration": 0.058813,
+        "RecalcStyleDuration": 0.027943,
+        "ScriptDuration": 0.130434,
+        "TaskDuration": 0.482971,
+        "JSHeapUsedSize": 9602528
+      },
+      "after": {
+        "Nodes": 5351,
+        "LayoutDuration": 0.058813,
+        "RecalcStyleDuration": 0.04345,
+        "ScriptDuration": 0.138841,
+        "TaskDuration": 1.186842,
+        "JSHeapUsedSize": 7442200
+      }
+    },
+    "rapid": {
+      "phase": "rapid",
+      "durationMs": 2934.099999964237,
+      "frames": 175,
+      "p95FrameGapMs": 16.700000000000728,
+      "maxFrameGapMs": 16.800000000000182,
+      "longTaskCount": 0,
+      "maxLongTaskMs": 0,
+      "blockingMs": 0,
+      "fcpMs": 48,
+      "lcpMs": 64,
+      "layoutShiftSum": 0.0007614573200546674,
+      "positions": [],
+      "before": {
+        "Nodes": 5351,
+        "LayoutDuration": 0.058813,
+        "RecalcStyleDuration": 0.04345,
+        "ScriptDuration": 0.138965,
+        "TaskDuration": 1.189757,
+        "JSHeapUsedSize": 7448324
+      },
+      "after": {
+        "Nodes": 5351,
+        "LayoutDuration": 0.058813,
+        "RecalcStyleDuration": 0.080141,
+        "ScriptDuration": 0.1548,
+        "TaskDuration": 2.066373,
+        "JSHeapUsedSize": 8177716
+      }
+    },
+    "jumps": {
+      "phase": "jumps",
+      "durationMs": 1841.699999988079,
+      "frames": 110,
+      "p95FrameGapMs": 16.799999999999272,
+      "maxFrameGapMs": 16.80000000000109,
+      "longTaskCount": 0,
+      "maxLongTaskMs": 0,
+      "blockingMs": 0,
+      "fcpMs": 48,
+      "lcpMs": 64,
+      "layoutShiftSum": 0.0007614573200546674,
+      "positions": [
+        138291,
+        0,
+        138291,
+        0,
+        138291,
+        0,
+        138291,
+        0,
+        138291,
+        0,
+        138291,
+        0
+      ],
+      "before": {
+        "Nodes": 5351,
+        "LayoutDuration": 0.058813,
+        "RecalcStyleDuration": 0.080487,
+        "ScriptDuration": 0.155113,
+        "TaskDuration": 2.119038,
+        "JSHeapUsedSize": 7382560
+      },
+      "after": {
+        "Nodes": 5351,
+        "LayoutDuration": 0.059379,
+        "RecalcStyleDuration": 0.085026,
+        "ScriptDuration": 0.158017,
+        "TaskDuration": 2.551703,
+        "JSHeapUsedSize": 7486476
+      }
+    }
+  },
+  {
+    "load": {
+      "phase": "load",
+      "durationMs": 340.7000000476837,
+      "frames": 14,
+      "p95FrameGapMs": 116.6,
+      "maxFrameGapMs": 116.6,
+      "longTaskCount": 1,
+      "maxLongTaskMs": 82,
+      "blockingMs": 32,
+      "fcpMs": 60,
+      "lcpMs": 76,
+      "layoutShiftSum": 0.000255787037037037
+    },
+    "scenario": {
+      "name": "desktop-small",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "size": "Small"
+    },
+    "renderer": {
+      "devices": [
+        {
+          "vendorId": 4203,
+          "deviceId": 0,
+          "vendorString": "Google Inc. (Apple)",
+          "deviceString": "ANGLE (Apple, ANGLE Metal Renderer: Apple M2, Version 26.6.2 (Build 25G83))",
+          "driverVendor": "Apple",
+          "driverVersion": "26.6.2"
+        }
+      ],
+      "features": {
+        "2d_canvas": "enabled",
+        "direct_rendering_display_compositor": "disabled_off_ok",
+        "gpu_compositing": "enabled",
+        "multiple_raster_threads": "enabled_on",
+        "opengl": "enabled_on",
+        "rasterization": "enabled",
+        "raw_draw": "disabled_off_ok",
+        "skia_graphite": "enabled_on",
+        "trees_in_viz": "disabled_off",
+        "video_decode": "enabled",
+        "video_encode": "enabled",
+        "webgl": "enabled",
+        "webgpu": "enabled",
+        "webnn": "disabled_off"
+      }
+    },
+    "slow": {
+      "phase": "slow",
+      "durationMs": 3917.199999988079,
+      "frames": 232,
+      "p95FrameGapMs": 16.800000000000182,
+      "maxFrameGapMs": 33.30000000000007,
+      "longTaskCount": 0,
+      "maxLongTaskMs": 0,
+      "blockingMs": 0,
+      "fcpMs": 60,
+      "lcpMs": 76,
+      "layoutShiftSum": 0.000255787037037037,
+      "positions": [],
+      "before": {
+        "Nodes": 7139,
+        "LayoutDuration": 0.061299,
+        "RecalcStyleDuration": 0.024389,
+        "ScriptDuration": 0.11504,
+        "TaskDuration": 0.491441,
+        "JSHeapUsedSize": 8948836
+      },
+      "after": {
+        "Nodes": 5352,
+        "LayoutDuration": 0.065916,
+        "RecalcStyleDuration": 0.059778,
+        "ScriptDuration": 0.133612,
+        "TaskDuration": 1.336436,
+        "JSHeapUsedSize": 6961848
+      }
+    },
+    "rapid": {
+      "phase": "rapid",
+      "durationMs": 2883.899999976158,
+      "frames": 154,
+      "p95FrameGapMs": 16.800000000000182,
+      "maxFrameGapMs": 116.60000000000036,
+      "longTaskCount": 0,
+      "maxLongTaskMs": 0,
+      "blockingMs": 0,
+      "fcpMs": 60,
+      "lcpMs": 76,
+      "layoutShiftSum": 0.000255787037037037,
+      "positions": [],
+      "before": {
+        "Nodes": 5352,
+        "LayoutDuration": 0.065916,
+        "RecalcStyleDuration": 0.059778,
+        "ScriptDuration": 0.133767,
+        "TaskDuration": 1.342882,
+        "JSHeapUsedSize": 6964992
+      },
+      "after": {
+        "Nodes": 5352,
+        "LayoutDuration": 0.065916,
+        "RecalcStyleDuration": 0.079329,
+        "ScriptDuration": 0.150883,
+        "TaskDuration": 1.924764,
+        "JSHeapUsedSize": 7346424
+      }
+    },
+    "jumps": {
+      "phase": "jumps",
+      "durationMs": 1854.199999988079,
+      "frames": 110,
+      "p95FrameGapMs": 16.799999999999272,
+      "maxFrameGapMs": 16.80000000000109,
+      "longTaskCount": 0,
+      "maxLongTaskMs": 0,
+      "blockingMs": 0,
+      "fcpMs": 60,
+      "lcpMs": 76,
+      "layoutShiftSum": 0.000255787037037037,
+      "positions": [
+        2450,
+        0,
+        2450,
+        0,
+        2450,
+        0,
+        2450,
+        0,
+        2450,
+        0,
+        2450,
+        0
+      ],
+      "before": {
+        "Nodes": 5352,
+        "LayoutDuration": 0.065916,
+        "RecalcStyleDuration": 0.080743,
+        "ScriptDuration": 0.153254,
+        "TaskDuration": 1.984834,
+        "JSHeapUsedSize": 6854440
+      },
+      "after": {
+        "Nodes": 5352,
+        "LayoutDuration": 0.065916,
+        "RecalcStyleDuration": 0.09011,
+        "ScriptDuration": 0.156251,
+        "TaskDuration": 2.321668,
+        "JSHeapUsedSize": 6961024
+      }
+    }
+  },
+  {
+    "load": {
+      "phase": "load",
+      "durationMs": 353,
+      "frames": 15,
+      "p95FrameGapMs": 100.00000000000003,
+      "maxFrameGapMs": 100.00000000000003,
+      "longTaskCount": 1,
+      "maxLongTaskMs": 80,
+      "blockingMs": 30,
+      "fcpMs": 52,
+      "lcpMs": 60,
+      "layoutShiftSum": 0.000255787037037037
+    },
+    "scenario": {
+      "name": "desktop-xl",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "size": "Extra large"
+    },
+    "renderer": {
+      "devices": [
+        {
+          "vendorId": 4203,
+          "deviceId": 0,
+          "vendorString": "Google Inc. (Apple)",
+          "deviceString": "ANGLE (Apple, ANGLE Metal Renderer: Apple M2, Version 26.6.2 (Build 25G83))",
+          "driverVendor": "Apple",
+          "driverVersion": "26.6.2"
+        }
+      ],
+      "features": {
+        "2d_canvas": "enabled",
+        "direct_rendering_display_compositor": "disabled_off_ok",
+        "gpu_compositing": "enabled",
+        "multiple_raster_threads": "enabled_on",
+        "opengl": "enabled_on",
+        "rasterization": "enabled",
+        "raw_draw": "disabled_off_ok",
+        "skia_graphite": "enabled_on",
+        "trees_in_viz": "disabled_off",
+        "video_decode": "enabled",
+        "video_encode": "enabled",
+        "webgl": "enabled",
+        "webgpu": "enabled",
+        "webnn": "disabled_off"
+      }
+    },
+    "slow": {
+      "phase": "slow",
+      "durationMs": 3000.5,
+      "frames": 179,
+      "p95FrameGapMs": 16.799999999999727,
+      "maxFrameGapMs": 16.800000000000182,
+      "longTaskCount": 0,
+      "maxLongTaskMs": 0,
+      "blockingMs": 0,
+      "fcpMs": 52,
+      "lcpMs": 60,
+      "layoutShiftSum": 0.000255787037037037,
+      "positions": [],
+      "before": {
+        "Nodes": 7138,
+        "LayoutDuration": 0.074778,
+        "RecalcStyleDuration": 0.029495,
+        "ScriptDuration": 0.131338,
+        "TaskDuration": 0.586679,
+        "JSHeapUsedSize": 9753844
+      },
+      "after": {
+        "Nodes": 7138,
+        "LayoutDuration": 0.074778,
+        "RecalcStyleDuration": 0.029495,
+        "ScriptDuration": 0.134993,
+        "TaskDuration": 0.749526,
+        "JSHeapUsedSize": 9821748
+      }
+    },
+    "rapid": {
+      "phase": "rapid",
+      "durationMs": 2009.1000000238419,
+      "frames": 117,
+      "p95FrameGapMs": 16.800000000000182,
+      "maxFrameGapMs": 33.400000000000546,
+      "longTaskCount": 0,
+      "maxLongTaskMs": 0,
+      "blockingMs": 0,
+      "fcpMs": 52,
+      "lcpMs": 60,
+      "layoutShiftSum": 0.000255787037037037,
+      "positions": [],
+      "before": {
+        "Nodes": 7138,
+        "LayoutDuration": 0.074778,
+        "RecalcStyleDuration": 0.029495,
+        "ScriptDuration": 0.135735,
+        "TaskDuration": 0.75594,
+        "JSHeapUsedSize": 9824924
+      },
+      "after": {
+        "Nodes": 7138,
+        "LayoutDuration": 0.074778,
+        "RecalcStyleDuration": 0.029495,
+        "ScriptDuration": 0.138672,
+        "TaskDuration": 1.053616,
+        "JSHeapUsedSize": 9897276
+      }
+    },
+    "jumps": {
+      "phase": "jumps",
+      "durationMs": 1843.0999999642372,
+      "frames": 110,
+      "p95FrameGapMs": 16.700000000000728,
+      "maxFrameGapMs": 16.800000000000182,
+      "longTaskCount": 0,
+      "maxLongTaskMs": 0,
+      "blockingMs": 0,
+      "fcpMs": 52,
+      "lcpMs": 60,
+      "layoutShiftSum": 0.000255787037037037,
+      "positions": [
+        14723,
+        0,
+        14723,
+        0,
+        14723,
+        0,
+        14723,
+        0,
+        14723,
+        0,
+        14723,
+        0
+      ],
+      "before": {
+        "Nodes": 5351,
+        "LayoutDuration": 0.074778,
+        "RecalcStyleDuration": 0.029495,
+        "ScriptDuration": 0.138793,
+        "TaskDuration": 1.072076,
+        "JSHeapUsedSize": 7359812
+      },
+      "after": {
+        "Nodes": 5351,
+        "LayoutDuration": 0.075803,
+        "RecalcStyleDuration": 0.029495,
+        "ScriptDuration": 0.13973,
+        "TaskDuration": 1.194691,
+        "JSHeapUsedSize": 7486156
+      }
+    }
+  },
+  {
+    "load": {
+      "phase": "load",
+      "durationMs": 288.80000001192093,
+      "frames": 11,
+      "p95FrameGapMs": 83.29999999999998,
+      "maxFrameGapMs": 83.29999999999998,
+      "longTaskCount": 1,
+      "maxLongTaskMs": 82,
+      "blockingMs": 32,
+      "fcpMs": 40,
+      "lcpMs": 60,
+      "layoutShiftSum": 0.0007614573200546674
+    },
+    "scenario": {
+      "name": "mobile-small",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "size": "Small"
+    },
+    "renderer": {
+      "devices": [
+        {
+          "vendorId": 4203,
+          "deviceId": 0,
+          "vendorString": "Google Inc. (Apple)",
+          "deviceString": "ANGLE (Apple, ANGLE Metal Renderer: Apple M2, Version 26.6.2 (Build 25G83))",
+          "driverVendor": "Apple",
+          "driverVersion": "26.6.2"
+        }
+      ],
+      "features": {
+        "2d_canvas": "enabled",
+        "direct_rendering_display_compositor": "disabled_off_ok",
+        "gpu_compositing": "enabled",
+        "multiple_raster_threads": "enabled_on",
+        "opengl": "enabled_on",
+        "rasterization": "enabled",
+        "raw_draw": "disabled_off_ok",
+        "skia_graphite": "enabled_on",
+        "trees_in_viz": "disabled_off",
+        "video_decode": "enabled",
+        "video_encode": "enabled",
+        "webgl": "enabled",
+        "webgpu": "enabled",
+        "webnn": "disabled_off"
+      }
+    },
+    "slow": {
+      "phase": "slow",
+      "durationMs": 2997,
+      "frames": 179,
+      "p95FrameGapMs": 16.700000000000273,
+      "maxFrameGapMs": 16.800000000000182,
+      "longTaskCount": 0,
+      "maxLongTaskMs": 0,
+      "blockingMs": 0,
+      "fcpMs": 40,
+      "lcpMs": 60,
+      "layoutShiftSum": 0.0007614573200546674,
+      "positions": [],
+      "before": {
+        "Nodes": 7139,
+        "LayoutDuration": 0.053985,
+        "RecalcStyleDuration": 0.021372,
+        "ScriptDuration": 0.105227,
+        "TaskDuration": 0.356862,
+        "JSHeapUsedSize": 9552024
+      },
+      "after": {
+        "Nodes": 7139,
+        "LayoutDuration": 0.058979,
+        "RecalcStyleDuration": 0.021477,
+        "ScriptDuration": 0.110553,
+        "TaskDuration": 0.713331,
+        "JSHeapUsedSize": 8271888
+      }
+    },
+    "rapid": {
+      "phase": "rapid",
+      "durationMs": 1998.4000000357628,
+      "frames": 119,
+      "p95FrameGapMs": 16.699999999999818,
+      "maxFrameGapMs": 16.800000000000182,
+      "longTaskCount": 0,
+      "maxLongTaskMs": 0,
+      "blockingMs": 0,
+      "fcpMs": 40,
+      "lcpMs": 60,
+      "layoutShiftSum": 0.0007614573200546674,
+      "positions": [],
+      "before": {
+        "Nodes": 7139,
+        "LayoutDuration": 0.058979,
+        "RecalcStyleDuration": 0.021477,
+        "ScriptDuration": 0.110663,
+        "TaskDuration": 0.717823,
+        "JSHeapUsedSize": 8275064
+      },
+      "after": {
+        "Nodes": 7139,
+        "LayoutDuration": 0.059911,
+        "RecalcStyleDuration": 0.021477,
+        "ScriptDuration": 0.113652,
+        "TaskDuration": 1.048202,
+        "JSHeapUsedSize": 8331328
+      }
+    },
+    "jumps": {
+      "phase": "jumps",
+      "durationMs": 1839,
+      "frames": 109,
+      "p95FrameGapMs": 16.700000000000728,
+      "maxFrameGapMs": 16.80000000000109,
+      "longTaskCount": 0,
+      "maxLongTaskMs": 0,
+      "blockingMs": 0,
+      "fcpMs": 40,
+      "lcpMs": 60,
+      "layoutShiftSum": 0.0007614573200546674,
+      "positions": [
+        10212,
+        0,
+        10212,
+        0,
+        10212,
+        0,
+        10212,
+        0,
+        10212,
+        0,
+        10212,
+        0
+      ],
+      "before": {
+        "Nodes": 7139,
+        "LayoutDuration": 0.059911,
+        "RecalcStyleDuration": 0.021477,
+        "ScriptDuration": 0.113732,
+        "TaskDuration": 1.05073,
+        "JSHeapUsedSize": 8336328
+      },
+      "after": {
+        "Nodes": 5352,
+        "LayoutDuration": 0.060923,
+        "RecalcStyleDuration": 0.021477,
+        "ScriptDuration": 0.117724,
+        "TaskDuration": 1.212278,
+        "JSHeapUsedSize": 6975844
+      }
+    }
+  },
+  {
+    "load": {
+      "phase": "load",
+      "durationMs": 297,
+      "frames": 13,
+      "p95FrameGapMs": 83.30000000000001,
+      "maxFrameGapMs": 83.30000000000001,
+      "longTaskCount": 1,
+      "maxLongTaskMs": 84,
+      "blockingMs": 34,
+      "fcpMs": 44,
+      "lcpMs": 60,
+      "layoutShiftSum": 0.0007614573200546674
+    },
+    "scenario": {
+      "name": "mobile-xl",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "size": "Extra large"
+    },
+    "renderer": {
+      "devices": [
+        {
+          "vendorId": 4203,
+          "deviceId": 0,
+          "vendorString": "Google Inc. (Apple)",
+          "deviceString": "ANGLE (Apple, ANGLE Metal Renderer: Apple M2, Version 26.6.2 (Build 25G83))",
+          "driverVendor": "Apple",
+          "driverVersion": "26.6.2"
+        }
+      ],
+      "features": {
+        "2d_canvas": "enabled",
+        "direct_rendering_display_compositor": "disabled_off_ok",
+        "gpu_compositing": "enabled",
+        "multiple_raster_threads": "enabled_on",
+        "opengl": "enabled_on",
+        "rasterization": "enabled",
+        "raw_draw": "disabled_off_ok",
+        "skia_graphite": "enabled_on",
+        "trees_in_viz": "disabled_off",
+        "video_decode": "enabled",
+        "video_encode": "enabled",
+        "webgl": "enabled",
+        "webgpu": "enabled",
+        "webnn": "disabled_off"
+      }
+    },
+    "slow": {
+      "phase": "slow",
+      "durationMs": 3599.2999999523163,
+      "frames": 215,
+      "p95FrameGapMs": 16.700000000000273,
+      "maxFrameGapMs": 16.800000000000182,
+      "longTaskCount": 0,
+      "maxLongTaskMs": 0,
+      "blockingMs": 0,
+      "fcpMs": 44,
+      "lcpMs": 60,
+      "layoutShiftSum": 0.0007614573200546674,
+      "positions": [],
+      "before": {
+        "Nodes": 7138,
+        "LayoutDuration": 0.060815,
+        "RecalcStyleDuration": 0.027167,
+        "ScriptDuration": 0.125633,
+        "TaskDuration": 0.481671,
+        "JSHeapUsedSize": 9601496
+      },
+      "after": {
+        "Nodes": 5351,
+        "LayoutDuration": 0.060815,
+        "RecalcStyleDuration": 0.041825,
+        "ScriptDuration": 0.134813,
+        "TaskDuration": 1.168564,
+        "JSHeapUsedSize": 7442084
+      }
+    },
+    "rapid": {
+      "phase": "rapid",
+      "durationMs": 2882.300000011921,
+      "frames": 172,
+      "p95FrameGapMs": 16.799999999999272,
+      "maxFrameGapMs": 16.800000000000182,
+      "longTaskCount": 0,
+      "maxLongTaskMs": 0,
+      "blockingMs": 0,
+      "fcpMs": 44,
+      "lcpMs": 60,
+      "layoutShiftSum": 0.0007614573200546674,
+      "positions": [],
+      "before": {
+        "Nodes": 5351,
+        "LayoutDuration": 0.060815,
+        "RecalcStyleDuration": 0.041825,
+        "ScriptDuration": 0.134944,
+        "TaskDuration": 1.171733,
+        "JSHeapUsedSize": 7448136
+      },
+      "after": {
+        "Nodes": 5351,
+        "LayoutDuration": 0.060815,
+        "RecalcStyleDuration": 0.077722,
+        "ScriptDuration": 0.151175,
+        "TaskDuration": 2.084445,
+        "JSHeapUsedSize": 8162640
+      }
+    },
+    "jumps": {
+      "phase": "jumps",
+      "durationMs": 1848.2000000476837,
+      "frames": 110,
+      "p95FrameGapMs": 16.799999999999272,
+      "maxFrameGapMs": 16.80000000000109,
+      "longTaskCount": 0,
+      "maxLongTaskMs": 0,
+      "blockingMs": 0,
+      "fcpMs": 44,
+      "lcpMs": 60,
+      "layoutShiftSum": 0.0007614573200546674,
+      "positions": [
+        138291,
+        0,
+        138291,
+        0,
+        138291,
+        0,
+        138291,
+        0,
+        138291,
+        0,
+        138291,
+        0
+      ],
+      "before": {
+        "Nodes": 5351,
+        "LayoutDuration": 0.060815,
+        "RecalcStyleDuration": 0.078029,
+        "ScriptDuration": 0.151719,
+        "TaskDuration": 2.131105,
+        "JSHeapUsedSize": 7385804
+      },
+      "after": {
+        "Nodes": 5351,
+        "LayoutDuration": 0.061342,
+        "RecalcStyleDuration": 0.084524,
+        "ScriptDuration": 0.155905,
+        "TaskDuration": 2.570085,
+        "JSHeapUsedSize": 7489440
+      }
+    }
+  }
+]

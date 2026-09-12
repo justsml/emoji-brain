@@ -1,0 +1,8 @@
+{
+  "scenario": "desktop-small rapid reversals",
+  "source": "Chromium ScrollJankV4",
+  "scrollFrames": 59,
+  "jankyScrollFrames": 0,
+  "traceSha256": "6d71e99fe4bde0ce9c073605c1051665c9a02f51a47fd756f19ecba8da5067dc",
+  "note": "Diagnostic trace; tracing overhead means timings are not directly comparable to untraced runs. rAF is not compositor presentation FPS."
+}
