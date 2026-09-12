@@ -130,11 +130,13 @@ export function EmojiProvider({ children, initialEmojis }: EmojiProviderProps) {
   // distinct from an explicit `[]` (user deselected everything).
   const [storedSelection, setStoredSelection] = useLocalStorage<unknown>(SELECTION_STORAGE_KEY, null);
 
-  const [state, dispatch] = useReducer(emojiReducer, {
+  // Resolve legacy ids/aliases once on mount, not on every focus, search, or
+  // selection update. React ignores subsequent initial-state arguments.
+  const [state, dispatch] = useReducer(emojiReducer, {storedSelection, initialEmojis}, ({storedSelection, initialEmojis}) => ({
     ...initialState,
     selectedEmojis: storedSelection === null ? initialEmojis : reconcileSelection(storedSelection, initialEmojis),
     filteredEmojis: initialEmojis,
-  });
+  }));
 
   useEffect(() => {
     setStoredSelection(state.selectedEmojis.map(emoji => emoji.id));

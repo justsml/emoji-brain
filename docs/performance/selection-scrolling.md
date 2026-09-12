@@ -56,3 +56,11 @@ it does not make a storage call preemptible.
 Unit tests verify coalescing, immediate state visibility, lifecycle flushing,
 and the timer fallback. Browser tests verify immediate reload after deselecting
 one emoji and after deselecting everything.
+
+## Initialize saved-selection lookup once
+
+The provider eagerly constructed its reducer's initial state on every render,
+including rebuilding the catalog alias lookup after focus or selection changes.
+A lazy reducer initializer does this once. The regression test observed four
+reconciliation calls during initialization plus one interaction before the fix,
+and one afterward, with the same restored selection and selection behavior.

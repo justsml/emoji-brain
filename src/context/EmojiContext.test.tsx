@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { expect, it } from 'vitest';
+import { expect, it, vi } from 'vitest';
+import * as selectionStorage from '../lib/selectionStorage';
 import { EmojiProvider, useEmojiContext } from './EmojiContext';
 import type { EmojiMetadata } from '../types/emoji';
 
@@ -38,4 +39,18 @@ it('visible selection actions preserve emojis outside the current view', async (
 
   await user.click(screen.getByRole('button', { name: 'clear all' }));
   expect(screen.getByText('', { selector: 'output' })).toBeInTheDocument();
+});
+
+
+it('reconciles persisted catalog records only when initializing the provider', async () => {
+  localStorage.setItem(selectionStorage.SELECTION_STORAGE_KEY, JSON.stringify(['one']));
+  const reconcile = vi.spyOn(selectionStorage, 'reconcileSelection');
+  try {
+    const user = userEvent.setup();
+    render(<EmojiProvider initialEmojis={emojis}><Harness /></EmojiProvider>);
+    expect(screen.getByText('one', {selector: 'output'})).toBeInTheDocument();
+    await user.click(screen.getByRole('button', {name: 'select second view'}));
+    expect(screen.getByText('one,three')).toBeInTheDocument();
+    expect(reconcile).toHaveBeenCalledTimes(1);
+  } finally {reconcile.mockRestore();}
 });
