@@ -64,3 +64,12 @@ including rebuilding the catalog alias lookup after focus or selection changes.
 A lazy reducer initializer does this once. The regression test observed four
 reconciliation calls during initialization plus one interaction before the fix,
 and one afterward, with the same restored selection and selection behavior.
+
+## Avoid incidental animation downloads
+
+Animated cards now require 120 ms of hover intent before swapping a still for
+an animation. Brief pointer crossings cancel the timer, static cards do not
+enter playback state, and click/focus playback stays immediate. Unmount cancels
+pending timers. A browser regression test first observed an animation request
+from a 20 ms crossing; after the change the same crossing made zero animation
+requests, with deliberate hover and focus playback both passing.

@@ -84,11 +84,13 @@ const EmojiCell = ({
   onFocusChange,
 }: EmojiCellProps) => {
   const [isPlaying, setIsPlaying] = useState(false);
+  const hoverTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+  useEffect(() => () => clearTimeout(hoverTimer.current), []);
 
   const handleClick = useCallback((e: React.MouseEvent) => {
     e.preventDefault();
     // a tap has no hover to enter, so play from the tap itself
-    setIsPlaying(true);
+    if (emoji.animated) setIsPlaying(true);
     onToggle(emoji, e);
   }, [onToggle, emoji]);
 
@@ -97,12 +99,22 @@ const EmojiCell = ({
   }, [onKeyDown, index, columnCount]);
 
   const handleFocus = useCallback(() => {
-    setIsPlaying(true);
+    if (emoji.animated) setIsPlaying(true);
     onFocusChange(index);
-  }, [onFocusChange, index]);
+  }, [onFocusChange, index, emoji.animated]);
 
-  const startPlaying = useCallback(() => setIsPlaying(true), []);
-  const stopPlaying = useCallback(() => setIsPlaying(false), []);
+  const startPlaying = useCallback(() => {
+    if (!emoji.animated) return;
+    // Cards passing under the pointer during a scroll should not start network
+    // requests, animation decoding, and raster invalidation. Taps/focus still
+    // play immediately; a stationary pointer expresses hover intent.
+    clearTimeout(hoverTimer.current);
+    hoverTimer.current = setTimeout(() => setIsPlaying(true), 120);
+  }, [emoji.animated]);
+  const stopPlaying = useCallback(() => {
+    clearTimeout(hoverTimer.current);
+    setIsPlaying(false);
+  }, []);
 
   const name = emoji.filename.split("/").pop()?.replace(/\.[^.]+$/, "") || emoji.filename;
 

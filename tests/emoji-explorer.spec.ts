@@ -162,3 +162,23 @@ test("persists a selection when reloading immediately after a click", async ({pa
   await page.reload();
   await expect(page.getByText('No emojis selected')).toBeVisible();
 });
+
+test('passing over an animation does not start a download; deliberate hover and focus still play', async ({page}) => {
+  const animated = page.locator('[role="gridcell"] button[aria-label*=", animated"]').first();
+  await animated.scrollIntoViewIfNeeded();
+  await page.mouse.move(0, 0);
+  const requests: string[] = [];
+  page.on('request', request => {if (/\/emoji-delivery\/(128|256)\//.test(request.url())) requests.push(request.url());});
+  const box = (await animated.boundingBox())!;
+  await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
+  await page.waitForTimeout(20);
+  await page.mouse.move(0, 0);
+  await page.waitForTimeout(200);
+  expect(requests).toEqual([]);
+  await animated.hover();
+  await expect(animated.locator('img')).toHaveAttribute('src', /emoji-delivery\/(128|256)\//);
+  await page.mouse.move(0, 0);
+  await expect(animated.locator('img')).toHaveAttribute('src', /previews/);
+  await animated.focus();
+  await expect(animated.locator('img')).toHaveAttribute('src', /emoji-delivery\/(128|256)\//);
+});
