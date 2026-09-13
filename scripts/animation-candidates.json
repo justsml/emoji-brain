@@ -1,0 +1,96 @@
+{
+  "promptVersion": "anim-1",
+  "output": { "width": 512, "height": 512, "format": "animated webp", "loop": 0, "alpha": "required" },
+  "candidates": [
+    {
+      "rank": 1,
+      "name": "meow_angry_tableflip",
+      "beat": "Table flip",
+      "subject": "a flat-vector yellow blob cat with black slit eyes, grey whiskers and an open red-brown mouth, with a brown wooden table tumbling out of the upper-left corner",
+      "why": "A table flip is a verb frozen mid-action. The still is the weakest possible version of it — the highest motion debt in the set.",
+      "subtle": { "frames": 12, "ms": 90, "displacement": "8%", "motion": "the cat vibrates with rage in place, the table jitters 2px against the corner, and two short steam puffs rise from behind the ears" },
+      "full": { "frames": 32, "ms": 60, "displacement": "25%", "motion": "the cat crouches in anticipation for 3 frames, launches upward as the table tumbles end-over-end out of the top-left corner, then lands and pants with the mouth open before resetting" }
+    },
+    {
+      "rank": 2,
+      "name": "meow_facepalm",
+      "beat": "Palm to face",
+      "subject": "a flat-vector yellow blob cat with a heavy black outline, eyes hidden behind a raised five-fingered paw pressed across its face",
+      "why": "A universal reaction emoji where the comedy is entirely the timing of the paw landing.",
+      "subtle": { "frames": 10, "ms": 110, "displacement": "6%", "motion": "the paw stays down and the head sinks 6px lower into a slow sigh, then lifts back" },
+      "full": { "frames": 26, "ms": 70, "displacement": "22%", "motion": "a 4-frame beat of open-eyed disbelief, then the paw swings up and lands with a squash on impact, the head recoiling downward before settling" }
+    },
+    {
+      "rank": 3,
+      "name": "meow_hiss",
+      "beat": "Hiss",
+      "subject": "a flat-vector yellow blob cat with grey whiskers, a dark-brown slit eye and an open red-brown mouth, with a grey paw swiping in from the upper-left",
+      "why": "Hissing is a sustained, naturally cyclic action, and the silhouette changes hard enough to read at 32px.",
+      "subtle": { "frames": 12, "ms": 90, "displacement": "9%", "motion": "the fur puff pulses, the whiskers splay wider on the out-breath, and the raised paw flicks at the wrist" },
+      "full": { "frames": 28, "ms": 60, "displacement": "24%", "motion": "the body arches up, the ear pins back, the jaw vibrates through the hiss with a short puff of breath, then the whole shape drops back down" }
+    },
+    {
+      "rank": 4,
+      "name": "meow_highfive_team",
+      "beat": "High five",
+      "subject": "two flat-vector yellow blob cats in profile facing each other with dark outlines, pink tongues and grey whiskers, raised paws nearly touching, with orange impact shards radiating from the contact point",
+      "why": "Two hands about to meet reads as unfinished, and celebration emoji get the most out of a loop.",
+      "subtle": { "frames": 10, "ms": 100, "displacement": "7%", "motion": "both cats bob in place with their paws hovering, and the orange impact shards pulse brighter on the down-beat" },
+      "full": { "frames": 24, "ms": 60, "displacement": "20%", "motion": "both cats wind up away from each other, swing in and clap, the orange shards flash out at full size on the impact frame, then both recoil and reset" }
+    },
+    {
+      "rank": 5,
+      "name": "meow_idea",
+      "beat": "Light bulb",
+      "subject": "a flat-vector yellow blob cat with round black eyes and a smiling mouth, one paw raised with a finger extended, and a small yellow light bulb with radiating strokes floating above its head",
+      "why": "The light-bulb motif is built for a flicker — the cheapest animation in the batch for the payoff.",
+      "subtle": { "frames": 8, "ms": 120, "displacement": "5%", "motion": "the bulb's radiating strokes flicker on and off in a two-step rhythm while the cat holds still" },
+      "full": { "frames": 22, "ms": 70, "displacement": "18%", "motion": "the bulb pops on with a burst of longer strokes, the cat's eyes widen and the raised paw jabs upward once, then everything settles back" }
+    },
+    {
+      "rank": 6,
+      "name": "meow_dunno",
+      "beat": "Shrug",
+      "subject": "a flat-vector yellow blob cat with large white googly eyes, a zigzag mouth and grey whiskers, both rounded paws held out palm-up at shoulder height",
+      "why": "A shrug is a two-pose action and the still only shows one. Also one of the highest-volume Slack reactions.",
+      "subtle": { "frames": 10, "ms": 110, "displacement": "7%", "motion": "the shoulders and both paws rise 4px, hold for 3 frames, then drop back down" },
+      "full": { "frames": 20, "ms": 80, "displacement": "20%", "motion": "a full shrug — paws lift high with a head tilt to one side, the googly eyes roll, then everything drops with a small bounce at the bottom" }
+    },
+    {
+      "rank": 7,
+      "name": "meow_melt",
+      "beat": "Melt",
+      "subject": "a flat-vector yellow blob cat with dark-grey oval eyes, a wavy zigzag mouth and thin sketchy paws, its body already sagging wide at the base",
+      "why": "Already mid-transformation in the still — a loop simply completes the gag.",
+      "subtle": { "frames": 14, "ms": 100, "displacement": "9%", "motion": "the body slowly sags wider and lower, then re-inflates, with the eyes drifting down as it spreads" },
+      "full": { "frames": 30, "ms": 70, "displacement": "25%", "motion": "the cat melts down into a flat yellow puddle over 18 frames, the face sliding to the surface, blinks once from the puddle, then springs back up into the original shape" }
+    },
+    {
+      "rank": 8,
+      "name": "meow_grumpy",
+      "beat": "Simmer",
+      "subject": "a flat-vector yellow blob cat with angry black slanted eyes, a jagged frown, folded arms and small grey steam puffs at both ears",
+      "why": "The steam prop is already drawn, and steam is the single most loop-friendly element in the library.",
+      "subtle": { "frames": 12, "ms": 100, "displacement": "5%", "motion": "the steam puffs rise, expand and dissipate at each ear on an offset cycle while the brows twitch once" },
+      "full": { "frames": 24, "ms": 70, "displacement": "16%", "motion": "a slow simmer with the body swelling, building to a burst of steam from both ears on one frame, then the body deflates back to the resting pose" }
+    },
+    {
+      "rank": 9,
+      "name": "old-man-yells-at-cloud",
+      "beat": "Yell at cloud",
+      "subject": "a cartoon elderly man in profile with a yellow face, wispy yellow hair, an open shouting mouth, a grey hand raised in a fist, and a blue outlined cloud icon in the upper-left corner",
+      "why": "Shouting plus a shaking fist is two animatable verbs in one frame — and the same rig also covers cat-yells-at-cloud and old-man-yells-at-comcast.",
+      "subtle": { "frames": 10, "ms": 100, "displacement": "6%", "motion": "the raised fist shakes side to side and the jaw flaps open and shut on a three-frame cycle" },
+      "full": { "frames": 26, "ms": 70, "displacement": "20%", "motion": "a full rant cycle — the fist pumps twice, the body leans in toward the cloud on each pump, and the cloud drifts slowly in the opposite direction for parallax" }
+    },
+    {
+      "rank": 10,
+      "name": "meow_sleep_zzz",
+      "beat": "Sleep",
+      "subject": "a flat-vector yellow blob cat with closed curved eyes, pink blush patches, a small open mouth and grey whiskers, with two grey Z letters floating up to the right",
+      "why": "Breathing plus drifting Z's is the cleanest possible loop, and the drowsy reaction has no animated equivalent yet.",
+      "subtle": { "frames": 16, "ms": 110, "displacement": "5%", "motion": "the body rises and falls on a slow breath while the two Z's drift up and to the right, fading out and respawning at the mouth" },
+      "full": { "frames": 28, "ms": 80, "displacement": "18%", "motion": "a full snore cycle — a deep inhale swells the body, a bubble inflates from the nose over several frames and pops, and the cat twitches once as the Z's stream upward" }
+    }
+  ]
+}

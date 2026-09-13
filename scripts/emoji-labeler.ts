@@ -34,7 +34,7 @@ export const emojiLabeler = async (inputImage: string) => {
     // Keep Gemini 3's default sampling settings per Google's guidance.
     seed: 42,
     providerOptions: {
-      google: { thinkingConfig: { thinkingLevel: 'minimal' } },
+      google: { thinkingConfig: { thinkingLevel: 'low' } },
       openrouter: { reasoning: { effort: 'minimal' } },
     },
     instructions: dedent`
