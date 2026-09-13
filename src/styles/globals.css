@@ -225,6 +225,10 @@ body {
   color: hsl(var(--muted-foreground));
   font-size: 0.875rem;
   line-height: 1.6;
+  /* The fallback sentence swaps for the live, longer estimate (plus a meter
+     bar) once the tray hydrates and prices the selection. Reserving its
+     height up front stops that swap from shoving the whole page down. */
+  min-height: 6.5em;
 }
 
 /* the sentence the explorer takes over: the same claim, priced live */

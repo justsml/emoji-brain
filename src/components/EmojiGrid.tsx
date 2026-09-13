@@ -1,5 +1,5 @@
 import type { ReactElement, KeyboardEvent } from "react";
-import { memo, useCallback, useMemo, useState, useEffect, useLayoutEffect, useRef } from "react";
+import { memo, useCallback, useMemo, useState, useEffect, useRef } from "react";
 import type { EmojiMetadata } from "../types/emoji";
 import { cn } from "../lib/utils";
 import { emojiAsset, previewSrcSet } from "../lib/emojiAssets";
@@ -30,22 +30,21 @@ interface EmojiCellProps {
   isFocused: boolean;
   /** inside the drag rectangle, and what releasing would do to it */
   preview: MarqueeMode | null;
-  columnCount: number;
-  imageWidth: number;
+  baseSize: number;
   onToggle: (emoji: EmojiMetadata, event?: React.MouseEvent) => void;
-  onKeyDown: (e: KeyboardEvent, index: number, columnCount: number, isSelected: boolean) => void;
+  onKeyDown: (e: KeyboardEvent, index: number, isSelected: boolean) => void;
   onFocusChange: (index: number) => void;
 }
 
 const AnimatedImage = ({
   emoji,
   alt,
-  width,
+  baseSize,
   isPlaying,
 }: {
   emoji: EmojiMetadata;
   alt: string;
-  width: number;
+  baseSize: number;
   isPlaying: boolean;
 }) => {
   // Animated WebPs invalidate their compositor tile on every frame. Drawing 90+
@@ -53,16 +52,18 @@ const AnimatedImage = ({
   // makes the page blank out while scrolling. Stills stay put; only the sticker
   // under the pointer plays.
   const playing = emoji.animated && isPlaying;
-  const src = emojiAsset(emoji.filename, playing ? (width <= 96 ? 128 : 256) : 128, !playing);
+  const src = emojiAsset(emoji.filename, playing ? (baseSize <= 96 ? 128 : 256) : 128, !playing);
   return (
     <img
       src={src}
       srcSet={playing ? undefined : previewSrcSet(emoji.filename)}
-      sizes={`${Math.ceil(width * 0.92)}px`}
+      // Cell width is fluid (CSS grid auto-fill), so this can only bound it: a
+      // cell never renders below its track minimum, and the viewport caps it.
+      sizes={`min(${Math.ceil(baseSize * 0.92)}px, 92vw)`}
       alt={alt}
       className="emoji-card-image"
-      width={width}
-      height={width}
+      width={baseSize}
+      height={baseSize}
       loading="lazy"
       decoding="async"
       fetchPriority="low"
@@ -77,8 +78,7 @@ const EmojiCell = ({
   isSelected,
   isFocused,
   preview,
-  columnCount,
-  imageWidth,
+  baseSize,
   onToggle,
   onKeyDown,
   onFocusChange,
@@ -95,8 +95,8 @@ const EmojiCell = ({
   }, [onToggle, emoji]);
 
   const handleKeyDown = useCallback((e: KeyboardEvent) => {
-    onKeyDown(e, index, columnCount, isSelected);
-  }, [onKeyDown, index, columnCount, isSelected]);
+    onKeyDown(e, index, isSelected);
+  }, [onKeyDown, index, isSelected]);
 
   const handleFocus = useCallback(() => {
     if (emoji.animated) setIsPlaying(true);
@@ -119,7 +119,7 @@ const EmojiCell = ({
   const name = emoji.filename.split("/").pop()?.replace(/\.[^.]+$/, "") || emoji.filename;
 
   return (
-    <div className="emoji-cell min-w-0" role="gridcell" data-id={emoji.id} style={{ height: `calc(${imageWidth}px + 1.509375rem)` }}>
+    <div className="emoji-cell min-w-0" role="gridcell" data-id={emoji.id} style={{ height: `calc(${baseSize}px + 1.509375rem)` }}>
       <button
         type="button"
         className={cn(
@@ -142,7 +142,7 @@ const EmojiCell = ({
       >
         <div className={cn("emoji-card-preview", emoji.animated && "emoji-card-preview-animated")}>
           <span className="emoji-card-check" aria-hidden="true">{isSelected ? "✓" : "+"}</span>
-          <AnimatedImage emoji={emoji} alt={emoji.filename} width={imageWidth} isPlaying={isPlaying} />
+          <AnimatedImage emoji={emoji} alt={emoji.filename} baseSize={baseSize} isPlaying={isPlaying} />
         </div>
         <span className="emoji-card-name">:{name}:</span>
       </button>
@@ -165,7 +165,7 @@ const EmojiGrid = ({
   onDeselectMany,
 }: EmojiGridProps): ReactElement => {
   const parentRef = useRef<HTMLDivElement>(null);
-  const [width, setWidth] = useState(800);
+  const baseSize = GRID_SCALES[gridScale] ?? GRID_SCALES[0];
 
   const isSelectedMap = useMemo(() => {
     const map = new Map();
@@ -193,40 +193,24 @@ const EmojiGrid = ({
     onCommit: commitMarquee,
   });
   
-  const calculateLayout = useCallback((width: number, scale: number) => {
-    const baseSize = GRID_SCALES[scale] ?? GRID_SCALES[0];
-    const availableWidth = width;
-    const columnCount = Math.max(1, Math.floor(availableWidth / (baseSize + GRID_GAP)));
-    return { columnCount };
+  // Columns come from the CSS grid's own auto-fill track sizing, not a JS
+  // measurement of container width: that way server-rendered markup and the
+  // hydrated client agree on layout from the first frame, with nothing to
+  // reconcile once JS takes over (a mismatch here was reflowing every one of
+  // 350+ cells and destabilizing scroll height mid-scroll).
+  const getColumnCount = useCallback(() => {
+    const cells = parentRef.current?.querySelectorAll('[role="gridcell"]');
+    if (!cells || cells.length < 2) return 1;
+    const firstTop = (cells[0] as HTMLElement).offsetTop;
+    let count = 1;
+    for (let i = 1; i < cells.length; i++) {
+      if ((cells[i] as HTMLElement).offsetTop !== firstTop) break;
+      count++;
+    }
+    return count;
   }, []);
 
-  const { columnCount } = calculateLayout(width, gridScale);
-
-  // Measured before the browser paints: a first frame laid out at the guessed
-  // width would resize every cell once the real width arrived, and 352 cells
-  // moving at once was the largest layout shift on the page.
-  useLayoutEffect(() => {
-    if (!parentRef.current) return;
-    
-    const updateWidth = () => {
-      if (parentRef.current) {
-        setWidth(parentRef.current.clientWidth);
-      }
-    };
-    
-    updateWidth();
-    
-    if (typeof ResizeObserver !== 'undefined') {
-      const resizeObserver = new ResizeObserver(updateWidth);
-      resizeObserver.observe(parentRef.current);
-      
-      return () => resizeObserver.disconnect();
-    }
-    
-    return () => {};
-  }, [emojis.length === 0]);
-
-  const handleKeyDown = useCallback((e: KeyboardEvent, index: number, colCount: number, isSelected: boolean) => {
+  const handleKeyDown = useCallback((e: KeyboardEvent, index: number, isSelected: boolean) => {
     switch (e.key) {
       case "ArrowRight":
         e.preventDefault();
@@ -238,11 +222,11 @@ const EmojiGrid = ({
         break;
       case "ArrowUp":
         e.preventDefault();
-        onSetFocusedIndex(Math.max(0, index - colCount));
+        onSetFocusedIndex(Math.max(0, index - getColumnCount()));
         break;
       case "ArrowDown":
         e.preventDefault();
-        onSetFocusedIndex(Math.min(emojis.length - 1, index + colCount));
+        onSetFocusedIndex(Math.min(emojis.length - 1, index + getColumnCount()));
         break;
       case "Enter":
       case " ":
@@ -293,7 +277,7 @@ const EmojiGrid = ({
           aria-label="Emoji results"
           style={{
             gap: GRID_GAP,
-            gridTemplateColumns: `repeat(${columnCount}, minmax(0, 1fr))`,
+            gridTemplateColumns: `repeat(auto-fill, minmax(${baseSize}px, 1fr))`,
           }}
         >
           {emojis.map((emoji, index) => (
@@ -304,8 +288,7 @@ const EmojiGrid = ({
               isSelected={isSelectedMap.has(emoji.id)}
               isFocused={focusedIndex === index}
               preview={marquee && previewIds?.has(emoji.id) ? marquee.mode : null}
-              columnCount={columnCount}
-              imageWidth={Math.max(1, (width - GRID_GAP * (columnCount - 1)) / columnCount)}
+              baseSize={baseSize}
               onToggle={onToggleSelection}
               onKeyDown={handleKeyDown}
               onFocusChange={onSetFocusedIndex}
