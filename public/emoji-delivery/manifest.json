@@ -15573,33 +15573,30 @@
       }
     },
     "roo-think": {
-      "source": "staging/emoji-enhancements/stills/candidates/roo-think.webp",
-      "basis": "enhanced",
-      "sourceSha256": "ae506fc50ccfb9b5c4b1826273f723fe7f5fd4e2e0c9b21d15c31c7f7b153979",
+      "source": "public/emojis/roo-think.webp",
+      "basis": "shirt-arm-repaired",
+      "sourceSha256": "cfde5c9eab44af9ad46cc24639f893de0edc10d82e8299fb2929d18c7030cc1d",
       "animated": false,
       "variants": {
         "64": {
           "webp": {
             "quality": 90,
             "path": "/emoji-delivery/64/roo-think.webp",
-            "bytes": 2240,
-            "slackGzipBytes": 2349
+            "bytes": 2088
           }
         },
         "128": {
           "webp": {
-            "path": "/emoji-delivery/128/roo-think.webp",
-            "bytes": 4766,
             "quality": 90,
-            "slackGzipBytes": 4877
+            "path": "/emoji-delivery/128/roo-think.webp",
+            "bytes": 4358
           }
         },
         "256": {
           "webp": {
-            "path": "/emoji-delivery/256/roo-think.webp",
-            "bytes": 10728,
             "quality": 90,
-            "slackGzipBytes": 10856
+            "path": "/emoji-delivery/256/roo-think.webp",
+            "bytes": 9512
           }
         }
       },
@@ -15607,28 +15604,28 @@
         "64": {
           "quality": 90,
           "path": "/emoji-delivery/previews/64/roo-think.webp",
-          "bytes": 2240
+          "bytes": 2088
         },
         "128": {
           "quality": 90,
           "path": "/emoji-delivery/previews/128/roo-think.webp",
-          "bytes": 4804
+          "bytes": 4358
         },
         "256": {
           "quality": 90,
           "path": "/emoji-delivery/previews/256/roo-think.webp",
-          "bytes": 10774
+          "bytes": 9512
         }
       },
       "highestSlackCompatible": {
         "size": 256,
         "path": "/emoji-delivery/256/roo-think.webp",
-        "bytes": 10728
+        "bytes": 9512
       },
       "original": {
         "quality": 90,
         "path": "/emoji-delivery/original/roo-think.webp",
-        "bytes": 52450,
+        "bytes": 53572,
         "width": 1024,
         "height": 1024
       }
