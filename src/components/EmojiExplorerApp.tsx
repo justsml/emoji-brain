@@ -88,7 +88,14 @@ async function pagefindSearch(
   }
 
   if(!isCurrent())return [];
-  const response = await client.search(term, { sort: { filename: "asc" } });
+  // "animated"/"static" fuzzy-match unrelated tags (e.g. stemmed "animal") via free-text
+  // search alone, so pin an exact facet filter when the query names one of these states.
+  const lowerTerm = term.toLowerCase();
+  const animatedFilter = lowerTerm === "animated" || lowerTerm === "static" ? lowerTerm : undefined;
+  const response = await client.search(term, {
+    sort: { filename: "asc" },
+    ...(animatedFilter ? { filters: { animated: [animatedFilter] } } : {}),
+  });
   if(!isCurrent())return [];
   const matchedIds=response.filters?.emoji_id;
   if(matchedIds){

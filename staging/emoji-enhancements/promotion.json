@@ -664,7 +664,7 @@
       "source": "staging/emoji-enhancements/stills/candidates/meow_deficit.webp",
       "original": "staging/emoji-enhancements/originals/meow_deficit.webp",
       "originalSha256": "b50f64002bbb2e58d65d544008c838b83546fe2d991c669056ac0159e89915ff",
-      "approvedSha256": "6173bd3a827f560e8eafeb167ae74d8c71fee7cf079a23901f7fc15b491ac3d9"
+      "approvedSha256": "81f6fb6f1de0b7e3786930813206e47d30625c7ed761ad9e697aa340c091fd5b"
     },
     {
       "file": "meow_devil.webp",
@@ -2833,12 +2833,30 @@
       "approvedSha256": "2bb84bcc3316499cc4c27f4559b623d2dacb6b2034a0bb9ca4fb3c5dfe941165"
     }
   ],
-  "corrections": {
-    "userRequest": "100000.webp looks jank w/ bad transparency, and 99.webp shouldn't have that outline",
-    "files": [
-      "100000.webp",
-      "99.webp"
-    ],
-    "method": "Reused generated RGB; retained only reviewed numeral and underline fill components and rebuilt alpha."
-  }
+  "corrections": [
+    {
+      "userRequest": "100000.webp looks jank w/ bad transparency, and 99.webp shouldn't have that outline",
+      "files": [
+        "100000.webp",
+        "99.webp"
+      ],
+      "method": "Reused generated RGB; retained only reviewed numeral and underline fill components and rebuilt alpha."
+    },
+    {
+      "userRequest": "meow_deficit gradient looks like it got messed up when upscaling, can you fix it and add a new emoji based on it for meow_profit",
+      "date": "2026-09-13",
+      "files": [
+        "meow_deficit.webp"
+      ],
+      "method": "Repainted the upscaler’s two flat face fills as the original’s blue-to-yellow ramp, measured off the 128px source. Generated art and alpha are otherwise untouched; the approved upscale is kept at staging/emoji-enhancements/stills/pre-correction/meow_deficit.webp.",
+      "script": "scripts/emoji-enhancement/meow-deficit-gradient-and-profit.mjs",
+      "supersededSha256": "6173bd3a827f560e8eafeb167ae74d8c71fee7cf079a23901f7fc15b491ac3d9",
+      "correctedSha256": "81f6fb6f1de0b7e3786930813206e47d30625c7ed761ad9e697aa340c091fd5b",
+      "derived": {
+        "file": "meow_profit.webp",
+        "sha256": "f74639c9afac92fb81399e72cd3fc1281e98132b3ed703db23c5f0750087362d",
+        "note": "New catalog entry drawn from the corrected art: plot line mirrored and recolored green, sweat removed, zigzag mouth replaced with a content cat curve. No model calls."
+      }
+    }
+  ]
 }

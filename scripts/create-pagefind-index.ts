@@ -12,12 +12,12 @@ function relatedTags(url: string) {
 async function buildIndex() {
   const records=data.emojis.map(emoji=>({
     language:'en',url:emoji.path,
-    content:[...new Set([emoji.filename,...emoji.categories,...emoji.tags,...(emoji.aliases??[]),...relatedTags(emoji.path)])].join(', '),
+    content:[...new Set([emoji.filename,...emoji.categories,...emoji.tags,...(emoji.aliases??[]),...relatedTags(emoji.path),emoji.animated?'animated':'static'])].join(', '),
     sort:{created:emoji.created.split('T')[0],filename:emoji.filename},
     meta:{id:emoji.id},
     // Matched IDs come back in the search response, avoiding one data-fragment
     // fetch/excerpt computation per result for metadata already in the app.
-    filters:{emoji_id:[emoji.id]},
+    filters:{emoji_id:[emoji.id],animated:[emoji.animated?'animated':'static']},
   }));
   if(new Set(records.map(r=>r.url)).size!==records.length||new Set(records.map(r=>r.meta.id)).size!==records.length)throw Error('Duplicate Pagefind document or emoji ID');
   const hash=(bytes: string|Buffer)=>createHash('sha256').update(bytes).digest('hex');

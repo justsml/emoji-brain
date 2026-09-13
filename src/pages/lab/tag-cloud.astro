@@ -1,0 +1,330 @@
+---
+// Design lab: four tag-cloud UX models over the real catalog.
+// Not linked from the app. Delete when the winner lands in the explorer.
+import Layout from "../../layouts/Layout.astro";
+import emojiMetadata from "../../data/emoji-metadata.json";
+import vocabulary from "../../data/tag-vocabulary.json";
+
+type Row = {id: string; name: string; tags: string[]};
+
+const emojis: Row[] = (emojiMetadata.emojis || []).map((e: any) => ({
+  id: e.id,
+  name: String(e.filename).replace(/\.[^.]+$/, ""),
+  // Categories are a second, coarser vocabulary; folding them in gives the
+  // cloud its only reliable top-level handles (animal / reaction / meme).
+  tags: Array.from(new Set([...(e.tags || []), ...(e.categories || [])].map((t: string) => t.toLowerCase().trim()))).filter(Boolean),
+}));
+
+const counts = new Map<string, number>();
+for (const e of emojis) for (const t of e.tags) counts.set(t, (counts.get(t) || 0) + 1);
+
+// Facet buckets. Hand-seeded because the tags carry no type information and a
+// cloud that mixes "yellow" with "angry" with "bongo cat" reads as noise.
+const SEEDS: Record<string, string[]> = {
+  Color: ["yellow", "orange", "pink", "red", "white", "blue", "purple", "green", "black", "brown", "grey", "gray", "rainbow", "gold", "color"],
+  Mood: ["happy", "angry", "sad", "excited", "thinking", "crying", "nervous", "skeptical", "surprised", "confused", "pleading", "smile", "smiling", "blush", "screaming", "love", "scared", "tired", "bored", "shy", "smug", "annoyed", "sleepy", "sleep", "laughing", "shocked", "disappointed", "proud", "cool", "emotion", "expression", "mood", "reaction", "sarcastic", "worried", "shrug", "disgust", "panic", "calm", "cozy"],
+  Style: ["cute", "kawaii", "uwu", "pixel", "pixel-art", "pixel_art", "pixel art", "aesthetic", "cursed", "3d", "retro", "anime", "cartoon", "meme", "emoji", "emote", "blob", "blobcat", "lego", "art", "style", "animation", "humor", "funny"],
+  Creature: ["cat", "feline", "kitten", "whiskers", "paws", "meow", "panda", "dog", "bear", "bunny", "rabbit", "frog", "bird", "fox", "animal", "creature", "monster", "fantasy", "pokemon", "character", "person", "people", "human", "humanoid", "face", "man", "woman"],
+};
+const bucketOf = new Map<string, string>();
+for (const [bucket, words] of Object.entries(SEEDS)) for (const w of words) bucketOf.set(w, bucket);
+const facetFor = (tag: string) => bucketOf.get(tag) || "Things";
+
+// Co-occurrence by lift: how much more often b shows up alongside a than in the
+// catalog at large. Raw co-occurrence just returns "cat" for every tag.
+const MIN = 3;
+const vocab = [...counts.entries()].filter(([, c]) => c >= MIN).map(([t]) => t);
+const vocabSet = new Set(vocab);
+const total = emojis.length;
+const pairs = new Map<string, Map<string, number>>();
+for (const e of emojis) {
+  const ts = e.tags.filter(t => vocabSet.has(t));
+  for (const a of ts) {
+    let row = pairs.get(a);
+    if (!row) pairs.set(a, (row = new Map()));
+    for (const b of ts) if (a !== b) row.set(b, (row.get(b) || 0) + 1);
+  }
+}
+const neighbors: Record<string, {tag: string; n: number; lift: number}[]> = {};
+for (const a of vocab) {
+  const ca = counts.get(a)!;
+  neighbors[a] = [...(pairs.get(a) || new Map()).entries()]
+    .map(([b, n]) => ({tag: b, n, lift: (n / ca) / (counts.get(b)! / total)}))
+    .filter(x => x.n >= 2)
+    .sort((x, y) => y.lift - x.lift || y.n - x.n)
+    .slice(0, 12);
+}
+
+const tags = [...counts.entries()]
+  .map(([tag, n]) => ({tag, n, facet: facetFor(tag)}))
+  .sort((a, b) => b.n - a.n);
+
+// Preview of the canonical vocabulary: roll every legacy tag through the alias
+// map so the lanes can be judged before anything is relabelled. An alias may
+// resolve into two facets at once (a knife is subject:object AND prop:weapon),
+// which is why this is a list rather than a lookup.
+const aliasMap = new Map<string, string[]>();
+for (const t of vocabulary.tags) {
+  for (const raw of t.aliases) {
+    const a = raw.toLowerCase().trim();
+    aliasMap.set(a, [...(aliasMap.get(a) || []), t.id]);
+  }
+}
+const canonById: Record<string, string[]> = {};
+const canonCount = new Map<string, number>();
+for (const e of emojis) {
+  const got = [...new Set(e.tags.flatMap(t => aliasMap.get(t) || []))];
+  canonById[e.id] = got;
+  for (const id of got) canonCount.set(id, (canonCount.get(id) || 0) + 1);
+}
+const canonFacets = Object.entries(vocabulary.facets).map(([id, f]: [string, any]) => ({
+  id,
+  label: f.label,
+  cardinality: f.cardinality,
+  note: f.note,
+  tags: vocabulary.tags.filter(t => t.facet === id)
+    .map(t => ({tag: t.id, n: canonCount.get(t.id) || 0, gloss: t.gloss}))
+    .sort((a, b) => b.n - a.n),
+}));
+
+const payload = {emojis, tags, neighbors, total, canonById, canonFacets, vocabSize: vocabulary.tags.length};
+const singles = tags.filter(t => t.n === 1).length;
+---
+
+<Layout title="Tag cloud lab" imageCount={total}>
+  <main class="lab">
+    <header class="lab-head">
+      <h1>Tag cloud lab</h1>
+      <p class="lab-lede">
+        {tags.length} tags over {total} emojis. {singles} of them appear exactly once,
+        and <em>cat</em> appears on {counts.get("cat")}. A frequency-sized cloud therefore
+        spends its largest type on the words that narrow nothing. Each model below
+        answers that differently — same catalog, same result strip.
+      </p>
+    </header>
+
+    <nav class="lab-tabs" aria-label="Cloud models">
+      <button type="button" data-view="weighted" class="is-active">1 · Weighted</button>
+      <button type="button" data-view="faceted">2 · Faceted lanes</button>
+      <button type="button" data-view="narrowing">3 · Narrowing</button>
+      <button type="button" data-view="orbit">4 · Neighborhood</button>
+      <button type="button" data-view="canonical">5 · Canonical vocabulary</button>
+    </nav>
+
+    <p class="lab-note" id="lab-note"></p>
+
+    <section class="lab-panel" id="panel"></section>
+
+    <div class="lab-active" id="active" hidden></div>
+
+    <section class="lab-results">
+      <h2 id="result-count"></h2>
+      <div class="lab-grid" id="grid"></div>
+    </section>
+  </main>
+
+  <script define:vars={{payload}} is:inline>
+    const {emojis, tags, neighbors, total, canonById, canonFacets, vocabSize} = payload;
+    const byTag = new Map();
+    for (const e of emojis) for (const t of e.tags) {
+      if (!byTag.has(t)) byTag.set(t, new Set());
+      byTag.get(t).add(e.id);
+    }
+    const emojiById = new Map(emojis.map(e => [e.id, e]));
+
+    const state = {view: "weighted", active: [], focus: "cat", longTail: false};
+    const $ = id => document.getElementById(id);
+
+    const NOTES = {
+      weighted: "The baseline. Size = how many emojis carry the tag. Honest, and mostly useless: the biggest words are the ones every emoji shares.",
+      faceted: "Same tags, split into lanes by kind. Frequency still sets size, but within a lane, so 'angry' competes with 'sad' rather than with 'cat'.",
+      narrowing: "Size = how much a tag would actually split what you're looking at right now. Tags that match everything or almost nothing drop out. The cloud rebuilds on every click.",
+      orbit: "No filtering — lateral browsing. Pick a tag, see what it travels with, ranked by lift rather than raw overlap. Click a neighbour to walk sideways.",
+      canonical: `The proposed ${vocabSize}-tag controlled vocabulary, previewed by rolling the legacy tags through its alias map. Counts are what today's data already supports; a tag at 0 is one only a labeller can fill. The Intent lane is nearly empty on purpose — nothing in the source art describes what you would be *saying* by posting it.`,
+    };
+
+    function selected() {
+      if (!state.active.length) return emojis;
+      const has = state.view === "canonical"
+        ? (e, t) => canonById[e.id].includes(t)
+        : (e, t) => e.tags.includes(t);
+      return emojis.filter(e => state.active.every(t => has(e, t)));
+    }
+
+    function sizeFor(ratio) { return (0.78 + ratio * 1.5).toFixed(2) + "rem"; }
+
+    function tagButton(tag, n, ratio, extra = "") {
+      const on = state.active.includes(tag);
+      return `<button type="button" class="tag${on ? " is-on" : ""}" data-tag="${tag}" style="font-size:${sizeFor(ratio)}" title="${n} emoji${n === 1 ? "" : "s"}${extra}">${tag}<span class="tag-n">${n}</span></button>`;
+    }
+
+    function renderWeighted() {
+      const list = tags.filter(t => state.longTail || t.n >= 3);
+      const max = Math.log(list[0].n + 1);
+      return `<div class="cloud">${list.map(t => tagButton(t.tag, t.n, Math.log(t.n + 1) / max)).join("")}</div>
+        ${tailToggle(list.length)}`;
+    }
+
+    function renderFaceted() {
+      const order = ["Creature", "Mood", "Style", "Color", "Things"];
+      const list = tags.filter(t => state.longTail || t.n >= 3);
+      return order.map(facet => {
+        const rows = list.filter(t => t.facet === facet);
+        if (!rows.length) return "";
+        const max = Math.log(rows[0].n + 1);
+        return `<div class="lane"><h3>${facet}<span class="lane-n">${rows.length}</span></h3>
+          <div class="cloud">${rows.map(t => tagButton(t.tag, t.n, Math.log(t.n + 1) / max)).join("")}</div></div>`;
+      }).join("") + tailToggle(list.length);
+    }
+
+    function renderNarrowing() {
+      const set = selected();
+      const size = set.length;
+      const local = new Map();
+      for (const e of set) for (const t of e.tags) local.set(t, (local.get(t) || 0) + 1);
+      const scored = [...local.entries()]
+        .filter(([t, c]) => !state.active.includes(t) && c >= 2 && c < size)
+        // Peaks when a tag halves the set: that is the click that tells you most.
+        .map(([t, c]) => ({tag: t, n: c, score: c * (1 - c / size)}))
+        .sort((a, b) => b.score - a.score)
+        .slice(0, 60);
+      if (!scored.length) return `<p class="lab-empty">Nothing left to split — ${size} emoji${size === 1 ? "" : "s"} in view.</p>`;
+      const max = scored[0].score;
+      return `<div class="cloud">${scored.map(t =>
+        tagButton(t.tag, t.n, t.score / max, ` · splits ${size} → ${t.n}`)).join("")}</div>
+        <p class="lab-hint">Ranked by how evenly each tag would cut the ${size} in view, not by how common it is.</p>`;
+    }
+
+    function renderOrbit() {
+      const focus = state.focus;
+      const near = neighbors[focus] || [];
+      const opts = tags.filter(t => neighbors[t.tag]).slice(0, 40);
+      const max = near.length ? near[0].lift : 1;
+      return `<div class="orbit">
+        <div class="orbit-focus">
+          <span class="orbit-label">around</span>
+          <strong>${focus}</strong>
+          <span class="orbit-count">${(byTag.get(focus) || new Set()).size} emojis</span>
+        </div>
+        <div class="cloud">${near.map(x =>
+          `<button type="button" class="tag" data-focus="${x.tag}" style="font-size:${sizeFor(x.lift / max)}" title="${x.n} shared · ${x.lift.toFixed(1)}× lift">${x.tag}<span class="tag-n">${x.n}</span></button>`
+        ).join("") || '<span class="lab-empty">No strong neighbours.</span>'}</div>
+        <div class="orbit-jump"><span class="orbit-label">jump to</span>${opts.map(t =>
+          `<button type="button" class="tag tag-plain${t.tag === focus ? " is-on" : ""}" data-focus="${t.tag}">${t.tag}</button>`).join("")}</div>
+      </div>`;
+    }
+
+    function renderCanonical() {
+      return canonFacets.map(f => {
+        const max = Math.log((f.tags[0]?.n || 0) + 1) || 1;
+        const covered = f.tags.filter(t => t.n > 0).length;
+        return `<div class="lane">
+          <h3>${f.label}<span class="lane-n">${f.tags.length} tags · ${f.cardinality} per emoji · ${covered} with existing support</span></h3>
+          <p class="lane-note">${f.note}</p>
+          <div class="cloud">${f.tags.map(t =>
+            `<button type="button" class="tag${t.n ? "" : " is-empty"}${state.active.includes(t.tag) ? " is-on" : ""}" data-canon="${t.tag}" style="font-size:${sizeFor(Math.log(t.n + 1) / max)}" title="${t.gloss}">${t.tag}<span class="tag-n">${t.n}</span></button>`
+          ).join("")}</div></div>`;
+      }).join("");
+    }
+
+    function tailToggle(shown) {
+      return `<button type="button" class="lab-toggle" data-toggle-tail>${
+        state.longTail ? `hide the ${tags.length - tags.filter(t => t.n >= 3).length} one-and-two-offs` : `show the long tail (${tags.length - shown} more)`
+      }</button>`;
+    }
+
+    function renderResults() {
+      const set = state.view === "orbit"
+        ? emojis.filter(e => e.tags.includes(state.focus))
+        : selected();
+      $("result-count").textContent = `${set.length} emoji${set.length === 1 ? "" : "s"}`;
+      $("grid").innerHTML = set.slice(0, 200).map(e =>
+        `<img src="/emoji-delivery/previews/64/${encodeURIComponent(e.name)}.webp" alt="${e.name}" title="${e.name}" width="48" height="48" loading="lazy">`
+      ).join("");
+    }
+
+    function renderActive() {
+      const box = $("active");
+      if (state.view === "orbit" || !state.active.length) { box.hidden = true; return; }
+      box.hidden = false;
+      box.innerHTML = `<span class="orbit-label">filtering</span>` + state.active.map(t =>
+        `<button type="button" class="chip" data-drop="${t}">${t}<span aria-hidden="true">×</span></button>`
+      ).join("") + `<button type="button" class="lab-toggle" data-clear>clear</button>`;
+    }
+
+    function render() {
+      $("lab-note").textContent = NOTES[state.view];
+      $("panel").innerHTML = {weighted: renderWeighted, faceted: renderFaceted, narrowing: renderNarrowing, orbit: renderOrbit, canonical: renderCanonical}[state.view]();
+      renderActive();
+      renderResults();
+    }
+
+    document.querySelector(".lab-tabs").addEventListener("click", event => {
+      const button = event.target.closest("button[data-view]");
+      if (!button) return;
+      // Legacy tags and canonical ids are different namespaces; carrying a
+      // selection across the boundary would silently match nothing.
+      if ((state.view === "canonical") !== (button.dataset.view === "canonical")) state.active = [];
+      state.view = button.dataset.view;
+      document.querySelectorAll(".lab-tabs button").forEach(b => b.classList.toggle("is-active", b === button));
+      render();
+    });
+
+    document.querySelector(".lab").addEventListener("click", event => {
+      const target = event.target.closest("button");
+      if (!target) return;
+      if (target.dataset.tag || target.dataset.canon) {
+        const tag = target.dataset.tag || target.dataset.canon;
+        state.active = state.active.includes(tag) ? state.active.filter(t => t !== tag) : [...state.active, tag];
+      } else if (target.dataset.focus) {
+        state.focus = target.dataset.focus;
+      } else if (target.dataset.drop) {
+        state.active = state.active.filter(t => t !== target.dataset.drop);
+      } else if (target.hasAttribute("data-clear")) {
+        state.active = [];
+      } else if (target.hasAttribute("data-toggle-tail")) {
+        state.longTail = !state.longTail;
+      } else return;
+      render();
+    });
+
+    render();
+  </script>
+
+  <style is:global>
+    .lab { max-width: 72rem; margin: 0 auto; padding: 2rem 1.25rem 4rem; }
+    .lab-head h1 { font-size: 1.6rem; font-weight: 600; letter-spacing: -0.01em; }
+    .lab-lede { max-width: 46rem; margin-top: .5rem; line-height: 1.55; opacity: .75; font-size: .92rem; }
+    .lab-tabs { display: flex; flex-wrap: wrap; gap: 1.25rem; margin: 1.75rem 0 0; padding-bottom: .6rem; border-bottom: 1px solid currentColor; border-color: color-mix(in srgb, currentColor 18%, transparent); }
+    .lab-tabs button { font-size: .9rem; opacity: .5; padding: .1rem 0; border-bottom: 2px solid transparent; }
+    .lab-tabs button:hover { opacity: .85; }
+    .lab-tabs button.is-active { opacity: 1; border-bottom-color: currentColor; }
+    .lab-note { margin: .9rem 0 1.5rem; max-width: 46rem; font-size: .87rem; line-height: 1.5; opacity: .6; }
+    .cloud { display: flex; flex-wrap: wrap; align-items: baseline; gap: .3rem .85rem; }
+    .tag { line-height: 1.25; opacity: .8; transition: opacity .12s; }
+    .tag:hover { opacity: 1; text-decoration: underline; text-underline-offset: .2em; }
+    .tag.is-on { opacity: 1; font-weight: 600; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: .2em; }
+    .tag-n { font-size: .62em; opacity: .45; margin-left: .18em; vertical-align: super; }
+    .tag-plain { font-size: .85rem !important; }
+    .lane { padding: 1rem 0; border-top: 1px solid color-mix(in srgb, currentColor 12%, transparent); }
+    .lane:first-child { border-top: 0; padding-top: 0; }
+    .lane h3 { font-size: .7rem; text-transform: uppercase; letter-spacing: .08em; opacity: .45; margin-bottom: .55rem; }
+    .lane-n { margin-left: .5rem; opacity: .6; text-transform: none; letter-spacing: 0; }
+    .lane-note { font-size: .78rem; opacity: .45; margin: -.2rem 0 .7rem; max-width: 44rem; }
+    .tag.is-empty { opacity: .32; font-style: italic; }
+    .lab-hint, .lab-empty { margin-top: 1rem; font-size: .8rem; opacity: .5; }
+    .lab-toggle { margin-top: 1.25rem; font-size: .78rem; opacity: .5; text-decoration: underline; text-underline-offset: .2em; }
+    .lab-toggle:hover { opacity: .9; }
+    .orbit-focus { display: flex; align-items: baseline; gap: .5rem; margin-bottom: 1rem; }
+    .orbit-focus strong { font-size: 1.5rem; font-weight: 600; }
+    .orbit-count, .orbit-label { font-size: .75rem; opacity: .45; }
+    .orbit-jump { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid color-mix(in srgb, currentColor 12%, transparent); display: flex; flex-wrap: wrap; gap: .25rem .7rem; align-items: baseline; }
+    .lab-active { display: flex; flex-wrap: wrap; align-items: baseline; gap: .6rem; margin-top: 1.75rem; }
+    .chip { font-size: .85rem; font-weight: 600; }
+    .chip span { margin-left: .3rem; opacity: .5; }
+    .lab-results { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid color-mix(in srgb, currentColor 18%, transparent); }
+    .lab-results h2 { font-size: .7rem; text-transform: uppercase; letter-spacing: .08em; opacity: .45; }
+    .lab-grid { display: flex; flex-wrap: wrap; gap: .35rem; margin-top: .9rem; }
+    .lab-grid img { width: 48px; height: 48px; object-fit: contain; }
+  </style>
+</Layout>

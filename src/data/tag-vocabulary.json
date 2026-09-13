@@ -1,0 +1,1794 @@
+{
+  "version": 2,
+  "note": "Canonical controlled vocabulary for labelling the emoji catalog. Every tag applied to an emoji must be an id from this file. `aliases` are the free-text tags from the legacy catalog that fold into each id — they exist to migrate old data and to seed few-shot examples, not to be applied as labels. An alias may appear under two tags in DIFFERENT facets (a knife emoji is both subject:object and prop:weapon-prop); two tags in the SAME facet must never share one.",
+  "facets": {
+    "subject": {
+      "label": "Subject",
+      "cardinality": "1-2",
+      "required": true,
+      "note": "What the picture is of. The single most useful handle; keep it literal."
+    },
+    "expression": {
+      "label": "Expression",
+      "cardinality": "0-4",
+      "required": false,
+      "note": "The feeling the face or body is showing. Skip when there is no face. Up to four — the blob faces routinely stack anxious + embarrassed + disgusted."
+    },
+    "action": {
+      "label": "Action",
+      "cardinality": "0-2",
+      "required": false,
+      "note": "What the subject is visibly doing."
+    },
+    "intent": {
+      "label": "Intent",
+      "cardinality": "1-3",
+      "required": true,
+      "note": "What you would be saying by posting this in a channel. Rarely present in the source art — this is the facet the labeller has to reason about, and the one most searches are really asking for."
+    },
+    "prop": {
+      "label": "Prop",
+      "cardinality": "0-3",
+      "required": false,
+      "note": "Objects, clothing and visual devices present alongside the subject."
+    },
+    "style": {
+      "label": "Style",
+      "cardinality": "1-2",
+      "required": true,
+      "note": "How it is drawn or rendered, independent of what it depicts."
+    },
+    "color": {
+      "label": "Color",
+      "cardinality": "1-2",
+      "required": true,
+      "note": "Dominant colors only — the one or two a person would name from across the room."
+    },
+    "origin": {
+      "label": "Origin",
+      "cardinality": "0-1",
+      "required": false,
+      "note": "A named franchise, meme or person. Apply only when a viewer would recognise the source; never guess."
+    }
+  },
+  "tags": [
+    {
+      "id": "cat",
+      "facet": "subject",
+      "gloss": "Any cat or cat-like face, of any breed, color or age.",
+      "aliases": [
+        "cat",
+        "feline",
+        "kitten",
+        "kitty",
+        "tabby",
+        "calico",
+        "white cat",
+        "black cat",
+        "ginger",
+        "whiskers",
+        "meow",
+        "blobcat",
+        "unikitty",
+        "meowth",
+        "pet"
+      ]
+    },
+    {
+      "id": "dog",
+      "facet": "subject",
+      "gloss": "A dog of any breed.",
+      "aliases": [
+        "dog",
+        "shiba inu",
+        "doge",
+        "puppy"
+      ]
+    },
+    {
+      "id": "bear",
+      "facet": "subject",
+      "gloss": "A bear, including pandas and teddy bears.",
+      "aliases": [
+        "bear",
+        "panda",
+        "teddy"
+      ]
+    },
+    {
+      "id": "bird",
+      "facet": "subject",
+      "gloss": "Any bird.",
+      "aliases": [
+        "bird",
+        "duck",
+        "chicken",
+        "penguin",
+        "parrot"
+      ]
+    },
+    {
+      "id": "amphibian",
+      "facet": "subject",
+      "gloss": "Frogs, toads, lizards, snakes and other reptiles or amphibians.",
+      "aliases": [
+        "frog",
+        "toad",
+        "lizard",
+        "snake",
+        "dino",
+        "dinosaur"
+      ]
+    },
+    {
+      "id": "rodent",
+      "facet": "subject",
+      "gloss": "Mice, rats, hamsters, rabbits, squirrels and similar small mammals.",
+      "aliases": [
+        "mouse",
+        "rat",
+        "hamster",
+        "rabbit",
+        "bunny",
+        "squirrel"
+      ]
+    },
+    {
+      "id": "sea-creature",
+      "facet": "subject",
+      "gloss": "Fish, whales, octopuses, crabs and anything else aquatic.",
+      "aliases": [
+        "fish",
+        "whale",
+        "shark",
+        "octopus",
+        "crab",
+        "nautical"
+      ]
+    },
+    {
+      "id": "animal-other",
+      "facet": "subject",
+      "gloss": "A real-world animal that none of the other animal tags covers.",
+      "aliases": [
+        "horse",
+        "cow",
+        "pig",
+        "fox",
+        "sloth",
+        "monkey"
+      ]
+    },
+    {
+      "id": "blob",
+      "facet": "subject",
+      "gloss": "A rounded featureless body with a face — the blob/Mutant Standard lineage. Use alongside `cat` for blobcats.",
+      "aliases": [
+        "blob",
+        "slime",
+        "amorphous"
+      ]
+    },
+    {
+      "id": "person",
+      "facet": "subject",
+      "gloss": "A human being, drawn or photographed.",
+      "aliases": [
+        "person",
+        "man",
+        "girl",
+        "woman",
+        "human",
+        "people",
+        "boy",
+        "guy"
+      ]
+    },
+    {
+      "id": "face",
+      "facet": "subject",
+      "gloss": "A bodiless face that is not an animal — the classic yellow smiley lineage.",
+      "aliases": [
+        "face",
+        "yellow face",
+        "emoji",
+        "smiley",
+        "awesome face",
+        "emote",
+        "expression"
+      ]
+    },
+    {
+      "id": "hand",
+      "facet": "subject",
+      "gloss": "A hand or hands as the main subject, with no face attached.",
+      "aliases": [
+        "hand",
+        "hand gesture",
+        "ok hand",
+        "finger guns",
+        "middle finger",
+        "paw",
+        "paws"
+      ]
+    },
+    {
+      "id": "creature",
+      "facet": "subject",
+      "gloss": "A fictional or supernatural being — monster, ghost, alien, demon, angel, mythical animal.",
+      "aliases": [
+        "creature",
+        "monster",
+        "devil",
+        "demon",
+        "angel",
+        "angelic",
+        "ghost",
+        "alien",
+        "unicorn",
+        "fantasy",
+        "humanoid",
+        "horns",
+        "halo"
+      ]
+    },
+    {
+      "id": "food",
+      "facet": "subject",
+      "gloss": "Something edible, as the main subject.",
+      "aliases": [
+        "food",
+        "bread",
+        "toast",
+        "ice cream",
+        "soft serve",
+        "popcorn",
+        "pizza",
+        "cake",
+        "fruit",
+        "food/drink"
+      ]
+    },
+    {
+      "id": "plant",
+      "facet": "subject",
+      "gloss": "A plant, leaf, flower or tree.",
+      "aliases": [
+        "weed",
+        "plant",
+        "leaf",
+        "flower",
+        "tree",
+        "cannabis"
+      ]
+    },
+    {
+      "id": "drink",
+      "facet": "subject",
+      "gloss": "A beverage or its container as the main subject.",
+      "aliases": [
+        "drink",
+        "coffee",
+        "tea",
+        "juice",
+        "mug",
+        "glass",
+        "beer",
+        "boba"
+      ]
+    },
+    {
+      "id": "object",
+      "facet": "subject",
+      "gloss": "An inanimate thing with no face, not food or drink.",
+      "aliases": [
+        "object",
+        "box",
+        "cardboard",
+        "laptop",
+        "computer",
+        "keyboard",
+        "knife",
+        "weapon",
+        "money",
+        "cash",
+        "gift",
+        "present",
+        "technology",
+        "tech"
+      ]
+    },
+    {
+      "id": "text",
+      "facet": "subject",
+      "gloss": "Words, letters or numerals are the content — the image is something to read.",
+      "aliases": [
+        "text",
+        "sign",
+        "number",
+        "digit",
+        "score",
+        "underlined",
+        "symbol",
+        "exclamation mark",
+        "flag",
+        "c",
+        "no",
+        "stop",
+        "halt",
+        "is for me"
+      ]
+    },
+    {
+      "id": "scene",
+      "facet": "subject",
+      "gloss": "A place or situation rather than a single subject — a room, a landscape, weather, a fire.",
+      "aliases": [
+        "scene",
+        "weather",
+        "cloud",
+        "rain",
+        "raindrops",
+        "space",
+        "nature",
+        "winter",
+        "wall",
+        "brick",
+        "jail",
+        "prison",
+        "bars",
+        "fire",
+        "flames",
+        "burning"
+      ]
+    },
+    {
+      "id": "happy",
+      "facet": "expression",
+      "gloss": "Plainly pleased — smiling, content, cheerful.",
+      "aliases": [
+        "happy",
+        "smile",
+        "smiling",
+        "grin",
+        "joy",
+        "satisfied",
+        "cheerful",
+        "glad"
+      ]
+    },
+    {
+      "id": "delighted",
+      "facet": "expression",
+      "gloss": "Happiness turned all the way up — beaming, sparkling, overjoyed.",
+      "aliases": [
+        "excited",
+        "sparkly eyes",
+        "sparkle eyes",
+        "starry eyes",
+        "ecstatic",
+        "thrilled"
+      ]
+    },
+    {
+      "id": "affectionate",
+      "facet": "expression",
+      "gloss": "Showing love or fondness — hearts, hugging, doting.",
+      "aliases": [
+        "love",
+        "affection",
+        "heart",
+        "hearts",
+        "in love",
+        "adoring"
+      ]
+    },
+    {
+      "id": "sad",
+      "facet": "expression",
+      "gloss": "Unhappy — downcast, disappointed, dejected.",
+      "aliases": [
+        "sad",
+        "upset",
+        "depressed",
+        "disappointed",
+        "frown",
+        "unhappy",
+        "gloomy",
+        "blue mood"
+      ]
+    },
+    {
+      "id": "crying",
+      "facet": "expression",
+      "gloss": "Actively weeping — visible tears or sobbing.",
+      "aliases": [
+        "crying",
+        "tears",
+        "sob",
+        "sobbing",
+        "weeping",
+        "bawling"
+      ]
+    },
+    {
+      "id": "angry",
+      "facet": "expression",
+      "gloss": "Anger of any intensity, from irritated to furious.",
+      "aliases": [
+        "angry",
+        "mad",
+        "annoyed",
+        "grumpy",
+        "frustrated",
+        "rage",
+        "furious",
+        "irritated",
+        "yelling"
+      ]
+    },
+    {
+      "id": "anxious",
+      "facet": "expression",
+      "gloss": "Worried, nervous or stressed — sweating, fidgeting, bracing for something.",
+      "aliases": [
+        "nervous",
+        "anxious",
+        "worried",
+        "stressed",
+        "stress",
+        "sweating",
+        "sweat",
+        "distressed",
+        "concerned",
+        "panic",
+        "panicked"
+      ]
+    },
+    {
+      "id": "scared",
+      "facet": "expression",
+      "gloss": "Frightened — fear rather than worry.",
+      "aliases": [
+        "scared",
+        "afraid",
+        "terrified",
+        "screaming",
+        "scream",
+        "fear"
+      ]
+    },
+    {
+      "id": "shocked",
+      "facet": "expression",
+      "gloss": "Caught off guard — wide eyes, open mouth, visible surprise.",
+      "aliases": [
+        "shocked",
+        "surprised",
+        "surprise",
+        "wide eyes",
+        "wide-eyed",
+        "big eyes",
+        "astonished",
+        "open mouth",
+        "gasp"
+      ]
+    },
+    {
+      "id": "skeptical",
+      "facet": "expression",
+      "gloss": "Doubting or unconvinced — raised brow, narrowed eyes, side-eye.",
+      "aliases": [
+        "skeptical",
+        "suspicious",
+        "side-eye",
+        "unimpressed",
+        "judgmental",
+        "doubtful",
+        "squint"
+      ]
+    },
+    {
+      "id": "thinking",
+      "facet": "expression",
+      "gloss": "Visibly considering something — hand on chin, furrowed brow, pondering.",
+      "aliases": [
+        "thinking",
+        "pondering",
+        "hmm",
+        "hmmm",
+        "thonk",
+        "questioning",
+        "hand on chin",
+        "curious",
+        "wondering",
+        "looking up"
+      ]
+    },
+    {
+      "id": "confused",
+      "facet": "expression",
+      "gloss": "Lost or puzzled — the emoji does not understand what is happening.",
+      "aliases": [
+        "confused",
+        "idk",
+        "dazed",
+        "dizzy",
+        "puzzled",
+        "bewildered",
+        "lost"
+      ]
+    },
+    {
+      "id": "smug",
+      "facet": "expression",
+      "gloss": "Pleased with itself — smirking, superior, knowing.",
+      "aliases": [
+        "smug",
+        "smirk",
+        "cocky",
+        "superior",
+        "condescending"
+      ]
+    },
+    {
+      "id": "malicious",
+      "facet": "expression",
+      "gloss": "Enjoying someone else's trouble — evil grin, scheming, up to no good.",
+      "aliases": [
+        "evil",
+        "scheming",
+        "devious",
+        "mischievous"
+      ]
+    },
+    {
+      "id": "confident",
+      "facet": "expression",
+      "gloss": "Self-assured and composed — cool, determined, in control.",
+      "aliases": [
+        "confident",
+        "cool",
+        "determined",
+        "intense",
+        "serious",
+        "badass"
+      ]
+    },
+    {
+      "id": "embarrassed",
+      "facet": "expression",
+      "gloss": "Flustered or self-conscious — blushing, hiding, caught out.",
+      "aliases": [
+        "blush",
+        "blushing",
+        "embarrassed",
+        "bashful",
+        "shy",
+        "awkward",
+        "flustered"
+      ]
+    },
+    {
+      "id": "tired",
+      "facet": "expression",
+      "gloss": "Out of energy — sleepy, drained, over it.",
+      "aliases": [
+        "tired",
+        "sleeping",
+        "sleepy",
+        "sleep",
+        "zzz",
+        "snoring",
+        "exhausted",
+        "bored"
+      ]
+    },
+    {
+      "id": "disgusted",
+      "facet": "expression",
+      "gloss": "Repulsed — grimacing, recoiling, nauseated.",
+      "aliases": [
+        "disgusted",
+        "grimace",
+        "sick",
+        "ill",
+        "nauseous",
+        "revolted",
+        "cringe"
+      ]
+    },
+    {
+      "id": "pleading",
+      "facet": "expression",
+      "gloss": "Begging — big wet eyes, asking for something.",
+      "aliases": [
+        "pleading",
+        "begging",
+        "puppy eyes",
+        "desperate"
+      ]
+    },
+    {
+      "id": "silly",
+      "facet": "expression",
+      "gloss": "Goofy on purpose — tongue out, derpy, clowning.",
+      "aliases": [
+        "silly",
+        "derp",
+        "goofy",
+        "tongue out",
+        "tongue",
+        "blep",
+        "mlem",
+        "playful",
+        "googly eyes"
+      ]
+    },
+    {
+      "id": "flirty",
+      "facet": "expression",
+      "gloss": "Winking, teasing or charming — playful come-on rather than plain happiness.",
+      "aliases": [
+        "wink",
+        "winking",
+        "flirty",
+        "smirk wink"
+      ]
+    },
+    {
+      "id": "deadpan",
+      "facet": "expression",
+      "gloss": "Deliberately blank — no reaction is the reaction.",
+      "aliases": [
+        "neutral",
+        "blank",
+        "staring",
+        "watching",
+        "expressionless",
+        "stare",
+        "unamused"
+      ]
+    },
+    {
+      "id": "laughing",
+      "facet": "expression",
+      "gloss": "Laughing out loud — this is funny, not merely pleasant.",
+      "aliases": [
+        "laughing",
+        "lol",
+        "laugh",
+        "giggling",
+        "cackling"
+      ]
+    },
+    {
+      "id": "waving",
+      "facet": "action",
+      "gloss": "Waving a hand.",
+      "aliases": [
+        "waving",
+        "wave",
+        "hi",
+        "hello"
+      ]
+    },
+    {
+      "id": "pointing",
+      "facet": "action",
+      "gloss": "Pointing at something or someone.",
+      "aliases": [
+        "pointing",
+        "point"
+      ]
+    },
+    {
+      "id": "clapping",
+      "facet": "action",
+      "gloss": "Clapping or applauding.",
+      "aliases": [
+        "clapping",
+        "clap",
+        "applause"
+      ]
+    },
+    {
+      "id": "typing",
+      "facet": "action",
+      "gloss": "Working a keyboard, phone or laptop.",
+      "aliases": [
+        "typing",
+        "working",
+        "work"
+      ]
+    },
+    {
+      "id": "eating",
+      "facet": "action",
+      "gloss": "Eating or about to eat.",
+      "aliases": [
+        "eating",
+        "hungry",
+        "chewing",
+        "nom"
+      ]
+    },
+    {
+      "id": "drinking",
+      "facet": "action",
+      "gloss": "Drinking, sipping or raising a glass.",
+      "aliases": [
+        "drinking",
+        "sipping",
+        "cheers",
+        "straw"
+      ]
+    },
+    {
+      "id": "dancing",
+      "facet": "action",
+      "gloss": "Dancing or moving to music.",
+      "aliases": [
+        "dancing",
+        "dance",
+        "grooving"
+      ]
+    },
+    {
+      "id": "drumming",
+      "facet": "action",
+      "gloss": "Playing or striking an instrument — the bongo-cat gesture.",
+      "aliases": [
+        "drumming",
+        "bongo cat",
+        "bongo",
+        "playing",
+        "music"
+      ]
+    },
+    {
+      "id": "running",
+      "facet": "action",
+      "gloss": "Running, walking or fleeing.",
+      "aliases": [
+        "running",
+        "run",
+        "walking",
+        "fleeing",
+        "chasing"
+      ]
+    },
+    {
+      "id": "peeking",
+      "facet": "action",
+      "gloss": "Half-hidden and looking out — from behind an edge, a box, a corner.",
+      "aliases": [
+        "peeking",
+        "hiding",
+        "peeking out",
+        "lurking"
+      ]
+    },
+    {
+      "id": "hugging",
+      "facet": "action",
+      "gloss": "Embracing or patting another subject.",
+      "aliases": [
+        "hugging",
+        "hug",
+        "patting",
+        "cuddle"
+      ]
+    },
+    {
+      "id": "shaking-fist",
+      "facet": "action",
+      "gloss": "Threatening — raised fist, brandished weapon.",
+      "aliases": [
+        "shaking fist",
+        "threat",
+        "violent",
+        "fighting",
+        "punching"
+      ]
+    },
+    {
+      "id": "shrugging",
+      "facet": "action",
+      "gloss": "Shrugging — palms up, who knows.",
+      "aliases": [
+        "shrug",
+        "shrugging"
+      ]
+    },
+    {
+      "id": "shouting",
+      "facet": "action",
+      "gloss": "Yelling or calling out, mouth wide open.",
+      "aliases": [
+        "shouting",
+        "yelling",
+        "screaming out",
+        "calling"
+      ]
+    },
+    {
+      "id": "falling-apart",
+      "facet": "action",
+      "gloss": "Melting, shattering, dissolving or otherwise coming undone.",
+      "aliases": [
+        "melting",
+        "shattering",
+        "breaking",
+        "chaos",
+        "crumbling"
+      ]
+    },
+    {
+      "id": "sitting",
+      "facet": "action",
+      "gloss": "Sitting, lying down or lounging.",
+      "aliases": [
+        "sitting",
+        "relaxing",
+        "lying",
+        "loaf"
+      ]
+    },
+    {
+      "id": "sleeping",
+      "facet": "action",
+      "gloss": "Asleep or dozing off.",
+      "aliases": [
+        "sleeping",
+        "asleep",
+        "dozing",
+        "napping",
+        "snoring"
+      ]
+    },
+    {
+      "id": "holding",
+      "facet": "action",
+      "gloss": "Carrying or presenting an object.",
+      "aliases": [
+        "holding",
+        "carrying",
+        "offering"
+      ]
+    },
+    {
+      "id": "approve",
+      "facet": "intent",
+      "gloss": "Yes, good, ship it — agreement and endorsement.",
+      "aliases": [
+        "approval",
+        "agreement",
+        "ok",
+        "perfect",
+        "perfection",
+        "yes",
+        "lgtm"
+      ]
+    },
+    {
+      "id": "disapprove",
+      "facet": "intent",
+      "gloss": "No, don't, bad idea — rejection or a veto.",
+      "aliases": [
+        "refusal",
+        "no",
+        "stop",
+        "halt",
+        "reject",
+        "disagree"
+      ]
+    },
+    {
+      "id": "celebrate",
+      "facet": "intent",
+      "gloss": "Marking a win — congratulations, launches, birthdays.",
+      "aliases": [
+        "celebration",
+        "celebrating",
+        "congratulations",
+        "birthday",
+        "party",
+        "achievement",
+        "milestone"
+      ]
+    },
+    {
+      "id": "thanks",
+      "facet": "intent",
+      "gloss": "Expressing gratitude.",
+      "aliases": [
+        "gratitude",
+        "thank you",
+        "thanks",
+        "appreciation"
+      ]
+    },
+    {
+      "id": "greeting",
+      "facet": "intent",
+      "gloss": "Hello, welcome, good morning.",
+      "aliases": [
+        "greeting",
+        "welcome"
+      ]
+    },
+    {
+      "id": "acknowledge",
+      "facet": "intent",
+      "gloss": "Seen it, on it, noted — a low-cost receipt.",
+      "aliases": [
+        "acknowledge",
+        "noted",
+        "seen",
+        "roger"
+      ]
+    },
+    {
+      "id": "question",
+      "facet": "intent",
+      "gloss": "Asking something, or signalling that you do not follow.",
+      "aliases": [
+        "question",
+        "asking",
+        "huh"
+      ]
+    },
+    {
+      "id": "uncertainty",
+      "facet": "intent",
+      "gloss": "I genuinely don't know, and I'm saying so.",
+      "aliases": [
+        "uncertainty",
+        "unsure",
+        "maybe"
+      ]
+    },
+    {
+      "id": "empathy",
+      "facet": "intent",
+      "gloss": "Solidarity with someone having a bad time — oof, I feel that.",
+      "aliases": [
+        "empathy",
+        "sympathy",
+        "condolence",
+        "oof"
+      ]
+    },
+    {
+      "id": "praise",
+      "facet": "intent",
+      "gloss": "Complimenting work or a person — nice one, well done.",
+      "aliases": [
+        "praise",
+        "compliment",
+        "kudos",
+        "nice"
+      ]
+    },
+    {
+      "id": "mockery",
+      "facet": "intent",
+      "gloss": "Teasing or roasting, affectionately or otherwise.",
+      "aliases": [
+        "mockery",
+        "roast",
+        "teasing",
+        "dark humor",
+        "rude"
+      ]
+    },
+    {
+      "id": "sarcasm",
+      "facet": "intent",
+      "gloss": "Saying the opposite of what is meant.",
+      "aliases": [
+        "sarcasm",
+        "sarcastic",
+        "irony"
+      ]
+    },
+    {
+      "id": "disbelief",
+      "facet": "intent",
+      "gloss": "I don't buy it — doubt aimed at a claim.",
+      "aliases": [
+        "disbelief",
+        "doubt",
+        "sus",
+        "x doubt"
+      ]
+    },
+    {
+      "id": "excitement",
+      "facet": "intent",
+      "gloss": "Hype — this is great news and I want everyone to know.",
+      "aliases": [
+        "hype",
+        "poggers",
+        "pog",
+        "let's go"
+      ]
+    },
+    {
+      "id": "frustration",
+      "facet": "intent",
+      "gloss": "Venting about something that is going badly.",
+      "aliases": [
+        "venting",
+        "complaint",
+        "ugh"
+      ]
+    },
+    {
+      "id": "resignation",
+      "facet": "intent",
+      "gloss": "Accepting a bad situation — this is fine, nothing to be done.",
+      "aliases": [
+        "this is fine",
+        "resignation",
+        "giving up",
+        "defeat"
+      ]
+    },
+    {
+      "id": "waiting",
+      "facet": "intent",
+      "gloss": "Still here, still nothing — for slow builds, silent threads, pending reviews.",
+      "aliases": [
+        "waiting",
+        "loading",
+        "still waiting",
+        "patience"
+      ]
+    },
+    {
+      "id": "working",
+      "facet": "intent",
+      "gloss": "Heads-down on it — coding, writing, in progress.",
+      "aliases": [
+        "working",
+        "in progress",
+        "coding",
+        "wip",
+        "on it"
+      ]
+    },
+    {
+      "id": "warning",
+      "facet": "intent",
+      "gloss": "Flagging a hazard or asking for care.",
+      "aliases": [
+        "warning",
+        "alert",
+        "emergency",
+        "caution",
+        "danger"
+      ]
+    },
+    {
+      "id": "attention",
+      "facet": "intent",
+      "gloss": "Look at this — pointing the room at something.",
+      "aliases": [
+        "attention",
+        "announcement",
+        "look",
+        "psa"
+      ]
+    },
+    {
+      "id": "greeting-farewell",
+      "facet": "intent",
+      "gloss": "Leaving — goodbye, signing off, end of shift.",
+      "aliases": [
+        "goodbye",
+        "bye",
+        "farewell",
+        "leaving"
+      ]
+    },
+    {
+      "id": "hat",
+      "facet": "prop",
+      "gloss": "Any headwear.",
+      "aliases": [
+        "hat",
+        "beret",
+        "duck hat",
+        "cap",
+        "crown",
+        "royalty",
+        "costume"
+      ]
+    },
+    {
+      "id": "glasses",
+      "facet": "prop",
+      "gloss": "Eyewear of any kind.",
+      "aliases": [
+        "glasses",
+        "sunglasses",
+        "shades",
+        "monocle",
+        "nerd"
+      ]
+    },
+    {
+      "id": "formalwear",
+      "facet": "prop",
+      "gloss": "A suit, tie, tuxedo or otherwise dressed up.",
+      "aliases": [
+        "suit",
+        "tie",
+        "tuxedo",
+        "fancy",
+        "gentleman",
+        "business",
+        "formal"
+      ]
+    },
+    {
+      "id": "casualwear",
+      "facet": "prop",
+      "gloss": "Everyday clothing that is worth noting — hoodie, shirt, scarf.",
+      "aliases": [
+        "hoodie",
+        "shirt",
+        "scarf",
+        "sweater"
+      ]
+    },
+    {
+      "id": "facial-hair",
+      "facet": "prop",
+      "gloss": "Moustache, beard or stubble.",
+      "aliases": [
+        "mustache",
+        "moustache",
+        "beard"
+      ]
+    },
+    {
+      "id": "heart-motif",
+      "facet": "prop",
+      "gloss": "Hearts drawn on or around the subject, including broken ones.",
+      "aliases": [
+        "heart",
+        "hearts",
+        "broken heart",
+        "heartbreak"
+      ]
+    },
+    {
+      "id": "sparkle-motif",
+      "facet": "prop",
+      "gloss": "Sparkles, stars or glitter as decoration.",
+      "aliases": [
+        "sparkle",
+        "sparkles",
+        "stars",
+        "star",
+        "glow",
+        "magic",
+        "shine"
+      ]
+    },
+    {
+      "id": "halo-motif",
+      "facet": "prop",
+      "gloss": "A halo, angel wings or devil horns drawn onto an otherwise ordinary subject.",
+      "aliases": [
+        "halo",
+        "angel wings",
+        "wings",
+        "horns motif"
+      ]
+    },
+    {
+      "id": "idea-motif",
+      "facet": "prop",
+      "gloss": "The lightbulb-over-the-head device, or a visible thought/idea symbol.",
+      "aliases": [
+        "lightbulb",
+        "idea",
+        "eureka"
+      ]
+    },
+    {
+      "id": "speech-bubble",
+      "facet": "prop",
+      "gloss": "A speech or thought bubble.",
+      "aliases": [
+        "speech bubble",
+        "thought bubble",
+        "bubble"
+      ]
+    },
+    {
+      "id": "teeth",
+      "facet": "prop",
+      "gloss": "Prominently visible teeth or fangs.",
+      "aliases": [
+        "teeth",
+        "fangs",
+        "grin teeth"
+      ]
+    },
+    {
+      "id": "sweat-drop",
+      "facet": "prop",
+      "gloss": "The anime sweat bead or nervous droplet.",
+      "aliases": [
+        "sweat drop",
+        "sweatdrop",
+        "droplet"
+      ]
+    },
+    {
+      "id": "screen",
+      "facet": "prop",
+      "gloss": "A computer, phone, TV or monitor in frame.",
+      "aliases": [
+        "laptop",
+        "computer",
+        "keyboard",
+        "screen",
+        "phone",
+        "monitor",
+        "interface"
+      ]
+    },
+    {
+      "id": "sign-prop",
+      "facet": "prop",
+      "gloss": "Holding or displaying a placard, card or sign with something written on it.",
+      "aliases": [
+        "sign",
+        "placard",
+        "banner",
+        "held sign"
+      ]
+    },
+    {
+      "id": "weapon-prop",
+      "facet": "prop",
+      "gloss": "A knife, gun, sword or improvised weapon.",
+      "aliases": [
+        "knife",
+        "weapon",
+        "gun",
+        "sword",
+        "blood"
+      ]
+    },
+    {
+      "id": "money-prop",
+      "facet": "prop",
+      "gloss": "Cash, coins or other visible wealth.",
+      "aliases": [
+        "money",
+        "cash",
+        "rich",
+        "wealth",
+        "coins"
+      ]
+    },
+    {
+      "id": "mask-prop",
+      "facet": "prop",
+      "gloss": "A mask or disguise covering the face.",
+      "aliases": [
+        "mask",
+        "disguise",
+        "ninja"
+      ]
+    },
+    {
+      "id": "paw-motif",
+      "facet": "prop",
+      "gloss": "Paws or paw prints as a deliberate element.",
+      "aliases": [
+        "paw",
+        "paws",
+        "paw print",
+        "toe beans"
+      ]
+    },
+    {
+      "id": "steam",
+      "facet": "prop",
+      "gloss": "Steam, smoke or vapour rising.",
+      "aliases": [
+        "steam",
+        "smoke",
+        "vapour",
+        "puff"
+      ]
+    },
+    {
+      "id": "utensils",
+      "facet": "prop",
+      "gloss": "Cutlery, chopsticks or other eating implements.",
+      "aliases": [
+        "fork",
+        "knife utensil",
+        "cutlery",
+        "chopsticks",
+        "spoon",
+        "utensils"
+      ]
+    },
+    {
+      "id": "headphones",
+      "facet": "prop",
+      "gloss": "Headphones, earbuds or speakers in frame.",
+      "aliases": [
+        "headphones",
+        "earbuds",
+        "speaker",
+        "audio"
+      ]
+    },
+    {
+      "id": "seasonal",
+      "facet": "prop",
+      "gloss": "Holiday or seasonal dressing — Christmas, Halloween, birthday hats, snow.",
+      "aliases": [
+        "christmas",
+        "festive",
+        "holiday",
+        "halloween",
+        "seasonal",
+        "winter",
+        "snow",
+        "pumpkin"
+      ]
+    },
+    {
+      "id": "party-prop",
+      "facet": "prop",
+      "gloss": "Cake, confetti, balloons, party hats — celebration debris.",
+      "aliases": [
+        "cake",
+        "confetti",
+        "balloons",
+        "party hat",
+        "party popper"
+      ]
+    },
+    {
+      "id": "flat-vector",
+      "facet": "style",
+      "gloss": "Clean flat shapes and solid fills — the standard emoji look.",
+      "aliases": [
+        "minimalist",
+        "simple",
+        "flat",
+        "vector",
+        "shape",
+        "square",
+        "silhouette"
+      ]
+    },
+    {
+      "id": "hand-drawn",
+      "facet": "style",
+      "gloss": "Visibly drawn by hand — sketchy, wobbly or painterly lines.",
+      "aliases": [
+        "hand drawn",
+        "sketch",
+        "doodle",
+        "painted",
+        "art",
+        "artist"
+      ]
+    },
+    {
+      "id": "pixel-art",
+      "facet": "style",
+      "gloss": "Deliberate low-resolution pixel grid.",
+      "aliases": [
+        "pixel art",
+        "pixel",
+        "pixelated",
+        "pixel-art",
+        "pixel_art",
+        "8bit",
+        "retro"
+      ]
+    },
+    {
+      "id": "photo",
+      "facet": "style",
+      "gloss": "A photograph or a photo cut-out, not a drawing.",
+      "aliases": [
+        "photo",
+        "photograph",
+        "irl",
+        "real"
+      ]
+    },
+    {
+      "id": "render-3d",
+      "facet": "style",
+      "gloss": "Three-dimensional rendered or sculpted look, including Lego.",
+      "aliases": [
+        "3d",
+        "render",
+        "lego",
+        "clay"
+      ]
+    },
+    {
+      "id": "anime",
+      "facet": "style",
+      "gloss": "Anime or manga drawing conventions.",
+      "aliases": [
+        "anime",
+        "anime eyes",
+        "manga"
+      ]
+    },
+    {
+      "id": "cartoon",
+      "facet": "style",
+      "gloss": "Western cartoon style — thick outlines, exaggerated features.",
+      "aliases": [
+        "cartoon",
+        "comic",
+        "toon"
+      ]
+    },
+    {
+      "id": "kawaii",
+      "facet": "style",
+      "gloss": "Deliberately adorable — big eyes, soft rounded forms, blush marks.",
+      "aliases": [
+        "kawaii",
+        "cute",
+        "uwu",
+        "owo",
+        "adorable",
+        "soft",
+        "cozy",
+        "aesthetic",
+        "w-mouth",
+        "w mouth",
+        "wavy mouth"
+      ]
+    },
+    {
+      "id": "cursed",
+      "facet": "style",
+      "gloss": "Intentionally degraded — deep-fried, distorted, low-quality, unsettling.",
+      "aliases": [
+        "cursed",
+        "deep fried",
+        "distorted",
+        "jpeg",
+        "glitch"
+      ]
+    },
+    {
+      "id": "animated",
+      "facet": "style",
+      "gloss": "The image moves. Applies only to multi-frame files.",
+      "aliases": [
+        "animated",
+        "animation",
+        "vibrating",
+        "shaking",
+        "gif"
+      ]
+    },
+    {
+      "id": "gradient",
+      "facet": "style",
+      "gloss": "Smooth color blends rather than flat fills.",
+      "aliases": [
+        "gradient",
+        "ombre",
+        "blend"
+      ]
+    },
+    {
+      "id": "transparent",
+      "facet": "style",
+      "gloss": "Built to sit on any background — no plate, no backdrop.",
+      "aliases": [
+        "transparent",
+        "cutout",
+        "no background"
+      ]
+    },
+    {
+      "id": "yellow",
+      "facet": "color",
+      "gloss": "Dominantly yellow or gold.",
+      "aliases": [
+        "yellow",
+        "gold",
+        "golden"
+      ]
+    },
+    {
+      "id": "orange",
+      "facet": "color",
+      "gloss": "Dominantly orange.",
+      "aliases": [
+        "orange",
+        "orange hair",
+        "amber"
+      ]
+    },
+    {
+      "id": "red",
+      "facet": "color",
+      "gloss": "Dominantly red.",
+      "aliases": [
+        "red",
+        "crimson",
+        "scarlet"
+      ]
+    },
+    {
+      "id": "pink",
+      "facet": "color",
+      "gloss": "Dominantly pink.",
+      "aliases": [
+        "pink",
+        "rose",
+        "magenta"
+      ]
+    },
+    {
+      "id": "purple",
+      "facet": "color",
+      "gloss": "Dominantly purple.",
+      "aliases": [
+        "purple",
+        "violet",
+        "lavender"
+      ]
+    },
+    {
+      "id": "blue",
+      "facet": "color",
+      "gloss": "Dominantly blue.",
+      "aliases": [
+        "blue",
+        "cyan",
+        "teal",
+        "navy"
+      ]
+    },
+    {
+      "id": "green",
+      "facet": "color",
+      "gloss": "Dominantly green.",
+      "aliases": [
+        "green",
+        "lime",
+        "olive"
+      ]
+    },
+    {
+      "id": "brown",
+      "facet": "color",
+      "gloss": "Dominantly brown or tan.",
+      "aliases": [
+        "brown",
+        "tan",
+        "beige"
+      ]
+    },
+    {
+      "id": "black",
+      "facet": "color",
+      "gloss": "Dominantly black or very dark.",
+      "aliases": [
+        "black",
+        "dark"
+      ]
+    },
+    {
+      "id": "white",
+      "facet": "color",
+      "gloss": "Dominantly white or near-white.",
+      "aliases": [
+        "white",
+        "cream",
+        "ivory"
+      ]
+    },
+    {
+      "id": "grey",
+      "facet": "color",
+      "gloss": "Dominantly grey.",
+      "aliases": [
+        "grey",
+        "gray",
+        "silver"
+      ]
+    },
+    {
+      "id": "multicolor",
+      "facet": "color",
+      "gloss": "No single color dominates — rainbow or genuinely mixed.",
+      "aliases": [
+        "rainbow",
+        "multicolor",
+        "colorful",
+        "color"
+      ]
+    },
+    {
+      "id": "pokemon",
+      "facet": "origin",
+      "gloss": "A Pokémon character.",
+      "aliases": [
+        "pokemon",
+        "pikachu",
+        "meowth"
+      ]
+    },
+    {
+      "id": "south-park",
+      "facet": "origin",
+      "gloss": "From South Park.",
+      "aliases": [
+        "south park",
+        "randy marsh"
+      ]
+    },
+    {
+      "id": "the-simpsons",
+      "facet": "origin",
+      "gloss": "From The Simpsons.",
+      "aliases": [
+        "the simpsons",
+        "simpsons"
+      ]
+    },
+    {
+      "id": "futurama",
+      "facet": "origin",
+      "gloss": "From Futurama.",
+      "aliases": [
+        "futurama",
+        "fry"
+      ]
+    },
+    {
+      "id": "blob-emoji",
+      "facet": "origin",
+      "gloss": "From the Blob / Mutant Standard emoji families.",
+      "aliases": [
+        "blobs",
+        "mutant standard",
+        "blob emoji"
+      ]
+    },
+    {
+      "id": "bongo-cat",
+      "facet": "origin",
+      "gloss": "The Bongo Cat meme specifically.",
+      "aliases": [
+        "bongo cat",
+        "bongo"
+      ]
+    },
+    {
+      "id": "doge",
+      "facet": "origin",
+      "gloss": "The Doge / Shiba Inu meme lineage.",
+      "aliases": [
+        "doge",
+        "cheems"
+      ]
+    },
+    {
+      "id": "this-is-fine",
+      "facet": "origin",
+      "gloss": "KC Green's burning-room comic.",
+      "aliases": [
+        "this is fine"
+      ]
+    },
+    {
+      "id": "great-gatsby",
+      "facet": "origin",
+      "gloss": "The Leonardo DiCaprio cheers still.",
+      "aliases": [
+        "great gatsby",
+        "leonardo dicaprio",
+        "cheers meme"
+      ]
+    },
+    {
+      "id": "unikitty",
+      "facet": "origin",
+      "gloss": "Unikitty, from The Lego Movie.",
+      "aliases": [
+        "unikitty"
+      ]
+    },
+    {
+      "id": "rage-comic",
+      "facet": "origin",
+      "gloss": "The rage-comic / Awesome Face / trollface lineage.",
+      "aliases": [
+        "awesome face",
+        "rage comic",
+        "trollface",
+        "meme face"
+      ]
+    },
+    {
+      "id": "twitch-emote",
+      "facet": "origin",
+      "gloss": "A Twitch or Discord emote — poggers, kappa, pepe.",
+      "aliases": [
+        "poggers",
+        "kappa",
+        "pepe",
+        "twitch",
+        "emote"
+      ]
+    },
+    {
+      "id": "actor-likeness",
+      "facet": "origin",
+      "gloss": "A recognisable real person's likeness.",
+      "aliases": [
+        "celebrity",
+        "keanu reeves",
+        "adam scott",
+        "chloe"
+      ]
+    },
+    {
+      "id": "tv-film",
+      "facet": "origin",
+      "gloss": "A recognisable character from a TV show or film with no more specific origin tag — Sesame Street, Severance, The Lego Movie.",
+      "aliases": [
+        "tv",
+        "film",
+        "movie",
+        "sesame street",
+        "elmo",
+        "severance",
+        "lego movie",
+        "emmet"
+      ]
+    },
+    {
+      "id": "brand",
+      "facet": "origin",
+      "gloss": "A recognisable product or company.",
+      "aliases": [
+        "clorox",
+        "bleach",
+        "brand",
+        "logo"
+      ]
+    },
+    {
+      "id": "video-game",
+      "facet": "origin",
+      "gloss": "From a video game or gaming culture, where no more specific origin tag applies.",
+      "aliases": [
+        "gaming",
+        "game",
+        "arcade",
+        "minecraft"
+      ]
+    }
+  ]
+}

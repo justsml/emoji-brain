@@ -2662,7 +2662,7 @@
       "source": "staging/emoji-enhancements/originals/meow_deficit.webp",
       "candidate": "candidates/meow_deficit.webp",
       "sourceSha256": "b50f64002bbb2e58d65d544008c838b83546fe2d991c669056ac0159e89915ff",
-      "candidateSha256": "6173bd3a827f560e8eafeb167ae74d8c71fee7cf079a23901f7fc15b491ac3d9",
+      "candidateSha256": "81f6fb6f1de0b7e3786930813206e47d30625c7ed761ad9e697aa340c091fd5b",
       "width": 1024,
       "height": 1024,
       "alphaMin": 0,
@@ -2679,8 +2679,10 @@
         "changedPixels": 0,
         "needsHumanAlphaReview": true
       },
-      "notes": [],
-      "approvedSha256": "6173bd3a827f560e8eafeb167ae74d8c71fee7cf079a23901f7fc15b491ac3d9"
+      "notes": [
+        "Gradient corrected after approval; see stills/alpha-audit.json followUpCorrections."
+      ],
+      "approvedSha256": "81f6fb6f1de0b7e3786930813206e47d30625c7ed761ad9e697aa340c091fd5b"
     },
     {
       "file": "meow_devil.webp",
