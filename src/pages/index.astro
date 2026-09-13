@@ -52,6 +52,6 @@ const allEmojis: EmojiMetadata[] = (emojiMetadata.emojis || []).map(
     </p>
   </aside>
   <div class="emoji-app w-full h-fit">
-    <EmojiExplorerApp client:only="react" initialEmojis={allEmojis} scriptOverheadBytes={scriptOverheadBytes} />
+    <EmojiExplorerApp client:load initialEmojis={allEmojis} scriptOverheadBytes={scriptOverheadBytes} />
   </div>
 </Layout>
