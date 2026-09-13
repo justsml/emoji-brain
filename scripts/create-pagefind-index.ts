@@ -1,18 +1,27 @@
 import {promises as fs} from 'node:fs';
 import {createHash} from 'node:crypto';
 import data from '../src/data/emoji-metadata.json' with {type:'json'};
+import vocabulary from '../src/data/tag-vocabulary.json' with {type:'json'};
 
-function relatedTags(url: string) {
-  if(url.includes('meow'))return ['cat','kitten','animal'];
-  if(url.includes('cat'))return ['meow','kitten','animal'];
-  if(url.includes('dog'))return ['dog','animal'];
-  if(url.includes('roo'))return ['animal','panda'];
-  return [];
+// Labels are canonical ids, but people search in their own words. Each tag's
+// aliases are exactly that synonym list, so they go into the indexed text
+// alongside the id — without them "whiskers", "uwu" and "tears" return nothing.
+const synonyms = new Map<string,string[]>(vocabulary.tags.map(tag=>[tag.id,tag.aliases]));
+
+// Broad words no single tag owns. Searching "animal" should reach every animal,
+// and the vocabulary deliberately has no tag meaning "an animal of some kind".
+const HYPERNYMS: Record<string,string[]> = {
+  cat:['animal','pet'],dog:['animal','pet'],bear:['animal'],bird:['animal'],
+  rodent:['animal','pet'],'sea-creature':['animal'],amphibian:['animal'],
+  'animal-other':['animal'],person:['human'],face:['smiley','emoji'],
+};
+function expand(tags: string[]) {
+  return tags.flatMap(tag=>[...(synonyms.get(tag)??[]),...(HYPERNYMS[tag]??[])]);
 }
 async function buildIndex() {
   const records=data.emojis.map(emoji=>({
     language:'en',url:emoji.path,
-    content:[...new Set([emoji.filename,...emoji.categories,...emoji.tags,...(emoji.aliases??[]),...relatedTags(emoji.path),emoji.animated?'animated':'static'])].join(', '),
+    content:[...new Set([emoji.filename,...emoji.categories,...emoji.tags,...(emoji.aliases??[]),...expand(emoji.tags),emoji.animated?'animated':'static'])].join(', '),
     sort:{created:emoji.created.split('T')[0],filename:emoji.filename},
     meta:{id:emoji.id},
     // Matched IDs come back in the search response, avoiding one data-fragment

@@ -70,10 +70,18 @@ for (const t of vocabulary.tags) {
     aliasMap.set(a, [...(aliasMap.get(a) || []), t.id]);
   }
 }
+// Once an emoji carries real per-facet labels, use them. The alias rollup is
+// only the fallback for rows the labelling passes have not reached.
+const labelled = new Map<string, any>(
+  (emojiMetadata.emojis || []).map((e: any) => [e.id, e.facets]).filter(([, f]) => f),
+);
 const canonById: Record<string, string[]> = {};
 const canonCount = new Map<string, number>();
 for (const e of emojis) {
-  const got = [...new Set(e.tags.flatMap(t => aliasMap.get(t) || []))];
+  const facets = labelled.get(e.id);
+  const got = facets
+    ? [...new Set(Object.values(facets).flat() as string[])]
+    : [...new Set(e.tags.flatMap(t => aliasMap.get(t) || []))];
   canonById[e.id] = got;
   for (const id of got) canonCount.set(id, (canonCount.get(id) || 0) + 1);
 }
@@ -140,7 +148,7 @@ const singles = tags.filter(t => t.n === 1).length;
       faceted: "Same tags, split into lanes by kind. Frequency still sets size, but within a lane, so 'angry' competes with 'sad' rather than with 'cat'.",
       narrowing: "Size = how much a tag would actually split what you're looking at right now. Tags that match everything or almost nothing drop out. The cloud rebuilds on every click.",
       orbit: "No filtering — lateral browsing. Pick a tag, see what it travels with, ranked by lift rather than raw overlap. Click a neighbour to walk sideways.",
-      canonical: `The proposed ${vocabSize}-tag controlled vocabulary, previewed by rolling the legacy tags through its alias map. Counts are what today's data already supports; a tag at 0 is one only a labeller can fill. The Intent lane is nearly empty on purpose — nothing in the source art describes what you would be *saying* by posting it.`,
+      canonical: `The ${vocabSize}-tag controlled vocabulary as actually applied: every emoji was labelled against it from the image. Counts are real. A tag still at 0 describes nothing in this collection — worth keeping only if the collection is expected to grow into it.`,
     };
 
     function selected() {

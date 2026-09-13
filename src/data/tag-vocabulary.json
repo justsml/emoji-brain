@@ -1,5 +1,5 @@
 {
-  "version": 2,
+  "version": 3,
   "note": "Canonical controlled vocabulary for labelling the emoji catalog. Every tag applied to an emoji must be an id from this file. `aliases` are the free-text tags from the legacy catalog that fold into each id — they exist to migrate old data and to seed few-shot examples, not to be applied as labels. An alias may appear under two tags in DIFFERENT facets (a knife emoji is both subject:object and prop:weapon-prop); two tags in the SAME facet must never share one.",
   "facets": {
     "subject": {
@@ -46,9 +46,9 @@
     },
     "origin": {
       "label": "Origin",
-      "cardinality": "0-1",
+      "cardinality": "0-2",
       "required": false,
-      "note": "A named franchise, meme or person. Apply only when a viewer would recognise the source; never guess."
+      "note": "A named franchise, meme or person. Apply only when a viewer would recognise the source; never guess. Two are allowed when a frame genuinely carries both, e.g. a franchise character plus a brand logo."
     }
   },
   "tags": [
@@ -683,6 +683,18 @@
       ]
     },
     {
+      "id": "thumbs-up",
+      "facet": "action",
+      "gloss": "A thumbs-up, OK sign or similar approving hand gesture.",
+      "aliases": [
+        "thumbs up",
+        "thumbsup",
+        "ok sign",
+        "double thumbs",
+        "fonzie"
+      ]
+    },
+    {
       "id": "clapping",
       "facet": "action",
       "gloss": "Clapping or applauding.",
@@ -1187,7 +1199,7 @@
         "halo",
         "angel wings",
         "wings",
-        "horns motif"
+        "devil horns"
       ]
     },
     {
@@ -1198,6 +1210,25 @@
         "lightbulb",
         "idea",
         "eureka"
+      ]
+    },
+    {
+      "id": "question-motif",
+      "facet": "prop",
+      "gloss": "A floating question mark or interrobang, with no speech bubble around it.",
+      "aliases": [
+        "question mark",
+        "interrobang"
+      ]
+    },
+    {
+      "id": "arrow-motif",
+      "facet": "prop",
+      "gloss": "A floating arrow or chevron pointing at something outside the frame.",
+      "aliases": [
+        "arrow",
+        "chevron",
+        "pointer"
       ]
     },
     {
@@ -1216,8 +1247,7 @@
       "gloss": "Prominently visible teeth or fangs.",
       "aliases": [
         "teeth",
-        "fangs",
-        "grin teeth"
+        "fangs"
       ]
     },
     {
@@ -1245,6 +1275,20 @@
       ]
     },
     {
+      "id": "book",
+      "facet": "prop",
+      "gloss": "A book, notepad, paper document or scroll.",
+      "aliases": [
+        "book",
+        "notepad",
+        "notes",
+        "paper",
+        "document",
+        "scroll",
+        "reading"
+      ]
+    },
+    {
       "id": "sign-prop",
       "facet": "prop",
       "gloss": "Holding or displaying a placard, card or sign with something written on it.",
@@ -1252,7 +1296,16 @@
         "sign",
         "placard",
         "banner",
-        "held sign"
+        "card"
+      ]
+    },
+    {
+      "id": "body-text",
+      "facet": "prop",
+      "gloss": "Words written on the subject's body — a tattoo, face paint or lettering on clothing.",
+      "aliases": [
+        "tattoo",
+        "lettering"
       ]
     },
     {
@@ -1312,16 +1365,49 @@
       ]
     },
     {
+      "id": "fire-motif",
+      "facet": "prop",
+      "gloss": "Flames or burning as a visual device on or around the subject.",
+      "aliases": [
+        "fire",
+        "flames",
+        "burning",
+        "onfire",
+        "lit"
+      ]
+    },
+    {
       "id": "utensils",
       "facet": "prop",
       "gloss": "Cutlery, chopsticks or other eating implements.",
       "aliases": [
         "fork",
-        "knife utensil",
         "cutlery",
         "chopsticks",
         "spoon",
-        "utensils"
+        "utensil"
+      ]
+    },
+    {
+      "id": "medical-prop",
+      "facet": "prop",
+      "gloss": "Thermometer, bandage, mask, pill or other sickness/medical device.",
+      "aliases": [
+        "thermometer",
+        "bandage",
+        "pills",
+        "medicine",
+        "bandaid"
+      ]
+    },
+    {
+      "id": "food-prop",
+      "facet": "prop",
+      "gloss": "Food or drink held, carried or eaten by the subject, rather than being the subject itself.",
+      "aliases": [
+        "snack",
+        "refreshment",
+        "beverage"
       ]
     },
     {
@@ -1503,8 +1589,7 @@
       "gloss": "Built to sit on any background — no plate, no backdrop.",
       "aliases": [
         "transparent",
-        "cutout",
-        "no background"
+        "cutout"
       ]
     },
     {

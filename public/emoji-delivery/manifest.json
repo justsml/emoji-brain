@@ -5022,31 +5022,31 @@
     "meow_deficit": {
       "source": "staging/emoji-enhancements/stills/candidates/meow_deficit.webp",
       "basis": "enhanced",
-      "sourceSha256": "6173bd3a827f560e8eafeb167ae74d8c71fee7cf079a23901f7fc15b491ac3d9",
+      "sourceSha256": "81f6fb6f1de0b7e3786930813206e47d30625c7ed761ad9e697aa340c091fd5b",
       "animated": false,
       "variants": {
         "64": {
           "webp": {
             "quality": 90,
             "path": "/emoji-delivery/64/meow_deficit.webp",
-            "bytes": 2074,
-            "slackGzipBytes": 2189
+            "bytes": 2078,
+            "slackGzipBytes": 2192
           }
         },
         "128": {
           "webp": {
-            "path": "/emoji-delivery/128/meow_deficit.webp",
-            "bytes": 4808,
             "quality": 90,
-            "slackGzipBytes": 4928
+            "path": "/emoji-delivery/128/meow_deficit.webp",
+            "bytes": 4840,
+            "slackGzipBytes": 4962
           }
         },
         "256": {
           "webp": {
-            "path": "/emoji-delivery/256/meow_deficit.webp",
-            "bytes": 11188,
             "quality": 90,
-            "slackGzipBytes": 11319
+            "path": "/emoji-delivery/256/meow_deficit.webp",
+            "bytes": 11158,
+            "slackGzipBytes": 11289
           }
         }
       },
@@ -5054,28 +5054,28 @@
         "64": {
           "quality": 90,
           "path": "/emoji-delivery/previews/64/meow_deficit.webp",
-          "bytes": 2074
+          "bytes": 2078
         },
         "128": {
           "quality": 90,
           "path": "/emoji-delivery/previews/128/meow_deficit.webp",
-          "bytes": 4864
+          "bytes": 4840
         },
         "256": {
           "quality": 90,
           "path": "/emoji-delivery/previews/256/meow_deficit.webp",
-          "bytes": 11208
+          "bytes": 11158
         }
       },
       "highestSlackCompatible": {
         "size": 256,
         "path": "/emoji-delivery/256/meow_deficit.webp",
-        "bytes": 11188
+        "bytes": 11158
       },
       "original": {
         "quality": 90,
         "path": "/emoji-delivery/original/meow_deficit.webp",
-        "bytes": 58506,
+        "bytes": 58914,
         "width": 1024,
         "height": 1024
       }
@@ -21453,6 +21453,67 @@
         "bytes": 645456,
         "width": 512,
         "height": 512
+      }
+    },
+    "meow_profit": {
+      "source": "public/emojis/meow_profit.webp",
+      "basis": "original",
+      "sourceSha256": "f74639c9afac92fb81399e72cd3fc1281e98132b3ed703db23c5f0750087362d",
+      "animated": false,
+      "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/meow_profit.webp",
+            "bytes": 2096,
+            "slackGzipBytes": 2207
+          }
+        },
+        "128": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/128/meow_profit.webp",
+            "bytes": 4904,
+            "slackGzipBytes": 5025
+          }
+        },
+        "256": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/256/meow_profit.webp",
+            "bytes": 11062,
+            "slackGzipBytes": 11193
+          }
+        }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/meow_profit.webp",
+          "bytes": 2096
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/meow_profit.webp",
+          "bytes": 4904
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/meow_profit.webp",
+          "bytes": 11062
+        }
+      },
+      "highestSlackCompatible": {
+        "size": 256,
+        "path": "/emoji-delivery/256/meow_profit.webp",
+        "bytes": 11062
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/meow_profit.webp",
+        "bytes": 57986,
+        "width": 1024,
+        "height": 1024
       }
     }
   }

@@ -28,26 +28,28 @@ const bounds = Object.fromEntries(facets.map(([id, f]) => {
 const rows = new Map();
 const errors = [];
 const dupes = [];
-// `out-*` is the first labelling pass, `rev-*` the revision pass against a later
-// vocabulary. Revisions load second and deliberately overwrite, so only rows a
-// reviser never saw keep their original labels.
+// Each prefix is a labelling pass against a successively larger vocabulary:
+// out-* (v1), rev-* (v2), v3-* (v3). Later passes load last and deliberately
+// overwrite, so a row keeps the labels from the last pass that actually saw it.
+const PASSES = [/^out-\d+\.jsonl$/, /^rev-\d+\.jsonl$/, /^v3-\d+\.jsonl$/];
 const files = readdirSync(dir);
-const revised = new Set();
-for (const file of [...files.filter(f => /^out-\d+\.jsonl$/.test(f)).sort(),
-                    ...files.filter(f => /^rev-\d+\.jsonl$/.test(f)).sort()]) {
-  const isRevision = file.startsWith("rev-");
+const revised = new Map(PASSES.map((_, i) => [i, new Set()]));
+for (const [pass, pattern] of PASSES.entries()) {
+ for (const file of files.filter(f => pattern.test(f)).sort()) {
+  const isRevision = pass > 0;
   const lines = readFileSync(join(dir, file), "utf8").split("\n").filter(l => l.trim());
   lines.forEach((line, i) => {
     let row;
     try { row = JSON.parse(line); }
     catch { errors.push(`${file}:${i + 1} unparseable JSON`); return; }
     if (!row.id) { errors.push(`${file}:${i + 1} missing id`); return; }
-    if (isRevision) {
-      if (revised.has(row.id)) { dupes.push(`${row.name || row.id} (${file})`); return; }
-      revised.add(row.id);
-    } else if (rows.has(row.id)) { dupes.push(`${row.name || row.id} (${file})`); return; }
+    // Within a pass a row may appear once; across passes the later one wins.
+    const seen = isRevision ? revised.get(pass) : rows;
+    if (seen?.has(row.id)) { dupes.push(`${row.name || row.id} (${file})`); return; }
+    if (isRevision) revised.get(pass).add(row.id);
     rows.set(row.id, {...row, _src: file});
   });
+ }
 }
 const catalogIds = new Set(catalog.emojis.map(e => e.id));
 const byId = new Map(catalog.emojis.map(e => [e.id, e]));
@@ -85,7 +87,8 @@ for (const row of rows.values()) {
   }
 }
 const pct = n => `${((n / rows.size) * 100).toFixed(0)}%`;
-console.log(`labelled ${rows.size} / ${catalog.emojis.length} emojis (${revised.size} revised in pass 2)`);
+const passCounts = [...revised.entries()].filter(([, s]) => s.size).map(([p, s]) => `pass ${p + 1}: ${s.size}`);
+console.log(`labelled ${rows.size} / ${catalog.emojis.length} emojis (revised — ${passCounts.join(", ") || "none"})`);
 if (orphans.length) console.log(`dropped ${orphans.length} row(s) for emojis no longer in the catalog`);
 if (dupes.length) console.log(`duplicate rows dropped: ${dupes.length} — ${dupes.slice(0, 5).join(", ")}`);
 if (missing.length) console.log(`MISSING (${missing.length}): ${missing.slice(0, 12).join(", ")}${missing.length > 12 ? " …" : ""}`);

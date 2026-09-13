@@ -1,8 +1,8 @@
 {
-  "count": 351,
-  "framesChecked": 11157,
+  "count": 352,
+  "framesChecked": 11161,
   "maxMeanAlphaError": 0.177734375,
-  "previewBytes": 6687210,
+  "previewBytes": 6705202,
   "slackCap": 127000,
   "slackIncompatible": [],
   "frameDropped": [
@@ -22,11 +22,11 @@
       "webpOver": []
     },
     "64": {
-      "webp": 3882548,
+      "webp": 3884648,
       "webpOver": []
     },
     "128": {
-      "webp": 11999518,
+      "webp": 12004454,
       "webpOver": [
         "cheers",
         "crying_bear",
@@ -50,7 +50,7 @@
       ]
     },
     "256": {
-      "webp": 28668998,
+      "webp": 28680030,
       "webpOver": [
         "alert",
         "boxcat",
@@ -99,7 +99,7 @@
       ]
     },
     "original": {
-      "webp": 79093664,
+      "webp": 79152058,
       "webpOver": [
         "cheers-whiskey",
         "doge_notes",
