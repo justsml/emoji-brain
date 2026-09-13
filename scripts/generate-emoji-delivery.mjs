@@ -9,6 +9,7 @@ sharp.cache({memory:32,files:0,items:16});
 const batchSize=Number(process.argv.find(a=>a.startsWith('--batch-size='))?.split('=')[1]??8);
 if(!Number.isInteger(batchSize)||batchSize<1||batchSize>32)throw Error('Batch size must be 1–32');
 const root='public/emoji-delivery',staging='staging/emoji-enhancements',sources=new Map();
+const only=process.argv.find(arg=>arg.startsWith('--only='))?.slice(7).split(',');
 for(const file of await fs.readdir('public/emojis'))if(file.endsWith('.webp'))sources.set(file.slice(0,-5),{source:'public/emojis/'+file,basis:'original'});
 for(const group of ['stills','animated-pilot','remaining-animations']){
  const m=JSON.parse(await fs.readFile(`${staging}/${group}/manifest.json`));
@@ -18,6 +19,7 @@ for(const group of ['stills','animated-pilot','remaining-animations']){
 const catalogNames=new Set((await fs.readdir('public/emojis')).filter(f=>f.endsWith('.webp')).map(f=>f.slice(0,-5)));
 for(const name of sources.keys())if(!catalogNames.has(name))sources.delete(name);
 sources.set('extreme-teamwork',{source:'public/emojis/extreme-teamwork.webp',basis:'background-cleaned'});
+sources.set('roo-think',{source:'public/emojis/roo-think.webp',basis:'shirt-arm-repaired'});
 sources.set('severance-running',{source:'public/emojis/severance-running.webp',basis:'original-awaiting-review'});
 const revisit=JSON.parse(await fs.readFile(`${staging}/severance-running-revisit/manifest.json`));
 if(revisit.status==='approved-promoted'){
@@ -81,6 +83,7 @@ async function writeImage(pipeline,path,quality,options={}){
  return {quality,path,bytes:info.size};
 }
 for(const [name,choice] of sources){
+ if(only&&!only.includes(name))continue;
  if(processed>=batchSize)break;
  const bytes=await fs.readFile(choice.source),sha=createHash('sha256').update(bytes).digest('hex');
  const m=await sharp(bytes,{animated:true}).metadata(),prior=previous?.items[name]?.sourceSha256===sha?previous.items[name]:null;

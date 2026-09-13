@@ -142,7 +142,7 @@ export function findLoop(frames, {min = 16, max = 96, target = 24, motionFloor =
 }
 
 /** Stage 4. The REJECT clauses of the one-shot prompt, made machine-checkable. */
-export function gate(frames, source, {displacement = 0.10} = {}) {
+export function gate(frames, source, {displacement = 0.10, cyclic = true} = {}) {
   const s0 = shape(source);
   const shapes = frames.map(shape);
   if (shapes.some(s => !s)) return {pass: false, checks: [{name: 'coverage', pass: false, detail: 'a frame matted to nothing'}]};
@@ -150,6 +150,11 @@ export function gate(frames, source, {displacement = 0.10} = {}) {
   const areas = shapes.map(s => s.area / s0.area);
   const scale = Math.max(Math.max(...areas), 1 / Math.min(...areas)) - 1;
   const seam = frameDistance(frames[0], frames[frames.length - 1]);
+  // A ping-pong cycle never closes on an identical frame - its endpoints are one step apart - so
+  // the seam only has to be no worse than a typical step between consecutive frames.
+  const steps = frames.slice(1).map((f, i) => frameDistance(frames[i], f)).sort((a, b) => a - b);
+  const typicalStep = steps.length ? steps[Math.floor(steps.length / 2)] : 0;
+  const seamBudget = cyclic ? 12 : Math.max(12, typicalStep * 1.5);
   const worst = Math.max(...frames.map(f => frameDistance(f, source)));
   const box = s => Math.min(s.box[0], s.box[1], S - s.box[2], S - s.box[3]);
   const edge = Math.min(...shapes.map(box));
@@ -159,7 +164,7 @@ export function gate(frames, source, {displacement = 0.10} = {}) {
   const checks = [
     {name: 'subject drift', pass: drift <= displacement, detail: `${(drift * 100).toFixed(1)}% of canvas (budget ${(displacement * 100).toFixed(0)}%)`},
     {name: 'scale stability', pass: scale <= 0.15, detail: `${(scale * 100).toFixed(1)}% area swing (budget 15%)`},
-    {name: 'loop seam', pass: seam <= 12, detail: `${seam.toFixed(1)} mean channel delta (budget 12)`},
+    {name: 'loop seam', pass: seam <= seamBudget, detail: `${seam.toFixed(1)} mean channel delta (budget ${seamBudget.toFixed(1)}${cyclic ? '' : ', ping-pong: 1.5x typical step'})`},
     {name: 'gross departure', pass: worst <= 64, detail: `worst frame ${worst.toFixed(1)} from source (budget 64)`},
     {name: 'inside frame', pass: edge >= edgeBudget, detail: `${edge}px margin vs source's ${box(s0)}px`},
   ];

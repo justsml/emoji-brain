@@ -53,7 +53,12 @@ export async function contactSheet(files, out, {cell = 256, cols = 4} = {}) {
   return out;
 }
 
-export async function identityCheck({source, frames, dir}) {
+/**
+ * `poses` (optional, one per frame) states what each panel is *supposed* to depict. Without it
+ * the judge treats every deliberate pose change as a lost feature - which made it useless for
+ * keyframes, where the pose is the thing being varied.
+ */
+export async function identityCheck({source, frames, dir, poses}) {
   const sheet = await contactSheet(frames, `${dir}/sheet.png`);
   const ref = await sharp(source).resize(256, 256).flatten({background: {r: 255, g: 255, b: 255}}).png().toBuffer();
 
@@ -70,6 +75,11 @@ For every panel, judge only whether it is still the SAME CHARACTER as the refere
 
 An added mouth, a changed eye shape, a different whisker count, or a stray object are INVENTED FEATURES — report them even when small. Motion itself (a moved paw, a tilted head, a blink) is expected and is NOT a fault. Judge every numbered panel.
 
+Report ONLY features you can actually see in the reference. Do not assume the reference has a mouth, a nose or eyebrows — if it has none, their absence in a panel is not a loss.${poses ? `
+
+Each panel was deliberately drawn in a different pose. These intended poses are NOT faults, and a body part moving out of view because of them is NOT a lost feature:
+${poses.map((p, i) => `  panel ${i + 1}: ${p}`).join('\n')}` : ''}
+
 Reply with JSON only, matching exactly this shape:
 ${SHAPE}`},
         {type: 'image', image: await fs.readFile(sheet)},
@@ -79,11 +89,16 @@ ${SHAPE}`},
 
   const object = JSON.parse(text.replace(/^[^{]*/, '').replace(/[^}]*$/, ''));
   const clean = object.frames.filter(f => f.sameCharacter && !f.inventedFeatures.length && !f.lostFeatures.length && !f.styleBreak);
+  const recognisable = object.frames.filter(f => f.sameCharacter && !f.styleBreak);
+  const n = object.frames.length;
   return {
     ...object,
-    panels: object.frames.length,
+    panels: n,
     cleanPanels: clean.length,
-    score: object.frames.length ? clean.length / object.frames.length : 0,
+    // Strict: no blemish at all. Useful for ranking, harsh as a pass/fail.
+    score: n ? clean.length / n : 0,
+    // Looser: still unmistakably the character, blemishes allowed. The shippable bar.
+    characterRate: n ? recognisable.length / n : 0,
     styleHeld: !object.frames.some(f => f.styleBreak),
   };
 }
@@ -93,7 +108,7 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   const all = (await fs.readdir(dir)).filter(f => /^out-\d+\.png$/.test(f)).sort();
   const pick = Array.from({length: 8}, (_, i) => `${dir}/${all[Math.round(i * (all.length - 1) / 7)]}`);
   const r = await identityCheck({source: `public/emojis/${name}.webp`, frames: pick, dir});
-  console.log(`identity ${(r.score * 100).toFixed(0)}% clean (${r.cleanPanels}/${r.panels}), style ${r.styleHeld ? 'held' : 'BROKEN'}`);
+  console.log(`identity ${(r.score * 100).toFixed(0)}% clean (${r.cleanPanels}/${r.panels}), ${(r.characterRate * 100).toFixed(0)}% recognisable, style ${r.styleHeld ? 'held' : 'BROKEN'}`);
   console.log(r.summary);
   for (const f of r.frames) if (f.inventedFeatures.length || f.lostFeatures.length || f.styleBreak)
     console.log(`  panel ${f.index}: +[${f.inventedFeatures}] -[${f.lostFeatures}]${f.styleBreak ? ' STYLE-BREAK' : ''}`);

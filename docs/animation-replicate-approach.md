@@ -7,14 +7,19 @@ tweening route produced a finished `meow_idea` loop, and the Replicate route pro
 ## Route A — tweening (built, working)
 
 `scripts/emoji-enhancement/tween-meow-idea.mjs` renders `meow_idea` subtle as 8 frames @ 120 ms,
-71.6 KB at 512px, no model involved.
+75.9 KB at 512px, no model involved.
 
-The rig: the bulb's radiating rays turned out to be a *single connected component* with the glass
-(they touch its outline), so component labeling can't separate them. They're cut geometrically
-instead, from the measured alpha profile — a fully transparent gutter at y=168 splits the bulb group
-from the cat, and the column profile puts the glass-and-base core at x∈[220,288], everything outside
-that being rays. Each frame composites three layers: cat (never resampled), glass core (RGB gain for
-the glow pulse), rays (scaled about the bulb centroid at 252,82, with per-frame opacity).
+The rig: two layers, split at the one place this artwork can be cut without damage. Rows 168–170 are
+completely empty (max alpha 0), separating the bulb group from the cat. Each frame composites the cat
+(copied, never resampled) and the bulb group, scaled about its centroid at (252, 82) with a
+brightness gain — a flicker with no interior seam.
+
+**A cut-line bug, and why the obvious rig was wrong.** The first version also split the bulb's rays
+from its glass at fixed columns x∈[220,288], intending to flicker the rays alone. The rays are a
+*single connected component* with the glass — they meet its outline, and stay fused even at
+alpha>240, so no threshold separates them. The column cut therefore sliced through solid artwork, and
+the severed edges appeared as straight vertical lines every time the rays scaled. The fix is not a
+better cut: it is not cutting. The bulb animates as one unit.
 
 **The property that matters: the cat's pixels are copied, never resampled.** Identity drift isn't
 mitigated, it's structurally impossible. That is the whole argument for this route.
@@ -125,10 +130,14 @@ GATE PASS
 
 Recovered alpha was checked against a magenta ground: no green fringe, no halo.
 
-**Calibration result worth keeping:** the encode-and-key round trip *by itself* costs 1.9% drift and
-5.7% area swing on frames that contain no real motion at all. That's the noise floor — a real
-generation's budget is the gate threshold minus this, so the effective drift budget for subtle is
-closer to 8% than 10%.
+**Calibration result worth keeping:** the encode-and-key round trip *by itself* costs 0.4% drift and
+2.1% area swing on frames containing no real motion. That is the noise floor, and a real generation's
+budget is the gate threshold minus it.
+
+(An earlier measurement here read 1.9% and 5.7%. That was inflated by the tween's own cut-line bug —
+the severed ray edges were flickering, and the gate was dutifully measuring them. Fixing the rig
+dropped the floor by 4x, which is a fair warning about calibrating a metric against output you have
+not yet verified by eye.)
 
 ## The live run — `meow_facepalm`, full variant
 
@@ -245,6 +254,147 @@ converting `meow_nod` to 111 frames of mp4) already works.
 
 The other motion-transfer route, `wan-2.2-animate-animation`, accepts the cat and scores 0%.
 
+## Frontier tier — all five fail
+
+Same plate, same prompt, same chain. Frontier video models are no better than the cheap ones, and
+mostly worse than `kling-v2.5-turbo-pro`:
+
+| Identity | Model | Gate | Predict | Failure |
+| --- | --- | --- | --- | --- |
+| 25% | `xai/grok-imagine-video-1.5` | pass | 32 s | Inconsistent eye designs, deformed paw. |
+| 0% | `google/veo-3.1-fast` | FAIL | 38 s | Invents a frowning mouth, a **torso outline**, paw-pad markings. |
+| 0% | `openai/sora-2` | FAIL | 84 s | Replaces the slit eye with large open ovals; omits the whiskers. |
+| 0% | `luma/ray-3.2` (native `loop: true`) | pass | 81 s | Invents large round cartoon eyes and **torso artifacts**. |
+| 0% | `google/gemini-omni-1.1` | FAIL | 33 s | Adds a **full torso**, nose, open eyes, eyebrows; deletes the facepalming paw. |
+
+A new shared tic in the frontier tier: they add a **torso**. Given a floating cat head they complete
+the body, because a head without a body is not a thing their training distribution contains. Neither
+`luma`'s native loop flag nor Veo's and Sora's scale changed the basic outcome.
+
+**Seventeen video models, ten vendors, and the winner is still `kling-v2.5-turbo-pro` at 75%.** No
+further i2v testing is warranted.
+
+## The keyframe route — a different instrument
+
+Video models are the wrong tool by construction: their prior is *motion*, and motion priors are
+photographic. Image-edit models have the opposite prior — keep this exact subject, change one thing.
+So the animation can be generated as a handful of posed keyframes instead
+(`scripts/emoji-enhancement/keyframe-bakeoff.mjs`, six poses describing the facepalm swing).
+
+| Strict | Recognisable | Model | Calls | Predict |
+| --- | --- | --- | --- | --- |
+| 17% | **50%** | `openai/gpt-image-2.5-sunburst` | 6 | 198 s |
+| 0% | **67%** | `google/nano-banana-2` | 6 | 55 s |
+| 0% | 33% | `bytedance/seedream-4` (`sequential_image_generation`) | 1 | 99 s |
+| err | — | `google/nano-banana-pro` | — | rejects the edit prompt with `E006` |
+
+Seedream's one-call sequential mode is the cheapest by far and the worst — the frames drift from each
+other because nothing re-anchors them to the reference. The per-frame models, each editing the
+original still directly, hold far better.
+
+**By eye, `gpt-image-2.5` preserves this character better than anything else tested, video or image.**
+Dash eyes, whisker count, ear shape, outline weight and fill all survive across all six poses, and
+when the paw lowers it correctly reveals a *second dash eye* rather than inventing a round one. That
+is the exact failure every video model committed, avoided.
+
+### Where the judge broke, and why the numbers above understate the keyframe route
+
+Two defects, both found here and both real:
+
+1. **No pose context.** The judge was validated on frames of a single motion, where the pose should
+   roughly match the reference. Keyframes deliberately vary the pose, so "the paw is no longer across
+   the face" was scored as a *lost feature* — exactly the change that was ordered. Fixed: `identityCheck`
+   now takes an optional `poses` array naming what each panel should depict.
+2. **A confirmed hallucination.** The judge repeatedly reported a missing "frown mouth line". The
+   reference has no mouth at all — it is one dash eye, whiskers, a paw and the arm line. It was
+   penalising the absence of a feature it invented. Mitigated by instructing it to report only
+   features visible in the reference, but not eliminated.
+
+The scoring was also a single over-strict compound (any blemish → 0). It now reports two numbers:
+`score` (strict, no blemish at all — good for ranking) and `characterRate` (still unmistakably the
+character — the shippable bar).
+
+Re-scored with pose context, the honest comparison is:
+
+| Model | Strict | Recognisable | Route |
+| --- | --- | --- | --- |
+| `kling-v2.5-turbo-pro` | 75% | 75% | video |
+| `kling-v2.6` | 63% | 75% | video |
+| `nano-banana-2` | 0% | 67% | keyframe |
+| `gpt-image-2.5` | 17% | 50% | keyframe |
+| `seedream-4` | 0% | 33% | keyframe |
+
+Kling still leads on the numbers. But the judge is known to under-score the keyframe route, my eye
+disagrees with it there, and the two routes fail differently: Kling degrades the *paw* at the extreme
+of a swing while holding the face; the image models hold everything and vary slightly between
+independent frames. The second failure mode is the more fixable one — it is a consistency problem
+between 6 images, not a generation problem.
+
+## Chaining + local assembly — the first finished generative loop
+
+Two changes to the keyframe route: chain each generation off the previously accepted frame, and
+assemble the accepted keyframes locally instead of paying for every frame.
+
+### Chaining
+
+Each call now receives two references — IMAGE 1 the original character, IMAGE 2 the previous frame —
+over a 5-pose swing ordered as one continuous motion (`SWING` in `keyframe-bakeoff.mjs`).
+
+| Model | Unchained | Chained |
+| --- | --- | --- |
+| `gpt-image-2.5` | 17% strict | **40% strict** |
+| `nano-banana-2` | 0% strict / 67% recognisable | **0% / broke outright** |
+
+Chaining is not universally good. `nano-banana-2` read the previous frame as *content to preserve*
+rather than as a starting point: it drew a second paw above the head while leaving the original paw
+on the face, in three consecutive frames. `gpt-image-2.5` read it as intended and improved markedly.
+
+### Local assembly
+
+`scripts/emoji-enhancement/keyframe-assemble.mjs` turns N keyframes into the finished loop, with no
+further generation:
+
+- **Re-registration.** Independently drawn frames wobble. Measured here: `gpt-image-2.5` draws the
+  character consistently ~13% small and ~30px off-centre. Each frame is rescaled and re-centred onto
+  the source's area and centroid.
+- **Ping-pong ordering** (`0..N-1` then `N-2..1`), which closes the cycle by construction — no loop
+  search, no seam hunting, and half as many keyframes to pay for.
+- **Limited-animation timing.** Hold each keyframe, then cut. This is what hand-drawn 2D does and
+  what flat-vector art survives; cross-dissolving flat fills produces ghosting.
+
+Result — 5 generated keyframes become an 8-frame, 1.44 s loop at 215 KB:
+
+```text
+$ node scripts/emoji-enhancement/keyframe-assemble.mjs meow_facepalm gpt-image-2.5-chain 3
+registration: k0 1.129 | k1 1.130 | k2 1.153 | k3 1.154 | k4 1.155 (median 1.153)
+  PASS  subject drift: 0.2% of canvas (budget 25%)
+  PASS  scale stability: 3.0% area swing (budget 15%)
+  PASS  loop seam: 11.5 (budget 39.8, ping-pong: 1.5x typical step)
+  PASS  gross departure: worst frame 46.1 from source (budget 64)
+  PASS  inside frame: 0px margin vs source's 0px
+identity 25% strict, 100% recognisable
+```
+
+**100% recognisable — the best result of anything in this document**, generative or otherwise, and
+the first generated loop that passes every gate.
+
+### Two more gate bugs, found by using it
+
+- **Registration tested the wrong thing.** It rejected a frame whose scale differed from the *source*
+  by >12%, so it rejected all five keyframes at 1.129–1.155. But that spread is only 2.6% — a
+  uniform reframing, not instability. The test now measures deviation from the *group median*:
+  systematic reframing is corrected in full, and only frames that disagree with their neighbours are
+  rejected. Scale stability improved 7.2% → 3.0%.
+- **The seam check assumed a cyclic loop.** A ping-pong cycle's first and last frames are one motion
+  step apart by construction and never identical, so the fixed budget of 12 failed every ping-pong
+  loop. The seam is now judged against 1.5x the typical inter-frame step when `cyclic: false`.
+
+### Cost shape
+
+This is the cheapest route tested, and the only one whose cost does not scale with frame count:
+5 image calls (~160 s total) produce an 8-frame loop, and a longer loop costs the same because the
+extra frames are holds and reversals, not generations.
+
 ### The VLM identity judge
 
 `scripts/emoji-enhancement/identity-check.mjs`. Samples 8 frames into one numbered contact sheet,
@@ -276,9 +426,17 @@ seam.
 **Motion-control is off the table for the cats.** It needs a character body to rig and rejects a
 floating cat head. Keep it in reserve for the person-shaped emoji only.
 
-**Do not spend on more i2v models.** Twelve have now been tested across six vendors; eleven invent a
-generic cat face and the twelfth (`kling-v2.6`) is a slightly worse `kling-v2.5-turbo-pro`. The
-remaining levers are not model choice: pick the loop window to *exclude* the frames the judge flags,
-soften the motion spec so the paw never reaches the distorting extreme, and consider ping-pong
-looping (play forward then reverse) which guarantees a seamless cycle locally, for free, and halves
-how much generated motion has to be trustworthy.
+**Do not spend on more i2v models.** Seventeen have now been tested across ten vendors, frontier tier
+included (Veo 3.1, Sora 2, Gemini Omni, Ray 3.2, Grok 1.5). Sixteen invent a generic cat face and the
+seventeenth is a slightly worse `kling-v2.5-turbo-pro`. Model choice is exhausted.
+
+**Ship the chained keyframe route.** `gpt-image-2.5` chained off its own previous frame, assembled
+locally with re-registration, ping-pong ordering and limited-animation holds, produces a loop that is
+100% recognisable and passes every gate — from 5 paid image calls, with loop length decoupled from
+cost. That is better than the best video model (`kling-v2.5-turbo-pro`, 75%) on both quality and
+price.
+
+**Next, in order:** run the same recipe across the rest of batch 01 to see whether 100% holds beyond
+`meow_facepalm`; check `gpt-image-2.5`'s systematic ~13% downscale is stable per-emoji (if so it can
+be pre-compensated in the plate); and test whether chaining helps or breaks each model individually —
+it doubled `gpt-image-2.5` and destroyed `nano-banana-2`, so it is not a universal switch.

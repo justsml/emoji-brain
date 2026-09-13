@@ -25,6 +25,18 @@ export const POSES = [
   'the paw is sliding back down, half clear of the face',
 ];
 
+/**
+ * Ordered as one continuous swing so each keyframe can be chained off the previous one, and so the
+ * sequence ping-pongs into a loop (play 1..5 then 4..2) without needing a closing frame.
+ */
+export const SWING = [
+  'the paw is raised high above the head, fully clear of the face, with the whole face visible',
+  'the paw is lowered to just above the head, still clear of the face',
+  'the paw is touching the top of the face, partly covering the forehead',
+  'the paw is pressed flat across the face exactly as in the original reference image',
+  'the paw is pressed flat across the face and the head is tilted slightly downward',
+];
+
 const PRESERVE = 'Keep the exact same character: identical flat-vector style, identical yellow fill, identical heavy black outline weight, identical eye shape, identical whisker count and placement, identical ears, identical proportions and identical framing on the same flat green background. Do not add a mouth, a nose, eyebrows, a torso, shading, gradients, fur texture or any facial feature that is not in the reference. Change nothing except the described pose.';
 
 export const ENTRANTS = [
@@ -60,6 +72,24 @@ export const ENTRANTS = [
       quality: 'high', aspect_ratio: '1:1', output_format: 'png', number_of_images: 1, background: 'opaque',
     }),
   },
+
+  // --- chained: every frame sees the original AND the previously accepted frame ---
+  {
+    id: 'gpt-image-2.5-chain', model: 'openai/gpt-image-2.5-sunburst', chain: true, poses: SWING,
+    input: ({plate, prev, pose}) => ({
+      input_images: prev ? [plate, prev] : [plate],
+      prompt: `${prev ? 'IMAGE 1 is the original character. IMAGE 2 is the previous frame of this animation. Draw the next frame, continuing directly from IMAGE 2.' : 'Draw the first frame of an animation of this character.'} In this frame, ${pose}. ${PRESERVE}`,
+      quality: 'high', aspect_ratio: '1:1', output_format: 'png', number_of_images: 1, background: 'opaque',
+    }),
+  },
+  {
+    id: 'nano-banana-2-chain', model: 'google/nano-banana-2', chain: true, poses: SWING,
+    input: ({plate, prev, pose}) => ({
+      image_input: prev ? [plate, prev] : [plate],
+      prompt: `${prev ? 'IMAGE 1 is the original character. IMAGE 2 is the previous frame of this animation. Draw the next frame, continuing directly from IMAGE 2.' : 'Draw the first frame of an animation of this character.'} In this frame, ${pose}. ${PRESERVE}`,
+      resolution: '1K', aspect_ratio: 'match_input_image', output_format: 'png',
+    }),
+  },
 ];
 
 const uri = async file => 'data:image/png;base64,' + (await fs.readFile(file)).toString('base64');
@@ -89,13 +119,17 @@ export async function keyframeBakeoff(name, {only} = {}) {
         const urls = Array.isArray(r.output) ? r.output : [r.output];
         for (const [i, u] of urls.entries()) frames.push(await save({output: u}, path.join(dir, `k-${i}.png`)));
       } else {
-        for (const [i, pose] of POSES.entries()) {
-          const r = await predict({dir, key: `${e.id}-${i}`, model: e.model, input: e.input({plate, pose})});
+        const poses = e.poses ?? POSES;
+        let prev;
+        for (const [i, pose] of poses.entries()) {
+          const r = await predict({dir, key: `${e.id}-${i}`, model: e.model, input: e.input({plate, pose, prev})});
           metrics.push(r.metrics);
-          frames.push(await save(r, path.join(dir, `k-${i}.png`)));
+          const norm = await save(r, path.join(dir, `k-${i}.png`));
+          frames.push(norm);
+          if (e.chain) prev = await uri(norm);
         }
       }
-      const identity = await identityCheck({source: `public/emojis/${name}.webp`, frames, dir});
+      const identity = await identityCheck({source: `public/emojis/${name}.webp`, frames, dir, poses: e.poses ?? POSES});
       const row = {id: e.id, model: e.model, frames: frames.length,
         predictSeconds: +metrics.reduce((a, m) => a + (m?.predict_time ?? 0), 0).toFixed(1), calls: metrics.length, identity};
       await fs.writeFile(path.join(dir, 'result.json'), JSON.stringify(row, null, 2));

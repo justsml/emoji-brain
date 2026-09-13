@@ -1,11 +1,17 @@
 /**
  * Tweening pilot: meow_idea "subtle" bulb flicker, 8 frames @ 120ms.
  *
- * No generative model. The still is split into three raster layers by geometry
- * (the bulb rays are a single connected component with the glass, so they are cut
- * by column, measured from the alpha profile), then each frame composites the
- * layers with per-layer alpha and scale about the bulb centre. The cat never moves
- * and is never resampled, so identity drift is structurally impossible.
+ * No generative model. The still is split into two raster layers at the one place the
+ * artwork can be cut without damage: rows 168-170 are completely empty, separating the
+ * bulb group from the cat. Each frame re-composites the bulb with a scale and brightness
+ * pulse about its centroid. The cat is copied, never resampled, so identity drift is
+ * structurally impossible.
+ *
+ * An earlier version also split the bulb's rays from its glass at fixed columns. That was
+ * wrong: the rays are one connected component with the glass (they meet its outline, and
+ * stay fused even at alpha>240), so the column cut sliced through solid artwork and the
+ * severed edges showed up as straight vertical lines whenever the rays moved. The bulb is
+ * now animated as a single unit - there is no interior cut to expose.
  */
 import fs from 'node:fs/promises';
 import path from 'node:path';
@@ -18,22 +24,24 @@ const S = 512;
 
 /** Measured from the alpha profile of meow_idea.webp at 512px. */
 export const RIG = {
-  split: 168,        // transparent gutter between bulb group and cat
-  coreLeft: 220,     // glass + screw base column span; outside it is rays
-  coreRight: 288,
-  centre: [252, 82], // bulb glass centroid — rays scale about this
+  split: 168,        // rows 168-170 are fully transparent: the only lossless cut in this artwork
+  centre: [252, 82], // bulb glass centroid - the bulb group scales about this
 };
 
-/** 8-frame two-step flicker. alpha = ray opacity, scale = ray scale, glow = glass RGB gain. */
+/**
+ * 8-frame two-step flicker of the whole bulb group. `scale` and `glow` only: fading the group's
+ * alpha would read as the bulb vanishing rather than dimming, and there is no sub-layer to fade
+ * independently without cutting the artwork.
+ */
 export const FLICKER = [
-  {alpha: 1.00, scale: 1.06, glow: 1.00},
-  {alpha: 1.00, scale: 1.04, glow: 1.00},
-  {alpha: 0.35, scale: 0.96, glow: 0.92},
-  {alpha: 0.70, scale: 1.00, glow: 0.96},
-  {alpha: 1.00, scale: 1.06, glow: 1.00},
-  {alpha: 0.30, scale: 0.95, glow: 0.91},
-  {alpha: 0.40, scale: 0.97, glow: 0.93},
-  {alpha: 0.75, scale: 1.02, glow: 0.97},
+  {scale: 1.05, glow: 1.06},
+  {scale: 1.04, glow: 1.04},
+  {scale: 0.97, glow: 0.90},
+  {scale: 1.00, glow: 0.96},
+  {scale: 1.05, glow: 1.06},
+  {scale: 0.96, glow: 0.88},
+  {scale: 0.98, glow: 0.92},
+  {scale: 1.02, glow: 1.00},
 ];
 
 const idx = (x, y) => (y * S + x) * 4;
@@ -98,15 +106,13 @@ export async function render({source = 'public/emojis/meow_idea.webp', dir, dela
   const {data} = await sharp(source).resize(S, S).ensureAlpha().raw().toBuffer({resolveWithObject: true});
 
   const cat = layer(data, (_x, y) => y >= RIG.split);
-  const core = layer(data, (x, y) => y < RIG.split && x >= RIG.coreLeft && x <= RIG.coreRight);
-  const rays = layer(data, (x, y) => y < RIG.split && (x < RIG.coreLeft || x > RIG.coreRight));
+  const bulb = layer(data, (_x, y) => y < RIG.split);
 
   const files = [];
   for (const [n, f] of FLICKER.entries()) {
     const frame = Buffer.alloc(S * S * 4);
     over(frame, cat);
-    over(frame, gain(Buffer.from(core), f.glow));
-    over(frame, scaleAbout(rays, f.scale, RIG.centre), f.alpha);
+    over(frame, gain(scaleAbout(bulb, f.scale, RIG.centre), f.glow));
     const file = path.join(dir, `frame-${String(n).padStart(2, '0')}.png`);
     await sharp(frame, {raw: {width: S, height: S, channels: 4}}).png().toFile(file);
     files.push(file);

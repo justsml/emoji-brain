@@ -1,6 +1,6 @@
 {
   "total": 351,
-  "lastUpdated": "2026-09-13T19:01:25.445Z",
+  "lastUpdated": "2026-09-13T21:45:01.244Z",
   "emojis": [
     {
       "id": "df167e0a",
@@ -19085,14 +19085,14 @@
         "twitch-emote"
       ],
       "created": "2025-04-12T03:57:25.135Z",
-      "size": 541720,
+      "size": 364052,
       "width": 1024,
       "height": 1024,
       "aliases": [],
-      "hash": "ae506fc50ccfb9b5c4b1826273f723fe7f5fd4e2e0c9b21d15c31c7f7b153979",
-      "modified": "2026-09-10T21:34:30.150Z",
+      "hash": "cfde5c9eab44af9ad46cc24639f893de0edc10d82e8299fb2929d18c7030cc1d",
+      "modified": "2026-09-13T21:49:20.160Z",
       "animated": false,
-      "labelHash": "ae506fc50ccfb9b5c4b1826273f723fe7f5fd4e2e0c9b21d15c31c7f7b153979",
+      "labelHash": "cfde5c9eab44af9ad46cc24639f893de0edc10d82e8299fb2929d18c7030cc1d",
       "facets": {
         "subject": [
           "bear"
@@ -19120,7 +19120,12 @@
           "twitch-emote"
         ]
       },
-      "labelConfidence": "high"
+      "labelConfidence": "high",
+      "labelProvenance": {
+        "method": "carried-forward-after-shirt-arm-repair",
+        "fromHash": "ae506fc50ccfb9b5c4b1826273f723fe7f5fd4e2e0c9b21d15c31c7f7b153979",
+        "repairReceipt": "staging/emoji-enhancements/roo-think-repair/manifest.json"
+      }
     },
     {
       "id": "bf25f3f2",
