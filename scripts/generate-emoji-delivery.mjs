@@ -20,6 +20,12 @@ const catalogNames=new Set((await fs.readdir('public/emojis')).filter(f=>f.endsW
 for(const name of sources.keys())if(!catalogNames.has(name))sources.delete(name);
 sources.set('extreme-teamwork',{source:'public/emojis/extreme-teamwork.webp',basis:'background-cleaned'});
 sources.set('roo-think',{source:'public/emojis/roo-think.webp',basis:'shirt-arm-repaired'});
+// The upscale pass recoloured these roos' black ears and patches to grey; the staging
+// candidate is the damaged art, so the repaired production file is the source.
+for(const name of ['roo-nom','roo-blank','rooderp','roo-rheee','roo-ez'])sources.set(name,{source:`public/emojis/${name}.webp`,basis:'ink-repaired'});
+// roo-derp and rooderp are the same pose; rooderp's repair came out cleaner, so
+// roo-derp now carries that art. Deliberately identical, not an accident.
+sources.set('roo-derp',{source:'public/emojis/roo-derp.webp',basis:'ink-repaired-from-rooderp'});
 sources.set('severance-running',{source:'public/emojis/severance-running.webp',basis:'original-awaiting-review'});
 const revisit=JSON.parse(await fs.readFile(`${staging}/severance-running-revisit/manifest.json`));
 if(revisit.status==='approved-promoted'){
@@ -32,6 +38,12 @@ let previous;try{previous=JSON.parse(await fs.readFile(root+'/manifest.json'))}c
 // 127 KB, not Slack's stated 128 KB: the cap is the point at which an upload is
 // refused outright, so the catalog keeps a kilobyte of headroom against it.
 const manifest={version:2,settings:{webpQuality:90,alphaQuality:100,sizes:[64,128,256],previewSizes:[64,128,256],slackTargetBytes:127000,slackFallbackSize:32},items:{...previous?.items}};
+// Carrying the previous items forward reuses unchanged encodes, but an emoji
+// dropped from the catalog would otherwise live on in the manifest forever,
+// pointing at delivery assets that no longer exist. The Slack size estimates
+// then fail reading them, and check:emoji-delivery reports the catalog counts
+// out of step. Prune what is no longer a source.
+for(const name of Object.keys(manifest.items))if(!sources.has(name))delete manifest.items[name];
 const slackCap=manifest.settings.slackTargetBytes;
 // Tried in order, stopping at the first result inside the cap. Quality never
 // drops below 80 — past that the artwork visibly degrades — so the last resort

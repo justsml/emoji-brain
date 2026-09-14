@@ -1,6 +1,6 @@
 {
   "total": 351,
-  "lastUpdated": "2026-09-13T21:45:01.244Z",
+  "lastUpdated": "2026-09-13T23:53:57.715Z",
   "emojis": [
     {
       "id": "df167e0a",
@@ -17685,14 +17685,14 @@
         "twitch-emote"
       ],
       "created": "2025-04-12T03:57:22.645Z",
-      "size": 297206,
+      "size": 265770,
       "width": 1024,
       "height": 1024,
       "aliases": [],
-      "hash": "9629605fb5a949247ca9aad9080667ec65e29eb8eb2d4657ae15ede1a36ba92c",
-      "modified": "2026-09-10T21:34:30.065Z",
+      "hash": "63f5a6e61468ffec279c01951f94de4cd14851cd4577ea467b415221029b2858",
+      "modified": "2026-09-13T23:46:36.661Z",
       "animated": false,
-      "labelHash": "9629605fb5a949247ca9aad9080667ec65e29eb8eb2d4657ae15ede1a36ba92c",
+      "labelHash": "63f5a6e61468ffec279c01951f94de4cd14851cd4577ea467b415221029b2858",
       "facets": {
         "subject": [
           "bear"
@@ -17719,7 +17719,12 @@
           "twitch-emote"
         ]
       },
-      "labelConfidence": "high"
+      "labelConfidence": "high",
+      "labelProvenance": {
+        "method": "carried-forward-after-ink-repair",
+        "fromHash": "9629605fb5a949247ca9aad9080667ec65e29eb8eb2d4657ae15ede1a36ba92c",
+        "approvalReceipt": "staging/emoji-enhancements/promotion.json"
+      }
     },
     {
       "id": "29652967",
@@ -18050,14 +18055,14 @@
         "twitch-emote"
       ],
       "created": "2025-04-12T03:57:19.772Z",
-      "size": 487448,
+      "size": 236484,
       "width": 1024,
       "height": 1024,
       "aliases": [],
-      "hash": "e5e7f46c414d87f1f5e7fc0e2d4973f220c86378a6cc4d3ba650d5700a1f1d2a",
-      "modified": "2026-09-10T21:34:30.084Z",
+      "hash": "46ece4c5a21621093a509e5a71fcacb05dd1782867c3dc673fcff0c6f8caa4cf",
+      "modified": "2026-09-13T23:53:41.293Z",
       "animated": false,
-      "labelHash": "e5e7f46c414d87f1f5e7fc0e2d4973f220c86378a6cc4d3ba650d5700a1f1d2a",
+      "labelHash": "46ece4c5a21621093a509e5a71fcacb05dd1782867c3dc673fcff0c6f8caa4cf",
       "facets": {
         "subject": [
           "bear"
@@ -18085,7 +18090,12 @@
           "twitch-emote"
         ]
       },
-      "labelConfidence": "high"
+      "labelConfidence": "high",
+      "labelProvenance": {
+        "method": "carried-forward-after-art-swap",
+        "fromHash": "3fa9469b45522c7f84f5325a7160c95652ac88812696d05a58b35ade723f7867",
+        "approvalReceipt": "staging/emoji-enhancements/promotion.json"
+      }
     },
     {
       "id": "b7fa785b",
@@ -18287,14 +18297,14 @@
         "twitch-emote"
       ],
       "created": "2025-04-12T03:57:23.512Z",
-      "size": 537294,
+      "size": 496962,
       "width": 1024,
       "height": 1024,
       "aliases": [],
-      "hash": "4a5bd0c99438568692e1e51488e40c5ffc0692af937a1e89d20ff94594926cd6",
-      "modified": "2026-09-10T21:34:30.104Z",
+      "hash": "adaebed022986514c1154e03820c00fec2879f7f55addfb0d9c6096ebd6e10bd",
+      "modified": "2026-09-13T23:46:36.679Z",
       "animated": false,
-      "labelHash": "4a5bd0c99438568692e1e51488e40c5ffc0692af937a1e89d20ff94594926cd6",
+      "labelHash": "adaebed022986514c1154e03820c00fec2879f7f55addfb0d9c6096ebd6e10bd",
       "facets": {
         "subject": [
           "bear"
@@ -18323,7 +18333,12 @@
           "twitch-emote"
         ]
       },
-      "labelConfidence": "high"
+      "labelConfidence": "high",
+      "labelProvenance": {
+        "method": "carried-forward-after-ink-repair",
+        "fromHash": "4a5bd0c99438568692e1e51488e40c5ffc0692af937a1e89d20ff94594926cd6",
+        "approvalReceipt": "staging/emoji-enhancements/promotion.json"
+      }
     },
     {
       "id": "17b0738a",
@@ -18647,14 +18662,14 @@
         "twitch-emote"
       ],
       "created": "2025-04-12T03:57:23.619Z",
-      "size": 336678,
+      "size": 329664,
       "width": 1024,
       "height": 1024,
       "aliases": [],
-      "hash": "b1e63e1874b99012c2fd652a6ce9c504b44654d981d2be1d223c469a9b031494",
-      "modified": "2026-09-10T21:34:30.128Z",
+      "hash": "a57d2d4ccd7e51c139e6610c7bc9559b78f03b031830a53a780c6fb0c74ea02f",
+      "modified": "2026-09-13T23:46:36.655Z",
       "animated": false,
-      "labelHash": "b1e63e1874b99012c2fd652a6ce9c504b44654d981d2be1d223c469a9b031494",
+      "labelHash": "a57d2d4ccd7e51c139e6610c7bc9559b78f03b031830a53a780c6fb0c74ea02f",
       "facets": {
         "subject": [
           "bear"
@@ -18686,7 +18701,12 @@
           "twitch-emote"
         ]
       },
-      "labelConfidence": "high"
+      "labelConfidence": "high",
+      "labelProvenance": {
+        "method": "carried-forward-after-ink-repair",
+        "fromHash": "b1e63e1874b99012c2fd652a6ce9c504b44654d981d2be1d223c469a9b031494",
+        "approvalReceipt": "staging/emoji-enhancements/promotion.json"
+      }
     },
     {
       "id": "d6dc5e99",
@@ -18835,16 +18855,16 @@
         "twitch-emote"
       ],
       "created": "2026-04-14T15:24:30.496Z",
-      "size": 553454,
+      "size": 478894,
       "width": 1024,
       "height": 1024,
       "aliases": [
         "roorheee"
       ],
-      "hash": "967016dbfeca76fa269b0df7112afabe118b7cafb1990c720bf18b7f6291ae1b",
-      "modified": "2026-09-10T21:34:30.135Z",
+      "hash": "e33c4f3b384dfaf66f7039ddfa031c56847f17693b3b80ee0f4cff799a1de982",
+      "modified": "2026-09-13T23:46:36.673Z",
       "animated": false,
-      "labelHash": "967016dbfeca76fa269b0df7112afabe118b7cafb1990c720bf18b7f6291ae1b",
+      "labelHash": "e33c4f3b384dfaf66f7039ddfa031c56847f17693b3b80ee0f4cff799a1de982",
       "facets": {
         "subject": [
           "bear"
@@ -18876,7 +18896,12 @@
           "twitch-emote"
         ]
       },
-      "labelConfidence": "high"
+      "labelConfidence": "high",
+      "labelProvenance": {
+        "method": "carried-forward-after-ink-repair",
+        "fromHash": "967016dbfeca76fa269b0df7112afabe118b7cafb1990c720bf18b7f6291ae1b",
+        "approvalReceipt": "staging/emoji-enhancements/promotion.json"
+      }
     },
     {
       "id": "6d5a0952",
@@ -19206,14 +19231,14 @@
         "twitch-emote"
       ],
       "created": "2026-04-14T15:24:23.300Z",
-      "size": 234892,
+      "size": 236484,
       "width": 1024,
       "height": 1024,
       "aliases": [],
-      "hash": "0c0fb5452768e170997703db7defae4d49ffd265bdd8c49f570ce2e10b0d5b82",
-      "modified": "2026-09-10T21:34:30.155Z",
+      "hash": "46ece4c5a21621093a509e5a71fcacb05dd1782867c3dc673fcff0c6f8caa4cf",
+      "modified": "2026-09-13T23:46:36.667Z",
       "animated": false,
-      "labelHash": "0c0fb5452768e170997703db7defae4d49ffd265bdd8c49f570ce2e10b0d5b82",
+      "labelHash": "46ece4c5a21621093a509e5a71fcacb05dd1782867c3dc673fcff0c6f8caa4cf",
       "facets": {
         "subject": [
           "bear"
@@ -19241,7 +19266,12 @@
           "twitch-emote"
         ]
       },
-      "labelConfidence": "high"
+      "labelConfidence": "high",
+      "labelProvenance": {
+        "method": "carried-forward-after-ink-repair",
+        "fromHash": "0c0fb5452768e170997703db7defae4d49ffd265bdd8c49f570ce2e10b0d5b82",
+        "approvalReceipt": "staging/emoji-enhancements/promotion.json"
+      }
     },
     {
       "id": "9dea87d7",
