@@ -323,33 +323,30 @@
       }
     },
     "100000": {
-      "source": "staging/emoji-enhancements/stills/candidates/100000.webp",
-      "basis": "enhanced",
-      "sourceSha256": "6e9b7bbd0dc799a602ac92f3cb846933b5ae97cf6384830938811d39fcbbe0fe",
+      "source": "public/emojis/100000.webp",
+      "basis": "approved-style-match",
+      "sourceSha256": "2ff0e72e02d3e607f59040d18e7feb5f9089f010864ce5b3a03edff02b1ed9b6",
       "animated": false,
       "variants": {
         "64": {
           "webp": {
             "quality": 90,
             "path": "/emoji-delivery/64/100000.webp",
-            "bytes": 1508,
-            "slackGzipBytes": 1605
+            "bytes": 2198
           }
         },
         "128": {
           "webp": {
             "quality": 90,
             "path": "/emoji-delivery/128/100000.webp",
-            "bytes": 3536,
-            "slackGzipBytes": 3633
+            "bytes": 5562
           }
         },
         "256": {
           "webp": {
             "quality": 90,
             "path": "/emoji-delivery/256/100000.webp",
-            "bytes": 8594,
-            "slackGzipBytes": 8642
+            "bytes": 14628
           }
         }
       },
@@ -357,30 +354,30 @@
         "64": {
           "quality": 90,
           "path": "/emoji-delivery/previews/64/100000.webp",
-          "bytes": 1508
+          "bytes": 2198
         },
         "128": {
           "quality": 90,
           "path": "/emoji-delivery/previews/128/100000.webp",
-          "bytes": 3536
+          "bytes": 5562
         },
         "256": {
           "quality": 90,
           "path": "/emoji-delivery/previews/256/100000.webp",
-          "bytes": 8594
+          "bytes": 14628
         }
       },
       "highestSlackCompatible": {
         "size": 256,
         "path": "/emoji-delivery/256/100000.webp",
-        "bytes": 8594
+        "bytes": 14628
       },
       "original": {
         "quality": 90,
         "path": "/emoji-delivery/original/100000.webp",
-        "bytes": 50374,
-        "width": 1584,
-        "height": 672
+        "bytes": 140544,
+        "width": 1254,
+        "height": 1254
       }
     },
     "10-10": {

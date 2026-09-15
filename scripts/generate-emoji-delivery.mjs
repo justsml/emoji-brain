@@ -20,6 +20,8 @@ const catalogNames=new Set((await fs.readdir('public/emojis')).filter(f=>f.endsW
 for(const name of sources.keys())if(!catalogNames.has(name))sources.delete(name);
 sources.set('extreme-teamwork',{source:'public/emojis/extreme-teamwork.webp',basis:'background-cleaned'});
 sources.set('roo-think',{source:'public/emojis/roo-think.webp',basis:'shirt-arm-repaired'});
+// The approved 10000-style redraw supersedes the historical enhancement.
+sources.set('100000',{source:'public/emojis/100000.webp',basis:'approved-style-match'});
 // The upscale pass recoloured these roos' black ears and patches to grey; the staging
 // candidate is the damaged art, so the repaired production file is the source.
 for(const name of ['roo-nom','roo-blank','rooderp','roo-rheee','roo-ez'])sources.set(name,{source:`public/emojis/${name}.webp`,basis:'ink-repaired'});

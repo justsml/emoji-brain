@@ -1,83 +1,32 @@
 {
-  "count": 14,
-  "framesChecked": 7574,
-  "maxMeanAlphaError": 0.34375,
-  "previewBytes": 265300,
+  "count": 1,
+  "framesChecked": 4,
+  "maxMeanAlphaError": 0,
+  "previewBytes": 22388,
   "slackCap": 127000,
   "slackIncompatible": [],
+  "frameDropped": [],
   "totals": {
     "32": {
-      "webp": 874488,
+      "webp": 0,
       "webpOver": []
     },
     "64": {
-      "webp": 2407042,
-      "webpOver": [
-        "meow-stretch",
-        "meow_angry_intensifies",
-        "meow_coffeespitting",
-        "meow_enjoy-rain",
-        "meow_enjoy-snow",
-        "meow_nod",
-        "meow_red-bull",
-        "meow_sad-rain"
-      ]
+      "webp": 2198,
+      "webpOver": []
     },
     "128": {
-      "webp": 5247292,
-      "webpOver": [
-        "cheers",
-        "crying_bear",
-        "meow-stretch",
-        "meow_angry_intensifies",
-        "meow_clorox",
-        "meow_coffeespitting",
-        "meow_derpy",
-        "meow_enjoy-rain",
-        "meow_enjoy-snow",
-        "meow_nod",
-        "meow_noddies",
-        "meow_red-bull",
-        "meow_sad-rain",
-        "severance-running"
-      ]
+      "webp": 5562,
+      "webpOver": []
     },
     "256": {
-      "webp": 15892976,
-      "webpOver": [
-        "cheers",
-        "crying_bear",
-        "meow-stretch",
-        "meow_angry_intensifies",
-        "meow_clorox",
-        "meow_coffeespitting",
-        "meow_derpy",
-        "meow_enjoy-rain",
-        "meow_enjoy-snow",
-        "meow_nod",
-        "meow_noddies",
-        "meow_red-bull",
-        "meow_sad-rain",
-        "severance-running"
-      ]
+      "webp": 14628,
+      "webpOver": []
     },
     "original": {
-      "webp": 38356610,
+      "webp": 140544,
       "webpOver": [
-        "cheers",
-        "crying_bear",
-        "meow-stretch",
-        "meow_angry_intensifies",
-        "meow_clorox",
-        "meow_coffeespitting",
-        "meow_derpy",
-        "meow_enjoy-rain",
-        "meow_enjoy-snow",
-        "meow_nod",
-        "meow_noddies",
-        "meow_red-bull",
-        "meow_sad-rain",
-        "severance-running"
+        "100000"
       ]
     }
   }

@@ -176,14 +176,14 @@
         "red"
       ],
       "created": "2025-04-12T03:57:25.942Z",
-      "size": 29658,
-      "width": 1584,
-      "height": 672,
+      "size": 300800,
+      "width": 1254,
+      "height": 1254,
       "aliases": [],
-      "hash": "6e9b7bbd0dc799a602ac92f3cb846933b5ae97cf6384830938811d39fcbbe0fe",
-      "modified": "2026-09-10T22:00:40.210Z",
+      "hash": "2ff0e72e02d3e607f59040d18e7feb5f9089f010864ce5b3a03edff02b1ed9b6",
+      "modified": "2026-09-15T18:02:26.880Z",
       "animated": false,
-      "labelHash": "6e9b7bbd0dc799a602ac92f3cb846933b5ae97cf6384830938811d39fcbbe0fe",
+      "labelHash": "2ff0e72e02d3e607f59040d18e7feb5f9089f010864ce5b3a03edff02b1ed9b6",
       "facets": {
         "subject": [
           "text"
@@ -205,7 +205,12 @@
         ],
         "origin": []
       },
-      "labelConfidence": "high"
+      "labelConfidence": "high",
+      "labelProvenance": {
+        "method": "carried-forward-after-approved-style-match",
+        "fromHash": "6e9b7bbd0dc799a602ac92f3cb846933b5ae97cf6384830938811d39fcbbe0fe",
+        "approvalReceipt": "staging/emoji-enhancements/100000-style-match/manifest.json"
+      }
     },
     {
       "id": "e66fa0bc",

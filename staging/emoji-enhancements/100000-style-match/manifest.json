@@ -1,0 +1,22 @@
+{
+  "status": "approved-promoted",
+  "tool": "built-in image_gen",
+  "reference": {
+    "path": "public/emojis/10000.webp",
+    "sha256": "6da7a07a7aa5bfab52f4b7f0cb268dc9b7be53181e8633e1805a2941a9573603"
+  },
+  "original": {
+    "path": "original.webp",
+    "sha256": "6e9b7bbd0dc799a602ac92f3cb846933b5ae97cf6384830938811d39fcbbe0fe"
+  },
+  "candidate": {
+    "path": "candidate.webp",
+    "sha256": "2ff0e72e02d3e607f59040d18e7feb5f9089f010864ce5b3a03edff02b1ed9b6"
+  },
+  "approval": {
+    "approvedSha256": "2ff0e72e02d3e607f59040d18e7feb5f9089f010864ce5b3a03edff02b1ed9b6",
+    "instruction": "approved, replace existing emoji with the new one",
+    "recordedAt": "2026-09-15T18:02:26.880Z"
+  },
+  "promotedTo": "public/emojis/100000.webp"
+}

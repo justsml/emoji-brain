@@ -1,0 +1,48 @@
+{
+  "id": "a40d4e51",
+  "filename": "100000.webp",
+  "path": "/emojis/100000.webp",
+  "categories": [
+    "text"
+  ],
+  "tags": [
+    "text",
+    "celebrate",
+    "excitement",
+    "praise",
+    "flat-vector",
+    "transparent",
+    "red"
+  ],
+  "created": "2025-04-12T03:57:25.942Z",
+  "size": 29658,
+  "width": 1584,
+  "height": 672,
+  "aliases": [],
+  "hash": "6e9b7bbd0dc799a602ac92f3cb846933b5ae97cf6384830938811d39fcbbe0fe",
+  "modified": "2026-09-10T22:00:40.210Z",
+  "animated": false,
+  "labelHash": "6e9b7bbd0dc799a602ac92f3cb846933b5ae97cf6384830938811d39fcbbe0fe",
+  "facets": {
+    "subject": [
+      "text"
+    ],
+    "expression": [],
+    "action": [],
+    "intent": [
+      "celebrate",
+      "excitement",
+      "praise"
+    ],
+    "prop": [],
+    "style": [
+      "flat-vector",
+      "transparent"
+    ],
+    "color": [
+      "red"
+    ],
+    "origin": []
+  },
+  "labelConfidence": "high"
+}
