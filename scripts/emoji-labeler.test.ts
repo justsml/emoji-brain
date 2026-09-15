@@ -37,7 +37,7 @@ test('OpenRouter key activates the adapter and sends Gemini image requests', asy
   } finally { await fs.rm(root, { recursive: true, force: true }); }
 });
 
-test('direct Google sends a fixed seed and minimal thinking', async () => {
+test('direct Google sends a fixed seed and low thinking', async () => {
   clearKeys();
   vi.stubEnv('GOOGLE_API_KEY', 'google-test-key');
   const fetchMock = vi.fn(async () => new Response(JSON.stringify({
@@ -54,7 +54,7 @@ test('direct Google sends a fixed seed and minimal thinking', async () => {
     expect(String(url)).toBe('https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent');
     const body = JSON.parse(request.body as string);
     expect(body.generationConfig.seed).toBe(42);
-    expect(body.generationConfig.thinkingConfig).toEqual({ thinkingLevel: 'minimal' });
+    expect(body.generationConfig.thinkingConfig).toEqual({ thinkingLevel: 'low' });
     expect(body.generationConfig.temperature).toBeUndefined();
   } finally { await fs.rm(root, { recursive: true, force: true }); }
 });
