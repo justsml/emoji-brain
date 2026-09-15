@@ -32,7 +32,8 @@
 
 .emoji-card-preview {
   position: relative;
-  aspect-ratio: 1;
+  /* Match the reserved cell height even when auto-fill widens a column. */
+  height: calc(var(--emoji-size) - 0.5rem);
 }
 
 .emoji-card-image {
@@ -266,5 +267,10 @@
 }
 
 /* Skip off-screen contents while retaining card geometry and DOM navigation. */
-.emoji-cell { content-visibility: auto; contain: layout style paint; }
+.emoji-cell {
+  /* Preview + card padding + single-line label; independent of image loading. */
+  height: calc(var(--emoji-size) + 1.509375rem);
+  content-visibility: auto;
+  contain: layout style paint;
+}
 .emoji-cell:hover, .emoji-cell:focus-within, .emoji-cell:has(.emoji-card-selected) { content-visibility: visible; contain: layout style; }

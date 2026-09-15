@@ -1,4 +1,4 @@
-import type { ReactElement, KeyboardEvent } from "react";
+import type { ReactElement, KeyboardEvent, CSSProperties } from "react";
 import { memo, useCallback, useMemo, useState, useEffect, useRef } from "react";
 import type { EmojiMetadata } from "../types/emoji";
 import { cn } from "../lib/utils";
@@ -21,7 +21,8 @@ interface EmojiGridProps {
   onDeselectMany?: (emojis: EmojiMetadata[]) => void;
 }
 
-const GRID_GAP = 12;
+// Fixed spacing per size keeps larger stickers separated without measurements.
+const GRID_GAPS = [12, 18, 24, 32];
 
 interface EmojiCellProps {
   emoji: EmojiMetadata;
@@ -119,7 +120,7 @@ const EmojiCell = ({
   const name = emoji.filename.split("/").pop()?.replace(/\.[^.]+$/, "") || emoji.filename;
 
   return (
-    <div className="emoji-cell min-w-0" role="gridcell" data-id={emoji.id} style={{ height: `calc(${baseSize}px + 1.509375rem)` }}>
+    <div className="emoji-cell min-w-0" role="gridcell" data-id={emoji.id} style={{ "--emoji-size": `${baseSize}px` } as CSSProperties}>
       <button
         type="button"
         className={cn(
@@ -276,7 +277,7 @@ const EmojiGrid = ({
           role="grid"
           aria-label="Emoji results"
           style={{
-            gap: GRID_GAP,
+            gap: GRID_GAPS[gridScale] ?? GRID_GAPS[0],
             gridTemplateColumns: `repeat(auto-fill, minmax(${baseSize}px, 1fr))`,
           }}
         >
