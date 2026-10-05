@@ -41,10 +41,8 @@
   padding: 0.6rem 2rem;
   border-top: 1px solid hsl(var(--rule) / 0.55);
   color: hsl(var(--foreground));
-  /* frosted, but only just: the mat's grid should ghost through the bar
-     without ever competing with the type sitting on it */
-  background: hsl(var(--background) / 0.86);
-  backdrop-filter: blur(20px) saturate(1.35);
+  /* An opaque surface avoids re-filtering the scrolling grid every frame. */
+  background: hsl(var(--background));
 }
 
 /* on a dark mat the inversion runs the other way: a paper strip */
@@ -78,6 +76,8 @@
   gap: 1rem;
   min-width: 0;
 }
+.sheet-expand { flex-shrink: 0; min-height: 36px; padding: 0 .5rem; font-size: .75rem; cursor: pointer; white-space: nowrap; }
+.sheet-expand:focus-visible { outline: 2px solid hsl(var(--cut)); }
 
 .sheet-tally {
   flex-shrink: 0;

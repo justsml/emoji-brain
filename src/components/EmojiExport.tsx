@@ -4,15 +4,17 @@ import type { EmojiMetadata } from "../types/emoji";
 import { getAbsoluteUrl } from "../lib/utils";
 import type { SlackResolution } from '../lib/slackExportPlan';
 import { runExportWorker } from "../lib/exportWorker";
-import { emojiAsset, markdownTable } from "../lib/emojiAssets";
+import { recoverEmojiPreview, restoreEmojiPreview, emojiAsset, markdownTable } from "../lib/emojiAssets";
 import { useExportEstimates } from "../hooks/useExportEstimates";
 import { formatBytes, SLACK_SCRIPT_LIMIT, type ExportTier } from "../lib/slackSizeEstimate";
 import { ExportOptions } from "./ExportOptions";
 import { ExportEstimateNote } from "./ExportEstimateNote";
-import { CheckSquare, XSquare, ChevronDown, Copy, LoaderCircle, X, Check, Trash2, Link } from "lucide-react";
+import { CheckSquare, XSquare, ChevronDown, Copy, LoaderCircle, X, Check, Trash2, Link, ArrowLeftRight } from "lucide-react";
 import "../styles/sheet-tray.css";
 
 interface EmojiExportProps {
+  onOpenSheet?: () => void;
+  onInvertVisible?: () => void;
   selectedEmojis: EmojiMetadata[];
   onClearSelection: () => void;
   onDeselectVisible: () => void;
@@ -26,7 +28,7 @@ interface EmojiExportProps {
   scriptOverheadBytes: number;
 }
 
-export function EmojiExport({ selectedEmojis, onClearSelection, onDeselectVisible, onSelectAll, filteredEmojis, gridScale, onRemoveEmoji, shareUrl, scriptOverheadBytes }: EmojiExportProps) {
+export function EmojiExport({ onInvertVisible, onOpenSheet, selectedEmojis, onClearSelection, onDeselectVisible, onSelectAll, filteredEmojis, gridScale, onRemoveEmoji, shareUrl, scriptOverheadBytes }: EmojiExportProps) {
   const [exportStatus, setExportStatus] = useState<string>("");
   const [isExporting, setIsExporting] = useState(false);
   const [copiedScript, setCopiedScript] = useState<{ megabytes: string; count: number; replaceSmaller: boolean; resolutions: SlackResolution[]; pinned: boolean } | null>(null);
@@ -226,9 +228,10 @@ export function EmojiExport({ selectedEmojis, onClearSelection, onDeselectVisibl
             </>
           )}
         </div>
+        {onOpenSheet && <button type="button" className="sheet-expand" onClick={onOpenSheet} aria-label="Expand selected emojis">Expand ↗</button>}
         {selectedEmojis.length > 0 && (
           <div className="sheet-strip scrollbar-hide mask-fade-right">
-            {selectedEmojis.map((emoji) => (
+            {selectedEmojis.slice(0, 12).map((emoji) => (
               <button
                 key={emoji.id}
                 type="button"
@@ -236,9 +239,10 @@ export function EmojiExport({ selectedEmojis, onClearSelection, onDeselectVisibl
                 onClick={() => onRemoveEmoji(emoji)}
                 title={`Remove ${emoji.filename}`}
               >
-                {/* stills only: the tray sits on a blurred backdrop, so an
-                    animating chip would force it to re-blur every frame */}
+                {/* Stills keep the fixed tray from repainting every animation frame. */}
                 <img
+                  onError={recoverEmojiPreview}
+                  onLoad={restoreEmojiPreview}
                   src={emojiAsset(emoji.filename, 64, true)}
                   width={32}
                   height={32}
@@ -248,6 +252,7 @@ export function EmojiExport({ selectedEmojis, onClearSelection, onDeselectVisibl
                 />
               </button>
             ))}
+            {selectedEmojis.length > 12 && <button type="button" className="sheet-expand" onClick={onOpenSheet}>+{selectedEmojis.length - 12}</button>}
           </div>
         )}
       </div>
@@ -305,6 +310,7 @@ export function EmojiExport({ selectedEmojis, onClearSelection, onDeselectVisibl
         >
           <Trash2 className="h-4 w-4" />
         </Button>
+        {onInvertVisible && <Button variant="ghost" size="sm" className="h-9 w-9 p-0" onClick={onInvertVisible} disabled={!filteredEmojis.length} title="Invert visible selection" aria-label="Invert visible selection"><ArrowLeftRight className="h-4 w-4" /></Button>}
         <div className="sheet-divider" />
         {shareUrl && selectedEmojis.length > 0 && (
           <Button

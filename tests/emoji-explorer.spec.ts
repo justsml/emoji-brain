@@ -3,6 +3,7 @@ import { test, expect } from "@playwright/test";
 test.beforeEach(async ({ page }) => {
   // Navigate to the home page before each test
   await page.goto("/");
+  await expect(page.locator('astro-island[ssr]')).toHaveCount(0);
 });
 
 test("should have the correct title", async ({ page }) => {
@@ -108,11 +109,11 @@ test("should filter emojis when searching", async ({ page }) => {
 test("should select and deselect emojis", async ({ page }) => {
   await page.getByTitle("Deselect visible").click();
   await expect(page.getByText("No emojis selected")).toBeVisible();
-  await page.locator('div[role="gridcell"] button').first().click();
+  await page.locator('div[role="gridcell"] > button').first().click();
   await expect(page.getByLabel("1 selected")).toBeVisible();
-  await page.locator('div[role="gridcell"] button').nth(1).click();
+  await page.locator('div[role="gridcell"] > button').nth(1).click();
   await expect(page.getByLabel("2 selected")).toBeVisible();
-  await page.locator('div[role="gridcell"] button').first().click();
+  await page.locator('div[role="gridcell"] > button').first().click();
   await expect(page.getByLabel("1 selected")).toBeVisible();
 
   // Handle dialog for deselect all
@@ -125,7 +126,7 @@ test("should show export options when emojis are selected", async ({
   page,
 }) => {
   // Select an emoji
-  await page.locator('div[role="gridcell"] button').first().click();
+  await page.locator('div[role="gridcell"] > button').first().click();
 
   await expect(page.getByRole("button", { name: "Copy Slack Script" })).toBeVisible();
 
@@ -195,6 +196,7 @@ test('selection becomes interactive even when the external font service stalls',
   try {
     await page.goto('/', {waitUntil: 'commit'});
     await expect(page.getByRole('grid', {name: 'Emoji results'})).toBeVisible({timeout: 3000});
+    await expect(page.locator('astro-island[ssr]')).toHaveCount(0, {timeout: 3000});
     await page.getByTitle('Deselect visible').click();
     await expect(page.getByText('No emojis selected')).toBeVisible();
   } finally {release();}
@@ -224,7 +226,7 @@ test('visible stickers stay decoded across page-end and page-home jumps', async 
 
 test('native Home End and page keys scroll without changing the selection', async ({page}) => {
   await page.getByRole('grid', {name: 'Emoji results'}).waitFor();
-  const selected = await page.locator('[role="gridcell"] button[aria-pressed="true"]').count();
+  const selected = await page.locator('[role="gridcell"] > button[aria-pressed="true"]').count();
   await page.keyboard.press('End');
   await expect.poll(() => page.evaluate(() => Math.abs(scrollY - (document.documentElement.scrollHeight - innerHeight)))).toBeLessThan(3);
   await page.keyboard.press('Home');
@@ -235,5 +237,5 @@ test('native Home End and page keys scroll without changing the selection', asyn
   await page.waitForTimeout(400);
   await page.keyboard.press('PageUp');
   await expect.poll(() => page.evaluate(() => scrollY)).toBeLessThan(3);
-  expect(await page.locator('[role="gridcell"] button[aria-pressed="true"]').count()).toBe(selected);
+  expect(await page.locator('[role="gridcell"] > button[aria-pressed="true"]').count()).toBe(selected);
 });

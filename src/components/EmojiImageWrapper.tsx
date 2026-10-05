@@ -1,5 +1,5 @@
 import React from 'react';
-import {emojiAsset, previewSrcSet} from '../lib/emojiAssets';
+import {recoverEmojiPreview, restoreEmojiPreview, emojiAsset, previewSrcSet} from '../lib/emojiAssets';
 import type { EmojiMetadata } from '../types/emoji';
 
 interface EmojiImageWrapperProps {
@@ -11,6 +11,8 @@ const EmojiImageWrapper: React.FC<EmojiImageWrapperProps> = ({ emoji, className 
   // Create a client-side image element that matches the Astro Image component's responsive behavior
   return (
     <img
+      onError={recoverEmojiPreview}
+      onLoad={restoreEmojiPreview}
       src={emojiAsset(emoji.filename, 128, true)}
       alt={emoji.filename}
       className={className}

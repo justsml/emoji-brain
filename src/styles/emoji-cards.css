@@ -27,7 +27,7 @@
   text-align: center;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
-  transition: background-color 140ms ease, box-shadow 140ms ease;
+  /* Selection rules change instantly, including when hundreds are inverted. */
 }
 
 .emoji-card-preview {
@@ -42,10 +42,9 @@
   width: 92%;
   height: 92%;
   object-fit: contain;
-  /* a sticker sits on the mat, so it casts a short contact shadow */
-  filter: drop-shadow(0 1.5px 1.5px hsl(var(--lift) / 0.3));
-  transition: transform 150ms cubic-bezier(0.2, 0.8, 0.3, 1),
-    filter 150ms ease;
+  /* Hundreds of image filters add raster/compositor work while scrolling.
+     A transform gives the hovered sticker its lift without a filtered layer. */
+  transition: transform 150ms cubic-bezier(0.2, 0.8, 0.3, 1);
 }
 
 .emoji-card:hover {
@@ -53,7 +52,6 @@
 }
 .emoji-card:hover .emoji-card-image {
   transform: translateY(-3px) rotate(-2deg) scale(1.06);
-  filter: drop-shadow(0 5px 5px hsl(var(--lift) / 0.3));
 }
 .emoji-card:active .emoji-card-image {
   transform: translateY(-1px) rotate(-1deg) scale(1);
@@ -73,8 +71,9 @@
   box-shadow: inset 0 -2px 0 0 hsl(var(--cut));
 }
 .emoji-card-selected .emoji-card-image {
-  transform: translateY(-2px) rotate(-2deg) scale(1.04);
-  filter: drop-shadow(0 4px 4px hsl(var(--lift) / 0.28));
+  /* Selection can cover the entire catalog. Keep its resting artwork flat;
+     hundreds of transformed images make long mobile grids costly to raster. */
+  transform: none;
 }
 
 /* the punch-out tab, shown only when it can be acted on */
@@ -94,7 +93,6 @@
   font-weight: 700;
   line-height: 1;
   opacity: 0;
-  transition: opacity 130ms ease;
 }
 .emoji-card:hover .emoji-card-check,
 .emoji-card:focus-visible .emoji-card-check { opacity: 1; }
@@ -144,7 +142,6 @@
 .emoji-card:hover .emoji-card-name { color: hsl(var(--foreground)); }
 .emoji-card-selected .emoji-card-name {
   color: hsl(var(--cut));
-  font-weight: 500;
 }
 
 /* --- empty state --------------------------------------------------------- */
@@ -268,9 +265,37 @@
 
 /* Skip off-screen contents while retaining card geometry and DOM navigation. */
 .emoji-cell {
+  position: relative;
   /* Preview + card padding + single-line label; independent of image loading. */
   height: calc(var(--emoji-size) + 1.509375rem);
   content-visibility: auto;
   contain: layout style paint;
 }
-.emoji-cell:hover, .emoji-cell:focus-within, .emoji-cell:has(.emoji-card-selected) { content-visibility: visible; contain: layout style; }
+.emoji-cell:hover, .emoji-cell:focus-within { content-visibility: visible; contain: layout style; }
+
+/* Only the card with pointer intent, keyboard focus, or a tap mounts controls. */
+.emoji-card-actions { position: absolute; z-index: 3; top: 0; left: 50%; transform: translateX(-50%); display: flex; width: max-content; border: 1px solid hsl(var(--border)); border-radius: 6px; background: hsl(var(--background)); box-shadow: 0 2px 6px rgb(0 0 0 / .12); }
+.emoji-card-actions button { min-height: 32px; min-width: 44px; padding: 0 6px; font-size: .6875rem; cursor: pointer; }
+.emoji-card-actions button + button { border-left: 1px solid hsl(var(--border)); }
+.emoji-card-actions button:focus-visible { outline: 2px solid hsl(var(--cut)); outline-offset: -2px; }
+.is-marquee .emoji-card-actions { display: none; }
+@media (pointer: coarse) { .emoji-card-actions button { min-height: 44px; } }
+
+.emoji-card-preview[data-preview-unavailable]::after,
+.workspace-pick[data-preview-unavailable]::after,
+.sheet-chip[data-preview-unavailable]::after {
+  content: "Image unavailable";
+  position: absolute;
+  inset: 12% 4% 24%;
+  display: grid;
+  place-items: center;
+  font-size: .625rem;
+  line-height: 1.2;
+  white-space: normal;
+  color: hsl(var(--muted-foreground));
+  pointer-events: none;
+  opacity: 1;
+}
+.sheet-chip[data-preview-unavailable]::after { content: "?"; inset: 0; }
+.workspace-load-note { position: fixed; z-index: 50; right: 1rem; bottom: 10rem; width: min(360px, calc(100vw - 2rem)); padding: 1rem; border: 1px solid hsl(var(--border)); border-radius: 8px; background: hsl(var(--background)); color: hsl(var(--foreground)); font-size: .875rem; }
+.workspace-load-note button { min-height: 44px; padding: .5rem; text-decoration: underline; cursor: pointer; }

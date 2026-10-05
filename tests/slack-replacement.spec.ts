@@ -6,8 +6,9 @@ for(const scenario of ['replace','restore','changed','alias','delete-rejected','
   test.setTimeout(60_000);
   await page.addInitScript(()=>Object.defineProperty(navigator,'clipboard',{value:{writeText:async(text:string)=>{(window as any).copiedEmojiScript=text;}}}));
   await page.goto('/');
+  await expect(page.locator('astro-island[ssr]')).toHaveCount(0);
   await page.getByTitle('Deselect visible').click();
-  const first=page.locator('[role="gridcell"] button').first();
+  const first=page.locator('[role="gridcell"] > button').first();
   const filename=(await first.getAttribute('aria-label'))!.split(',')[0],name=filename.replace(/\.webp$/,'').toLowerCase();
   await first.click();await page.getByRole('button',{name:'Other export options'}).click();
   await page.getByRole('menuitem',{name:'Slack script: replace smaller…'}).click();

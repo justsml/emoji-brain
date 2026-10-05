@@ -2,7 +2,7 @@ import type { ReactElement, KeyboardEvent, CSSProperties } from "react";
 import { memo, useCallback, useMemo, useState, useEffect, useRef } from "react";
 import type { EmojiMetadata } from "../types/emoji";
 import { cn } from "../lib/utils";
-import { emojiAsset, previewSrcSet } from "../lib/emojiAssets";
+import { recoverEmojiPreview, restoreEmojiPreview, emojiAsset, previewSrcSet } from "../lib/emojiAssets";
 import { GRID_SCALES } from "./GridScaleSlider";
 import { useMarqueeSelection, type MarqueeMode } from "../hooks/useMarqueeSelection";
 import "../styles/emoji-cards.css";
@@ -12,6 +12,7 @@ interface EmojiGridProps {
   selectedEmojis: EmojiMetadata[];
   focusedIndex: number;
   gridScale: number;
+  onSimilar?: (emoji: EmojiMetadata) => void;
   onToggleSelection: (emoji: EmojiMetadata, event?: React.MouseEvent) => void;
   onSetFocusedIndex: (index: number) => void;
   onAnnounceSelection: (emoji: EmojiMetadata, isSelected: boolean) => void;
@@ -32,6 +33,7 @@ interface EmojiCellProps {
   /** inside the drag rectangle, and what releasing would do to it */
   preview: MarqueeMode | null;
   baseSize: number;
+  onSimilar?: (emoji: EmojiMetadata) => void;
   onToggle: (emoji: EmojiMetadata, event?: React.MouseEvent) => void;
   onKeyDown: (e: KeyboardEvent, index: number, isSelected: boolean) => void;
   onFocusChange: (index: number) => void;
@@ -56,6 +58,8 @@ const AnimatedImage = ({
   const src = emojiAsset(emoji.filename, playing ? (baseSize <= 96 ? 128 : 256) : 128, !playing);
   return (
     <img
+      onError={recoverEmojiPreview}
+      onLoad={restoreEmojiPreview}
       src={src}
       srcSet={playing ? undefined : previewSrcSet(emoji.filename)}
       // Cell width is fluid (CSS grid auto-fill), so this can only bound it: a
@@ -73,6 +77,8 @@ const AnimatedImage = ({
   );
 };
 
+const MemoizedAnimatedImage = memo(AnimatedImage);
+
 const EmojiCell = ({
   emoji,
   index,
@@ -81,17 +87,21 @@ const EmojiCell = ({
   preview,
   baseSize,
   onToggle,
+  onSimilar,
   onKeyDown,
   onFocusChange,
 }: EmojiCellProps) => {
   const [isPlaying, setIsPlaying] = useState(false);
+  const [actions, setActions] = useState(false);
+  const [copyStatus, setCopyStatus] = useState("");
   const hoverTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   useEffect(() => () => clearTimeout(hoverTimer.current), []);
 
   const handleClick = useCallback((e: React.MouseEvent) => {
     e.preventDefault();
     // a tap has no hover to enter, so play from the tap itself
-    if (emoji.animated) setIsPlaying(true);
+    setActions(true);
+    if (emoji.animated && !window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) setIsPlaying(true);
     onToggle(emoji, e);
   }, [onToggle, emoji]);
 
@@ -100,17 +110,21 @@ const EmojiCell = ({
   }, [onKeyDown, index, isSelected]);
 
   const handleFocus = useCallback(() => {
-    if (emoji.animated) setIsPlaying(true);
+    setActions(true);
+    if (emoji.animated && !window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) setIsPlaying(true);
     onFocusChange(index);
   }, [onFocusChange, index, emoji.animated]);
 
   const startPlaying = useCallback(() => {
-    if (!emoji.animated) return;
+    if (window.matchMedia?.("(hover: none)").matches) return;
     // Cards passing under the pointer during a scroll should not start network
     // requests, animation decoding, and raster invalidation. Taps/focus still
     // play immediately; a stationary pointer expresses hover intent.
     clearTimeout(hoverTimer.current);
-    hoverTimer.current = setTimeout(() => setIsPlaying(true), 120);
+    hoverTimer.current = setTimeout(() => {
+      setActions(true);
+      if (emoji.animated && !window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) setIsPlaying(true);
+    }, 120);
   }, [emoji.animated]);
   const stopPlaying = useCallback(() => {
     clearTimeout(hoverTimer.current);
@@ -120,7 +134,7 @@ const EmojiCell = ({
   const name = emoji.filename.split("/").pop()?.replace(/\.[^.]+$/, "") || emoji.filename;
 
   return (
-    <div className="emoji-cell min-w-0" role="gridcell" data-id={emoji.id} style={{ "--emoji-size": `${baseSize}px` } as CSSProperties}>
+    <div className="emoji-cell min-w-0" onPointerEnter={startPlaying} onPointerLeave={event => { stopPlaying(); if (!event.currentTarget.contains(document.activeElement)) setActions(false); }} onBlur={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) { stopPlaying(); setActions(false); } }} role="gridcell" data-id={emoji.id} style={{ "--emoji-size": `${baseSize}px` } as CSSProperties}>
       <button
         type="button"
         className={cn(
@@ -133,9 +147,6 @@ const EmojiCell = ({
         onClick={handleClick}
         onKeyDown={handleKeyDown}
         onFocus={handleFocus}
-        onBlur={stopPlaying}
-        onPointerEnter={startPlaying}
-        onPointerLeave={stopPlaying}
         tabIndex={isFocused ? 0 : -1}
         aria-label={`${emoji.filename}${emoji.animated ? ", animated" : ""}`}
         aria-pressed={isSelected}
@@ -143,10 +154,14 @@ const EmojiCell = ({
       >
         <div className={cn("emoji-card-preview", emoji.animated && "emoji-card-preview-animated")}>
           <span className="emoji-card-check" aria-hidden="true">{isSelected ? "✓" : "+"}</span>
-          <AnimatedImage emoji={emoji} alt={emoji.filename} baseSize={baseSize} isPlaying={isPlaying} />
+          <MemoizedAnimatedImage emoji={emoji} alt={emoji.filename} baseSize={baseSize} isPlaying={isPlaying} />
         </div>
         <span className="emoji-card-name">:{name}:</span>
       </button>
+      {actions && onSimilar && <div className="emoji-card-actions" role="group" aria-label={`Actions for ${name}`} onPointerDown={event => event.stopPropagation()}>
+        <button type="button" onClick={() => onSimilar(emoji)}>Similar</button>
+        <button type="button" aria-label={`Copy shortcode for ${name}`} onClick={async () => { try { await navigator.clipboard.writeText(`:${name}:`); setCopyStatus("Copied"); } catch { setCopyStatus("Failed"); } }}>{copyStatus || "Copy"}</button>
+      </div>}
     </div>
   );
 };
@@ -160,6 +175,7 @@ const EmojiGrid = ({
   focusedIndex,
   gridScale,
   onToggleSelection,
+  onSimilar,
   onSetFocusedIndex,
   onAnnounceSelection,
   onSelectMany,
@@ -257,7 +273,7 @@ const EmojiGrid = ({
   if (emojis.length === 0) {
     return (
       <div className="emoji-empty">
-        <img src="/emoji-delivery/previews/128/cat-confuse.webp" alt="" aria-hidden="true" width="72" height="72" />
+        <img onError={recoverEmojiPreview} onLoad={restoreEmojiPreview} src="/emoji-delivery/previews/128/cat-confuse.webp" alt="" aria-hidden="true" width="72" height="72" />
         <h2>Nothing on the sheet matches that</h2>
         <p>Search by name, or by what an emoji is doing — try “cat”, “fire”, “thumbs”, or “party”.</p>
       </div>
@@ -290,6 +306,7 @@ const EmojiGrid = ({
               isFocused={focusedIndex === index}
               preview={marquee && previewIds?.has(emoji.id) ? marquee.mode : null}
               baseSize={baseSize}
+              onSimilar={onSimilar}
               onToggle={onToggleSelection}
               onKeyDown={handleKeyDown}
               onFocusChange={onSetFocusedIndex}

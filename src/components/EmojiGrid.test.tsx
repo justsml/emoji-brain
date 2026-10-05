@@ -255,7 +255,7 @@ describe('EmojiGrid drag selection', () => {
 });
 
 
-it('only rerenders the changed card when selection changes', () => {
+it('updates selection without rebuilding unchanged image previews', () => {
   const emojis: EmojiMetadata[] = ['one', 'two', 'three'].map(id => ({id, filename: `${id}.webp`, path: `/emojis/${id}.webp`, categories: [], tags: [], created: '', size: 1}));
   const props = {emojis, focusedIndex: 0, gridScale: 0, onToggleSelection: vi.fn(), onSetFocusedIndex: vi.fn(), onAnnounceSelection: vi.fn()};
   const preview = vi.spyOn(emojiAssets, 'previewSrcSet');
@@ -264,6 +264,6 @@ it('only rerenders the changed card when selection changes', () => {
     preview.mockClear();
     rerender(<EmojiGrid {...props} selectedEmojis={[emojis[1]]} />);
     expect(screen.getByRole('button', {name: 'two.webp'})).toHaveAttribute('aria-pressed', 'true');
-    expect(preview).toHaveBeenCalledTimes(1);
+    expect(preview).not.toHaveBeenCalled();
   } finally {preview.mockRestore();}
 });

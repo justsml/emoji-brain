@@ -16,17 +16,29 @@ const emojis: EmojiMetadata[] = ['one', 'two', 'three'].map((id) => ({
 }));
 
 function Harness() {
-  const { selectedEmojis, selectAllVisible, deselectVisible, resetSelection } = useEmojiContext();
+  const { selectedEmojis, selectAllVisible, deselectVisible, invertVisible, resetSelection } = useEmojiContext();
   return <>
     <output>{selectedEmojis.map(emoji => emoji.id).join(',')}</output>
     <button onClick={() => selectAllVisible([emojis[0], emojis[1]])}>select first view</button>
     <button onClick={() => selectAllVisible([emojis[2]])}>select second view</button>
     <button onClick={() => deselectVisible([emojis[0]])}>deselect first view</button>
     <button onClick={resetSelection}>clear all</button>
+    <button onClick={() => invertVisible([emojis[0], emojis[1]])}>invert first view</button>
   </>;
 }
 
+it('inverts a mixed visible selection atomically and preserves hidden selections', async () => {
+  localStorage.setItem(selectionStorage.SELECTION_STORAGE_KEY, JSON.stringify(['one', 'three']));
+  const user = userEvent.setup();
+  render(<EmojiProvider initialEmojis={emojis}><Harness /></EmojiProvider>);
+  await user.click(screen.getByRole('button', {name: 'invert first view'}));
+  expect(screen.getByText('three,two', {selector: 'output'})).toBeInTheDocument();
+  await user.click(screen.getByRole('button', {name: 'invert first view'}));
+  expect(screen.getByText('three,one', {selector: 'output'})).toBeInTheDocument();
+});
+
 it('visible selection actions preserve emojis outside the current view', async () => {
+  localStorage.clear();
   const user = userEvent.setup();
   render(<EmojiProvider initialEmojis={emojis}><Harness /></EmojiProvider>);
 

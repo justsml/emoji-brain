@@ -11,6 +11,9 @@ import { ErrorBoundary } from "./ErrorBoundary";
 import EmojiProviderWrapper from "./ReduxProviderWrapper";
 import { buildShareUrl, clearShareParams, readShareParams } from "../lib/shareLink";
 
+import WorkspaceLoader from "./WorkspaceLoader";
+import { recoverEmojiPreview } from "../lib/emojiAssets";
+
 interface PagefindResultData {
   url: string;
   content: string;
@@ -143,12 +146,25 @@ const _EmojiExplorerApp: React.FC<EmojiExplorerAppProps> = ({
     replaceSelection,
     selectAllVisible,
     deselectVisible,
+    invertVisible,
   } = useEmojiContext();
+
+  // Server-rendered images can fail before React attaches their error handlers.
+  useEffect(() => {
+    for (const image of document.querySelectorAll<HTMLImageElement>('.emoji-card-image, .sheet-chip img')) {
+      if (image.complete && image.currentSrc && !image.naturalWidth) recoverEmojiPreview({currentTarget: image});
+    }
+  }, []);
 
   // A shared link opens straight onto its search and its sheet.
   const [shared] = useState(() =>
     typeof window === "undefined" ? {} : readShareParams(window.location.search),
   );
+  const [workspace, setWorkspace] = useState<{ source: EmojiMetadata | null } | null>(null);
+  const openSheet = useCallback(() => setWorkspace({ source: null }), []);
+  const openSimilar = useCallback((emoji: EmojiMetadata) => setWorkspace({ source: emoji }), []);
+  const handleInvertVisible = useCallback(() => invertVisible(filteredEmojis), [invertVisible, filteredEmojis]);
+  const closeWorkspace = useCallback(() => setWorkspace(null), []);
   const [searchTerm, setSearchTerm] = useState(shared.q ?? "");
   const [searchResults, setSearchResults] = useState(initialEmojis);
   const [searchStatus, setSearchStatus] = useState("");
@@ -257,6 +273,7 @@ const _EmojiExplorerApp: React.FC<EmojiExplorerAppProps> = ({
             selectedEmojis={selectedEmojis}
             focusedIndex={focusedIndex}
             gridScale={gridScale}
+            onSimilar={openSimilar}
             onToggleSelection={handleEmojiSelect}
             onSetFocusedIndex={setFocusedIndex}
             onAnnounceSelection={handleAnnounceSelection}
@@ -266,6 +283,8 @@ const _EmojiExplorerApp: React.FC<EmojiExplorerAppProps> = ({
         </section>
 
         <EmojiExport
+          onInvertVisible={handleInvertVisible}
+          onOpenSheet={openSheet}
           selectedEmojis={selectedEmojis}
           onClearSelection={handleResetSelection}
           onDeselectVisible={() => deselectVisible(filteredEmojis)}
@@ -276,6 +295,7 @@ const _EmojiExplorerApp: React.FC<EmojiExplorerAppProps> = ({
           shareUrl={selectionShareUrl}
           scriptOverheadBytes={scriptOverheadBytes}
         />
+        {workspace && <WorkspaceLoader onInvertVisible={handleInvertVisible} visibleCount={filteredEmojis.length} catalog={initialEmojis} selected={selectedEmojis} source={workspace.source} onToggle={handleEmojiSelect} onSimilar={openSimilar} onClose={closeWorkspace} />}
       </div>
     </ErrorBoundary>
   );
