@@ -25,7 +25,7 @@ export function recoverEmojiPreview(event: {currentTarget: HTMLImageElement}): v
 
 export function restoreEmojiPreview(event: {currentTarget: HTMLImageElement}): void {
   const image = event.currentTarget;
-  if (!image.dataset.previewFallback && !image.dataset.previewUnavailable) return;
+  if (!image.dataset.previewFallback && !image.dataset.previewUnavailable && !image.parentElement?.hasAttribute('data-preview-unavailable')) return;
   delete image.dataset.previewFallback;
   delete image.dataset.previewUnavailable;
   image.style.visibility = '';

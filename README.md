@@ -213,3 +213,10 @@ Built with Astro, React, TypeScript, Tailwind CSS, shadcn/ui components, Pagefin
 - [ ] Authentication and access controls
 
 [Suggest an emoji or report an issue](https://github.com/justsml/emoji-brain/issues/new).
+
+### Optional offline similarity analysis
+
+The [offline visual similarity tools](docs/offline-similarity.md) provide resumable
+palette, shape, and animation analysis with a human review report. Run
+`pnpm process-similarity --report` explicitly; this heavier analysis stays outside
+the normal build and the app's compact Similar workspace.

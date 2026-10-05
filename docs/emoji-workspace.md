@@ -1,9 +1,16 @@
 # Emoji workspace
 
-Tap a sticker to toggle selection and reveal Similar / Copy. Desktop pointers
+Tap a sticker to toggle selection and reveal the floating Similar control. Desktop pointers
 reveal these controls after 120 ms of hover intent; keyboard focus reveals them
-immediately. Copy writes the Slack shortcode. Similar opens related suggestions
+immediately. Similar opens related suggestions
 without replacing the search results.
+
+The masthead's theme atlas replaces the decorative sticker cluster. Choose 5,
+10, or 20 common subject/mood/intent labels; selecting a word filters exact
+semantic labels within the current search. The color rail's segment lengths
+reflect alpha-weighted foreground color coverage with each sticker weighted
+equally. Color choices sort the same results, preserving their selection and
+using search order to break ties. Reset clears both discovery controls.
 
 Expand in the export bar opens the selected sheet. The same native, nonmodal
 popover appears as a right-side panel on desktop and a bottom drawer below
@@ -51,24 +58,32 @@ PERF_FULL_CHROMIUM=1 PERF_PORT=4324 pnpm test:e2e:performance \
   tests/performance/workspace.performance.spec.ts --reporter=list
 ```
 
-The final eight checks passed in Chromium 153 using Apple M2 Metal rendering.
+The final ten checks passed in Chromium 153 using Apple M2 Metal rendering.
 At 4× CPU throttling, workspace interactions had a 16.8 ms p95 animation-frame
 gap and zero long main-thread tasks at both 1440px and 390px. Opening the lazy
-workspace, including test-driver overhead, took 249 ms and 209 ms respectively.
+workspace, including test-driver overhead, took 247 ms and 245 ms respectively.
 
-At 2× CPU throttling, the selected-grid scroll checks had p95 frame gaps around
-16.8 ms across desktop and mobile Small/XL, except desktop Small rapid scrolling
-at 33.3 ms. All scroll phases had zero long tasks. These are local browser measurements,
-not a claim of guaranteed FPS on physical phones or other browsers. The tests
-attach raw frame and task measurements for each run.
+At 2× CPU throttling, selected-grid scroll checks had p95 frame gaps of
+16.7–33.3 ms across desktop and mobile Small/XL. All scroll phases had zero long
+tasks. These are local browser measurements, not guaranteed FPS on physical
+phones or other browsers. The tests attach raw frame and task measurements.
 
-The additional bulk-interaction checks use 4× CPU throttling and a real CDP
-network limit of 4 Mbps with 40 ms latency. They invert the whole selection four
-times, open both workspace tabs and export controls, change export tiers, and
-invert filtered results. Desktop measured a 33.4 ms p95 frame gap, a longest
-main-thread task of 72 ms, and 28 ms total blocking time. Mobile measured 33.3 ms
-p95 and zero long tasks. The desktop result still includes brief measurable
-blocking; these measurements do not promise universally jank-free interaction.
+Bulk-interaction checks use 4× CPU throttling and a CDP network limit of 4 Mbps
+with 40 ms latency. They invert the whole selection four times, open both
+workspace tabs and export controls, change export tiers, and invert filtered
+results. Desktop measured a 33.3 ms p95 frame gap, a longest main-thread task
+of 68 ms, and 31 ms total blocking time. Mobile measured 33.3 ms p95 and zero
+long tasks. Desktop still has brief measurable blocking.
+
+Theme/color discovery uses 2× desktop and 4× mobile CPU throttling. Desktop
+measured a 16.7 ms p95 frame gap; mobile measured 33.3 ms. Neither had long tasks.
+Additional 4× desktop stress runs varied between 33 and 50 ms p95 and had brief
+55–68 ms tasks; they do not consistently meet the 35 ms discovery frame budget.
+These measurements do not promise universally jank-free interaction.
+
+Stable keyboard callbacks let memoized cells survive sorts, React transitions
+give input priority, and grid containment limits layout/paint work. The atlas
+keeps its height stable when changing the number of words.
 
 Browser checks decode all 1,053 preview assets (351 stickers at three sizes),
 open and scroll the entire expanded sheet on desktop and mobile, and verify

@@ -110,11 +110,14 @@ test('ZIP downloads the native-size quality-90 WebPs and Markdown includes all p
 });
 
 test('export can be canceled while the grid remains interactive',async({page,context})=>{
+  const errors: string[] = [];
+  page.on('pageerror', error => errors.push(error.message));
   await context.route('**/emoji-delivery/original/**',async route=>{
     await new Promise(resolve=>setTimeout(resolve,500));
     await route.continue().catch(()=>{});
   });
   await page.goto('/');
+  await expect(page.locator('astro-island[ssr]')).toHaveCount(0);
   await page.locator('[role="gridcell"] button').first().click();
   await page.getByRole('button',{name:'Other export options'}).click();
   const created=page.waitForEvent('worker');
@@ -125,6 +128,7 @@ test('export can be canceled while the grid remains interactive',async({page,con
   await expect(page.locator('.sheet-status')).toContainText('Export canceled');
   await expect.poll(()=>page.workers().filter(w=>w.url().includes("export.worker")).length).toBe(0);
   await expect(page.getByPlaceholder('Search emojis...')).toHaveValue('roo');
+  expect(errors).toEqual([]);
 });
 
 test('Pagefind is lazy, uses one engine, and avoids redundant result fragments',async({page})=>{

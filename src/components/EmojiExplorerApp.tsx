@@ -112,7 +112,7 @@ async function pagefindSearch(
   const emojiById = new Map(initialEmojis.map((emoji) => [emoji.id, emoji]));
   let loaded = 0;
   onProgress(loaded, response.results.length);
-  return Promise.all(response.results.map(async (result) => {
+  return Promise.all(response.results.map(async (result: PagefindSearchResult) => {
     const data = await result.data();
     onProgress(++loaded, response.results.length);
     const original = emojiById.get(data.meta.id);

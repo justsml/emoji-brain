@@ -1,5 +1,5 @@
 import type { ReactElement, KeyboardEvent, CSSProperties } from "react";
-import { memo, useCallback, useMemo, useState, useEffect, useRef } from "react";
+import { memo, useCallback, useMemo, useState, useEffect, useLayoutEffect, useRef } from "react";
 import type { EmojiMetadata } from "../types/emoji";
 import { cn } from "../lib/utils";
 import { recoverEmojiPreview, restoreEmojiPreview, emojiAsset, previewSrcSet } from "../lib/emojiAssets";
@@ -27,7 +27,6 @@ const GRID_GAPS = [14, 20, 26, 34];
 
 interface EmojiCellProps {
   emoji: EmojiMetadata;
-  index: number;
   isSelected: boolean;
   isFocused: boolean;
   /** inside the drag rectangle, and what releasing would do to it */
@@ -35,8 +34,8 @@ interface EmojiCellProps {
   baseSize: number;
   onSimilar?: (emoji: EmojiMetadata) => void;
   onToggle: (emoji: EmojiMetadata, event?: React.MouseEvent) => void;
-  onKeyDown: (e: KeyboardEvent, index: number, isSelected: boolean) => void;
-  onFocusChange: (index: number) => void;
+  onKeyDown: (e: KeyboardEvent, id: string, isSelected: boolean) => void;
+  onFocusChange: (id: string) => void;
 }
 
 const AnimatedImage = ({
@@ -81,7 +80,6 @@ const MemoizedAnimatedImage = memo(AnimatedImage);
 
 const EmojiCell = ({
   emoji,
-  index,
   isSelected,
   isFocused,
   preview,
@@ -105,14 +103,14 @@ const EmojiCell = ({
   }, [onToggle, emoji]);
 
   const handleKeyDown = useCallback((e: KeyboardEvent) => {
-    onKeyDown(e, index, isSelected);
-  }, [onKeyDown, index, isSelected]);
+    onKeyDown(e, emoji.id, isSelected);
+  }, [onKeyDown, emoji.id, isSelected]);
 
   const handleFocus = useCallback(() => {
     setActions(true);
     if (emoji.animated && !window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) setIsPlaying(true);
-    onFocusChange(index);
-  }, [onFocusChange, index, emoji.animated]);
+    onFocusChange(emoji.id);
+  }, [onFocusChange, emoji.id, emoji.animated]);
 
   const startPlaying = useCallback(() => {
     if (window.matchMedia?.("(hover: none)").matches) return;
@@ -180,6 +178,12 @@ const EmojiGrid = ({
   onDeselectMany,
 }: EmojiGridProps): ReactElement => {
   const parentRef = useRef<HTMLDivElement>(null);
+  const order = useRef({emojis, byId: new Map(emojis.map((emoji,index) => [emoji.id,index]))});
+  useLayoutEffect(() => { order.current = {emojis, byId: new Map(emojis.map((emoji,index) => [emoji.id,index]))}; }, [emojis]);
+  const handleFocusChange = useCallback((id: string) => {
+    const index = order.current.byId.get(id);
+    if (index !== undefined) onSetFocusedIndex(index);
+  }, [onSetFocusedIndex]);
   const baseSize = GRID_SCALES[gridScale] ?? GRID_SCALES[0];
 
   const isSelectedMap = useMemo(() => {
@@ -225,7 +229,10 @@ const EmojiGrid = ({
     return count;
   }, []);
 
-  const handleKeyDown = useCallback((e: KeyboardEvent, index: number, isSelected: boolean) => {
+  const handleKeyDown = useCallback((e: KeyboardEvent, id: string, isSelected: boolean) => {
+    const {emojis, byId} = order.current;
+    const index = byId.get(id);
+    if (index === undefined) return;
     switch (e.key) {
       case "ArrowRight":
         e.preventDefault();
@@ -252,7 +259,7 @@ const EmojiGrid = ({
         }
         break;
     }
-  }, [emojis, onSetFocusedIndex, onToggleSelection, onAnnounceSelection]);
+  }, [getColumnCount, onSetFocusedIndex, onToggleSelection, onAnnounceSelection]);
 
   // Only stickers that releasing would actually change get the preview treatment.
   const previewIds = useMemo(() => {
@@ -299,7 +306,6 @@ const EmojiGrid = ({
             <MemoizedEmojiCell
               key={emoji.id}
               emoji={emoji}
-              index={index}
               isSelected={isSelectedMap.has(emoji.id)}
               isFocused={focusedIndex === index}
               preview={marquee && previewIds?.has(emoji.id) ? marquee.mode : null}
@@ -307,7 +313,7 @@ const EmojiGrid = ({
               onSimilar={onSimilar}
               onToggle={onToggleSelection}
               onKeyDown={handleKeyDown}
-              onFocusChange={onSetFocusedIndex}
+              onFocusChange={handleFocusChange}
             />
           ))}
         </div>

@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { screen, act } from '@testing-library/react';
+import { screen, act, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import EmojiGrid from './EmojiGrid';
 import * as emojiAssets from '../lib/emojiAssets';
@@ -266,4 +266,19 @@ it('updates selection without rebuilding unchanged image previews', () => {
     expect(screen.getByRole('button', {name: 'two.webp'})).toHaveAttribute('aria-pressed', 'true');
     expect(preview).not.toHaveBeenCalled();
   } finally {preview.mockRestore();}
+});
+
+
+it('uses the committed sorted order for focus, navigation and selection', () => {
+  const emojis: EmojiMetadata[] = ['one', 'two', 'three'].map(id => ({id, filename: `${id}.webp`, path: '', categories: [], tags: [], size: 1}));
+  const props = {focusedIndex: 0, gridScale: 0, selectedEmojis: [], onToggleSelection: vi.fn(), onSetFocusedIndex: vi.fn(), onAnnounceSelection: vi.fn()};
+  const {rerender} = render(<EmojiGrid {...props} emojis={emojis} />);
+  rerender(<EmojiGrid {...props} emojis={[emojis[2],emojis[0],emojis[1]]} />);
+  const first = screen.getByRole('button', {name:'three.webp'});
+  fireEvent.focus(first);
+  expect(props.onSetFocusedIndex).toHaveBeenLastCalledWith(0);
+  fireEvent.keyDown(first,{key:'ArrowRight'});
+  expect(props.onSetFocusedIndex).toHaveBeenLastCalledWith(1);
+  fireEvent.keyDown(first,{key:'Enter'});
+  expect(props.onToggleSelection).toHaveBeenLastCalledWith(emojis[2]);
 });

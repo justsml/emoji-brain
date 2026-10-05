@@ -30,3 +30,7 @@ test-results
 playwright-tests
 playwright-report
 experiments
+
+# Optional offline similarity outputs
+public/similarity/
+.cache/similarity/

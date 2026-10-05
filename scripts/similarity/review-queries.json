@@ -1,0 +1,245 @@
+{
+  "description": "40 queries selected by filename/category for human review; no relevance judgments supplied. Split fixed before tuning.",
+  "queries": [
+    {
+      "id": "df167e0a",
+      "filename": "10-10.webp",
+      "category": "text",
+      "split": "held-out"
+    },
+    {
+      "id": "9a399ad2",
+      "filename": "1000.webp",
+      "category": "text",
+      "split": "tuning"
+    },
+    {
+      "id": "32b965f8",
+      "filename": "10000.webp",
+      "category": "text",
+      "split": "tuning"
+    },
+    {
+      "id": "e66fa0bc",
+      "filename": "420.webp",
+      "category": "text",
+      "split": "tuning"
+    },
+    {
+      "id": "41aff2c1",
+      "filename": "done.webp",
+      "category": "text",
+      "split": "held-out"
+    },
+    {
+      "id": "83445bcc",
+      "filename": "no_ragrets.webp",
+      "category": "text",
+      "split": "tuning"
+    },
+    {
+      "id": "65127750",
+      "filename": "fingerguns_left.webp",
+      "category": "direction",
+      "split": "held-out"
+    },
+    {
+      "id": "44baed4a",
+      "filename": "fingerguns.webp",
+      "category": "direction",
+      "split": "tuning"
+    },
+    {
+      "id": "75318d53",
+      "filename": "meow_fistbumpleft.webp",
+      "category": "direction",
+      "split": "tuning"
+    },
+    {
+      "id": "eaa8f07f",
+      "filename": "meow_fistbumpright.webp",
+      "category": "direction",
+      "split": "tuning"
+    },
+    {
+      "id": "71c4f47a",
+      "filename": "cat-orange.webp",
+      "category": "palette",
+      "split": "held-out"
+    },
+    {
+      "id": "508c10b2",
+      "filename": "golden_turd.webp",
+      "category": "palette",
+      "split": "tuning"
+    },
+    {
+      "id": "071d741c",
+      "filename": "meow_black_cat.webp",
+      "category": "palette",
+      "split": "tuning"
+    },
+    {
+      "id": "0eab7b43",
+      "filename": "meow_pink_hug.webp",
+      "category": "palette",
+      "split": "tuning"
+    },
+    {
+      "id": "f285ce43",
+      "filename": "meow_pikachu.webp",
+      "category": "palette",
+      "split": "held-out"
+    },
+    {
+      "id": "96939887",
+      "filename": "meow_neon.webp",
+      "category": "palette",
+      "split": "tuning"
+    },
+    {
+      "id": "a401a837",
+      "filename": "meow_angry.webp",
+      "category": "expression",
+      "split": "held-out"
+    },
+    {
+      "id": "caaa8a36",
+      "filename": "meow_cry.webp",
+      "category": "expression",
+      "split": "tuning"
+    },
+    {
+      "id": "3f92e576",
+      "filename": "meow_joy.webp",
+      "category": "expression",
+      "split": "tuning"
+    },
+    {
+      "id": "eebaa82c",
+      "filename": "meow_think.webp",
+      "category": "expression",
+      "split": "tuning"
+    },
+    {
+      "id": "9575a73f",
+      "filename": "roo-happy.webp",
+      "category": "expression",
+      "split": "held-out"
+    },
+    {
+      "id": "d8e64d99",
+      "filename": "roo-cry.webp",
+      "category": "expression",
+      "split": "tuning"
+    },
+    {
+      "id": "ff1d45f8",
+      "filename": "roo-think.webp",
+      "category": "expression",
+      "split": "tuning"
+    },
+    {
+      "id": "b7fa785b",
+      "filename": "roo-devil.webp",
+      "category": "expression",
+      "split": "tuning"
+    },
+    {
+      "id": "34f9e4e0",
+      "filename": "cheers-leo.webp",
+      "category": "photo",
+      "split": "held-out"
+    },
+    {
+      "id": "968048a8",
+      "filename": "sad_keanu.webp",
+      "category": "photo",
+      "split": "tuning"
+    },
+    {
+      "id": "4ad52495",
+      "filename": "abraham-thinkin.webp",
+      "category": "photo",
+      "split": "tuning"
+    },
+    {
+      "id": "812956ce",
+      "filename": "old-man-yells-at-cloud.webp",
+      "category": "photo",
+      "split": "tuning"
+    },
+    {
+      "id": "13c999f8",
+      "filename": "loading.webp",
+      "category": "animation",
+      "split": "held-out"
+    },
+    {
+      "id": "ee7095ec",
+      "filename": "nyancat.webp",
+      "category": "animation",
+      "split": "tuning"
+    },
+    {
+      "id": "4a090f89",
+      "filename": "bongo-cat.webp",
+      "category": "animation",
+      "split": "tuning"
+    },
+    {
+      "id": "242b31dc",
+      "filename": "elmo-fire.webp",
+      "category": "animation",
+      "split": "tuning"
+    },
+    {
+      "id": "5d52113c",
+      "filename": "awkward.webp",
+      "category": "animation",
+      "split": "held-out"
+    },
+    {
+      "id": "073c0019",
+      "filename": "meow_nod.webp",
+      "category": "animation",
+      "split": "tuning"
+    },
+    {
+      "id": "f0b9159b",
+      "filename": "thinking-face-rotating.webp",
+      "category": "animation",
+      "split": "tuning"
+    },
+    {
+      "id": "92eaded5",
+      "filename": "severance-dancing.webp",
+      "category": "animation",
+      "split": "tuning"
+    },
+    {
+      "id": "51d2199c",
+      "filename": "weed.webp",
+      "category": "objects",
+      "split": "held-out"
+    },
+    {
+      "id": "22847855",
+      "filename": "meow_coffee.webp",
+      "category": "objects",
+      "split": "tuning"
+    },
+    {
+      "id": "2c029547",
+      "filename": "meow_sushi.webp",
+      "category": "objects",
+      "split": "tuning"
+    },
+    {
+      "id": "25dd5347",
+      "filename": "avocato.webp",
+      "category": "objects",
+      "split": "tuning"
+    }
+  ]
+}

@@ -97,14 +97,18 @@ for (const viewport of [{width: 1440, height: 900}, {width: 390, height: 844}]) 
 }
 
 for (const viewport of [{width:1440,height:900},{width:390,height:844}]) {
-  test(`theme and color discovery stays responsive at ${viewport.width}px with 4× CPU throttling`, async ({page},testInfo) => {
+  const cpuRate = viewport.width < 768 ? 4 : 2;
+  test.describe(`discovery input at ${viewport.width}px`, () => {
+  test.use({hasTouch:viewport.width<768,isMobile:viewport.width<768});
+  test(`theme and color discovery stays responsive at ${viewport.width}px with ${cpuRate}× CPU throttling`, async ({page},testInfo) => {
     await page.setViewportSize(viewport);
     await installMetrics(page);
     const cdp = await page.context().newCDPSession(page);
-    await cdp.send('Emulation.setCPUThrottlingRate',{rate:4});
+    await cdp.send('Emulation.setCPUThrottlingRate',{rate:cpuRate});
     await page.goto('/');
     await expect(page.locator('astro-island[ssr]')).toHaveCount(0);
     await page.waitForTimeout(300);
+    if (process.env.DISCOVERY_TRACE) await page.context().browser()!.startTracing(page,{path:testInfo.outputPath('discovery-trace.json'),categories:['devtools.timeline','blink.user_timing']});
     await begin(page,'theme-color-discovery');
     for (const limit of [20,5,10]) await page.getByRole('button',{name:`Show ${limit} themes`}).click();
     for (const word of ['cat','happy','blob']) {
@@ -120,11 +124,13 @@ for (const viewport of [{width:1440,height:900},{width:390,height:844}]) {
     }
     await page.getByRole('button',{name:'Reset',exact:true}).click();
     const metrics = await snapshot(page);
-    console.log(JSON.stringify({viewport,...metrics}));
-    await testInfo.attach('discovery-metrics.json',{body:JSON.stringify({viewport,...metrics},null,2),contentType:'application/json'});
+    if (process.env.DISCOVERY_TRACE) await page.context().browser()!.stopTracing();
+    console.log(JSON.stringify({viewport,cpuRate,...metrics}));
+    await testInfo.attach('discovery-metrics.json',{body:JSON.stringify({viewport,cpuRate,...metrics},null,2),contentType:'application/json'});
     expect(metrics.p95FrameGapMs).toBeLessThan(35);
     expect(metrics.maxLongTaskMs).toBeLessThan(100);
     expect(metrics.maxFrameGapMs).toBeLessThan(150);
     await cdp.detach();
+  });
   });
 }

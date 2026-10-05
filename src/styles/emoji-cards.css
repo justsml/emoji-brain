@@ -6,6 +6,8 @@
    --------------------------------------------------------------------------- */
 
 .emoji-grid-wrap {
+  /* Isolate grid reordering from painting the full cutting mat and header. */
+  contain: layout style paint;
   max-width: 1680px;
   margin: 0 auto;
   padding: 1.75rem 2rem 2rem;
