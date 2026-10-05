@@ -274,9 +274,8 @@
 .emoji-cell:hover, .emoji-cell:focus-within { content-visibility: visible; contain: layout style; }
 
 /* Only the card with pointer intent, keyboard focus, or a tap mounts controls. */
-.emoji-card-actions { position: absolute; z-index: 3; top: 0; left: 50%; transform: translateX(-50%); display: flex; width: max-content; border: 1px solid hsl(var(--border)); border-radius: 6px; background: hsl(var(--background)); box-shadow: 0 2px 6px rgb(0 0 0 / .12); }
+.emoji-card-actions { position: absolute; z-index: 3; top: -14px; left: 50%; transform: translateX(-50%); display: flex; width: max-content; border: 1px solid hsl(var(--border)); border-radius: 999px; background: hsl(var(--background)); box-shadow: 0 2px 6px rgb(0 0 0 / .12); }
 .emoji-card-actions button { min-height: 32px; min-width: 44px; padding: 0 6px; font-size: .6875rem; cursor: pointer; }
-.emoji-card-actions button + button { border-left: 1px solid hsl(var(--border)); }
 .emoji-card-actions button:focus-visible { outline: 2px solid hsl(var(--cut)); outline-offset: -2px; }
 .is-marquee .emoji-card-actions { display: none; }
 @media (pointer: coarse) { .emoji-card-actions button { min-height: 44px; } }

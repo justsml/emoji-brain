@@ -6,18 +6,11 @@ import "../styles/globals.css";
 interface Props {
   title: string;
   imageCount: number;
+  discovery?: boolean;
 }
 
-const { title, imageCount } = Astro.props;
+const { title, imageCount, discovery = false } = Astro.props;
 
-// The hero is made of the collection itself — real stickers from the set.
-const heroStickers = [
-  "bongo-cat.webp",
-  "avocato.webp",
-  "meow_birthday.webp",
-  "this-is-fine-fire.webp",
-  "meow-double-thumbs2.webp",
-];
 ---
 
 <!doctype html>
@@ -85,11 +78,7 @@ const heroStickers = [
               then paste a single script into Slack to upload the lot.
             </p>
           </div>
-          <div class="sticker-cluster" aria-hidden="true">
-            {heroStickers.map((file) => (
-              <img src={`/emoji-delivery/128/${file}`} decoding="async" alt="" width="56" height="56" loading="eager" />
-            ))}
-          </div>
+          {discovery && <div id="catalog-discovery" class="catalog-discovery-slot"><span class="atlas-placeholder">Explore by theme &amp; color</span></div>}
         </div>
       </header>
       <main class="w-full">

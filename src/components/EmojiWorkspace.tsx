@@ -83,7 +83,7 @@ export default function EmojiWorkspace({ catalog, selected, source, onToggle, on
   return (
     <div ref={panel} popover="auto" className="emoji-workspace" role="dialog" aria-modal="false" aria-label="Emoji workspace">
       <header className="workspace-head">
-        <div><span className="workspace-eyebrow">YOUR EMOJI WORKSPACE</span><h2>{tab === 'sheet' ? 'The whole sheet.' : 'Find your next favorite.'}</h2></div>
+        <div><h2>{tab === 'sheet' ? 'Your sheet' : 'Similar stickers'}</h2></div>
         <button ref={closeButton} type="button" onClick={onClose} aria-label="Close emoji workspace">✕</button>
       </header>
       <div className="workspace-tabs" role="group" aria-label="Workspace view">
@@ -91,7 +91,7 @@ export default function EmojiWorkspace({ catalog, selected, source, onToggle, on
         <button type="button" aria-pressed={tab === 'similar'} onClick={() => setTab('similar')}>Similar</button>
       </div>
       <div className="workspace-scroll">
-        {tab === 'similar' && (source ? <div className="workspace-source"><img onError={recoverEmojiPreview} onLoad={restoreEmojiPreview} src={emojiAsset(source.filename, 128, true)} width="64" height="64" alt="" /><div><b>{source.filename.replace(/\.[^.]+$/, '')}</b><p>Related by name, subject, and mood.</p></div></div> : <p>Choose Similar on any sticker to explore related emojis.</p>)}
+        {tab === 'similar' && (source ? <div className="workspace-source"><img onError={recoverEmojiPreview} onLoad={restoreEmojiPreview} src={emojiAsset(source.filename, 128, true)} width="40" height="40" alt="" /><div><b>{source.filename.replace(/\.[^.]+$/, '')}</b></div></div> : <p>Choose Similar on any sticker to explore related emojis.</p>)}
         {tab === 'similar' && source && !ready && <p role="status">{failed ? 'Suggestions couldn’t load. Your sheet is still available.' : 'Finding related stickers…'}</p>}
         {tab === 'sheet' && !selected.length && <p>Your sheet is empty. Tap stickers to collect them.</p>}
         {tab === 'similar' && ready && !emojis.length && <p>No related labels yet. Try another sticker.</p>}
@@ -103,12 +103,12 @@ export default function EmojiWorkspace({ catalog, selected, source, onToggle, on
               <img onError={recoverEmojiPreview} onLoad={restoreEmojiPreview} src={emojiAsset(emoji.filename, 128, true)} width="96" height="96" loading="lazy" decoding="async" alt="" />
               <span>{emoji.filename.replace(/\.[^.]+$/, '')}</span><i aria-hidden="true">{selectedIds.has(emoji.id) ? '✓' : '+'}</i>
             </button>
-            <button type="button" className="workspace-related" onClick={() => onSimilar(emoji)} aria-label={`Similar to ${emoji.filename}`}>Similar ↗</button>
+            <button type="button" className="workspace-related" onClick={() => onSimilar(emoji)} aria-label={`Similar to ${emoji.filename}`} title="Explore similar stickers"><span aria-hidden="true">↗</span></button>
           </div>)}
         </div>
         {tab === 'sheet' && limit < selected.length && <button type="button" className="workspace-more" onClick={() => setLimit(value => value + 48)}>Show 48 more · {selected.length - limit} remaining</button>}
       </div>
-      <footer className="workspace-foot">{tab === 'sheet' ? 'Tap a selected sticker to remove it.' : 'Tap a suggestion to add it to your sheet.'} Close this panel to export your sheet.</footer>
+      <footer className="workspace-foot">{selected.length} collected · Tap a sticker to toggle selection.</footer>
     </div>
   );
 }

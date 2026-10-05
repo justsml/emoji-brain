@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect, useMemo } from "react";
+import React, { startTransition, useState, useCallback, useEffect, useMemo } from "react";
 import type { EmojiMetadata } from "../types/emoji";
 import {getPagefind} from "../lib/pagefindClient";
 import SearchBar from "./SearchBar";
@@ -11,6 +11,9 @@ import { ErrorBoundary } from "./ErrorBoundary";
 import EmojiProviderWrapper from "./ReduxProviderWrapper";
 import { buildShareUrl, clearShareParams, readShareParams } from "../lib/shareLink";
 
+import {createPortal} from "react-dom";
+import CatalogDiscovery from "./CatalogDiscovery";
+import {discover} from "../lib/catalogDiscovery";
 import WorkspaceLoader from "./WorkspaceLoader";
 import { recoverEmojiPreview } from "../lib/emojiAssets";
 
@@ -234,12 +237,23 @@ const _EmojiExplorerApp: React.FC<EmojiExplorerAppProps> = ({
     return () => { current = false; clearTimeout(timer); };
   }, [searchTerm, initialEmojis, setIsSearching]);
 
-  const selectedIds = useMemo(() => new Set(selectedEmojis.map(emoji => emoji.id)), [selectedEmojis]);
+  const [discoveryHost, setDiscoveryHost] = useState<HTMLElement | null>(null);
+  const [themeWord, setThemeWord] = useState<string | null>(null);
+  const [color, setColor] = useState<number | null>(null);
   useEffect(() => {
-    setFilteredEmojis(showSelectedOnly
-      ? searchResults.filter((emoji) => selectedIds.has(emoji.id))
-      : searchResults);
-  }, [searchResults, showSelectedOnly, selectedIds, setFilteredEmojis]);
+    const host = document.getElementById("catalog-discovery");
+    if (host) { host.replaceChildren(); setDiscoveryHost(host); }
+  }, []);
+  const discoveredResults = useMemo(() => discover(searchResults, themeWord, color), [searchResults, themeWord, color]);
+
+  const selectedIds = useMemo(() => new Set(selectedEmojis.map(emoji => emoji.id)), [selectedEmojis]);
+  const visibleResults = useMemo(() => showSelectedOnly
+    ? discoveredResults.filter(emoji => selectedIds.has(emoji.id))
+    : discoveredResults, [discoveredResults, showSelectedOnly, selectedIds]);
+  useEffect(() => {
+    // Give pointer/keyboard feedback priority over reconciling a whole grid.
+    startTransition(() => setFilteredEmojis(visibleResults));
+  }, [visibleResults, setFilteredEmojis]);
 
   const handleAnnounceSelection = useCallback((emoji: EmojiMetadata, isSelected: boolean) => {
     announceSelection(emoji, isSelected);
@@ -248,6 +262,7 @@ const _EmojiExplorerApp: React.FC<EmojiExplorerAppProps> = ({
   return (
     <ErrorBoundary>
       <div className="w-full">
+        {discoveryHost && createPortal(<CatalogDiscovery catalog={initialEmojis} word={themeWord} color={color} onWord={setThemeWord} onColor={setColor} />, discoveryHost)}
         <div className="toolbar">
           <div className="toolbar-inner">
             <SearchBar

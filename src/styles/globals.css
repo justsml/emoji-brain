@@ -178,29 +178,6 @@ body {
 }
 .masthead-lede b { color: hsl(var(--foreground)); font-weight: 600; }
 
-/* more of the collection, stuck to the page at angles */
-.sticker-cluster {
-  display: flex;
-  align-items: flex-end;
-  flex-shrink: 0;
-  padding-bottom: 0.15rem;
-}
-.sticker-cluster img {
-  width: 3.4rem;
-  height: 3.4rem;
-  margin-left: -0.35rem;
-  object-fit: contain;
-  filter: drop-shadow(0 2px 3px hsl(var(--lift) / 0.3));
-}
-.sticker-cluster img:nth-child(1) { transform: rotate(-11deg); }
-.sticker-cluster img:nth-child(2) { transform: rotate(5deg) translateY(-7px); }
-.sticker-cluster img:nth-child(3) { transform: rotate(-4deg) translateY(4px); }
-.sticker-cluster img:nth-child(4) { transform: rotate(9deg) translateY(-5px); }
-.sticker-cluster img:nth-child(5) { transform: rotate(-7deg); }
-
-@media (max-width: 860px) {
-  .sticker-cluster { display: none; }
-}
 @media (max-width: 560px) {
   .app-header { padding: 0.5rem 1rem 1.25rem; }
   .utility-rail { gap: 0.9rem; }

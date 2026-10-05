@@ -14,6 +14,10 @@ export interface EmojiMetadata {
   size: number
   /** true when the source WebP has more than one frame */
   animated?: boolean
+  /** Semantic discovery labels, extracted at build time. */
+  themes?: string[]
+  /** Alpha-weighted visible-pixel color histogram, in thousandths. */
+  colors?: number[]
   /**
    * Compressed bytes this image contributes to a Slack script, keyed by pixel
    * size. Joined from the delivery manifest at build time so the tray can price

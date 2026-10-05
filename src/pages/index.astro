@@ -1,5 +1,6 @@
 ---
 // src/pages/index.astro
+import {catalogColors} from "../lib/catalogColors.server";
 import Layout from "../layouts/Layout.astro";
 import EmojiExplorerApp from "../components/EmojiExplorerApp"; // Import the main app component
 import type { EmojiMetadata } from "../types/emoji";
@@ -35,14 +36,15 @@ const gzipByEmoji = (filename: string): Record<string, number> | undefined => {
 
 // Keep catalog bookkeeping on the server instead of serializing it into the
 // client island. The explorer only needs the fields left in each record.
+const colors = await catalogColors(emojiMetadata.emojis.map(emoji => emoji.filename));
 const allEmojis: EmojiMetadata[] = (emojiMetadata.emojis || []).map(
-  ({id, filename, path, animated, size, tags, categories, aliases}) =>
-    ({id, filename, path, animated, size, tags, categories, aliases, gzip: gzipByEmoji(filename), originalBytes: deliveryRow(filename)?.original.bytes, maxSlackSize: deliveryRow(filename)?.highestSlackCompatible?.size}),
+  ({id, filename, path, animated, size, tags, categories, aliases, facets}, index) =>
+    ({id, filename, path, animated, size, tags, categories, aliases, colors: colors[index], themes: [...new Set([...facets.subject, ...facets.expression, ...facets.intent])], gzip: gzipByEmoji(filename), originalBytes: deliveryRow(filename)?.original.bytes, maxSlackSize: deliveryRow(filename)?.highestSlackCompatible?.size}),
 );
 // const categories = Array.from(new Set(allEmojis.flatMap(emoji => emoji.categories))).filter(Boolean);
 ---
 
-<Layout title="Emoji Explorer" imageCount={allEmojis.length}>
+<Layout title="Emoji Explorer" imageCount={allEmojis.length} discovery>
   <aside class="collection-note" aria-label="About the collection">
     <p class="collection-note-copy">
       Everything here is upscaled, so it still reads at full size. The export

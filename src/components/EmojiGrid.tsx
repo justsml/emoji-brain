@@ -23,7 +23,7 @@ interface EmojiGridProps {
 }
 
 // Fixed spacing per size keeps larger stickers separated without measurements.
-const GRID_GAPS = [12, 18, 24, 32];
+const GRID_GAPS = [14, 20, 26, 34];
 
 interface EmojiCellProps {
   emoji: EmojiMetadata;
@@ -93,7 +93,6 @@ const EmojiCell = ({
 }: EmojiCellProps) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [actions, setActions] = useState(false);
-  const [copyStatus, setCopyStatus] = useState("");
   const hoverTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   useEffect(() => () => clearTimeout(hoverTimer.current), []);
 
@@ -159,8 +158,7 @@ const EmojiCell = ({
         <span className="emoji-card-name">:{name}:</span>
       </button>
       {actions && onSimilar && <div className="emoji-card-actions" role="group" aria-label={`Actions for ${name}`} onPointerDown={event => event.stopPropagation()}>
-        <button type="button" onClick={() => onSimilar(emoji)}>Similar</button>
-        <button type="button" aria-label={`Copy shortcode for ${name}`} onClick={async () => { try { await navigator.clipboard.writeText(`:${name}:`); setCopyStatus("Copied"); } catch { setCopyStatus("Failed"); } }}>{copyStatus || "Copy"}</button>
+        <button type="button" onClick={() => onSimilar(emoji)}><span aria-hidden="true">✦ </span>Similar</button>
       </div>}
     </div>
   );

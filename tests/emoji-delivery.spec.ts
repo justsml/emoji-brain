@@ -55,7 +55,8 @@ test('grid requests pre-generated still previews, plays a small animation only o
   const images=page.locator('[role="gridcell"] img');
   await expect(images.first()).toHaveAttribute('srcset', /previews\/64/);
   expect(await page.locator('.toolbar').evaluate(el=>getComputedStyle(el).backdropFilter)).toContain('blur');
-  expect(await images.first().evaluate(el=>getComputedStyle(el).filter)).toContain('drop-shadow');
+  // Per-image filters were removed to keep rapid scrolling cheap.
+  expect(await images.first().evaluate(el=>getComputedStyle(el).filter)).toBe('none');
   const height=await page.evaluate(()=>document.documentElement.scrollHeight);
   await page.evaluate(()=>window.scrollTo(0,document.documentElement.scrollHeight));
   await page.waitForTimeout(150);
