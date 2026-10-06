@@ -123,6 +123,9 @@ const EmojiCell = ({
       if (emoji.animated && !window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) setIsPlaying(true);
     }, 120);
   }, [emoji.animated]);
+  // A finger "leaves" the moment it lifts, and engines disagree on whether that
+  // lands before or after the click; touch never stops playback by leaving, so
+  // a tap always plays regardless of event order.
   const stopPlaying = useCallback(() => {
     clearTimeout(hoverTimer.current);
     setIsPlaying(false);
@@ -131,7 +134,7 @@ const EmojiCell = ({
   const name = emoji.filename.split("/").pop()?.replace(/\.[^.]+$/, "") || emoji.filename;
 
   return (
-    <div className="emoji-cell min-w-0" onPointerEnter={startPlaying} onPointerLeave={event => { stopPlaying(); if (!event.currentTarget.contains(document.activeElement)) setActions(false); }} onBlur={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) { stopPlaying(); setActions(false); } }} role="gridcell" data-id={emoji.id} style={{ "--emoji-size": `${baseSize}px` } as CSSProperties}>
+    <div className="emoji-cell min-w-0" onPointerEnter={startPlaying} onPointerLeave={event => { if (event.pointerType === 'touch') return; stopPlaying(); if (!event.currentTarget.contains(document.activeElement)) setActions(false); }} onBlur={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) { stopPlaying(); setActions(false); } }} role="gridcell" data-id={emoji.id} style={{ "--emoji-size": `${baseSize}px` } as CSSProperties}>
       <button
         type="button"
         className={cn(

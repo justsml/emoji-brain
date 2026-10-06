@@ -107,7 +107,6 @@ test("should filter emojis when searching", async ({ page }) => {
 // });
 
 test("should select and deselect emojis", async ({ page }) => {
-  await page.getByTitle("Deselect visible").click();
   await expect(page.getByText("No emojis selected")).toBeVisible();
   await page.locator('div[role="gridcell"] > button').first().click();
   await expect(page.getByLabel("1 selected")).toBeVisible();
@@ -153,8 +152,12 @@ test("should be responsive", async ({ page }) => {
 
 
 test("persists a selection when reloading immediately after a click", async ({page}) => {
-  const cells = page.locator('[role="gridcell"] button');
+  const cells = page.locator('[role="gridcell"] > button');
+  await cells.first().click();
+  await cells.nth(1).click();
+  await page.reload();
   await expect(cells.first()).toHaveAttribute('aria-pressed', 'true');
+  await expect(cells.nth(1)).toHaveAttribute('aria-pressed', 'true');
   await cells.first().click();
   await page.reload();
   await expect(cells.first()).toHaveAttribute('aria-pressed', 'false');
@@ -197,8 +200,8 @@ test('selection becomes interactive even when the external font service stalls',
     await page.goto('/', {waitUntil: 'commit'});
     await expect(page.getByRole('grid', {name: 'Emoji results'})).toBeVisible({timeout: 3000});
     await expect(page.locator('astro-island[ssr]')).toHaveCount(0, {timeout: 3000});
-    await page.getByTitle('Deselect visible').click();
-    await expect(page.getByText('No emojis selected')).toBeVisible();
+    await page.locator('div[role="gridcell"] > button').first().click();
+    await expect(page.getByLabel('1 selected', {exact: true})).toBeVisible();
   } finally {release();}
 });
 

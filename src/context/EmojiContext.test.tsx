@@ -1,4 +1,6 @@
-import { render, screen } from '@testing-library/react';
+import { act, render, screen } from '@testing-library/react';
+import { renderToString } from 'react-dom/server';
+import { hydrateRoot } from 'react-dom/client';
 import userEvent from '@testing-library/user-event';
 import { expect, it, vi } from 'vitest';
 import * as selectionStorage from '../lib/selectionStorage';
@@ -26,6 +28,34 @@ function Harness() {
     <button onClick={() => invertVisible([emojis[0], emojis[1]])}>invert first view</button>
   </>;
 }
+
+it('starts a first visit with nothing selected, and keeps a returning selection', () => {
+  localStorage.clear();
+  const first = render(<EmojiProvider initialEmojis={emojis}><Harness /></EmojiProvider>);
+  expect(screen.getByText('', {selector: 'output'})).toBeInTheDocument();
+  first.unmount();
+  localStorage.setItem(selectionStorage.SELECTION_STORAGE_KEY, JSON.stringify(['two']));
+  render(<EmojiProvider initialEmojis={emojis}><Harness /></EmojiProvider>);
+  expect(screen.getByText('two', {selector: 'output'})).toBeInTheDocument();
+});
+
+it('hydrates a server render without a mismatch, then restores the stored sheet before paint', async () => {
+  localStorage.clear(); // the server has no storage
+  const tree = <EmojiProvider initialEmojis={emojis}><Harness /></EmojiProvider>;
+  const container = document.createElement('div');
+  container.innerHTML = renderToString(tree);
+  document.body.append(container);
+  localStorage.setItem(selectionStorage.SELECTION_STORAGE_KEY, JSON.stringify(['two']));
+  const errors: unknown[] = [];
+  const root = await act(async () => hydrateRoot(container, tree, {onRecoverableError: error => errors.push(error)}));
+  try {
+    expect(errors).toEqual([]);
+    expect(container.querySelector('output')?.textContent).toBe('two');
+  } finally {
+    act(() => root.unmount());
+    container.remove();
+  }
+});
 
 it('inverts a mixed visible selection atomically and preserves hidden selections', async () => {
   localStorage.setItem(selectionStorage.SELECTION_STORAGE_KEY, JSON.stringify(['one', 'three']));
@@ -72,15 +102,15 @@ it('does not rerender consumers just to mirror selection into persistence', asyn
   localStorage.clear();
   const rendered = vi.fn();
   function Consumer() {
-    const {selectedEmojis, resetSelection} = useEmojiContext();
+    const {selectedEmojis, toggleEmojiSelection} = useEmojiContext();
     rendered();
-    return <button onClick={resetSelection}>{selectedEmojis.length} on sheet</button>;
+    return <button onClick={() => toggleEmojiSelection(emojis[0])}>{selectedEmojis.length} on sheet</button>;
   }
   const user = userEvent.setup();
   render(<EmojiProvider initialEmojis={emojis}><Consumer /></EmojiProvider>);
   expect(rendered).toHaveBeenCalledTimes(1);
-  await user.click(screen.getByRole('button', {name: '3 on sheet'}));
-  expect(screen.getByRole('button', {name: '0 on sheet'})).toBeInTheDocument();
+  await user.click(screen.getByRole('button', {name: '0 on sheet'}));
+  expect(screen.getByRole('button', {name: '1 on sheet'})).toBeInTheDocument();
   expect(rendered).toHaveBeenCalledTimes(2);
 });
 

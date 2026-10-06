@@ -1,4 +1,8 @@
 import { test, expect } from '@playwright/test';
+import { startWithFullSheet } from './fullSheet';
+
+// Exercises a sheet that already has stickers on it.
+test.beforeEach(({page}) => startWithFullSheet(page));
 
 test.beforeEach(async ({page}) => {
   await page.goto('/');

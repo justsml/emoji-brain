@@ -1,5 +1,9 @@
 import { test, expect } from '@playwright/test';
 import { installMetrics, begin, snapshot, throttle, profiles } from './metrics';
+import { startWithFullSheet } from '../fullSheet';
+
+// These measure the heaviest sheet: every sticker selected.
+test.beforeEach(({page}) => startWithFullSheet(page));
 
 for (const viewport of [{width: 1440, height: 900}, {width: 390, height: 844}]) {
   test(`workspace remains responsive at ${viewport.width}px with 4× CPU throttling`, async ({page}, testInfo) => {

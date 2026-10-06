@@ -1,6 +1,10 @@
 import { test, expect, type Locator, type Page } from '@playwright/test';
 import fs from 'node:fs/promises';
 import sharp from 'sharp';
+import { startWithFullSheet } from './fullSheet';
+
+// Exercises a sheet that already has stickers on it.
+test.beforeEach(({page}) => startWithFullSheet(page));
 
 const catalog = JSON.parse(await fs.readFile('src/data/emoji-metadata.json', 'utf8')).emojis as {filename: string}[];
 

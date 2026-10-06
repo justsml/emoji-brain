@@ -8,7 +8,6 @@ const stillCount = catalog.length - animatedCount;
 test('console export uses a worker and adaptive WebP and uploads identical bytes in a mocked browser',async({page,context})=>{
   await page.addInitScript(()=>Object.defineProperty(navigator,'clipboard',{value:{writeText:async(text:string)=>{(window as any).copiedEmojiScript=text;}}}));
   await page.goto('/');
-  await page.getByTitle('Deselect visible').click();
   await page.locator('div[role="gridcell"] button').first().click();
   await expect(page.getByLabel('Slack image size')).toHaveCount(0);
   for(const size of [256]){
@@ -73,7 +72,6 @@ test('grid requests pre-generated still previews, plays a small animation only o
 test('ZIP downloads the native-size quality-90 WebPs and Markdown includes all preview sizes',async({page})=>{
   await page.addInitScript(()=>Object.defineProperty(navigator,'clipboard',{value:{writeText:async(text:string)=>{(window as any).copiedEmojiScript=text;}}}));
   await page.goto('/');
-  await page.getByTitle('Deselect visible').click();
   const button=page.locator('[role="gridcell"] button').first();
   const filename=(await button.getAttribute('aria-label'))!.split(',')[0];
   await button.click();

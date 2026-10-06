@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useReducer, useCallback, useLayoutEffect, useMemo, type ReactNode } from 'react';
+import React, { createContext, useContext, useReducer, useCallback, useLayoutEffect, useMemo, useRef, type ReactNode } from 'react';
 import type { EmojiMetadata } from '../types/emoji';
 import { useLocalStorage } from '../hooks/useLocalStorage';
 import { SELECTION_STORAGE_KEY, reconcileSelection } from '../lib/selectionStorage';
@@ -139,20 +139,30 @@ interface EmojiProviderProps {
 
 export function EmojiProvider({ children, initialEmojis }: EmojiProviderProps) {
   // ids only: stored records go stale when the catalog is deduped, leaving the
-  // tray pointing at files that no longer exist.
-  // `null` initialValue is a sentinel for "nothing stored yet" (first visit),
-  // distinct from an explicit `[]` (user deselected everything).
+  // tray pointing at files that no longer exist. A first visit has nothing
+  // stored and starts with an empty sheet: picking is the first thing to do.
   const [storedSelection, setStoredSelection] = useLocalStorage<unknown>(SELECTION_STORAGE_KEY, null);
 
-  // Resolve legacy ids/aliases once on mount, not on every focus, search, or
-  // selection update. React ignores subsequent initial-state arguments.
-  const [state, dispatch] = useReducer(emojiReducer, {storedSelection, initialEmojis}, ({storedSelection, initialEmojis}) => ({
+  // The server has no storage, so it renders an empty sheet; the first client
+  // render must match it or hydration fails. The stored sheet is restored in a
+  // layout effect instead, which React flushes before the first paint.
+  const [state, dispatch] = useReducer(emojiReducer, initialEmojis, initialEmojis => ({
     ...initialState,
-    selectedEmojis: storedSelection === null ? initialEmojis : reconcileSelection(storedSelection, initialEmojis),
     filteredEmojis: initialEmojis,
   }));
 
+  // Resolve legacy ids/aliases once on mount, not on every focus, search, or
+  // selection update.
+  const restored = useRef(false);
   useLayoutEffect(() => {
+    const selection = reconcileSelection(storedSelection, initialEmojis);
+    if (selection.length) dispatch({ type: 'SET_SELECTION', payload: selection });
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- mount only
+  }, []);
+
+  useLayoutEffect(() => {
+    // Skip the hydration commit: its empty sheet would overwrite what is stored.
+    if (!restored.current) { restored.current = true; return; }
     setStoredSelection(state.selectedEmojis.map(emoji => emoji.id));
   }, [state.selectedEmojis, setStoredSelection]);
 

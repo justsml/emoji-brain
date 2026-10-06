@@ -1,4 +1,8 @@
 import { test, expect } from '@playwright/test';
+import { startWithFullSheet } from './fullSheet';
+
+// Exercises a sheet that already has stickers on it.
+test.beforeEach(({page}) => startWithFullSheet(page));
 
 for (const viewport of [{width: 1440, height: 900}, {width: 390, height: 844}]) {
   test.describe(`workspace at ${viewport.width}px`, () => {

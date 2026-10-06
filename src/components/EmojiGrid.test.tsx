@@ -282,3 +282,16 @@ it('uses the committed sorted order for focus, navigation and selection', () => 
   fireEvent.keyDown(first,{key:'Enter'});
   expect(props.onToggleSelection).toHaveBeenLastCalledWith(emojis[2]);
 });
+
+it('a tap keeps playing even when the touch leave arrives after the click', () => {
+  const emojis: EmojiMetadata[] = [{id: 'spin', filename: 'spin.webp', path: '/emojis/spin.webp', categories: [], tags: [], created: '', size: 1, animated: true}];
+  render(<EmojiGrid emojis={emojis} selectedEmojis={[]} focusedIndex={0} gridScale={4} onToggleSelection={vi.fn()} onSetFocusedIndex={vi.fn()} onAnnounceSelection={vi.fn()} />);
+  const card = screen.getByRole('button', {name: 'spin.webp, animated'});
+  const image = () => card.querySelector('img')!.getAttribute('src');
+  fireEvent.click(card);
+  expect(image()).not.toMatch(/previews/);
+  fireEvent.pointerLeave(card.closest('[role=gridcell]')!, {pointerType: 'touch'});
+  expect(image()).not.toMatch(/previews/);
+  fireEvent.pointerLeave(card.closest('[role=gridcell]')!, {pointerType: 'mouse'});
+  expect(image()).toMatch(/previews/);
+});

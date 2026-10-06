@@ -23,11 +23,11 @@ for (const width of [1440,390]) test.describe(`theme atlas at ${width}px`, () =>
     await expect(page.locator('.emoji-card').first()).toHaveAttribute('aria-label',/catdance.webp/);
     expect(await page.locator('.emoji-cell').evaluateAll(cells => cells.map(c => c.getAttribute('data-id')).sort())).toEqual(ids);
     await page.getByRole('button',{name:'Invert visible selection',exact:true}).click();
-    await expect(page.locator('.emoji-card[aria-pressed=true]')).toHaveCount(0);
+    await expect(page.locator('.emoji-card[aria-pressed=true]')).toHaveCount(cats.length);
     await page.getByRole('radio',{name:/Collected/}).check();
-    await expect(page.locator('.emoji-card')).toHaveCount(0);
+    await expect(page.locator('.emoji-card')).toHaveCount(cats.length);
     await page.getByRole('button',{name:'Reset',exact:true}).click();
-    await expect(page.locator('.emoji-card')).toHaveCount(metadata.total-cats.length);
+    await expect(page.locator('.emoji-card')).toHaveCount(cats.length);
     await page.getByRole('radio',{name:/Everything/}).check();
     await expect(page.locator('.emoji-card')).toHaveCount(metadata.total);
     await page.getByPlaceholder('Search emojis...').fill('cat');

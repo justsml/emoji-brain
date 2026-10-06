@@ -1,4 +1,8 @@
 import {test, expect} from '@playwright/test';
+import {startWithFullSheet} from '../fullSheet';
+
+// These measure the heaviest sheet: every sticker selected.
+test.beforeEach(({page}) => startWithFullSheet(page));
 import {createHash} from 'node:crypto';
 import {installMetrics, begin, snapshot, cpuMetrics} from './metrics';
 
