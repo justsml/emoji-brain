@@ -1,5 +1,5 @@
 import {expect, it} from 'vitest';
-import {colorBin, pixelProfile, colorShares, discover, topThemes} from './catalogDiscovery';
+import {colorBin, pixelProfile, colorShares, discover, themeMascots, topThemes} from './catalogDiscovery';
 import type {EmojiMetadata} from '../types/emoji';
 
 const emoji = (id: string, themes: string[], colors: number[]): EmojiMetadata => ({id,filename:`${id}.webp`,path:'',size:0,categories:[],tags:[],themes,colors});
@@ -25,4 +25,11 @@ it('color sorting retains the whole result set, respects filters and keeps ties 
   expect(discover(catalog,'cat',0).map(e => e.id)).toEqual(['red','green']);
   expect(catalog[0].id).toBe('green');
   expect(colorShares(catalog)[0]).toBeCloseTo(2/3);
+});
+it('gives each theme its own sticker, preferring a still whose name says the word', () => {
+  const catalog = [emoji('100_happy',['happy'],[]),emoji('blob_happy',['cat','happy'],[]),emoji('catnap',['cat'],[]),{...emoji('cat_spin',['cat'],[]),animated:true},emoji('grin',['happy'],[])];
+  const mascots = themeMascots(catalog,['cat','happy','missing']);
+  expect(mascots.get('cat')?.id).toBe('catnap');
+  expect(mascots.get('happy')?.id).toBe('blob_happy');
+  expect(mascots.has('missing')).toBe(false);
 });

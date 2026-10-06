@@ -99,10 +99,10 @@ body {
 
 .page-shell {
   min-height: 100vh;
-  padding-bottom: 5rem; /* clears the fixed sheet bar */
+  padding-bottom: 7rem; /* clears the fixed sheet desk */
 }
 @media (max-width: 560px) {
-  .page-shell { padding-bottom: 8.5rem; } /* clears wrapped sheet controls */
+  .page-shell { padding-bottom: 10.5rem; } /* clears wrapped sheet controls */
 }
 
 /* --- masthead ------------------------------------------------------------ */
@@ -190,10 +190,23 @@ body {
    The spec line for the sheet, printed on the mat: figures set in the display
    face, separated by the same hairline rules as everything else. No card. */
 
-.collection-note {
-  max-width: 1680px;
-  margin: 0 auto 0.25rem;
-  padding: 0 2rem 1.25rem;
+.collection-note { margin: 1.25rem 0 0; }
+
+/* With the theme picker present the masthead is a grid: the picker spans the
+   title and this note on wide screens, and sits between them on narrow ones. */
+.masthead:has(.catalog-discovery-slot) {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) min(480px, 46%);
+  grid-template-areas: "copy atlas" "note atlas";
+  align-items: end;
+  column-gap: 2rem;
+}
+.masthead:has(.catalog-discovery-slot) .masthead-copy { grid-area: copy; }
+.masthead:has(.catalog-discovery-slot) .collection-note { grid-area: note; }
+.masthead:has(.catalog-discovery-slot) .catalog-discovery-slot { grid-area: atlas; }
+@media (max-width: 860px) {
+  .masthead:has(.catalog-discovery-slot) { grid-template-columns: minmax(0, 1fr); grid-template-areas: "copy" "atlas" "note"; row-gap: 1rem; }
+  .masthead:has(.catalog-discovery-slot) .collection-note { margin-top: 0; }
 }
 
 .collection-note-copy {
@@ -242,10 +255,6 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   .estimate-meter i { transition: none; }
-}
-
-@media (max-width: 560px) {
-  .collection-note { padding: 0 1rem 1rem; }
 }
 
 /* --- the explorer's footprint --------------------------------------------- */

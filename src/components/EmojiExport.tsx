@@ -9,6 +9,7 @@ import { useExportEstimates } from "../hooks/useExportEstimates";
 import { formatBytes, SLACK_SCRIPT_LIMIT, type ExportTier } from "../lib/slackSizeEstimate";
 import { ExportOptions } from "./ExportOptions";
 import { ExportEstimateNote } from "./ExportEstimateNote";
+import { DeskSurface } from "./DeskSurface";
 import { CheckSquare, XSquare, ChevronDown, Copy, LoaderCircle, X, Check, Trash2, Link, ArrowLeftRight } from "lucide-react";
 import "../styles/sheet-tray.css";
 
@@ -215,6 +216,7 @@ export function EmojiExport({ onInvertVisible, onOpenSheet, selectedEmojis, onCl
       </section>
     )}
     <div className="sheet-tray">
+      <DeskSurface count={selectedEmojis.length} />
       <div className="sheet-summary">
         <div className="sheet-tally" aria-label={`${selectedEmojis.length} selected`}>
           {selectedEmojis.length === 0 ? (

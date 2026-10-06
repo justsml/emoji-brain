@@ -49,6 +49,24 @@ export function topThemes(catalog: EmojiMetadata[]) {
     .sort((a,b) => b.count-a.count || a.word.localeCompare(b.word)).slice(0,20);
 }
 
+/** One distinct sticker per theme, so the picker can show the word as well as name it. */
+export function themeMascots(catalog: EmojiMetadata[], words: string[]): Map<string, EmojiMetadata> {
+  const used = new Set<string>(), mascots = new Map<string, EmojiMetadata>();
+  for (const word of words) {
+    let best: EmojiMetadata | undefined, bestScore = -1;
+    for (const emoji of catalog) {
+      if (used.has(emoji.id) || !(emoji.themes ?? emoji.categories).some(label => label.toLowerCase() === word)) continue;
+      // Stills sit quietly in the header, a name containing the word reads as the obvious pick,
+      // and number badges (100, 10000...) say nothing about a theme.
+      const name = emoji.filename.toLowerCase();
+      const score = (/\d/.test(name) ? 0 : 4) + (emoji.animated ? 0 : 2) + (name.includes(word) ? 1 : 0);
+      if (score > bestScore) { best = emoji; bestScore = score; }
+    }
+    if (best) { used.add(best.id); mascots.set(word, best); }
+  }
+  return mascots;
+}
+
 export function colorShares(catalog: EmojiMetadata[]) {
   const sums = PALETTE.map((_, i) => catalog.reduce((sum, emoji) => sum + (emoji.colors?.[i] ?? 0), 0));
   const total = sums.reduce((a,b) => a+b, 0);

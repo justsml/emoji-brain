@@ -79,6 +79,7 @@ const { title, imageCount, discovery = false } = Astro.props;
             </p>
           </div>
           {discovery && <div id="catalog-discovery" class="catalog-discovery-slot"><span class="atlas-placeholder">Explore by theme &amp; color</span></div>}
+          <slot name="masthead-note" />
         </div>
       </header>
       <main class="w-full">

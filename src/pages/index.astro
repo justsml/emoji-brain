@@ -45,7 +45,7 @@ const allEmojis: EmojiMetadata[] = (emojiMetadata.emojis || []).map(
 ---
 
 <Layout title="Emoji Explorer" imageCount={allEmojis.length} discovery>
-  <aside class="collection-note" aria-label="About the collection">
+  <aside class="collection-note" slot="masthead-note" aria-label="About the collection">
     <p class="collection-note-copy">
       Everything here is upscaled, so it still reads at full size. The export
       script sizes each image to fit your whole selection into one paste —
