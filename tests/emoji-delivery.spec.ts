@@ -149,6 +149,10 @@ test('Pagefind is lazy, uses one engine, and avoids redundant result fragments',
   expect(await page.locator('[role="gridcell"]').count()).toBe(await page.evaluate(()=>(window as any).engineMatches));
   await input.fill('cat');await expect(page.locator('#emoji-search-status')).toContainText('matches for “cat”');
   expect(await page.locator('[role="gridcell"]').count()).toBe(await page.evaluate(()=>(window as any).engineMatches));
+  await input.fill('omg');
+  await expect(page.locator('#emoji-search-status')).toContainText('matches for “omg”');
+  await expect(page.getByRole('button',{name:'roo-zomg.webp, animated',exact:true})).toBeVisible();
+  await expect(page.getByRole('button',{name:'roo-omg.webp',exact:true})).toBeVisible();
   expect(requests.filter(url=>url.includes('/fragment/'))).toHaveLength(0);
   expect(requests.filter(url=>new URL(url).pathname==='/pagefind/pagefind.js')).toHaveLength(1);
   expect(page.workers().filter(worker=>worker.url().includes('pagefind-worker'))).toHaveLength(1);

@@ -19538,7 +19538,10 @@
       "width": 512,
       "height": 512,
       "animated": true,
-      "aliases": [],
+      "aliases": [
+        "omg",
+        "zomg"
+      ],
       "hash": "443d162a83c0ed6025af034becfe73f535ae590ef8fbd014842d91c6423f308f",
       "modified": "2026-10-07T18:45:51.972Z",
       "labelHash": "443d162a83c0ed6025af034becfe73f535ae590ef8fbd014842d91c6423f308f",
