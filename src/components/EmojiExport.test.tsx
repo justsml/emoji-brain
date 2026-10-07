@@ -272,8 +272,8 @@ describe("EmojiExport Component", () => {
     expect(screen.getByRole("status")).toHaveTextContent("Link copied · 2 emojis");
   });
 
-  it("has no link to share from an empty sheet", () => {
+  it("disables sharing from an empty sheet", () => {
     renderExport({ selectedEmojis: [], shareUrl: () => "" });
-    expect(screen.queryByRole("button", { name: "Copy a link to this sheet" })).not.toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Copy a link to this sheet" })).toBeDisabled();
   });
 });

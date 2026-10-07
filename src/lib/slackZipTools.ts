@@ -47,7 +47,7 @@ On macOS you can copy it with: pbcopy < slack-upload.js
 
 This is the normal uploader, without automatic deletion/replacement.
 To upload fewer images, move files out of slack/images and run again.
-To get larger optimized images, select fewer emojis in Emoji Brain and export
+To get larger optimized images, select fewer emojis in Adorbs.fun and export
 a new ZIP. Root originals are preserved; the generator uses slack/images only.
 `);
 }

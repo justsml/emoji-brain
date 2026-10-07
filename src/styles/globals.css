@@ -2,7 +2,7 @@
 @import "tailwindcss";
 
 /* ---------------------------------------------------------------------------
-   Emoji Explorer — stickers on a cutting mat.
+   Adorbs.fun — stickers on a cutting mat.
    A cutting mat is defined by printed lines, not containers, so this interface
    is built from rules and space. Almost nothing is boxed or rounded; the emoji
    artwork supplies every saturated colour on the page.
@@ -190,71 +190,11 @@ body {
    The spec line for the sheet, printed on the mat: figures set in the display
    face, separated by the same hairline rules as everything else. No card. */
 
-.collection-note { margin: 1.25rem 0 0; }
-
-/* With the theme picker present the masthead is a grid: the picker spans the
-   title and this note on wide screens, and sits between them on narrow ones. */
+/* Discovery sits below the title, with themes and colors sharing a row. */
 .masthead:has(.catalog-discovery-slot) {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) min(480px, 46%);
-  grid-template-areas: "copy atlas" "note atlas";
-  align-items: end;
-  column-gap: 2rem;
-}
-.masthead:has(.catalog-discovery-slot) .masthead-copy { grid-area: copy; }
-.masthead:has(.catalog-discovery-slot) .collection-note { grid-area: note; }
-.masthead:has(.catalog-discovery-slot) .catalog-discovery-slot { grid-area: atlas; }
-@media (max-width: 860px) {
-  .masthead:has(.catalog-discovery-slot) { grid-template-columns: minmax(0, 1fr); grid-template-areas: "copy" "atlas" "note"; row-gap: 1rem; }
-  .masthead:has(.catalog-discovery-slot) .collection-note { margin-top: 0; }
-}
-
-.collection-note-copy {
-  margin: 0;
-  max-width: 58ch;
-  color: hsl(var(--muted-foreground));
-  font-size: 0.875rem;
-  line-height: 1.6;
-  /* The fallback sentence swaps for the live, longer estimate (plus a meter
-     bar) once the tray hydrates and prices the selection. Reserving its
-     height up front stops that swap from shoving the whole page down. */
-  min-height: 6.5em;
-}
-
-/* the sentence the explorer takes over: the same claim, priced live */
-.estimate-live {
-  display: inline-flex;
-  flex-direction: column;
-  gap: 0.3rem;
-  vertical-align: bottom;
-}
-.estimate-line { color: hsl(var(--foreground)); }
-.estimate-line b {
-  font-family: var(--font-display);
-  font-variant-numeric: tabular-nums;
-  font-weight: 700;
-  letter-spacing: -0.01em;
-}
-.estimate-bytes { color: hsl(var(--cut)); }
-
-.estimate-meter {
-  display: block;
-  width: min(22rem, 100%);
-  height: 2px;
-  background: hsl(var(--rule) / 0.25);
-}
-.estimate-meter i {
-  display: block;
-  height: 100%;
-  background: hsl(var(--rule));
-  transition: width 260ms ease;
-}
-.estimate-live[data-over="true"] .estimate-line,
-.estimate-live[data-over="true"] .estimate-bytes { color: hsl(var(--destructive)); }
-.estimate-live[data-over="true"] .estimate-meter i { background: hsl(var(--destructive)); }
-
-@media (prefers-reduced-motion: reduce) {
-  .estimate-meter i { transition: none; }
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.5rem;
 }
 
 /* --- the explorer's footprint --------------------------------------------- */
@@ -366,8 +306,11 @@ body {
 }
 .segmented label:has(input:checked) .segmented-count { color: hsl(var(--cut)); }
 
-.segmented-size { gap: 0.75rem; }
-.segmented-size label { font-variant-numeric: tabular-nums; }
+.segmented-size { gap: .2rem; padding: .2rem; border: 1px solid hsl(var(--rule) / .4); border-radius: .5rem; background: hsl(var(--foreground) / .035); }
+.size-caption { padding: 0 .35rem; color: hsl(var(--muted-foreground)); font-size: .75rem; }
+.segmented-size label { align-items: center; justify-content: center; min-width: 1.75rem; min-height: 1.75rem; padding: .2rem .3rem; border-radius: .3rem; font-variant-numeric: tabular-nums; }
+.segmented-size label::after { display: none; }
+.segmented-size label:has(input:checked) { background: hsl(var(--cut) / .13); color: hsl(var(--cut)); box-shadow: inset 0 0 0 1px hsl(var(--cut) / .3); }
 
 .segmented-legend {
   color: hsl(var(--muted-foreground));
@@ -386,6 +329,7 @@ body {
   line-height: 1.65;
 }
 .colophon p { margin: 0 0 0.5rem; max-width: 78ch; }
+.colophon .collection-updated { color: hsl(var(--muted-foreground)); font-size: 0.75rem; font-variant-numeric: tabular-nums; }
 .colophon a {
   color: hsl(var(--foreground));
   text-decoration: underline;
@@ -402,3 +346,21 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .rail-link, .segmented label, .segmented label::after { transition: none; }
 }
+
+.collection-guide {
+  max-width: 70rem;
+  margin: 2rem auto;
+  padding: 1.5rem 2rem;
+  color: hsl(var(--foreground));
+  line-height: 1.65;
+  border-top: 1px solid hsl(var(--rule) / 0.4);
+}
+.collection-guide h2 { font-family: var(--font-display); font-size: 1.5rem; font-weight: 650; }
+.collection-guide > p { max-width: 75ch; margin: 0.75rem 0; }
+.collection-answers { margin: 1.25rem 0; }
+.collection-answers details { border-top: 1px solid hsl(var(--rule) / 0.3); padding: 0.8rem 0; }
+.collection-answers summary { cursor: pointer; font-weight: 600; }
+.collection-answers summary:focus-visible { outline: 2px solid hsl(var(--cut)); outline-offset: 4px; }
+.collection-answers p { max-width: 75ch; margin: 0.7rem 0 0; }
+.collection-guide a { text-decoration: underline; text-underline-offset: 0.2em; }
+@media (max-width: 560px) { .collection-guide { padding: 1.25rem 1rem; } }

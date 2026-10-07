@@ -1,4 +1,4 @@
-import {memo, useMemo, useState, type CSSProperties} from 'react';
+import {memo, useMemo, type CSSProperties} from 'react';
 import type {EmojiMetadata} from '../types/emoji';
 import {PALETTE, colorShares, themeMascots, topThemes} from '../lib/catalogDiscovery';
 import {emojiAsset} from '../lib/emojiAssets';
@@ -22,19 +22,18 @@ function summary(word: string | null, color: number | null): string {
 }
 
 export default memo(function CatalogDiscovery({catalog,word,color,onWord,onColor}: Props) {
-  const [limit,setLimit] = useState(10);
   const themes = useMemo(() => topThemes(catalog),[catalog]);
   const mascots = useMemo(() => themeMascots(catalog,themes.map(theme => theme.word)),[catalog,themes]);
   const shares = useMemo(() => colorShares(catalog),[catalog]);
   const peak = themes[0]?.count ?? 1;
   const active = word !== null || color !== null;
   return <section className="theme-atlas" aria-label="Explore themes and colors">
+    <section className="atlas-themes" aria-label="Browse by theme">
     <div className="atlas-heading">
       <h2>Browse by theme</h2>
-      <div role="group" aria-label="Number of themes"><span aria-hidden="true">Show</span>{[5,10,20].map(n => <button key={n} type="button" aria-label={`Show ${n} themes`} aria-pressed={limit===n} onClick={() => setLimit(n)}>{n}</button>)}</div>
     </div>
-    <div className="theme-cloud" role="group" aria-label="Theme filters" data-crowded={limit > 10 || undefined}>
-      {themes.slice(0,limit).map(({word:label,count}) => {
+    <div className="theme-cloud" role="group" aria-label="Theme filters">
+      {themes.slice(0,10).map(({word:label,count}) => {
         const mascot = mascots.get(label);
         return <button key={label} type="button" aria-label={`Filter ${label}`} aria-pressed={word===label} onClick={() => onWord(word===label ? null : label)} title={`${count} stickers`} style={{'--word-size':`${.8 + .35*Math.sqrt(count/peak)}rem`} as CSSProperties}>
           {mascot && <img src={emojiAsset(mascot.filename,64,true)} alt="" width={64} height={64} decoding="async" draggable={false} />}
@@ -43,9 +42,14 @@ export default memo(function CatalogDiscovery({catalog,word,color,onWord,onColor
         </button>;
       })}
     </div>
+    </section>
+    <section className="atlas-colors" aria-label="Pick by color">
+    <div className="atlas-heading"><h2>Pick by color</h2></div>
+    <p className="atlas-color-hint">Bring your favorite shades to the front.</p>
     <div className="color-strip" role="group" aria-label="Sort by color">
       {PALETTE.map((item,i) => <button type="button" key={item.name} aria-label={`Sort ${item.name.toLowerCase()} first`} aria-pressed={color===i} onClick={() => onColor(color===i ? null : i)} title={`${item.name}: ${(shares[i]*100).toFixed(1)}% of the artwork`} style={{'--swatch':item.hex,flexGrow:shares[i]} as CSSProperties} />)}
     </div>
+    </section>
     <div className="atlas-status" aria-live="polite" data-active={active || undefined}>
       <span>{summary(word,color)}</span>
       {active && <button type="button" onClick={() => {onWord(null);onColor(null);}}>Reset</button>}

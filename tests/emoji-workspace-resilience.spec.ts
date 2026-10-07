@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { startWithFullSheet } from './fullSheet';
+import metadata from '../src/data/emoji-metadata.json' with {type:'json'};
 
 // Exercises a sheet that already has stickers on it.
 test.beforeEach(({page}) => startWithFullSheet(page));
@@ -67,13 +68,13 @@ for (const mode of ['constructor', 'error', 'hang', 'invalid', 'null'] as const)
     await panel.getByRole('button', {name: /Sheet \d+/}).click();
     await expect(panel.locator('.workspace-pick')).toHaveCount(48);
     await panel.locator('.workspace-pick').first().click();
-    await expect(page.getByLabel('350 selected', {exact: true})).toBeVisible();
+    await expect(page.getByLabel(`${metadata.total - 1} selected`, {exact: true})).toBeVisible();
     await panel.getByRole('button', {name: 'Similar', exact: true}).click();
     await page.evaluate(() => { (window as any).__workerFault = null; });
     await panel.getByRole('button', {name: 'Retry suggestions'}).click();
     await expect(panel.locator('.workspace-pick')).toHaveCount(12);
     await panel.getByRole('button', {name: 'Close emoji workspace'}).click();
-    await expect(page.getByLabel('350 selected', {exact: true})).toBeVisible();
+    await expect(page.getByLabel(`${metadata.total - 1} selected`, {exact: true})).toBeVisible();
   });
 }
 
@@ -104,12 +105,12 @@ test('a failed workspace chunk is contained and reload recovery preserves select
   await page.getByRole('button', {name: 'Expand selected emojis'}).click();
   await expect(page.getByRole('alert')).toContainText('Your selection is safe');
   await page.getByRole('button', {name: '10-10.webp', exact: true}).click();
-  await expect(page.getByLabel('350 selected', {exact: true})).toBeVisible();
+  await expect(page.getByLabel(`${metadata.total - 1} selected`, {exact: true})).toBeVisible();
   await page.unroute('**/*EmojiWorkspace*.js');
   await page.getByRole('button', {name: 'Reload to retry'}).click();
   await expect(page.locator('astro-island[ssr]')).toHaveCount(0);
-  await expect(page.getByLabel('350 selected', {exact: true})).toBeVisible();
+  await expect(page.getByLabel(`${metadata.total - 1} selected`, {exact: true})).toBeVisible();
   await page.getByRole('button', {name: 'Expand selected emojis'}).click();
   await expect(page.getByRole('dialog', {name: 'Emoji workspace'})).toBeVisible();
-  await expect(page.getByLabel('350 selected', {exact: true})).toBeVisible();
+  await expect(page.getByLabel(`${metadata.total - 1} selected`, {exact: true})).toBeVisible();
 });

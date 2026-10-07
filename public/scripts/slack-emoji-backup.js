@@ -1,4 +1,4 @@
-// Emoji Brain Slack backup. Paste this entire file into DevTools Console at
+// Adorbs.fun Slack backup. Paste this entire file into DevTools Console at
 // https://YOUR-WORKSPACE.slack.com/customize/emoji, then leave the tab open.
 // Optional: globalThis.slackEmojiBackupOptions = { batchSize: 200 };
 (async () => {

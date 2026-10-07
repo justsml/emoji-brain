@@ -47,7 +47,7 @@ const initialState: EmojiState = {
   filteredEmojis: [],
   isSearching: false,
   showSelectedOnly: false,
-  gridScale: 0,
+  gridScale: 2,
 };
 
 function emojiReducer(state: EmojiState, action: EmojiAction): EmojiState {
@@ -142,6 +142,7 @@ export function EmojiProvider({ children, initialEmojis }: EmojiProviderProps) {
   // tray pointing at files that no longer exist. A first visit has nothing
   // stored and starts with an empty sheet: picking is the first thing to do.
   const [storedSelection, setStoredSelection] = useLocalStorage<unknown>(SELECTION_STORAGE_KEY, null);
+  const [storedScale, setStoredScale] = useLocalStorage<unknown>('emoji-grid-scale', 2);
 
   // The server has no storage, so it renders an empty sheet; the first client
   // render must match it or hydration fails. The stored sheet is restored in a
@@ -157,6 +158,9 @@ export function EmojiProvider({ children, initialEmojis }: EmojiProviderProps) {
   useLayoutEffect(() => {
     const selection = reconcileSelection(storedSelection, initialEmojis);
     if (selection.length) dispatch({ type: 'SET_SELECTION', payload: selection });
+    if (typeof storedScale === 'number' && Number.isInteger(storedScale) && storedScale >= 0 && storedScale < 4) {
+      dispatch({ type: 'SET_GRID_SCALE', payload: storedScale });
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps -- mount only
   }, []);
 
@@ -207,8 +211,10 @@ export function EmojiProvider({ children, initialEmojis }: EmojiProviderProps) {
   }, []);
 
   const setGridScale = useCallback((scale: number) => {
+    if (!Number.isInteger(scale) || scale < 0 || scale >= 4) return;
     dispatch({ type: 'SET_GRID_SCALE', payload: scale });
-  }, []);
+    setStoredScale(scale);
+  }, [setStoredScale]);
 
   const announceSelection = useCallback((_emoji: EmojiMetadata, _isSelected: boolean) => {
   }, []);

@@ -8,6 +8,7 @@ const stillCount = catalog.length - animatedCount;
 test('console export uses a worker and adaptive WebP and uploads identical bytes in a mocked browser',async({page,context})=>{
   await page.addInitScript(()=>Object.defineProperty(navigator,'clipboard',{value:{writeText:async(text:string)=>{(window as any).copiedEmojiScript=text;}}}));
   await page.goto('/');
+  await expect(page.locator('astro-island[ssr]')).toHaveCount(0);
   await page.locator('div[role="gridcell"] button').first().click();
   await expect(page.getByLabel('Slack image size')).toHaveCount(0);
   for(const size of [256]){
@@ -73,6 +74,7 @@ test('ZIP downloads the native-size quality-90 WebPs and Markdown includes all p
   await page.addInitScript(()=>Object.defineProperty(navigator,'clipboard',{value:{writeText:async(text:string)=>{(window as any).copiedEmojiScript=text;}}}));
   await page.goto('/');
   const button=page.locator('[role="gridcell"] button').first();
+  await expect(page.locator('astro-island[ssr]')).toHaveCount(0);
   const filename=(await button.getAttribute('aria-label'))!.split(',')[0];
   await button.click();
   await page.getByRole('button',{name:'Other export options'}).click();

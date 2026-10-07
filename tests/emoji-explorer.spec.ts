@@ -8,12 +8,12 @@ test.beforeEach(async ({ page }) => {
 
 test("should have the correct title", async ({ page }) => {
   // Check that the page title is correct
-  await expect(page).toHaveTitle(/Emoji Explorer/);
+  await expect(page).toHaveTitle(/Adorbs.fun/);
 });
 
 test("should display welcome message", async ({ page }) => {
   // Check that the main title is displayed
-  await expect(page.getByText("Emoji Explorer")).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Adorbs.fun", exact: true })).toBeVisible();
 });
 
 test("should display emoji grid", async ({ page }) => {
@@ -133,10 +133,10 @@ test("should show export options when emojis are selected", async ({
   await page.getByRole("button", { name: "Other export options" }).click();
 
   // Check that all export options are displayed
-  await expect(page.getByText("Plain Text")).toBeVisible();
-  await expect(page.getByText("HTML")).toBeVisible();
-  await expect(page.getByText("CSS")).toBeVisible();
-  await expect(page.getByText("Markdown Table")).toBeVisible();
+  const menu = page.getByRole("menu", { name: "Export options" });
+  for (const name of ["Plain Text", "HTML", "CSS", "Markdown Table"]) {
+    await expect(menu.getByRole("menuitem", { name, exact: true })).toBeVisible();
+  }
   await expect(page.getByRole("menuitem", {name: /^Originals/})).toBeVisible();
 });
 
@@ -211,7 +211,13 @@ test('visible stickers stay decoded across page-end and page-home jumps', async 
     await page.getByRole('radio', {name: 'Extra large', exact: true}).check();
     expect(await page.locator('.sheet-actions button').evaluateAll(buttons => buttons.filter(button => button.getClientRects().length).every(button => {const rect = button.getBoundingClientRect(); return rect.left >= 0 && rect.right <= innerWidth + 1;}))).toBe(true);
     for (const end of [true, false, true, false]) {
-      await page.evaluate(end => window.scrollTo({top: end ? document.documentElement.scrollHeight : 0, behavior: 'instant'}), end);
+      await page.evaluate(end => {
+        const grid = document.querySelector('[role="grid"]')!;
+        // The guide now follows the catalog. Exercise the last row of stickers,
+        // rather than assuming the bottom of the document contains the grid.
+        const bottom = grid.getBoundingClientRect().bottom + scrollY;
+        window.scrollTo({top: end ? bottom - innerHeight + 150 : 0, behavior: 'instant'});
+      }, end);
       await expect.poll(() => page.locator('[role="gridcell"]').evaluateAll(async cells => {
         const visible = cells.filter(cell => {const rect = cell.getBoundingClientRect(); return rect.bottom > 100 && rect.top < innerHeight - 150;});
         return visible.length > 0 && (await Promise.all(visible.map(async cell => {const img = cell.querySelector('img')!; try {await img.decode(); return img.naturalWidth > 0;} catch {return false;}}))).every(Boolean);

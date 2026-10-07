@@ -1,6 +1,6 @@
 {
-  "total": 351,
-  "lastUpdated": "2026-09-13T23:53:57.715Z",
+  "total": 360,
+  "lastUpdated": "2026-10-07T18:45:51.972Z",
   "emojis": [
     {
       "id": "df167e0a",
@@ -1337,357 +1337,6 @@
       "labelConfidence": "high"
     },
     {
-      "id": "4975109c",
-      "filename": "cat-meow-disappointed.webp",
-      "path": "/emojis/cat-meow-disappointed.webp",
-      "categories": [
-        "cat"
-      ],
-      "tags": [
-        "cat",
-        "sad",
-        "tired",
-        "deadpan",
-        "frustration",
-        "resignation",
-        "flat-vector",
-        "kawaii",
-        "yellow"
-      ],
-      "created": "2025-04-12T03:57:24.080Z",
-      "size": 368064,
-      "width": 1024,
-      "height": 1024,
-      "aliases": [],
-      "hash": "3534c179aadfa9266195f5633899c58fa0d361b3c4802285f4b5b3e4cb86fd11",
-      "modified": "2026-09-10T21:34:29.190Z",
-      "animated": false,
-      "labelHash": "3534c179aadfa9266195f5633899c58fa0d361b3c4802285f4b5b3e4cb86fd11",
-      "facets": {
-        "subject": [
-          "cat"
-        ],
-        "expression": [
-          "sad",
-          "tired",
-          "deadpan"
-        ],
-        "action": [],
-        "intent": [
-          "frustration",
-          "resignation"
-        ],
-        "prop": [],
-        "style": [
-          "flat-vector",
-          "kawaii"
-        ],
-        "color": [
-          "yellow"
-        ],
-        "origin": []
-      },
-      "labelConfidence": "high"
-    },
-    {
-      "id": "dbfa1cef",
-      "filename": "cat-meow-hearts.webp",
-      "path": "/emojis/cat-meow-hearts.webp",
-      "categories": [
-        "cat"
-      ],
-      "tags": [
-        "cat",
-        "affectionate",
-        "happy",
-        "excitement",
-        "empathy",
-        "photo",
-        "animated",
-        "brown",
-        "white"
-      ],
-      "created": "2025-04-12T03:57:20.260Z",
-      "size": 3525372,
-      "width": 460,
-      "height": 512,
-      "animated": true,
-      "aliases": [],
-      "hash": "b340dc3ba4ccb22d318b52b03d7fce17049d2e179ac26c52a7287dd56b07770f",
-      "modified": "2026-09-10T21:34:30.330Z",
-      "labelHash": "b340dc3ba4ccb22d318b52b03d7fce17049d2e179ac26c52a7287dd56b07770f",
-      "facets": {
-        "subject": [
-          "cat"
-        ],
-        "expression": [
-          "affectionate",
-          "happy"
-        ],
-        "action": [],
-        "intent": [
-          "excitement",
-          "empathy"
-        ],
-        "prop": [],
-        "style": [
-          "photo",
-          "animated"
-        ],
-        "color": [
-          "brown",
-          "white"
-        ],
-        "origin": []
-      },
-      "labelConfidence": "medium"
-    },
-    {
-      "id": "23cd88f5",
-      "filename": "cat-meow-knife.webp",
-      "path": "/emojis/cat-meow-knife.webp",
-      "categories": [
-        "cat",
-        "blob"
-      ],
-      "tags": [
-        "cat",
-        "blob",
-        "malicious",
-        "angry",
-        "smug",
-        "holding",
-        "shaking-fist",
-        "mockery",
-        "warning",
-        "weapon-prop",
-        "flat-vector",
-        "yellow",
-        "grey",
-        "blob-emoji"
-      ],
-      "created": "2025-04-12T03:57:25.503Z",
-      "size": 290486,
-      "width": 1024,
-      "height": 1024,
-      "aliases": [],
-      "hash": "7415cb65b75940c1ab595d8426e73d23de21970e2310be5a435ee421b265ad5c",
-      "modified": "2026-09-10T21:34:29.195Z",
-      "animated": false,
-      "labelHash": "7415cb65b75940c1ab595d8426e73d23de21970e2310be5a435ee421b265ad5c",
-      "facets": {
-        "subject": [
-          "cat",
-          "blob"
-        ],
-        "expression": [
-          "malicious",
-          "angry",
-          "smug"
-        ],
-        "action": [
-          "holding",
-          "shaking-fist"
-        ],
-        "intent": [
-          "mockery",
-          "warning"
-        ],
-        "prop": [
-          "weapon-prop"
-        ],
-        "style": [
-          "flat-vector"
-        ],
-        "color": [
-          "yellow",
-          "grey"
-        ],
-        "origin": [
-          "blob-emoji"
-        ]
-      },
-      "labelConfidence": "high"
-    },
-    {
-      "id": "9a59d0be",
-      "filename": "cat-meow-mask.webp",
-      "path": "/emojis/cat-meow-mask.webp",
-      "categories": [
-        "cat"
-      ],
-      "tags": [
-        "cat",
-        "deadpan",
-        "warning",
-        "acknowledge",
-        "mask-prop",
-        "medical-prop",
-        "flat-vector",
-        "kawaii",
-        "yellow"
-      ],
-      "created": "2025-04-12T03:57:20.894Z",
-      "size": 307104,
-      "width": 1024,
-      "height": 1024,
-      "aliases": [],
-      "hash": "4bc9c6426cbd33f2804e3ff102af14672f257fba873c977c9230ed4efa1af901",
-      "modified": "2026-09-10T21:34:29.197Z",
-      "animated": false,
-      "labelHash": "4bc9c6426cbd33f2804e3ff102af14672f257fba873c977c9230ed4efa1af901",
-      "facets": {
-        "subject": [
-          "cat"
-        ],
-        "expression": [
-          "deadpan"
-        ],
-        "action": [],
-        "intent": [
-          "warning",
-          "acknowledge"
-        ],
-        "prop": [
-          "mask-prop",
-          "medical-prop"
-        ],
-        "style": [
-          "flat-vector",
-          "kawaii"
-        ],
-        "color": [
-          "yellow"
-        ],
-        "origin": []
-      },
-      "labelConfidence": "high"
-    },
-    {
-      "id": "3cbd92bf",
-      "filename": "cat-meow-shocked.webp",
-      "path": "/emojis/cat-meow-shocked.webp",
-      "categories": [
-        "cat",
-        "face"
-      ],
-      "tags": [
-        "cat",
-        "face",
-        "anxious",
-        "shocked",
-        "scared",
-        "embarrassed",
-        "empathy",
-        "frustration",
-        "flat-vector",
-        "kawaii",
-        "yellow",
-        "blob-emoji"
-      ],
-      "created": "2025-04-12T03:57:23.480Z",
-      "size": 268982,
-      "width": 1024,
-      "height": 1024,
-      "aliases": [],
-      "hash": "16dfb3f2034650cef87ffaa690253b57a08453300a348750b671faa9bdb9d667",
-      "modified": "2026-09-10T21:34:29.201Z",
-      "animated": false,
-      "labelHash": "16dfb3f2034650cef87ffaa690253b57a08453300a348750b671faa9bdb9d667",
-      "facets": {
-        "subject": [
-          "cat",
-          "face"
-        ],
-        "expression": [
-          "anxious",
-          "shocked",
-          "scared",
-          "embarrassed"
-        ],
-        "action": [],
-        "intent": [
-          "empathy",
-          "frustration"
-        ],
-        "prop": [],
-        "style": [
-          "flat-vector",
-          "kawaii"
-        ],
-        "color": [
-          "yellow"
-        ],
-        "origin": [
-          "blob-emoji"
-        ]
-      },
-      "labelConfidence": "medium"
-    },
-    {
-      "id": "20577bd9",
-      "filename": "cat-meow-sip.webp",
-      "path": "/emojis/cat-meow-sip.webp",
-      "categories": [
-        "cat"
-      ],
-      "tags": [
-        "cat",
-        "smug",
-        "deadpan",
-        "skeptical",
-        "drinking",
-        "holding",
-        "sarcasm",
-        "mockery",
-        "food-prop",
-        "flat-vector",
-        "kawaii",
-        "yellow",
-        "purple"
-      ],
-      "created": "2025-04-12T03:57:20.666Z",
-      "size": 405288,
-      "width": 1024,
-      "height": 1024,
-      "aliases": [],
-      "hash": "845aa34364a899c33f378ec74a2147526b47493a6388031eca2ec192b8d33c30",
-      "modified": "2026-09-10T21:34:29.205Z",
-      "animated": false,
-      "labelHash": "845aa34364a899c33f378ec74a2147526b47493a6388031eca2ec192b8d33c30",
-      "facets": {
-        "subject": [
-          "cat"
-        ],
-        "expression": [
-          "smug",
-          "deadpan",
-          "skeptical"
-        ],
-        "action": [
-          "drinking",
-          "holding"
-        ],
-        "intent": [
-          "sarcasm",
-          "mockery"
-        ],
-        "prop": [
-          "food-prop"
-        ],
-        "style": [
-          "flat-vector",
-          "kawaii"
-        ],
-        "color": [
-          "yellow",
-          "purple"
-        ],
-        "origin": []
-      },
-      "labelConfidence": "high"
-    },
-    {
       "id": "6cdfeb52",
       "filename": "cat-nap.webp",
       "path": "/emojis/cat-nap.webp",
@@ -2323,6 +1972,68 @@
         ],
         "color": [
           "brown"
+        ],
+        "origin": []
+      },
+      "labelConfidence": "high"
+    },
+    {
+      "id": "65e511a7",
+      "filename": "delighted-frog.webp",
+      "path": "/emojis/delighted-frog.webp",
+      "categories": [
+        "amphibian"
+      ],
+      "tags": [
+        "amphibian",
+        "happy",
+        "delighted",
+        "celebrate",
+        "excitement",
+        "paw-motif",
+        "cartoon",
+        "kawaii",
+        "hand-drawn",
+        "green",
+        "pink"
+      ],
+      "aliases": [
+        "frog",
+        "social card",
+        "adorbs"
+      ],
+      "created": "2026-10-07T17:42:35.489Z",
+      "size": 183204,
+      "width": 1024,
+      "height": 1024,
+      "hash": "aa7e7bb50268b692457bc29e3de0b25219133a94f6bdeaf9707ddec35b4b2dd4",
+      "labelHash": "aa7e7bb50268b692457bc29e3de0b25219133a94f6bdeaf9707ddec35b4b2dd4",
+      "modified": "2026-10-07T17:43:43.726Z",
+      "animated": false,
+      "facets": {
+        "subject": [
+          "amphibian"
+        ],
+        "expression": [
+          "happy",
+          "delighted"
+        ],
+        "action": [],
+        "intent": [
+          "celebrate",
+          "excitement"
+        ],
+        "prop": [
+          "paw-motif"
+        ],
+        "style": [
+          "cartoon",
+          "kawaii",
+          "hand-drawn"
+        ],
+        "color": [
+          "green",
+          "pink"
         ],
         "origin": []
       },
@@ -3323,6 +3034,65 @@
         "color": [
           "black",
           "grey"
+        ],
+        "origin": []
+      },
+      "labelConfidence": "high"
+    },
+    {
+      "id": "dee710fc",
+      "filename": "happy-blob.webp",
+      "path": "/emojis/happy-blob.webp",
+      "categories": [
+        "blob"
+      ],
+      "tags": [
+        "blob",
+        "happy",
+        "delighted",
+        "celebrate",
+        "greeting",
+        "cartoon",
+        "kawaii",
+        "hand-drawn",
+        "orange",
+        "pink"
+      ],
+      "aliases": [
+        "orange blob",
+        "social card",
+        "adorbs"
+      ],
+      "created": "2026-10-07T17:42:41.293Z",
+      "size": 237296,
+      "width": 1024,
+      "height": 1024,
+      "hash": "2b79a5f8d902068a1ca1b5e930e93e8a244bad60edbbc89cc184da14c21f19df",
+      "labelHash": "2b79a5f8d902068a1ca1b5e930e93e8a244bad60edbbc89cc184da14c21f19df",
+      "modified": "2026-10-07T17:43:51.541Z",
+      "animated": false,
+      "facets": {
+        "subject": [
+          "blob"
+        ],
+        "expression": [
+          "happy",
+          "delighted"
+        ],
+        "action": [],
+        "intent": [
+          "celebrate",
+          "greeting"
+        ],
+        "prop": [],
+        "style": [
+          "cartoon",
+          "kawaii",
+          "hand-drawn"
+        ],
+        "color": [
+          "orange",
+          "pink"
         ],
         "origin": []
       },
@@ -5782,6 +5552,78 @@
         "origin": [
           "blob-emoji"
         ]
+      },
+      "labelConfidence": "high"
+    },
+    {
+      "id": "a401694f",
+      "filename": "meow_chefs_kiss.webp",
+      "path": "/emojis/meow_chefs_kiss.webp",
+      "categories": [
+        "cat",
+        "blob"
+      ],
+      "tags": [
+        "cat",
+        "blob",
+        "delighted",
+        "approve",
+        "praise",
+        "paw-motif",
+        "cartoon",
+        "kawaii",
+        "flat-vector",
+        "yellow",
+        "grey",
+        "hat",
+        "white"
+      ],
+      "aliases": [
+        "meow chefs kiss",
+        "meow chef's kiss",
+        "meow-chefs-kiss",
+        "meow-chef-kiss",
+        "chefs-kiss",
+        "chef's kiss",
+        "chef kiss",
+        "perfect"
+      ],
+      "created": "2026-10-07T17:43:04.734Z",
+      "size": 94828,
+      "width": 1024,
+      "height": 1024,
+      "hash": "1ef0174daaeed026addf8f93ecfbe7ea18b13f9213a01a5fcc2631ed7dd6ae37",
+      "labelHash": "1ef0174daaeed026addf8f93ecfbe7ea18b13f9213a01a5fcc2631ed7dd6ae37",
+      "modified": "2026-10-07T17:49:51.312Z",
+      "animated": false,
+      "facets": {
+        "subject": [
+          "cat",
+          "blob"
+        ],
+        "expression": [
+          "delighted"
+        ],
+        "action": [],
+        "intent": [
+          "approve",
+          "praise"
+        ],
+        "prop": [
+          "paw-motif",
+          "hat"
+        ],
+        "style": [
+          "cartoon",
+          "kawaii",
+          "flat-vector"
+        ],
+        "color": [
+          "yellow",
+          "grey",
+          "white"
+        ],
+        "origin": []
       },
       "labelConfidence": "high"
     },
@@ -12067,7 +11909,7 @@
       "width": 1024,
       "height": 1024,
       "aliases": [
-        "cat-meow-peek"
+        "meow-peek"
       ],
       "hash": "1efbc0ac999cb674fd5fb837eb15093af188e8ab9c08067045eb60107d28edfb",
       "modified": "2026-09-10T21:34:29.818Z",
@@ -15257,7 +15099,7 @@
       "width": 1024,
       "height": 1024,
       "aliases": [
-        "cat-meow-wow"
+        "meow-wow"
       ],
       "hash": "f03850f3acc9bcb8cf7c649b6be7a2ba7e4658874d1d0d5646a50ed5d26d99e0",
       "modified": "2026-09-10T21:34:29.965Z",
@@ -15915,6 +15757,59 @@
       "labelConfidence": "high"
     },
     {
+      "id": "4975109c",
+      "filename": "meow-disappointed.webp",
+      "path": "/emojis/meow-disappointed.webp",
+      "categories": [
+        "cat"
+      ],
+      "tags": [
+        "cat",
+        "sad",
+        "tired",
+        "deadpan",
+        "frustration",
+        "resignation",
+        "flat-vector",
+        "kawaii",
+        "yellow"
+      ],
+      "created": "2025-04-12T03:57:24.080Z",
+      "size": 368064,
+      "width": 1024,
+      "height": 1024,
+      "aliases": [],
+      "hash": "3534c179aadfa9266195f5633899c58fa0d361b3c4802285f4b5b3e4cb86fd11",
+      "modified": "2026-09-10T21:34:29.190Z",
+      "animated": false,
+      "labelHash": "3534c179aadfa9266195f5633899c58fa0d361b3c4802285f4b5b3e4cb86fd11",
+      "facets": {
+        "subject": [
+          "cat"
+        ],
+        "expression": [
+          "sad",
+          "tired",
+          "deadpan"
+        ],
+        "action": [],
+        "intent": [
+          "frustration",
+          "resignation"
+        ],
+        "prop": [],
+        "style": [
+          "flat-vector",
+          "kawaii"
+        ],
+        "color": [
+          "yellow"
+        ],
+        "origin": []
+      },
+      "labelConfidence": "high"
+    },
+    {
       "id": "182aadaf",
       "filename": "meow-double-thumbs2.webp",
       "path": "/emojis/meow-double-thumbs2.webp",
@@ -16086,6 +15981,180 @@
         "color": [
           "yellow",
           "red"
+        ],
+        "origin": []
+      },
+      "labelConfidence": "high"
+    },
+    {
+      "id": "dbfa1cef",
+      "filename": "meow-hearts.webp",
+      "path": "/emojis/meow-hearts.webp",
+      "categories": [
+        "cat"
+      ],
+      "tags": [
+        "cat",
+        "affectionate",
+        "happy",
+        "excitement",
+        "empathy",
+        "photo",
+        "animated",
+        "brown",
+        "white"
+      ],
+      "created": "2025-04-12T03:57:20.260Z",
+      "size": 3525372,
+      "width": 460,
+      "height": 512,
+      "animated": true,
+      "aliases": [],
+      "hash": "b340dc3ba4ccb22d318b52b03d7fce17049d2e179ac26c52a7287dd56b07770f",
+      "modified": "2026-09-10T21:34:30.330Z",
+      "labelHash": "b340dc3ba4ccb22d318b52b03d7fce17049d2e179ac26c52a7287dd56b07770f",
+      "facets": {
+        "subject": [
+          "cat"
+        ],
+        "expression": [
+          "affectionate",
+          "happy"
+        ],
+        "action": [],
+        "intent": [
+          "excitement",
+          "empathy"
+        ],
+        "prop": [],
+        "style": [
+          "photo",
+          "animated"
+        ],
+        "color": [
+          "brown",
+          "white"
+        ],
+        "origin": []
+      },
+      "labelConfidence": "medium"
+    },
+    {
+      "id": "23cd88f5",
+      "filename": "meow-knife.webp",
+      "path": "/emojis/meow-knife.webp",
+      "categories": [
+        "cat",
+        "blob"
+      ],
+      "tags": [
+        "cat",
+        "blob",
+        "malicious",
+        "angry",
+        "smug",
+        "holding",
+        "shaking-fist",
+        "mockery",
+        "warning",
+        "weapon-prop",
+        "flat-vector",
+        "yellow",
+        "grey",
+        "blob-emoji"
+      ],
+      "created": "2025-04-12T03:57:25.503Z",
+      "size": 290486,
+      "width": 1024,
+      "height": 1024,
+      "aliases": [],
+      "hash": "7415cb65b75940c1ab595d8426e73d23de21970e2310be5a435ee421b265ad5c",
+      "modified": "2026-09-10T21:34:29.195Z",
+      "animated": false,
+      "labelHash": "7415cb65b75940c1ab595d8426e73d23de21970e2310be5a435ee421b265ad5c",
+      "facets": {
+        "subject": [
+          "cat",
+          "blob"
+        ],
+        "expression": [
+          "malicious",
+          "angry",
+          "smug"
+        ],
+        "action": [
+          "holding",
+          "shaking-fist"
+        ],
+        "intent": [
+          "mockery",
+          "warning"
+        ],
+        "prop": [
+          "weapon-prop"
+        ],
+        "style": [
+          "flat-vector"
+        ],
+        "color": [
+          "yellow",
+          "grey"
+        ],
+        "origin": [
+          "blob-emoji"
+        ]
+      },
+      "labelConfidence": "high"
+    },
+    {
+      "id": "9a59d0be",
+      "filename": "meow-mask.webp",
+      "path": "/emojis/meow-mask.webp",
+      "categories": [
+        "cat"
+      ],
+      "tags": [
+        "cat",
+        "deadpan",
+        "warning",
+        "acknowledge",
+        "mask-prop",
+        "medical-prop",
+        "flat-vector",
+        "kawaii",
+        "yellow"
+      ],
+      "created": "2025-04-12T03:57:20.894Z",
+      "size": 307104,
+      "width": 1024,
+      "height": 1024,
+      "aliases": [],
+      "hash": "4bc9c6426cbd33f2804e3ff102af14672f257fba873c977c9230ed4efa1af901",
+      "modified": "2026-09-10T21:34:29.197Z",
+      "animated": false,
+      "labelHash": "4bc9c6426cbd33f2804e3ff102af14672f257fba873c977c9230ed4efa1af901",
+      "facets": {
+        "subject": [
+          "cat"
+        ],
+        "expression": [
+          "deadpan"
+        ],
+        "action": [],
+        "intent": [
+          "warning",
+          "acknowledge"
+        ],
+        "prop": [
+          "mask-prop",
+          "medical-prop"
+        ],
+        "style": [
+          "flat-vector",
+          "kawaii"
+        ],
+        "color": [
+          "yellow"
         ],
         "origin": []
       },
@@ -16554,6 +16623,130 @@
         "origin": []
       },
       "labelConfidence": "medium"
+    },
+    {
+      "id": "3cbd92bf",
+      "filename": "meow-shocked.webp",
+      "path": "/emojis/meow-shocked.webp",
+      "categories": [
+        "cat",
+        "face"
+      ],
+      "tags": [
+        "cat",
+        "face",
+        "anxious",
+        "shocked",
+        "scared",
+        "embarrassed",
+        "empathy",
+        "frustration",
+        "flat-vector",
+        "kawaii",
+        "yellow",
+        "blob-emoji"
+      ],
+      "created": "2025-04-12T03:57:23.480Z",
+      "size": 268982,
+      "width": 1024,
+      "height": 1024,
+      "aliases": [],
+      "hash": "16dfb3f2034650cef87ffaa690253b57a08453300a348750b671faa9bdb9d667",
+      "modified": "2026-09-10T21:34:29.201Z",
+      "animated": false,
+      "labelHash": "16dfb3f2034650cef87ffaa690253b57a08453300a348750b671faa9bdb9d667",
+      "facets": {
+        "subject": [
+          "cat",
+          "face"
+        ],
+        "expression": [
+          "anxious",
+          "shocked",
+          "scared",
+          "embarrassed"
+        ],
+        "action": [],
+        "intent": [
+          "empathy",
+          "frustration"
+        ],
+        "prop": [],
+        "style": [
+          "flat-vector",
+          "kawaii"
+        ],
+        "color": [
+          "yellow"
+        ],
+        "origin": [
+          "blob-emoji"
+        ]
+      },
+      "labelConfidence": "medium"
+    },
+    {
+      "id": "20577bd9",
+      "filename": "meow-sip.webp",
+      "path": "/emojis/meow-sip.webp",
+      "categories": [
+        "cat"
+      ],
+      "tags": [
+        "cat",
+        "smug",
+        "deadpan",
+        "skeptical",
+        "drinking",
+        "holding",
+        "sarcasm",
+        "mockery",
+        "food-prop",
+        "flat-vector",
+        "kawaii",
+        "yellow",
+        "purple"
+      ],
+      "created": "2025-04-12T03:57:20.666Z",
+      "size": 405288,
+      "width": 1024,
+      "height": 1024,
+      "aliases": [],
+      "hash": "845aa34364a899c33f378ec74a2147526b47493a6388031eca2ec192b8d33c30",
+      "modified": "2026-09-10T21:34:29.205Z",
+      "animated": false,
+      "labelHash": "845aa34364a899c33f378ec74a2147526b47493a6388031eca2ec192b8d33c30",
+      "facets": {
+        "subject": [
+          "cat"
+        ],
+        "expression": [
+          "smug",
+          "deadpan",
+          "skeptical"
+        ],
+        "action": [
+          "drinking",
+          "holding"
+        ],
+        "intent": [
+          "sarcasm",
+          "mockery"
+        ],
+        "prop": [
+          "food-prop"
+        ],
+        "style": [
+          "flat-vector",
+          "kawaii"
+        ],
+        "color": [
+          "yellow",
+          "purple"
+        ],
+        "origin": []
+      },
+      "labelConfidence": "high"
     },
     {
       "id": "2ca51bf9",
@@ -17437,60 +17630,73 @@
       "labelConfidence": "high"
     },
     {
-      "id": "41a1eeab",
-      "filename": "panda-omg.webp",
-      "path": "/emojis/panda-omg.webp",
+      "id": "6fb4fd04",
+      "filename": "party-cat.webp",
+      "path": "/emojis/party-cat.webp",
       "categories": [
-        "bear"
+        "cat"
       ],
       "tags": [
-        "bear",
-        "silly",
-        "laughing",
+        "cat",
+        "happy",
         "delighted",
-        "mockery",
+        "celebrate",
         "excitement",
-        "animated",
+        "hat",
+        "party-prop",
+        "paw-motif",
         "cartoon",
-        "white",
+        "kawaii",
+        "hand-drawn",
+        "orange",
         "black",
-        "twitch-emote"
+        "white",
+        "pink"
       ],
-      "created": "2025-04-12T03:57:23.061Z",
-      "size": 431558,
-      "width": 512,
-      "height": 512,
-      "animated": true,
-      "aliases": [],
-      "hash": "3138b04334b7a3e92ea3cd284b9516acfc451d2263b13b6a0aed51f88e65b92f",
-      "modified": "2026-09-10T21:34:30.238Z",
-      "labelHash": "3138b04334b7a3e92ea3cd284b9516acfc451d2263b13b6a0aed51f88e65b92f",
+      "aliases": [
+        "birthday cat",
+        "party cat",
+        "social card",
+        "adorbs"
+      ],
+      "created": "2026-10-07T17:42:29.899Z",
+      "size": 172570,
+      "width": 1024,
+      "height": 1024,
+      "hash": "dcbceaf7369ab85cccf11c5b144f67e6a0b84dae94a3bb95d51639647fb4902e",
+      "labelHash": "dcbceaf7369ab85cccf11c5b144f67e6a0b84dae94a3bb95d51639647fb4902e",
+      "modified": "2026-10-07T17:43:37.130Z",
+      "animated": false,
       "facets": {
         "subject": [
-          "bear"
+          "cat"
         ],
         "expression": [
-          "silly",
-          "laughing",
+          "happy",
           "delighted"
         ],
         "action": [],
         "intent": [
-          "mockery",
+          "celebrate",
           "excitement"
         ],
-        "prop": [],
+        "prop": [
+          "hat",
+          "party-prop",
+          "paw-motif"
+        ],
         "style": [
-          "animated",
-          "cartoon"
+          "cartoon",
+          "kawaii",
+          "hand-drawn"
         ],
         "color": [
+          "orange",
+          "black",
           "white",
-          "black"
+          "pink"
         ],
-        "origin": [
-          "twitch-emote"
-        ]
+        "origin": []
       },
       "labelConfidence": "high"
     },
@@ -17849,6 +18055,88 @@
         "origin": []
       },
       "labelConfidence": "medium"
+    },
+    {
+      "id": "62217aa9",
+      "filename": "roo-chefs-kiss.webp",
+      "path": "/emojis/roo-chefs-kiss.webp",
+      "categories": [
+        "bear"
+      ],
+      "tags": [
+        "bear",
+        "happy",
+        "delighted",
+        "affectionate",
+        "approve",
+        "praise",
+        "paw-motif",
+        "hat",
+        "sparkle-motif",
+        "cartoon",
+        "kawaii",
+        "flat-vector",
+        "white",
+        "black",
+        "grey",
+        "yellow"
+      ],
+      "aliases": [
+        "roo chefs kiss",
+        "roo chef's kiss",
+        "roo-chef-kiss",
+        "roo_chefs_kiss",
+        "chefs-kiss",
+        "chef's kiss",
+        "chef kiss",
+        "perfect",
+        "panda",
+        "perfection",
+        "exquisite",
+        "delicious",
+        "excellent"
+      ],
+      "created": "2026-10-07T17:42:59.647Z",
+      "size": 77334,
+      "width": 1024,
+      "height": 1024,
+      "hash": "89ddcff52af40870fa682d0b8ee557526de977224dac86af766e43848b17edef",
+      "labelHash": "89ddcff52af40870fa682d0b8ee557526de977224dac86af766e43848b17edef",
+      "modified": "2026-10-07T18:10:55.430Z",
+      "animated": false,
+      "facets": {
+        "subject": [
+          "bear"
+        ],
+        "expression": [
+          "happy",
+          "delighted",
+          "affectionate"
+        ],
+        "action": [],
+        "intent": [
+          "approve",
+          "praise"
+        ],
+        "prop": [
+          "paw-motif",
+          "hat",
+          "sparkle-motif"
+        ],
+        "style": [
+          "cartoon",
+          "kawaii",
+          "flat-vector"
+        ],
+        "color": [
+          "white",
+          "black",
+          "grey",
+          "yellow"
+        ],
+        "origin": []
+      },
+      "labelConfidence": "high"
     },
     {
       "id": "c25d3945",
@@ -19031,6 +19319,74 @@
       "labelConfidence": "high"
     },
     {
+      "id": "01ac195d",
+      "filename": "roo-shocked.webp",
+      "path": "/emojis/roo-shocked.webp",
+      "categories": [
+        "bear"
+      ],
+      "tags": [
+        "bear",
+        "shocked",
+        "disbelief",
+        "excitement",
+        "paw-motif",
+        "cartoon",
+        "kawaii",
+        "flat-vector",
+        "white",
+        "black",
+        "grey",
+        "pink"
+      ],
+      "aliases": [
+        "roo shocked",
+        "roo surprise",
+        "roo-surprised",
+        "panda shocked",
+        "wow",
+        "gasp",
+        "astonished"
+      ],
+      "created": "2026-10-07T17:49:27.278Z",
+      "modified": "2026-10-07T17:52:50.558Z",
+      "size": 75308,
+      "width": 1024,
+      "height": 1024,
+      "hash": "0dc7adc6bd707db9757131dac4a593bb0ea71bb421612138f2ce2711d6e8eddd",
+      "labelHash": "0dc7adc6bd707db9757131dac4a593bb0ea71bb421612138f2ce2711d6e8eddd",
+      "animated": false,
+      "facets": {
+        "subject": [
+          "bear"
+        ],
+        "expression": [
+          "shocked"
+        ],
+        "action": [],
+        "intent": [
+          "disbelief",
+          "excitement"
+        ],
+        "prop": [
+          "paw-motif"
+        ],
+        "style": [
+          "cartoon",
+          "kawaii",
+          "flat-vector"
+        ],
+        "color": [
+          "white",
+          "black",
+          "grey",
+          "pink"
+        ],
+        "origin": []
+      },
+      "labelConfidence": "high"
+    },
+    {
       "id": "18a46db4",
       "filename": "roo-sip.webp",
       "path": "/emojis/roo-sip.webp",
@@ -19156,6 +19512,64 @@
         "fromHash": "ae506fc50ccfb9b5c4b1826273f723fe7f5fd4e2e0c9b21d15c31c7f7b153979",
         "repairReceipt": "staging/emoji-enhancements/roo-think-repair/manifest.json"
       }
+    },
+    {
+      "id": "41a1eeab",
+      "filename": "roo-zomg.webp",
+      "path": "/emojis/roo-zomg.webp",
+      "categories": [
+        "bear"
+      ],
+      "tags": [
+        "bear",
+        "silly",
+        "laughing",
+        "delighted",
+        "mockery",
+        "excitement",
+        "animated",
+        "cartoon",
+        "white",
+        "black",
+        "twitch-emote"
+      ],
+      "created": "2025-04-12T03:57:23.061Z",
+      "size": 221366,
+      "width": 512,
+      "height": 512,
+      "animated": true,
+      "aliases": [],
+      "hash": "443d162a83c0ed6025af034becfe73f535ae590ef8fbd014842d91c6423f308f",
+      "modified": "2026-10-07T18:45:51.972Z",
+      "labelHash": "443d162a83c0ed6025af034becfe73f535ae590ef8fbd014842d91c6423f308f",
+      "facets": {
+        "subject": [
+          "bear"
+        ],
+        "expression": [
+          "silly",
+          "laughing",
+          "delighted"
+        ],
+        "action": [],
+        "intent": [
+          "mockery",
+          "excitement"
+        ],
+        "prop": [],
+        "style": [
+          "animated",
+          "cartoon"
+        ],
+        "color": [
+          "white",
+          "black"
+        ],
+        "origin": [
+          "twitch-emote"
+        ]
+      },
+      "labelConfidence": "high"
     },
     {
       "id": "bf25f3f2",
@@ -19959,6 +20373,66 @@
       "labelConfidence": "high"
     },
     {
+      "id": "ddaabfaa",
+      "filename": "sleepy-cloud.webp",
+      "path": "/emojis/sleepy-cloud.webp",
+      "categories": [
+        "object"
+      ],
+      "tags": [
+        "object",
+        "tired",
+        "sleeping",
+        "waiting",
+        "cartoon",
+        "kawaii",
+        "hand-drawn",
+        "purple",
+        "pink"
+      ],
+      "aliases": [
+        "sleepy cloud",
+        "sleep",
+        "nap",
+        "social card",
+        "adorbs"
+      ],
+      "created": "2026-10-07T17:42:47.537Z",
+      "size": 168142,
+      "width": 1024,
+      "height": 1024,
+      "hash": "68d22d2f644f4ed08058700a255eea6f2f062ce5d2e49b846576ea23e7e326b6",
+      "labelHash": "68d22d2f644f4ed08058700a255eea6f2f062ce5d2e49b846576ea23e7e326b6",
+      "modified": "2026-10-07T17:43:57.890Z",
+      "animated": false,
+      "facets": {
+        "subject": [
+          "object"
+        ],
+        "expression": [
+          "tired"
+        ],
+        "action": [
+          "sleeping"
+        ],
+        "intent": [
+          "waiting"
+        ],
+        "prop": [],
+        "style": [
+          "cartoon",
+          "kawaii",
+          "hand-drawn"
+        ],
+        "color": [
+          "purple",
+          "pink"
+        ],
+        "origin": []
+      },
+      "labelConfidence": "high"
+    },
+    {
       "id": "1550e7b9",
       "filename": "smart.webp",
       "path": "/emojis/smart.webp",
@@ -20012,6 +20486,67 @@
         "origin": [
           "actor-likeness"
         ]
+      },
+      "labelConfidence": "high"
+    },
+    {
+      "id": "e8e40528",
+      "filename": "smiling-heart.webp",
+      "path": "/emojis/smiling-heart.webp",
+      "categories": [
+        "object"
+      ],
+      "tags": [
+        "object",
+        "happy",
+        "affectionate",
+        "thanks",
+        "empathy",
+        "heart-motif",
+        "cartoon",
+        "kawaii",
+        "hand-drawn",
+        "pink"
+      ],
+      "aliases": [
+        "smiling heart",
+        "love",
+        "social card",
+        "adorbs"
+      ],
+      "created": "2026-10-07T17:42:53.935Z",
+      "size": 243272,
+      "width": 1024,
+      "height": 1024,
+      "hash": "7fefe3b6de519faeefd07752f77911539476b47ee06e54dc5a1a836d0297d24b",
+      "labelHash": "7fefe3b6de519faeefd07752f77911539476b47ee06e54dc5a1a836d0297d24b",
+      "modified": "2026-10-07T17:44:05.223Z",
+      "animated": false,
+      "facets": {
+        "subject": [
+          "object"
+        ],
+        "expression": [
+          "happy",
+          "affectionate"
+        ],
+        "action": [],
+        "intent": [
+          "thanks",
+          "empathy"
+        ],
+        "prop": [
+          "heart-motif"
+        ],
+        "style": [
+          "cartoon",
+          "kawaii",
+          "hand-drawn"
+        ],
+        "color": [
+          "pink"
+        ],
+        "origin": []
       },
       "labelConfidence": "high"
     },
@@ -20077,6 +20612,62 @@
         "origin": [
           "south-park"
         ]
+      },
+      "labelConfidence": "high"
+    },
+    {
+      "id": "bbc3930b",
+      "filename": "sparkle.webp",
+      "path": "/emojis/sparkle.webp",
+      "categories": [
+        "object"
+      ],
+      "tags": [
+        "object",
+        "praise",
+        "excitement",
+        "sparkle-motif",
+        "cartoon",
+        "kawaii",
+        "hand-drawn",
+        "yellow"
+      ],
+      "aliases": [
+        "yellow sparkle",
+        "star",
+        "social card",
+        "adorbs"
+      ],
+      "created": "2026-10-07T17:44:23.217Z",
+      "size": 147142,
+      "width": 1024,
+      "height": 1024,
+      "hash": "dde37469cf9c6968bca63b4851adfd7c09b15fbfd6e28be9dd3f99bbdfdae325",
+      "labelHash": "dde37469cf9c6968bca63b4851adfd7c09b15fbfd6e28be9dd3f99bbdfdae325",
+      "modified": "2026-10-07T17:44:23.217Z",
+      "animated": false,
+      "facets": {
+        "subject": [
+          "object"
+        ],
+        "expression": [],
+        "action": [],
+        "intent": [
+          "praise",
+          "excitement"
+        ],
+        "prop": [
+          "sparkle-motif"
+        ],
+        "style": [
+          "cartoon",
+          "kawaii",
+          "hand-drawn"
+        ],
+        "color": [
+          "yellow"
+        ],
+        "origin": []
       },
       "labelConfidence": "high"
     },

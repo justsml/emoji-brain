@@ -114,7 +114,6 @@ for (const viewport of [{width:1440,height:900},{width:390,height:844}]) {
     await page.waitForTimeout(300);
     if (process.env.DISCOVERY_TRACE) await page.context().browser()!.startTracing(page,{path:testInfo.outputPath('discovery-trace.json'),categories:['devtools.timeline','blink.user_timing']});
     await begin(page,'theme-color-discovery');
-    for (const limit of [20,5,10]) await page.getByRole('button',{name:`Show ${limit} themes`}).click();
     for (const word of ['cat','happy','blob']) {
       await page.getByRole('button',{name:`Filter ${word}`,exact:true}).click();
       await expect(page.locator('.emoji-card')).not.toHaveCount(351);

@@ -1,0 +1,7 @@
+# Adorbs.fun social card
+
+Generated with the built-in image generation tool, then resized and compressed with Sharp to 1200 × 630 PNG at `public/social-card.png`. Open Graph and Twitter metadata use this asset.
+
+## Generation prompt
+
+Use case: ads-marketing. Asset type: beautiful social share card for Adorbs.fun, a curated cute emoji and sticker explorer with exports for Slack. Create a premium playful editorial brand illustration, wide 1.905:1 composition intended for a 1200x630 social image. Warm ivory paper background with subtle graph-paper cutting-mat lines. Huge beautifully typeset dark charcoal headline exactly 'Adorbs.fun' with a raspberry pink dot. Beneath it, clearly readable subtitle exactly 'Cute emojis. Big feelings.' Lower left small line exactly 'Find your favorites. Export to Slack.' On the right and around edges, a delightful curated collage of original die-cut kawaii sticker characters: birthday cat with tiny party hat, smiling pink heart, tiny sleepy cloud, delighted frog, yellow sparkles, orange happy blob. Tactile matte paper and subtle realistic lifting shadows, restrained raspberry, lavender, mint and sunny yellow palette. Sophisticated clean typography, purposeful whitespace, visually arresting, charming rather than cluttered. Keep all text fully inside a central safe region with at least 80px margins and ample contrast, no clipped letters. No Slack logo, no watermarks, no screenshot or UI chrome. Generate at wide landscape aspect ratio as close to 1200x630 as possible.

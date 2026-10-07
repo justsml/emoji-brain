@@ -2,7 +2,7 @@
 
 <img src="public/emojis/meow_birthday.webp" alt="" width="72" height="72">
 
-# Emoji Explorer
+# Adorbs.fun
 
 **Browse 350+ upscaled emojis and stickers inspired by other collections, pick your favorites, and paste one script into Slack to upload the lot.**
 
@@ -13,8 +13,7 @@
 [![Emoji count](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjustsml%2Femoji-brain%2Fmain%2Fsrc%2Fdata%2Femoji-metadata.json&query=%24.total&label=emoji&color=ff4f8b&logo=slack&logoColor=white)](public/emojis/)
 [![PRs welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/justsml/emoji-brain/pulls)
 
-[![Live on Vercel](https://img.shields.io/badge/Live-Vercel-000000?logo=vercel)](https://emoji-brain.vercel.app/)
-[![Live on Netlify](https://img.shields.io/badge/Live-Netlify-00C7B7?logo=netlify&logoColor=white)](https://emoji-brain.netlify.app/)
+[![Adorbs.fun](https://img.shields.io/badge/Live-Adorbs.fun-ff4f8b)](https://adorbs.fun/)
 
 [![Astro](https://img.shields.io/badge/Astro-7-BC52EE?logo=astro&logoColor=white)](https://astro.build/)
 [![React](https://img.shields.io/badge/React-19-20232A?logo=react&logoColor=61DAFB)](https://react.dev/)
@@ -26,10 +25,10 @@
 [![Playwright](https://img.shields.io/badge/E2E-Playwright-2EAD33?logo=playwright&logoColor=white)](https://playwright.dev/)
 [![Vitest](https://img.shields.io/badge/Tests-Vitest-6E9F18?logo=vitest&logoColor=white)](https://vitest.dev/)
 
-<a href="https://emoji-brain.vercel.app/">
+<a href="https://adorbs.fun/">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="docs/screenshot-dark.webp">
-    <img src="docs/screenshot-light.webp" alt="Emoji Explorer: a searchable grid of custom emoji laid out on a cutting-mat sheet, with a Copy Slack script button in the tray" width="100%">
+    <img src="docs/screenshot-light.webp" alt="Adorbs.fun: a searchable grid of custom emoji laid out on a cutting-mat sheet, with a Copy Slack script button in the tray" width="100%">
   </picture>
 </a>
 
@@ -37,7 +36,7 @@
 
 </div>
 
-Emoji Explorer (`emoji-brain`) is a self-hostable, static [Astro](https://astro.build/) app with a React interface and no backend. Search, select, then export to Slack, ZIP, HTML, CSS, or Markdown.
+Adorbs.fun (`emoji-brain`) is a self-hostable, static [Astro](https://astro.build/) app with a React interface and no backend. Search, select, then export to Slack, ZIP, HTML, CSS, or Markdown.
 
 > [!TIP]
 > **✨ Big emojis. Smart Slack exports.**
@@ -55,7 +54,7 @@ Emoji Explorer (`emoji-brain`) is a self-hostable, static [Astro](https://astro.
 
 ## Use the collection
 
-1. Open the [Vercel demo](https://emoji-brain.vercel.app/) or [Netlify demo](https://emoji-brain.netlify.app/).
+1. Open [Adorbs.fun](https://adorbs.fun/).
 2. Search for emojis and click the ones you want to add to your sheet. Click again to remove one.
 3. Choose **Copy Slack script**, or open **Other export options** beside it for the other formats.
 
@@ -93,7 +92,7 @@ All 353 approved upscales are promoted to `public/emojis`, including the recover
 
 ### Back up a Slack workspace
 
-Use **Back up Slack emojis** in the site navigation, or copy [slack-emoji-backup.js](public/scripts/slack-emoji-backup.js) into DevTools Console on your signed-in workspace’s `/customize/emoji` page. No selection in Emoji Explorer is required.
+Use **Back up Slack emojis** in the site navigation, or copy [slack-emoji-backup.js](public/scripts/slack-emoji-backup.js) into DevTools Console on your signed-in workspace’s `/customize/emoji` page. No selection in Adorbs.fun is required.
 
 - Enumerates `emoji.adminList` pages and validates the reported total before downloading images.
 - Automatically requests numbered ZIP downloads, **200 emoji records per ZIP** by default. Set `globalThis.slackEmojiBackupOptions = { batchSize: 100 };` before running to change it (1–1,000).

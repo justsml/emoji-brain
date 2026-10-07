@@ -8,7 +8,6 @@ import { recoverEmojiPreview, restoreEmojiPreview, emojiAsset, markdownTable } f
 import { useExportEstimates } from "../hooks/useExportEstimates";
 import { formatBytes, SLACK_SCRIPT_LIMIT, type ExportTier } from "../lib/slackSizeEstimate";
 import { ExportOptions } from "./ExportOptions";
-import { ExportEstimateNote } from "./ExportEstimateNote";
 import { DeskSurface } from "./DeskSurface";
 import { CheckSquare, XSquare, ChevronDown, Copy, LoaderCircle, X, Check, Trash2, Link, ArrowLeftRight } from "lucide-react";
 import "../styles/sheet-tray.css";
@@ -182,7 +181,6 @@ export function EmojiExport({ onInvertVisible, onOpenSheet, selectedEmojis, onCl
 
   return (
     <>
-    <ExportEstimateNote estimates={estimates} count={selectedEmojis.length} />
     {copiedScript && (
       <section
         aria-labelledby="slack-instructions-title"
@@ -259,6 +257,7 @@ export function EmojiExport({ onInvertVisible, onOpenSheet, selectedEmojis, onCl
       </div>
 
       <div className="sheet-actions">
+        <div className="sheet-estimate-slot">
         {active && (
           <button
             type="button"
@@ -279,11 +278,12 @@ export function EmojiExport({ onInvertVisible, onOpenSheet, selectedEmojis, onCl
             </span>
           </button>
         )}
+        </div>
         <Button
           ref={selectAllButtonRef}
           variant="ghost"
           onClick={onSelectAll}
-          className={`h-9 w-9 p-0 hover:bg-primary/10 hover:text-primary${flashSelectAll ? " sheet-flash" : ""}`}
+          className={`sheet-tool h-9 w-9 p-0${flashSelectAll ? " sheet-flash" : ""}`}
           size="sm"
           title="Select All Visible"
         >
@@ -292,7 +292,7 @@ export function EmojiExport({ onInvertVisible, onOpenSheet, selectedEmojis, onCl
         <Button
           variant="ghost"
           onClick={onDeselectVisible}
-          className="h-9 w-9 p-0 hover:bg-destructive/10 hover:text-destructive disabled:opacity-35"
+          className="sheet-tool h-9 w-9 p-0"
           size="sm"
           title="Deselect visible"
           aria-label="Deselect visible"
@@ -303,7 +303,7 @@ export function EmojiExport({ onInvertVisible, onOpenSheet, selectedEmojis, onCl
         <Button
           variant="ghost"
           onClick={onClearSelection}
-          className="h-9 w-9 p-0 hover:bg-destructive/10 hover:text-destructive disabled:opacity-35"
+          className="sheet-tool h-9 w-9 p-0"
           size="sm"
           title="Clear all selected emojis"
           aria-label="Clear all selected emojis"
@@ -311,20 +311,19 @@ export function EmojiExport({ onInvertVisible, onOpenSheet, selectedEmojis, onCl
         >
           <Trash2 className="h-4 w-4" />
         </Button>
-        {onInvertVisible && <Button variant="ghost" size="sm" className="h-9 w-9 p-0" onClick={onInvertVisible} disabled={!filteredEmojis.length} title="Invert visible selection" aria-label="Invert visible selection"><ArrowLeftRight className="h-4 w-4" /></Button>}
+        {onInvertVisible && <Button variant="ghost" size="sm" className="sheet-tool h-9 w-9 p-0" onClick={onInvertVisible} disabled={!filteredEmojis.length} title="Invert visible selection" aria-label="Invert visible selection"><ArrowLeftRight className="h-4 w-4" /></Button>}
         <div className="sheet-divider" />
-        {shareUrl && selectedEmojis.length > 0 && (
           <Button
             variant="ghost"
             onClick={copyShareLink}
-            className="sheet-share h-9 w-9 p-0 hover:bg-primary/10 hover:text-primary"
+            disabled={!shareUrl || selectedEmojis.length === 0}
+            className="sheet-tool sheet-share h-9 w-9 p-0"
             size="sm"
             title="Copy a link to this sheet"
             aria-label="Copy a link to this sheet"
           >
             <Link className="h-4 w-4" />
           </Button>
-        )}
         <div className="flex items-center">
           <span
             title={selectedEmojis.length === 0 ? "Select some emojis first, or click Select All" : undefined}

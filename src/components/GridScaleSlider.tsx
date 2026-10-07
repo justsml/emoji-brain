@@ -12,7 +12,8 @@ const GridScaleSlider: React.FC = () => {
 
   return (
     <fieldset className="segmented segmented-size">
-      <legend className="sr-only">Sticker size</legend>
+      <legend className="sr-only">Emoji size</legend>
+      <span className="size-caption" aria-hidden="true">Size</span>
       {SIZE_LABELS.map((label, index) => (
         <label key={label} title={SIZE_NAMES[index]}>
           <input

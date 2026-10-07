@@ -1,37 +1,27 @@
-.catalog-discovery-slot { min-width: 0; height: 252px; }
+.catalog-discovery-slot { min-width: 0; height: 200px; }
 .atlas-placeholder { font-size: .75rem; color: hsl(var(--muted-foreground)); }
 
 /* Themes are stickers from the sheet: each word brings its own, and picking one
    peels it up. Colors are the sheet's actual palette, one strip wide, so the
    picker doubles as the chart of how much of each hue there is. */
-.theme-atlas { --spring: cubic-bezier(.34, 1.56, .64, 1); display: flex; flex-direction: column; width: 100%; height: 100%; }
+.theme-atlas { --spring: cubic-bezier(.34, 1.56, .64, 1); display: grid; grid-template-columns: minmax(0, 24rem) minmax(0, 20rem); grid-template-rows: minmax(0, 1fr) auto; column-gap: 2rem; width: 100%; height: 100%; }
 .theme-atlas button { cursor: pointer; -webkit-tap-highlight-color: transparent; }
 .theme-atlas button:focus-visible { outline: 2px solid hsl(var(--cut)); outline-offset: 2px; }
 
+.atlas-themes { width: 100%; max-width: 24rem; display: flex; flex-direction: column; min-width: 0; min-height: 0; }
+.atlas-colors { width: 100%; max-width: 20rem; min-width: 0; }
+.atlas-color-hint { margin: .75rem 0 .25rem; font-size: .8rem; color: hsl(var(--muted-foreground)); }
+
 .atlas-heading { display: flex; align-items: baseline; justify-content: space-between; gap: .5rem; }
 .atlas-heading h2 { margin: 0; font-family: var(--font-display); font-size: .95rem; font-weight: 650; letter-spacing: -.01em; }
-.atlas-heading [role=group] { display: flex; align-items: baseline; gap: .1rem; font-size: .75rem; color: hsl(var(--muted-foreground)); }
-.atlas-heading [role=group] > span { margin-right: .25rem; }
-.atlas-heading button { min-height: 28px; min-width: 26px; font-variant-numeric: tabular-nums; color: inherit; background: linear-gradient(hsl(var(--cut)), hsl(var(--cut))) center bottom 4px / 0 2px no-repeat; transition: color 140ms ease, background-size 220ms var(--spring); }
-.atlas-heading button:hover { color: hsl(var(--foreground)); }
-.atlas-heading button[aria-pressed=true] { color: hsl(var(--foreground)); font-weight: 650; background-size: 14px 2px; }
 
-.theme-cloud { display: flex; flex-wrap: wrap; align-items: center; align-content: safe center; justify-content: flex-start; column-gap: .35rem; row-gap: .15rem; flex: 1; min-height: 0; overflow-y: auto; padding: .5rem; margin: 0 -.5rem; scrollbar-width: thin; }
+.theme-cloud { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); grid-template-rows: repeat(3, 1fr); align-items: center; gap: .15rem .2rem; flex: 1; min-height: 0; padding: .5rem 0; }
+.theme-cloud button { grid-column: span 4; justify-self: center; }
+.theme-cloud button:nth-child(-n+4) { grid-column: span 3; }
 .theme-cloud button { display: inline-flex; align-items: center; gap: .3em; min-height: 34px; padding: .1rem .45rem .1rem .2rem; border-radius: 999px; font-family: var(--font-display); font-size: var(--word-size); font-weight: 450; letter-spacing: -.005em; line-height: 1.2; white-space: nowrap; color: hsl(var(--foreground) / .78); transition: opacity 180ms ease, background-color 160ms ease, color 160ms ease; }
 .theme-cloud img { width: 1.75em; height: 1.75em; object-fit: contain; flex-shrink: 0; transform: rotate(var(--tilt, -6deg)); filter: drop-shadow(0 1px 1px hsl(var(--lift) / .22)); transition: transform 260ms var(--spring), filter 200ms ease; }
 .theme-cloud button:nth-child(even) img { --tilt: 5deg; }
 .theme-cloud button:nth-child(3n) img { --tilt: -2deg; }
-/* When the themes outgrow the slot, fade the bottom edge so it reads as scrollable.
-   A scroll timeline only runs while there is something to scroll, and the fade
-   lifts as the list reaches its end; elsewhere, fall back to fading at 20. */
-@property --cloud-fade { syntax: "<length>"; inherits: false; initial-value: 0px; }
-.theme-cloud { mask-image: linear-gradient(#000 calc(100% - var(--cloud-fade)), transparent); }
-.theme-cloud[data-crowded] { --cloud-fade: 1.75rem; }
-@supports (animation-timeline: scroll()) {
-  .theme-cloud { animation: cloud-fade linear both; animation-timeline: scroll(self); }
-  .theme-cloud[data-crowded] { --cloud-fade: 0px; }
-}
-@keyframes cloud-fade { from { --cloud-fade: 1.75rem; } 85% { --cloud-fade: 1.75rem; } to { --cloud-fade: 0px; } }
 .theme-count { font-size: .58rem; opacity: .8; font-variant-numeric: tabular-nums; color: hsl(var(--muted-foreground)); align-self: flex-start; margin-top: .45em; }
 
 .theme-cloud button:hover { background: hsl(var(--foreground) / .06); color: hsl(var(--foreground)); }
@@ -62,26 +52,20 @@
 .color-strip button[aria-pressed=true]::after { content: ""; position: absolute; left: 50%; top: 5px; width: 6px; height: 6px; margin-left: -3px; border-radius: 50%; background: hsl(0 0% 100%); box-shadow: 0 0 0 1.5px hsl(var(--foreground) / .55); }
 .color-strip:has([aria-pressed=true]) button:not([aria-pressed=true]):not(:hover) { opacity: .6; }
 
-.atlas-status { min-height: 30px; display: flex; align-items: center; justify-content: space-between; gap: .75rem; font-size: .75rem; color: hsl(var(--muted-foreground)); }
+.atlas-status { grid-column: 1 / -1; min-height: 30px; display: flex; align-items: center; justify-content: space-between; gap: .75rem; font-size: .75rem; color: hsl(var(--muted-foreground)); }
 .atlas-status > span::first-letter { text-transform: uppercase; }
 .atlas-status[data-active] > span { color: hsl(var(--foreground)); font-weight: 550; }
 .atlas-status button { min-height: 28px; color: hsl(var(--cut)); font-weight: 600; text-decoration: underline; text-underline-offset: .25em; text-decoration-thickness: 1px; }
 
-/* On phones the themes run in three rows that scroll sideways, so the picker
-   stays short enough for the first stickers to show above the fold. */
+/* Stack the compact pickers on phones, keeping the same three theme rows. */
 @media (max-width: 860px) {
-  .catalog-discovery-slot { height: 240px; }
-  .theme-cloud { display: grid; grid-auto-flow: column; grid-template-rows: repeat(3, auto); justify-content: start; align-content: center; gap: .1rem .2rem; overflow: auto hidden; padding: .4rem .5rem; overscroll-behavior-x: contain; mask-image: linear-gradient(to right, #000 calc(100% - var(--cloud-fade)), transparent); }
-  .theme-cloud button { font-size: calc(var(--word-size) * .92); min-height: 38px; }
-  .theme-cloud[data-crowded] { --cloud-fade: 1.75rem; }
-  @supports (animation-timeline: scroll()) {
-    .theme-cloud { animation-timeline: scroll(self inline); }
-    .theme-cloud[data-crowded] { --cloud-fade: 0px; }
-  }
+  .catalog-discovery-slot { height: 330px; }
+  .theme-atlas { grid-template-columns: minmax(0, 24rem); grid-template-rows: minmax(0, 1fr) auto auto; row-gap: .75rem; }
+  .atlas-color-hint { margin-top: .35rem; }
+  .theme-cloud button { font-size: calc(var(--word-size) * .85); min-height: 38px; padding-inline: .1rem; gap: .2em; }
 }
 @media (pointer: coarse) {
   .theme-cloud button { min-height: 40px; }
-  .atlas-heading button { min-height: 40px; min-width: 36px; }
   .color-strip { height: 48px; }
   .color-strip button { min-width: 22px; height: 30px; }
   .color-strip button:hover { height: 30px; }

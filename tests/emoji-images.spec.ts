@@ -54,6 +54,7 @@ for (const viewport of [{width: 1440, height: 900}, {width: 390, height: 844}]) 
       for (let i = 0; i < 8; i++) {
         await page.evaluate(bottom => scrollTo(0, bottom ? document.documentElement.scrollHeight : 0), i % 2 === 0);
         const image = page.getByRole('button', {name: i % 2 ? '10-10.webp' : 'weed.webp', exact: true}).locator('img');
+        await image.scrollIntoViewIfNeeded();
         await expect.poll(() => image.evaluate(img => (img as HTMLImageElement).naturalWidth)).toBeGreaterThan(0);
         const clip = await image.boundingBox();
         expect(clip).not.toBeNull();

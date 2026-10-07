@@ -2,9 +2,9 @@
 import Layout from '../layouts/Layout.astro';
 import metadata from '../data/emoji-metadata.json';
 ---
-<Layout title="Back up Slack emojis · Emoji Explorer" imageCount={metadata.emojis.length}>
-  <main style="max-width:48rem;margin:2rem auto;padding:1.5rem;line-height:1.7">
-    <h2 style="font-size:2rem;font-weight:700">Back up your Slack emojis</h2>
+<Layout title="Back up Slack emojis · Adorbs.fun" description="Back up your Slack workspace’s custom emojis, aliases, and metadata to ZIP files with a browser script. Follow the steps and verify every download." heading="Back up your Slack emojis" imageCount={metadata.emojis.length}>
+  <section aria-label="Slack emoji backup instructions" style="max-width:48rem;margin:2rem auto;padding:1.5rem;line-height:1.7">
+    <h2 style="font-size:2rem;font-weight:700">How to back up custom Slack emojis</h2>
     <p>Save your workspace’s custom emojis, aliases, and metadata in numbered ZIP files, with 200 emojis per file.</p>
     <ol style="list-style:decimal;padding-left:1.5rem;margin:1rem 0">
       <li>Copy the script below.</li>
@@ -19,8 +19,8 @@ import metadata from '../data/emoji-metadata.json';
     <p>Keep the backup panel open until you have verified every ZIP downloaded. Its links let you retry blocked downloads. Image failures are recorded in the manifest and console report.</p>
     <p>To change the batch size, run <code is:raw>globalThis.slackEmojiBackupOptions = { batchSize: 200 };</code> before pasting the script. Values from 1 to 1,000 are supported.</p>
     <p>Processing happens in your browser. The script loads fflate from jsDelivr and reads Slack’s emoji API and image URLs. Backups include the workspace metadata Slack exposes, such as uploader IDs and names.</p>
-    <a href="/" style="text-decoration:underline">Back to Emoji Explorer</a>
-  </main>
+    <a href="/" style="text-decoration:underline">Back to Adorbs.fun</a>
+  </section>
 </Layout>
 <script>
   import script from '../../public/scripts/slack-emoji-backup.js?raw';

@@ -74,13 +74,21 @@
   mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
+  /* The prefixed shorthand also resets the standard composite in Chromium.
+     Set the standard operation last so only the edge ring is painted. */
+  mask-composite: exclude;
   pointer-events: none;
 }
 
 .dark .sheet-tray {
   /* the same desk under a dimmer lamp */
   --background: 34 38% 70%;
-  --muted-foreground: 26 24% 26%;
+  --foreground: 24 38% 10%;
+  --muted-foreground: 26 28% 20%;
+  --primary: 341 78% 32%;
+  --cut: 341 78% 32%;
+  --destructive: 6 76% 30%;
+  --ring: 341 78% 32%;
   --accent: 32 34% 62%;
   --border: 30 24% 52%;
   --input: 30 24% 52%;
@@ -312,12 +320,12 @@ button.sheet-flag:focus-visible { outline: 2px solid hsl(var(--cut)); outline-of
   border-radius: 11px 1px 1px 6px;
   background:
     radial-gradient(22px 120% at 0 30%, hsl(220 8% 32% / 0.32), transparent),
-    linear-gradient(hsl(355 66% 52%), hsl(355 62% 45%));
+    linear-gradient(hsl(355 66% 43%), hsl(355 62% 36%));
 }
 .sheet-eraser-ink { --eraser-side: hsl(214 46% 25%); }
 .sheet-eraser-ink::before {
   border-radius: 1px 6px 6px 1px;
-  background: linear-gradient(hsl(214 46% 48%), hsl(214 48% 40%));
+  background: linear-gradient(hsl(214 46% 40%), hsl(214 48% 32%));
   box-shadow:
     inset 1px 0 0 hsl(0 0% 0% / 0.18),
     inset 0 1px 0 hsl(0 0% 100% / 0.25),
@@ -433,6 +441,8 @@ button.sheet-flag:focus-visible { outline: 2px solid hsl(var(--cut)); outline-of
   min-height: 48px;
   gap: 0.35rem;
 }
+.sheet-estimate-slot { display: contents; }
+.sheet-share:disabled { display: none; }
 .sheet-divider {
   width: 1px;
   height: 1.35rem;
@@ -765,4 +775,71 @@ button.sheet-flag:focus-visible { outline: 2px solid hsl(var(--cut)); outline-of
 @media (prefers-reduced-motion: reduce) {
   .sheet-estimate, .sheet-estimate-meter i, .size-option { transition: none; }
   .sheet-flash { animation: none; }
+}
+
+/* Disabled rubber must keep its label readable against the laminate.
+   Fade the material color instead of the entire control (including its text). */
+.sheet-tray .sheet-eraser:disabled { opacity: 1; color: hsl(24 30% 20%); text-shadow: none; }
+.sheet-eraser-pencil:disabled { --eraser-side: hsl(355 18% 37%); }
+.sheet-eraser-pencil:disabled::before { background: linear-gradient(hsl(355 26% 73%), hsl(355 22% 64%)); }
+.sheet-eraser-ink:disabled { --eraser-side: hsl(214 16% 36%); }
+.sheet-eraser-ink:disabled::before { background: linear-gradient(hsl(214 23% 75%), hsl(214 20% 65%)); }
+.sheet-tray button:disabled:not(.sheet-eraser):not(.sheet-tool) { opacity: 0.6; }
+
+/* Give functional icons their own readable surface over the desk texture. */
+.sheet-tray .sheet-tool {
+  color: hsl(24 38% 13%);
+  background: hsl(38 52% 94%);
+  border: 1px solid hsl(24 30% 35% / 0.45);
+  box-shadow: 0 1px 2px hsl(var(--lift) / 0.15);
+}
+.sheet-tray .sheet-tool svg { width: 18px; height: 18px; stroke-width: 2; }
+.sheet-tray .sheet-tool:hover:not(:disabled) {
+  color: hsl(24 38% 13%);
+  background: hsl(38 65% 99%);
+  border-color: hsl(24 30% 35%);
+}
+.sheet-tray .sheet-tool:focus-visible {
+  outline: 2px solid hsl(var(--cut));
+  outline-offset: 2px;
+}
+.sheet-tray .sheet-tool:disabled {
+  opacity: 1;
+  color: hsl(24 18% 34%);
+  background: hsl(34 28% 83%);
+  box-shadow: none;
+}
+.dark .sheet-tray .sheet-estimate {
+  color: hsl(24 38% 13%);
+  background: hsl(38 52% 94%);
+  border: 1px solid hsl(24 30% 35% / 0.45);
+  border-radius: 6px;
+  padding: 0.3rem 0.5rem;
+}
+.dark .sheet-tray .sheet-estimate-px,
+.dark .sheet-tray .sheet-estimate-bytes { color: hsl(24 38% 13%); }
+.dark .sheet-tray .sheet-estimate[data-over="true"],
+.dark .sheet-tray .sheet-estimate[data-over="true"] .sheet-estimate-px { color: hsl(6 76% 30%); }
+
+/* Mobile uses fixed rows and reserves conditional controls, so collecting
+   stickers changes their state without moving the desk. */
+@media (max-width: 560px) {
+  .sheet-tray { flex-direction: column; align-items: stretch; }
+  .sheet-summary { height: 36px; }
+  .sheet-flag { width: 190px; }
+  .sheet-strip { display: none; }
+  .sheet-actions {
+    display: grid;
+    grid-template-columns: minmax(64px, 1fr) repeat(5, minmax(28px, 36px));
+    grid-template-rows: 36px 40px;
+    row-gap: 0.5rem;
+    width: 100%;
+  }
+  .sheet-estimate-slot { display: block; height: 36px; min-width: 0; }
+  .sheet-estimate { margin-right: 0; width: 100%; height: 36px; gap: 0; }
+  .sheet-estimate-px { font-size: 0.8125rem; }
+  .sheet-tray .sheet-tool { width: 100%; min-width: 0; }
+  .sheet-divider { display: none; }
+  .sheet-share:disabled { display: inline-flex; visibility: hidden; }
+  .sheet-actions > .flex { grid-column: 1 / -1; justify-self: end; }
 }

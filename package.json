@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "astro dev --port ${PORT:-3000}",
     "build": "bun scripts/create-pagefind-index.ts && astro build",
+    "check:seo": "node scripts/check-seo.mjs",
     "preview": "astro preview --port ${PORT:-4321}",
     "test": "vitest run",
     "test:watch": "vitest",

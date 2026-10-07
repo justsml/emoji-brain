@@ -2,14 +2,43 @@
 import "../styles/fonts.css";
 import { ThemeToggle } from "../components/theme-toggle";
 import "../styles/globals.css";
+import emojiMetadata from "../data/emoji-metadata.json";
 
 interface Props {
   title: string;
   imageCount: number;
   discovery?: boolean;
+  description: string;
+  noindex?: boolean;
+  heading?: string;
+  structuredData?: Record<string, unknown>[];
 }
 
-const { title, imageCount, discovery = false } = Astro.props;
+const { title, description, imageCount, discovery = false, noindex = false,
+  heading = "Adorbs.fun", structuredData = [] } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site!).href;
+const socialImage = new URL("/social-card.png", Astro.site!).href;
+const websiteId = new URL("/#website", Astro.site!).href;
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    ...(Astro.url.pathname === "/" ? [{
+      "@type": "WebSite", "@id": websiteId,
+      name: "Adorbs.fun", alternateName: "Adorbs", url: Astro.site!.href,
+      description, inLanguage: "en",
+    }] : []),
+    { "@type": "WebPage", "@id": `${canonical}#webpage`, url: canonical,
+      name: title, description, inLanguage: "en", isPartOf: { "@id": websiteId } },
+    ...structuredData,
+  ],
+};
+const schemaJson = JSON.stringify(schema).replace(/</g, "\\u003c");
+const emojisLastAdded = emojiMetadata.emojis.reduce(
+  (latest, emoji) => emoji.created > latest ? emoji.created : latest, "",
+);
+const emojiUpdateDate = emojisLastAdded && new Intl.DateTimeFormat("en-US", {
+  month: "short", day: "numeric", year: "numeric", timeZone: "UTC",
+}).format(new Date(emojisLastAdded));
 
 ---
 
@@ -17,10 +46,25 @@ const { title, imageCount, discovery = false } = Astro.props;
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="description"
-      content="Emoji Explorer: Search, share, & export emojis with ease"
-    />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta name="robots" content={noindex ? "noindex, follow" : "index, follow, max-image-preview:large"} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Adorbs.fun" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={socialImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Adorbs.fun — cute custom emojis and stickers for Slack" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImage} />
+    <meta name="twitter:image:alt" content="Adorbs.fun — cute custom emojis and stickers for Slack" />
+    <script type="application/ld+json" is:inline set:html={schemaJson} />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
@@ -55,7 +99,7 @@ const { title, imageCount, discovery = false } = Astro.props;
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M9 19c-4.3 1.3-4.3-2.2-6-2.7m12 5v-3.4c0-1 .1-1.5-.5-2.1 3.3-.4 6.8-1.6 6.8-7.3a5.7 5.7 0 0 0-1.5-4 5.3 5.3 0 0 0-.1-4s-1.3-.4-4.2 1.5a14.3 14.3 0 0 0-7.6 0C5 .1 3.7.5 3.7.5a5.3 5.3 0 0 0-.1 4 5.7 5.7 0 0 0-1.5 4c0 5.7 3.5 6.9 6.8 7.3-.5.5-.6 1-.6 2.1v3.4" transform="translate(1 1) scale(.9)" /></svg>
             <span>Source</span>
           </a>
-          <a class="rail-link rail-link-thanks" href="https://twitter.com/intent/tweet?text=Thanks%20%40justsml%20for%20Emoji%20Explorer%21&url=https%3A%2F%2Fgithub.com%2Fjustsml%2Femoji-brain" target="_blank" rel="noopener noreferrer">
+          <a class="rail-link rail-link-thanks" href="https://twitter.com/intent/tweet?text=Thanks%20%40justsml%20for%20Adorbs.fun%21&url=https%3A%2F%2Fadorbs.fun%2F" target="_blank" rel="noopener noreferrer">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z" /></svg>
             <span>Thank @justsml</span>
           </a>
@@ -71,7 +115,7 @@ const { title, imageCount, discovery = false } = Astro.props;
           <div class="masthead-copy">
             <h1 class="masthead-title">
               <img class="brand-mark" src="/emoji-delivery/128/meow_birthday.webp" alt="" aria-hidden="true" width="42" height="42" />
-              Emoji Explorer
+              <a href="/">{heading}</a>
             </h1>
             <p class="masthead-lede">
               A hand-collected sheet of <b>{imageCount.toLocaleString("en-US")} stickers</b>. Pick the ones you want,
@@ -86,8 +130,14 @@ const { title, imageCount, discovery = false } = Astro.props;
         <slot />
       </main>
       <footer class="colophon">
+        {emojisLastAdded && <p class="collection-updated">
+          Emojis last updated: <time datetime={emojisLastAdded}>{emojiUpdateDate}</time>
+        </p>}
         <p>
           Missing something? <a href="https://github.com/justsml/emoji-brain/issues/new?title=Emoji%20suggestion" target="_blank" rel="noopener noreferrer">Suggest an emoji on GitHub</a> — the collection grows by request.
+        </p>
+        <p>
+          Adorbs.fun is an educational project exploring web performance with dense visual lists.
         </p>
         <p>
           The artwork here was collected from around the internet and stays the property of whoever

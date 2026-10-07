@@ -1,8 +1,8 @@
 {
   "count": 1,
-  "framesChecked": 4,
+  "framesChecked": 8,
   "maxMeanAlphaError": 0,
-  "previewBytes": 22388,
+  "previewBytes": 20798,
   "slackCap": 127000,
   "slackIncompatible": [],
   "frameDropped": [],
@@ -12,22 +12,20 @@
       "webpOver": []
     },
     "64": {
-      "webp": 2198,
+      "webp": 5606,
       "webpOver": []
     },
     "128": {
-      "webp": 5562,
+      "webp": 11794,
       "webpOver": []
     },
     "256": {
-      "webp": 14628,
+      "webp": 24778,
       "webpOver": []
     },
     "original": {
-      "webp": 140544,
-      "webpOver": [
-        "100000"
-      ]
+      "webp": 55840,
+      "webpOver": []
     }
   }
 }

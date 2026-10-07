@@ -1,0 +1,11 @@
+---
+import { siteFaq } from "../data/site-faq";
+---
+<section class="collection-guide" aria-labelledby="collection-guide-title">
+  <h2 id="collection-guide-title">Custom emojis, from your sheet to Slack</h2>
+  <p>Browse the collection above, search for a reaction, or explore by theme and color. Select the stickers you want, then choose an export from your sheet.</p>
+  <div class="collection-answers">
+    {siteFaq.map(({ question, answer }) => <details><summary>{question}</summary><p>{answer}</p></details>)}
+  </div>
+  <p>Already have a collection in Slack? <a href="/slack-backup">Back up your workspace’s custom emojis</a> as ZIP files with aliases and metadata.</p>
+</section>

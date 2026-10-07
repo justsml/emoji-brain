@@ -124,7 +124,7 @@ it('ignores repeated search, focus and size values without notifying consumers',
     return <button onClick={() => {
       context.setIsSearching(false);
       context.setFocusedIndex(0);
-      context.setGridScale(0);
+      context.setGridScale(context.gridScale);
       context.setShowSelectedOnly(false);
       context.setFilteredEmojis(emojis);
     }}>repeat current values</button>;

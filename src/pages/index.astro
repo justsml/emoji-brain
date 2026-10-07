@@ -1,6 +1,8 @@
 ---
 // src/pages/index.astro
 import {catalogColors} from "../lib/catalogColors.server";
+import CollectionGuide from "../components/CollectionGuide.astro";
+import { siteFaq } from "../data/site-faq";
 import Layout from "../layouts/Layout.astro";
 import EmojiExplorerApp from "../components/EmojiExplorerApp"; // Import the main app component
 import type { EmojiMetadata } from "../types/emoji";
@@ -40,20 +42,19 @@ const colors = await catalogColors(emojiMetadata.emojis.map(emoji => emoji.filen
 const allEmojis: EmojiMetadata[] = (emojiMetadata.emojis || []).map(
   ({id, filename, path, animated, size, tags, categories, aliases, facets}, index) =>
     ({id, filename, path, animated, size, tags, categories, aliases, colors: colors[index], themes: [...new Set([...facets.subject, ...facets.expression, ...facets.intent])], gzip: gzipByEmoji(filename), originalBytes: deliveryRow(filename)?.original.bytes, maxSlackSize: deliveryRow(filename)?.highestSlackCompatible?.size}),
-);
+).sort((a, b) => a.filename.localeCompare(b.filename));
 // const categories = Array.from(new Set(allEmojis.flatMap(emoji => emoji.categories))).filter(Boolean);
 ---
 
-<Layout title="Emoji Explorer" imageCount={allEmojis.length} discovery>
-  <aside class="collection-note" slot="masthead-note" aria-label="About the collection">
-    <p class="collection-note-copy">
-      Everything here is upscaled, so it still reads at full size. The export
-      script sizes each image to fit your whole selection into one paste —
-      <!-- the explorer takes this over once it hydrates, pricing your sheet live -->
-      <span id="export-estimate"><span data-estimate-fallback>pick fewer, get bigger.</span></span>
-    </p>
-  </aside>
+<Layout title="Adorbs.fun — Cute Custom Emojis & Stickers for Slack" description="Find cute custom emojis, animated reactions, and stickers. Search by theme or color, select your favorites, and export to Slack, ZIP, HTML, CSS, or Markdown." imageCount={allEmojis.length} discovery structuredData={[{
+  "@type": "FAQPage", "@id": new URL("/#faq", Astro.site!).href,
+  mainEntity: siteFaq.map(({ question, answer }) => ({
+    "@type": "Question", name: question,
+    acceptedAnswer: { "@type": "Answer", text: answer },
+  })),
+}]} >
   <div class="emoji-app w-full h-fit">
     <EmojiExplorerApp client:load initialEmojis={allEmojis} scriptOverheadBytes={scriptOverheadBytes} />
   </div>
+  <CollectionGuide />
 </Layout>
