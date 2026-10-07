@@ -230,47 +230,120 @@
 .sheet-chip:nth-child(3n + 2) { rotate: 3deg; }
 .sheet-chip:nth-child(3n) { rotate: -1deg; }
 
-/* The tally on label-maker tape: raised white capitals pressed into red vinyl. */
-.sheet-tally[data-filled] {
-  padding: 0.22rem 0.6rem 0.2rem;
-  border-radius: 2px;
-  background:
-    linear-gradient(hsl(0 0% 100% / 0.18), transparent 45%, hsl(0 0% 0% / 0.14)),
-    hsl(352 68% 38%);
-  box-shadow:
-    inset 0 1px 0 hsl(0 0% 100% / 0.22),
-    0 1px 1px hsl(var(--lift) / 0.45),
-    0 2px 4px -1px hsl(var(--lift) / 0.3);
-  color: hsl(0 0% 97%);
-  font-family: var(--font-ui);
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.09em;
-  text-transform: uppercase;
-  text-shadow: 0 1px 0 hsl(352 60% 22% / 0.8), 0 -0.5px 0 hsl(0 0% 100% / 0.4);
+/* The tally is a sticky arrow flag: canary paper with a glossier adhesive
+   strip at the stuck end, pointing at the stickers. The shape is a clipped
+   layer behind the text, so the flag's shadow comes from a filter on the
+   button and follows the arrow. Pulling it (hover) lifts the free end. */
+.sheet-flag {
+  position: relative;
+  isolation: isolate;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 0.3rem 1.35rem 0.3rem 0.85rem;
+  border: 0;
+  background: none;
+  color: hsl(34 45% 16%);
+  filter: drop-shadow(0 1px 0.5px hsl(var(--lift) / 0.35)) drop-shadow(0 2px 2px hsl(var(--lift) / 0.18));
   rotate: -1.5deg;
+  transform-origin: 0 50%;
+  transition: rotate 160ms ease, translate 160ms ease;
 }
-.sheet-tally[data-filled] strong {
-  margin-right: 0.15rem;
-  color: inherit;
-  font-family: inherit;
-  font-size: 1rem;
+.sheet-flag::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 50%, calc(100% - 14px) 100%, 0 100%);
+  background:
+    linear-gradient(to right, hsl(48 60% 70% / 0.55) 0 9px, hsl(48 40% 60% / 0.35) 9px 10px, transparent 10px),
+    linear-gradient(176deg, hsl(54 100% 86%), hsl(50 98% 72%) 55%, hsl(46 92% 64%));
+}
+button.sheet-flag { cursor: pointer; }
+button.sheet-flag:hover { rotate: -3deg; translate: 0 -1px; }
+button.sheet-flag:focus-visible { outline: 2px solid hsl(var(--cut)); outline-offset: 3px; }
+
+.sheet-tally {
+  font-family: var(--font-display);
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+.sheet-tally strong {
+  margin-right: 0.1rem;
+  font-size: 1.25rem;
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  color: hsl(var(--cut));
 }
 
-/* The one action as a molded plastic key: it sits proud of the desk and
-   travels down when pressed. */
-.sheet-cta:not(:disabled) {
-  background-image: linear-gradient(hsl(0 0% 100% / 0.2), transparent 48%, hsl(0 0% 0% / 0.12));
+/* A two-tone red-and-blue eraser: the pencil end copies the script, the ink
+   end opens the other exports. Each half is a skewed rubber block behind its
+   label, so the shared seam lines up and both ends are chamfered like the
+   real thing. The red end is the one that gets used: worn round at the
+   corner and grey with graphite. */
+.sheet-tray .sheet-eraser {
+  position: relative;
+  isolation: isolate;
+  background: none;
+  box-shadow: none;
+  color: hsl(0 0% 100%);
+  text-shadow: 0 -1px 0 hsl(0 0% 0% / 0.22);
+  transition: transform 90ms ease;
+}
+.sheet-eraser::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  transform: skewX(-14deg);
   box-shadow:
-    inset 0 1px 0 hsl(0 0% 100% / 0.3),
-    0 3px 0 hsl(341 74% 26%),
-    0 4px 5px hsl(var(--lift) / 0.35);
-  transition: transform 80ms ease, box-shadow 80ms ease;
+    inset 0 1px 0 hsl(0 0% 100% / 0.28),
+    inset 0 -1px 1px hsl(0 0% 0% / 0.12),
+    0 4px 0 var(--eraser-side),
+    0 6px 6px -1px hsl(var(--lift) / 0.4);
+  transition: box-shadow 90ms ease;
 }
-.sheet-cta:not(:disabled):active {
-  transform: translateY(3px);
-  box-shadow: inset 0 1px 2px hsl(0 0% 0% / 0.25), 0 0 0 hsl(341 74% 26%), 0 1px 1px hsl(var(--lift) / 0.3);
+.sheet-eraser-pencil { --eraser-side: hsl(355 52% 32%); }
+.sheet-eraser-pencil::before {
+  border-radius: 11px 1px 1px 6px;
+  background:
+    radial-gradient(22px 120% at 0 30%, hsl(220 8% 32% / 0.32), transparent),
+    linear-gradient(hsl(355 66% 52%), hsl(355 62% 45%));
 }
+.sheet-eraser-ink { --eraser-side: hsl(214 46% 25%); }
+.sheet-eraser-ink::before {
+  border-radius: 1px 6px 6px 1px;
+  background: linear-gradient(hsl(214 46% 48%), hsl(214 48% 40%));
+  box-shadow:
+    inset 1px 0 0 hsl(0 0% 0% / 0.18),
+    inset 0 1px 0 hsl(0 0% 100% / 0.25),
+    0 4px 0 var(--eraser-side),
+    0 6px 6px -1px hsl(var(--lift) / 0.4);
+}
+/* rubber crumbs left on the desk */
+.sheet-eraser-pencil::after {
+  content: "";
+  position: absolute;
+  left: -26px;
+  bottom: -3px;
+  width: 20px;
+  height: 10px;
+  background:
+    radial-gradient(2px 1.4px at 4px 7px, hsl(355 30% 55% / 0.8) 90%, transparent),
+    radial-gradient(1.6px 1.2px at 11px 4px, hsl(355 25% 52% / 0.7) 90%, transparent),
+    radial-gradient(2.4px 1.6px at 15px 8px, hsl(355 30% 50% / 0.75) 90%, transparent),
+    radial-gradient(1.2px 1px at 8px 2px, hsl(220 8% 40% / 0.6) 90%, transparent);
+  pointer-events: none;
+}
+.sheet-eraser:not(:disabled):active { transform: translateY(2px) scaleY(0.97); }
+.sheet-eraser:not(:disabled):active::before {
+  box-shadow: inset 0 1px 2px hsl(0 0% 0% / 0.2), 0 1px 0 var(--eraser-side), 0 2px 2px hsl(var(--lift) / 0.3);
+}
+.sheet-tray .sheet-eraser:focus-visible { outline: 2px solid hsl(var(--cut)); outline-offset: 4px; }
 
 @media (max-width: 1100px) {
   .desk-carve { inset: auto 0.9rem 9px auto; width: 168px; height: 26px; }
@@ -280,10 +353,11 @@
   .sheet-tray::before { border-radius: calc(16px + 5px); }
   .desk-surface::before { left: 0.8rem; right: 0.8rem; }
   .desk-pencil { left: auto; right: 2.5rem; width: 96px; }
+  .sheet-eraser-pencil::after { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
   .desk-surface[data-ready] .desk-pencil { animation: none; }
-  .sheet-cta { transition: none; }
+  .sheet-flag, .sheet-eraser, .sheet-eraser::before { transition: none; }
 }
 
 .sheet-summary {
@@ -295,44 +369,11 @@
 .sheet-expand { flex-shrink: 0; min-height: 36px; padding: 0 .5rem; font-size: .75rem; cursor: pointer; white-space: nowrap; }
 .sheet-expand:focus-visible { outline: 2px solid hsl(var(--cut)); }
 
-.sheet-tally {
-  flex-shrink: 0;
-  font-family: var(--font-display);
-  font-size: 0.9375rem;
-  font-weight: 500;
-  letter-spacing: -0.02em;
-  line-height: 1.2;
-}
-.sheet-tally strong {
-  font-size: 1.375rem;
-  font-variant-numeric: tabular-nums;
-  font-weight: 700;
-  color: hsl(var(--cut));
-}
-.sheet-weight {
-  margin-left: 0.45rem;
-  color: hsl(var(--muted-foreground));
-  font-family: var(--font-ui);
-  font-size: 0.75rem;
-  font-weight: 400;
-  font-variant-numeric: tabular-nums;
-}
-
 /* empty is an invitation, not a status */
-.sheet-empty {
+.sheet-hint {
   color: hsl(var(--muted-foreground));
-  font-family: var(--font-ui);
   font-size: 0.8125rem;
-  font-weight: 400;
   line-height: 1.35;
-}
-.sheet-empty b {
-  display: block;
-  color: hsl(var(--foreground));
-  font-family: var(--font-display);
-  font-size: 0.9375rem;
-  font-weight: 600;
-  letter-spacing: -0.02em;
 }
 
 /* the cut-out stickers, laid in a strip */
@@ -428,7 +469,7 @@
   .sheet-summary { gap: 0.6rem; }
   .sheet-actions { flex-wrap: wrap; max-width: 100%; }
   .sheet-tally strong { font-size: 1.125rem; }
-  .sheet-empty span { display: none; }
+  .sheet-hint { display: none; }
   .sheet-divider { margin: 0 0.25rem; }
 }
 

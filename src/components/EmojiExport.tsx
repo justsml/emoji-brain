@@ -218,19 +218,18 @@ export function EmojiExport({ onInvertVisible, onOpenSheet, selectedEmojis, onCl
     <div className="sheet-tray">
       <DeskSurface count={selectedEmojis.length} />
       <div className="sheet-summary">
-        <div className="sheet-tally" data-filled={selectedEmojis.length > 0 || undefined} aria-label={`${selectedEmojis.length} selected`}>
-          {selectedEmojis.length === 0 ? (
-            <span className="sheet-empty">
-              <b>No emojis selected</b>
-              <span>Tap any sticker above to start your sheet.</span>
+        {/* The tally is a sticky arrow flag stuck to the desk; pulling it opens the sheet. */}
+        {(() => {
+          const tally = (
+            <span className="sheet-tally" data-filled={selectedEmojis.length > 0 || undefined} aria-label={`${selectedEmojis.length} selected`}>
+              {selectedEmojis.length === 0 ? "No emojis selected" : <><strong>{selectedEmojis.length}</strong> on your sheet</>}
             </span>
-          ) : (
-            <>
-              <strong>{selectedEmojis.length}</strong> on your sheet
-            </>
-          )}
-        </div>
-        {onOpenSheet && <button type="button" className="sheet-expand" onClick={onOpenSheet} aria-label="Expand selected emojis">Expand ↗</button>}
+          );
+          return onOpenSheet
+            ? <button type="button" className="sheet-flag" onClick={onOpenSheet} aria-label="Expand selected emojis" title="Open your sheet">{tally}</button>
+            : <span className="sheet-flag">{tally}</span>;
+        })()}
+        {selectedEmojis.length === 0 && <span className="sheet-hint">Tap any sticker above to start your sheet.</span>}
         {selectedEmojis.length > 0 && (
           <div className="sheet-strip scrollbar-hide mask-fade-right">
             {selectedEmojis.slice(0, 12).map((emoji) => (
@@ -336,7 +335,7 @@ export function EmojiExport({ onInvertVisible, onOpenSheet, selectedEmojis, onCl
               ref={scriptButtonRef}
               onClick={() => void exportFiles('slack')}
               disabled={selectedEmojis.length === 0 || isExporting}
-              className="sheet-cta h-9 gap-2 rounded-r-none px-4 font-semibold"
+              className="sheet-eraser sheet-eraser-pencil h-9 gap-2 rounded-r-none px-4 font-semibold"
             >
               {isExporting ? <LoaderCircle className="h-4 w-4 animate-spin motion-reduce:animate-none" /> : <Copy className="h-4 w-4" />}
               {isExporting ? "Preparing…" : "Copy Slack script"}
@@ -347,7 +346,7 @@ export function EmojiExport({ onInvertVisible, onOpenSheet, selectedEmojis, onCl
             aria-haspopup="menu"
             popoverTarget="export-menu"
             disabled={selectedEmojis.length === 0 || isExporting}
-            className="sheet-cta h-9 w-8 rounded-l-none border-l border-primary-foreground/25 p-0"
+            className="sheet-eraser sheet-eraser-ink h-9 w-8 rounded-l-none p-0"
           >
             <ChevronDown className="h-4 w-4" />
           </Button>
