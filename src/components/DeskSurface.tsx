@@ -1,10 +1,10 @@
 import { memo, useEffect, useState } from "react";
 
-const DETAILS = ["/desk/grain.svg", "/desk/scuffs.svg"];
+const DETAILS = ["/desk/grain.svg", "/desk/scuffs.svg", "/desk/carvings.svg"];
 
 /**
  * The tray as a plastic school desk. The groove is plain CSS and paints with
- * the bar; grain, scuffs and the pencil wait until the browser is idle and the
+ * the bar; grain, scuffs, carvings and the pencil wait until the browser is idle and the
  * masks have decoded, then fade in together, so the grid never competes with
  * decoration for the network or the main thread.
  */
@@ -28,6 +28,9 @@ export const DeskSurface = memo(function DeskSurface({ count }: { count: number 
     <div className="desk-surface" aria-hidden="true" data-ready={ready || undefined}>
       <span className="desk-grain" />
       <span className="desk-scuffs" />
+      {/* One mask, twice: a lit lip under a dark cut reads as carved in. */}
+      <span className="desk-carve desk-carve-lip" />
+      <span className="desk-carve" />
       {/* Remounting on each change replays the nudge: the pencil answers the sheet. */}
       <i className="desk-pencil" key={count} />
     </div>

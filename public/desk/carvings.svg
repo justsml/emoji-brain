@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420" height="64" viewBox="0 0 420 64" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round">
+  <!-- a heart dug in with a compass point, initials inside -->
+  <g stroke-width="1.6">
+    <path d="M40 18c-6-9-20-6-19 5 1 9 11 16 19 25 8-9 19-16 19-25 1-11-13-14-19-5z"/>
+    <path d="M30 26v10m0-10c5 0 7 2 7 5s-2 5-7 5" stroke-width="1.2"/>
+    <path d="M43 26v10h6" stroke-width="1.2"/>
+    <path d="M14 46l14-11m24-2l14-12m-5 0h5v5" stroke-width="1.2"/>
+  </g>
+  <!-- tally of days until summer -->
+  <g stroke-width="1.3">
+    <path d="M112 22v18M118 21v18M124 22v18M130 21v18M108 37l26-12"/>
+    <path d="M146 22v18M152 21v18"/>
+  </g>
+  <!-- tic-tac-toe, a draw -->
+  <g stroke-width="1.1" opacity=".85">
+    <path d="M200 14v40M214 13v41M188 27h40M187 41h41"/>
+    <path d="M191 17l6 7m0-7l-6 7M218 31l6 7m0-7l-6 7M203 46l6 6m0-6l-6 6"/>
+    <circle cx="221" cy="20" r="3.5"/><circle cx="207" cy="34" r="3.5"/><circle cx="194" cy="48" r="3.5"/>
+  </g>
+  <!-- a lopsided smiley -->
+  <g stroke-width="1.4">
+    <circle cx="290" cy="32" r="15"/>
+    <path d="M284 28v2M296 27v2M281 36c5 6 13 6 18 0"/>
+  </g>
+  <!-- a doodled arrow pointing at the export -->
+  <path d="M330 38c18-8 40-10 72-6m-10-7l11 7-12 6" stroke-width="1.3" opacity=".85"/>
+</svg>
