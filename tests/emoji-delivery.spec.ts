@@ -134,6 +134,7 @@ test('export can be canceled while the grid remains interactive',async({page,con
 test('Pagefind is lazy, uses one engine, and avoids redundant result fragments',async({page})=>{
   const requests:string[]=[];page.on('request',request=>{if(request.url().includes('/pagefind/'))requests.push(request.url());});
   await page.goto('/');await page.getByRole('grid',{name:'Emoji results'}).waitFor();
+  await expect(page.locator('astro-island[ssr]')).toHaveCount(0);
   expect(requests).toHaveLength(0);
   await page.getByPlaceholder('Search emojis...').focus();
   await page.waitForFunction(()=>!!(window as any).pagefind);
@@ -164,6 +165,7 @@ test('full Slack script yields during payload decoding at half-speed CPU', async
   test.setTimeout(90_000);
   await page.addInitScript(() => Object.defineProperty(navigator,'clipboard',{value:{writeText:async(text:string)=>{(window as any).copiedEmojiScript=text;}}}));
   await page.goto('/');
+  await expect(page.locator('astro-island[ssr]')).toHaveCount(0);
   await page.getByTitle('Select All Visible', {exact:true}).click();
   await page.getByRole('button',{name:'Copy Slack script',exact:true}).click();
   await expect(page.getByLabel('Close Slack instructions')).toBeVisible({timeout:60_000});
