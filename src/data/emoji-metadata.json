@@ -1,6 +1,6 @@
 {
-  "total": 360,
-  "lastUpdated": "2026-10-07T18:45:51.972Z",
+  "total": 366,
+  "lastUpdated": "2026-10-08T23:52:23.581Z",
   "emojis": [
     {
       "id": "df167e0a",
@@ -17103,6 +17103,177 @@
         ]
       },
       "labelConfidence": "high"
+    },
+    {
+      "id": "a7359a6d",
+      "filename": "michael-scott-awkward-smile.webp",
+      "path": "/emojis/michael-scott-awkward-smile.webp",
+      "created": "2026-10-08T23:52:01.809Z",
+      "tags": [
+        "michael scott",
+        "the office",
+        "grimace",
+        "cringe",
+        "awkward",
+        "steve carell",
+        "yikes",
+        "uncomfortable"
+      ],
+      "categories": [
+        "reaction",
+        "meme",
+        "people"
+      ],
+      "aliases": [],
+      "hash": "b7be617bc68e2d75a93737479d3cb3a5d3f2d815f974f8c9307f73e61a009c84",
+      "modified": "2026-10-08T23:52:01.809Z",
+      "size": 4626,
+      "width": 128,
+      "height": 128,
+      "animated": false,
+      "labelHash": "b7be617bc68e2d75a93737479d3cb3a5d3f2d815f974f8c9307f73e61a009c84"
+    },
+    {
+      "id": "ac3b8169",
+      "filename": "michael-scott-laughing.webp",
+      "path": "/emojis/michael-scott-laughing.webp",
+      "created": "2026-10-08T23:52:01.853Z",
+      "tags": [
+        "michael scott",
+        "the office",
+        "steve carell",
+        "awkward smile",
+        "grimace",
+        "cringe",
+        "nervous"
+      ],
+      "categories": [
+        "reaction",
+        "meme",
+        "people"
+      ],
+      "aliases": [],
+      "hash": "acc2bd4109aaa9faabb2283d333ceb090ffcd938aa9afe4c2f636cf1a02698d5",
+      "modified": "2026-10-08T23:52:01.853Z",
+      "size": 47660,
+      "width": 60,
+      "height": 60,
+      "animated": true,
+      "labelHash": "acc2bd4109aaa9faabb2283d333ceb090ffcd938aa9afe4c2f636cf1a02698d5"
+    },
+    {
+      "id": "553163d1",
+      "filename": "michael-scott-screaming-no.webp",
+      "path": "/emojis/michael-scott-screaming-no.webp",
+      "created": "2026-10-08T23:52:01.873Z",
+      "tags": [
+        "michael scott",
+        "the office",
+        "no",
+        "noooooooo",
+        "screaming",
+        "shouting",
+        "shocked",
+        "steve carell"
+      ],
+      "categories": [
+        "meme",
+        "reaction",
+        "pop-culture"
+      ],
+      "aliases": [],
+      "hash": "3f2013dab1aaee7c4414268f713fc8b7b98a4293c4d6927a69e3aaad946634a0",
+      "modified": "2026-10-08T23:52:01.873Z",
+      "size": 4640,
+      "width": 128,
+      "height": 128,
+      "animated": false,
+      "labelHash": "3f2013dab1aaee7c4414268f713fc8b7b98a4293c4d6927a69e3aaad946634a0"
+    },
+    {
+      "id": "9ccc6769",
+      "filename": "michael-scott-shaking-head-no.webp",
+      "path": "/emojis/michael-scott-shaking-head-no.webp",
+      "created": "2026-10-08T23:52:02.211Z",
+      "tags": [
+        "michael scott",
+        "the office",
+        "crying",
+        "holding back tears",
+        "sad",
+        "emotional",
+        "steve carell"
+      ],
+      "categories": [
+        "meme",
+        "reaction",
+        "people"
+      ],
+      "aliases": [],
+      "hash": "3435644e9f0e9716b1918b4ea5b1edb109801e637799064bbc16a30ee0be058f",
+      "modified": "2026-10-08T23:52:02.211Z",
+      "size": 41312,
+      "width": 60,
+      "height": 60,
+      "animated": true,
+      "labelHash": "3435644e9f0e9716b1918b4ea5b1edb109801e637799064bbc16a30ee0be058f"
+    },
+    {
+      "id": "ed25c8a6",
+      "filename": "michael-scott-shocked.webp",
+      "path": "/emojis/michael-scott-shocked.webp",
+      "created": "2026-10-08T23:52:02.233Z",
+      "tags": [
+        "michael scott",
+        "the office",
+        "shocked",
+        "surprised",
+        "gasp",
+        "steve carell",
+        "jaw drop",
+        "omg"
+      ],
+      "categories": [
+        "reaction",
+        "meme",
+        "people"
+      ],
+      "aliases": [],
+      "hash": "df229a3d7047ff368239f9749f76de44b4644129c264d0d587d36f04cd8b0ab6",
+      "modified": "2026-10-08T23:52:02.233Z",
+      "size": 3232,
+      "width": 128,
+      "height": 128,
+      "animated": false,
+      "labelHash": "df229a3d7047ff368239f9749f76de44b4644129c264d0d587d36f04cd8b0ab6"
+    },
+    {
+      "id": "35e465cd",
+      "filename": "michael-scott-worlds-best-boss.webp",
+      "path": "/emojis/michael-scott-worlds-best-boss.webp",
+      "created": "2026-10-08T23:52:02.242Z",
+      "tags": [
+        "michael scott",
+        "the office",
+        "world's best boss",
+        "mug",
+        "steve carell",
+        "boss",
+        "serious"
+      ],
+      "categories": [
+        "meme",
+        "reaction",
+        "tv show"
+      ],
+      "aliases": [],
+      "hash": "7d20db9108692a97f9d311dfd6f2acdf23403ef8c9da89f5e5c063299f62826e",
+      "modified": "2026-10-08T23:52:02.242Z",
+      "size": 4316,
+      "width": 128,
+      "height": 128,
+      "animated": false,
+      "labelHash": "7d20db9108692a97f9d311dfd6f2acdf23403ef8c9da89f5e5c063299f62826e"
     },
     {
       "id": "2185a2d6",

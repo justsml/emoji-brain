@@ -22003,6 +22003,372 @@
         "width": 512,
         "height": 512
       }
+    },
+    "michael-scott-awkward-smile": {
+      "source": "public/emojis/michael-scott-awkward-smile.webp",
+      "basis": "original",
+      "sourceSha256": "b7be617bc68e2d75a93737479d3cb3a5d3f2d815f974f8c9307f73e61a009c84",
+      "animated": false,
+      "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/michael-scott-awkward-smile.webp",
+            "bytes": 1954,
+            "slackGzipBytes": 2082
+          }
+        },
+        "128": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/128/michael-scott-awkward-smile.webp",
+            "bytes": 4546,
+            "slackGzipBytes": 4683
+          }
+        },
+        "256": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/256/michael-scott-awkward-smile.webp",
+            "bytes": 8758,
+            "slackGzipBytes": 8904
+          }
+        }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/michael-scott-awkward-smile.webp",
+          "bytes": 1954
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/michael-scott-awkward-smile.webp",
+          "bytes": 4546
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/michael-scott-awkward-smile.webp",
+          "bytes": 8758
+        }
+      },
+      "highestSlackCompatible": {
+        "size": 256,
+        "path": "/emoji-delivery/256/michael-scott-awkward-smile.webp",
+        "bytes": 8758
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/michael-scott-awkward-smile.webp",
+        "bytes": 4546,
+        "width": 128,
+        "height": 128
+      }
+    },
+    "michael-scott-laughing": {
+      "source": "public/emojis/michael-scott-laughing.webp",
+      "basis": "original",
+      "sourceSha256": "acc2bd4109aaa9faabb2283d333ceb090ffcd938aa9afe4c2f636cf1a02698d5",
+      "animated": true,
+      "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/michael-scott-laughing.webp",
+            "bytes": 46814,
+            "slackGzipBytes": 46062
+          }
+        },
+        "128": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/128/michael-scott-laughing.webp",
+            "bytes": 88678,
+            "slackGzipBytes": 88260
+          }
+        },
+        "256": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/256/michael-scott-laughing.webp",
+            "bytes": 179244,
+            "slackGzipBytes": 179364
+          }
+        }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/michael-scott-laughing.webp",
+          "bytes": 1428
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/michael-scott-laughing.webp",
+          "bytes": 2720
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/michael-scott-laughing.webp",
+          "bytes": 5474
+        }
+      },
+      "highestSlackCompatible": {
+        "size": 128,
+        "path": "/emoji-delivery/128/michael-scott-laughing.webp",
+        "bytes": 88678
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/michael-scott-laughing.webp",
+        "bytes": 45374,
+        "width": 60,
+        "height": 60
+      }
+    },
+    "michael-scott-screaming-no": {
+      "source": "public/emojis/michael-scott-screaming-no.webp",
+      "basis": "original",
+      "sourceSha256": "3f2013dab1aaee7c4414268f713fc8b7b98a4293c4d6927a69e3aaad946634a0",
+      "animated": false,
+      "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/michael-scott-screaming-no.webp",
+            "bytes": 2008,
+            "slackGzipBytes": 2134
+          }
+        },
+        "128": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/128/michael-scott-screaming-no.webp",
+            "bytes": 4532,
+            "slackGzipBytes": 4665
+          }
+        },
+        "256": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/256/michael-scott-screaming-no.webp",
+            "bytes": 8866,
+            "slackGzipBytes": 9010
+          }
+        }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/michael-scott-screaming-no.webp",
+          "bytes": 2008
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/michael-scott-screaming-no.webp",
+          "bytes": 4532
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/michael-scott-screaming-no.webp",
+          "bytes": 8866
+        }
+      },
+      "highestSlackCompatible": {
+        "size": 256,
+        "path": "/emoji-delivery/256/michael-scott-screaming-no.webp",
+        "bytes": 8866
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/michael-scott-screaming-no.webp",
+        "bytes": 4532,
+        "width": 128,
+        "height": 128
+      }
+    },
+    "michael-scott-shaking-head-no": {
+      "source": "public/emojis/michael-scott-shaking-head-no.webp",
+      "basis": "original",
+      "sourceSha256": "3435644e9f0e9716b1918b4ea5b1edb109801e637799064bbc16a30ee0be058f",
+      "animated": true,
+      "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/michael-scott-shaking-head-no.webp",
+            "bytes": 40182,
+            "slackGzipBytes": 39588
+          }
+        },
+        "128": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/128/michael-scott-shaking-head-no.webp",
+            "bytes": 77152,
+            "slackGzipBytes": 76858
+          }
+        },
+        "256": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/256/michael-scott-shaking-head-no.webp",
+            "bytes": 158788,
+            "slackGzipBytes": 159003
+          }
+        }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/michael-scott-shaking-head-no.webp",
+          "bytes": 1408
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/michael-scott-shaking-head-no.webp",
+          "bytes": 2654
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/michael-scott-shaking-head-no.webp",
+          "bytes": 5436
+        }
+      },
+      "highestSlackCompatible": {
+        "size": 128,
+        "path": "/emoji-delivery/128/michael-scott-shaking-head-no.webp",
+        "bytes": 77152
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/michael-scott-shaking-head-no.webp",
+        "bytes": 38346,
+        "width": 60,
+        "height": 60
+      }
+    },
+    "michael-scott-shocked": {
+      "source": "public/emojis/michael-scott-shocked.webp",
+      "basis": "original",
+      "sourceSha256": "df229a3d7047ff368239f9749f76de44b4644129c264d0d587d36f04cd8b0ab6",
+      "animated": false,
+      "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/michael-scott-shocked.webp",
+            "bytes": 1346,
+            "slackGzipBytes": 1466
+          }
+        },
+        "128": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/128/michael-scott-shocked.webp",
+            "bytes": 3164,
+            "slackGzipBytes": 3289
+          }
+        },
+        "256": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/256/michael-scott-shocked.webp",
+            "bytes": 5956,
+            "slackGzipBytes": 6090
+          }
+        }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/michael-scott-shocked.webp",
+          "bytes": 1346
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/michael-scott-shocked.webp",
+          "bytes": 3164
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/michael-scott-shocked.webp",
+          "bytes": 5956
+        }
+      },
+      "highestSlackCompatible": {
+        "size": 256,
+        "path": "/emoji-delivery/256/michael-scott-shocked.webp",
+        "bytes": 5956
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/michael-scott-shocked.webp",
+        "bytes": 3164,
+        "width": 128,
+        "height": 128
+      }
+    },
+    "michael-scott-worlds-best-boss": {
+      "source": "public/emojis/michael-scott-worlds-best-boss.webp",
+      "basis": "original",
+      "sourceSha256": "7d20db9108692a97f9d311dfd6f2acdf23403ef8c9da89f5e5c063299f62826e",
+      "animated": false,
+      "variants": {
+        "64": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/64/michael-scott-worlds-best-boss.webp",
+            "bytes": 1692,
+            "slackGzipBytes": 1819
+          }
+        },
+        "128": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/128/michael-scott-worlds-best-boss.webp",
+            "bytes": 4268,
+            "slackGzipBytes": 4403
+          }
+        },
+        "256": {
+          "webp": {
+            "quality": 90,
+            "path": "/emoji-delivery/256/michael-scott-worlds-best-boss.webp",
+            "bytes": 8204,
+            "slackGzipBytes": 8351
+          }
+        }
+      },
+      "previews": {
+        "64": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/64/michael-scott-worlds-best-boss.webp",
+          "bytes": 1692
+        },
+        "128": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/128/michael-scott-worlds-best-boss.webp",
+          "bytes": 4268
+        },
+        "256": {
+          "quality": 90,
+          "path": "/emoji-delivery/previews/256/michael-scott-worlds-best-boss.webp",
+          "bytes": 8204
+        }
+      },
+      "highestSlackCompatible": {
+        "size": 256,
+        "path": "/emoji-delivery/256/michael-scott-worlds-best-boss.webp",
+        "bytes": 8204
+      },
+      "original": {
+        "quality": 90,
+        "path": "/emoji-delivery/original/michael-scott-worlds-best-boss.webp",
+        "bytes": 4268,
+        "width": 128,
+        "height": 128
+      }
     }
   }
 }
