@@ -1,3 +1,4 @@
+import { track } from '../lib/analytics';
 import React, { createContext, useContext, useReducer, useCallback, useLayoutEffect, useMemo, useRef, type ReactNode } from 'react';
 import type { EmojiMetadata } from '../types/emoji';
 import { useLocalStorage } from '../hooks/useLocalStorage';
@@ -171,26 +172,32 @@ export function EmojiProvider({ children, initialEmojis }: EmojiProviderProps) {
   }, [state.selectedEmojis, setStoredSelection]);
 
   const toggleEmojiSelection = useCallback((emoji: EmojiMetadata) => {
+    track('emoji_selection_toggled', { emoji_id: emoji.id });
     dispatch({ type: 'TOGGLE_SELECTION', payload: emoji });
   }, []);
 
   const selectAllVisible = useCallback((emojis: EmojiMetadata[]) => {
+    track('selection_all_visible', { visible_count: emojis.length });
     dispatch({ type: 'SELECT_ALL', payload: emojis });
   }, []);
 
   const deselectVisible = useCallback((emojis: EmojiMetadata[]) => {
+    track('selection_deselect_visible', { visible_count: emojis.length });
     dispatch({ type: 'DESELECT_VISIBLE', payload: emojis });
   }, []);
 
   const invertVisible = useCallback((emojis: EmojiMetadata[]) => {
+    track('selection_invert_visible', { visible_count: emojis.length });
     dispatch({ type: 'INVERT_VISIBLE', payload: emojis });
   }, []);
 
   const replaceSelection = useCallback((emojis: EmojiMetadata[]) => {
+    track('selection_restored', { selected_count: emojis.length });
     dispatch({ type: 'SET_SELECTION', payload: emojis });
   }, []);
 
   const resetSelection = useCallback(() => {
+    track('selection_cleared', {});
     dispatch({ type: 'RESET_SELECTION' });
   }, []);
 
@@ -207,11 +214,13 @@ export function EmojiProvider({ children, initialEmojis }: EmojiProviderProps) {
   }, []);
 
   const setShowSelectedOnly = useCallback((show: boolean) => {
+    track('selection_filter_changed', { enabled: show });
     dispatch({ type: 'SET_SHOW_SELECTED_ONLY', payload: show });
   }, []);
 
   const setGridScale = useCallback((scale: number) => {
     if (!Number.isInteger(scale) || scale < 0 || scale >= 4) return;
+    track('grid_scale_changed', { scale });
     dispatch({ type: 'SET_GRID_SCALE', payload: scale });
     setStoredScale(scale);
   }, [setStoredScale]);

@@ -1,3 +1,4 @@
+import { track, trackError } from '../lib/analytics';
 import { useState, useRef, useCallback, useEffect } from "react";
 import { Button } from "./ui/button";
 import type { EmojiMetadata } from "../types/emoji";
@@ -53,19 +54,33 @@ export function EmojiExport({ onInvertVisible, onOpenSheet, selectedEmojis, onCl
     statusTimerRef.current = setTimeout(() => setExportStatus(""), 5000);
   }, []);
 
+  const copyExport = useCallback(async (format: string, text: string) => {
+    const properties = { format, selected_count: selectedEmojis.length };
+    track('export_started', properties);
+    const started = performance.now();
+    try {
+      await navigator.clipboard.writeText(text);
+      track('export_completed', { ...properties, duration_ms: Math.round(performance.now() - started) });
+    } catch (error) {
+      track('export_failed', properties);
+      trackError(error, { ...properties, source: 'clipboard_export' });
+      throw error;
+    }
+  }, [selectedEmojis.length]);
+
   const exportAsPlainText = useCallback(async () => {
     const text = selectedEmojis.map((emoji) => emoji.filename).join("\n");
-    await navigator.clipboard.writeText(text);
+    await copyExport('text', text);
     setStatusWithTimeout("Copied filenames to clipboard!");
-  }, [selectedEmojis, setStatusWithTimeout]);
+  }, [selectedEmojis, setStatusWithTimeout, copyExport]);
 
   const exportAsHtml = useCallback(async () => {
     const html = selectedEmojis
       .map((emoji) => `<img src="${getAbsoluteUrl(emoji.path)}" alt="${emoji.filename}" />`)
       .join("\n");
-    await navigator.clipboard.writeText(html);
+    await copyExport('html', html);
     setStatusWithTimeout("Copied HTML to clipboard!");
-  }, [selectedEmojis, setStatusWithTimeout]);
+  }, [selectedEmojis, setStatusWithTimeout, copyExport]);
 
   const exportAsCss = useCallback(async () => {
     const css = selectedEmojis
@@ -78,22 +93,25 @@ export function EmojiExport({ onInvertVisible, onOpenSheet, selectedEmojis, onCl
 }`
       )
       .join("\n\n");
-    await navigator.clipboard.writeText(css);
+    await copyExport('css', css);
     setStatusWithTimeout("Copied CSS to clipboard!");
-  }, [selectedEmojis, setStatusWithTimeout]);
+  }, [selectedEmojis, setStatusWithTimeout, copyExport]);
 
   const exportAsMarkdownTable = useCallback(async () => {
     const markdown = markdownTable(selectedEmojis.map(emoji => emoji.filename), window.location.origin);
-    await navigator.clipboard.writeText(markdown);
+    await copyExport('markdown', markdown);
     setStatusWithTimeout("Copied Markdown Table to clipboard!");
-  }, [selectedEmojis, setStatusWithTimeout]);
+  }, [selectedEmojis, setStatusWithTimeout, copyExport]);
 
   const copyShareLink = useCallback(async () => {
     if (!shareUrl) return;
     try {
       await navigator.clipboard.writeText(shareUrl());
+      track('share_link_copied', { kind: 'selection', selected_count: selectedEmojis.length });
       setStatusWithTimeout(`Link copied · ${selectedEmojis.length} ${selectedEmojis.length === 1 ? "emoji" : "emojis"}`);
     } catch (error) {
+      trackError(error, { source: 'share_selection' });
+      track('share_link_failed', { kind: 'selection' });
       console.error("Could not copy share link:", error);
       setStatusWithTimeout("Could not copy the link. Please try again.");
     }
@@ -102,6 +120,9 @@ export function EmojiExport({ onInvertVisible, onOpenSheet, selectedEmojis, onCl
   const exportFiles = useCallback(async (kind: 'slack' | 'zip', replaceSmaller = false) => {
     if (isExporting || selectedEmojis.length === 0) return;
     const overwrite = kind === 'slack' && overwriteExisting && !replaceSmaller;
+    const properties = { format: kind, selected_count: selectedEmojis.length, replace_smaller: replaceSmaller, overwrite, tier_still: pinnedTier?.still ?? null, tier_animated: pinnedTier?.animated ?? null };
+    const started = performance.now();
+    track('export_started', properties);
     const controller = new AbortController();
     abortControllerRef.current = controller;
     setIsExporting(true);
@@ -129,11 +150,15 @@ export function EmojiExport({ onInvertVisible, onOpenSheet, selectedEmojis, onCl
         setTimeout(() => URL.revokeObjectURL(url), 1000);
         setStatusWithTimeout('ZIP downloaded!');
       }
+      track('export_completed', { ...properties, duration_ms: Math.round(performance.now() - started) });
     } catch (error) {
       if (!controller.signal.aborted) {
+        track('export_failed', properties);
+        trackError(error, { ...properties, source: 'file_export' });
         setStatusWithTimeout(`Could not export: ${error instanceof Error ? error.message : String(error)}`);
       }
     } finally {
+      if (controller.signal.aborted) track('export_cancelled', properties);
       if (abortControllerRef.current === controller) {
         abortControllerRef.current = null;
         setIsExporting(false);
@@ -363,7 +388,7 @@ export function EmojiExport({ onInvertVisible, onOpenSheet, selectedEmojis, onCl
             overwrite={overwriteExisting}
             onOverwriteChange={setOverwriteExisting}
             pinnedTier={pinnedTier}
-            onPinTier={setPinnedTier}
+            onPinTier={tier => { track('export_tier_changed', { still: tier?.still ?? null, animated: tier?.animated ?? null }); setPinnedTier(tier); }}
             onRun={runExport}
             onDownloadOriginals={() => exportFiles('zip')}
             formats={[
