@@ -1,3 +1,4 @@
+import { track, trackError } from '../lib/analytics';
 import React, { useEffect, useRef, useState } from 'react';
 import '../styles/search.css';
 import { Check, Link, Search } from 'lucide-react';
@@ -45,10 +46,13 @@ const SearchBar: React.FC<SearchBarProps> = ({
     if (!shareUrl) return;
     try {
       await navigator.clipboard.writeText(shareUrl());
+      track('share_link_copied', { kind: 'search' });
       setLinkCopied(true);
       if (copiedTimerRef.current) clearTimeout(copiedTimerRef.current);
       copiedTimerRef.current = setTimeout(() => setLinkCopied(false), 2000);
     } catch (error) {
+      trackError(error, { source: 'share_search' });
+      track('share_link_failed', { kind: 'search' });
       console.error('Could not copy search link:', error);
     }
   };

@@ -1,4 +1,5 @@
 import React, { Component, type ErrorInfo, type ReactNode } from 'react';
+import { trackError } from '../lib/analytics';
 
 interface ErrorBoundaryProps {
   children: ReactNode;
@@ -37,6 +38,7 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
   }
 
   componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
+    trackError(error, { source: 'react_boundary', component_stack: errorInfo.componentStack ?? '' });
     console.error('ErrorBoundary caught an error:', error, errorInfo);
   }
 

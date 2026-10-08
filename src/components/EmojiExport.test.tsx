@@ -7,6 +7,8 @@ import { render } from "../test-utils/test-utils";
 import type { EmojiMetadata } from "../types/emoji";
 
 import {runExportWorker} from '../lib/exportWorker';
+import {track, trackError} from '../lib/analytics';
+vi.mock('../lib/analytics', () => ({track: vi.fn(), trackError: vi.fn()}));
 vi.mock('../lib/exportWorker',()=>({runExportWorker:vi.fn()}));
 
 describe("EmojiExport Component", () => {
@@ -209,6 +211,8 @@ describe("EmojiExport Component", () => {
 
     expect(runExportWorker).toHaveBeenCalledWith(expect.objectContaining({kind:'zip',filenames:['emoji1.webp','emoji2.webp']}),expect.any(AbortSignal),expect.any(Function));
     expect(URL.createObjectURL).toHaveBeenCalled();
+    expect(track).toHaveBeenCalledWith('export_started', expect.objectContaining({format: 'zip', selected_count: 2}));
+    expect(track).toHaveBeenCalledWith('export_completed', expect.objectContaining({format: 'zip', duration_ms: expect.any(Number)}));
   });
 
   it("copies a self-contained Slack upload script", async () => {
@@ -248,6 +252,9 @@ describe("EmojiExport Component", () => {
     await vi.waitFor(() => expect(screen.getByRole("status")).toHaveTextContent("Could not export"));
     expect(screen.queryByRole("region", { name: "Three steps to get them into Slack" })).not.toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Copy Slack script" })).toBeEnabled();
+    expect(track).toHaveBeenCalledWith('export_failed', expect.objectContaining({format: 'slack'}));
+    expect(track).not.toHaveBeenCalledWith('export_completed', expect.anything());
+    expect(trackError).toHaveBeenCalledWith(expect.any(Error), expect.objectContaining({source: 'file_export'}));
     consoleError.mockRestore();
   });
 
@@ -277,4 +284,16 @@ describe("EmojiExport Component", () => {
     expect(screen.getByRole("button", { name: "Copy a link to this sheet" })).toBeDisabled();
   });
 
+  it('reports cancellation without a failed or completed export', async () => {
+    vi.mocked(runExportWorker).mockImplementation((_request, signal) => new Promise((_resolve, reject) => {
+      signal.addEventListener('abort', () => reject(new DOMException('Cancelled', 'AbortError')), {once: true});
+    }));
+    renderExport();
+    await userEvent.click(screen.getByRole('button', {name: 'Copy Slack script'}));
+    await userEvent.click(screen.getByRole('button', {name: 'Cancel export'}));
+    await vi.waitFor(() => expect(track).toHaveBeenCalledWith('export_cancelled', expect.objectContaining({format: 'slack'})));
+    expect(track).not.toHaveBeenCalledWith('export_completed', expect.anything());
+    expect(track).not.toHaveBeenCalledWith('export_failed', expect.anything());
+    expect(trackError).not.toHaveBeenCalled();
+  });
 });
