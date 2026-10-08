@@ -92,7 +92,25 @@ const EmojiCell = ({
   const [isPlaying, setIsPlaying] = useState(false);
   const [actions, setActions] = useState(false);
   const hoverTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+  const nameRef = useRef<HTMLSpanElement>(null);
+  const nameActive = isSelected || actions;
   useEffect(() => () => clearTimeout(hoverTimer.current), []);
+
+  // Keep the grid's initial bundle and layout work small. Only an intentional
+  // interaction with a clipped name loads the scrolling behavior and its CSS.
+  useEffect(() => {
+    if (!nameActive || window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) return;
+    let disposed = false;
+    let stop: (() => void) | undefined;
+    const timer = setTimeout(() => {
+      const label = nameRef.current;
+      if (!label || label.scrollWidth <= label.clientWidth + 1) return;
+      void import('../lib/emojiNameScroll').then(({ scrollEmojiName }) => {
+        if (!disposed) stop = scrollEmojiName(label);
+      }).catch(() => { /* The full name remains available in the button title. */ });
+    }, 800);
+    return () => { disposed = true; clearTimeout(timer); stop?.(); };
+  }, [nameActive, baseSize, emoji.filename]);
 
   const handleClick = useCallback((e: React.MouseEvent) => {
     e.preventDefault();
@@ -156,7 +174,7 @@ const EmojiCell = ({
           <span className="emoji-card-check" aria-hidden="true">{isSelected ? "✓" : "+"}</span>
           <MemoizedAnimatedImage emoji={emoji} alt={emoji.filename} baseSize={baseSize} isPlaying={isPlaying} />
         </div>
-        <span className="emoji-card-name">:{name}:</span>
+        <span ref={nameRef} className="emoji-card-name"><span>:{name}:</span></span>
       </button>
       {actions && onSimilar && <div className="emoji-card-actions" role="group" aria-label={`Actions for ${name}`} onPointerDown={event => event.stopPropagation()}>
         <button type="button" onClick={() => onSimilar(emoji)}><span aria-hidden="true">✦ </span>Similar</button>
