@@ -17110,6 +17110,22 @@
       "path": "/emojis/michael-scott-awkward-smile.webp",
       "created": "2026-10-08T23:52:01.809Z",
       "tags": [
+        "person",
+        "embarrassed",
+        "anxious",
+        "uncertainty",
+        "acknowledge",
+        "formalwear",
+        "photo",
+        "brown",
+        "blue",
+        "actor-likeness",
+        "tv-film"
+      ],
+      "categories": [
+        "person"
+      ],
+      "aliases": [
         "michael scott",
         "the office",
         "grimace",
@@ -17119,19 +17135,42 @@
         "yikes",
         "uncomfortable"
       ],
-      "categories": [
-        "reaction",
-        "meme",
-        "people"
-      ],
-      "aliases": [],
       "hash": "b7be617bc68e2d75a93737479d3cb3a5d3f2d815f974f8c9307f73e61a009c84",
       "modified": "2026-10-08T23:52:01.809Z",
       "size": 4626,
       "width": 128,
       "height": 128,
       "animated": false,
-      "labelHash": "b7be617bc68e2d75a93737479d3cb3a5d3f2d815f974f8c9307f73e61a009c84"
+      "labelHash": "b7be617bc68e2d75a93737479d3cb3a5d3f2d815f974f8c9307f73e61a009c84",
+      "facets": {
+        "subject": [
+          "person"
+        ],
+        "expression": [
+          "embarrassed",
+          "anxious"
+        ],
+        "action": [],
+        "intent": [
+          "uncertainty",
+          "acknowledge"
+        ],
+        "prop": [
+          "formalwear"
+        ],
+        "style": [
+          "photo"
+        ],
+        "color": [
+          "brown",
+          "blue"
+        ],
+        "origin": [
+          "actor-likeness",
+          "tv-film"
+        ]
+      },
+      "labelConfidence": "medium"
     },
     {
       "id": "ac3b8169",
@@ -17139,6 +17178,22 @@
       "path": "/emojis/michael-scott-laughing.webp",
       "created": "2026-10-08T23:52:01.853Z",
       "tags": [
+        "person",
+        "laughing",
+        "embarrassed",
+        "mockery",
+        "uncertainty",
+        "formalwear",
+        "photo",
+        "brown",
+        "white",
+        "actor-likeness",
+        "tv-film"
+      ],
+      "categories": [
+        "person"
+      ],
+      "aliases": [
         "michael scott",
         "the office",
         "steve carell",
@@ -17147,19 +17202,42 @@
         "cringe",
         "nervous"
       ],
-      "categories": [
-        "reaction",
-        "meme",
-        "people"
-      ],
-      "aliases": [],
       "hash": "acc2bd4109aaa9faabb2283d333ceb090ffcd938aa9afe4c2f636cf1a02698d5",
       "modified": "2026-10-08T23:52:01.853Z",
       "size": 47660,
       "width": 60,
       "height": 60,
       "animated": true,
-      "labelHash": "acc2bd4109aaa9faabb2283d333ceb090ffcd938aa9afe4c2f636cf1a02698d5"
+      "labelHash": "acc2bd4109aaa9faabb2283d333ceb090ffcd938aa9afe4c2f636cf1a02698d5",
+      "facets": {
+        "subject": [
+          "person"
+        ],
+        "expression": [
+          "laughing",
+          "embarrassed"
+        ],
+        "action": [],
+        "intent": [
+          "mockery",
+          "uncertainty"
+        ],
+        "prop": [
+          "formalwear"
+        ],
+        "style": [
+          "photo"
+        ],
+        "color": [
+          "brown",
+          "white"
+        ],
+        "origin": [
+          "actor-likeness",
+          "tv-film"
+        ]
+      },
+      "labelConfidence": "medium"
     },
     {
       "id": "553163d1",
@@ -17167,6 +17245,24 @@
       "path": "/emojis/michael-scott-screaming-no.webp",
       "created": "2026-10-08T23:52:01.873Z",
       "tags": [
+        "person",
+        "shocked",
+        "angry",
+        "shouting",
+        "disapprove",
+        "disbelief",
+        "formalwear",
+        "body-text",
+        "photo",
+        "brown",
+        "white",
+        "actor-likeness",
+        "tv-film"
+      ],
+      "categories": [
+        "person"
+      ],
+      "aliases": [
         "michael scott",
         "the office",
         "no",
@@ -17176,19 +17272,45 @@
         "shocked",
         "steve carell"
       ],
-      "categories": [
-        "meme",
-        "reaction",
-        "pop-culture"
-      ],
-      "aliases": [],
       "hash": "3f2013dab1aaee7c4414268f713fc8b7b98a4293c4d6927a69e3aaad946634a0",
       "modified": "2026-10-08T23:52:01.873Z",
       "size": 4640,
       "width": 128,
       "height": 128,
       "animated": false,
-      "labelHash": "3f2013dab1aaee7c4414268f713fc8b7b98a4293c4d6927a69e3aaad946634a0"
+      "labelHash": "3f2013dab1aaee7c4414268f713fc8b7b98a4293c4d6927a69e3aaad946634a0",
+      "facets": {
+        "subject": [
+          "person"
+        ],
+        "expression": [
+          "shocked",
+          "angry"
+        ],
+        "action": [
+          "shouting"
+        ],
+        "intent": [
+          "disapprove",
+          "disbelief"
+        ],
+        "prop": [
+          "formalwear",
+          "body-text"
+        ],
+        "style": [
+          "photo"
+        ],
+        "color": [
+          "brown",
+          "white"
+        ],
+        "origin": [
+          "actor-likeness",
+          "tv-film"
+        ]
+      },
+      "labelConfidence": "medium"
     },
     {
       "id": "9ccc6769",
@@ -17196,6 +17318,22 @@
       "path": "/emojis/michael-scott-shaking-head-no.webp",
       "created": "2026-10-08T23:52:02.211Z",
       "tags": [
+        "person",
+        "sad",
+        "crying",
+        "resignation",
+        "disapprove",
+        "formalwear",
+        "photo",
+        "brown",
+        "white",
+        "actor-likeness",
+        "tv-film"
+      ],
+      "categories": [
+        "person"
+      ],
+      "aliases": [
         "michael scott",
         "the office",
         "crying",
@@ -17204,19 +17342,42 @@
         "emotional",
         "steve carell"
       ],
-      "categories": [
-        "meme",
-        "reaction",
-        "people"
-      ],
-      "aliases": [],
       "hash": "3435644e9f0e9716b1918b4ea5b1edb109801e637799064bbc16a30ee0be058f",
       "modified": "2026-10-08T23:52:02.211Z",
       "size": 41312,
       "width": 60,
       "height": 60,
       "animated": true,
-      "labelHash": "3435644e9f0e9716b1918b4ea5b1edb109801e637799064bbc16a30ee0be058f"
+      "labelHash": "3435644e9f0e9716b1918b4ea5b1edb109801e637799064bbc16a30ee0be058f",
+      "facets": {
+        "subject": [
+          "person"
+        ],
+        "expression": [
+          "sad",
+          "crying"
+        ],
+        "action": [],
+        "intent": [
+          "resignation",
+          "disapprove"
+        ],
+        "prop": [
+          "formalwear"
+        ],
+        "style": [
+          "photo"
+        ],
+        "color": [
+          "brown",
+          "white"
+        ],
+        "origin": [
+          "actor-likeness",
+          "tv-film"
+        ]
+      },
+      "labelConfidence": "medium"
     },
     {
       "id": "ed25c8a6",
@@ -17224,6 +17385,21 @@
       "path": "/emojis/michael-scott-shocked.webp",
       "created": "2026-10-08T23:52:02.233Z",
       "tags": [
+        "person",
+        "shocked",
+        "disbelief",
+        "attention",
+        "formalwear",
+        "photo",
+        "brown",
+        "white",
+        "actor-likeness",
+        "tv-film"
+      ],
+      "categories": [
+        "person"
+      ],
+      "aliases": [
         "michael scott",
         "the office",
         "shocked",
@@ -17233,19 +17409,41 @@
         "jaw drop",
         "omg"
       ],
-      "categories": [
-        "reaction",
-        "meme",
-        "people"
-      ],
-      "aliases": [],
       "hash": "df229a3d7047ff368239f9749f76de44b4644129c264d0d587d36f04cd8b0ab6",
       "modified": "2026-10-08T23:52:02.233Z",
       "size": 3232,
       "width": 128,
       "height": 128,
       "animated": false,
-      "labelHash": "df229a3d7047ff368239f9749f76de44b4644129c264d0d587d36f04cd8b0ab6"
+      "labelHash": "df229a3d7047ff368239f9749f76de44b4644129c264d0d587d36f04cd8b0ab6",
+      "facets": {
+        "subject": [
+          "person"
+        ],
+        "expression": [
+          "shocked"
+        ],
+        "action": [],
+        "intent": [
+          "disbelief",
+          "attention"
+        ],
+        "prop": [
+          "formalwear"
+        ],
+        "style": [
+          "photo"
+        ],
+        "color": [
+          "brown",
+          "white"
+        ],
+        "origin": [
+          "actor-likeness",
+          "tv-film"
+        ]
+      },
+      "labelConfidence": "medium"
     },
     {
       "id": "35e465cd",
@@ -17253,6 +17451,24 @@
       "path": "/emojis/michael-scott-worlds-best-boss.webp",
       "created": "2026-10-08T23:52:02.242Z",
       "tags": [
+        "person",
+        "deadpan",
+        "confident",
+        "holding",
+        "praise",
+        "sarcasm",
+        "formalwear",
+        "sign-prop",
+        "photo",
+        "brown",
+        "white",
+        "actor-likeness",
+        "tv-film"
+      ],
+      "categories": [
+        "person"
+      ],
+      "aliases": [
         "michael scott",
         "the office",
         "world's best boss",
@@ -17261,19 +17477,45 @@
         "boss",
         "serious"
       ],
-      "categories": [
-        "meme",
-        "reaction",
-        "tv show"
-      ],
-      "aliases": [],
       "hash": "7d20db9108692a97f9d311dfd6f2acdf23403ef8c9da89f5e5c063299f62826e",
       "modified": "2026-10-08T23:52:02.242Z",
       "size": 4316,
       "width": 128,
       "height": 128,
       "animated": false,
-      "labelHash": "7d20db9108692a97f9d311dfd6f2acdf23403ef8c9da89f5e5c063299f62826e"
+      "labelHash": "7d20db9108692a97f9d311dfd6f2acdf23403ef8c9da89f5e5c063299f62826e",
+      "facets": {
+        "subject": [
+          "person"
+        ],
+        "expression": [
+          "deadpan",
+          "confident"
+        ],
+        "action": [
+          "holding"
+        ],
+        "intent": [
+          "praise",
+          "sarcasm"
+        ],
+        "prop": [
+          "formalwear",
+          "sign-prop"
+        ],
+        "style": [
+          "photo"
+        ],
+        "color": [
+          "brown",
+          "white"
+        ],
+        "origin": [
+          "actor-likeness",
+          "tv-film"
+        ]
+      },
+      "labelConfidence": "medium"
     },
     {
       "id": "2185a2d6",
