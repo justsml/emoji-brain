@@ -2,6 +2,17 @@ import {describe,it,expect} from 'vitest';
 import {planSlackEmojiReplacements, type ReplacementImage} from './slackEmojiReplacements';
 const image=(name:string,width=128,height=128,animated=false):ReplacementImage=>({name,width,height,animated});
 describe('read-only Slack replacement plan',()=>{
+  it('overwrites exact-name matches of any size or animation only when explicitly enabled',()=>{
+    const incoming=['equal','large','animated'].map(name=>image(name));
+    const existing=[image('equal'),image('large',256,256),image('animated',64,64,true)];
+    expect(planSlackEmojiReplacements(incoming,existing,{overwrite:true}).map(r=>r.action)).toEqual(['overwrite','overwrite','overwrite']);
+  });
+  it('keeps identical artwork and respects an explicit deletion denial',()=>{
+    const incoming=[{...image('same'),sha256:'identical'},image('denied')];
+    const existing=[{...image('same'),sha256:'identical'},{...image('denied'),canDelete:false}];
+    expect(planSlackEmojiReplacements(incoming,existing,{overwrite:true}).map(r=>r.action)).toEqual(['keep-existing','keep-existing']);
+    expect(planSlackEmojiReplacements([image('cat')],[image('cat'),{name:'alias',aliasFor:'cat'}],{overwrite:true})[0].action).toBe('manual-review');
+  });
   it('offers replacement only for a smaller exact-name match',()=>{
     const result=planSlackEmojiReplacements([image('roo'),image('cat'),image('new')],[image('roo',64,64),image('cat')]);
     expect(result.map(r=>r.action)).toEqual(['replace-smaller','keep-existing','upload-new']);

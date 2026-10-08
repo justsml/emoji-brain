@@ -13,6 +13,8 @@ interface ExportOptionsProps {
   /** Downloads the full-resolution sources; they are far too big to paste. */
   onDownloadOriginals: () => void | Promise<void>;
   panelRef: React.Ref<HTMLDivElement>;
+  overwrite: boolean;
+  onOverwriteChange: (value: boolean) => void;
 }
 
 const tierKey = (tier: ExportTier) => `${tier.still}/${tier.animated}`;
@@ -24,7 +26,7 @@ function tierLabel(tier: TierEstimate): string {
   return `${tier.still} / ${tier.animated} px`;
 }
 
-export function ExportOptions({id, estimates, pinnedTier, onPinTier, onRun, formats, onDownloadOriginals, panelRef}: ExportOptionsProps) {
+export function ExportOptions({id, estimates, pinnedTier, onPinTier, onRun, formats, onDownloadOriginals, panelRef, overwrite, onOverwriteChange}: ExportOptionsProps) {
   const {tiers, best, active, originalsBytes} = estimates;
   const mixed = !!(tiers[0]?.stillCount && tiers[0]?.animatedCount);
 
@@ -115,6 +117,10 @@ export function ExportOptions({id, estimates, pinnedTier, onPinTier, onRun, form
       )}
 
       <div className="export-formats">
+        <div className="export-overwrite">
+          <label><input type="checkbox" checked={overwrite} onChange={event => onOverwriteChange(event.target.checked)} aria-describedby={`${id}-overwrite-warning`} /> Overwrite existing Slack emojis</label>
+          <p id={`${id}-overwrite-warning`}>Deletes exact-name matches before uploading ours, even if the current image is larger or animated. Requires deletion permission: typically an admin/owner or the emoji’s creator, subject to workspace policy. The script requires an originals backup and confirmation in Slack. Recovery is best effort.</p>
+        </div>
         <h3>Copy as</h3>
         {formats.map((format) => (
           <button key={format.label} type="button" role="menuitem" onClick={() => onRun(format.run)}>

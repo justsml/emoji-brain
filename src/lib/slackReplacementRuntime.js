@@ -1,11 +1,12 @@
 // Embedded as source in an opt-in console script. Keep this function self-contained.
-async function runSlackEmojiReplacement(images, token, decide) {
+async function runSlackEmojiReplacement(images, token, decide, options = {}) {
   if (document.getElementById('emoji-replacement-panel')) throw Error('A replacement preview is already open.');
   const panel = document.createElement('section'); panel.id = 'emoji-replacement-panel';
   Object.assign(panel.style, {position:'fixed',inset:'24px',zIndex:'2147483647',background:'#fff',color:'#17202a',padding:'24px',overflow:'auto',font:'14px/1.5 system-ui',border:'2px solid #34495e',borderRadius:'12px',boxShadow:'0 12px 60px #0006'});
   const previews=[];
   const styles=document.createElement('style');styles.textContent='#emoji-replacement-panel td,#emoji-replacement-panel th{padding:8px;border-bottom:1px solid #d5dce3}#emoji-replacement-panel button{font:inherit;padding:7px 12px;margin:8px;cursor:pointer}#emoji-replacement-panel img{display:block;object-fit:contain;background:repeating-conic-gradient(#eee 0% 25%,#fff 0% 50%) 0/12px 12px}';panel.append(styles);
-  const title=document.createElement('h2');title.textContent='Preview smaller emoji replacements';panel.append(title);
+  const title=document.createElement('h2');title.textContent=options.overwrite?'Preview emoji overwrites':'Preview smaller emoji replacements';panel.append(title);
+  const warning=document.createElement('p');warning.textContent='Requires permission to add and delete custom emoji: usually a workspace admin/owner or the emoji creator, subject to workspace policy. Replacement deletes the old image first and can change its size or animation. A failed upload may leave the emoji missing; restoring from backup is best effort. Aliases and their targets are excluded. Nothing is changed until you save a backup and confirm.';panel.append(warning);
   const status=document.createElement('p');status.setAttribute('role','status');panel.append(status);
   const stop=document.createElement('button');stop.textContent='Stop / close';panel.append(stop);document.body.append(panel);
   let stopped=false,busy=false,nextRequest=0,backupSaved=false;
@@ -24,7 +25,7 @@ async function runSlackEmojiReplacement(images, token, decide) {
       const response=await fetch(path,{method:'POST',credentials:'same-origin',body:form,signal:AbortSignal.timeout(20000)});
       if(response.status===429){const retry=response.headers.get('retry-after');const wait=retry&&Number.isFinite(Number(retry))?Number(retry)*1000:Math.max(0,Date.parse(retry||'')-Date.now());nextRequest=Date.now()+Math.max(Number.isFinite(wait)?wait:0,2000*2**attempt);continue;}
       const body=await response.json();
-      if(!response.ok||body.ok!==true)throw Error(path+': '+(body.error||'Unconfirmed response (HTTP '+response.status+')'));
+      if(!response.ok||body.ok!==true){const error=Error(path+': '+(body.error||'Unconfirmed response (HTTP '+response.status+')'));error.code=body.error;throw error;}
       return body;
     }
     throw Error(path+': rate limit retries exhausted');
@@ -62,7 +63,7 @@ async function runSlackEmojiReplacement(images, token, decide) {
     const url=new URL(row.url);if(url.protocol!=='https:')throw Error('Invalid existing image URL');
     const response=await fetch(url.href,{cache:'no-store',credentials:'omit',signal:AbortSignal.timeout(20000)});if(!response.ok)throw Error('Cannot back up existing image');
     const blob=await response.blob();if(!blob.size)throw Error('Empty existing image');
-    return {row,blob,hash:await digest(blob),meta:{name:row.name,...await measure(blob)}};
+    return {row,blob,hash:await digest(blob),meta:{name:row.name,sha256:await digest(blob),canDelete:row.can_delete === false || row.is_deletable === false ? false : undefined,...await measure(blob)}};
   }
   const lookup=async name=>(await list(name)).find(row=>row.name===name);
   async function add(name,blob) {
@@ -73,7 +74,7 @@ async function runSlackEmojiReplacement(images, token, decide) {
   try {
     busy=true;update('Reading workspace emoji names and aliases…');const existing=await list();
     const backups=new Map(),incoming=new Map(),metadata=[];
-    for(const image of images){if(stopped)throw Error('Stopped');const name=normalize(image.filename),blob=incomingBlob(image);incoming.set(name,blob);metadata.push({name,...await measure(blob)});await sleep(0);}
+    for(const image of images){if(stopped)throw Error('Stopped');const name=normalize(image.filename),blob=incomingBlob(image);incoming.set(name,blob);metadata.push({name,sha256:await digest(blob),...await measure(blob)});await sleep(0);}
     const existingMetadata=[];const names=new Set(metadata.map(r=>r.name));
     for(const row of existing){
       if(stopped)throw Error('Stopped');
@@ -83,13 +84,13 @@ async function runSlackEmojiReplacement(images, token, decide) {
       try{const value=await readExisting(row);backups.set(row.name,value);existingMetadata.push(value.meta);}
       catch{existingMetadata.push({name:row.name});}
     }
-    const decisions=decide(metadata,existingMetadata);globalThis.slackEmojiReplacementPlan=decisions.map(row=>({...row}));
+    const decisions=decide(metadata,existingMetadata,options);globalThis.slackEmojiReplacementPlan=decisions.map(row=>({...row}));
     const table=document.createElement('table');Object.assign(table.style,{width:'100%',textAlign:'left',borderCollapse:'collapse'});panel.append(table);
     const headings=table.createTHead().insertRow();for(const label of ['Include','Emoji','Current','Incoming','Decision']){const th=document.createElement('th');th.scope='col';th.textContent=label;headings.append(th);}
     const rows=table.createTBody();
     const thumbnail=(cell,blob,description)=>{if(!blob)return;const img=document.createElement('img'),url=URL.createObjectURL(blob);previews.push(url);img.src=url;img.alt=description;img.width=48;img.height=48;img.loading='lazy';img.decoding='async';cell.append(img);};
     const selected=new Set();const checks=[];
-    for(const decision of decisions){const row=rows.insertRow(),cell=row.insertCell(),check=document.createElement('input');check.type='checkbox';check.setAttribute('aria-label','Include '+decision.name);check.disabled=!['replace-smaller','upload-new'].includes(decision.action);check.checked=!check.disabled;if(check.checked)selected.add(decision.name);cell.append(check);checks.push(check);
+    for(const decision of decisions){const row=rows.insertRow(),cell=row.insertCell(),check=document.createElement('input');check.type='checkbox';check.setAttribute('aria-label','Include '+decision.name);check.disabled=!['replace-smaller','overwrite','upload-new'].includes(decision.action);check.checked=!check.disabled;if(check.checked)selected.add(decision.name);cell.append(check);checks.push(check);
       for(const text of [decision.name,decision.current?.width?decision.current.width+'×'+decision.current.height:'—',decision.incoming.width+'×'+decision.incoming.height,decision.action+' · '+decision.reason])row.insertCell().textContent=text;
       thumbnail(row.cells[2],backups.get(decision.name)?.blob,'Current '+decision.name);thumbnail(row.cells[3],incoming.get(decision.name),'Incoming '+decision.name);
       check.onchange=()=>{if(check.checked)selected.add(decision.name);else selected.delete(decision.name);backupSaved=false;saved.checked=false;apply.disabled=true;};}
@@ -99,13 +100,13 @@ async function runSlackEmojiReplacement(images, token, decide) {
     saved.onchange=()=>{apply.disabled=!saved.checked||!backupSaved;};
     download.onclick=async()=>{
       const backupSelection=JSON.stringify([...selected].sort());
-      try{const originals=[];for(const d of decisions)if(selected.has(d.name)&&d.action==='replace-smaller'){const b=backups.get(d.name);originals.push({name:d.name,mimeType:b.blob.type,sha256:b.hash,...b.meta,base64:await base64(b.blob)});}
+      try{const originals=[];for(const d of decisions)if(selected.has(d.name)&&['replace-smaller','overwrite'].includes(d.action)){const b=backups.get(d.name);originals.push({name:d.name,mimeType:b.blob.type,sha256:b.hash,...b.meta,base64:await base64(b.blob)});}
       const blob=new Blob([JSON.stringify({format:'slack-emoji-replacement-backup-v1',workspace:location.hostname,createdAt:new Date().toISOString(),originals},null,2)],{type:'application/json'});const url=URL.createObjectURL(blob),link=document.createElement('a');link.href=url;link.download='slack-emoji-originals-backup.json';link.click();setTimeout(()=>URL.revokeObjectURL(url),60000);backupSaved=backupSelection===JSON.stringify([...selected].sort());saved.disabled=!backupSaved;update('Save the backup, then check the confirmation box.');}catch(error){update('Backup failed: '+error.message);}
     };
     apply.onclick=async()=>{
       if(busy||!backupSaved||!saved.checked||!selected.size)return;
-      const replacements=decisions.filter(d=>selected.has(d.name)&&d.action==='replace-smaller');
-      if(!confirm('Replace '+replacements.length+' smaller emojis and upload selected new names? The old images will be deleted one at a time.'))return;
+      const replacements=decisions.filter(d=>selected.has(d.name)&&['replace-smaller','overwrite'].includes(d.action));
+      if(!confirm('Delete and replace '+replacements.length+' existing emojis and upload selected new names? '+(options.overwrite?'Existing images may be larger or animated. ':'')+'Deletion happens first. Recovery may fail; keep your originals backup.'))return;
       busy=true;apply.disabled=true;download.disabled=true;saved.disabled=true;checks.forEach(check=>check.disabled=true);stop.textContent='Stop after current emoji';report.status='applying';
       try {
         const fresh=await list();const dependents=new Set(fresh.map(alias).filter(Boolean));
@@ -124,11 +125,12 @@ async function runSlackEmojiReplacement(images, token, decide) {
             let current;try{current=await lookup(d.name);}catch{throw Error(d.name+': state unknown; stopped. Use the saved backup if recovery is needed.');}
             if(await same(current,blob)){report.items.push({name:d.name,status:'replaced-verified-after-error'});continue;}
             if(!current){try{await add(d.name,backup.blob);if(!await same(await lookup(d.name),backup.blob))throw Error('Restore not verified');report.items.push({name:d.name,status:'restored-original',error:error.message});}catch(restoreError){report.items.push({name:d.name,status:'restore-failed',error:restoreError.message});}}
+            else if(options.overwrite && ['no_permission','cant_delete','not_owner','restricted_action','missing_scope'].includes(error.code) && await same(current,backup.blob)){report.items.push({name:d.name,status:'skipped-permission',error:error.message,reason:'Ask the emoji creator or a workspace admin/owner; workspace policy may restrict deletion.'});continue;}
             else report.items.push({name:d.name,status:'stopped',error:error.message});
             throw error;
           }
         }
-        report.status=stopped?'stopped':'complete';update(stopped?'Stopped. Originals backup is retained.':'Complete. Replacements and uploads verified.');
+        report.status=stopped?'stopped':'complete';update(stopped?'Stopped. Originals backup is retained.':'Complete. See the report for verified replacements, uploads, and any skipped names.');
       }catch(error){report.status='stopped-error';report.error=error.message;update('Stopped: '+error.message);}
       finally{busy=false;console.table(report.items);stop.textContent='Close';}
     };

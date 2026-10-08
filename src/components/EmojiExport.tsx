@@ -31,7 +31,8 @@ interface EmojiExportProps {
 export function EmojiExport({ onInvertVisible, onOpenSheet, selectedEmojis, onClearSelection, onDeselectVisible, onSelectAll, filteredEmojis, gridScale, onRemoveEmoji, shareUrl, scriptOverheadBytes }: EmojiExportProps) {
   const [exportStatus, setExportStatus] = useState<string>("");
   const [isExporting, setIsExporting] = useState(false);
-  const [copiedScript, setCopiedScript] = useState<{ megabytes: string; count: number; replaceSmaller: boolean; resolutions: SlackResolution[]; pinned: boolean } | null>(null);
+  const [copiedScript, setCopiedScript] = useState<{ megabytes: string; count: number; replaceSmaller: boolean; overwrite: boolean; resolutions: SlackResolution[]; pinned: boolean } | null>(null);
+  const [overwriteExisting, setOverwriteExisting] = useState(false);
   const statusTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const scriptButtonRef = useRef<HTMLButtonElement>(null);
   const selectAllButtonRef = useRef<HTMLButtonElement>(null);
@@ -100,6 +101,7 @@ export function EmojiExport({ onInvertVisible, onOpenSheet, selectedEmojis, onCl
 
   const exportFiles = useCallback(async (kind: 'slack' | 'zip', replaceSmaller = false) => {
     if (isExporting || selectedEmojis.length === 0) return;
+    const overwrite = kind === 'slack' && overwriteExisting && !replaceSmaller;
     const controller = new AbortController();
     abortControllerRef.current = controller;
     setIsExporting(true);
@@ -107,7 +109,8 @@ export function EmojiExport({ onInvertVisible, onOpenSheet, selectedEmojis, onCl
     if (statusTimerRef.current) clearTimeout(statusTimerRef.current);
     setExportStatus(`Preparing 0 of ${selectedEmojis.length} emojis…`);
     try {
-      const result = await runExportWorker({kind, filenames: selectedEmojis.map(e => e.filename), origin: window.location.origin, replaceSmaller, tier: pinnedTier ?? undefined}, controller.signal, setExportStatus);
+      const result = await runExportWorker({kind, filenames: selectedEmojis.map(e => e.filename), origin: window.location.origin, replaceSmaller, overwrite, tier: pinnedTier ?? undefined}, controller.signal, setExportStatus);
+      if (controller.signal.aborted) return;
       if (result.kind === 'slack') {
         setExportStatus('Copying script to clipboard… Please wait; large exports may briefly pause your browser.');
         // Let React commit and the browser paint the message before clipboard work.
@@ -115,7 +118,8 @@ export function EmojiExport({ onInvertVisible, onOpenSheet, selectedEmojis, onCl
         if (controller.signal.aborted) return;
         const megabytes = (result.scriptBytes / 1_000_000).toFixed(3);
         await navigator.clipboard.writeText(result.script);
-        setCopiedScript({megabytes, count: result.count, replaceSmaller, resolutions: result.resolutions, pinned: pinnedTier !== null});
+        if (controller.signal.aborted) return;
+        setCopiedScript({megabytes, count: result.count, replaceSmaller, overwrite, resolutions: result.resolutions, pinned: pinnedTier !== null});
         setStatusWithTimeout(`Copied Slack script · ${megabytes} MB`);
       } else {
         const url = URL.createObjectURL(new Blob([result.buffer], {type: 'application/zip'}));
@@ -126,14 +130,16 @@ export function EmojiExport({ onInvertVisible, onOpenSheet, selectedEmojis, onCl
         setStatusWithTimeout('ZIP downloaded!');
       }
     } catch (error) {
-      if (!controller.signal.aborted) setStatusWithTimeout(`Could not export: ${error instanceof Error ? error.message : String(error)}`);
+      if (!controller.signal.aborted) {
+        setStatusWithTimeout(`Could not export: ${error instanceof Error ? error.message : String(error)}`);
+      }
     } finally {
       if (abortControllerRef.current === controller) {
         abortControllerRef.current = null;
         setIsExporting(false);
       }
     }
-  }, [selectedEmojis, isExporting, setStatusWithTimeout, pinnedTier]);
+  }, [selectedEmojis, isExporting, setStatusWithTimeout, pinnedTier, overwriteExisting]);
 
   const cancelExport = () => {
     abortControllerRef.current?.abort();
@@ -204,6 +210,7 @@ export function EmojiExport({ onInvertVisible, onOpenSheet, selectedEmojis, onCl
         </p>
         <p className="slack-guide-note">Select fewer emojis to make room for larger images, up to 256px stills and 128px animations. ZIP exports include full-size originals and a local Slack script generator.</p>
         {copiedScript.replaceSmaller && <p>The script opens a replacement preview in Slack. Save the originals backup and confirm the selected changes before anything is deleted.</p>}
+        {copiedScript.overwrite && <p className="slack-overwrite-warning"><strong>Overwrite is enabled.</strong> The script previews exact-name replacements, including larger or animated images. It requires deletion permission, an originals backup, and confirmation before deleting anything. Failed uploads can leave an emoji missing; restoration is best effort. Denied deletions are skipped, and aliases are excluded.</p>}
         <ol>
           <li>Sign in to your workspace and open <code>https://YOUR-WORKSPACE.slack.com/customize/emoji</code>.</li>
           <li>Open your browser’s developer tools and select the <strong>Console</strong> tab.</li>
@@ -337,7 +344,7 @@ export function EmojiExport({ onInvertVisible, onOpenSheet, selectedEmojis, onCl
               className="sheet-eraser sheet-eraser-pencil h-9 gap-2 rounded-r-none px-4 font-semibold"
             >
               {isExporting ? <LoaderCircle className="h-4 w-4 animate-spin motion-reduce:animate-none" /> : <Copy className="h-4 w-4" />}
-              {isExporting ? "Preparing…" : "Copy Slack script"}
+              {isExporting ? "Preparing…" : overwriteExisting ? "Copy overwrite script" : "Copy Slack script"}
             </Button>
           </span>
           <Button
@@ -353,11 +360,14 @@ export function EmojiExport({ onInvertVisible, onOpenSheet, selectedEmojis, onCl
             id="export-menu"
             panelRef={exportMenuRef}
             estimates={estimates}
+            overwrite={overwriteExisting}
+            onOverwriteChange={setOverwriteExisting}
             pinnedTier={pinnedTier}
             onPinTier={setPinnedTier}
             onRun={runExport}
             onDownloadOriginals={() => exportFiles('zip')}
             formats={[
+              {label: "Slack script", run: () => exportFiles('slack')},
               {label: "Slack script: replace smaller…", run: () => exportFiles('slack', true)},
               {label: "Plain Text", run: exportAsPlainText},
               {label: "HTML", run: exportAsHtml},

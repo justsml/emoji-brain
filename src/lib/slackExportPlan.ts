@@ -20,7 +20,7 @@ export async function planSlackExport(
   rows: {filename: string; row: DeliveryRow}[],
   load: (assets: SlackAsset[]) => Promise<Uint8Array[]>,
   progress: (text: string) => void,
-  options: {replaceSmaller?: boolean; allowOversizeArchive?: boolean; tier?: ExportTier} = {},
+  options: {replaceSmaller?: boolean; overwrite?: boolean; allowOversizeArchive?: boolean; tier?: ExportTier} = {},
   limit = SLACK_SCRIPT_LIMIT,
 ): Promise<SlackPlan> {
   if (!rows.length) throw Error('Select at least one emoji');

@@ -276,4 +276,5 @@ describe("EmojiExport Component", () => {
     renderExport({ selectedEmojis: [], shareUrl: () => "" });
     expect(screen.getByRole("button", { name: "Copy a link to this sheet" })).toBeDisabled();
   });
+
 });

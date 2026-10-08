@@ -188,6 +188,27 @@ Playwright starts the preview server at `http://localhost:4321`. See [`TESTING.m
 
 ## Project structure
 
+### Analytics
+
+Production pages initialize PostHog through `https://fun.adorbs.fun` using the
+`2026-05-30` defaults. The SDK loads after page load during an idle window;
+up to 50 early events are buffered. Development and automated browser traffic
+are excluded, and analytics failures never interrupt the app.
+
+Tracking includes pageviews, automatic interactions, searches, selection and
+filter changes, workspace opening, sharing, and export starts, completions,
+cancellations, and failures. Export properties include format, selection count,
+resolution choice, and duration. A completed Slack export means its script was
+copied; a completed ZIP export means the browser download was initiated.
+Caught application errors and unhandled browser errors are reported separately.
+
+Session recording is disabled. Automatic interaction capture masks text and
+element attributes; search events contain lengths and counts rather than query
+text. Captured page URLs omit query strings and fragments. See
+[`src/lib/analytics.ts`](src/lib/analytics.ts) for configuration and event delivery.
+
+### Files
+
 | Path | Purpose |
 | --- | --- |
 | `src/pages/`, `src/layouts/` | Astro page and site shell |
