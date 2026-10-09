@@ -54,8 +54,9 @@
     "pendingLabels": []
   },
   "upscaling": {
-    "status": "not-run",
-    "reason": "The existing local restoration Python environment and Real-ESRGAN model weights are absent. Delivery resizing does not count as restoration."
+    "status": "approved-promoted",
+    "reviewManifest": "staging/emoji-enhancements/michael-scott/manifest.json",
+    "approvalReceipt": "staging/emoji-enhancements/michael-scott/review-decisions.json"
   },
   "discovery": {
     "status": "complete",

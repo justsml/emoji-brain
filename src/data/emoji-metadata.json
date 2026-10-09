@@ -1,6 +1,6 @@
 {
   "total": 366,
-  "lastUpdated": "2026-10-08T23:52:23.581Z",
+  "lastUpdated": "2026-10-09T01:26:41.355Z",
   "emojis": [
     {
       "id": "df167e0a",
@@ -17120,7 +17120,7 @@
         "brown",
         "blue",
         "actor-likeness",
-        "tv-film"
+        "the-office"
       ],
       "categories": [
         "person"
@@ -17133,15 +17133,16 @@
         "awkward",
         "steve carell",
         "yikes",
-        "uncomfortable"
+        "uncomfortable",
+        "dunder mifflin"
       ],
-      "hash": "b7be617bc68e2d75a93737479d3cb3a5d3f2d815f974f8c9307f73e61a009c84",
-      "modified": "2026-10-08T23:52:01.809Z",
-      "size": 4626,
-      "width": 128,
-      "height": 128,
+      "hash": "3d15b0d523e6d7c9acccb3f7ec6fa63fc9df404993a8bce714b0a9f178c0fc1d",
+      "modified": "2026-10-09T01:26:05.407Z",
+      "size": 236444,
+      "width": 512,
+      "height": 512,
       "animated": false,
-      "labelHash": "b7be617bc68e2d75a93737479d3cb3a5d3f2d815f974f8c9307f73e61a009c84",
+      "labelHash": "3d15b0d523e6d7c9acccb3f7ec6fa63fc9df404993a8bce714b0a9f178c0fc1d",
       "facets": {
         "subject": [
           "person"
@@ -17167,10 +17168,20 @@
         ],
         "origin": [
           "actor-likeness",
-          "tv-film"
+          "the-office"
         ]
       },
-      "labelConfidence": "medium"
+      "labelConfidence": "medium",
+      "labelProvenance": {
+        "method": "carried-forward-after-approved-upscale",
+        "fromHash": "b7be617bc68e2d75a93737479d3cb3a5d3f2d815f974f8c9307f73e61a009c84",
+        "approvalReceipt": "staging/emoji-enhancements/michael-scott/review-decisions.json",
+        "facetReview": {
+          "method": "visual-review",
+          "reviewedAt": "2026-10-09T01:26:41.354Z",
+          "notes": "Recognisable Michael Scott / Steve Carell from The Office; retained expression and intent facets."
+        }
+      }
     },
     {
       "id": "ac3b8169",
@@ -17188,7 +17199,7 @@
         "brown",
         "white",
         "actor-likeness",
-        "tv-film"
+        "the-office"
       ],
       "categories": [
         "person"
@@ -17200,15 +17211,21 @@
         "awkward smile",
         "grimace",
         "cringe",
-        "nervous"
+        "nervous",
+        "dunder mifflin",
+        "laugh",
+        "laughing",
+        "lol",
+        "nervous laughter",
+        "awkward laugh"
       ],
-      "hash": "acc2bd4109aaa9faabb2283d333ceb090ffcd938aa9afe4c2f636cf1a02698d5",
-      "modified": "2026-10-08T23:52:01.853Z",
-      "size": 47660,
-      "width": 60,
-      "height": 60,
+      "hash": "5b85740c54c765de39bed55fdf49ed7ad0cabcab50db9d0b9caad2deb1fed48b",
+      "modified": "2026-10-09T01:26:05.410Z",
+      "size": 1825234,
+      "width": 240,
+      "height": 240,
       "animated": true,
-      "labelHash": "acc2bd4109aaa9faabb2283d333ceb090ffcd938aa9afe4c2f636cf1a02698d5",
+      "labelHash": "5b85740c54c765de39bed55fdf49ed7ad0cabcab50db9d0b9caad2deb1fed48b",
       "facets": {
         "subject": [
           "person"
@@ -17234,10 +17251,20 @@
         ],
         "origin": [
           "actor-likeness",
-          "tv-film"
+          "the-office"
         ]
       },
-      "labelConfidence": "medium"
+      "labelConfidence": "medium",
+      "labelProvenance": {
+        "method": "carried-forward-after-approved-upscale",
+        "fromHash": "acc2bd4109aaa9faabb2283d333ceb090ffcd938aa9afe4c2f636cf1a02698d5",
+        "approvalReceipt": "staging/emoji-enhancements/michael-scott/review-decisions.json",
+        "facetReview": {
+          "method": "visual-review",
+          "reviewedAt": "2026-10-09T01:26:41.355Z",
+          "notes": "Recognisable Michael Scott / Steve Carell from The Office; retained expression and intent facets."
+        }
+      }
     },
     {
       "id": "553163d1",
@@ -17257,7 +17284,7 @@
         "brown",
         "white",
         "actor-likeness",
-        "tv-film"
+        "the-office"
       ],
       "categories": [
         "person"
@@ -17270,15 +17297,16 @@
         "screaming",
         "shouting",
         "shocked",
-        "steve carell"
+        "steve carell",
+        "dunder mifflin"
       ],
-      "hash": "3f2013dab1aaee7c4414268f713fc8b7b98a4293c4d6927a69e3aaad946634a0",
-      "modified": "2026-10-08T23:52:01.873Z",
-      "size": 4640,
-      "width": 128,
-      "height": 128,
+      "hash": "eefbbca4aee2549fa238742f3068eb97da77cb8284d3515c85306b63e2ee8918",
+      "modified": "2026-10-09T01:26:05.408Z",
+      "size": 235868,
+      "width": 512,
+      "height": 512,
       "animated": false,
-      "labelHash": "3f2013dab1aaee7c4414268f713fc8b7b98a4293c4d6927a69e3aaad946634a0",
+      "labelHash": "eefbbca4aee2549fa238742f3068eb97da77cb8284d3515c85306b63e2ee8918",
       "facets": {
         "subject": [
           "person"
@@ -17307,10 +17335,20 @@
         ],
         "origin": [
           "actor-likeness",
-          "tv-film"
+          "the-office"
         ]
       },
-      "labelConfidence": "medium"
+      "labelConfidence": "medium",
+      "labelProvenance": {
+        "method": "carried-forward-after-approved-upscale",
+        "fromHash": "3f2013dab1aaee7c4414268f713fc8b7b98a4293c4d6927a69e3aaad946634a0",
+        "approvalReceipt": "staging/emoji-enhancements/michael-scott/review-decisions.json",
+        "facetReview": {
+          "method": "visual-review",
+          "reviewedAt": "2026-10-09T01:26:41.355Z",
+          "notes": "Recognisable Michael Scott / Steve Carell from The Office; retained expression and intent facets."
+        }
+      }
     },
     {
       "id": "9ccc6769",
@@ -17320,7 +17358,7 @@
       "tags": [
         "person",
         "sad",
-        "crying",
+        "skeptical",
         "resignation",
         "disapprove",
         "formalwear",
@@ -17328,7 +17366,7 @@
         "brown",
         "white",
         "actor-likeness",
-        "tv-film"
+        "the-office"
       ],
       "categories": [
         "person"
@@ -17340,22 +17378,28 @@
         "holding back tears",
         "sad",
         "emotional",
-        "steve carell"
+        "steve carell",
+        "dunder mifflin",
+        "no",
+        "nope",
+        "shaking head",
+        "disappointed",
+        "disapproval"
       ],
-      "hash": "3435644e9f0e9716b1918b4ea5b1edb109801e637799064bbc16a30ee0be058f",
-      "modified": "2026-10-08T23:52:02.211Z",
-      "size": 41312,
-      "width": 60,
-      "height": 60,
+      "hash": "6c65eef9a506622315ae08526afccbf72061a03c3d7afd17bd52056fe9c2128b",
+      "modified": "2026-10-09T01:26:05.422Z",
+      "size": 1699898,
+      "width": 240,
+      "height": 240,
       "animated": true,
-      "labelHash": "3435644e9f0e9716b1918b4ea5b1edb109801e637799064bbc16a30ee0be058f",
+      "labelHash": "6c65eef9a506622315ae08526afccbf72061a03c3d7afd17bd52056fe9c2128b",
       "facets": {
         "subject": [
           "person"
         ],
         "expression": [
           "sad",
-          "crying"
+          "skeptical"
         ],
         "action": [],
         "intent": [
@@ -17374,10 +17418,20 @@
         ],
         "origin": [
           "actor-likeness",
-          "tv-film"
+          "the-office"
         ]
       },
-      "labelConfidence": "medium"
+      "labelConfidence": "medium",
+      "labelProvenance": {
+        "method": "carried-forward-after-approved-upscale",
+        "fromHash": "3435644e9f0e9716b1918b4ea5b1edb109801e637799064bbc16a30ee0be058f",
+        "approvalReceipt": "staging/emoji-enhancements/michael-scott/review-decisions.json",
+        "facetReview": {
+          "method": "visual-review",
+          "reviewedAt": "2026-10-09T01:26:41.355Z",
+          "notes": "Frowning, doubtful expression; no visible tears. Crying remains a reaction search alias, not a literal facial tag."
+        }
+      }
     },
     {
       "id": "ed25c8a6",
@@ -17394,7 +17448,7 @@
         "brown",
         "white",
         "actor-likeness",
-        "tv-film"
+        "the-office"
       ],
       "categories": [
         "person"
@@ -17407,15 +17461,16 @@
         "gasp",
         "steve carell",
         "jaw drop",
-        "omg"
+        "omg",
+        "dunder mifflin"
       ],
-      "hash": "df229a3d7047ff368239f9749f76de44b4644129c264d0d587d36f04cd8b0ab6",
-      "modified": "2026-10-08T23:52:02.233Z",
-      "size": 3232,
-      "width": 128,
-      "height": 128,
+      "hash": "67b2cbb04199dd0acc39b447ecf2dbbb2dbf8b298681fc682a67765c58a10e30",
+      "modified": "2026-10-09T01:26:05.405Z",
+      "size": 220452,
+      "width": 512,
+      "height": 512,
       "animated": false,
-      "labelHash": "df229a3d7047ff368239f9749f76de44b4644129c264d0d587d36f04cd8b0ab6",
+      "labelHash": "67b2cbb04199dd0acc39b447ecf2dbbb2dbf8b298681fc682a67765c58a10e30",
       "facets": {
         "subject": [
           "person"
@@ -17440,10 +17495,20 @@
         ],
         "origin": [
           "actor-likeness",
-          "tv-film"
+          "the-office"
         ]
       },
-      "labelConfidence": "medium"
+      "labelConfidence": "medium",
+      "labelProvenance": {
+        "method": "carried-forward-after-approved-upscale",
+        "fromHash": "df229a3d7047ff368239f9749f76de44b4644129c264d0d587d36f04cd8b0ab6",
+        "approvalReceipt": "staging/emoji-enhancements/michael-scott/review-decisions.json",
+        "facetReview": {
+          "method": "visual-review",
+          "reviewedAt": "2026-10-09T01:26:41.355Z",
+          "notes": "Recognisable Michael Scott / Steve Carell from The Office; retained expression and intent facets."
+        }
+      }
     },
     {
       "id": "35e465cd",
@@ -17463,7 +17528,7 @@
         "brown",
         "white",
         "actor-likeness",
-        "tv-film"
+        "the-office"
       ],
       "categories": [
         "person"
@@ -17475,15 +17540,16 @@
         "mug",
         "steve carell",
         "boss",
-        "serious"
+        "serious",
+        "dunder mifflin"
       ],
-      "hash": "7d20db9108692a97f9d311dfd6f2acdf23403ef8c9da89f5e5c063299f62826e",
-      "modified": "2026-10-08T23:52:02.242Z",
-      "size": 4316,
-      "width": 128,
-      "height": 128,
+      "hash": "1082f7de402f8e8fedd405193e56bae31d20e9548dcdeef534e7e44d74b18f6d",
+      "modified": "2026-10-09T01:26:05.407Z",
+      "size": 218390,
+      "width": 512,
+      "height": 512,
       "animated": false,
-      "labelHash": "7d20db9108692a97f9d311dfd6f2acdf23403ef8c9da89f5e5c063299f62826e",
+      "labelHash": "1082f7de402f8e8fedd405193e56bae31d20e9548dcdeef534e7e44d74b18f6d",
       "facets": {
         "subject": [
           "person"
@@ -17512,10 +17578,20 @@
         ],
         "origin": [
           "actor-likeness",
-          "tv-film"
+          "the-office"
         ]
       },
-      "labelConfidence": "medium"
+      "labelConfidence": "medium",
+      "labelProvenance": {
+        "method": "carried-forward-after-approved-upscale",
+        "fromHash": "7d20db9108692a97f9d311dfd6f2acdf23403ef8c9da89f5e5c063299f62826e",
+        "approvalReceipt": "staging/emoji-enhancements/michael-scott/review-decisions.json",
+        "facetReview": {
+          "method": "visual-review",
+          "reviewedAt": "2026-10-09T01:26:41.355Z",
+          "notes": "Recognisable Michael Scott / Steve Carell from The Office; retained expression and intent facets."
+        }
+      }
     },
     {
       "id": "2185a2d6",

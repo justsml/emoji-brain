@@ -24,6 +24,22 @@ The current local runtime is an external Python 3.12 environment at `/tmp/emoji-
 
 Upstream architecture and weights: [Real-ESRGAN](https://github.com/xinntao/Real-ESRGAN). The adapted compact SR network's BSD license is retained in `Real-ESRGAN-LICENSE.txt`. Local matting uses [rembg](https://github.com/danielgatis/rembg).
 
+The upscale worker automatically prefers CUDA, then MPS, then CPU. Set
+`EMOJI_UPSCALE_DEVICE=cuda`, `mps`, or `cpu` to require a device; an unavailable
+explicit device fails. Photo restoration only needs PyTorch, Pillow, NumPy and
+the two general-x4v3 weights; it does not require rembg or artwork weights.
+
+For the six Michael Scott inputs, run
+`EMOJI_UPSCALE_DEVICE=cuda node scripts/emoji-enhancement/michael-scott.mjs`,
+then `node scripts/emoji-enhancement/michael-scott.mjs --validate`.
+The gallery lives in `staging/emoji-enhancements/michael-scott/` and provides
+synchronized enlarged/32px views, background choices, pause and scrubbing.
+The batch uses native 4× photo restoration, capped at 512px, with a 75%
+restoration blend and exact resampled source alpha. Cached frames are bound to
+source, settings, worker and model hashes. Generation never promotes candidates.
+`--promote` requires a separate approval file bound to all six candidate hashes.
+See [the batch record](../../docs/michael-scott-restoration.md).
+
 Semantic background removal can erase white faces and eyes. Enclosed-alpha repair restores only holes supported by the original source. Border-connected white removal is a narrower alternative for manually inspected outlined flat artwork on uniform white; it is unsuitable for general photos or unoutlined white subjects.
 
 Animation restoration retains frame count, individual durations and loop setting. Dual black/white restoration estimates a sharper alpha matte; the effect-preserving blend retains the original alpha. The Nano sprite-sheet variant retains timing but can change poses, margins, colors or motion effects. It is an experiment requiring frame-by-frame review, not an automatic replacement. The effect-preserving blend is provisional and intentionally weak on motion-blur examples.

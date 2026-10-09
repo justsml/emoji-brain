@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 4,
   "note": "Canonical controlled vocabulary for labelling the emoji catalog. Every tag applied to an emoji must be an id from this file. `aliases` are the free-text tags from the legacy catalog that fold into each id — they exist to migrate old data and to seed few-shot examples, not to be applied as labels. An alias may appear under two tags in DIFFERENT facets (a knife emoji is both subject:object and prop:weapon-prop); two tags in the SAME facet must never share one.",
   "facets": {
     "subject": {
@@ -1739,6 +1739,17 @@
       "aliases": [
         "the simpsons",
         "simpsons"
+      ]
+    },
+    {
+      "id": "the-office",
+      "facet": "origin",
+      "gloss": "A recognisable character or scene from The Office.",
+      "aliases": [
+        "the office",
+        "michael scott",
+        "dunder mifflin",
+        "steve carell"
       ]
     },
     {

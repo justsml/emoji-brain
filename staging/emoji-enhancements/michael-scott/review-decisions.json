@@ -1,0 +1,38 @@
+{
+  "status": "approved",
+  "userApproval": "Looks good, include them",
+  "approvedAt": "2026-10-09T01:26:03.926Z",
+  "reviewedManifestSha256": "12ebcef0d2ba5adbe8e1c9bce56a348c42103fae5fad42836e28b91c1563dd48",
+  "items": [
+    {
+      "name": "michael-scott-shocked",
+      "candidateSha256": "67b2cbb04199dd0acc39b447ecf2dbbb2dbf8b298681fc682a67765c58a10e30",
+      "productionSha256": "df229a3d7047ff368239f9749f76de44b4644129c264d0d587d36f04cd8b0ab6"
+    },
+    {
+      "name": "michael-scott-worlds-best-boss",
+      "candidateSha256": "1082f7de402f8e8fedd405193e56bae31d20e9548dcdeef534e7e44d74b18f6d",
+      "productionSha256": "7d20db9108692a97f9d311dfd6f2acdf23403ef8c9da89f5e5c063299f62826e"
+    },
+    {
+      "name": "michael-scott-awkward-smile",
+      "candidateSha256": "3d15b0d523e6d7c9acccb3f7ec6fa63fc9df404993a8bce714b0a9f178c0fc1d",
+      "productionSha256": "b7be617bc68e2d75a93737479d3cb3a5d3f2d815f974f8c9307f73e61a009c84"
+    },
+    {
+      "name": "michael-scott-screaming-no",
+      "candidateSha256": "eefbbca4aee2549fa238742f3068eb97da77cb8284d3515c85306b63e2ee8918",
+      "productionSha256": "3f2013dab1aaee7c4414268f713fc8b7b98a4293c4d6927a69e3aaad946634a0"
+    },
+    {
+      "name": "michael-scott-laughing",
+      "candidateSha256": "5b85740c54c765de39bed55fdf49ed7ad0cabcab50db9d0b9caad2deb1fed48b",
+      "productionSha256": "acc2bd4109aaa9faabb2283d333ceb090ffcd938aa9afe4c2f636cf1a02698d5"
+    },
+    {
+      "name": "michael-scott-shaking-head-no",
+      "candidateSha256": "6c65eef9a506622315ae08526afccbf72061a03c3d7afd17bd52056fe9c2128b",
+      "productionSha256": "3435644e9f0e9716b1918b4ea5b1edb109801e637799064bbc16a30ee0be058f"
+    }
+  ]
+}
