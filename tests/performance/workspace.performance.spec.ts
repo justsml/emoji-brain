@@ -73,10 +73,10 @@ for (const viewport of [{width: 1440, height: 900}, {width: 390, height: 844}]) 
     await expect(page.getByLabel(`${total - 1} selected`, {exact: true})).toBeVisible();
     await page.keyboard.press('Escape');
     await page.getByRole('button', {name: 'Other export options'}).click();
-    const menu = page.getByRole('menu', {name: 'Export options'});
+    const menu = page.getByRole('group', {name: 'Export options'});
     await expect(menu).toBeVisible();
-    await menu.getByRole('menuitemradio', {name: /256/}).first().click();
-    await menu.getByRole('menuitemradio', {name: /Best fit/}).click();
+    await menu.getByRole('button', {name: /256/}).first().click();
+    await menu.getByRole('button', {name: /Best fit/}).click();
     await page.keyboard.press('Escape');
     await page.getByRole('button', {name: /Choose the image size/}).click();
     await expect(menu).toBeVisible();

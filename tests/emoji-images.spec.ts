@@ -113,12 +113,12 @@ for (const viewport of [{width: 1440, height: 900}, {width: 390, height: 844}]) 
       await assertVisibleImages(page, panel.locator('img'));
       await page.keyboard.press('Escape');
       await page.getByRole('button', {name: 'Other export options'}).click();
-      const exportPanel = page.getByRole('menu', {name: 'Export options'});
+      const exportPanel = page.getByRole('group', {name: 'Export options'});
       await expect(exportPanel).toBeVisible();
-      await exportPanel.getByRole('menuitemradio', {name: /256/}).first().click();
-      await expect(exportPanel.getByRole('menuitemradio', {name: /256/}).first()).toHaveAttribute('aria-checked', 'true');
-      await exportPanel.getByRole('menuitemradio', {name: /Best fit/}).click();
-      await expect(exportPanel.getByRole('menuitemradio', {name: /Best fit/})).toHaveAttribute('aria-checked', 'true');
+      await exportPanel.getByRole('button', {name: /256/}).first().click();
+      await expect(exportPanel.getByRole('button', {name: /256/}).first()).toHaveAttribute('aria-pressed', 'true');
+      await exportPanel.getByRole('button', {name: /Best fit/}).click();
+      await expect(exportPanel.getByRole('button', {name: /Best fit/})).toHaveAttribute('aria-pressed', 'true');
       await page.keyboard.press('Escape');
       await page.getByRole('button', {name: /Choose the image size/}).click();
       await expect(exportPanel).toBeVisible();

@@ -73,10 +73,10 @@ for (const theme of ['light', 'dark']) {
         await page.locator('.emoji-card').first().click();
       }
       await page.getByRole('button', { name: 'Other export options' }).click();
-      const menu = page.getByRole('menu', { name: 'Export options' });
+      const menu = page.getByRole('group', { name: 'Export options' });
       await expect(menu).toBeVisible();
       await expect(menu).toHaveCSS('color', 'rgb(46, 31, 21)');
-      await expect(menu.getByRole('menuitem', { name: /Originals/ })).toBeVisible();
+      await expect(menu.getByRole('button', { name: /Originals/ })).toBeVisible();
     });
   }
 }

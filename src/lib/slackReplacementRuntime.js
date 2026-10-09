@@ -1,17 +1,28 @@
 // Embedded as source in an opt-in console script. Keep this function self-contained.
 async function runSlackEmojiReplacement(images, token, decide, options = {}) {
   if (document.getElementById('emoji-replacement-panel')) throw Error('A replacement preview is already open.');
-  const panel = document.createElement('section'); panel.id = 'emoji-replacement-panel';
-  Object.assign(panel.style, {position:'fixed',inset:'24px',zIndex:'2147483647',background:'#fff',color:'#17202a',padding:'24px',overflow:'auto',font:'14px/1.5 system-ui',border:'2px solid #34495e',borderRadius:'12px',boxShadow:'0 12px 60px #0006'});
+  const previousFocus = document.activeElement;
+  const panel = document.createElement('dialog'); panel.id = 'emoji-replacement-panel';
+  panel.setAttribute('aria-labelledby', 'emoji-replacement-title');
+  panel.setAttribute('aria-describedby', 'emoji-replacement-warning');
+  Object.assign(panel.style, {position:'fixed',inset:'0',margin:'auto',width:'calc(100vw - 24px)',maxWidth:'1100px',maxHeight:'calc(100dvh - 24px)',boxSizing:'border-box',zIndex:'2147483647',background:'#fff',color:'#17202a',padding:'clamp(12px, 3vw, 24px)',overflow:'auto',font:'14px/1.5 system-ui',border:'2px solid #34495e',borderRadius:'12px',boxShadow:'0 12px 60px #0006'});
   const previews=[];
-  const styles=document.createElement('style');styles.textContent='#emoji-replacement-panel td,#emoji-replacement-panel th{padding:8px;border-bottom:1px solid #d5dce3}#emoji-replacement-panel button{font:inherit;padding:7px 12px;margin:8px;cursor:pointer}#emoji-replacement-panel img{display:block;object-fit:contain;background:repeating-conic-gradient(#eee 0% 25%,#fff 0% 50%) 0/12px 12px}';panel.append(styles);
-  const title=document.createElement('h2');title.textContent=options.overwrite?'Preview emoji overwrites':'Preview smaller emoji replacements';panel.append(title);
-  const warning=document.createElement('p');warning.textContent='Requires permission to add and delete custom emoji: usually a workspace admin/owner or the emoji creator, subject to workspace policy. Replacement deletes the old image first and can change its size or animation. A failed upload may leave the emoji missing; restoring from backup is best effort. Aliases and their targets are excluded. Nothing is changed until you save a backup and confirm.';panel.append(warning);
+  const styles=document.createElement('style');styles.textContent='#emoji-replacement-panel::backdrop{background:#0008}#emoji-replacement-panel .emoji-plan-scroll{overflow-x:auto;margin:16px 0}#emoji-replacement-panel .emoji-plan-scroll:focus-visible{outline:2px solid #1268ae}#emoji-replacement-panel button:disabled{cursor:not-allowed;opacity:.55}#emoji-replacement-panel td:nth-child(2){overflow-wrap:anywhere;min-width:100px}#emoji-replacement-panel td:last-child{min-width:180px}#emoji-replacement-panel td,#emoji-replacement-panel th{padding:8px;border-bottom:1px solid #d5dce3}#emoji-replacement-panel button{font:inherit;padding:7px 12px;margin:8px;cursor:pointer}#emoji-replacement-panel img{display:block;object-fit:contain;background:repeating-conic-gradient(#eee 0% 25%,#fff 0% 50%) 0/12px 12px}';panel.append(styles);
+  const title=document.createElement('h2');title.id='emoji-replacement-title';title.tabIndex=-1;title.textContent=options.overwrite?'Preview emoji overwrites':'Preview smaller emoji replacements';panel.append(title);
+  const warning=document.createElement('p');warning.id='emoji-replacement-warning';warning.textContent='Requires permission to add and delete custom emoji: usually a workspace admin/owner or the emoji creator, subject to workspace policy. Replacement deletes the old image first and can change its size or animation. A failed upload may leave the emoji missing; restoring from backup is best effort. Aliases and their targets are excluded. Nothing is changed until you save a backup and confirm.';panel.append(warning);
   const status=document.createElement('p');status.setAttribute('role','status');panel.append(status);
-  const stop=document.createElement('button');stop.textContent='Stop / close';panel.append(stop);document.body.append(panel);
+  const stop=document.createElement('button');stop.textContent='Stop / close';panel.append(stop);document.body.append(panel);panel.showModal();title.focus();
   let stopped=false,busy=false,nextRequest=0,backupSaved=false;
   const report={status:'scanning',items:[]};globalThis.slackEmojiReplacementReport=report;
-  stop.onclick=()=>{stopped=true;if(!busy){panel.remove();previews.forEach(url=>URL.revokeObjectURL(url));}else status.textContent='Stopping after the current operation…';};
+  stop.onclick=()=>{stopped=true;if(!busy){panel.close();panel.remove();previews.forEach(url=>URL.revokeObjectURL(url));if(previousFocus?.isConnected)previousFocus.focus();}else status.textContent='Stopping after the current operation…';};
+  panel.addEventListener('cancel',event=>{event.preventDefault();stop.click();});
+  panel.addEventListener('keydown',event=>{
+    if(event.key!=='Tab')return;
+    const controls=[...panel.querySelectorAll('button:not(:disabled),input:not(:disabled),[tabindex="0"]')].filter(el=>el.getClientRects().length);
+    const first=controls[0],last=controls[controls.length-1];
+    if(event.shiftKey&&(document.activeElement===first||!controls.includes(document.activeElement))){event.preventDefault();last?.focus();}
+    else if(!event.shiftKey&&(document.activeElement===last||!controls.includes(document.activeElement))){event.preventDefault();first?.focus();}
+  });
   const sleep=ms=>new Promise(resolve=>setTimeout(resolve,ms));
   const update=text=>{status.textContent=text;console.log('[emoji-replacement]',text);};
   const normalize=name=>name.replace(/\.[^.]+$/,'').trim().toLowerCase().replace(/[^a-z0-9_-]+/g,'_').replace(/_+/g,'_').replace(/^[_-]+|[_-]+$/g,'');
@@ -85,7 +96,8 @@ async function runSlackEmojiReplacement(images, token, decide, options = {}) {
       catch{existingMetadata.push({name:row.name});}
     }
     const decisions=decide(metadata,existingMetadata,options);globalThis.slackEmojiReplacementPlan=decisions.map(row=>({...row}));
-    const table=document.createElement('table');Object.assign(table.style,{width:'100%',textAlign:'left',borderCollapse:'collapse'});panel.append(table);
+    const scroll=document.createElement('div');scroll.className='emoji-plan-scroll';scroll.tabIndex=0;scroll.setAttribute('role','region');scroll.setAttribute('aria-label','Emoji replacement plan');panel.append(scroll);
+    const table=document.createElement('table');Object.assign(table.style,{width:'100%',textAlign:'left',borderCollapse:'collapse'});scroll.append(table);
     const headings=table.createTHead().insertRow();for(const label of ['Include','Emoji','Current','Incoming','Decision']){const th=document.createElement('th');th.scope='col';th.textContent=label;headings.append(th);}
     const rows=table.createTBody();
     const thumbnail=(cell,blob,description)=>{if(!blob)return;const img=document.createElement('img'),url=URL.createObjectURL(blob);previews.push(url);img.src=url;img.alt=description;img.width=48;img.height=48;img.loading='lazy';img.decoding='async';cell.append(img);};

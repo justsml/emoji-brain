@@ -31,7 +31,7 @@ export function ExportOptions({id, estimates, pinnedTier, onPinTier, onRun, form
   const mixed = !!(tiers[0]?.stillCount && tiers[0]?.animatedCount);
 
   return (
-    <div ref={panelRef} id={id} popover="auto" role="menu" className="export-menu" aria-label="Export options">
+    <div ref={panelRef} id={id} popover="auto" role="group" className="export-menu" aria-label="Export options">
       {tiers.length > 0 && (
         <div className="size-options">
           <div className="size-options-head">
@@ -45,8 +45,7 @@ export function ExportOptions({id, estimates, pinnedTier, onPinTier, onRun, form
 
           <button
             type="button"
-            role="menuitemradio"
-            aria-checked={pinnedTier === null}
+            aria-pressed={pinnedTier === null}
             className="size-option"
             data-active={pinnedTier === null}
             onClick={() => onPinTier(null)}
@@ -68,8 +67,7 @@ export function ExportOptions({id, estimates, pinnedTier, onPinTier, onRun, form
               <button
                 key={tierKey(tier)}
                 type="button"
-                role="menuitemradio"
-                aria-checked={pinnedHere}
+                aria-pressed={pinnedHere}
                 className="size-option"
                 data-active={pinnedHere}
                 data-over={!tier.fits}
@@ -99,7 +97,6 @@ export function ExportOptions({id, estimates, pinnedTier, onPinTier, onRun, form
               download rather than a paste. */}
           <button
             type="button"
-            role="menuitem"
             className="size-option size-option-originals"
             onClick={() => onRun(onDownloadOriginals)}
           >
@@ -109,7 +106,7 @@ export function ExportOptions({id, estimates, pinnedTier, onPinTier, onRun, form
               <small>full resolution — ZIP download, not a Slack paste</small>
             </span>
             <span className="size-option-figures">
-              <span className="size-option-px">{tiers[0]?.stillCount ? "1024 px" : "512 px"}</span>
+              <span className="size-option-px">Full size</span>
               <span className="size-option-bytes">{originalsBytes ? formatBytes(originalsBytes) : ""}</span>
             </span>
           </button>
@@ -123,7 +120,7 @@ export function ExportOptions({id, estimates, pinnedTier, onPinTier, onRun, form
         </div>
         <h3>Copy as</h3>
         {formats.map((format) => (
-          <button key={format.label} type="button" role="menuitem" onClick={() => onRun(format.run)}>
+          <button key={format.label} type="button" onClick={() => onRun(format.run)}>
             {format.label}
           </button>
         ))}
