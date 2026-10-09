@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width">
+<title>Michael Scott restoration review</title>
+<style>
+body{font:16px system-ui;margin:24px;background:#202124;color:#eee}a{color:#91c6ff}header{max-width:900px}button,select,input{font:inherit}button,select{padding:6px;margin:4px}article{border-top:1px solid #666;padding:20px 0}.pair{display:flex;gap:24px;flex-wrap:wrap}figure{margin:0}canvas{background:repeating-conic-gradient(#aaa 0% 25%,#ddd 0% 50%) 0/16px 16px}body[data-bg="dark"] canvas{background:#111}body[data-bg="light"] canvas{background:#fff}.small{display:block;margin:10px 0}.controls{display:flex;align-items:center;gap:8px;flex-wrap:wrap}input[type=range]{width:260px}p{max-width:850px}.error{color:#ffa8a8}
+</style>
+<header><h1>Michael Scott · restoration candidates</h1>
+<p>Six candidates awaiting review. Local Real-ESRGAN photo model, equal strong/weak denoise weights, 75% restored pixels / 25% resized source. Stills are 512px; animations are 240px from their 60px sources. Identity, lettering and temporal quality still need visual approval. Production images have not been replaced.</p>
+<p>Original and candidate share the same frame clock. Inspect enlarged and 32px views, scrub facial changes and loop seams, and compare backgrounds. <a href="manifest.json">Hashes, models and timeline</a>.</p>
+<p><button data-bg="checker">Checkerboard</button><button data-bg="dark">Dark</button><button data-bg="light">Light</button></p></header>
+<main></main>
+<script type="module">
+const manifest=__MANIFEST__;
+if(manifest.status==='approved-promoted'){
+ document.querySelector('header p').textContent='Six approved candidates promoted to production. Local Real-ESRGAN photo restoration: 512px stills and 240px animations. Original images are archived; animation frame counts, delays, loops and resampled alpha are preserved.';
+}
+document.querySelectorAll('[data-bg]').forEach(button=>button.onclick=()=>document.body.dataset.bg=button.dataset.bg);
+for(const item of manifest.items){
+ const article=document.createElement('article');article.id=item.name;
+ article.innerHTML=`<h2>${item.name}</h2><p>${item.sourceWidth}×${item.sourceHeight} → ${item.width}×${item.height} · ${item.frames} frame(s) · ${item.approval==='approved'?'approved and promoted':'approval pending'}</p><div class="pair"></div>`;
+ document.querySelector('main').append(article);
+ const views=[];
+ for(const [label,file,atlas] of [['Original',item.original,item.originalAtlas],['Candidate',item.candidate,item.candidateAtlas]]){
+  const figure=document.createElement('figure');figure.innerHTML=`<figcaption><a href="${file}">${label}</a></figcaption><canvas width="256" height="256" aria-label="${label} enlarged ${item.name}"></canvas><canvas class="small" width="32" height="32" aria-label="${label} at emoji size ${item.name}"></canvas>`;
+  article.querySelector('.pair').append(figure);
+  const image=new Image();image.src=atlas.file;
+  await image.decode().catch(error=>{const p=document.createElement('p');p.className='error';p.textContent='Preview failed: '+error.message;article.append(p);});
+  views.push({image,atlas,canvases:[...figure.querySelectorAll('canvas')]});
+ }
+ let frame=0,playing=item.frames>1&&!matchMedia('(prefers-reduced-motion: reduce)').matches,position=0,last=performance.now(),speed=1;
+ const duration=item.delays.reduce((a,b)=>a+b,0),ends=[];item.delays.reduce((sum,d)=>{ends.push(sum+d);return sum+d},0);
+ const draw=()=>{article.dataset.frame=frame;for(const {image,atlas,canvases} of views)for(const canvas of canvases){const ctx=canvas.getContext('2d');ctx.clearRect(0,0,canvas.width,canvas.height);if(image.naturalWidth)ctx.drawImage(image,frame%atlas.columns*atlas.cell,Math.floor(frame/atlas.columns)*atlas.cell,atlas.cell,atlas.cell,0,0,canvas.width,canvas.height);}};
+ draw();
+ if(item.frames<2)continue;
+ const controls=document.createElement('div');controls.className='controls';controls.innerHTML=`<button>${playing?'Pause':'Play'}</button><input type="range" min="0" max="${item.frames-1}" value="0" aria-label="Frame ${item.name}"><span></span><select aria-label="Playback speed ${item.name}"><option value="0.25">0.25×</option><option value="0.5">0.5×</option><option value="1" selected>1×</option></select>`;article.append(controls);
+ const button=controls.querySelector('button'),slider=controls.querySelector('input'),info=controls.querySelector('span');
+ const update=()=>{slider.value=frame;info.textContent=`Frame ${frame+1}/${item.frames} · ${item.delays[frame]}ms`;draw();};update();
+ button.onclick=()=>{playing=!playing;last=performance.now();button.textContent=playing?'Pause':'Play';};
+ slider.oninput=()=>{playing=false;button.textContent='Play';frame=Number(slider.value);position=frame?ends[frame-1]:0;update();};
+ controls.querySelector('select').onchange=event=>{speed=Number(event.target.value);};
+ let visible=true;new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;last=performance.now();}).observe(article);
+ const tick=now=>{if(playing&&visible&&!document.hidden){position=(position+(now-last)*speed)%duration;const next=ends.findIndex(end=>end>position);if(next!==frame){frame=next;update();}}last=now;requestAnimationFrame(tick);};requestAnimationFrame(tick);
+}
+</script></html>

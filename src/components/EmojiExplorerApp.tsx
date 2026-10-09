@@ -1,3 +1,4 @@
+import { track, trackError } from '../lib/analytics';
 import React, { startTransition, useState, useCallback, useEffect, useMemo } from "react";
 import type { EmojiMetadata } from "../types/emoji";
 import {getPagefind} from "../lib/pagefindClient";
@@ -164,10 +165,10 @@ const _EmojiExplorerApp: React.FC<EmojiExplorerAppProps> = ({
     typeof window === "undefined" ? {} : readShareParams(window.location.search),
   );
   const [workspace, setWorkspace] = useState<{ source: EmojiMetadata | null } | null>(null);
-  const openSheet = useCallback(() => setWorkspace({ source: null }), []);
-  const openSimilar = useCallback((emoji: EmojiMetadata) => setWorkspace({ source: emoji }), []);
+  const openSheet = useCallback(() => { track('workspace_opened', { mode: 'sheet' }); setWorkspace({ source: null }); }, []);
+  const openSimilar = useCallback((emoji: EmojiMetadata) => { track('workspace_opened', { mode: 'similar', emoji_id: emoji.id }); setWorkspace({ source: emoji }); }, []);
   const handleInvertVisible = useCallback(() => invertVisible(filteredEmojis), [invertVisible, filteredEmojis]);
-  const closeWorkspace = useCallback(() => setWorkspace(null), []);
+  const closeWorkspace = useCallback(() => { track('workspace_closed'); setWorkspace(null); }, []);
   const [searchTerm, setSearchTerm] = useState(shared.q ?? "");
   const [searchResults, setSearchResults] = useState(initialEmojis);
   const [searchStatus, setSearchStatus] = useState("");
@@ -224,10 +225,13 @@ const _EmojiExplorerApp: React.FC<EmojiExplorerAppProps> = ({
       setSearchProgress(total > 0 ? Math.round(loaded / total * 100) : 100);
     }, () => current).then((results) => {
       if (!current) return;
+      track('search_completed', { query_length: searchTerm.trim().length, result_count: results.length });
       setSearchResults(results);
       setSearchStatus(`${results.length.toLocaleString()} matches for “${searchTerm.trim()}”`);
     }).catch((error) => {
       if (!current) return;
+      trackError(error, { source: 'search' });
+      track('search_failed', { query_length: searchTerm.trim().length });
       console.error("Pagefind search error:", error);
       setSearchStatus("Search couldn’t finish. Your previous results are still here. Try searching again.");
     }).finally(() => {
@@ -262,7 +266,7 @@ const _EmojiExplorerApp: React.FC<EmojiExplorerAppProps> = ({
   return (
     <ErrorBoundary>
       <div className="w-full">
-        {discoveryHost && createPortal(<CatalogDiscovery catalog={initialEmojis} word={themeWord} color={color} onWord={setThemeWord} onColor={setColor} />, discoveryHost)}
+        {discoveryHost && createPortal(<CatalogDiscovery catalog={initialEmojis} word={themeWord} color={color} onWord={word => { track('theme_filter_changed', { theme: word }); setThemeWord(word); }} onColor={color => { track('color_filter_changed', { color }); setColor(color); }} />, discoveryHost)}
         <div className="toolbar">
           <div className="toolbar-inner">
             <SearchBar

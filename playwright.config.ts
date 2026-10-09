@@ -1,5 +1,8 @@
 import { defineConfig, devices } from '@playwright/test';
 
+const port = Number(process.env.PLAYWRIGHT_PORT ?? 4321);
+const baseURL = `http://localhost:${port}`;
+
 export default defineConfig({
   testDir: './tests',
   testIgnore: '**/*.performance.spec.ts',
@@ -9,7 +12,7 @@ export default defineConfig({
   workers: process.env.CI ? 1 : undefined,
   reporter: 'html',
   use: {
-    baseURL: 'http://localhost:4321',
+    baseURL,
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
   },
@@ -36,8 +39,8 @@ export default defineConfig({
     // },
   ],
   webServer: {
-    command: 'ASTRO_PREVIEW_BACKGROUND=0 pnpm preview',
-    url: 'http://localhost:4321',
+    command: `PORT=${port} ASTRO_PREVIEW_BACKGROUND=0 pnpm preview`,
+    url: baseURL,
     reuseExistingServer: !process.env.CI,
     timeout: 120000,
   },

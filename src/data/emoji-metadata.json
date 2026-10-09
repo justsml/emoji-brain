@@ -1,6 +1,6 @@
 {
-  "total": 360,
-  "lastUpdated": "2026-10-07T18:45:51.972Z",
+  "total": 366,
+  "lastUpdated": "2026-10-09T01:26:41.355Z",
   "emojis": [
     {
       "id": "df167e0a",
@@ -17103,6 +17103,495 @@
         ]
       },
       "labelConfidence": "high"
+    },
+    {
+      "id": "a7359a6d",
+      "filename": "michael-scott-awkward-smile.webp",
+      "path": "/emojis/michael-scott-awkward-smile.webp",
+      "created": "2026-10-08T23:52:01.809Z",
+      "tags": [
+        "person",
+        "embarrassed",
+        "anxious",
+        "uncertainty",
+        "acknowledge",
+        "formalwear",
+        "photo",
+        "brown",
+        "blue",
+        "actor-likeness",
+        "the-office"
+      ],
+      "categories": [
+        "person"
+      ],
+      "aliases": [
+        "michael scott",
+        "the office",
+        "grimace",
+        "cringe",
+        "awkward",
+        "steve carell",
+        "yikes",
+        "uncomfortable",
+        "dunder mifflin"
+      ],
+      "hash": "3d15b0d523e6d7c9acccb3f7ec6fa63fc9df404993a8bce714b0a9f178c0fc1d",
+      "modified": "2026-10-09T01:26:05.407Z",
+      "size": 236444,
+      "width": 512,
+      "height": 512,
+      "animated": false,
+      "labelHash": "3d15b0d523e6d7c9acccb3f7ec6fa63fc9df404993a8bce714b0a9f178c0fc1d",
+      "facets": {
+        "subject": [
+          "person"
+        ],
+        "expression": [
+          "embarrassed",
+          "anxious"
+        ],
+        "action": [],
+        "intent": [
+          "uncertainty",
+          "acknowledge"
+        ],
+        "prop": [
+          "formalwear"
+        ],
+        "style": [
+          "photo"
+        ],
+        "color": [
+          "brown",
+          "blue"
+        ],
+        "origin": [
+          "actor-likeness",
+          "the-office"
+        ]
+      },
+      "labelConfidence": "medium",
+      "labelProvenance": {
+        "method": "carried-forward-after-approved-upscale",
+        "fromHash": "b7be617bc68e2d75a93737479d3cb3a5d3f2d815f974f8c9307f73e61a009c84",
+        "approvalReceipt": "staging/emoji-enhancements/michael-scott/review-decisions.json",
+        "facetReview": {
+          "method": "visual-review",
+          "reviewedAt": "2026-10-09T01:26:41.354Z",
+          "notes": "Recognisable Michael Scott / Steve Carell from The Office; retained expression and intent facets."
+        }
+      }
+    },
+    {
+      "id": "ac3b8169",
+      "filename": "michael-scott-laughing.webp",
+      "path": "/emojis/michael-scott-laughing.webp",
+      "created": "2026-10-08T23:52:01.853Z",
+      "tags": [
+        "person",
+        "laughing",
+        "embarrassed",
+        "mockery",
+        "uncertainty",
+        "formalwear",
+        "photo",
+        "brown",
+        "white",
+        "actor-likeness",
+        "the-office"
+      ],
+      "categories": [
+        "person"
+      ],
+      "aliases": [
+        "michael scott",
+        "the office",
+        "steve carell",
+        "awkward smile",
+        "grimace",
+        "cringe",
+        "nervous",
+        "dunder mifflin",
+        "laugh",
+        "laughing",
+        "lol",
+        "nervous laughter",
+        "awkward laugh"
+      ],
+      "hash": "5b85740c54c765de39bed55fdf49ed7ad0cabcab50db9d0b9caad2deb1fed48b",
+      "modified": "2026-10-09T01:26:05.410Z",
+      "size": 1825234,
+      "width": 240,
+      "height": 240,
+      "animated": true,
+      "labelHash": "5b85740c54c765de39bed55fdf49ed7ad0cabcab50db9d0b9caad2deb1fed48b",
+      "facets": {
+        "subject": [
+          "person"
+        ],
+        "expression": [
+          "laughing",
+          "embarrassed"
+        ],
+        "action": [],
+        "intent": [
+          "mockery",
+          "uncertainty"
+        ],
+        "prop": [
+          "formalwear"
+        ],
+        "style": [
+          "photo"
+        ],
+        "color": [
+          "brown",
+          "white"
+        ],
+        "origin": [
+          "actor-likeness",
+          "the-office"
+        ]
+      },
+      "labelConfidence": "medium",
+      "labelProvenance": {
+        "method": "carried-forward-after-approved-upscale",
+        "fromHash": "acc2bd4109aaa9faabb2283d333ceb090ffcd938aa9afe4c2f636cf1a02698d5",
+        "approvalReceipt": "staging/emoji-enhancements/michael-scott/review-decisions.json",
+        "facetReview": {
+          "method": "visual-review",
+          "reviewedAt": "2026-10-09T01:26:41.355Z",
+          "notes": "Recognisable Michael Scott / Steve Carell from The Office; retained expression and intent facets."
+        }
+      }
+    },
+    {
+      "id": "553163d1",
+      "filename": "michael-scott-screaming-no.webp",
+      "path": "/emojis/michael-scott-screaming-no.webp",
+      "created": "2026-10-08T23:52:01.873Z",
+      "tags": [
+        "person",
+        "shocked",
+        "angry",
+        "shouting",
+        "disapprove",
+        "disbelief",
+        "formalwear",
+        "body-text",
+        "photo",
+        "brown",
+        "white",
+        "actor-likeness",
+        "the-office"
+      ],
+      "categories": [
+        "person"
+      ],
+      "aliases": [
+        "michael scott",
+        "the office",
+        "no",
+        "noooooooo",
+        "screaming",
+        "shouting",
+        "shocked",
+        "steve carell",
+        "dunder mifflin"
+      ],
+      "hash": "eefbbca4aee2549fa238742f3068eb97da77cb8284d3515c85306b63e2ee8918",
+      "modified": "2026-10-09T01:26:05.408Z",
+      "size": 235868,
+      "width": 512,
+      "height": 512,
+      "animated": false,
+      "labelHash": "eefbbca4aee2549fa238742f3068eb97da77cb8284d3515c85306b63e2ee8918",
+      "facets": {
+        "subject": [
+          "person"
+        ],
+        "expression": [
+          "shocked",
+          "angry"
+        ],
+        "action": [
+          "shouting"
+        ],
+        "intent": [
+          "disapprove",
+          "disbelief"
+        ],
+        "prop": [
+          "formalwear",
+          "body-text"
+        ],
+        "style": [
+          "photo"
+        ],
+        "color": [
+          "brown",
+          "white"
+        ],
+        "origin": [
+          "actor-likeness",
+          "the-office"
+        ]
+      },
+      "labelConfidence": "medium",
+      "labelProvenance": {
+        "method": "carried-forward-after-approved-upscale",
+        "fromHash": "3f2013dab1aaee7c4414268f713fc8b7b98a4293c4d6927a69e3aaad946634a0",
+        "approvalReceipt": "staging/emoji-enhancements/michael-scott/review-decisions.json",
+        "facetReview": {
+          "method": "visual-review",
+          "reviewedAt": "2026-10-09T01:26:41.355Z",
+          "notes": "Recognisable Michael Scott / Steve Carell from The Office; retained expression and intent facets."
+        }
+      }
+    },
+    {
+      "id": "9ccc6769",
+      "filename": "michael-scott-shaking-head-no.webp",
+      "path": "/emojis/michael-scott-shaking-head-no.webp",
+      "created": "2026-10-08T23:52:02.211Z",
+      "tags": [
+        "person",
+        "sad",
+        "skeptical",
+        "resignation",
+        "disapprove",
+        "formalwear",
+        "photo",
+        "brown",
+        "white",
+        "actor-likeness",
+        "the-office"
+      ],
+      "categories": [
+        "person"
+      ],
+      "aliases": [
+        "michael scott",
+        "the office",
+        "crying",
+        "holding back tears",
+        "sad",
+        "emotional",
+        "steve carell",
+        "dunder mifflin",
+        "no",
+        "nope",
+        "shaking head",
+        "disappointed",
+        "disapproval"
+      ],
+      "hash": "6c65eef9a506622315ae08526afccbf72061a03c3d7afd17bd52056fe9c2128b",
+      "modified": "2026-10-09T01:26:05.422Z",
+      "size": 1699898,
+      "width": 240,
+      "height": 240,
+      "animated": true,
+      "labelHash": "6c65eef9a506622315ae08526afccbf72061a03c3d7afd17bd52056fe9c2128b",
+      "facets": {
+        "subject": [
+          "person"
+        ],
+        "expression": [
+          "sad",
+          "skeptical"
+        ],
+        "action": [],
+        "intent": [
+          "resignation",
+          "disapprove"
+        ],
+        "prop": [
+          "formalwear"
+        ],
+        "style": [
+          "photo"
+        ],
+        "color": [
+          "brown",
+          "white"
+        ],
+        "origin": [
+          "actor-likeness",
+          "the-office"
+        ]
+      },
+      "labelConfidence": "medium",
+      "labelProvenance": {
+        "method": "carried-forward-after-approved-upscale",
+        "fromHash": "3435644e9f0e9716b1918b4ea5b1edb109801e637799064bbc16a30ee0be058f",
+        "approvalReceipt": "staging/emoji-enhancements/michael-scott/review-decisions.json",
+        "facetReview": {
+          "method": "visual-review",
+          "reviewedAt": "2026-10-09T01:26:41.355Z",
+          "notes": "Frowning, doubtful expression; no visible tears. Crying remains a reaction search alias, not a literal facial tag."
+        }
+      }
+    },
+    {
+      "id": "ed25c8a6",
+      "filename": "michael-scott-shocked.webp",
+      "path": "/emojis/michael-scott-shocked.webp",
+      "created": "2026-10-08T23:52:02.233Z",
+      "tags": [
+        "person",
+        "shocked",
+        "disbelief",
+        "attention",
+        "formalwear",
+        "photo",
+        "brown",
+        "white",
+        "actor-likeness",
+        "the-office"
+      ],
+      "categories": [
+        "person"
+      ],
+      "aliases": [
+        "michael scott",
+        "the office",
+        "shocked",
+        "surprised",
+        "gasp",
+        "steve carell",
+        "jaw drop",
+        "omg",
+        "dunder mifflin"
+      ],
+      "hash": "67b2cbb04199dd0acc39b447ecf2dbbb2dbf8b298681fc682a67765c58a10e30",
+      "modified": "2026-10-09T01:26:05.405Z",
+      "size": 220452,
+      "width": 512,
+      "height": 512,
+      "animated": false,
+      "labelHash": "67b2cbb04199dd0acc39b447ecf2dbbb2dbf8b298681fc682a67765c58a10e30",
+      "facets": {
+        "subject": [
+          "person"
+        ],
+        "expression": [
+          "shocked"
+        ],
+        "action": [],
+        "intent": [
+          "disbelief",
+          "attention"
+        ],
+        "prop": [
+          "formalwear"
+        ],
+        "style": [
+          "photo"
+        ],
+        "color": [
+          "brown",
+          "white"
+        ],
+        "origin": [
+          "actor-likeness",
+          "the-office"
+        ]
+      },
+      "labelConfidence": "medium",
+      "labelProvenance": {
+        "method": "carried-forward-after-approved-upscale",
+        "fromHash": "df229a3d7047ff368239f9749f76de44b4644129c264d0d587d36f04cd8b0ab6",
+        "approvalReceipt": "staging/emoji-enhancements/michael-scott/review-decisions.json",
+        "facetReview": {
+          "method": "visual-review",
+          "reviewedAt": "2026-10-09T01:26:41.355Z",
+          "notes": "Recognisable Michael Scott / Steve Carell from The Office; retained expression and intent facets."
+        }
+      }
+    },
+    {
+      "id": "35e465cd",
+      "filename": "michael-scott-worlds-best-boss.webp",
+      "path": "/emojis/michael-scott-worlds-best-boss.webp",
+      "created": "2026-10-08T23:52:02.242Z",
+      "tags": [
+        "person",
+        "deadpan",
+        "confident",
+        "holding",
+        "praise",
+        "sarcasm",
+        "formalwear",
+        "sign-prop",
+        "photo",
+        "brown",
+        "white",
+        "actor-likeness",
+        "the-office"
+      ],
+      "categories": [
+        "person"
+      ],
+      "aliases": [
+        "michael scott",
+        "the office",
+        "world's best boss",
+        "mug",
+        "steve carell",
+        "boss",
+        "serious",
+        "dunder mifflin"
+      ],
+      "hash": "1082f7de402f8e8fedd405193e56bae31d20e9548dcdeef534e7e44d74b18f6d",
+      "modified": "2026-10-09T01:26:05.407Z",
+      "size": 218390,
+      "width": 512,
+      "height": 512,
+      "animated": false,
+      "labelHash": "1082f7de402f8e8fedd405193e56bae31d20e9548dcdeef534e7e44d74b18f6d",
+      "facets": {
+        "subject": [
+          "person"
+        ],
+        "expression": [
+          "deadpan",
+          "confident"
+        ],
+        "action": [
+          "holding"
+        ],
+        "intent": [
+          "praise",
+          "sarcasm"
+        ],
+        "prop": [
+          "formalwear",
+          "sign-prop"
+        ],
+        "style": [
+          "photo"
+        ],
+        "color": [
+          "brown",
+          "white"
+        ],
+        "origin": [
+          "actor-likeness",
+          "the-office"
+        ]
+      },
+      "labelConfidence": "medium",
+      "labelProvenance": {
+        "method": "carried-forward-after-approved-upscale",
+        "fromHash": "7d20db9108692a97f9d311dfd6f2acdf23403ef8c9da89f5e5c063299f62826e",
+        "approvalReceipt": "staging/emoji-enhancements/michael-scott/review-decisions.json",
+        "facetReview": {
+          "method": "visual-review",
+          "reviewedAt": "2026-10-09T01:26:41.355Z",
+          "notes": "Recognisable Michael Scott / Steve Carell from The Office; retained expression and intent facets."
+        }
+      }
     },
     {
       "id": "2185a2d6",

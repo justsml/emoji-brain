@@ -37,9 +37,9 @@ export function planSlackEmojiReplacements(incoming: ReplacementImage[], existin
     if (!validDimensions(current)) return decision('manual-review', 'Existing dimensions are unknown');
     if (current.canDelete === false) return decision('keep-existing', 'Slack says you cannot delete this emoji; ask its creator or an admin');
     if (image.sha256 && image.sha256 === current.sha256) return decision('keep-existing', 'Already identical to the incoming image');
-    if (options.overwrite) return decision('overwrite', 'Exact-name overwrite; resolution or animation may change');
     if (current.animated === undefined || image.animated === undefined)
       return decision('manual-review', 'Animation state is unknown');
+    if (options.overwrite) return decision('overwrite', 'Exact-name overwrite; resolution or animation may change');
     if (current.animated && !image.animated) return decision('keep-existing', 'Do not replace animation with a still');
     if (current.width! <= image.width! && current.height! <= image.height! &&
         Math.max(current.width!,current.height!) < Math.max(image.width!,image.height!))

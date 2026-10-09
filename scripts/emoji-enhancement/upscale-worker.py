@@ -3,6 +3,7 @@ Official animevideov3 (16 convolutions) and general-x4v3 (32 convolutions).
 General uses a 50/50 strong/weak denoise weight interpolation.
 """
 import json
+import os
 import sys
 from pathlib import Path
 import numpy as np
@@ -26,7 +27,15 @@ class Compact(nn.Module):
         return self.upsampler(result) + F.interpolate(value, scale_factor=4, mode='nearest')
 
 torch.set_num_threads(4)
-device = 'mps' if torch.backends.mps.is_available() else 'cpu'
+device = os.environ.get('EMOJI_UPSCALE_DEVICE', 'auto')
+if device == 'auto':
+    device = 'cuda' if torch.cuda.is_available() else 'mps' if torch.backends.mps.is_available() else 'cpu'
+if device not in ('cuda', 'mps', 'cpu'):
+    raise ValueError('EMOJI_UPSCALE_DEVICE must be auto, cuda, mps, or cpu')
+if device == 'cuda' and not torch.cuda.is_available():
+    raise RuntimeError('CUDA was requested but is unavailable')
+if device == 'mps' and not torch.backends.mps.is_available():
+    raise RuntimeError('MPS was requested but is unavailable')
 models = {}
 weights_root = Path(sys.argv[1])
 def weights(name):

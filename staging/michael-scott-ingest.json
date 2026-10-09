@@ -1,0 +1,65 @@
+{
+  "items": [
+    {
+      "source": "staging/michael-scott-face.png",
+      "ingestName": "michael-scott-shocked.png",
+      "output": "public/emojis/michael-scott-shocked.webp",
+      "sourceSha256": "e625790227f2d9d9a4dcf5a7c47bb48f1e14e9617488a82784e49c4a2ae1e43e"
+    },
+    {
+      "source": "staging/michael_scott.jpg",
+      "ingestName": "michael-scott-worlds-best-boss.jpg",
+      "output": "public/emojis/michael-scott-worlds-best-boss.webp",
+      "sourceSha256": "db11c2d6814c1dd8bc66fb34a6cb9a518b6d9449c0ecbd140324c132879ad9a7"
+    },
+    {
+      "source": "staging/michaelscott-office.png",
+      "ingestName": "michael-scott-awkward-smile.png",
+      "output": "public/emojis/michael-scott-awkward-smile.webp",
+      "sourceSha256": "184c646b2cb1926ff558b9b79973650e2c2e00d8d22f29637bf5bb24869964c4"
+    },
+    {
+      "source": "staging/michael-scott-no.png",
+      "ingestName": "michael-scott-screaming-no.png",
+      "output": "public/emojis/michael-scott-screaming-no.webp",
+      "sourceSha256": "4903cafc9d6110b5ed71673b8bdb1d5bf2b8e11cd434e4086c50aac67dfcb461"
+    },
+    {
+      "source": "staging/michael-scott-office-laughq.gif",
+      "ingestName": "michael-scott-laughing.gif",
+      "output": "public/emojis/michael-scott-laughing.webp",
+      "sourceSha256": "56d669238c1e4cb0c893377cf4d0ca1a95bde2580ff382d03f29d6c1b3fecce4"
+    },
+    {
+      "source": "staging/michael-the-office-no.gif",
+      "ingestName": "michael-scott-shaking-head-no.gif",
+      "output": "public/emojis/michael-scott-shaking-head-no.webp",
+      "sourceSha256": "157550ed47947189c50c5553a039a0dcac56a4702e280f8ef1bdeedf29109e98"
+    }
+  ],
+  "result": {
+    "total": 6,
+    "added": 6,
+    "changed": 0,
+    "tracked": 0,
+    "removed": 0,
+    "converted": 6,
+    "ingested": 6,
+    "labelled": 6,
+    "stills": 2
+  },
+  "validation": {
+    "invalid": 0,
+    "errors": [],
+    "pendingLabels": []
+  },
+  "upscaling": {
+    "status": "approved-promoted",
+    "reviewManifest": "staging/emoji-enhancements/michael-scott/manifest.json",
+    "approvalReceipt": "staging/emoji-enhancements/michael-scott/review-decisions.json"
+  },
+  "discovery": {
+    "status": "complete",
+    "method": "Curated canonical facets validated against src/data/tag-vocabulary.json; original label terms preserved as aliases."
+  }
+}

@@ -28,6 +28,7 @@ describe('read-only Slack replacement plan',()=>{
   it('never replaces aliases or guesses unknown metadata',()=>{
     const result=planSlackEmojiReplacements([image('alias'),image('unknown'),image('animation')],[{...image('alias',32,32),aliasFor:'other'},{name:'unknown'},{name:'animation',width:64,height:64}]);
     expect(result.map(r=>r.action)).toEqual(['keep-existing','manual-review','manual-review']);
+    expect(planSlackEmojiReplacements([image('animation')],[{name:'animation',width:64,height:64}],{overwrite:true})[0].action).toBe('manual-review');
   });
   it('requires review when aliases depend on the emoji being replaced',()=>{
     expect(planSlackEmojiReplacements([image('cat')],[image('cat',64,64),{name:'kitty',aliasFor:'cat'}])[0].action).toBe('manual-review');

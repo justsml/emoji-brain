@@ -1,0 +1,11 @@
+.emoji-card-name.is-scrolling {
+  text-overflow: clip;
+  mask-image: linear-gradient(to right, transparent, #000 5px, #000 calc(100% - 5px), transparent);
+}
+.emoji-card-name.is-scrolling > span {
+  display: inline-block;
+}
+@media (prefers-reduced-motion: reduce) {
+  .emoji-card-name.is-scrolling { mask-image: none; text-overflow: ellipsis; }
+  .emoji-card-name.is-scrolling > span { transform: none !important; }
+}

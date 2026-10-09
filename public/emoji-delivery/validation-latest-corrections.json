@@ -1,8 +1,8 @@
 {
-  "count": 1,
-  "framesChecked": 8,
+  "count": 6,
+  "framesChecked": 260,
   "maxMeanAlphaError": 0,
-  "previewBytes": 20798,
+  "previewBytes": 74414,
   "slackCap": 127000,
   "slackIncompatible": [],
   "frameDropped": [],
@@ -12,19 +12,22 @@
       "webpOver": []
     },
     "64": {
-      "webp": 5606,
+      "webp": 93996,
       "webpOver": []
     },
     "128": {
-      "webp": 11794,
+      "webp": 182340,
       "webpOver": []
     },
     "256": {
-      "webp": 24778,
-      "webpOver": []
+      "webp": 369816,
+      "webpOver": [
+        "michael-scott-laughing",
+        "michael-scott-shaking-head-no"
+      ]
     },
     "original": {
-      "webp": 55840,
+      "webp": 100230,
       "webpOver": []
     }
   }
