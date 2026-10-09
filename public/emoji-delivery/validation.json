@@ -1,8 +1,8 @@
 {
-  "count": 351,
-  "framesChecked": 11157,
+  "count": 366,
+  "framesChecked": 11453,
   "maxMeanAlphaError": 0.177734375,
-  "previewBytes": 6684370,
+  "previewBytes": 6956386,
   "slackCap": 127000,
   "slackIncompatible": [],
   "frameDropped": [
@@ -22,11 +22,11 @@
       "webpOver": []
     },
     "64": {
-      "webp": 3882320,
+      "webp": 4000352,
       "webpOver": []
     },
     "128": {
-      "webp": 11999420,
+      "webp": 12253520,
       "webpOver": [
         "cheers",
         "crying_bear",
@@ -50,11 +50,10 @@
       ]
     },
     "256": {
-      "webp": 28667538,
+      "webp": 29253400,
       "webpOver": [
         "alert",
         "boxcat",
-        "cat-meow-hearts",
         "cat_money",
         "cheers",
         "crying_bear",
@@ -95,12 +94,16 @@
         "try-not-to-cry",
         "typing_cat_kitten",
         "typingcat",
-        "watcat"
+        "watcat",
+        "meow-hearts",
+        "michael-scott-laughing",
+        "michael-scott-shaking-head-no"
       ]
     },
     "original": {
-      "webp": 79096516,
+      "webp": 80741598,
       "webpOver": [
+        "100000",
         "cheers-whiskey",
         "doge_notes",
         "happycat",
@@ -115,7 +118,6 @@
         "awkward_side_eye",
         "bongo-cat-jumbo",
         "boxcat",
-        "cat-meow-hearts",
         "cat_money",
         "catdance",
         "cheers",
@@ -168,7 +170,15 @@
         "try-not-to-cry",
         "typing_cat_kitten",
         "typingcat",
-        "watcat"
+        "watcat",
+        "delighted-frog",
+        "happy-blob",
+        "party-cat",
+        "sleepy-cloud",
+        "smiling-heart",
+        "meow-hearts",
+        "michael-scott-laughing",
+        "michael-scott-shaking-head-no"
       ]
     }
   }

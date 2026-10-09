@@ -51,6 +51,16 @@ its literal `crying` expression was corrected to `skeptical`; “crying” and
 IDs and cardinalities were checked against vocabulary version 4. Pagefind
 indexes both canonical tags and synonyms.
 
+Final validation passed: 187 unit tests, all 57 existing functional browser
+tests, and 16 browser checks against the updated assets (including two new
+identity/reaction search tests). The production build passed. Catalog validation
+found 366 entries and zero invalid records; delivery validation checked 11,453
+frames across all 366 entries and found no Slack-incompatible emoji. The new
+animations ship at 128px for Slack's byte cap while their 240px masters remain
+available. The repository-wide `tsc --noEmit` check still reports legacy optional
+script dependencies and test matcher declarations; it reports no errors in the
+changed analytics, export or Slack runtime TypeScript files.
+
 ## Reproduce and inspect
 
 The machine-local environment is Python 3.12.15 with PyTorch 2.14.1, Pillow
