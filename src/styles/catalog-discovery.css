@@ -1,24 +1,24 @@
-.catalog-discovery-slot { min-width: 0; height: 200px; }
+.catalog-discovery-slot { min-width: 0; min-height: 150px; }
 .atlas-placeholder { font-size: .75rem; color: hsl(var(--muted-foreground)); }
 
 /* Themes are stickers from the sheet: each word brings its own, and picking one
    peels it up. Colors are the sheet's actual palette, one strip wide, so the
-   picker doubles as the chart of how much of each hue there is. */
-.theme-atlas { --spring: cubic-bezier(.34, 1.56, .64, 1); display: grid; grid-template-columns: minmax(0, 24rem) minmax(0, 20rem); grid-template-rows: minmax(0, 1fr) auto; column-gap: 2rem; width: 100%; height: 100%; }
+   picker doubles as the chart of how much of each hue there is. Themes take
+   the full width of the panel; colors and the live summary share a row under
+   them so the whole picker stays short enough to keep the grid in view. */
+.theme-atlas { --spring: cubic-bezier(.34, 1.56, .64, 1); display: flex; flex-direction: column; gap: .5rem; width: 100%; height: 100%; }
 .theme-atlas button { cursor: pointer; -webkit-tap-highlight-color: transparent; }
 .theme-atlas button:focus-visible { outline: 2px solid hsl(var(--cut)); outline-offset: 2px; }
 
-.atlas-themes { width: 100%; max-width: 24rem; display: flex; flex-direction: column; min-width: 0; min-height: 0; }
-.atlas-colors { width: 100%; max-width: 20rem; min-width: 0; }
-.atlas-color-hint { margin: .75rem 0 .25rem; font-size: .8rem; color: hsl(var(--muted-foreground)); }
+.atlas-themes { display: flex; flex-direction: column; gap: .35rem; min-width: 0; }
+.atlas-footer { display: flex; align-items: center; flex-wrap: wrap; gap: .5rem 1.5rem; margin-top: auto; padding-top: .6rem; border-top: 1px solid hsl(var(--rule) / .45); }
+.atlas-colors { display: flex; align-items: center; gap: .9rem; flex: 1 1 22rem; max-width: 30rem; min-width: 0; }
 
-.atlas-heading { display: flex; align-items: baseline; justify-content: space-between; gap: .5rem; }
-.atlas-heading h2 { margin: 0; font-family: var(--font-display); font-size: .95rem; font-weight: 650; letter-spacing: -.01em; }
+.atlas-heading { display: flex; align-items: baseline; justify-content: space-between; gap: .5rem; flex-shrink: 0; }
+.atlas-heading h2 { margin: 0; font-family: var(--font-display); font-size: .72rem; font-weight: 650; letter-spacing: .06em; text-transform: uppercase; color: hsl(var(--muted-foreground)); }
 
-.theme-cloud { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); grid-template-rows: repeat(3, 1fr); align-items: center; gap: .15rem .2rem; flex: 1; min-height: 0; padding: .5rem 0; }
-.theme-cloud button { grid-column: span 4; justify-self: center; }
-.theme-cloud button:nth-child(-n+4) { grid-column: span 3; }
-.theme-cloud button { display: inline-flex; align-items: center; gap: .3em; min-height: 34px; padding: .1rem .45rem .1rem .2rem; border-radius: 999px; font-family: var(--font-display); font-size: var(--word-size); font-weight: 450; letter-spacing: -.005em; line-height: 1.2; white-space: nowrap; color: hsl(var(--foreground) / .78); transition: opacity 180ms ease, background-color 160ms ease, color 160ms ease; }
+.theme-cloud { display: flex; flex-wrap: wrap; align-items: center; gap: .15rem .35rem; margin-left: -.2rem; }
+.theme-cloud button { display: inline-flex; align-items: center; gap: .3em; min-height: 34px; padding: .1rem .55rem .1rem .2rem; border-radius: 999px; font-family: var(--font-display); font-size: var(--word-size); font-weight: 450; letter-spacing: -.005em; line-height: 1.2; white-space: nowrap; color: hsl(var(--foreground) / .78); transition: opacity 180ms ease, background-color 160ms ease, color 160ms ease; }
 .theme-cloud img { width: 1.75em; height: 1.75em; object-fit: contain; flex-shrink: 0; transform: rotate(var(--tilt, -6deg)); filter: drop-shadow(0 1px 1px hsl(var(--lift) / .22)); transition: transform 260ms var(--spring), filter 200ms ease; }
 .theme-cloud button:nth-child(even) img { --tilt: 5deg; }
 .theme-cloud button:nth-child(3n) img { --tilt: -2deg; }
@@ -43,7 +43,7 @@
 }
 
 /* Each swatch is as wide as its share of the artwork, with a floor so rare hues stay tappable. */
-.color-strip { display: flex; align-items: flex-end; gap: 2px; height: 34px; padding-top: 8px; }
+.color-strip { display: flex; align-items: center; gap: 2px; flex: 1; min-width: 0; height: 30px; }
 .color-strip button { flex-basis: 0; min-width: 18px; height: 16px; background: var(--swatch); box-shadow: inset 0 0 0 1px hsl(var(--foreground) / .12); position: relative; transition: height 240ms var(--spring), border-radius 200ms ease; }
 .color-strip button:first-child { border-radius: 8px 2px 2px 8px; }
 .color-strip button:last-child { border-radius: 2px 8px 8px 2px; }
@@ -52,17 +52,20 @@
 .color-strip button[aria-pressed=true]::after { content: ""; position: absolute; left: 50%; top: 5px; width: 6px; height: 6px; margin-left: -3px; border-radius: 50%; background: hsl(0 0% 100%); box-shadow: 0 0 0 1.5px hsl(var(--foreground) / .55); }
 .color-strip:has([aria-pressed=true]) button:not([aria-pressed=true]):not(:hover) { opacity: .6; }
 
-.atlas-status { grid-column: 1 / -1; min-height: 30px; display: flex; align-items: center; justify-content: space-between; gap: .75rem; font-size: .75rem; color: hsl(var(--muted-foreground)); }
+.atlas-status { flex: 1 1 14rem; min-height: 30px; display: flex; align-items: center; justify-content: flex-end; gap: .75rem; font-size: .75rem; text-align: right; color: hsl(var(--muted-foreground)); }
 .atlas-status > span::first-letter { text-transform: uppercase; }
 .atlas-status[data-active] > span { color: hsl(var(--foreground)); font-weight: 550; }
 .atlas-status button { min-height: 28px; color: hsl(var(--cut)); font-weight: 600; text-decoration: underline; text-underline-offset: .25em; text-decoration-thickness: 1px; }
 
-/* Stack the compact pickers on phones, keeping the same three theme rows. */
-@media (max-width: 860px) {
-  .catalog-discovery-slot { height: 330px; }
-  .theme-atlas { grid-template-columns: minmax(0, 24rem); grid-template-rows: minmax(0, 1fr) auto auto; row-gap: .75rem; }
-  .atlas-color-hint { margin-top: .35rem; }
-  .theme-cloud button { font-size: calc(var(--word-size) * .85); min-height: 38px; padding-inline: .1rem; gap: .2em; }
+/* Phones get one swipeable row of themes instead of three stacked ones; the
+   fade on the trailing edge says there is more to the right. */
+@media (max-width: 720px) {
+  .theme-cloud { flex-wrap: nowrap; overflow-x: auto; scroll-snap-type: x proximity; scrollbar-width: none; margin-inline: -1rem; padding: .15rem 2rem .15rem 1rem; scroll-padding-inline: 1rem; -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 2.5rem), transparent); mask-image: linear-gradient(90deg, #000 calc(100% - 2.5rem), transparent); }
+  .theme-cloud::-webkit-scrollbar { display: none; }
+  .theme-cloud button { scroll-snap-align: start; font-size: calc(var(--word-size) * .9); flex-shrink: 0; }
+  .atlas-footer { flex-direction: column; align-items: stretch; gap: .25rem; }
+  .atlas-colors { flex: none; max-width: none; flex-direction: column; align-items: stretch; gap: .35rem; }
+  .atlas-status { flex: none; justify-content: space-between; text-align: left; min-height: 28px; }
 }
 @media (pointer: coarse) {
   .theme-cloud button { min-height: 40px; }

@@ -190,11 +190,24 @@ body {
    The spec line for the sheet, printed on the mat: figures set in the display
    face, separated by the same hairline rules as everything else. No card. */
 
-/* Discovery sits below the title, with themes and colors sharing a row. */
+/* Discovery sits beside the title on wide screens, filling the space the lede
+   leaves, and drops below it once the two would crowd each other. */
 .masthead:has(.catalog-discovery-slot) {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  gap: 1.5rem;
+  gap: 1.25rem;
+}
+@media (min-width: 1024px) {
+  .masthead:has(.catalog-discovery-slot) {
+    grid-template-columns: minmax(20rem, 28rem) minmax(0, 1fr);
+    align-items: center;
+    column-gap: clamp(2rem, 4vw, 4.5rem);
+  }
+  .masthead:has(.catalog-discovery-slot) .catalog-discovery-slot {
+    padding-left: clamp(2rem, 4vw, 4.5rem);
+    margin-left: calc(-1 * clamp(2rem, 4vw, 4.5rem));
+    border-left: 1px solid hsl(var(--rule) / 0.45);
+  }
 }
 
 /* --- the explorer's footprint --------------------------------------------- */

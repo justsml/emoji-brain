@@ -43,16 +43,17 @@ export default memo(function CatalogDiscovery({catalog,word,color,onWord,onColor
       })}
     </div>
     </section>
-    <section className="atlas-colors" aria-label="Pick by color">
-    <div className="atlas-heading"><h2>Pick by color</h2></div>
-    <p className="atlas-color-hint">Bring your favorite shades to the front.</p>
-    <div className="color-strip" role="group" aria-label="Sort by color">
-      {PALETTE.map((item,i) => <button type="button" key={item.name} aria-label={`Sort ${item.name.toLowerCase()} first`} aria-pressed={color===i} onClick={() => onColor(color===i ? null : i)} title={`${item.name}: ${(shares[i]*100).toFixed(1)}% of the artwork`} style={{'--swatch':item.hex,flexGrow:shares[i]} as CSSProperties} />)}
-    </div>
-    </section>
-    <div className="atlas-status" aria-live="polite" data-active={active || undefined}>
-      <span>{summary(word,color)}</span>
-      {active && <button type="button" onClick={() => {onWord(null);onColor(null);}}>Reset</button>}
+    <div className="atlas-footer">
+      <section className="atlas-colors" aria-label="Pick by color">
+        <div className="atlas-heading"><h2>Pick by color</h2></div>
+        <div className="color-strip" role="group" aria-label="Sort by color">
+          {PALETTE.map((item,i) => <button type="button" key={item.name} aria-label={`Sort ${item.name.toLowerCase()} first`} aria-pressed={color===i} onClick={() => onColor(color===i ? null : i)} title={`${item.name}: ${(shares[i]*100).toFixed(1)}% of the artwork`} style={{'--swatch':item.hex,flexGrow:shares[i]} as CSSProperties} />)}
+        </div>
+      </section>
+      <div className="atlas-status" aria-live="polite" data-active={active || undefined}>
+        <span>{summary(word,color)}</span>
+        {active && <button type="button" onClick={() => {onWord(null);onColor(null);}}>Reset</button>}
+      </div>
     </div>
   </section>;
 });
