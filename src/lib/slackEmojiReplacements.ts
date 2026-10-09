@@ -5,17 +5,19 @@ export interface ReplacementImage {
   height?: number;
   animated?: boolean;
   aliasFor?: string;
+  sha256?: string;
+  canDelete?: boolean;
 }
 export interface ReplacementDecision {
   name: string;
-  action: 'upload-new' | 'replace-smaller' | 'keep-existing' | 'manual-review';
+  action: 'upload-new' | 'replace-smaller' | 'overwrite' | 'keep-existing' | 'manual-review';
   reason: string;
   current?: ReplacementImage;
   incoming: ReplacementImage;
 }
 /** Pixel dimensions, never compressed bytes, determine whether an image is smaller.
  * Names must already be normalized by the uploader; no fuzzy/family matching. */
-export function planSlackEmojiReplacements(incoming: ReplacementImage[], existing: ReplacementImage[]): ReplacementDecision[] {
+export function planSlackEmojiReplacements(incoming: ReplacementImage[], existing: ReplacementImage[], options: {overwrite?: boolean} = {}): ReplacementDecision[] {
   const validDimensions = (image: ReplacementImage) =>
   Number.isInteger(image.width) && Number.isInteger(image.height) && image.width! > 0 && image.height! > 0;
   const index = new Map<string, ReplacementImage[]>();
@@ -33,8 +35,11 @@ export function planSlackEmojiReplacements(incoming: ReplacementImage[], existin
     if (!validDimensions(image)) return decision('manual-review', 'Incoming dimensions are unknown');
     if (!current) return decision('upload-new', 'No exact-name match');
     if (!validDimensions(current)) return decision('manual-review', 'Existing dimensions are unknown');
+    if (current.canDelete === false) return decision('keep-existing', 'Slack says you cannot delete this emoji; ask its creator or an admin');
+    if (image.sha256 && image.sha256 === current.sha256) return decision('keep-existing', 'Already identical to the incoming image');
     if (current.animated === undefined || image.animated === undefined)
       return decision('manual-review', 'Animation state is unknown');
+    if (options.overwrite) return decision('overwrite', 'Exact-name overwrite; resolution or animation may change');
     if (current.animated && !image.animated) return decision('keep-existing', 'Do not replace animation with a still');
     if (current.width! <= image.width! && current.height! <= image.height! &&
         Math.max(current.width!,current.height!) < Math.max(image.width!,image.height!))

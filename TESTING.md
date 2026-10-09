@@ -7,6 +7,7 @@ pnpm test                           # Vitest unit/component tests
 pnpm exec vitest run --maxWorkers=1         # Serial run on a resource-constrained machine
 pnpm build && pnpm test:e2e         # Functional browser tests
 pnpm test:e2e:performance           # Builds automatically, then throttled performance tests
+PLAYWRIGHT_PORT=4331 pnpm test:e2e  # Use a different port if 4321 is occupied
 ```
 
 Functional Playwright tests use port 4321 and can reuse a running preview. Performance tests use an isolated production preview on port 4322, fresh browser contexts, one test worker, disabled caches, and no retries. They run separately so other tests, trace recording, and video encoding do not distort the measurements. Stop other resource-intensive jobs before benchmarking.
