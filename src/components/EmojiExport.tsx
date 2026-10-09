@@ -239,7 +239,7 @@ export function EmojiExport({ onInvertVisible, onOpenSheet, selectedEmojis, onCl
         <ol>
           <li>Sign in to your workspace and open <code>https://YOUR-WORKSPACE.slack.com/customize/emoji</code>.</li>
           <li>Open your browser’s developer tools and select the <strong>Console</strong> tab.</li>
-          <li>Paste the script and press <strong>Enter</strong>. Leave the page open while it uploads — the console reports each emoji and a final count.</li>
+          <li>Paste the script and press <strong>Enter</strong>. {copiedScript.replaceSmaller || copiedScript.overwrite ? "Review the replacement preview, download and save the originals backup, then confirm the selected changes. Leave the page open until the operation completes." : "Leave the page open while it uploads — the console reports each emoji and a final count."}</li>
         </ol>
         {Number(copiedScript.megabytes) >= 1 && <p className="slack-guide-note">Pasting a large script can briefly pause DevTools. Give it time to finish, then press Enter once. Image preparation reports progress in the console.</p>}
         <p className="slack-guide-note">Your workspace must allow you to add custom emoji. The console lists any names or images Slack rejects.</p>
@@ -374,7 +374,6 @@ export function EmojiExport({ onInvertVisible, onOpenSheet, selectedEmojis, onCl
           </span>
           <Button
             aria-label="Other export options"
-            aria-haspopup="menu"
             popoverTarget="export-menu"
             disabled={selectedEmojis.length === 0 || isExporting}
             className="sheet-eraser sheet-eraser-ink h-9 w-8 rounded-l-none p-0"
@@ -392,7 +391,7 @@ export function EmojiExport({ onInvertVisible, onOpenSheet, selectedEmojis, onCl
             onRun={runExport}
             onDownloadOriginals={() => exportFiles('zip')}
             formats={[
-              {label: "Slack script", run: () => exportFiles('slack')},
+              {label: overwriteExisting ? "Slack overwrite script" : "Slack script", run: () => exportFiles('slack')},
               {label: "Slack script: replace smaller…", run: () => exportFiles('slack', true)},
               {label: "Plain Text", run: exportAsPlainText},
               {label: "HTML", run: exportAsHtml},

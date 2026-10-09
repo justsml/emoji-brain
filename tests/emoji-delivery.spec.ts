@@ -79,7 +79,7 @@ test('ZIP downloads the native-size quality-90 WebPs and Markdown includes all p
   await button.click();
   await page.getByRole('button',{name:'Other export options'}).click();
   const downloaded=page.waitForEvent('download');
-  await page.getByRole('menuitem',{name:/^Originals/}).click();
+  await page.getByRole('button',{name:/^Originals/}).click();
   const download=await downloaded;
   const fs=await import('node:fs/promises'),JSZip=(await import('jszip')).default;
   const zip=await JSZip.loadAsync(await fs.readFile((await download.path())!));
@@ -103,7 +103,7 @@ test('ZIP downloads the native-size quality-90 WebPs and Markdown includes all p
   } finally {await fs.rm(directory,{recursive:true,force:true});}
 
   await page.getByRole('button',{name:'Other export options'}).click();
-  await page.getByRole('menuitem',{name:'Markdown Table'}).click();
+  await page.getByRole('button',{name:'Markdown Table'}).click();
   await expect.poll(()=>page.evaluate(()=>(window as any).copiedEmojiScript)).toContain('/emoji-delivery/original/');
   const markdown=await page.evaluate(()=>(window as any).copiedEmojiScript);
   for(const size of [64,128,256])expect(markdown).toContain('/emoji-delivery/'+size+'/');
@@ -121,7 +121,7 @@ test('export can be canceled while the grid remains interactive',async({page,con
   await page.locator('[role="gridcell"] button').first().click();
   await page.getByRole('button',{name:'Other export options'}).click();
   const created=page.waitForEvent('worker');
-  await page.getByRole('menuitem',{name:/^Originals/}).click();
+  await page.getByRole('button',{name:/^Originals/}).click();
   await created;
   await page.getByPlaceholder('Search emojis...').fill('roo');
   await page.getByRole('button',{name:'Cancel export',exact:true}).click();

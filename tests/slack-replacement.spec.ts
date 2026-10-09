@@ -19,13 +19,15 @@ for(const scenario of ['replace','restore','changed','alias','delete-rejected','
     await page.getByRole('checkbox',{name:'Overwrite existing Slack emojis'}).check();
     await expect(page.locator('.export-overwrite')).toContainText('Requires deletion permission');
   }
-  await page.getByRole('menuitem',{name:overwrite?'Slack script':'Slack script: replace smaller…',exact:true}).click();
+  await page.getByRole('button',{name:overwrite?'Slack overwrite script':'Slack script: replace smaller…',exact:true}).click();
   await expect(page.getByLabel('Close Slack instructions')).toBeVisible();
   const script=await page.evaluate(()=>(window as any).copiedEmojiScript);
   const newer=await fs.readFile('public/emoji-delivery/256/'+filename);
   const old=scenario==='overwrite-identical'?newer:await sharp({create:{width:overwrite?512:16,height:overwrite?512:16,channels:4,background:'#1268ae'}}).webp({lossless:true}).toBuffer();
   const mock=await context.newPage();await mock.route('https://emoji-replace-test.slack.com/**',route=>route.fulfill({contentType:'text/html',body:'<input name="token" value="fixture-token">'}));
-  await mock.goto('https://emoji-replace-test.slack.com/customize/emoji');mock.on('dialog',dialog=>scenario==='overwrite-cancel'?dialog.dismiss():dialog.accept());
+  await mock.goto('https://emoji-replace-test.slack.com/customize/emoji');
+  if(scenario==='overwrite')await mock.setViewportSize({width:320,height:640});
+  await mock.locator('input[name=token]').focus();mock.on('dialog',dialog=>scenario==='overwrite-cancel'?dialog.dismiss():dialog.accept());
   await mock.evaluate(({name,old,scenario,nextName})=>{
     const state:any={name,bytes:old,url:'https://emoji-cdn.test/original.webp',exists:true,requests:[],failed:false,nextName,nextExists:false,nextBytes:[]};(window as any).replacementFixture=state;
     window.fetch=async(url,init)=>{
@@ -50,6 +52,14 @@ for(const scenario of ['replace','restore','changed','alias','delete-rejected','
     };
   },{name,old:Array.from(old),scenario,nextName});
   await mock.evaluate(script);
+  const preview=mock.getByRole('dialog',{name:overwrite?'Preview emoji overwrites':'Preview smaller emoji replacements',exact:true});
+  await expect(preview).toBeVisible();
+  await expect(preview.getByRole('heading')).toBeFocused();
+  if(scenario==='overwrite'){
+    for(let i=0;i<10;i++){await mock.keyboard.press('Tab');expect(await mock.evaluate(()=>document.getElementById('emoji-replacement-panel')!.contains(document.activeElement))).toBe(true);}
+    expect(await preview.evaluate(el=>el.scrollWidth<=el.clientWidth)).toBe(true);
+    await expect(preview.getByRole('region',{name:'Emoji replacement plan'})).toBeVisible();
+  }
   await expect(mock.getByRole('status')).toContainText('Nothing has been uploaded or deleted');
   expect(await mock.evaluate(()=>(window as any).replacementFixture.requests.filter((r:any)=>r.path!=='/api/emoji.adminList'))).toEqual([]);
   if(scenario==='overwrite-identical'){await expect(mock.getByLabel('Include '+name)).toBeDisabled();await expect(mock.locator('table')).toContainText('Already identical');await mock.close();return;}
@@ -77,5 +87,6 @@ for(const scenario of ['replace','restore','changed','alias','delete-rejected','
     if(['delete-rejected','overwrite-denied'].includes(scenario))expect(result.state.requests.filter((r:any)=>r.path==='/api/emoji.add')).toHaveLength(0);
     if(scenario==='restore-failure')expect(result.report.status).toBe('stopped-error');
   }
+  if(scenario==='overwrite'){await mock.keyboard.press('Escape');await expect(preview).toHaveCount(0);await expect(mock.locator('input[name=token]')).toBeFocused();}
   await mock.close();
 });

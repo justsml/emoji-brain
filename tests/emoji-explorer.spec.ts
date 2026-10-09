@@ -133,11 +133,37 @@ test("should show export options when emojis are selected", async ({
   await page.getByRole("button", { name: "Other export options" }).click();
 
   // Check that all export options are displayed
-  const menu = page.getByRole("menu", { name: "Export options" });
+  const menu = page.getByRole("group", { name: "Export options" });
   for (const name of ["Plain Text", "HTML", "CSS", "Markdown Table"]) {
-    await expect(menu.getByRole("menuitem", { name, exact: true })).toBeVisible();
+    await expect(menu.getByRole("button", { name, exact: true })).toBeVisible();
   }
-  await expect(page.getByRole("menuitem", {name: /^Originals/})).toBeVisible();
+  await expect(page.getByRole("button", {name: /^Originals/})).toBeVisible();
+});
+
+test("export settings support keyboard selection and identify overwrite mode", async ({ page }) => {
+  await page.locator('div[role="gridcell"] > button').first().click();
+  const trigger = page.getByRole('button', {name: 'Other export options'});
+  await trigger.focus();
+  await page.keyboard.press('Enter');
+  const options = page.getByRole('group', {name: 'Export options'});
+  await expect(options).toBeVisible();
+  const bestFit = options.getByRole('button', {name: /^Best fit/});
+  await bestFit.focus();
+  await expect(bestFit).toHaveAttribute('aria-pressed', 'true');
+  await page.keyboard.press('Tab');
+  const nextSize = options.locator('.size-option').nth(1);
+  await expect(nextSize).toBeFocused();
+  await page.keyboard.press('Space');
+  await expect(nextSize).toHaveAttribute('aria-pressed', 'true');
+  await expect(bestFit).toHaveAttribute('aria-pressed', 'false');
+  const overwrite = options.getByRole('checkbox', {name: 'Overwrite existing Slack emojis'});
+  await overwrite.focus();
+  await page.keyboard.press('Space');
+  await expect(overwrite).toBeChecked();
+  await expect(options.getByRole('button', {name: 'Slack overwrite script', exact: true})).toBeVisible();
+  await expect(page.getByRole('button', {name: 'Copy overwrite script', exact: true})).toBeVisible();
+  await page.keyboard.press('Escape');
+  await expect(options).not.toBeVisible();
 });
 
 test("should be responsive", async ({ page }) => {

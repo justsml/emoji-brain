@@ -120,12 +120,12 @@ describe("EmojiExport Component", () => {
 
     // jsdom keeps a closed popover out of the accessibility tree, so reach the
     // rows directly rather than depending on popover invoker support
-    const row = (name: RegExp) => screen.getByRole("menuitemradio", {name, hidden: true});
-    expect(row(/Best fit/)).toHaveAttribute("aria-checked", "true");
+    const row = (name: RegExp) => screen.getByRole("button", {name, hidden: true});
+    expect(row(/Best fit/)).toHaveAttribute("aria-pressed", "true");
 
     fireEvent.click(row(/^128 px/));
-    expect(row(/^128 px/)).toHaveAttribute("aria-checked", "true");
-    expect(row(/Best fit/)).toHaveAttribute("aria-checked", "false");
+    expect(row(/^128 px/)).toHaveAttribute("aria-pressed", "true");
+    expect(row(/Best fit/)).toHaveAttribute("aria-pressed", "false");
     expect(screen.getByRole("button", {name: /Choose the image size/})).toHaveAccessibleName(/128 px, about 16 KB/);
 
     await userEvent.click(screen.getByRole("button", {name: "Copy Slack script"}));
