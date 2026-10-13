@@ -6,6 +6,22 @@ export function emojiAsset(filename: string, size: number | 'original', still = 
 export function previewSrcSet(filename: string): string {
   return PREVIEW_SIZES.map(size => `${emojiAsset(filename, size, true)} ${size}w`).join(', ');
 }
+/** Animations are encoded at the same widths as the stills, at several times the bytes. */
+export function animatedSrcSet(filename: string): string {
+  return PREVIEW_SIZES.map(size => `${emojiAsset(filename, size)} ${size}w`).join(', ');
+}
+/** The smallest delivered width that covers `cssPx` at 1x: the `src` for browsers without `srcset`. */
+export function fittingSize(cssPx: number): (typeof PREVIEW_SIZES)[number] {
+  return PREVIEW_SIZES.find(size => size >= cssPx) ?? PREVIEW_SIZES[PREVIEW_SIZES.length - 1];
+}
+/**
+ * `src`/`srcSet`/`sizes` for a still drawn `cssPx` wide. `sizes` must be the
+ * drawn width, not the box: the browser multiplies it by its pixel density
+ * and takes the smallest candidate that covers the result.
+ */
+export function stillImageProps(filename: string, cssPx: number) {
+  return {src: emojiAsset(filename, fittingSize(cssPx), true), srcSet: previewSrcSet(filename), sizes: `${cssPx}px`};
+}
 
 /** A bounded static fallback; never loop or download full-size originals. */
 export function recoverEmojiPreview(event: {currentTarget: HTMLImageElement}): void {

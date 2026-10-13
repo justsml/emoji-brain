@@ -38,11 +38,16 @@
   height: calc(var(--emoji-size) - 0.5rem);
 }
 
+/* Drawn at exactly --sticker-size (one of the delivered widths, see
+   src/lib/gridScales.ts) and centred, so `sizes` can state it precisely. */
 .emoji-card-image {
   position: absolute;
-  inset: 4%;
-  width: 92%;
-  height: 92%;
+  inset: 0;
+  width: var(--sticker-size, 92%);
+  height: var(--sticker-size, 92%);
+  max-width: 100%;
+  max-height: 100%;
+  margin: auto;
   object-fit: contain;
   /* Hundreds of image filters add raster/compositor work while scrolling.
      A transform gives the hovered sticker its lift without a filtered layer. */
@@ -300,3 +305,61 @@
 .sheet-chip[data-preview-unavailable]::after { content: "?"; inset: 0; }
 .workspace-load-note { position: fixed; z-index: 50; right: 1rem; bottom: 10rem; width: min(360px, calc(100vw - 2rem)); padding: 1rem; border: 1px solid hsl(var(--border)); border-radius: 8px; background: hsl(var(--background)); color: hsl(var(--foreground)); font-size: .875rem; }
 .workspace-load-note button { min-height: 44px; padding: .5rem; text-decoration: underline; cursor: pointer; }
+
+/* --- placeholders --------------------------------------------------------
+   Until a sticker arrives, its silhouette sits in its place: a 10px tile cut
+   from one shared contact sheet (src/lib/placeholderAtlas.server.ts), so the
+   whole grid's placeholders cost a single small request. Upscaling a tile
+   that small blurs it on its own; no filter, so no raster cost while scrolling.
+   The layout script marks each image `data-ready` as it loads, before the
+   island hydrates; `:has()` lets the cell react without any JavaScript of its
+   own. Browsers without `:has()` just keep the plain loading behaviour, and a
+   preview that fails outright keeps its "Image unavailable" note instead. */
+@supports selector(:has(*)) {
+  .ph-js .emoji-card-preview-placeholder {
+    isolation: isolate;
+  }
+  .ph-js .emoji-card-preview-placeholder:not([data-preview-unavailable])::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    width: var(--sticker-size, 92%);
+    height: var(--sticker-size, 92%);
+    max-width: 100%;
+    max-height: 100%;
+    margin: auto;
+    z-index: -1;
+    background: var(--ph-atlas) no-repeat;
+    background-size: calc(var(--ph-columns) * 100%) calc(var(--ph-rows) * 100%);
+    background-position:
+      calc(var(--ph-x) * 100% / (var(--ph-columns) - 1))
+      calc(var(--ph-y) * 100% / (var(--ph-rows) - 1));
+    pointer-events: none;
+    transition: opacity 180ms ease-out;
+  }
+  .ph-js .emoji-card-preview-placeholder:has(> .emoji-card-image[data-ready])::after {
+    opacity: 0;
+  }
+  /* Hide alt text and partial decodes behind the silhouette, then cross-fade. */
+  .ph-js .emoji-card-preview-placeholder > .emoji-card-image:not([data-ready]) {
+    opacity: 0;
+  }
+  .ph-js .emoji-card-preview-placeholder > .emoji-card-image {
+    transition: transform 150ms cubic-bezier(0.2, 0.8, 0.3, 1), opacity 180ms ease-out;
+  }
+}
+
+/* An animation is a second, larger download. Once one has kept someone
+   waiting for a beat, the motion badge spins until it arrives. */
+.emoji-card-preview-animated.is-fetching::before {
+  animation: emoji-fetch-spin 900ms linear 280ms infinite;
+}
+@keyframes emoji-fetch-spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ph-js .emoji-card-preview-placeholder::after,
+  .ph-js .emoji-card-preview-placeholder > .emoji-card-image { transition: none; }
+  .emoji-card-preview-animated.is-fetching::before { animation: none; }
+}

@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import type { EmojiMetadata } from '../types/emoji';
-import { recoverEmojiPreview, restoreEmojiPreview, emojiAsset } from '../lib/emojiAssets';
+import { recoverEmojiPreview, restoreEmojiPreview, stillImageProps } from '../lib/emojiAssets';
 import '../styles/emoji-workspace.css';
 
 export interface EmojiWorkspaceProps {
@@ -91,7 +91,7 @@ export default function EmojiWorkspace({ catalog, selected, source, onToggle, on
         <button type="button" aria-pressed={tab === 'similar'} onClick={() => setTab('similar')}>Similar</button>
       </div>
       <div className="workspace-scroll">
-        {tab === 'similar' && (source ? <div className="workspace-source"><img onError={recoverEmojiPreview} onLoad={restoreEmojiPreview} src={emojiAsset(source.filename, 128, true)} width="40" height="40" alt="" /><div><b>{source.filename.replace(/\.[^.]+$/, '')}</b></div></div> : <p>Choose Similar on any sticker to explore related emojis.</p>)}
+        {tab === 'similar' && (source ? <div className="workspace-source"><img onError={recoverEmojiPreview} onLoad={restoreEmojiPreview} {...stillImageProps(source.filename, 40)} width="40" height="40" alt="" /><div><b>{source.filename.replace(/\.[^.]+$/, '')}</b></div></div> : <p>Choose Similar on any sticker to explore related emojis.</p>)}
         {tab === 'similar' && source && !ready && <p role="status">{failed ? 'Suggestions couldn’t load. Your sheet is still available.' : 'Finding related stickers…'}</p>}
         {tab === 'sheet' && !selected.length && <p>Your sheet is empty. Tap stickers to collect them.</p>}
         {tab === 'similar' && ready && !emojis.length && <p>No related labels yet. Try another sticker.</p>}
@@ -100,7 +100,7 @@ export default function EmojiWorkspace({ catalog, selected, source, onToggle, on
         <div className="workspace-grid">
           {emojis.map(emoji => <div key={emoji.id} className="workspace-sticker">
             <button type="button" className="workspace-pick" aria-label={`${selectedIds.has(emoji.id) ? 'Remove' : 'Select'} ${emoji.filename}`} aria-pressed={selectedIds.has(emoji.id)} onClick={() => onToggle(emoji)}>
-              <img onError={recoverEmojiPreview} onLoad={restoreEmojiPreview} src={emojiAsset(emoji.filename, 128, true)} width="96" height="96" loading="lazy" decoding="async" alt="" />
+              <img onError={recoverEmojiPreview} onLoad={restoreEmojiPreview} {...stillImageProps(emoji.filename, 88)} width="88" height="88" loading="lazy" decoding="async" alt="" />
               <span>{emoji.filename.replace(/\.[^.]+$/, '')}</span><i aria-hidden="true">{selectedIds.has(emoji.id) ? '✓' : '+'}</i>
             </button>
             <button type="button" className="workspace-related" onClick={() => onSimilar(emoji)} aria-label={`Similar to ${emoji.filename}`} title="Explore similar stickers"><span aria-hidden="true">↗</span></button>

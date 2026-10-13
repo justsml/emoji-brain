@@ -5,7 +5,7 @@ import type { EmojiMetadata } from "../types/emoji";
 import { getAbsoluteUrl } from "../lib/utils";
 import type { SlackResolution } from '../lib/slackExportPlan';
 import { runExportWorker } from "../lib/exportWorker";
-import { recoverEmojiPreview, restoreEmojiPreview, emojiAsset, markdownTable } from "../lib/emojiAssets";
+import { recoverEmojiPreview, restoreEmojiPreview, markdownTable, stillImageProps } from "../lib/emojiAssets";
 import { useExportEstimates } from "../hooks/useExportEstimates";
 import { formatBytes, SLACK_SCRIPT_LIMIT, type ExportTier } from "../lib/slackSizeEstimate";
 import { ExportOptions } from "./ExportOptions";
@@ -274,9 +274,9 @@ export function EmojiExport({ onInvertVisible, onOpenSheet, selectedEmojis, onCl
                 <img
                   onError={recoverEmojiPreview}
                   onLoad={restoreEmojiPreview}
-                  src={emojiAsset(emoji.filename, 64, true)}
-                  width={32}
-                  height={32}
+                  {...stillImageProps(emoji.filename, 28)}
+                  width={28}
+                  height={28}
                   alt={emoji.filename}
                   loading="lazy"
                   decoding="async"
