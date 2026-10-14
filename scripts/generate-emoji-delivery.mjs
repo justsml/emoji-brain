@@ -35,6 +35,17 @@ if(revisit.status==='approved-promoted'){
  if(createHash('sha256').update(await fs.readFile(source)).digest('hex')!==revisit.approval.approvedSha256)throw Error('Approved Severance candidate changed');
  sources.set('severance-running',{source,basis:'enhanced-approved'});
 }
+// Requested matte corrections supersede the historical restoration candidates.
+// Their prior masters remain archived; hash binding prevents stale promotion.
+let matteRepairs;
+try{matteRepairs=JSON.parse(await fs.readFile('scripts/emoji-enhancement/animation-matte-repairs.json'));}
+catch(error){if(error.code!=='ENOENT')throw error;}
+if(matteRepairs?.status==='applied')for(const row of matteRepairs.items){
+  if(row.status!=='applied')throw Error('Incomplete applied matte repair: '+row.name);
+  const source=`public/emojis/${row.name}.webp`;
+  if(createHash('sha256').update(await fs.readFile(source)).digest('hex')!==row.candidateSha256)throw Error('Matte repair master changed: '+row.name);
+  sources.set(row.name,{source,basis:'requested-matte-repair'});
+}
 await fs.mkdir(root,{recursive:true});
 let previous;try{previous=JSON.parse(await fs.readFile(root+'/manifest.json'))}catch{}
 // 127 KB, not Slack's stated 128 KB: the cap is the point at which an upload is

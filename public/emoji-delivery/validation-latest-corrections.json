@@ -1,34 +1,75 @@
 {
-  "count": 6,
-  "framesChecked": 260,
+  "count": 12,
+  "framesChecked": 3958,
   "maxMeanAlphaError": 0,
-  "previewBytes": 74414,
+  "previewBytes": 233190,
   "slackCap": 127000,
   "slackIncompatible": [],
-  "frameDropped": [],
+  "frameDropped": [
+    "meow-stretch@64: 79/239 frames",
+    "meow_clorox@64: 53/70 frames",
+    "meow_coffeespitting@64: 48/145 frames",
+    "meow_enjoy-rain@64: 60/150 frames",
+    "meow_enjoy-snow@64: 50/150 frames",
+    "meow_red-bull@64: 49/147 frames",
+    "meow_sad-rain@64: 60/100 frames"
+  ],
   "totals": {
     "32": {
       "webp": 0,
       "webpOver": []
     },
     "64": {
-      "webp": 93996,
+      "webp": 1064346,
       "webpOver": []
     },
     "128": {
-      "webp": 182340,
-      "webpOver": []
+      "webp": 5167778,
+      "webpOver": [
+        "magic",
+        "meow-stretch",
+        "meow_clorox",
+        "meow_cloroxsip",
+        "meow_coffeespitting",
+        "meow_enjoy-rain",
+        "meow_enjoy-snow",
+        "meow_red-bull",
+        "meow_sad-rain"
+      ]
     },
     "256": {
-      "webp": 369816,
+      "webp": 12956442,
       "webpOver": [
-        "michael-scott-laughing",
-        "michael-scott-shaking-head-no"
+        "alert",
+        "magic",
+        "meow-stretch",
+        "meow_clorox",
+        "meow_cloroxsip",
+        "meow_coffeespitting",
+        "meow_enjoy-rain",
+        "meow_enjoy-snow",
+        "meow_red-bull",
+        "meow_sad-rain",
+        "smart",
+        "meow-hearts"
       ]
     },
     "original": {
-      "webp": 100230,
-      "webpOver": []
+      "webp": 34067644,
+      "webpOver": [
+        "alert",
+        "magic",
+        "meow-stretch",
+        "meow_clorox",
+        "meow_cloroxsip",
+        "meow_coffeespitting",
+        "meow_enjoy-rain",
+        "meow_enjoy-snow",
+        "meow_red-bull",
+        "meow_sad-rain",
+        "smart",
+        "meow-hearts"
+      ]
     }
   }
 }
