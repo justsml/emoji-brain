@@ -63,3 +63,25 @@ for (const width of [1440,390]) test.describe(`theme atlas at ${width}px`, () =>
     expect(errors).toEqual([]);
   });
 });
+
+for (const width of [1000, 860]) test(`theme chips wrap in balanced lines at ${width}px`, async ({page}) => {
+  await page.setViewportSize({width, height: 900});
+  await page.goto('/');
+  await expect(page.locator('astro-island[ssr]')).toHaveCount(0);
+  await page.evaluate(() => document.fonts.ready);
+  // Chips are grouped into lines by where their centres sit.
+  const chipButtons = page.getByRole('group',{name:'Theme filters'}).getByRole('button');
+  await expect(chipButtons.first()).toBeVisible();
+  const lines = await chipButtons.evaluateAll(chips => {
+    const counts = new Map<number, number>();
+    for (const chip of chips) {
+      const box = chip.getBoundingClientRect();
+      const line = Math.round((box.top + box.height / 2) / 20);
+      counts.set(line, (counts.get(line) ?? 0) + 1);
+    }
+    return [...counts.values()];
+  });
+  expect(lines.length).toBeGreaterThan(1);
+  // Unbalanced flex-wrap leaves 6+4 or 7+3 here; balanced lines differ by at most one chip.
+  expect(Math.max(...lines) - Math.min(...lines)).toBeLessThanOrEqual(1);
+});

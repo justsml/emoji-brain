@@ -18,6 +18,14 @@
 .atlas-heading h2 { margin: 0; font-family: var(--font-display); font-size: .72rem; font-weight: 650; letter-spacing: .06em; text-transform: uppercase; color: hsl(var(--muted-foreground)); }
 
 .theme-cloud { display: flex; flex-wrap: wrap; align-items: center; gap: .15rem .35rem; margin-left: -.2rem; }
+/* Balanced wrapping: `text-wrap: balance` evens out line lengths, but only for
+   inline content, so where it is supported the chips stop being flex items and
+   become inline-flex boxes in a block, which it does balance. Elsewhere the
+   flex-wrap row above stays. */
+@supports (text-wrap: balance) {
+  .theme-cloud { display: block; text-wrap: balance; line-height: 0; }
+  .theme-cloud button { vertical-align: middle; margin: .075rem .175rem; }
+}
 .theme-cloud button { display: inline-flex; align-items: center; gap: .3em; min-height: 34px; padding: .1rem .55rem .1rem .2rem; border-radius: 999px; font-family: var(--font-display); font-size: var(--word-size); font-weight: 450; letter-spacing: -.005em; line-height: 1.2; white-space: nowrap; color: hsl(var(--foreground) / .78); transition: opacity 180ms ease, background-color 160ms ease, color 160ms ease; }
 .theme-cloud img { width: 1.75em; height: 1.75em; object-fit: contain; flex-shrink: 0; transform: rotate(var(--tilt, -6deg)); filter: drop-shadow(0 1px 1px hsl(var(--lift) / .22)); transition: transform 260ms var(--spring), filter 200ms ease; }
 .theme-cloud button:nth-child(even) img { --tilt: 5deg; }
@@ -60,9 +68,9 @@
 /* Phones get one swipeable row of themes instead of three stacked ones; the
    fade on the trailing edge says there is more to the right. */
 @media (max-width: 720px) {
-  .theme-cloud { flex-wrap: nowrap; overflow-x: auto; scroll-snap-type: x proximity; scrollbar-width: none; margin-inline: -1rem; padding: .15rem 2rem .15rem 1rem; scroll-padding-inline: 1rem; -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 2.5rem), transparent); mask-image: linear-gradient(90deg, #000 calc(100% - 2.5rem), transparent); }
+  .theme-cloud { display: flex; align-items: center; gap: .15rem .35rem; flex-wrap: nowrap; overflow-x: auto; scroll-snap-type: x proximity; scrollbar-width: none; margin-inline: -1rem; padding: .15rem 2rem .15rem 1rem; scroll-padding-inline: 1rem; -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 2.5rem), transparent); mask-image: linear-gradient(90deg, #000 calc(100% - 2.5rem), transparent); }
   .theme-cloud::-webkit-scrollbar { display: none; }
-  .theme-cloud button { scroll-snap-align: start; font-size: calc(var(--word-size) * .9); flex-shrink: 0; }
+  .theme-cloud button { scroll-snap-align: start; font-size: calc(var(--word-size) * .9); flex-shrink: 0; margin: 0; }
   .atlas-footer { flex-direction: column; align-items: stretch; gap: .25rem; }
   .atlas-colors { flex: none; max-width: none; flex-direction: column; align-items: stretch; gap: .35rem; }
   .atlas-status { flex: none; justify-content: space-between; text-align: left; min-height: 28px; }
