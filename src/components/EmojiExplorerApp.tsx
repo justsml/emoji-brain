@@ -2,7 +2,7 @@ import { track, trackError } from '../lib/analytics';
 import React, { startTransition, useState, useCallback, useEffect, useMemo } from "react";
 import type { EmojiMetadata } from "../types/emoji";
 import {getPagefind} from "../lib/pagefindClient";
-import SearchBar from "./SearchBar";
+import SearchBar, { type SearchFilterPill } from "./SearchBar";
 import EmojiGrid from "./EmojiGrid";
 import GridScaleSlider from "./GridScaleSlider";
 import PreviewQualityNotice from "./PreviewQualityNotice";
@@ -15,7 +15,7 @@ import { buildShareUrl, clearShareParams, readShareParams } from "../lib/shareLi
 
 import {createPortal} from "react-dom";
 import CatalogDiscovery from "./CatalogDiscovery";
-import {discover} from "../lib/catalogDiscovery";
+import {discover, PALETTE} from "../lib/catalogDiscovery";
 import WorkspaceLoader from "./WorkspaceLoader";
 import { recoverEmojiPreview } from "../lib/emojiAssets";
 
@@ -275,6 +275,12 @@ const _EmojiExplorerApp: React.FC<EmojiExplorerAppProps> = ({
     const host = document.getElementById("catalog-discovery");
     if (host) { host.replaceChildren(); setDiscoveryHost(host); }
   }, []);
+  // Where the theme and color choices live is the atlas above; the field is
+  // where the eye already is, so it carries them too.
+  const filterPills = useMemo<SearchFilterPill[]>(() => [
+    ...(themeWord !== null ? [{ kind: 'theme' as const, label: themeWord.replace(/-/g, " "), onClear: () => { track('theme_filter_changed', { theme: null }); setThemeWord(null); } }] : []),
+    ...(color !== null ? [{ kind: 'color' as const, label: `${PALETTE[color].name} first`, swatch: PALETTE[color].hex, onClear: () => { track('color_filter_changed', { color: null }); setColor(null); } }] : []),
+  ], [themeWord, color]);
   const discoveredResults = useMemo(() => discover(searchResults, themeWord, color), [searchResults, themeWord, color]);
 
   const selectedIds = useMemo(() => new Set(selectedEmojis.map(emoji => emoji.id)), [selectedEmojis]);
@@ -299,6 +305,7 @@ const _EmojiExplorerApp: React.FC<EmojiExplorerAppProps> = ({
             <SearchBar
               onSearchChange={handleSearchChange}
               onEmojiSelect={handleEmojiSelect}
+              filters={filterPills}
               defaultValue={shared.q ?? ""}
               shareUrl={searchShareUrl}
               count={filteredEmojis.length}

@@ -1,16 +1,28 @@
 import { track, trackError } from '../lib/analytics';
 import React, { useEffect, useRef, useState } from 'react';
 import '../styles/search.css';
-import { Check, Link, Search } from 'lucide-react';
+import { Check, Link, Search, X } from 'lucide-react';
 import {warmPagefind} from '../lib/pagefindClient';
 import {emojiAsset} from '../lib/emojiAssets';
 import type { EmojiMetadata } from '../types/emoji';
+
+/** An active theme or color filter, shown as a pill inside the field. */
+export interface SearchFilterPill {
+  kind: 'theme' | 'color';
+  /** What the pill says, e.g. "cat" or "Red first". */
+  label: string;
+  /** A CSS color for the color pill's swatch. */
+  swatch?: string;
+  onClear: () => void;
+}
 
 interface SearchBarProps {
   // Callback to notify parent of search term changes
   onSearchChange: (term: string) => void;
   // Callback to notify parent of emoji selection
   onEmojiSelect?: (emoji: EmojiMetadata) => void;
+  // Theme and color filters currently narrowing or ordering the results
+  filters?: SearchFilterPill[];
   // Number of search results
   count: number;
   isSearching?: boolean;
@@ -28,6 +40,7 @@ interface SearchBarProps {
 const SearchBar: React.FC<SearchBarProps> = ({
   onSearchChange,
   onEmojiSelect,
+  filters = [],
   count,
   isSearching = false,
   status = "",
@@ -63,6 +76,14 @@ const SearchBar: React.FC<SearchBarProps> = ({
     onSearchChange(term); // Notify parent component
   };
 
+  // Like any token field: Backspace in an empty box takes back the last pill.
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Backspace' && inputValue === '' && filters.length > 0) {
+      event.preventDefault();
+      filters[filters.length - 1].onClear();
+    }
+  };
+
   const handleEmojiSelect = (emoji: EmojiMetadata) => {
     if (onEmojiSelect) {
       onEmojiSelect(emoji);
@@ -73,6 +94,25 @@ const SearchBar: React.FC<SearchBarProps> = ({
     <div className="emoji-search">
       <div className={`emoji-search-shell ${isSearching ? 'is-searching' : ''}`}>
         <Search className="emoji-search-icon" aria-hidden="true" />
+        {filters.length > 0 && (
+          <div className="emoji-search-pills" role="group" aria-label="Active filters">
+            {filters.map(filter => (
+              <button
+                key={filter.kind}
+                type="button"
+                className="emoji-search-pill"
+                data-kind={filter.kind}
+                onClick={filter.onClear}
+                aria-label={`Clear ${filter.kind} filter: ${filter.label}`}
+                title={`Clear ${filter.kind} filter`}
+              >
+                {filter.swatch && <i className="emoji-search-pill-swatch" style={{ background: filter.swatch }} aria-hidden="true" />}
+                <span className="emoji-search-pill-label">{filter.label}</span>
+                <X className="emoji-search-pill-x" aria-hidden="true" />
+              </button>
+            ))}
+          </div>
+        )}
         <input
           type="search"
           aria-label="Search emojis"
@@ -81,6 +121,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
           className="emoji-search-input"
           value={inputValue}
           onChange={handleChange}
+          onKeyDown={handleKeyDown}
           onFocus={warmPagefind}
         />
         <span className="emoji-search-count">

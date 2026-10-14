@@ -85,3 +85,30 @@ for (const width of [1000, 860]) test(`theme chips wrap in balanced lines at ${w
   // Unbalanced flex-wrap leaves 6+4 or 7+3 here; balanced lines differ by at most one chip.
   expect(Math.max(...lines) - Math.min(...lines)).toBeLessThanOrEqual(1);
 });
+
+test('the search field carries the active theme and color as pills', async ({page}) => {
+  await page.setViewportSize({width:1440,height:900});
+  await page.goto('/');
+  await expect(page.locator('astro-island[ssr]')).toHaveCount(0);
+  const pills = page.getByRole('group',{name:'Active filters'});
+  await expect(pills).toHaveCount(0);
+  await page.getByRole('button',{name:'Filter cat',exact:true}).click();
+  await page.getByRole('button',{name:'Sort red first'}).click();
+  await expect(pills.getByRole('button',{name:'Clear theme filter: cat'})).toBeVisible();
+  await expect(pills.getByRole('button',{name:'Clear color filter: Red first'})).toBeVisible();
+  // the pills sit inside the field, before the text
+  const field = await page.locator('.emoji-search-shell').boundingBox();
+  const pillBox = await pills.boundingBox();
+  const input = await page.getByRole('searchbox').boundingBox();
+  expect(pillBox!.x).toBeGreaterThanOrEqual(field!.x);
+  expect(pillBox!.x + pillBox!.width).toBeLessThanOrEqual(input!.x + 1);
+  // clearing one pill unwinds the same state as the atlas above
+  await pills.getByRole('button',{name:'Clear color filter: Red first'}).click();
+  await expect(page.getByRole('button',{name:'Sort red first'})).toHaveAttribute('aria-pressed','false');
+  await expect(pills.getByRole('button',{name:'Clear theme filter: cat'})).toBeVisible();
+  // Backspace in the empty field takes back the last one left
+  await page.getByRole('searchbox').focus();
+  await page.keyboard.press('Backspace');
+  await expect(pills).toHaveCount(0);
+  await expect(page.getByRole('button',{name:'Filter cat',exact:true})).toHaveAttribute('aria-pressed','false');
+});
