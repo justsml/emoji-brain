@@ -3,6 +3,7 @@ import React, { createContext, useContext, useReducer, useCallback, useLayoutEff
 import type { EmojiMetadata } from '../types/emoji';
 import { useLocalStorage } from '../hooks/useLocalStorage';
 import { SELECTION_STORAGE_KEY, reconcileSelection } from '../lib/selectionStorage';
+import { DEFAULT_GRID_SCALE, GRID_SCALE_STORAGE_KEY } from '../lib/gridScales';
 
 interface EmojiState {
   selectedEmojis: EmojiMetadata[];
@@ -48,7 +49,7 @@ const initialState: EmojiState = {
   filteredEmojis: [],
   isSearching: false,
   showSelectedOnly: false,
-  gridScale: 2,
+  gridScale: DEFAULT_GRID_SCALE,
 };
 
 function emojiReducer(state: EmojiState, action: EmojiAction): EmojiState {
@@ -143,7 +144,7 @@ export function EmojiProvider({ children, initialEmojis }: EmojiProviderProps) {
   // tray pointing at files that no longer exist. A first visit has nothing
   // stored and starts with an empty sheet: picking is the first thing to do.
   const [storedSelection, setStoredSelection] = useLocalStorage<unknown>(SELECTION_STORAGE_KEY, null);
-  const [storedScale, setStoredScale] = useLocalStorage<unknown>('emoji-grid-scale', 2);
+  const [storedScale, setStoredScale] = useLocalStorage<unknown>(GRID_SCALE_STORAGE_KEY, DEFAULT_GRID_SCALE);
 
   // The server has no storage, so it renders an empty sheet; the first client
   // render must match it or hydration fails. The stored sheet is restored in a
@@ -165,11 +166,17 @@ export function EmojiProvider({ children, initialEmojis }: EmojiProviderProps) {
     // eslint-disable-next-line react-hooks/exhaustive-deps -- mount only
   }, []);
 
+  // Keyed on the ids, not the array: while a transition is pending, React
+  // rebases a click's update onto each sync render and produces an equal
+  // selection in a new array every time. Persisting on identity then stores,
+  // re-renders and re-persists until React gives up ("Maximum update depth
+  // exceeded", which blanked the grid on roughly one first click in three).
+  const selectedKey = state.selectedEmojis.map(emoji => emoji.id).join('\n');
   useLayoutEffect(() => {
     // Skip the hydration commit: its empty sheet would overwrite what is stored.
     if (!restored.current) { restored.current = true; return; }
-    setStoredSelection(state.selectedEmojis.map(emoji => emoji.id));
-  }, [state.selectedEmojis, setStoredSelection]);
+    setStoredSelection(selectedKey ? selectedKey.split('\n') : []);
+  }, [selectedKey, setStoredSelection]);
 
   const toggleEmojiSelection = useCallback((emoji: EmojiMetadata) => {
     track('emoji_selection_toggled', { emoji_id: emoji.id });

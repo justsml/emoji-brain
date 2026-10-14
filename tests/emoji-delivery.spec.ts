@@ -65,7 +65,11 @@ test('grid requests pre-generated still previews, plays a small animation only o
   await animated.scrollIntoViewIfNeeded();
   await animated.hover();
   await expect(animated.locator('img')).toHaveAttribute('src', /emoji-delivery\/(128|256)\//);
-  await expect(animated.locator('img')).not.toHaveAttribute('srcset');
+  // Animations are responsive too: same widths as the stills, never the previews.
+  await expect(animated.locator('img')).toHaveAttribute('srcset', /^\/emoji-delivery\/64\/.* 64w, .* 256w$/);
+  await expect(animated.locator('img')).not.toHaveAttribute('srcset', /previews/);
+  // A 128px sticker on a 1x screen plays the 128px animation, not the 256px one.
+  await expect.poll(()=>animated.locator('img').evaluate((el:HTMLImageElement)=>el.currentSrc)).toMatch(/emoji-delivery\/128\//);
   await page.mouse.move(0,0);
   await expect(animated.locator('img')).toHaveAttribute('src', /previews/);
 });

@@ -103,3 +103,38 @@ describe('SearchBar share link', () => {
     expect(screen.getByRole('button', { name: 'Copy link to this search' })).toBeInTheDocument();
   });
 });
+
+describe('SearchBar filter pills', () => {
+  const mockOnSearchChange = vi.fn();
+  const pills = () => [
+    { kind: 'theme' as const, label: 'cat', onClear: vi.fn() },
+    { kind: 'color' as const, label: 'Red', description: 'Red first', descending: true, swatch: '#e64c55', onClear: vi.fn() },
+  ];
+
+  it('shows a pill per active filter, and clears the one clicked', async () => {
+    const filters = pills();
+    render(<SearchBar onSearchChange={mockOnSearchChange} count={3} filters={filters} />);
+    const group = screen.getByRole('group', { name: 'Active filters' });
+    expect(group).toBeInTheDocument();
+    await userEvent.click(screen.getByRole('button', { name: 'Clear color filter: Red first' }));
+    expect(filters[1].onClear).toHaveBeenCalledTimes(1);
+    expect(filters[0].onClear).not.toHaveBeenCalled();
+  });
+
+  it('renders nothing when no filter is active', () => {
+    render(<SearchBar onSearchChange={mockOnSearchChange} count={3} />);
+    expect(screen.queryByRole('group', { name: 'Active filters' })).not.toBeInTheDocument();
+  });
+
+  it('takes back the last pill on Backspace in an empty field, not while typing', async () => {
+    const filters = pills();
+    render(<SearchBar onSearchChange={mockOnSearchChange} count={3} filters={filters} />);
+    const input = screen.getByRole('searchbox');
+    await userEvent.type(input, 'a');
+    await userEvent.keyboard('{Backspace}');
+    expect(filters[1].onClear).not.toHaveBeenCalled();
+    await userEvent.keyboard('{Backspace}');
+    expect(filters[1].onClear).toHaveBeenCalledTimes(1);
+    expect(filters[0].onClear).not.toHaveBeenCalled();
+  });
+});

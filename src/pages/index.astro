@@ -1,6 +1,7 @@
 ---
 // src/pages/index.astro
 import {catalogColors} from "../lib/catalogColors.server";
+import {placeholderAtlas} from "../lib/placeholderAtlas.server";
 import CollectionGuide from "../components/CollectionGuide.astro";
 import { siteFaq } from "../data/site-faq";
 import Layout from "../layouts/Layout.astro";
@@ -39,9 +40,10 @@ const gzipByEmoji = (filename: string): Record<string, number> | undefined => {
 // Keep catalog bookkeeping on the server instead of serializing it into the
 // client island. The explorer only needs the fields left in each record.
 const colors = await catalogColors(emojiMetadata.emojis.map(emoji => emoji.filename));
+const atlas = await placeholderAtlas(emojiMetadata.emojis.map(emoji => emoji.filename));
 const allEmojis: EmojiMetadata[] = (emojiMetadata.emojis || []).map(
   ({id, filename, path, animated, size, tags, categories, aliases, facets}, index) =>
-    ({id, filename, path, animated, size, tags, categories, aliases, colors: colors[index], themes: [...new Set([...facets.subject, ...facets.expression, ...facets.intent])], gzip: gzipByEmoji(filename), originalBytes: deliveryRow(filename)?.original.bytes, maxSlackSize: deliveryRow(filename)?.highestSlackCompatible?.size}),
+    ({id, filename, path, animated, size, tags, categories, aliases, colors: colors[index], themes: [...new Set([...facets.subject, ...facets.expression, ...facets.intent])], gzip: gzipByEmoji(filename), originalBytes: deliveryRow(filename)?.original.bytes, maxSlackSize: deliveryRow(filename)?.highestSlackCompatible?.size, placeholder: atlas.cells[index]}),
 ).sort((a, b) => a.filename.localeCompare(b.filename));
 // const categories = Array.from(new Set(allEmojis.flatMap(emoji => emoji.categories))).filter(Boolean);
 ---
@@ -53,7 +55,8 @@ const allEmojis: EmojiMetadata[] = (emojiMetadata.emojis || []).map(
     acceptedAnswer: { "@type": "Answer", text: answer },
   })),
 }]} >
-  <div class="emoji-app w-full h-fit">
+  <link slot="head" rel="preload" as="image" type="image/webp" href={atlas.url} fetchpriority="high" />
+  <div class="emoji-app w-full h-fit" style={`--ph-atlas:url("${atlas.url}");--ph-columns:${atlas.columns};--ph-rows:${atlas.rows}`}>
     <EmojiExplorerApp client:load initialEmojis={allEmojis} scriptOverheadBytes={scriptOverheadBytes} />
   </div>
   <CollectionGuide />

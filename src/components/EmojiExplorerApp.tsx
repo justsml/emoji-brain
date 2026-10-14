@@ -2,9 +2,10 @@ import { track, trackError } from '../lib/analytics';
 import React, { startTransition, useState, useCallback, useEffect, useMemo } from "react";
 import type { EmojiMetadata } from "../types/emoji";
 import {getPagefind} from "../lib/pagefindClient";
-import SearchBar from "./SearchBar";
+import SearchBar, { type SearchFilterPill } from "./SearchBar";
 import EmojiGrid from "./EmojiGrid";
 import GridScaleSlider from "./GridScaleSlider";
+import PreviewQualityNotice from "./PreviewQualityNotice";
 import { EmojiExport } from "./EmojiExport";
 import { useEmojiContext } from "../context/EmojiContext";
 import ShowSelectedToggle from "./ShowSelectedToggle";
@@ -14,7 +15,7 @@ import { buildShareUrl, clearShareParams, readShareParams } from "../lib/shareLi
 
 import {createPortal} from "react-dom";
 import CatalogDiscovery from "./CatalogDiscovery";
-import {discover} from "../lib/catalogDiscovery";
+import {discover, PALETTE} from "../lib/catalogDiscovery";
 import WorkspaceLoader from "./WorkspaceLoader";
 import { recoverEmojiPreview } from "../lib/emojiAssets";
 
@@ -79,6 +80,20 @@ interface EmojiExplorerAppProps {
   scriptOverheadBytes: number;
 }
 
+/** Plain substring matching over what the page already has: no download needed. */
+export function localMatches(term: string, emojis: EmojiMetadata[]): EmojiMetadata[] {
+  const query = term.trim().toLowerCase();
+  return emojis.filter((emoji) =>
+    [emoji.filename, ...emoji.tags, ...emoji.categories, ...(emoji.aliases ?? []), ...(emoji.themes ?? [])]
+      .join(" ").toLowerCase().includes(query)
+  );
+}
+
+/** How long a search waits on the index before showing name matches instead. */
+const INTERIM_SEARCH_MS = 1200;
+/** Past this, the index download is plainly slow and the status says so. */
+const SLOW_SEARCH_MS = 8000;
+
 async function pagefindSearch(
   searchTerm: string,
   initialEmojis: EmojiMetadata[],
@@ -88,10 +103,7 @@ async function pagefindSearch(
   const term = searchTerm.trim();
   let client;
   try { client = await getPagefind(); } catch {
-    const query = term.toLowerCase();
-    return initialEmojis.filter((emoji) =>
-      [emoji.filename, ...emoji.tags, ...emoji.categories].join(" ").toLowerCase().includes(query)
-    );
+    return localMatches(term, initialEmojis);
   }
 
   if(!isCurrent())return [];
@@ -218,17 +230,32 @@ const _EmojiExplorerApp: React.FC<EmojiExplorerAppProps> = ({
     setIsSearching(true);
     setSearchStatus(`Finding matches for “${searchTerm.trim()}”…`);
     setSearchProgress(undefined);
+    // On a slow link the search index is the long pole. Rather than hold the
+    // old results behind a spinner, show what plain name matching finds now
+    // and let the full search replace it when the index lands.
+    const interim = setTimeout(() => {
+      if (!current) return;
+      const matches = localMatches(searchTerm, initialEmojis);
+      setSearchResults(matches);
+      setSearchStatus(`${matches.length.toLocaleString()} name matches for “${searchTerm.trim()}” — still loading full search…`);
+    }, INTERIM_SEARCH_MS);
+    const slow = setTimeout(() => {
+      if (current) setSearchStatus(`Showing name matches for “${searchTerm.trim()}”. Full search is still downloading on this slow connection.`);
+    }, SLOW_SEARCH_MS);
+    const settle = () => { clearTimeout(interim); clearTimeout(slow); };
     const timer = setTimeout(() => {
     pagefindSearch(searchTerm, initialEmojis, (loaded, total) => {
       if (!current) return;
       setSearchStatus(`Preparing ${loaded.toLocaleString()} of ${total.toLocaleString()} matches…`);
       setSearchProgress(total > 0 ? Math.round(loaded / total * 100) : 100);
     }, () => current).then((results) => {
+      settle();
       if (!current) return;
       track('search_completed', { query_length: searchTerm.trim().length, result_count: results.length });
       setSearchResults(results);
       setSearchStatus(`${results.length.toLocaleString()} matches for “${searchTerm.trim()}”`);
     }).catch((error) => {
+      settle();
       if (!current) return;
       trackError(error, { source: 'search' });
       track('search_failed', { query_length: searchTerm.trim().length });
@@ -238,7 +265,7 @@ const _EmojiExplorerApp: React.FC<EmojiExplorerAppProps> = ({
       if (current) setIsSearching(false);
     });
     }, 120);
-    return () => { current = false; clearTimeout(timer); };
+    return () => { current = false; clearTimeout(timer); settle(); };
   }, [searchTerm, initialEmojis, setIsSearching]);
 
   const [discoveryHost, setDiscoveryHost] = useState<HTMLElement | null>(null);
@@ -248,6 +275,12 @@ const _EmojiExplorerApp: React.FC<EmojiExplorerAppProps> = ({
     const host = document.getElementById("catalog-discovery");
     if (host) { host.replaceChildren(); setDiscoveryHost(host); }
   }, []);
+  // Where the theme and color choices live is the atlas above; the field is
+  // where the eye already is, so it carries them too.
+  const filterPills = useMemo<SearchFilterPill[]>(() => [
+    ...(themeWord !== null ? [{ kind: 'theme' as const, label: themeWord.replace(/-/g, " "), onClear: () => { track('theme_filter_changed', { theme: null }); setThemeWord(null); } }] : []),
+    ...(color !== null ? [{ kind: 'color' as const, label: PALETTE[color].name, description: `${PALETTE[color].name} first`, descending: true, swatch: PALETTE[color].hex, onClear: () => { track('color_filter_changed', { color: null }); setColor(null); } }] : []),
+  ], [themeWord, color]);
   const discoveredResults = useMemo(() => discover(searchResults, themeWord, color), [searchResults, themeWord, color]);
 
   const selectedIds = useMemo(() => new Set(selectedEmojis.map(emoji => emoji.id)), [selectedEmojis]);
@@ -272,6 +305,7 @@ const _EmojiExplorerApp: React.FC<EmojiExplorerAppProps> = ({
             <SearchBar
               onSearchChange={handleSearchChange}
               onEmojiSelect={handleEmojiSelect}
+              filters={filterPills}
               defaultValue={shared.q ?? ""}
               shareUrl={searchShareUrl}
               count={filteredEmojis.length}
@@ -280,6 +314,7 @@ const _EmojiExplorerApp: React.FC<EmojiExplorerAppProps> = ({
               progress={searchProgress}
             />
             <div className="toolbar-controls">
+              <PreviewQualityNotice />
               <ShowSelectedToggle />
               <GridScaleSlider />
             </div>

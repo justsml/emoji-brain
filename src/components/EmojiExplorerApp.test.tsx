@@ -1,6 +1,6 @@
 import { act, fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { afterEach, expect, it, vi } from 'vitest';
-import EmojiExplorerApp from './EmojiExplorerApp';
+import EmojiExplorerApp, { localMatches } from './EmojiExplorerApp';
 
 vi.mock('../lib/pagefindClient',()=>({getPagefind:()=>window.pagefind?Promise.resolve(window.pagefind):Promise.reject(new Error('offline')),warmPagefind:()=>{}}));
 
@@ -103,4 +103,26 @@ it('coalesces fast typing and uses matched IDs without loading redundant fragmen
   fireEvent.change(input,{target:{value:'o'}});fireEvent.change(input,{target:{value:'or'}});fireEvent.change(input,{target:{value:'original'}});
   await waitFor(()=>expect(screen.getByRole('status')).toHaveTextContent('1 matches'));
   expect(window.pagefind!.search).toHaveBeenCalledTimes(1);expect(load).not.toHaveBeenCalled();
+});
+
+it('shows name matches while a slow search index downloads, then the full results', async () => {
+  const slow = deferred();
+  const catalog = [...initial, { id: 'cat', filename: 'cat-wave.png', path: '/cat-wave.png', tags: [], categories: [], created: '', size: 1 }];
+  window.pagefind = { search: vi.fn().mockReturnValueOnce(slow.promise) } as any;
+  render(<EmojiExplorerApp initialEmojis={catalog} scriptOverheadBytes={5_000} />);
+  fireEvent.change(screen.getByRole('searchbox'), { target: { value: 'cat' } });
+  await waitFor(() => expect(screen.getByRole('status')).toHaveTextContent('still loading full search'), { timeout: 3000 });
+  // The grid follows in a transition, a tick behind the status line.
+  await waitFor(() => expect(screen.queryByRole('button', { name: 'original.png' })).not.toBeInTheDocument());
+  expect(screen.getByRole('button', { name: 'cat-wave.png' })).toBeInTheDocument();
+  await act(async () => slow.resolve(response('original')));
+  await waitFor(() => expect(screen.getByRole('button', { name: 'original.png' })).toBeInTheDocument());
+  expect(screen.getByRole('status')).toHaveTextContent('1 matches for “cat”');
+});
+
+it('matches names, aliases, and themes without the index', () => {
+  const emoji = { ...initial[0], aliases: ['kitty'], themes: ['celebration'] };
+  expect(localMatches('KITTY', [emoji])).toEqual([emoji]);
+  expect(localMatches(' celebr ', [emoji])).toEqual([emoji]);
+  expect(localMatches('dog', [emoji])).toEqual([]);
 });

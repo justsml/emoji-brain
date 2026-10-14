@@ -1,7 +1,7 @@
 import {memo, useMemo, type CSSProperties} from 'react';
 import type {EmojiMetadata} from '../types/emoji';
 import {PALETTE, colorShares, themeMascots, topThemes} from '../lib/catalogDiscovery';
-import {emojiAsset} from '../lib/emojiAssets';
+import {stillImageProps} from '../lib/emojiAssets';
 import '../styles/catalog-discovery.css';
 
 interface Props {
@@ -36,7 +36,7 @@ export default memo(function CatalogDiscovery({catalog,word,color,onWord,onColor
       {themes.slice(0,10).map(({word:label,count}) => {
         const mascot = mascots.get(label);
         return <button key={label} type="button" aria-label={`Filter ${label}`} aria-pressed={word===label} onClick={() => onWord(word===label ? null : label)} title={`${count} stickers`} style={{'--word-size':`${.8 + .35*Math.sqrt(count/peak)}rem`} as CSSProperties}>
-          {mascot && <img src={emojiAsset(mascot.filename,64,true)} alt="" width={64} height={64} decoding="async" draggable={false} />}
+          {mascot && <img {...stillImageProps(mascot.filename,36)} alt="" width={36} height={36} decoding="async" draggable={false} />}
           <span className="theme-word">{label.replace(/-/g,' ')}</span>
           <span className="theme-count">{count}</span>
         </button>;

@@ -31,4 +31,6 @@ export interface EmojiMetadata {
    * ship smaller than their tier because of it.
    */
   maxSlackSize?: number
+  /** [column, row] of this sticker's silhouette on the placeholder atlas. */
+  placeholder?: [number, number]
 }

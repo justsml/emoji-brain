@@ -63,8 +63,10 @@ describe('EmojiGrid Component', () => {
     expect(emojiImages).toHaveLength(mockEmojis.length);
     
     emojiImages.forEach((img, index) => {
-      expect(img).toHaveAttribute('src', `/emoji-delivery/previews/128/${mockEmojis[index].filename.replace(/\.[^.]+$/, '')}.webp`);
-      expect(img).toHaveAttribute('srcset', expect.stringContaining('/previews/64/'));
+      // gridScale 4 is out of range and falls back to S: a 64px sticker
+      expect(img).toHaveAttribute('src', `/emoji-delivery/previews/64/${mockEmojis[index].filename.replace(/\.[^.]+$/, '')}.webp`);
+      expect(img).toHaveAttribute('srcset', expect.stringContaining('/previews/256/'));
+      expect(img).toHaveAttribute('sizes', '64px');
       expect(img).toHaveAttribute('alt', mockEmojis[index].filename);
     });
   });
