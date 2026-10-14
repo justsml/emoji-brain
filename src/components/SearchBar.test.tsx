@@ -108,7 +108,7 @@ describe('SearchBar filter pills', () => {
   const mockOnSearchChange = vi.fn();
   const pills = () => [
     { kind: 'theme' as const, label: 'cat', onClear: vi.fn() },
-    { kind: 'color' as const, label: 'Red first', swatch: '#e64c55', onClear: vi.fn() },
+    { kind: 'color' as const, label: 'Red', description: 'Red first', descending: true, swatch: '#e64c55', onClear: vi.fn() },
   ];
 
   it('shows a pill per active filter, and clears the one clicked', async () => {

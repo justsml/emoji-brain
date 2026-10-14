@@ -96,6 +96,9 @@ test('the search field carries the active theme and color as pills', async ({pag
   await page.getByRole('button',{name:'Sort red first'}).click();
   await expect(pills.getByRole('button',{name:'Clear theme filter: cat'})).toBeVisible();
   await expect(pills.getByRole('button',{name:'Clear color filter: Red first'})).toBeVisible();
+  // the color pill says only the color, with an arrow for the order
+  await expect(pills.getByRole('button',{name:'Clear color filter: Red first'})).toHaveText('Red');
+  await expect(pills.locator('.emoji-search-pill-sort')).toHaveCount(1);
   // the pills sit inside the field, before the text
   const field = await page.locator('.emoji-search-shell').boundingBox();
   const pillBox = await pills.boundingBox();

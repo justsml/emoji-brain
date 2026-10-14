@@ -1,7 +1,7 @@
 import { track, trackError } from '../lib/analytics';
 import React, { useEffect, useRef, useState } from 'react';
 import '../styles/search.css';
-import { Check, Link, Search, X } from 'lucide-react';
+import { ArrowDown, Check, Link, Search, X } from 'lucide-react';
 import {warmPagefind} from '../lib/pagefindClient';
 import {emojiAsset} from '../lib/emojiAssets';
 import type { EmojiMetadata } from '../types/emoji';
@@ -9,8 +9,12 @@ import type { EmojiMetadata } from '../types/emoji';
 /** An active theme or color filter, shown as a pill inside the field. */
 export interface SearchFilterPill {
   kind: 'theme' | 'color';
-  /** What the pill says, e.g. "cat" or "Red first". */
+  /** What the pill says, e.g. "cat" or "Red". */
   label: string;
+  /** The longer meaning for assistive tech and the tooltip, e.g. "Red first". */
+  description?: string;
+  /** Draws a down arrow: the results are ordered by this, most first. */
+  descending?: boolean;
   /** A CSS color for the color pill's swatch. */
   swatch?: string;
   onClear: () => void;
@@ -103,11 +107,12 @@ const SearchBar: React.FC<SearchBarProps> = ({
                 className="emoji-search-pill"
                 data-kind={filter.kind}
                 onClick={filter.onClear}
-                aria-label={`Clear ${filter.kind} filter: ${filter.label}`}
+                aria-label={`Clear ${filter.kind} filter: ${filter.description ?? filter.label}`}
                 title={`Clear ${filter.kind} filter`}
               >
                 {filter.swatch && <i className="emoji-search-pill-swatch" style={{ background: filter.swatch }} aria-hidden="true" />}
                 <span className="emoji-search-pill-label">{filter.label}</span>
+                {filter.descending && <ArrowDown className="emoji-search-pill-sort" aria-hidden="true" />}
                 <X className="emoji-search-pill-x" aria-hidden="true" />
               </button>
             ))}

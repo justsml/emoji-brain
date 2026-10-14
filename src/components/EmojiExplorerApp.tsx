@@ -279,7 +279,7 @@ const _EmojiExplorerApp: React.FC<EmojiExplorerAppProps> = ({
   // where the eye already is, so it carries them too.
   const filterPills = useMemo<SearchFilterPill[]>(() => [
     ...(themeWord !== null ? [{ kind: 'theme' as const, label: themeWord.replace(/-/g, " "), onClear: () => { track('theme_filter_changed', { theme: null }); setThemeWord(null); } }] : []),
-    ...(color !== null ? [{ kind: 'color' as const, label: `${PALETTE[color].name} first`, swatch: PALETTE[color].hex, onClear: () => { track('color_filter_changed', { color: null }); setColor(null); } }] : []),
+    ...(color !== null ? [{ kind: 'color' as const, label: PALETTE[color].name, description: `${PALETTE[color].name} first`, descending: true, swatch: PALETTE[color].hex, onClear: () => { track('color_filter_changed', { color: null }); setColor(null); } }] : []),
   ], [themeWord, color]);
   const discoveredResults = useMemo(() => discover(searchResults, themeWord, color), [searchResults, themeWord, color]);
 
