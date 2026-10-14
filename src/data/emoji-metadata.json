@@ -1,6 +1,6 @@
 {
   "total": 366,
-  "lastUpdated": "2026-10-09T01:26:41.355Z",
+  "lastUpdated": "2026-10-14T16:00:03.272Z",
   "emojis": [
     {
       "id": "df167e0a",
@@ -499,14 +499,14 @@
         "red"
       ],
       "created": "2025-04-12T03:57:25.691Z",
-      "size": 2965698,
+      "size": 2972980,
       "width": 512,
       "height": 512,
       "animated": true,
       "aliases": [],
-      "hash": "fb478c6da24d9dee2ecde93ea5a6c852e041934e472b2dc74264eb83c5de3634",
-      "modified": "2026-09-10T21:34:30.284Z",
-      "labelHash": "fb478c6da24d9dee2ecde93ea5a6c852e041934e472b2dc74264eb83c5de3634",
+      "hash": "9b5794f753415c401a7b3ab6d20427c6072e2d85baee6a583c67f34deaa8a9f8",
+      "modified": "2026-10-14T16:00:02.826Z",
+      "labelHash": "9b5794f753415c401a7b3ab6d20427c6072e2d85baee6a583c67f34deaa8a9f8",
       "facets": {
         "subject": [
           "object"
@@ -527,7 +527,12 @@
         ],
         "origin": []
       },
-      "labelConfidence": "high"
+      "labelConfidence": "high",
+      "labelProvenance": {
+        "method": "carried-forward-after-requested-matte-repair",
+        "fromHash": "fb478c6da24d9dee2ecde93ea5a6c852e041934e472b2dc74264eb83c5de3634",
+        "repairReceipt": "scripts/emoji-enhancement/animation-matte-repairs.json"
+      }
     },
     {
       "id": "25dd5347",
@@ -3678,14 +3683,14 @@
         "pink"
       ],
       "created": "2025-04-12T03:57:23.437Z",
-      "size": 5675682,
+      "size": 5814442,
       "width": 512,
       "height": 512,
       "animated": true,
       "aliases": [],
-      "hash": "201a63ab7397629234ca86401a2dfd1c08c1eb692e4ad29a2bea02e7885713a1",
-      "modified": "2026-09-10T21:34:30.575Z",
-      "labelHash": "201a63ab7397629234ca86401a2dfd1c08c1eb692e4ad29a2bea02e7885713a1",
+      "hash": "800b2e70a19242325325011043634e6ee8593bc7d873312ee142b01475727af9",
+      "modified": "2026-10-14T16:00:02.859Z",
+      "labelHash": "800b2e70a19242325325011043634e6ee8593bc7d873312ee142b01475727af9",
       "facets": {
         "subject": [
           "person"
@@ -3714,7 +3719,12 @@
         ],
         "origin": []
       },
-      "labelConfidence": "medium"
+      "labelConfidence": "medium",
+      "labelProvenance": {
+        "method": "carried-forward-after-requested-matte-repair",
+        "fromHash": "201a63ab7397629234ca86401a2dfd1c08c1eb692e4ad29a2bea02e7885713a1",
+        "repairReceipt": "scripts/emoji-enhancement/animation-matte-repairs.json"
+      }
     },
     {
       "id": "fe0dbaaa",
@@ -5719,14 +5729,14 @@
         "blob-emoji"
       ],
       "created": "2025-04-12T03:57:20.011Z",
-      "size": 16192156,
+      "size": 16675682,
       "width": 512,
       "height": 512,
       "animated": true,
       "aliases": [],
-      "hash": "345c4aabed7360bd29751ce0f21024635e3a0e556ac4cb0d9b38378026ce91c4",
-      "modified": "2026-09-10T21:34:30.814Z",
-      "labelHash": "345c4aabed7360bd29751ce0f21024635e3a0e556ac4cb0d9b38378026ce91c4",
+      "hash": "c8b71ef62db58b5b1a1027625a1ccb4c0da6dc8f3c58a228cca4defcf47e66fe",
+      "modified": "2026-10-14T16:00:02.991Z",
+      "labelHash": "c8b71ef62db58b5b1a1027625a1ccb4c0da6dc8f3c58a228cca4defcf47e66fe",
       "facets": {
         "subject": [
           "cat",
@@ -5758,7 +5768,12 @@
           "blob-emoji"
         ]
       },
-      "labelConfidence": "medium"
+      "labelConfidence": "medium",
+      "labelProvenance": {
+        "method": "carried-forward-after-requested-matte-repair",
+        "fromHash": "345c4aabed7360bd29751ce0f21024635e3a0e556ac4cb0d9b38378026ce91c4",
+        "repairReceipt": "scripts/emoji-enhancement/animation-matte-repairs.json"
+      }
     },
     {
       "id": "c6265409",
@@ -5782,14 +5797,14 @@
         "brand"
       ],
       "created": "2025-04-12T03:57:24.326Z",
-      "size": 8887492,
+      "size": 9144218,
       "width": 512,
       "height": 512,
       "animated": true,
       "aliases": [],
-      "hash": "8a56f12bf9e1033184b93122ade1737029d966c85c0e3baa8d113bfe07bb314d",
-      "modified": "2026-09-10T21:34:30.858Z",
-      "labelHash": "8a56f12bf9e1033184b93122ade1737029d966c85c0e3baa8d113bfe07bb314d",
+      "hash": "5b5df5c286ffcb78e406d5ef242de29f19938b422b0d2537a73ded5da02b2dac",
+      "modified": "2026-10-14T16:00:03.034Z",
+      "labelHash": "5b5df5c286ffcb78e406d5ef242de29f19938b422b0d2537a73ded5da02b2dac",
       "facets": {
         "subject": [
           "cat",
@@ -5819,7 +5834,12 @@
           "brand"
         ]
       },
-      "labelConfidence": "medium"
+      "labelConfidence": "medium",
+      "labelProvenance": {
+        "method": "carried-forward-after-requested-matte-repair",
+        "fromHash": "8a56f12bf9e1033184b93122ade1737029d966c85c0e3baa8d113bfe07bb314d",
+        "repairReceipt": "scripts/emoji-enhancement/animation-matte-repairs.json"
+      }
     },
     {
       "id": "b7098b00",
@@ -6034,14 +6054,14 @@
         "blob-emoji"
       ],
       "created": "2025-04-12T03:57:23.246Z",
-      "size": 33557982,
+      "size": 34153250,
       "width": 512,
       "height": 512,
       "animated": true,
       "aliases": [],
-      "hash": "db834a25579c8739af73a81108b7f3651e5bfa3fb4ab371cba5f683cc7e6afc5",
-      "modified": "2026-09-10T21:34:30.984Z",
-      "labelHash": "db834a25579c8739af73a81108b7f3651e5bfa3fb4ab371cba5f683cc7e6afc5",
+      "hash": "2f8ffb08cb7f7c96feaca6647cf5e21d25cc961ec4a8af53bdeb36da88d6294e",
+      "modified": "2026-10-14T16:00:03.069Z",
+      "labelHash": "2f8ffb08cb7f7c96feaca6647cf5e21d25cc961ec4a8af53bdeb36da88d6294e",
       "facets": {
         "subject": [
           "cat",
@@ -6075,7 +6095,12 @@
           "blob-emoji"
         ]
       },
-      "labelConfidence": "high"
+      "labelConfidence": "high",
+      "labelProvenance": {
+        "method": "carried-forward-after-requested-matte-repair",
+        "fromHash": "db834a25579c8739af73a81108b7f3651e5bfa3fb4ab371cba5f683cc7e6afc5",
+        "repairReceipt": "scripts/emoji-enhancement/animation-matte-repairs.json"
+      }
     },
     {
       "id": "11da988d",
@@ -7352,16 +7377,16 @@
         "blue"
       ],
       "created": "2026-04-14T15:24:35.629Z",
-      "size": 21979846,
+      "size": 21794540,
       "width": 512,
       "height": 512,
       "animated": true,
       "aliases": [
         "meow-enjoy-rain"
       ],
-      "hash": "a4a48feb686da5b6c7c7b402cd91cdf6f93c3c031d227685909e4a791e5dab06",
-      "modified": "2026-09-10T21:34:31.962Z",
-      "labelHash": "a4a48feb686da5b6c7c7b402cd91cdf6f93c3c031d227685909e4a791e5dab06",
+      "hash": "b45958a9ee90ec9d1cbc78f3bc2f31dda5182ab7f073e1051edca2db44da80a8",
+      "modified": "2026-10-14T16:00:03.113Z",
+      "labelHash": "b45958a9ee90ec9d1cbc78f3bc2f31dda5182ab7f073e1051edca2db44da80a8",
       "facets": {
         "subject": [
           "cat",
@@ -7386,7 +7411,12 @@
         ],
         "origin": []
       },
-      "labelConfidence": "high"
+      "labelConfidence": "high",
+      "labelProvenance": {
+        "method": "carried-forward-after-requested-matte-repair",
+        "fromHash": "a4a48feb686da5b6c7c7b402cd91cdf6f93c3c031d227685909e4a791e5dab06",
+        "repairReceipt": "scripts/emoji-enhancement/animation-matte-repairs.json"
+      }
     },
     {
       "id": "42ac4783",
@@ -7408,16 +7438,16 @@
         "white"
       ],
       "created": "2026-04-14T15:24:30.045Z",
-      "size": 21766186,
+      "size": 21977522,
       "width": 512,
       "height": 512,
       "animated": true,
       "aliases": [
         "meow-enjoy-snow"
       ],
-      "hash": "cdd3882e81eef6458e2934c3302b5ff0f11304e3047a1c58ae4c2b2b8868b9ca",
-      "modified": "2026-09-10T21:34:32.491Z",
-      "labelHash": "cdd3882e81eef6458e2934c3302b5ff0f11304e3047a1c58ae4c2b2b8868b9ca",
+      "hash": "c690aec78ed5dccc551123b17c3f970e8c9123eb4a82bb442453dc2ac4a82b46",
+      "modified": "2026-10-14T16:00:03.157Z",
+      "labelHash": "c690aec78ed5dccc551123b17c3f970e8c9123eb4a82bb442453dc2ac4a82b46",
       "facets": {
         "subject": [
           "cat"
@@ -7444,7 +7474,12 @@
         ],
         "origin": []
       },
-      "labelConfidence": "high"
+      "labelConfidence": "high",
+      "labelProvenance": {
+        "method": "carried-forward-after-requested-matte-repair",
+        "fromHash": "cdd3882e81eef6458e2934c3302b5ff0f11304e3047a1c58ae4c2b2b8868b9ca",
+        "repairReceipt": "scripts/emoji-enhancement/animation-matte-repairs.json"
+      }
     },
     {
       "id": "ebe340ea",
@@ -13229,16 +13264,16 @@
         "brand"
       ],
       "created": "2026-04-14T15:24:22.666Z",
-      "size": 35709558,
+      "size": 35707830,
       "width": 512,
       "height": 512,
       "animated": true,
       "aliases": [
         "meow-red-bull"
       ],
-      "hash": "19ba0520428b56298dbe81947be673d0b17bf387b3b5a24071d04f35e43d9c2d",
-      "modified": "2026-09-10T21:34:34.151Z",
-      "labelHash": "19ba0520428b56298dbe81947be673d0b17bf387b3b5a24071d04f35e43d9c2d",
+      "hash": "d8f557532375bb66c9242baadfbf5530e4645d39801d8ac1f42cb1d266b7409f",
+      "modified": "2026-10-14T16:00:03.201Z",
+      "labelHash": "d8f557532375bb66c9242baadfbf5530e4645d39801d8ac1f42cb1d266b7409f",
       "facets": {
         "subject": [
           "cat"
@@ -13270,7 +13305,12 @@
           "brand"
         ]
       },
-      "labelConfidence": "medium"
+      "labelConfidence": "medium",
+      "labelProvenance": {
+        "method": "carried-forward-after-requested-matte-repair",
+        "fromHash": "19ba0520428b56298dbe81947be673d0b17bf387b3b5a24071d04f35e43d9c2d",
+        "repairReceipt": "scripts/emoji-enhancement/animation-matte-repairs.json"
+      }
     },
     {
       "id": "3383a98b",
@@ -13295,14 +13335,14 @@
         "blob-emoji"
       ],
       "created": "2025-04-12T03:57:23.307Z",
-      "size": 16578340,
+      "size": 16673954,
       "width": 512,
       "height": 512,
       "animated": true,
       "aliases": [],
-      "hash": "c06a294548bccea36fb4cbbfdcb238028b65565cb5fe2a1698fc76f7f8a07fc0",
-      "modified": "2026-09-10T21:34:34.406Z",
-      "labelHash": "c06a294548bccea36fb4cbbfdcb238028b65565cb5fe2a1698fc76f7f8a07fc0",
+      "hash": "efe373639d12a186bcde71c7706720860af9042d6e37a6e5f76bb2400308bf14",
+      "modified": "2026-10-14T16:00:03.243Z",
+      "labelHash": "efe373639d12a186bcde71c7706720860af9042d6e37a6e5f76bb2400308bf14",
       "facets": {
         "subject": [
           "cat",
@@ -13331,7 +13371,12 @@
           "blob-emoji"
         ]
       },
-      "labelConfidence": "high"
+      "labelConfidence": "high",
+      "labelProvenance": {
+        "method": "carried-forward-after-requested-matte-repair",
+        "fromHash": "c06a294548bccea36fb4cbbfdcb238028b65565cb5fe2a1698fc76f7f8a07fc0",
+        "repairReceipt": "scripts/emoji-enhancement/animation-matte-repairs.json"
+      }
     },
     {
       "id": "661adf1a",
@@ -16005,14 +16050,14 @@
         "white"
       ],
       "created": "2025-04-12T03:57:20.260Z",
-      "size": 3525372,
+      "size": 3416634,
       "width": 460,
       "height": 512,
       "animated": true,
       "aliases": [],
-      "hash": "b340dc3ba4ccb22d318b52b03d7fce17049d2e179ac26c52a7287dd56b07770f",
-      "modified": "2026-09-10T21:34:30.330Z",
-      "labelHash": "b340dc3ba4ccb22d318b52b03d7fce17049d2e179ac26c52a7287dd56b07770f",
+      "hash": "3d189ff92e266992af13e8ee4e615552f3c023f4a12cdbe5348ed449d51ccad1",
+      "modified": "2026-10-14T16:00:02.887Z",
+      "labelHash": "3d189ff92e266992af13e8ee4e615552f3c023f4a12cdbe5348ed449d51ccad1",
       "facets": {
         "subject": [
           "cat"
@@ -16037,7 +16082,12 @@
         ],
         "origin": []
       },
-      "labelConfidence": "medium"
+      "labelConfidence": "medium",
+      "labelProvenance": {
+        "method": "carried-forward-after-requested-matte-repair",
+        "fromHash": "b340dc3ba4ccb22d318b52b03d7fce17049d2e179ac26c52a7287dd56b07770f",
+        "repairReceipt": "scripts/emoji-enhancement/animation-matte-repairs.json"
+      }
     },
     {
       "id": "23cd88f5",
@@ -16824,14 +16874,14 @@
         "blob-emoji"
       ],
       "created": "2025-04-12T03:57:24.524Z",
-      "size": 31329696,
+      "size": 32118538,
       "width": 512,
       "height": 512,
       "animated": true,
       "aliases": [],
-      "hash": "53d49029b490915d8e6fe7e546c939b109bb945382d4cb9c4be74dcb98a309c2",
-      "modified": "2026-09-10T21:34:30.647Z",
-      "labelHash": "53d49029b490915d8e6fe7e546c939b109bb945382d4cb9c4be74dcb98a309c2",
+      "hash": "f20c3d010d6432079b0d645ff46823d8f79e432a6011e9ef481a48ec2c99beb6",
+      "modified": "2026-10-14T16:00:02.940Z",
+      "labelHash": "f20c3d010d6432079b0d645ff46823d8f79e432a6011e9ef481a48ec2c99beb6",
       "facets": {
         "subject": [
           "cat"
@@ -16857,7 +16907,12 @@
           "blob-emoji"
         ]
       },
-      "labelConfidence": "medium"
+      "labelConfidence": "medium",
+      "labelProvenance": {
+        "method": "carried-forward-after-requested-matte-repair",
+        "fromHash": "53d49029b490915d8e6fe7e546c939b109bb945382d4cb9c4be74dcb98a309c2",
+        "repairReceipt": "scripts/emoji-enhancement/animation-matte-repairs.json"
+      }
     },
     {
       "id": "bdd81d8d",
@@ -20944,14 +20999,14 @@
         "actor-likeness"
       ],
       "created": "2025-04-12T03:57:25.896Z",
-      "size": 4016282,
+      "size": 3886954,
       "width": 512,
       "height": 512,
       "animated": true,
       "aliases": [],
-      "hash": "90ee2baee9dcef86f4a48489fb3ff46a9a52902256f1ea4161aad23884c7f3a2",
-      "modified": "2026-09-10T21:34:35.353Z",
-      "labelHash": "90ee2baee9dcef86f4a48489fb3ff46a9a52902256f1ea4161aad23884c7f3a2",
+      "hash": "f85b23e82fd7c24d9d00c23f8d3be7b14717a9185084cd0a6e161f52215de4e2",
+      "modified": "2026-10-14T16:00:02.906Z",
+      "labelHash": "f85b23e82fd7c24d9d00c23f8d3be7b14717a9185084cd0a6e161f52215de4e2",
       "facets": {
         "subject": [
           "person"
@@ -20979,7 +21034,12 @@
           "actor-likeness"
         ]
       },
-      "labelConfidence": "high"
+      "labelConfidence": "high",
+      "labelProvenance": {
+        "method": "carried-forward-after-requested-matte-repair",
+        "fromHash": "90ee2baee9dcef86f4a48489fb3ff46a9a52902256f1ea4161aad23884c7f3a2",
+        "repairReceipt": "scripts/emoji-enhancement/animation-matte-repairs.json"
+      }
     },
     {
       "id": "e8e40528",
