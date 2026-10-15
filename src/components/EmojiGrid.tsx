@@ -1,7 +1,7 @@
 import type { ReactElement, KeyboardEvent, CSSProperties } from "react";
 import { memo, useCallback, useMemo, useState, useEffect, useLayoutEffect, useRef } from "react";
 import type { EmojiMetadata } from "../types/emoji";
-import { cn } from "../lib/utils";
+import { clsx as cn } from "clsx";
 import { recoverEmojiPreview, restoreEmojiPreview, emojiAsset, previewSrcSet, animatedSrcSet, fittingSize, stillImageProps } from "../lib/emojiAssets";
 import { GRID_SCALES, LIGHT_STICKER_SIZE, STICKER_SIZES } from "../lib/gridScales";
 import { useMarqueeSelection, type MarqueeMode } from "../hooks/useMarqueeSelection";
@@ -204,7 +204,7 @@ const EmojiCell = ({
   const name = emoji.filename.split("/").pop()?.replace(/\.[^.]+$/, "") || emoji.filename;
 
   return (
-    <div className="emoji-cell min-w-0" onPointerEnter={startPlaying} onPointerLeave={event => { if (event.pointerType === 'touch') return; stopPlaying(); if (!event.currentTarget.contains(document.activeElement)) setActions(false); }} onBlur={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) { stopPlaying(); setActions(false); } }} role="gridcell" data-id={emoji.id} style={{ "--emoji-size": `${baseSize}px`, "--sticker-size": `${stickerSize}px`, ...(emoji.placeholder && { "--ph-x": emoji.placeholder[0], "--ph-y": emoji.placeholder[1] }) } as CSSProperties}>
+    <div className="emoji-cell min-w-0" onPointerEnter={startPlaying} onPointerLeave={event => { if (event.pointerType === 'touch') return; stopPlaying(); if (!event.currentTarget.contains(document.activeElement)) setActions(false); }} onBlur={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) { stopPlaying(); setActions(false); } }} role="gridcell" data-id={emoji.id} style={emoji.placeholder && { "--ph-x": emoji.placeholder[0], "--ph-y": emoji.placeholder[1] } as CSSProperties}>
       <button
         type="button"
         className={cn(
@@ -382,7 +382,11 @@ const EmojiGrid = ({
           style={{
             gap: GRID_GAPS[gridScale] ?? GRID_GAPS[0],
             gridTemplateColumns: `repeat(auto-fill, minmax(${baseSize}px, 1fr))`,
-          }}
+            // Every cell shares these; set once here, they inherit, instead of
+            // being repeated in all 366 cells' inline styles.
+            "--emoji-size": `${baseSize}px`,
+            "--sticker-size": `${stickerSize}px`,
+          } as CSSProperties}
         >
           {emojis.map((emoji, index) => (
             <MemoizedEmojiCell

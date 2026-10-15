@@ -1,6 +1,6 @@
 import { track, trackError } from '../lib/analytics';
 import { useState, useRef, useCallback, useEffect } from "react";
-import { Button } from "./ui/button";
+import { eraserInkButton, eraserPencilButton, ghostIconButton, sheetToolButton } from "./ui/buttonClasses";
 import type { EmojiMetadata } from "../types/emoji";
 import { getAbsoluteUrl } from "../lib/utils";
 import type { SlackResolution } from '../lib/slackExportPlan';
@@ -223,7 +223,7 @@ export function EmojiExport({ onInvertVisible, onOpenSheet, selectedEmojis, onCl
             <div className="slack-guide-receipt"><Check className="h-3.5 w-3.5" /> {copiedScript.count} emojis · {copiedScript.megabytes} MB on your clipboard</div>
             <h2 id="slack-instructions-title">Three steps to get them into Slack</h2>
           </div>
-          <Button ref={closeInstructionsRef} variant="ghost" size="icon" aria-label="Close Slack instructions" onClick={closeInstructions}><X className="h-4 w-4" /></Button>
+          <button ref={closeInstructionsRef} className={ghostIconButton} aria-label="Close Slack instructions" onClick={closeInstructions}><X className="h-4 w-4" /></button>
         </div>
         <p className="slack-guide-note" aria-label="Exported image resolutions">
           {copiedScript.resolutions.map(r => `${r.count} ${r.animated ? 'animated' : 'still'} at ${r.size}×${r.size}`).join(' · ')}
@@ -315,51 +315,43 @@ export function EmojiExport({ onInvertVisible, onOpenSheet, selectedEmojis, onCl
         </div>
         {/* The tools sit in a groove routed into the desk, like type blocks in a case. */}
         <div className="sheet-toolrail">
-        <Button
+        <button
           ref={selectAllButtonRef}
-          variant="ghost"
           onClick={onSelectAll}
-          className={`sheet-tool h-9 w-9 p-0${flashSelectAll ? " sheet-flash" : ""}`}
-          size="sm"
+          className={sheetToolButton(flashSelectAll ? "sheet-flash" : "")}
           title="Select All Visible"
         >
           <CheckSquare className="h-4 w-4" />
-        </Button>
-        <Button
-          variant="ghost"
+        </button>
+        <button
           onClick={onDeselectVisible}
-          className="sheet-tool h-9 w-9 p-0"
-          size="sm"
+          className={sheetToolButton()}
           title="Deselect visible"
           aria-label="Deselect visible"
           disabled={!hasVisibleSelection}
         >
           <XSquare className="h-4 w-4" />
-        </Button>
-        <Button
-          variant="ghost"
+        </button>
+        <button
           onClick={onClearSelection}
-          className="sheet-tool h-9 w-9 p-0"
-          size="sm"
+          className={sheetToolButton()}
           title="Clear all selected emojis"
           aria-label="Clear all selected emojis"
           disabled={selectedEmojis.length === 0}
         >
           <Trash2 className="h-4 w-4" />
-        </Button>
-        {onInvertVisible && <Button variant="ghost" size="sm" className="sheet-tool h-9 w-9 p-0" onClick={onInvertVisible} disabled={!filteredEmojis.length} title="Invert visible selection" aria-label="Invert visible selection"><ArrowLeftRight className="h-4 w-4" /></Button>}
+        </button>
+        {onInvertVisible && <button className={sheetToolButton()} onClick={onInvertVisible} disabled={!filteredEmojis.length} title="Invert visible selection" aria-label="Invert visible selection"><ArrowLeftRight className="h-4 w-4" /></button>}
         <div className="sheet-divider" />
-          <Button
-            variant="ghost"
+          <button
             onClick={copyShareLink}
             disabled={!shareUrl || selectedEmojis.length === 0}
-            className="sheet-tool sheet-share h-9 w-9 p-0"
-            size="sm"
+            className={sheetToolButton("sheet-share")}
             title="Copy a link to this sheet"
             aria-label="Copy a link to this sheet"
           >
             <Link className="h-4 w-4" />
-          </Button>
+          </button>
         </div>
         <div className="sheet-eraser-pair flex items-center">
           <span
@@ -367,24 +359,24 @@ export function EmojiExport({ onInvertVisible, onOpenSheet, selectedEmojis, onCl
             onMouseEnter={nudgeSelectAll}
             onClick={nudgeSelectAll}
           >
-            <Button
+            <button
               ref={scriptButtonRef}
               onClick={() => void exportFiles('slack')}
               disabled={selectedEmojis.length === 0 || isExporting}
-              className="sheet-eraser sheet-eraser-pencil h-9 gap-2 rounded-r-none px-4 font-semibold"
+              className={eraserPencilButton}
             >
               {isExporting ? <LoaderCircle className="h-4 w-4 animate-spin motion-reduce:animate-none" /> : <Copy className="h-4 w-4" />}
               {isExporting ? "Preparing…" : overwriteExisting ? "Copy overwrite script" : "Copy Slack script"}
-            </Button>
+            </button>
           </span>
-          <Button
+          <button
             aria-label="Other export options"
             popoverTarget="export-menu"
             disabled={selectedEmojis.length === 0 || isExporting}
-            className="sheet-eraser sheet-eraser-ink h-9 w-8 rounded-l-none p-0"
+            className={eraserInkButton}
           >
             <ChevronDown className="h-4 w-4" />
-          </Button>
+          </button>
           <ExportOptions
             id="export-menu"
             panelRef={exportMenuRef}
