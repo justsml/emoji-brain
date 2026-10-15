@@ -793,28 +793,106 @@ button.sheet-flag:focus-visible { outline: 2px solid hsl(var(--cut)); outline-of
 .sheet-eraser-ink:disabled::before { background: linear-gradient(hsl(214 23% 75%), hsl(214 20% 65%)); }
 .sheet-tray button:disabled:not(.sheet-eraser):not(.sheet-tool) { opacity: 0.6; }
 
-/* Give functional icons their own readable surface over the desk texture. */
-.sheet-tray .sheet-tool {
-  color: hsl(24 38% 13%);
-  background: hsl(38 52% 94%);
-  border: 1px solid hsl(24 30% 35% / 0.45);
-  box-shadow: 0 1px 2px hsl(var(--lift) / 0.15);
+/* The tools sit in a groove routed into the desk: darker end grain, scratched
+   by years of pencils, holding a row of pale wooden blocks. Each block keeps a
+   solid base color so its ink reads at a known contrast over the grain. */
+.sheet-toolrail {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.3rem 0.35rem 0.4rem;
+  border-radius: 7px 9px 6px 8px;
+  background-color: hsl(29 30% 47%);
+  background-image:
+    radial-gradient(45% 120% at 12% 115%, hsl(24 45% 12% / 0.22), transparent 70%),
+    radial-gradient(30% 90% at 88% -10%, hsl(24 45% 12% / 0.16), transparent 70%),
+    repeating-linear-gradient(92deg, hsl(26 35% 18% / 0.09) 0 1px, transparent 1px 6px, hsl(38 50% 80% / 0.06) 6px 7px, transparent 7px 13px),
+    linear-gradient(hsl(28 32% 40%), hsl(31 34% 52%));
+  box-shadow:
+    inset 0 3px 4px hsl(24 45% 10% / 0.5),
+    inset 0 -1px 0 hsl(36 50% 78% / 0.35),
+    0 1px 0 hsl(38 60% 94% / 0.6);
 }
-.sheet-tray .sheet-tool svg { width: 18px; height: 18px; stroke-width: 2; }
+.sheet-toolrail .sheet-divider {
+  height: 1.6rem;
+  margin: 0 0.15rem;
+  background: hsl(24 45% 12% / 0.4);
+  box-shadow: 1px 0 0 hsl(38 50% 80% / 0.3);
+}
+.sheet-toolrail .sheet-divider:has(+ .sheet-share:disabled) { display: none; }
+
+.sheet-tray .sheet-tool {
+  --block-side: hsl(30 30% 58%);
+  position: relative;
+  color: hsl(24 38% 13%);
+  border: 0;
+  border-radius: 4px 5px 4px 3px;
+  background-color: hsl(39 46% 87%);
+  background-image:
+    radial-gradient(70% 50% at 75% 15%, hsl(40 70% 97% / 0.55), transparent),
+    repeating-linear-gradient(176deg, hsl(30 40% 40% / 0.07) 0 1px, transparent 1px 4px),
+    linear-gradient(hsl(40 50% 90%), hsl(37 40% 83%));
+  box-shadow:
+    inset 0 1px 0 hsl(40 70% 97% / 0.85),
+    inset 0 0 0 1px hsl(28 30% 40% / 0.18),
+    0 2px 0 var(--block-side),
+    0 3px 3px hsl(24 45% 10% / 0.35);
+  transition: translate 90ms ease, box-shadow 90ms ease;
+}
+/* inked into the wood: a lit lip under the stroke reads as pressed in */
+.sheet-tray .sheet-tool svg {
+  width: 18px;
+  height: 18px;
+  stroke-width: 2;
+  filter: drop-shadow(0 1px 0 hsl(40 70% 97% / 0.75));
+}
 .sheet-tray .sheet-tool:hover:not(:disabled) {
   color: hsl(24 38% 13%);
-  background: hsl(38 65% 99%);
-  border-color: hsl(24 30% 35%);
+  background-color: hsl(40 55% 91%);
+  translate: 0 -1px;
+  box-shadow:
+    inset 0 1px 0 hsl(40 70% 97% / 0.9),
+    inset 0 0 0 1px hsl(28 30% 40% / 0.22),
+    0 3px 0 var(--block-side),
+    0 5px 5px hsl(24 45% 10% / 0.35);
+}
+.sheet-tray .sheet-tool:active:not(:disabled) {
+  translate: 0 2px;
+  box-shadow:
+    inset 0 1px 2px hsl(24 45% 10% / 0.25),
+    inset 0 0 0 1px hsl(28 30% 40% / 0.25),
+    0 0 0 var(--block-side);
 }
 .sheet-tray .sheet-tool:focus-visible {
   outline: 2px solid hsl(var(--cut));
   outline-offset: 2px;
 }
+/* a block with nothing to do sinks flush into the groove, its ink worn */
 .sheet-tray .sheet-tool:disabled {
   opacity: 1;
-  color: hsl(24 18% 34%);
-  background: hsl(34 28% 83%);
-  box-shadow: none;
+  color: hsl(26 22% 26%);
+  background-color: hsl(34 26% 70%);
+  background-image:
+    repeating-linear-gradient(176deg, hsl(30 40% 30% / 0.07) 0 1px, transparent 1px 4px),
+    linear-gradient(hsl(34 26% 68%), hsl(33 24% 72%));
+  box-shadow: inset 0 1px 2px hsl(24 45% 10% / 0.3);
+  translate: 0 2px;
+}
+.sheet-tray .sheet-tool:disabled svg { filter: none; opacity: 0.8; }
+
+/* the select-all nudge glows from the block instead of repainting it */
+@keyframes tool-flash {
+  0%, 100% { outline-color: hsl(var(--primary) / 0); }
+  30% { outline-color: hsl(var(--primary) / 0.9); color: hsl(var(--primary)); }
+}
+.sheet-tray .sheet-tool.sheet-flash {
+  outline: 3px solid hsl(var(--primary) / 0);
+  outline-offset: 2px;
+  animation: tool-flash 0.9s ease-out;
+}
+@media (prefers-reduced-motion: reduce) {
+  .sheet-tray .sheet-tool { transition: none; }
+  .sheet-tray .sheet-tool.sheet-flash { animation: none; }
 }
 .dark .sheet-tray .sheet-estimate {
   color: hsl(24 38% 13%);
@@ -845,6 +923,7 @@ button.sheet-flag:focus-visible { outline: 2px solid hsl(var(--cut)); outline-of
   .sheet-estimate-slot { display: block; height: 36px; min-width: 0; }
   .sheet-estimate { margin-right: 0; width: 100%; height: 36px; gap: 0; }
   .sheet-estimate-px { font-size: 0.8125rem; }
+  .sheet-toolrail { display: contents; }
   .sheet-tray .sheet-tool { width: 100%; min-width: 0; }
   .sheet-divider { display: none; }
   .sheet-share:disabled { display: inline-flex; visibility: hidden; }

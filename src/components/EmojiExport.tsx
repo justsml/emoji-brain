@@ -311,6 +311,8 @@ export function EmojiExport({ onInvertVisible, onOpenSheet, selectedEmojis, onCl
           </button>
         )}
         </div>
+        {/* The tools sit in a groove routed into the desk, like type blocks in a case. */}
+        <div className="sheet-toolrail">
         <Button
           ref={selectAllButtonRef}
           variant="ghost"
@@ -356,6 +358,7 @@ export function EmojiExport({ onInvertVisible, onOpenSheet, selectedEmojis, onCl
           >
             <Link className="h-4 w-4" />
           </Button>
+        </div>
         <div className="flex items-center">
           <span
             title={selectedEmojis.length === 0 ? "Select some emojis first, or click Select All" : undefined}
