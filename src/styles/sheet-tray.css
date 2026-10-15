@@ -161,7 +161,7 @@
 /* Years of compass-point carving, in the open laminate between the sheet and
    its actions, measured back from the actions so a full strip rarely covers it. */
 .desk-carve {
-  inset: auto 628px 9px auto;
+  inset: auto 684px 9px auto;
   width: 196px;
   height: 30px;
   background: hsl(26 50% 24%);
@@ -353,6 +353,11 @@ button.sheet-flag:focus-visible { outline: 2px solid hsl(var(--cut)); outline-of
 }
 .sheet-tray .sheet-eraser:focus-visible { outline: 2px solid hsl(var(--cut)); outline-offset: 4px; }
 
+/* Room to breathe: the crumbs below sit in the gap, clear of the link button,
+   and the skewed block eats the label's edges, so the padding is generous. */
+.sheet-eraser-pair { margin-left: 2.25rem; }
+.sheet-tray .sheet-eraser-pencil { padding-inline: 1.65rem 1.5rem; gap: 0.6rem; }
+
 @media (max-width: 1100px) {
   .desk-carve { inset: auto 0.9rem 9px auto; width: 168px; height: 26px; }
 }
@@ -362,6 +367,8 @@ button.sheet-flag:focus-visible { outline: 2px solid hsl(var(--cut)); outline-of
   .desk-surface::before { left: 0.8rem; right: 0.8rem; }
   .desk-pencil { left: auto; right: 2.5rem; width: 96px; }
   .sheet-eraser-pencil::after { display: none; }
+  .sheet-eraser-pair { margin-left: 0; }
+  .sheet-tray .sheet-eraser-pencil { padding-inline: 1rem; gap: 0.5rem; }
 }
 @media (prefers-reduced-motion: reduce) {
   .desk-surface[data-ready] .desk-pencil { animation: none; }
@@ -375,6 +382,8 @@ button.sheet-flag:focus-visible { outline: 2px solid hsl(var(--cut)); outline-of
   min-width: 0;
 }
 .sheet-expand { flex-shrink: 0; min-height: 36px; padding: 0 .5rem; font-size: .75rem; cursor: pointer; white-space: nowrap; }
+/* with no panel to open it is only a count, so it must not look pressable */
+.sheet-expand[data-static] { display: inline-flex; align-items: center; cursor: default; color: hsl(var(--muted-foreground)); font-weight: 600; }
 .sheet-expand:focus-visible { outline: 2px solid hsl(var(--cut)); }
 
 /* empty is an invitation, not a status */
@@ -613,16 +622,23 @@ button.sheet-flag:focus-visible { outline: 2px solid hsl(var(--cut)); outline-of
   position: fixed;
   inset: auto 1rem 4.75rem auto;
   margin: 0;
-  width: min(23rem, calc(100vw - 2rem));
+  width: min(24rem, calc(100vw - 2rem));
   max-height: calc(100dvh - 6rem);
   overflow-y: auto;
-  padding: 0;
+  padding: 0 0 0.25rem;
   border: 0;
-  border-top: 2px solid hsl(var(--cut));
-  border-radius: 3px;
-  background: hsl(var(--popover));
+  /* an index card pinned to the desk: the red header rule is its top line,
+     the faint blue ruling is the lines you write on */
+  border-top: 3px solid hsl(var(--cut));
+  border-radius: 3px 3px 5px 5px;
+  background:
+    repeating-linear-gradient(transparent 0 1.7rem, hsl(210 60% 50% / 0.07) 1.7rem calc(1.7rem + 1px)),
+    hsl(var(--popover));
   color: hsl(var(--popover-foreground));
-  box-shadow: 0 18px 44px -14px hsl(var(--lift) / 0.55);
+  box-shadow:
+    0 1px 0 hsl(var(--lift) / 0.25),
+    0 2px 0 hsl(40 40% 82%),
+    0 22px 44px -14px hsl(var(--lift) / 0.6);
 }
 
 .export-menu::backdrop { background: transparent; }
@@ -632,7 +648,7 @@ button.sheet-flag:focus-visible { outline: 2px solid hsl(var(--cut)); outline-of
   color: hsl(var(--muted-foreground));
   font-family: var(--font-ui);
   font-size: 0.6875rem;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.09em;
   text-transform: uppercase;
 }
@@ -642,20 +658,32 @@ button.sheet-flag:focus-visible { outline: 2px solid hsl(var(--cut)); outline-of
   align-items: baseline;
   justify-content: space-between;
   gap: 1rem;
-  padding: 0.8rem 0.9rem 0.55rem;
+  padding: 0.7rem 1rem 0.1rem;
   color: hsl(var(--muted-foreground));
   font-size: 0.75rem;
   font-variant-numeric: tabular-nums;
 }
+/* the ceiling, stated once in words and once as the end of every bar */
+.size-options-limit {
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0 1rem 0.4rem;
+  color: hsl(var(--muted-foreground));
+  font-size: 0.75rem;
+}
+.size-options-limit strong { color: hsl(var(--foreground)); font-variant-numeric: tabular-nums; }
+.size-options-limit-end { font-size: 0.6875rem; font-variant-numeric: tabular-nums; }
 
 /* Each size is a row on a ruled sheet: the choice is marked by weight and a
    rule, never by a filled box. */
 .size-option {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 0.7rem;
   width: 100%;
-  padding: 0.5rem 0.9rem;
+  padding: 0.4rem 1rem;
   border: 0;
   border-top: 1px solid hsl(var(--rule) / 0.22);
   background: none;
@@ -668,14 +696,19 @@ button.sheet-flag:focus-visible { outline: 2px solid hsl(var(--cut)); outline-of
 .size-option:hover { background: hsl(var(--foreground) / 0.05); }
 .size-option:focus-visible { outline: 2px solid hsl(var(--cut)); outline-offset: -2px; }
 
+/* a ring that fills in, like a box ticked on a form */
 .size-option-mark {
   display: grid;
   place-items: center;
   flex-shrink: 0;
   width: 1rem;
   height: 1rem;
+  border: 1.5px solid hsl(var(--muted-foreground));
+  border-radius: 50%;
   color: hsl(var(--cut));
 }
+.size-option[aria-pressed="true"] .size-option-mark { border-color: hsl(var(--cut)); }
+.size-option-originals .size-option-mark { border: 0; border-radius: 0; }
 
 .size-option-name {
   flex: 1;
@@ -697,7 +730,7 @@ button.sheet-flag:focus-visible { outline: 2px solid hsl(var(--cut)); outline-of
 
 .size-option-figures {
   flex-shrink: 0;
-  width: 6.5rem;
+  width: 7.5rem;
   text-align: right;
 }
 .size-option-px {
@@ -714,64 +747,137 @@ button.sheet-flag:focus-visible { outline: 2px solid hsl(var(--cut)); outline-of
   font-variant-numeric: tabular-nums;
 }
 
-/* every row against the same 8 MB ceiling, so the rows compare at a glance */
+/* every row against the same 8 MB ceiling, so the rows compare at a glance:
+   a full track is the limit, and a tick marks where it ends */
 .size-option-bar {
   display: block;
-  height: 2px;
+  height: 4px;
   margin-top: 0.3rem;
-  background: hsl(var(--foreground) / 0.14);
+  border-radius: 1px;
+  background: hsl(var(--foreground) / 0.12);
+  box-shadow: 1px 0 0 hsl(var(--foreground) / 0.45);
 }
 .size-option-bar i {
   display: block;
   height: 100%;
+  border-radius: 1px;
   background: hsl(var(--rule));
 }
 
 .size-option[data-active="true"] { background: hsl(var(--foreground) / 0.05); }
+.size-option[data-active="true"]::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3px;
+  background: hsl(var(--cut));
+}
 .size-option[data-active="true"] .size-option-name { color: hsl(var(--foreground)); }
 .size-option[data-active="true"] .size-option-bar i { background: hsl(var(--cut)); }
 
+/* over the limit is said in words and hatched, never colour alone */
 .size-option[data-over="true"] .size-option-name small,
 .size-option[data-over="true"] .size-option-bytes { color: hsl(var(--destructive)); }
-.size-option[data-over="true"] .size-option-bar i { background: hsl(var(--destructive)); }
+.size-option[data-over="true"] .size-option-bar i {
+  background: repeating-linear-gradient(135deg, hsl(var(--destructive)) 0 3px, hsl(var(--destructive) / 0.45) 3px 6px);
+}
 
 /* the originals sit apart: a download, not another rung on the Slack ladder */
-.size-option-originals { border-top-color: hsl(var(--rule) / 0.5); }
+.size-option-originals { margin-top: 0.2rem; border-top: 1px dashed hsl(var(--rule) / 0.55); }
 .size-option-originals .size-option-mark { color: hsl(var(--muted-foreground)); }
 .size-option-originals:hover .size-option-mark { color: hsl(var(--foreground)); }
 .size-option-originals .size-option-bytes { color: hsl(var(--muted-foreground)); }
 
-.export-formats {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.15rem;
-  padding: 0.7rem 0.6rem 0.6rem;
-  border-top: 1px solid hsl(var(--rule) / 0.35);
+/* The one thing the card is for. Overwrite sits above it because it changes
+   what this button does, and turns it from red rubber to a warning. */
+.export-primary { padding: 0.65rem 1rem 0.1rem; }
+.export-primary-button {
+  display: block;
+  width: 100%;
+  min-height: 2.75rem;
+  padding: 0.6rem 1rem;
+  border: 0;
+  border-radius: 3px 8px 8px 3px;
+  background: linear-gradient(hsl(355 66% 43%), hsl(355 62% 36%));
+  box-shadow:
+    inset 0 1px 0 hsl(0 0% 100% / 0.28),
+    0 3px 0 hsl(355 52% 28%),
+    0 5px 6px -1px hsl(var(--lift) / 0.4);
+  color: hsl(0 0% 100%);
+  cursor: pointer;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  text-shadow: 0 -1px 0 hsl(0 0% 0% / 0.22);
+  transition: transform 90ms ease, box-shadow 90ms ease;
 }
-.export-formats h3 { width: 100%; padding: 0 0.3rem 0.35rem; }
-.export-overwrite { width: 100%; padding: .65rem; margin-bottom: .5rem; border: 1px solid hsl(var(--destructive) / .35); border-radius: .4rem; background: hsl(var(--destructive) / .06); }
-.export-overwrite label { display: flex; align-items: center; gap: .5rem; font-size: .8rem; font-weight: 600; cursor: pointer; }
-.export-overwrite input { width: 1rem; height: 1rem; flex-shrink: 0; accent-color: hsl(var(--destructive)); }
-.export-overwrite p { margin: .5rem 0 0; font-size: .75rem; line-height: 1.5; color: hsl(var(--muted-foreground)); }
+.export-primary-button:hover { filter: brightness(1.06); }
+.export-primary-button:active { transform: translateY(2px); box-shadow: inset 0 1px 2px hsl(0 0% 0% / 0.2), 0 1px 0 hsl(355 52% 28%); }
+.export-primary-button:focus-visible { outline: 2px solid hsl(var(--foreground)); outline-offset: 3px; }
+.export-primary[data-destructive="true"] .export-primary-button {
+  background: repeating-linear-gradient(-45deg, hsl(6 74% 28%) 0 10px, hsl(6 74% 24%) 10px 20px);
+  box-shadow: inset 0 1px 0 hsl(0 0% 100% / 0.2), 0 3px 0 hsl(6 70% 15%), 0 5px 6px -1px hsl(var(--lift) / 0.4);
+}
+.export-primary p {
+  margin: 0.55rem 0 0;
+  color: hsl(var(--muted-foreground));
+  font-size: 0.75rem;
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+}
+.export-primary p { display: flex; flex-wrap: wrap; justify-content: center; gap: 0 0.45rem; }
+.export-primary[data-over="true"] p { color: hsl(var(--destructive)); font-weight: 600; }
+
+/* The destructive option: a caution slip, apart from the sizes and the
+   formats, with its consequences written out beside the box. */
+.export-replace {
+  margin: 0.65rem 1rem 0;
+  padding: 0.5rem 0.7rem;
+  border: 1px dashed hsl(var(--destructive) / 0.6);
+  border-radius: 3px;
+  background: hsl(var(--destructive) / 0.06);
+}
+.export-replace[data-on="true"] { border-style: solid; background: hsl(var(--destructive) / 0.1); }
+.export-replace-switch {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.export-replace-switch input { width: 1rem; height: 1rem; flex-shrink: 0; accent-color: hsl(var(--destructive)); }
+.export-replace-switch:has(input:focus-visible) { outline: 2px solid hsl(var(--cut)); outline-offset: 3px; border-radius: 2px; }
+.export-overwrite { margin-top: 0.45rem; padding-left: 1.55rem; }
+.export-overwrite p { margin: 0; font-size: 0.6875rem; line-height: 1.45; color: hsl(var(--muted-foreground)); }
+.export-overwrite .export-overwrite-lead {
+  margin-bottom: 0.3rem;
+  color: hsl(var(--destructive));
+  font-weight: 600;
+}
+.export-overwrite-lead svg { display: inline; vertical-align: -2px; }
 .slack-overwrite-warning { padding: .75rem; border: 1px solid hsl(var(--destructive) / .4); border-radius: .4rem; background: hsl(var(--destructive) / .06); }
 
+/* the other formats are a calm shelf: small, quiet, two to a row */
+.export-formats { padding: 0.75rem 1rem 0.5rem; }
+.export-formats h3 { padding-bottom: 0.4rem; }
+.export-formats-list { display: grid; grid-template-columns: 1fr 1fr; gap: 0.2rem 0.5rem; }
 .export-menu .export-formats button {
   border: 0;
+  border-bottom: 1px solid hsl(var(--rule) / 0.3);
   border-radius: 2px;
   background: transparent;
-  padding: 0.35rem 0.5rem;
+  padding: 0.3rem 0.35rem;
   color: inherit;
   cursor: pointer;
   font: inherit;
   font-size: 0.8125rem;
   text-align: left;
 }
-.export-menu .export-formats button:hover,
-.export-menu .export-formats button:focus-visible {
-  background: hsl(var(--accent));
-  color: hsl(var(--accent-foreground));
-  outline: none;
-}
+.export-menu .export-formats button:hover { background: hsl(var(--accent)); color: hsl(var(--accent-foreground)); }
+.export-menu .export-formats button:focus-visible { background: hsl(var(--accent)); color: hsl(var(--accent-foreground)); outline: 2px solid hsl(var(--cut)); outline-offset: -2px; }
+.export-menu .export-formats button:first-child { grid-column: 1 / -1; }
 
 @keyframes sheet-flash {
   0%, 100% { background: transparent; color: inherit; }
@@ -780,7 +886,7 @@ button.sheet-flag:focus-visible { outline: 2px solid hsl(var(--cut)); outline-of
 .sheet-flash { animation: sheet-flash 0.9s ease-out; }
 
 @media (prefers-reduced-motion: reduce) {
-  .sheet-estimate, .sheet-estimate-meter i, .size-option { transition: none; }
+  .sheet-estimate, .sheet-estimate-meter i, .size-option, .export-primary-button { transition: none; }
   .sheet-flash { animation: none; }
 }
 
