@@ -15,18 +15,38 @@ export function generateSlackBrowserScript(images: SlackScriptImage[], options: 
 (async () => {
   const images = ${serializedImages};
   const sleep = (milliseconds) => new Promise((resolve) => setTimeout(resolve, milliseconds));
+  // Slack has moved its page token around, so look in every place it has lived:
+  // an explicit override, the old page fields, then the signed-in session's
+  // own record of each workspace (which is where the current web client keeps it).
+  const sessionToken = () => {
+    try {
+      const teams = Object.values(JSON.parse(globalThis.localStorage?.getItem('localConfig_v2') || '{}').teams || {})
+        .filter((team) => team && typeof team.token === 'string' && team.token.length > 0);
+      const host = location.hostname.toLowerCase();
+      const sameWorkspace = teams.find((team) => {
+        try { if (new URL(team.url).hostname.toLowerCase() === host) return true; } catch {}
+        return typeof team.domain === 'string' && team.domain.toLowerCase() + '.slack.com' === host;
+      });
+      // Never guess between workspaces: a token for another one only fails.
+      return (sameWorkspace || (teams.length === 1 ? teams[0] : undefined))?.token;
+    } catch {
+      return undefined;
+    }
+  };
   const token = [
+    globalThis.SLACK_TOKEN,
     document.querySelector('input[name="token"]')?.value,
     globalThis.TS?.boot_data?.api_token,
     globalThis.boot_data?.api_token,
     globalThis.slackDebug?.token,
+    sessionToken(),
   ].find((value) => typeof value === 'string' && value.length > 0);
 
   if (!location.hostname.endsWith('.slack.com')) {
     throw new Error('Run this script on your Slack workspace customize/emoji page.');
   }
   if (!token) {
-    throw new Error('Could not find the Slack page token. Open /customize/emoji and retry.');
+    throw new Error('Could not find the Slack token. Open https://YOUR-WORKSPACE.slack.com/customize/emoji (not the /client view), reload, and paste the script again. If it still fails, set globalThis.SLACK_TOKEN = "xoxc-…" first, using the token from any /api request in the Network tab.');
   }
 
   const emojiName = (filename) => filename

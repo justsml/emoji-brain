@@ -113,11 +113,13 @@ test('ZIP downloads the native-size quality-90 WebPs and Markdown includes all p
   for(const size of [64,128,256])expect(markdown).toContain('/emoji-delivery/'+size+'/');
 });
 
-test('export can be canceled while the grid remains interactive',async({page,context})=>{
+test('export can be canceled from the progress overlay and the page is left as it was',async({page,context})=>{
   const errors: string[] = [];
   page.on('pageerror', error => errors.push(error.message));
+  // The progress overlay deliberately waits 150ms before appearing, so the
+  // export has to outlast that for there to be anything to cancel.
   await context.route('**/emoji-delivery/original/**',async route=>{
-    await new Promise(resolve=>setTimeout(resolve,500));
+    await new Promise(resolve=>setTimeout(resolve,2500));
     await route.continue().catch(()=>{});
   });
   await page.goto('/');
