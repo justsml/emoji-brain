@@ -20,6 +20,15 @@ export interface PlaceholderAtlas {
   cells: [number, number][];
 }
 
+/**
+ * The order the page lists the catalog in. The atlas is laid out in the same
+ * order, so each sticker's cell follows from its position and the island's
+ * packed catalog doesn't have to spell it out (src/lib/catalogCodec.ts).
+ */
+export function catalogFilenames(emojis: {filename: string}[]): string[] {
+  return emojis.map(emoji => emoji.filename).sort((a, b) => a.localeCompare(b));
+}
+
 let built: Promise<PlaceholderAtlas> | undefined;
 let builtFor = '';
 

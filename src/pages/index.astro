@@ -1,7 +1,8 @@
 ---
 // src/pages/index.astro
 import {catalogColors} from "../lib/catalogColors.server";
-import {placeholderAtlas} from "../lib/placeholderAtlas.server";
+import {catalogFilenames, placeholderAtlas} from "../lib/placeholderAtlas.server";
+import {encodeCatalog} from "../lib/catalogCodec";
 import CollectionGuide from "../components/CollectionGuide.astro";
 import { siteFaq } from "../data/site-faq";
 import Layout from "../layouts/Layout.astro";
@@ -38,13 +39,20 @@ const gzipByEmoji = (filename: string): Record<string, number> | undefined => {
 };
 
 // Keep catalog bookkeeping on the server instead of serializing it into the
-// client island. The explorer only needs the fields left in each record.
-const colors = await catalogColors(emojiMetadata.emojis.map(emoji => emoji.filename));
-const atlas = await placeholderAtlas(emojiMetadata.emojis.map(emoji => emoji.filename));
-const allEmojis: EmojiMetadata[] = (emojiMetadata.emojis || []).map(
-  ({id, filename, path, animated, size, tags, categories, aliases, facets}, index) =>
-    ({id, filename, path, animated, size, tags, categories, aliases, colors: colors[index], themes: [...new Set([...facets.subject, ...facets.expression, ...facets.intent])], gzip: gzipByEmoji(filename), originalBytes: deliveryRow(filename)?.original.bytes, maxSlackSize: deliveryRow(filename)?.highestSlackCompatible?.size, placeholder: atlas.cells[index]}),
-).sort((a, b) => a.filename.localeCompare(b.filename));
+// client island. The explorer only needs the fields left in each record. The
+// page, the color profiles and the placeholder atlas all share one order, so
+// a sticker's atlas cell follows from its position.
+const byFilename = new Map(emojiMetadata.emojis.map(emoji => [emoji.filename, emoji]));
+const filenames = catalogFilenames(emojiMetadata.emojis);
+const colors = await catalogColors(filenames);
+const atlas = await placeholderAtlas(filenames);
+const allEmojis: EmojiMetadata[] = filenames.map(filename => byFilename.get(filename)!).map(
+  ({id, filename, path, animated, tags, categories, aliases, facets}, index) =>
+    ({id, filename, path, animated, tags, categories, aliases, colors: colors[index], themes: [...new Set([...facets.subject, ...facets.expression, ...facets.intent])], gzip: gzipByEmoji(filename), originalBytes: deliveryRow(filename)?.original.bytes, maxSlackSize: deliveryRow(filename)?.highestSlackCompatible?.size, placeholder: atlas.cells[index]}),
+);
+// Astro would spell every record out as quoted [type, value] tuples; packed,
+// the island's props are a fifth of the size (src/lib/catalogCodec.ts).
+const catalog = encodeCatalog(allEmojis, atlas.columns);
 // const categories = Array.from(new Set(allEmojis.flatMap(emoji => emoji.categories))).filter(Boolean);
 ---
 
@@ -57,7 +65,7 @@ const allEmojis: EmojiMetadata[] = (emojiMetadata.emojis || []).map(
 }]} >
   <link slot="head" rel="preload" as="image" type="image/webp" href={atlas.url} fetchpriority="high" />
   <div class="emoji-app w-full h-fit" style={`--ph-atlas:url("${atlas.url}");--ph-columns:${atlas.columns};--ph-rows:${atlas.rows}`}>
-    <EmojiExplorerApp client:load initialEmojis={allEmojis} scriptOverheadBytes={scriptOverheadBytes} />
+    <EmojiExplorerApp client:load catalog={catalog} scriptOverheadBytes={scriptOverheadBytes} />
   </div>
   <CollectionGuide />
 </Layout>
