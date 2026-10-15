@@ -3,6 +3,7 @@ import React, { createContext, useContext, useReducer, useCallback, useLayoutEff
 import type { EmojiMetadata } from '../types/emoji';
 import { useLocalStorage } from '../hooks/useLocalStorage';
 import { SELECTION_STORAGE_KEY, reconcileSelection } from '../lib/selectionStorage';
+import { DEFAULT_GRID_SCALE, GRID_SCALE_STORAGE_KEY } from '../lib/gridScales';
 
 interface EmojiState {
   selectedEmojis: EmojiMetadata[];
@@ -48,7 +49,7 @@ const initialState: EmojiState = {
   filteredEmojis: [],
   isSearching: false,
   showSelectedOnly: false,
-  gridScale: 2,
+  gridScale: DEFAULT_GRID_SCALE,
 };
 
 function emojiReducer(state: EmojiState, action: EmojiAction): EmojiState {
@@ -143,7 +144,7 @@ export function EmojiProvider({ children, initialEmojis }: EmojiProviderProps) {
   // tray pointing at files that no longer exist. A first visit has nothing
   // stored and starts with an empty sheet: picking is the first thing to do.
   const [storedSelection, setStoredSelection] = useLocalStorage<unknown>(SELECTION_STORAGE_KEY, null);
-  const [storedScale, setStoredScale] = useLocalStorage<unknown>('emoji-grid-scale', 2);
+  const [storedScale, setStoredScale] = useLocalStorage<unknown>(GRID_SCALE_STORAGE_KEY, DEFAULT_GRID_SCALE);
 
   // The server has no storage, so it renders an empty sheet; the first client
   // render must match it or hydration fails. The stored sheet is restored in a

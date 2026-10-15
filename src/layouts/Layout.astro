@@ -3,6 +3,9 @@ import "../styles/fonts.css";
 import { ThemeToggle } from "../components/theme-toggle";
 import "../styles/globals.css";
 import emojiMetadata from "../data/emoji-metadata.json";
+import { animatedSrcSet } from "../lib/emojiAssets";
+import { DEFAULT_GRID_SCALE, GRID_SCALE_STORAGE_KEY, LIGHT_STICKER_SIZE, STICKER_SIZES } from "../lib/gridScales";
+import { PREVIEW_QUALITY_KEY } from "../lib/previewQuality";
 
 interface Props {
   title: string;
@@ -75,6 +78,41 @@ const emojiUpdateDate = emojisLastAdded && new Intl.DateTimeFormat("en-US", {
     </script>
     <link rel="preload" href="/fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/instrument-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <slot name="head" />
+    <script is:inline define:vars={{ stickerSizes: STICKER_SIZES, defaultScale: DEFAULT_GRID_SCALE, scaleKey: GRID_SCALE_STORAGE_KEY, lightSize: LIGHT_STICKER_SIZE, qualityKey: PREVIEW_QUALITY_KEY }}>
+      // Placeholders hide once their sticker has painted. This runs before the
+      // body parses and long before the island hydrates, which on a slow link
+      // can be the last thing to arrive. `load` doesn't bubble, so capture it.
+      document.documentElement.classList.add("ph-js");
+      document.addEventListener("load", (event) => {
+        const image = event.target;
+        if (image instanceof HTMLImageElement && image.classList.contains("emoji-card-image")) image.dataset.ready = "";
+      }, true);
+      // The server renders the grid at the default size, for a fast
+      // connection; the island only applies a stored size or light previews
+      // (src/lib/previewQuality.ts) once it hydrates, and Chrome never trades
+      // a larger image it already has for a smaller one. So correct `sizes` as
+      // each sticker is parsed, before a lazy image has fetched anything.
+      const read = (key) => { try { return localStorage.getItem(key); } catch { return null; } };
+      const lightPreviews = (() => {
+        const stored = read(qualityKey);
+        if (stored) return stored === "light";
+        const connection = navigator.connection;
+        return !!connection && (connection.saveData || connection.effectiveType === "2g" || connection.effectiveType === "slow-2g");
+      })();
+      const storedScale = read(scaleKey);
+      const slot = lightPreviews ? lightSize
+        : (storedScale === null ? undefined : stickerSizes[Number(storedScale)]) ?? stickerSizes[defaultScale];
+      if (slot !== stickerSizes[defaultScale]) {
+        const observer = new MutationObserver((records) => {
+          for (const record of records) for (const node of record.addedNodes) {
+            if (node instanceof HTMLImageElement && node.classList.contains("emoji-card-image") && node.srcset) node.sizes = `${slot}px`;
+          }
+        });
+        observer.observe(document.documentElement, { childList: true, subtree: true });
+        document.addEventListener("DOMContentLoaded", () => observer.disconnect(), { once: true });
+      }
+    </script>
     <script is:inline>
       const theme = (() => {
         if (
@@ -118,7 +156,7 @@ const emojiUpdateDate = emojisLastAdded && new Intl.DateTimeFormat("en-US", {
         <div class="masthead">
           <div class="masthead-copy">
             <h1 class="masthead-title">
-              <img class="brand-mark" src="/emoji-delivery/128/meow_birthday.webp" alt="" aria-hidden="true" width="42" height="42" />
+              <img class="brand-mark" src="/emoji-delivery/64/meow_birthday.webp" srcset={animatedSrcSet("meow_birthday.webp")} sizes="42px" alt="" aria-hidden="true" width="42" height="42" />
               <a href="/">{heading}</a>
             </h1>
             <p class="masthead-lede">
