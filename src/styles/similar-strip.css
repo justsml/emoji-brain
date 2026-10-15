@@ -1,0 +1,72 @@
+/* ---------------------------------------------------------------------------
+   Similar stickers: a strip peeled off the sheet for a moment. It floats just
+   above the tray (z-index below it) and measures its own clearance, so a tray
+   that wraps to two rows on a phone never overlaps it.
+   --------------------------------------------------------------------------- */
+
+.similar-strip {
+  position: fixed;
+  z-index: 35;
+  left: 1rem;
+  right: 1rem;
+  bottom: calc(var(--tray-clearance, 5rem) + .5rem);
+  max-width: 44rem;
+  margin-inline: auto;
+  padding: .4rem .6rem .5rem;
+  border: 1px solid hsl(var(--border));
+  border-radius: 14px;
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
+  box-shadow: 0 6px 18px rgb(0 0 0 / .22), 0 1px 0 hsl(0 0% 100% / .5) inset;
+  transform-origin: bottom center;
+  animation: similar-peel .2s cubic-bezier(.2, .8, .2, 1) both;
+}
+.dark .similar-strip { box-shadow: 0 6px 18px rgb(0 0 0 / .5), 0 1px 0 hsl(0 0% 100% / .08) inset; }
+@keyframes similar-peel {
+  from { opacity: 0; transform: translateY(14px) scale(.97); }
+  to { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .similar-strip { animation: none; }
+}
+
+.similar-head { display: flex; align-items: center; gap: .5rem; min-height: 32px; }
+.similar-head img { object-fit: contain; flex: none; }
+.similar-head p { flex: 1; min-width: 0; margin: 0; font-size: .75rem; color: hsl(var(--muted-foreground)); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.similar-head b { font-family: var(--font-code); font-weight: 600; color: hsl(var(--foreground)); }
+.similar-close { flex: none; min-width: 32px; min-height: 32px; border-radius: 999px; font-size: .8125rem; cursor: pointer; }
+.similar-close:hover { background: hsl(var(--foreground) / .08); }
+
+.similar-list {
+  display: flex;
+  gap: .5rem;
+  margin: .25rem 0 0;
+  padding: .25rem .125rem;
+  list-style: none;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x proximity;
+  scrollbar-width: thin;
+}
+.similar-item { position: relative; flex: none; width: 76px; scroll-snap-align: start; }
+.similar-pick { display: block; position: relative; width: 100%; padding: .25rem; border-radius: 8px; border: 2px solid transparent; cursor: pointer; text-align: center; }
+.similar-pick img { display: block; width: 56px; height: 56px; margin: 0 auto; object-fit: contain; }
+.similar-pick span { display: block; margin-top: .125rem; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font-family: var(--font-code); font-size: .625rem; }
+.similar-pick:hover { background: hsl(var(--foreground) / .06); }
+.similar-pick[aria-pressed="true"] { border-color: hsl(var(--cut)); background: hsl(var(--cut) / .12); }
+.similar-pick i { position: absolute; right: 2px; top: 2px; display: none; width: 16px; height: 16px; border-radius: 999px; background: hsl(var(--cut)); color: #fff; font-size: .625rem; font-style: normal; line-height: 16px; text-align: center; }
+.similar-pick[aria-pressed="true"] i { display: block; }
+.similar-pick[data-preview-unavailable]::after { content: "?"; position: absolute; inset: .25rem .25rem auto; height: 56px; display: grid; place-items: center; color: hsl(var(--muted-foreground)); pointer-events: none; }
+
+/* "More like this": always visible so touch users find it; small so it stays out of the way. */
+.similar-chain { position: absolute; left: 2px; top: 2px; width: 24px; height: 24px; border-radius: 999px; border: 1px solid hsl(var(--border)); background: hsl(var(--background)); color: hsl(var(--foreground)); font-size: .6875rem; cursor: pointer; }
+.similar-chain:hover { background: hsl(var(--cut) / .15); }
+@media (pointer: coarse) {
+  .similar-close { min-width: 44px; min-height: 44px; margin: -6px -6px -6px 0; }
+  .similar-chain { width: 32px; height: 32px; left: 0; top: 0; }
+}
+
+.similar-note { display: flex; align-items: center; gap: .75rem; margin: .25rem 0 0; min-height: 56px; font-size: .8125rem; color: hsl(var(--muted-foreground)); }
+.similar-note button { min-height: 44px; padding: 0 .5rem; text-decoration: underline; color: hsl(var(--foreground)); cursor: pointer; }
+
+.similar-strip button:focus-visible { outline: 2px solid hsl(var(--cut)); outline-offset: 1px; }
