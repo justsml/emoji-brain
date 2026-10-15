@@ -160,8 +160,8 @@ test("export settings support keyboard selection and identify overwrite mode", a
   await overwrite.focus();
   await page.keyboard.press('Space');
   await expect(overwrite).toBeChecked();
-  await expect(options.getByRole('button', {name: 'Slack overwrite script', exact: true})).toBeVisible();
-  await expect(page.getByRole('button', {name: 'Copy overwrite script', exact: true})).toBeVisible();
+  await expect(options.getByRole('button', {name: 'Copy overwrite script', exact: true})).toBeVisible();
+  await expect(page.locator('.sheet-tray .sheet-eraser').getByText('Copy overwrite script', {exact: true})).toBeVisible();
   await page.keyboard.press('Escape');
   await expect(options).not.toBeVisible();
 });

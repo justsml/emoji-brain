@@ -118,10 +118,10 @@ export function ExportOptions({id, estimates, pinnedTier, onPinTier, onRun, form
 
       {primary && (
         <div className="export-primary" data-destructive={overwrite} data-over={!!active && !active.fits}>
-          {/* The tray already has a "Copy Slack script" button, so this one keeps
-              the format's own accessible name to stay unambiguous. */}
-          <button type="button" className="export-primary-button" aria-label={primary.label} onClick={() => onRun(primary.run)}>
-            {overwrite ? "Copy overwrite script" : "Copy Slack script"}
+          {/* Accessible name is the visible text (WCAG 2.5.3). It shares a name with
+              the tray's button, so scope queries to the "Export options" group. */}
+          <button type="button" className="export-primary-button" onClick={() => onRun(primary.run)}>
+            {primary.label}
           </button>
           {active ? (
             <p>

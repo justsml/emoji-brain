@@ -396,7 +396,7 @@ export function EmojiExport({ onInvertVisible, onOpenSheet, selectedEmojis, onCl
             onRun={runExport}
             onDownloadOriginals={() => exportFiles('zip')}
             formats={[
-              {label: overwriteExisting ? "Slack overwrite script" : "Slack script", run: () => exportFiles('slack'), primary: true},
+              {label: overwriteExisting ? "Copy overwrite script" : "Copy Slack script", run: () => exportFiles('slack'), primary: true},
               {label: "Slack script: replace smaller…", run: () => exportFiles('slack', true)},
               {label: "Plain Text", run: exportAsPlainText},
               {label: "HTML", run: exportAsHtml},
