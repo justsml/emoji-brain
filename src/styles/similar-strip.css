@@ -1,0 +1,121 @@
+/* ---------------------------------------------------------------------------
+   Similar stickers: a strip peeled off the sheet for a moment. It floats just
+   above the tray (z-index below it) and measures its own clearance, so a tray
+   that wraps to two rows on a phone never overlaps it.
+   --------------------------------------------------------------------------- */
+
+.similar-strip {
+  --paper: 42 28% 93%;
+  --paper-ink: 30 20% 16%;
+  --paper-mute: 30 12% 36%;
+  position: fixed;
+  z-index: 35;
+  left: 1rem;
+  right: 1rem;
+  bottom: calc(var(--tray-clearance, 5rem) + 16px);
+  max-width: 44rem;
+  margin-inline: auto;
+  padding: .4rem 1rem .55rem;
+  color: hsl(var(--paper-ink));
+  /* The paper is clipped to a torn edge, so the shadow rides on a filter. */
+  filter: drop-shadow(0 1px 1px hsl(var(--lift) / .35)) drop-shadow(0 6px 8px hsl(var(--lift) / .28));
+  transform: rotate(-.35deg);
+  transform-origin: bottom center;
+  animation: similar-peel .24s cubic-bezier(.2, .8, .2, 1) both;
+}
+.dark .similar-strip { --paper: 220 7% 22%; --paper-ink: 40 20% 94%; --paper-mute: 40 10% 74%; }
+/* Backing paper: glossy sheen, perforated ends, a ragged top tear. */
+.similar-strip::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: 3px;
+  background:
+    linear-gradient(105deg, transparent 30%, hsl(0 0% 100% / .45) 42%, transparent 54%),
+    repeating-linear-gradient(0deg, hsl(var(--paper-ink) / .025) 0 1px, transparent 1px 3px),
+    hsl(var(--paper));
+  box-shadow: inset 0 0 0 1px hsl(var(--paper-ink) / .1);
+  clip-path: polygon(0 5px, 6% 2px, 13% 5px, 22% 1px, 31% 4px, 42% 0, 53% 4px, 64% 1px, 75% 5px, 86% 2px, 94% 4px, 100% 1px, 100% 100%, 0 100%);
+  -webkit-mask: radial-gradient(circle 4px at 0 50%, transparent 98%, #000) left / 51% 14px repeat-y,
+                radial-gradient(circle 4px at 100% 50%, transparent 98%, #000) right / 51% 14px repeat-y;
+  mask: radial-gradient(circle 4px at 0 50%, transparent 98%, #000) left / 51% 14px repeat-y,
+        radial-gradient(circle 4px at 100% 50%, transparent 98%, #000) right / 51% 14px repeat-y;
+}
+.dark .similar-strip::before {
+  background:
+    linear-gradient(105deg, transparent 30%, hsl(0 0% 100% / .09) 42%, transparent 54%),
+    repeating-linear-gradient(0deg, hsl(0 0% 100% / .02) 0 1px, transparent 1px 3px),
+    hsl(var(--paper));
+  box-shadow: inset 0 0 0 1px hsl(0 0% 100% / .1);
+}
+@keyframes similar-peel {
+  from { opacity: 0; transform: translateY(14px) rotate(-2deg) scale(.97); }
+  to { opacity: 1; transform: rotate(-.35deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .similar-strip { animation: none; }
+}
+
+.similar-head { display: flex; align-items: center; gap: .5rem; min-height: 32px; }
+.similar-head img { object-fit: contain; flex: none; }
+.similar-head p { flex: 1; min-width: 0; margin: 0; font-size: .75rem; color: hsl(var(--paper-mute)); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.similar-head b { display: inline-block; margin-inline-start: .3em; font-family: var(--font-code); font-weight: 600; color: hsl(var(--paper-ink)); }
+.similar-close { flex: none; min-width: 32px; min-height: 32px; border-radius: 999px; font-size: .8125rem; cursor: pointer; color: hsl(var(--paper-ink)); }
+.similar-close:hover { background: hsl(var(--paper-ink) / .1); }
+
+.similar-list {
+  display: flex;
+  gap: .5rem;
+  margin: .25rem -1rem 0;
+  padding: .5rem 1.25rem .25rem;
+  list-style: none;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x proximity;
+  scroll-padding-inline: 1.25rem;
+  scrollbar-width: none;
+  /* Fade both ends so the row reads as scrollable, not cut off. */
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 1.1rem, #000 calc(100% - 2rem), transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 1.1rem, #000 calc(100% - 2rem), transparent);
+}
+.similar-item { position: relative; flex: none; width: 76px; scroll-snap-align: start; }
+/* Each sticker sits in its die-cut outline on the backing paper. */
+.similar-pick {
+  display: block; position: relative; width: 100%; padding: .3rem .25rem .25rem; text-align: center; cursor: pointer;
+  border-radius: 16px; border: 1.5px dashed hsl(var(--paper-ink) / .3);
+  color: hsl(var(--paper-ink));
+  transition: transform .25s var(--spring, cubic-bezier(.34, 1.56, .64, 1)), box-shadow .2s ease, background-color .2s ease;
+}
+.similar-pick img { display: block; width: 56px; height: 56px; margin: 0 auto; object-fit: contain; filter: drop-shadow(0 1px 1px hsl(var(--lift) / .25)); }
+.similar-pick span { display: block; margin-top: .125rem; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font-family: var(--font-code); font-size: .625rem; }
+.similar-pick:hover { background: hsl(var(--paper-ink) / .06); }
+/* Picked: the sticker has been peeled up, leaving a lifted, tilted card with a check. */
+.similar-pick[aria-pressed="true"] {
+  border-style: solid; border-color: hsl(var(--cut)); background: hsl(var(--paper)); 
+  background-image: linear-gradient(hsl(var(--cut) / .12), hsl(var(--cut) / .12));
+  transform: translateY(-4px) rotate(-3deg);
+  box-shadow: 0 6px 8px -2px hsl(var(--lift) / .35);
+}
+.similar-pick i { position: absolute; right: -5px; top: -5px; display: none; width: 18px; height: 18px; border-radius: 999px; background: hsl(var(--cut)); color: #fff; font-size: .625rem; font-style: normal; line-height: 18px; text-align: center; box-shadow: 0 1px 2px hsl(var(--lift) / .4); }
+.similar-pick[aria-pressed="true"] i { display: block; }
+.similar-pick[data-preview-unavailable]::after { content: "?"; position: absolute; inset: .3rem .25rem auto; height: 56px; display: grid; place-items: center; color: hsl(var(--paper-mute)); pointer-events: none; }
+@media (prefers-reduced-motion: reduce) {
+  .similar-pick { transition: none; }
+}
+
+/* "More like this": a quiet badge that shows on hover or focus; always there (small) on touch. */
+.similar-chain { position: absolute; left: -4px; top: -4px; width: 24px; height: 24px; border-radius: 999px; border: 1px solid hsl(var(--paper-ink) / .3); background: hsl(var(--paper)); color: hsl(var(--paper-ink)); font-size: .6875rem; cursor: pointer; opacity: 0; transition: opacity .15s ease; }
+.similar-item:hover .similar-chain, .similar-item:focus-within .similar-chain, .similar-chain:focus-visible { opacity: 1; }
+.similar-chain:hover { background: hsl(var(--cut) / .2); }
+@media (hover: none) {
+  .similar-chain { opacity: .75; width: 28px; height: 28px; }
+}
+@media (pointer: coarse) {
+  .similar-close { min-width: 44px; min-height: 44px; margin: -6px -6px -6px 0; }
+}
+
+.similar-note { display: flex; align-items: center; gap: .75rem; margin: .25rem 0 0; min-height: 56px; font-size: .8125rem; color: hsl(var(--paper-mute)); }
+.similar-note button { min-height: 44px; padding: 0 .5rem; text-decoration: underline; color: hsl(var(--paper-ink)); cursor: pointer; }
+
+.similar-strip button:focus-visible { outline: 2px solid hsl(var(--cut)); outline-offset: 1px; }

@@ -16,7 +16,7 @@ import { buildShareUrl, clearShareParams, readShareParams } from "../lib/shareLi
 import {createPortal} from "react-dom";
 import CatalogDiscovery from "./CatalogDiscovery";
 import {discover, PALETTE} from "../lib/catalogDiscovery";
-import WorkspaceLoader from "./WorkspaceLoader";
+import SimilarStripLoader from "./SimilarStripLoader";
 import { recoverEmojiPreview } from "../lib/emojiAssets";
 
 interface PagefindResultData {
@@ -176,11 +176,11 @@ const _EmojiExplorerApp: React.FC<EmojiExplorerAppProps> = ({
   const [shared] = useState(() =>
     typeof window === "undefined" ? {} : readShareParams(window.location.search),
   );
-  const [workspace, setWorkspace] = useState<{ source: EmojiMetadata | null } | null>(null);
-  const openSheet = useCallback(() => { track('workspace_opened', { mode: 'sheet' }); setWorkspace({ source: null }); }, []);
-  const openSimilar = useCallback((emoji: EmojiMetadata) => { track('workspace_opened', { mode: 'similar', emoji_id: emoji.id }); setWorkspace({ source: emoji }); }, []);
+  // The similar strip is ephemeral: one source at a time, never persisted.
+  const [similarSource, setSimilarSource] = useState<EmojiMetadata | null>(null);
+  const closeSimilar = useCallback(() => setSimilarSource(null), []);
+  const openSimilar = useCallback((emoji: EmojiMetadata) => { track("similar_opened", { emoji_id: emoji.id }); setSimilarSource(emoji); }, []);
   const handleInvertVisible = useCallback(() => invertVisible(filteredEmojis), [invertVisible, filteredEmojis]);
-  const closeWorkspace = useCallback(() => { track('workspace_closed'); setWorkspace(null); }, []);
   const [searchTerm, setSearchTerm] = useState(shared.q ?? "");
   const [searchResults, setSearchResults] = useState(initialEmojis);
   const [searchStatus, setSearchStatus] = useState("");
@@ -338,7 +338,6 @@ const _EmojiExplorerApp: React.FC<EmojiExplorerAppProps> = ({
 
         <EmojiExport
           onInvertVisible={handleInvertVisible}
-          onOpenSheet={openSheet}
           selectedEmojis={selectedEmojis}
           onClearSelection={handleResetSelection}
           onDeselectVisible={() => deselectVisible(filteredEmojis)}
@@ -349,7 +348,7 @@ const _EmojiExplorerApp: React.FC<EmojiExplorerAppProps> = ({
           shareUrl={selectionShareUrl}
           scriptOverheadBytes={scriptOverheadBytes}
         />
-        {workspace && <WorkspaceLoader onInvertVisible={handleInvertVisible} visibleCount={filteredEmojis.length} catalog={initialEmojis} selected={selectedEmojis} source={workspace.source} onToggle={handleEmojiSelect} onSimilar={openSimilar} onClose={closeWorkspace} />}
+        {similarSource && <SimilarStripLoader catalog={initialEmojis} selected={selectedEmojis} source={similarSource} onToggle={handleEmojiSelect} onSimilar={openSimilar} onClose={closeSimilar} />}
       </div>
     </ErrorBoundary>
   );

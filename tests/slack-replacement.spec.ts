@@ -19,7 +19,7 @@ for(const scenario of ['replace','restore','changed','alias','delete-rejected','
     await page.getByRole('checkbox',{name:'Overwrite existing Slack emojis'}).check();
     await expect(page.locator('.export-overwrite')).toContainText('Requires deletion permission');
   }
-  await page.getByRole('button',{name:overwrite?'Slack overwrite script':'Slack script: replace smaller…',exact:true}).click();
+  await page.getByRole('group',{name:'Export options'}).getByRole('button',{name:overwrite?'Copy overwrite script':'Slack script: replace smaller…',exact:true}).click();
   await expect(page.getByLabel('Close Slack instructions')).toBeVisible();
   const script=await page.evaluate(()=>(window as any).copiedEmojiScript);
   const newer=await fs.readFile('public/emoji-delivery/256/'+filename);

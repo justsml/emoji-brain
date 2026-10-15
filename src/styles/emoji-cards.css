@@ -288,7 +288,6 @@
 @media (pointer: coarse) { .emoji-card-actions button { min-height: 44px; } }
 
 .emoji-card-preview[data-preview-unavailable]::after,
-.workspace-pick[data-preview-unavailable]::after,
 .sheet-chip[data-preview-unavailable]::after {
   content: "Image unavailable";
   position: absolute;
@@ -303,8 +302,11 @@
   opacity: 1;
 }
 .sheet-chip[data-preview-unavailable]::after { content: "?"; inset: 0; }
-.workspace-load-note { position: fixed; z-index: 50; right: 1rem; bottom: 10rem; width: min(360px, calc(100vw - 2rem)); padding: 1rem; border: 1px solid hsl(var(--border)); border-radius: 8px; background: hsl(var(--background)); color: hsl(var(--foreground)); font-size: .875rem; }
-.workspace-load-note button { min-height: 44px; padding: .5rem; text-decoration: underline; cursor: pointer; }
+/* Stand-in while the strip's chunk loads; lives here so it doesn't wait for that chunk. */
+.similar-load-note { position: fixed; z-index: 35; left: 1rem; right: 1rem; bottom: 6rem; max-width: 24rem; margin-inline: auto; display: flex; align-items: center; gap: .5rem; padding: .25rem .5rem .25rem 1rem; border: 1px dashed hsl(30 20% 16% / .35); border-radius: 4px; background: hsl(42 28% 93%); color: hsl(30 20% 16%); font-size: .8125rem; filter: drop-shadow(0 4px 6px hsl(var(--lift) / .3)); transform: rotate(-.35deg); }
+.dark .similar-load-note { background: hsl(220 7% 22%); color: hsl(40 20% 94%); border-color: hsl(0 0% 100% / .25); }
+.similar-load-note p { flex: 1; margin: 0; }
+.similar-load-note button { min-height: 44px; min-width: 44px; padding: .5rem; cursor: pointer; }
 
 /* --- placeholders --------------------------------------------------------
    Until a sticker arrives, its silhouette sits in its place: a 10px tile cut
