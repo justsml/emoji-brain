@@ -33,10 +33,10 @@ async function assertVisibleImages(page: Page, images: Locator) {
   await expect.poll(() => images.evaluateAll(images => images.filter(image => {
     const rect = image.getBoundingClientRect();
     if (!rect.width || !rect.height || rect.bottom <= 0 || rect.top >= innerHeight) return false;
-    const scroll = image.closest('.workspace-scroll');
+    const scroll = image.closest('.similar-list');
     if (scroll) {
       const bounds = scroll.getBoundingClientRect();
-      if (rect.bottom <= bounds.top || rect.top >= bounds.bottom) return false;
+      if (rect.right <= bounds.left || rect.left >= bounds.right) return false;
     }
     const img = image as HTMLImageElement;
     return !img.complete || !img.naturalWidth || !img.naturalHeight || img.dataset.previewUnavailable === 'true';
@@ -84,32 +84,24 @@ for (const viewport of [{width: 1440, height: 900}, {width: 390, height: 844}]) 
         await assertVisibleImages(page, page.locator('.emoji-card img'));
       }
       await expect.poll(() => page.locator('.emoji-card img').evaluateAll(images => images.filter(image => !(image as HTMLImageElement).naturalWidth).length)).toBe(0);
-      await page.getByRole('button', {name: 'Expand selected emojis'}).click();
-      const panel = page.getByRole('dialog', {name: 'Emoji workspace'});
-      await expect(panel.locator('.workspace-pick')).toHaveCount(Math.min(48, count));
-      for (let shown = 48; shown < count; shown += 48) {
-        await panel.getByRole('button', {name: /Show 48 more/}).click();
-        await expect(panel.locator('.workspace-pick')).toHaveCount(Math.min(shown + 48, count));
-      }
-      await expect(panel.locator('.workspace-pick')).toHaveCount(count);
-      const scroll = panel.locator('.workspace-scroll');
-      const height = await scroll.evaluate(element => element.scrollHeight);
-      const step = await scroll.evaluate(element => element.clientHeight * .65);
-      for (let y = 0; y < height; y += step) {
-        await scroll.evaluate((element, y) => { element.scrollTop = y; }, y);
-        await assertVisibleImages(page, panel.locator('img'));
-      }
-      await expect.poll(() => panel.locator('img').evaluateAll(images => images.filter(image => !(image as HTMLImageElement).naturalWidth).length)).toBe(0);
-      await panel.getByRole('button', {name: 'Similar to 10-10.webp', exact: true}).click();
-      await expect(panel.locator('.workspace-pick')).toHaveCount(12);
+      const card = page.getByRole('button', {name: '10-10.webp', exact: true});
+      const openStrip = async () => {
+        await page.evaluate(() => scrollTo(0, 0));
+        await card.click();
+        await page.getByRole('group', {name: 'Actions for 10-10'}).getByRole('button', {name: 'Similar', exact: true}).click();
+      };
+      const panel = page.getByRole('region', {name: 'Stickers similar to 10-10'});
+      await openStrip();
+      await expect(panel.locator('.similar-pick')).toHaveCount(12);
       await assertVisibleImages(page, panel.locator('img'));
-      await panel.locator('.workspace-pick').first().click();
-      await expect(page.getByLabel(`${count - 1} selected`, {exact: true})).toBeVisible();
+      await panel.locator('.similar-pick').first().click();
+      await expect(page.getByLabel(`${count - 2} selected`, {exact: true})).toBeVisible();
       await page.keyboard.press('Escape');
+      await expect(panel).toHaveCount(0);
       await page.evaluate(() => scrollTo(0, 0));
       await page.getByRole('button', {name: /Switch to .* theme/}).click();
-      await page.getByRole('button', {name: 'Expand selected emojis'}).click();
-      await expect(panel).toBeVisible();
+      await openStrip();
+      await expect(panel.locator('.similar-pick')).toHaveCount(12);
       await assertVisibleImages(page, panel.locator('img'));
       await page.keyboard.press('Escape');
       await page.getByRole('button', {name: 'Other export options'}).click();
