@@ -623,7 +623,7 @@ button.sheet-flag:focus-visible { outline: 2px solid hsl(var(--cut)); outline-of
   inset: auto 1rem 4.75rem auto;
   margin: 0;
   width: min(24rem, calc(100vw - 2rem));
-  max-height: calc(100dvh - 6rem);
+  max-height: calc(100dvh - 6.5rem - 4rem);
   overflow-y: auto;
   padding: 0 0 0.25rem;
   border: 0;
@@ -658,19 +658,17 @@ button.sheet-flag:focus-visible { outline: 2px solid hsl(var(--cut)); outline-of
   align-items: baseline;
   justify-content: space-between;
   gap: 1rem;
-  padding: 0.7rem 1rem 0.1rem;
+  padding: 0.5rem 1rem 0.1rem;
   color: hsl(var(--muted-foreground));
   font-size: 0.75rem;
   font-variant-numeric: tabular-nums;
 }
 /* the ceiling, stated once in words and once as the end of every bar */
 .size-options-limit {
-  display: flex;
-  justify-content: space-between;
   margin: 0;
-  padding: 0 1rem 0.4rem;
+  padding: 0 1rem 0.3rem;
   color: hsl(var(--muted-foreground));
-  font-size: 0.75rem;
+  font-size: 0.6875rem;
 }
 .size-options-limit strong { color: hsl(var(--foreground)); font-variant-numeric: tabular-nums; }
 .size-options-limit-end { font-size: 0.6875rem; font-variant-numeric: tabular-nums; }
@@ -683,7 +681,7 @@ button.sheet-flag:focus-visible { outline: 2px solid hsl(var(--cut)); outline-of
   align-items: center;
   gap: 0.7rem;
   width: 100%;
-  padding: 0.4rem 1rem;
+  padding: 0.25rem 1rem;
   border: 0;
   border-top: 1px solid hsl(var(--rule) / 0.22);
   background: none;
@@ -695,6 +693,37 @@ button.sheet-flag:focus-visible { outline: 2px solid hsl(var(--cut)); outline-of
 }
 .size-option:hover { background: hsl(var(--foreground) / 0.05); }
 .size-option:focus-visible { outline: 2px solid hsl(var(--cut)); outline-offset: -2px; }
+
+/* the auto / best-fit switch lives in the header, as a small chip */
+.size-option.size-option-auto {
+  display: inline-flex;
+  width: auto;
+  gap: 0.4rem;
+  padding: 0.15rem 0.5rem 0.15rem 0.35rem;
+  border: 1px solid hsl(var(--rule) / 0.5);
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.size-option.size-option-auto::before { display: none; }
+.size-option-auto .size-option-mark { width: 0.875rem; height: 0.875rem; }
+.size-option-auto[aria-pressed="true"] { border-color: hsl(var(--cut)); }
+.size-option-tag {
+  margin-left: 0.5rem;
+  padding: 0 0.35rem;
+  border: 1px solid hsl(var(--rule) / 0.6);
+  border-radius: 2px;
+  color: hsl(var(--muted-foreground));
+  font-family: var(--font-ui);
+  font-size: 0.625rem;
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  vertical-align: 1px;
+}
+.size-option[data-active="true"] .size-option-tag { border-color: hsl(var(--cut)); color: hsl(var(--foreground)); }
 
 /* a ring that fills in, like a box ticked on a form */
 .size-option-mark {
@@ -730,7 +759,7 @@ button.sheet-flag:focus-visible { outline: 2px solid hsl(var(--cut)); outline-of
 
 .size-option-figures {
   flex-shrink: 0;
-  width: 7.5rem;
+  width: 8.5rem;
   text-align: right;
 }
 .size-option-px {
@@ -751,8 +780,8 @@ button.sheet-flag:focus-visible { outline: 2px solid hsl(var(--cut)); outline-of
    a full track is the limit, and a tick marks where it ends */
 .size-option-bar {
   display: block;
-  height: 4px;
-  margin-top: 0.3rem;
+  height: 5px;
+  margin-top: 0.2rem;
   border-radius: 1px;
   background: hsl(var(--foreground) / 0.12);
   box-shadow: 1px 0 0 hsl(var(--foreground) / 0.45);
@@ -762,6 +791,7 @@ button.sheet-flag:focus-visible { outline: 2px solid hsl(var(--cut)); outline-of
   height: 100%;
   border-radius: 1px;
   background: hsl(var(--rule));
+  min-width: 4px;
 }
 
 .size-option[data-active="true"] { background: hsl(var(--foreground) / 0.05); }
@@ -790,12 +820,12 @@ button.sheet-flag:focus-visible { outline: 2px solid hsl(var(--cut)); outline-of
 
 /* The one thing the card is for. Overwrite sits above it because it changes
    what this button does, and turns it from red rubber to a warning. */
-.export-primary { padding: 0.65rem 1rem 0.1rem; }
+.export-primary { padding: 0.6rem 1rem 0; }
 .export-primary-button {
   display: block;
   width: 100%;
-  min-height: 2.75rem;
-  padding: 0.6rem 1rem;
+  min-height: 2.5rem;
+  padding: 0.45rem 1rem;
   border: 0;
   border-radius: 3px 8px 8px 3px;
   background: linear-gradient(hsl(355 66% 43%), hsl(355 62% 36%));
@@ -820,7 +850,7 @@ button.sheet-flag:focus-visible { outline: 2px solid hsl(var(--cut)); outline-of
   box-shadow: inset 0 1px 0 hsl(0 0% 100% / 0.2), 0 3px 0 hsl(6 70% 15%), 0 5px 6px -1px hsl(var(--lift) / 0.4);
 }
 .export-primary p {
-  margin: 0.55rem 0 0;
+  margin: 0.4rem 0 0;
   color: hsl(var(--muted-foreground));
   font-size: 0.75rem;
   font-variant-numeric: tabular-nums;
@@ -832,8 +862,8 @@ button.sheet-flag:focus-visible { outline: 2px solid hsl(var(--cut)); outline-of
 /* The destructive option: a caution slip, apart from the sizes and the
    formats, with its consequences written out beside the box. */
 .export-replace {
-  margin: 0.65rem 1rem 0;
-  padding: 0.5rem 0.7rem;
+  margin: 0.5rem 1rem 0;
+  padding: 0.4rem 0.7rem;
   border: 1px dashed hsl(var(--destructive) / 0.6);
   border-radius: 3px;
   background: hsl(var(--destructive) / 0.06);
@@ -849,10 +879,11 @@ button.sheet-flag:focus-visible { outline: 2px solid hsl(var(--cut)); outline-of
 }
 .export-replace-switch input { width: 1rem; height: 1rem; flex-shrink: 0; accent-color: hsl(var(--destructive)); }
 .export-replace-switch:has(input:focus-visible) { outline: 2px solid hsl(var(--cut)); outline-offset: 3px; border-radius: 2px; }
-.export-overwrite { margin-top: 0.45rem; padding-left: 1.55rem; }
+.export-overwrite { margin-top: 0.2rem; padding-left: 1.55rem; }
+.export-overwrite p + p { margin-top: 0.3rem; }
 .export-overwrite p { margin: 0; font-size: 0.6875rem; line-height: 1.45; color: hsl(var(--muted-foreground)); }
 .export-overwrite .export-overwrite-lead {
-  margin-bottom: 0.3rem;
+  margin-bottom: 0;
   color: hsl(var(--destructive));
   font-weight: 600;
 }
@@ -860,15 +891,15 @@ button.sheet-flag:focus-visible { outline: 2px solid hsl(var(--cut)); outline-of
 .slack-overwrite-warning { padding: .75rem; border: 1px solid hsl(var(--destructive) / .4); border-radius: .4rem; background: hsl(var(--destructive) / .06); }
 
 /* the other formats are a calm shelf: small, quiet, two to a row */
-.export-formats { padding: 0.75rem 1rem 0.5rem; }
-.export-formats h3 { padding-bottom: 0.4rem; }
+.export-formats { padding: 0.55rem 1rem 0.4rem; }
+.export-formats h3 { padding-bottom: 0.25rem; }
 .export-formats-list { display: grid; grid-template-columns: 1fr 1fr; gap: 0.2rem 0.5rem; }
 .export-menu .export-formats button {
   border: 0;
   border-bottom: 1px solid hsl(var(--rule) / 0.3);
   border-radius: 2px;
   background: transparent;
-  padding: 0.3rem 0.35rem;
+  padding: 0.2rem 0.35rem;
   color: inherit;
   cursor: pointer;
   font: inherit;

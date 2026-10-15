@@ -32,7 +32,6 @@ export function ExportOptions({id, estimates, pinnedTier, onPinTier, onRun, form
   const primary = formats.find(format => format.primary);
   const others = formats.filter(format => !format.primary);
   const limit = formatBytes(SLACK_SCRIPT_LIMIT);
-  const mixed = !!(tiers[0]?.stillCount && tiers[0]?.animatedCount);
 
   return (
     <div ref={panelRef} id={id} popover="auto" role="group" className="export-menu" aria-label="Export options">
@@ -40,58 +39,42 @@ export function ExportOptions({id, estimates, pinnedTier, onPinTier, onRun, form
         <div className="size-options" role="group" aria-labelledby={`${id}-size`}>
           <div className="size-options-head">
             <h3 id={`${id}-size`}>Image size</h3>
-            <span>
-              {tiers[0].stillCount > 0 && `${tiers[0].stillCount} still${tiers[0].stillCount === 1 ? "" : "s"}`}
-              {mixed && " · "}
-              {tiers[0].animatedCount > 0 && `${tiers[0].animatedCount} animated`}
-            </span>
+            {/* auto vs pinned: pressed while the planner chooses, and pressing it
+                again after pinning a row hands the choice back */}
+            <button
+              type="button"
+              aria-pressed={pinnedTier === null}
+              className="size-option size-option-auto"
+              data-active={pinnedTier === null}
+              onClick={() => onPinTier(null)}
+            >
+              <span className="size-option-mark" aria-hidden="true">{pinnedTier === null && <Check className="h-3 w-3" />}</span>
+              Best fit{pinnedTier === null ? " (auto)" : ": reset"}
+            </button>
           </div>
-          <p className="size-options-limit">
-            <span>Slack accepts a paste up to <strong>{limit}</strong></span>
-            <span className="size-options-limit-end" aria-hidden="true">{limit}</span>
-          </p>
-
-          <button
-            type="button"
-            aria-pressed={pinnedTier === null}
-            className="size-option"
-            data-active={pinnedTier === null}
-            onClick={() => onPinTier(null)}
-          >
-            <span className="size-option-mark" aria-hidden="true">{pinnedTier === null && <Check className="h-3 w-3" />}</span>
-            <span className="size-option-name">
-              Best fit
-              <small>largest that stays under {formatBytes(SLACK_SCRIPT_LIMIT)}</small>
-            </span>
-            <span className="size-option-figures">
-              <span className="size-option-px">{best ? tierLabel(best) : "—"}</span>
-              <span className="size-option-bytes">{best ? `≈ ${formatBytes(best.bytes)}` : ""}</span>
-            </span>
-          </button>
+          <p className="size-options-limit">Bars show each size against Slack’s <strong>{limit}</strong> paste limit.</p>
 
           {tiers.map((tier) => {
             const pinnedHere = !!pinnedTier && tierKey(pinnedTier) === tierKey(tier);
+            const isBest = tier === best;
+            const active = pinnedHere || (isBest && pinnedTier === null);
             return (
               <button
                 key={tierKey(tier)}
                 type="button"
                 aria-pressed={pinnedHere}
                 className="size-option"
-                data-active={pinnedHere}
+                data-active={active}
                 data-over={!tier.fits}
                 onClick={() => onPinTier({still: tier.still, animated: tier.animated})}
               >
                 <span className="size-option-mark" aria-hidden="true">{pinnedHere && <Check className="h-3 w-3" />}</span>
                 <span className="size-option-name">
                   {tierLabel(tier)}
-                  <small>
-                    {tier.fits
-                      ? tier === best && pinnedTier === null ? "what best fit picks" : "fits the limit"
-                      : "over the limit — may not paste"}
-                  </small>
+                  {isBest && <em className="size-option-tag">best fit</em>}
                 </span>
                 <span className="size-option-figures">
-                  <span className="size-option-bytes">≈ {formatBytes(tier.bytes)}{!tier.fits && " · over"}</span>
+                  <span className="size-option-bytes">≈ {formatBytes(tier.bytes)}{!tier.fits && " · over limit"}</span>
                   <span className="size-option-bar" aria-hidden="true">
                     <i style={{width: `${Math.min(100, (tier.bytes / SLACK_SCRIPT_LIMIT) * 100)}%`}} />
                   </span>
@@ -111,10 +94,9 @@ export function ExportOptions({id, estimates, pinnedTier, onPinTier, onRun, form
             <span className="size-option-mark" aria-hidden="true"><Download className="h-3 w-3" /></span>
             <span className="size-option-name">
               Originals
-              <small>full-size ZIP download, not a Slack paste</small>
+              <small>full-size ZIP, not a paste</small>
             </span>
             <span className="size-option-figures">
-              <span className="size-option-px">Full size</span>
               <span className="size-option-bytes">{originalsBytes ? formatBytes(originalsBytes) : ""}</span>
             </span>
           </button>
@@ -127,15 +109,19 @@ export function ExportOptions({id, estimates, pinnedTier, onPinTier, onRun, form
           <span id={`${id}-replace-title`}>Overwrite existing Slack emojis</span>
         </label>
         <div className="export-overwrite" id={`${id}-overwrite-warning`}>
-          <p className="export-overwrite-lead"><TriangleAlert className="h-3.5 w-3.5" aria-hidden="true" /> Deletes same-name emojis before uploading ours, even if yours is larger or animated.</p>
-          <p>Requires deletion permission: typically an admin/owner or the emoji’s creator, subject to workspace policy. The script requires an originals backup and confirmation in Slack. Recovery is best effort.</p>
+          <p className="export-overwrite-lead"><TriangleAlert className="h-3.5 w-3.5" aria-hidden="true" /> Deletes same-name emojis before uploading ours.</p>
+          {overwrite && (
+            <p>Requires deletion permission: typically an admin, owner, or the emoji’s creator. The script requires an originals backup and confirmation in Slack. Recovery is best effort.</p>
+          )}
         </div>
       </div>
 
       {primary && (
         <div className="export-primary" data-destructive={overwrite} data-over={!!active && !active.fits}>
-          <button type="button" className="export-primary-button" onClick={() => onRun(primary.run)}>
-            {primary.label}
+          {/* The tray already has a "Copy Slack script" button, so this one keeps
+              the format's own accessible name to stay unambiguous. */}
+          <button type="button" className="export-primary-button" aria-label={primary.label} onClick={() => onRun(primary.run)}>
+            {overwrite ? "Copy overwrite script" : "Copy Slack script"}
           </button>
           {active ? (
             <p>
