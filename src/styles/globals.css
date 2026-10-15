@@ -1,5 +1,5 @@
 @config "../../tailwind.config.mjs";
-@import "tailwindcss";
+@import "tailwindcss" source(none);
 
 /* ---------------------------------------------------------------------------
    Adorbs.fun — stickers on a cutting mat.
