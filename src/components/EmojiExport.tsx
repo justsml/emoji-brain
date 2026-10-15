@@ -283,7 +283,9 @@ export function EmojiExport({ onInvertVisible, onOpenSheet, selectedEmojis, onCl
                 />
               </button>
             ))}
-            {selectedEmojis.length > 12 && <button type="button" className="sheet-expand" onClick={onOpenSheet}>+{selectedEmojis.length - 12}</button>}
+            {selectedEmojis.length > 12 && (onOpenSheet
+              ? <button type="button" className="sheet-expand" onClick={onOpenSheet}>+{selectedEmojis.length - 12}</button>
+              : <span className="sheet-expand" data-static>+{selectedEmojis.length - 12}</span>)}
           </div>
         )}
       </div>
@@ -356,7 +358,7 @@ export function EmojiExport({ onInvertVisible, onOpenSheet, selectedEmojis, onCl
           >
             <Link className="h-4 w-4" />
           </Button>
-        <div className="flex items-center">
+        <div className="sheet-eraser-pair flex items-center">
           <span
             title={selectedEmojis.length === 0 ? "Select some emojis first, or click Select All" : undefined}
             onMouseEnter={nudgeSelectAll}
@@ -391,7 +393,7 @@ export function EmojiExport({ onInvertVisible, onOpenSheet, selectedEmojis, onCl
             onRun={runExport}
             onDownloadOriginals={() => exportFiles('zip')}
             formats={[
-              {label: overwriteExisting ? "Slack overwrite script" : "Slack script", run: () => exportFiles('slack')},
+              {label: overwriteExisting ? "Slack overwrite script" : "Slack script", run: () => exportFiles('slack'), primary: true},
               {label: "Slack script: replace smaller…", run: () => exportFiles('slack', true)},
               {label: "Plain Text", run: exportAsPlainText},
               {label: "HTML", run: exportAsHtml},
