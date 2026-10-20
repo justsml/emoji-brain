@@ -9,6 +9,7 @@ import { recoverEmojiPreview, restoreEmojiPreview, markdownTable, stillImageProp
 import { useExportEstimates } from "../hooks/useExportEstimates";
 import { formatBytes, SLACK_SCRIPT_LIMIT, type ExportTier } from "../lib/slackSizeEstimate";
 import { ExportOptions } from "./ExportOptions";
+import { ExportProgressOverlay } from "./ExportProgressOverlay";
 import { DeskSurface } from "./DeskSurface";
 import { CheckSquare, XSquare, ChevronDown, Copy, LoaderCircle, X, Check, Trash2, Link, ArrowLeftRight } from "lucide-react";
 import "../styles/sheet-tray.css";
@@ -32,6 +33,10 @@ interface EmojiExportProps {
 export function EmojiExport({ onInvertVisible, onOpenSheet, selectedEmojis, onClearSelection, onDeselectVisible, onSelectAll, filteredEmojis, gridScale, onRemoveEmoji, shareUrl, scriptOverheadBytes }: EmojiExportProps) {
   const [exportStatus, setExportStatus] = useState<string>("");
   const [isExporting, setIsExporting] = useState(false);
+  const [exportKind, setExportKind] = useState<'slack' | 'zip'>('slack');
+  // The clipboard write can't be taken back, so Cancel goes away just before it.
+  const [copying, setCopying] = useState(false);
+  const exportOpenerRef = useRef<HTMLElement | null>(null);
   const [copiedScript, setCopiedScript] = useState<{ megabytes: string; count: number; replaceSmaller: boolean; overwrite: boolean; resolutions: SlackResolution[]; pinned: boolean } | null>(null);
   const [overwriteExisting, setOverwriteExisting] = useState(false);
   const statusTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -125,6 +130,9 @@ export function EmojiExport({ onInvertVisible, onOpenSheet, selectedEmojis, onCl
     track('export_started', properties);
     const controller = new AbortController();
     abortControllerRef.current = controller;
+    exportOpenerRef.current = document.activeElement instanceof HTMLElement && document.activeElement !== document.body ? document.activeElement : scriptButtonRef.current;
+    setExportKind(kind);
+    setCopying(false);
     setIsExporting(true);
     setCopiedScript(null);
     if (statusTimerRef.current) clearTimeout(statusTimerRef.current);
@@ -133,6 +141,7 @@ export function EmojiExport({ onInvertVisible, onOpenSheet, selectedEmojis, onCl
       const result = await runExportWorker({kind, filenames: selectedEmojis.map(e => e.filename), origin: window.location.origin, replaceSmaller, overwrite, tier: pinnedTier ?? undefined}, controller.signal, setExportStatus);
       if (controller.signal.aborted) return;
       if (result.kind === 'slack') {
+        setCopying(true);
         setExportStatus('Copying script to clipboard… Please wait; large exports may briefly pause your browser.');
         // Let React commit and the browser paint the message before clipboard work.
         await new Promise<void>(resolve => requestAnimationFrame(() => requestAnimationFrame(() => resolve())));
@@ -173,6 +182,13 @@ export function EmojiExport({ onInvertVisible, onOpenSheet, selectedEmojis, onCl
     setStatusWithTimeout('Export canceled');
   };
 
+  // The overlay held focus; hand it back to whatever started the export.
+  const wasExporting = useRef(false);
+  useEffect(() => {
+    if (wasExporting.current && !isExporting && !copiedScript) exportOpenerRef.current?.focus();
+    wasExporting.current = isExporting;
+  }, [isExporting, copiedScript]);
+
   useEffect(() => {
     return () => {
       abortControllerRef.current?.abort();
@@ -212,6 +228,7 @@ export function EmojiExport({ onInvertVisible, onOpenSheet, selectedEmojis, onCl
 
   return (
     <>
+    {isExporting && <ExportProgressOverlay kind={exportKind} status={exportStatus} cancelable={!copying} onCancel={cancelExport} />}
     {copiedScript && (
       <section
         aria-labelledby="slack-instructions-title"
@@ -407,7 +424,6 @@ export function EmojiExport({ onInvertVisible, onOpenSheet, selectedEmojis, onCl
         </div>
       </div>
 
-      {isExporting && <button type="button" onClick={cancelExport}>Cancel export</button>}
       {exportStatus && (
         <div role="status" className="sheet-status animate-in fade-in">
           {exportStatus}
