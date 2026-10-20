@@ -11,7 +11,8 @@ export interface EmojiMetadata {
   width?: number
   height?: number
   created?: string
-  size: number
+  /** Source bytes. Build-time only: the island's packed catalog leaves it out. */
+  size?: number
   /** true when the source WebP has more than one frame */
   animated?: boolean
   /** Semantic discovery labels, extracted at build time. */

@@ -18,6 +18,7 @@ import CatalogDiscovery from "./CatalogDiscovery";
 import {discover, PALETTE} from "../lib/catalogDiscovery";
 import SimilarStripLoader from "./SimilarStripLoader";
 import { recoverEmojiPreview } from "../lib/emojiAssets";
+import { decodeCatalog } from "../lib/catalogCodec";
 
 interface PagefindResultData {
   url: string;
@@ -354,12 +355,17 @@ const _EmojiExplorerApp: React.FC<EmojiExplorerAppProps> = ({
   );
 };
 
-const EmojiExplorerWrapper = (
-  props: Omit<EmojiExplorerAppProps, "categories">
-) => {
+type EmojiExplorerWrapperProps = Omit<EmojiExplorerAppProps, "initialEmojis"> & (
+  | { initialEmojis: EmojiMetadata[]; catalog?: never }
+  /** The page passes the catalog packed (src/lib/catalogCodec.ts) to keep the island's props small. */
+  | { catalog: string; initialEmojis?: never }
+);
+
+const EmojiExplorerWrapper = ({ initialEmojis, catalog, scriptOverheadBytes }: EmojiExplorerWrapperProps) => {
+  const emojis = useMemo(() => initialEmojis ?? decodeCatalog(catalog!), [initialEmojis, catalog]);
   return (
-    <EmojiProviderWrapper initialEmojis={props.initialEmojis}>
-      <_EmojiExplorerApp initialEmojis={props.initialEmojis} scriptOverheadBytes={props.scriptOverheadBytes} />
+    <EmojiProviderWrapper initialEmojis={emojis}>
+      <_EmojiExplorerApp initialEmojis={emojis} scriptOverheadBytes={scriptOverheadBytes} />
     </EmojiProviderWrapper>
   );
 };
