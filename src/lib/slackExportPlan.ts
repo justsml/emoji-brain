@@ -1,4 +1,4 @@
-import {generateCompactSlackBrowserScript, generateSlackBrowserScript, type SlackScriptImage} from './slackBrowserScript';
+import {generateFetchingSlackBrowserScript, generateCompactSlackBrowserScript, generateSlackBrowserScript, type SlackScriptImage} from './slackBrowserScript';
 import {EXPORT_TIERS, SLACK_SCRIPT_LIMIT, slackSizeFor, type ExportTier} from './slackSizeEstimate';
 
 export {SLACK_SCRIPT_LIMIT};
@@ -20,7 +20,7 @@ export async function planSlackExport(
   rows: {filename: string; row: DeliveryRow}[],
   load: (assets: SlackAsset[]) => Promise<Uint8Array[]>,
   progress: (text: string) => void,
-  options: {replaceSmaller?: boolean; overwrite?: boolean; allowOversizeArchive?: boolean; tier?: ExportTier} = {},
+  options: {replaceSmaller?: boolean; overwrite?: boolean; allowOversizeArchive?: boolean; tier?: ExportTier; fetchOrigin?: string} = {},
   limit = SLACK_SCRIPT_LIMIT,
 ): Promise<SlackPlan> {
   if (!rows.length) throw Error('Select at least one emoji');
@@ -28,7 +28,7 @@ export async function planSlackExport(
   // The final script is always measured; estimates are never a safety boundary.
   const overhead = new Blob([generateSlackBrowserScript([],options)]).size + 1024;
   const attempted = new Set<string>();
-  const ladder = options.tier ? [options.tier] : EXPORT_TIERS;
+  const ladder = options.tier ? [options.tier] : options.fetchOrigin ? [EXPORT_TIERS[0]] : EXPORT_TIERS;
   let smallest: SlackPlan | undefined;
   for (const {still: stillSize, animated: animatedSize} of ladder) {
     const assets = rows.map(({filename,row}) => {
@@ -40,7 +40,7 @@ export async function planSlackExport(
       if (!asset) throw Error(`Missing ${size}px WebP: ${filename}`);
       return {...asset, filename, size, animated: row.animated};
     });
-    if (!options.tier && (stillSize !== 64 || animatedSize !== 64) && assets.every(a => Number.isFinite(a.slackGzipBytes))) {
+    if (!options.fetchOrigin && !options.tier && (stillSize !== 64 || animatedSize !== 64) && assets.every(a => Number.isFinite(a.slackGzipBytes))) {
       const estimate = 4 * Math.ceil(assets.reduce((sum,a) => sum + a.slackGzipBytes!,0)/3) + overhead;
       // Leave 1% tolerance for per-stream headers and shared dictionaries.
       if (estimate >= limit * 1.01) continue;
@@ -50,13 +50,19 @@ export async function planSlackExport(
     attempted.add(key);
     progress(`Checking ${stillSize}px stills / ${animatedSize}px animations…`);
     const data = await load(assets);
-    const images: SlackScriptImage[] = assets.map((asset,index) => {
+    const images: SlackScriptImage[] = options.fetchOrigin ? [] : assets.map((asset,index) => {
       const bytes = data[index]; let binary = '';
       for (let offset=0;offset<bytes.length;offset+=0x8000) binary += String.fromCharCode(...bytes.subarray(offset,offset+0x8000));
       return {filename:asset.filename, mimeType:'image/webp', base64:btoa(binary)};
     });
     progress('Checking compressed script size…');
-    const script = await generateCompactSlackBrowserScript(images,options);
+    const script = options.fetchOrigin
+      ? generateFetchingSlackBrowserScript(await Promise.all(assets.map(async (asset, index) => {
+          if (data[index].length !== asset.bytes || asset.bytes > 127000) throw Error(`Invalid Slack asset: ${asset.filename}`);
+          const sha256 = Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256', new Uint8Array(data[index]))), n => n.toString(16).padStart(2,'0')).join('');
+          return {filename:asset.filename, mimeType:'image/webp', url:new URL(asset.path, options.fetchOrigin).href, bytes:asset.bytes, sha256};
+        })), options)
+      : await generateCompactSlackBrowserScript(images,options);
     const scriptBytes = new Blob([script]).size;
     // Capped images make a group non-uniform, so report every size actually
     // shipped rather than claiming the first one stands for the rest.

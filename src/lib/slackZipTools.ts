@@ -1,10 +1,17 @@
 import type JSZip from 'jszip';
-import {generateSlackBrowserScript, slackPayloadDecoder} from './slackBrowserScript';
+import {generateFetchingSlackBrowserScript, generateSlackBrowserScript, slackPayloadDecoder} from './slackBrowserScript';
 import {SLACK_SCRIPT_LIMIT, type SlackPlan} from './slackExportPlan';
 
 /** A portable Node script uses the same uploader templates as the browser. */
-export function addSlackZipTools(zip: JSZip, plan: SlackPlan, data: Uint8Array[]) {
+export async function addSlackZipTools(zip: JSZip, plan: SlackPlan, data: Uint8Array[]) {
   plan.assets.forEach((asset,index) => zip.file(`slack/images/${asset.filename}`,data[index]));
+  const descriptors = await Promise.all(plan.assets.map(async (asset, index) => ({
+    filename:asset.filename, mimeType:'image/webp', url:'', bytes:data[index].length,
+    sha256:Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256', new Uint8Array(data[index]))), n => n.toString(16).padStart(2,'0')).join(''),
+  })));
+  zip.file('slack/import-local.js', generateFetchingSlackBrowserScript(descriptors, {}, 'zip'));
+  zip.file('slack/import-overwrite.js', generateFetchingSlackBrowserScript(descriptors, {overwrite:true}, 'zip'));
+  zip.file('slack/import-replace-smaller.js', generateFetchingSlackBrowserScript(descriptors, {replaceSmaller:true}, 'zip'));
   zip.file('slack/resolutions.json',JSON.stringify(plan.resolutions,null,2));
   const plainTemplate = generateSlackBrowserScript([]);
   const compactTemplate = plainTemplate.replace('const images = [];',`const images = ${slackPayloadDecoder('__EMOJI_PAYLOAD__')};`);
@@ -35,6 +42,13 @@ exec node slack/generate.mjs
   zip.file('SLACK-README.txt',`Full-resolution WebP originals are at the archive root.
 The separate slack/images folder contains the optimized selection:
 ${plan.resolutions.map(r=>`${r.count} ${r.animated?'animated':'still'} at ${r.size}x${r.size}`).join('\n')}
+
+Offline browser fallback (no external image requests):
+Paste slack/import-local.js into Slack DevTools, then choose this original ZIP
+in the file picker. It verifies the optimized images before uploading. Cancel
+preparation with cancelSlackEmojiUpload(). import-local.js adds only; it never deletes.
+For the backup/confirmation replacement workflow use slack/import-overwrite.js
+or slack/import-replace-smaller.js instead.
 
 Run: sh generate-slack-script.sh
 Requires Node.js 18 or newer; no packages, network access or Slack token needed.
