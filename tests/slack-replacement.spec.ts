@@ -2,9 +2,9 @@ import {test,expect} from '@playwright/test';
 import sharp from 'sharp';
 import fs from 'node:fs/promises';
 
-for(const scenario of ['replace','restore','changed','alias','delete-rejected','lost-acknowledgement','restore-failure','overwrite','overwrite-denied','overwrite-identical','overwrite-restore','overwrite-cancel','overwrite-next-upload'] as const)test(`optional Slack replacement: ${scenario}`,async({page,context})=>{
+for(const scenario of ['fetch-overwrite','replace','restore','changed','alias','delete-rejected','lost-acknowledgement','restore-failure','overwrite','overwrite-denied','overwrite-identical','overwrite-restore','overwrite-cancel','overwrite-next-upload'] as const)test(`optional Slack replacement: ${scenario}`,async({page,context})=>{
   test.setTimeout(60_000);
-  const overwrite = scenario.startsWith('overwrite');
+  const overwrite = scenario.startsWith('overwrite') || scenario === 'fetch-overwrite';
   await page.addInitScript(()=>Object.defineProperty(navigator,'clipboard',{value:{writeText:async(text:string)=>{(window as any).copiedEmojiScript=text;}}}));
   await page.goto('/');
   await expect(page.locator('astro-island[ssr]')).toHaveCount(0);
@@ -19,19 +19,20 @@ for(const scenario of ['replace','restore','changed','alias','delete-rejected','
     await page.getByRole('checkbox',{name:'Overwrite existing Slack emojis'}).check();
     await expect(page.locator('.export-overwrite')).toContainText('Requires deletion permission');
   }
-  await page.getByRole('group',{name:'Export options'}).getByRole('button',{name:overwrite?'Copy overwrite script':'Slack script: replace smaller…',exact:true}).click();
+  await page.getByRole('group',{name:'Export options'}).getByRole('button',{name:scenario==='fetch-overwrite'?'Copy small fetch script (experimental)':overwrite?'Copy overwrite script':'Slack script: replace smaller…',exact:true}).click();
   await expect(page.getByLabel('Close Slack instructions')).toBeVisible();
-  const script=await page.evaluate(()=>(window as any).copiedEmojiScript);
+  const script=(await page.evaluate(()=>(window as any).copiedEmojiScript)).replaceAll(new URL(page.url()).origin, 'https://adorbs.fun');
   const newer=await fs.readFile('public/emoji-delivery/256/'+filename);
   const old=scenario==='overwrite-identical'?newer:await sharp({create:{width:overwrite?512:16,height:overwrite?512:16,channels:4,background:'#1268ae'}}).webp({lossless:true}).toBuffer();
   const mock=await context.newPage();await mock.route('https://emoji-replace-test.slack.com/**',route=>route.fulfill({contentType:'text/html',body:'<input name="token" value="fixture-token">'}));
   await mock.goto('https://emoji-replace-test.slack.com/customize/emoji');
   if(scenario==='overwrite')await mock.setViewportSize({width:320,height:640});
   await mock.locator('input[name=token]').focus();mock.on('dialog',dialog=>scenario==='overwrite-cancel'?dialog.dismiss():dialog.accept());
-  await mock.evaluate(({name,old,scenario,nextName})=>{
+  await mock.evaluate(({name,old,scenario,nextName,newer})=>{
     const state:any={name,bytes:old,url:'https://emoji-cdn.test/original.webp',exists:true,requests:[],failed:false,nextName,nextExists:false,nextBytes:[]};(window as any).replacementFixture=state;
     window.fetch=async(url,init)=>{
       const path=String(url);
+      if(path.startsWith('https://adorbs.fun/emoji-delivery/'))return new Response(new Uint8Array(newer));
       if(path==='https://emoji-cdn.test/next.webp')return new Response(new Uint8Array(state.nextBytes),{headers:{'Content-Type':'image/webp'}});
       if(path.startsWith('https://emoji-cdn.test/'))return new Response(new Uint8Array(state.bytes),{headers:{'Content-Type':'image/webp'}});
       const form=init!.body as FormData;state.requests.push({path,method:init!.method,name:form.get('name'),reason:form.get('_x_reason'),mode:form.get('_x_mode')});
@@ -50,7 +51,7 @@ for(const scenario of ['replace','restore','changed','alias','delete-rejected','
       }
       throw Error('Unexpected fixture request '+path);
     };
-  },{name,old:Array.from(old),scenario,nextName});
+  },{name,old:Array.from(old),scenario,nextName,newer:Array.from(newer)});
   await mock.evaluate(script);
   const preview=mock.getByRole('dialog',{name:overwrite?'Preview emoji overwrites':'Preview smaller emoji replacements',exact:true});
   await expect(preview).toBeVisible();
@@ -83,7 +84,7 @@ for(const scenario of ['replace','restore','changed','alias','delete-rejected','
     expect(removes).toEqual([{path:'/api/emoji.remove',method:'POST',name,reason:'customize-emoji-remove',mode:'online'}]);
     const expected=['restore','overwrite-restore'].includes(scenario)?'restored-original':scenario==='restore-failure'?'restore-failed':scenario==='overwrite-denied'?'skipped-permission':scenario==='delete-rejected'?'stopped':'replaced';
     expect(result.report.items[0].status).toBe(expected);
-    expect(Buffer.from(result.state.bytes)).toEqual(['replace','lost-acknowledgement','overwrite'].includes(scenario)?newer:old);
+    expect(Buffer.from(result.state.bytes)).toEqual(['fetch-overwrite','replace','lost-acknowledgement','overwrite'].includes(scenario)?newer:old);
     if(['delete-rejected','overwrite-denied'].includes(scenario))expect(result.state.requests.filter((r:any)=>r.path==='/api/emoji.add')).toHaveLength(0);
     if(scenario==='restore-failure')expect(result.report.status).toBe('stopped-error');
   }

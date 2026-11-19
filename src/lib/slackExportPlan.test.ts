@@ -101,3 +101,12 @@ it('still enforces actual bytes if stored estimates are too small',async()=>{
  expect(result.assets.map(a=>a.size)).toEqual([128,64]);
  expect(result.scriptBytes).toBeLessThan(base+2900);
 });
+
+it('fetch export keeps the largest tier despite aggregate clipboard estimates',async()=>{
+ const selection=structuredClone(rows);
+ for(const {row} of selection)for(const variant of Object.values(row.variants))variant.webp.slackGzipBytes=100_000;
+ const result=await planSlackExport(selection,async assets=>assets.map(a=>new Uint8Array(a.bytes)),()=>{},{fetchOrigin:'https://adorbs.fun'});
+ expect(result.assets.map(a=>a.size)).toEqual([256,128]);
+ expect(result.script).toContain('https://adorbs.fun/false/256');
+ expect(result.script).toContain('sha256');expect(result.script).not.toContain('"base64":');
+});

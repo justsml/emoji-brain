@@ -1,3 +1,4 @@
+import assetRuntime from './slackAssetRuntime.js?raw';
 import replacementRuntime from './slackReplacementRuntime.js?raw';
 import {planSlackEmojiReplacements} from './slackEmojiReplacements';
 
@@ -66,6 +67,7 @@ export function generateSlackBrowserScript(images: SlackScriptImage[], options: 
 
   const report = [];
   for (const [index, image] of images.entries()) {
+    if (images.signal?.aborted) { report.push({filename:image.filename, status:'cancelled'}); continue; }
     const name = emojiName(image.filename);
     const progress = '[' + (index + 1) + '/' + images.length + ']';
     try {
@@ -77,13 +79,22 @@ export function generateSlackBrowserScript(images: SlackScriptImage[], options: 
       form.append('_x_reason', 'customize-emoji-add');
       form.append('_x_mode', 'online');
 
-      const response = await fetch('/api/emoji.add', {
+      let response;
+      for (let attempt = 0; attempt < 3; attempt++) {
+        images.signal?.throwIfAborted();
+        response = await fetch('/api/emoji.add', {
         method: 'POST',
         credentials: 'same-origin',
         body: form,
       });
+        if (response.status !== 429 || attempt === 2) break;
+        const retry = response.headers.get('retry-after');
+        const delay = Math.max(1000 * 2 ** attempt, Number(retry) * 1000 || Date.parse(retry || '') - Date.now() || 0);
+        if (delay > 30000) throw Error('Rate limited; retry after ' + retry);
+        await sleep(delay);
+      }
       const body = await response.json().catch(() => ({}));
-      if (!response.ok || body.ok === false) {
+      if (!response.ok || body.ok !== true) {
         throw new Error(body.error || 'HTTP ' + response.status);
       }
       report.push({ filename: image.filename, name, status: 'uploaded' });
@@ -135,4 +146,18 @@ export function slackPayloadDecoder(encoded: string): string {
     }
     return JSON.parse(await new Response(new Blob(chunks).stream().pipeThrough(new DecompressionStream('gzip'))).text());
   })()`;
+}
+
+export interface SlackAssetDescriptor {
+  filename: string;
+  mimeType: string;
+  url: string;
+  bytes: number;
+  sha256: string;
+}
+
+/** All assets are verified before the uploader (including replacement) starts. */
+export function generateFetchingSlackBrowserScript(images: SlackAssetDescriptor[], options: {replaceSmaller?: boolean; overwrite?: boolean} = {}, source: 'fetch' | 'zip' = 'fetch'): string {
+  return generateSlackBrowserScript([], options).replace('const images = [];',
+    `${assetRuntime}\n  const images = await loadSlackAssets(${JSON.stringify(images)}, ${JSON.stringify(source)});`);
 }

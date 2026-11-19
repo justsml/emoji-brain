@@ -18,6 +18,8 @@ it('ZIP packages the full-resolution WebP bytes, not a resized variant',async()=
  const zip=await JSZip.loadAsync(result.buffer);
  expect(await zip.file('test.webp')!.async('uint8array')).toEqual(data);
  expect(await zip.file('slack/images/test.webp')!.async('uint8array')).toEqual(data);
+ expect(await zip.file('slack/import-overwrite.js')!.async('string')).toContain('runSlackEmojiReplacement');
+ expect(await zip.file('slack/import-replace-smaller.js')!.async('string')).toContain('runSlackEmojiReplacement');
  const directory=await mkdtemp(join(tmpdir(),'emoji-slack-generator-'));
  try {
   for(const [name,file] of Object.entries(zip.files))if(!file.dir){const path=join(directory,name);await mkdir(dirname(path),{recursive:true});await writeFile(path,await file.async('nodebuffer'));}

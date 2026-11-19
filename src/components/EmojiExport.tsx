@@ -122,7 +122,7 @@ export function EmojiExport({ onInvertVisible, onOpenSheet, selectedEmojis, onCl
     }
   }, [shareUrl, selectedEmojis.length, setStatusWithTimeout]);
 
-  const exportFiles = useCallback(async (kind: 'slack' | 'zip', replaceSmaller = false) => {
+  const exportFiles = useCallback(async (kind: 'slack' | 'zip', replaceSmaller = false, fetchAssets = false) => {
     if (isExporting || selectedEmojis.length === 0) return;
     const overwrite = kind === 'slack' && overwriteExisting && !replaceSmaller;
     const properties = { format: kind, selected_count: selectedEmojis.length, replace_smaller: replaceSmaller, overwrite, tier_still: pinnedTier?.still ?? null, tier_animated: pinnedTier?.animated ?? null };
@@ -138,7 +138,7 @@ export function EmojiExport({ onInvertVisible, onOpenSheet, selectedEmojis, onCl
     if (statusTimerRef.current) clearTimeout(statusTimerRef.current);
     setExportStatus(`Preparing 0 of ${selectedEmojis.length} emojis…`);
     try {
-      const result = await runExportWorker({kind, filenames: selectedEmojis.map(e => e.filename), origin: window.location.origin, replaceSmaller, overwrite, tier: pinnedTier ?? undefined}, controller.signal, setExportStatus);
+      const result = await runExportWorker({kind, filenames: selectedEmojis.map(e => e.filename), origin: window.location.origin, replaceSmaller, overwrite, fetchAssets, tier: pinnedTier ?? undefined}, controller.signal, setExportStatus);
       if (controller.signal.aborted) return;
       if (result.kind === 'slack') {
         setCopying(true);
@@ -250,7 +250,7 @@ export function EmojiExport({ onInvertVisible, onOpenSheet, selectedEmojis, onCl
           {copiedScript.resolutions.filter(r => r.animated).length > 1 &&
             ' A few long animations ship smaller than the rest: Slack refuses any single emoji over 128 KB.'}
         </p>
-        <p className="slack-guide-note">Select fewer emojis to make room for larger images, up to 256px stills and 128px animations. ZIP exports include full-size originals and a local Slack script generator.</p>
+        <p className="slack-guide-note">Select fewer emojis to make room for larger images, up to 256px stills and 128px animations. ZIP exports include full-size originals, a local Slack script generator, and slack/import-local.js for importing the ZIP when external fetches are blocked.</p>
         {copiedScript.replaceSmaller && <p>The script opens a replacement preview in Slack. Save the originals backup and confirm the selected changes before anything is deleted.</p>}
         {copiedScript.overwrite && <p className="slack-overwrite-warning"><strong>Overwrite is enabled.</strong> The script previews exact-name replacements, including larger or animated images. It requires deletion permission, an originals backup, and confirmation before deleting anything. Failed uploads can leave an emoji missing; restoration is best effort. Denied deletions are skipped, and aliases are excluded.</p>}
         <ol>
@@ -414,6 +414,7 @@ export function EmojiExport({ onInvertVisible, onOpenSheet, selectedEmojis, onCl
             onDownloadOriginals={() => exportFiles('zip')}
             formats={[
               {label: overwriteExisting ? "Copy overwrite script" : "Copy Slack script", run: () => exportFiles('slack'), primary: true},
+              {label: "Copy small fetch script (experimental)", run: () => exportFiles('slack', false, true)},
               {label: "Slack script: replace smaller…", run: () => exportFiles('slack', true)},
               {label: "Plain Text", run: exportAsPlainText},
               {label: "HTML", run: exportAsHtml},
